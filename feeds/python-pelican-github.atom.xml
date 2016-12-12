@@ -115,7 +115,31 @@ git push -u origin master
 
 &lt;h3&gt;Visting your Brand new Blog&lt;/h3&gt;
 &lt;p&gt;You can visit your blog at https://username.github.io&lt;/p&gt;
+&lt;h3&gt;Script to publish and push to github repo automatically:&lt;/h3&gt;
+&lt;p&gt;I created &lt;code&gt;publish-n-push.sh&lt;/code&gt; script to automate generating html contents and pushing everything to github:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;echo &amp;quot;publising changes...&amp;quot;
+make html &amp;amp;&amp;amp; make publish
+echo &amp;quot;pushing code to source repo...&amp;quot;
+git add .
+git commit -m &amp;quot;$1&amp;quot;
+git push origin master
+echo &amp;quot;pushing generated website to github&amp;quot;
+cd output
+git add .
+git commit -m &amp;quot;$1&amp;quot;
+git push origin master
+cd ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Using this script: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd githubpages
+./publish-n-push.sh &amp;quot;commit-message&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h3&gt;References&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Here's wonderful tutorial about &lt;a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"&gt;Markdown syntax&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;I refered &lt;a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/"&gt;this&lt;/a&gt; tutorial as a reference.&lt;/li&gt;
 &lt;/ul&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
