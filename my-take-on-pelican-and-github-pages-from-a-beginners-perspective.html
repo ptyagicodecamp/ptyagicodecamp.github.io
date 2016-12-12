@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>My take on Pelican and Github pages from a beginner's perspective — CodeCamp Playground</title>
+	<meta name="description" content="Title: My take on Pelican and Github pages from a beginner's perspective; Date: 2010-12-08; Author: ptyagi">
+	<meta name="author" content="Priyanka Tyagi">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="./theme/html5.js"></script>
+		<![endif]-->
+	<link href="./theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="./theme/css/local.css" rel="stylesheet">
+	<link href="./theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="./">CodeCamp Playground</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">My take on Pelican and Github pages from a beginner's perspective</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">ptyagi</h4>
+		</span>
+		<time datetime="2010-12-08T10:20:00-07:00" itemprop="datePublished">Wed 08 December 2010</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="./category/python-pelican-github.html" rel="category">Python, Pelican, Github</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="./tag/pelican.html" rel="tag">pelican</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="./tag/publishing.html" rel="tag">publishing</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><h3>Setting up environment:</h3>
+<ol>
+<li>
+<p>First we need a pacakge manager to install necessery tools and packages. I chose Homebrew. Install Homebrew package manager and other needed tools for Mac by pasting this command in terminal:
+<code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew install wget</code></p>
+</li>
+<li>
+<p>Now, use Homebrew to install python, pip and other related tools. As time of this writing, it will install Python 2.7.12. 
+<code>brew install python</code></p>
+</li>
+<li>
+<p>Setup  <a href="https://virtualenv.pypa.io/en/stable/">vitutalenv tool</a> to keep python installations separate in their own sandbox: <code>pip install virtualenv</code></p>
+</li>
+<li>
+<p>Creating virtualenv for pelican
+    <code>mkdir -p ~/virtualenvs
+    cd ~/virtualenvs
+    virtualenv pelican
+    cd pelican
+    source bin/activate</code></p>
+</li>
+<li>
+<p>Install pelican: <code>pip install pelican</code></p>
+</li>
+<li>Install markdown package: <code>pip install pelican markdown</code></li>
+</ol>
+<h3>Setting up github repos:</h3>
+<ol>
+<li>One repo for source code for blog generator: ptyagicodecamp.github.io-src</li>
+<li>One repo for generated html blog contents: ptyagicodecamp.github.io</li>
+</ol>
+<h3>Setting up Blog with Pelican:</h3>
+<ol>
+<li>Clone github source repo into your local working directory:</li>
+</ol>
+<div class="highlight"><pre><span></span>git clone https://github.com/ptyagicodecamp/ptyagicodecamp.github.io-src.git githubpages
+cd githubpages
+</pre></div>
+
+
+<ol>
+<li>
+<p>Create output directory inside <code>githubpages</code> directory to hold generated html pages to add it as a git submodule: <code>git submodule add https://github.com/ptyagicodecamp/ptyagicodecamp.github.io.git output</code></p>
+</li>
+<li>
+<p>Setup pelican : </p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>pelican-quickstart
+&gt; Where do you want to create your new web site? [.]
+&gt; What will be the title of this web site? **Title of your blog**   
+&gt; Who will be the author of this web site? **your name**
+&gt; What will be the default language of this web site? [en]
+&gt; Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) Y
+&gt; What is your URL prefix? (see above example; no trailing slash) http://username.github.io
+&gt; Do you want to enable article pagination? (Y/n)
+&gt; How many articles per page do you want? [10]
+&gt; What is your time zone? [Europe/Paris]    America/Mazatlan
+&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) Y
+&gt; Do you want an auto-reload &amp; simpleHTTP script to assist with theme and site development? (Y/n) Y
+&gt; Do you want to upload your website using FTP? (y/N) N
+&gt; Do you want to upload your website using SSH? (y/N) N
+&gt; Do you want to upload your website using Dropbox? (y/N) N
+&gt; Do you want to upload your website using S3? (y/N) N
+&gt; Do you want to upload your website using Rackspace Cloud Files? (y/N) N
+&gt; Do you want to upload your website using GitHub Pages? (y/N) Y
+&gt; Is this your personal page (username.github.io)? (y/N) Y
+Error: [Errno 17] File exists: &#39;~/githubpages/content&#39;
+Error: [Errno 17] File exists: &#39;~/githubpages/output&#39;
+Done. Your new project is available at ~/githubpages
+</pre></div>
+
+
+<p>Note: Make DELETE_OUTPUT_DIRECTORY = False in publishconf.py to NOT delete output dir, since its a submodule.</p>
+<h3>Writing your first blog post:</h3>
+<p>Don't forget to install Markdown package: <code>pip install Markdown</code>. Also, don’t overlook that “.md” files needs meta-data at the beginning of file. Failing to do so, would give error that “NameTile” is failing. Meta data looks like this:</p>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">first</span> <span class="n">title</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">08</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
+<span class="n">Modified</span><span class="o">:</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">08</span> <span class="mi">19</span><span class="o">:</span><span class="mi">30</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
+<span class="n">Tags</span><span class="o">:</span> <span class="n">pelican</span><span class="o">,</span> <span class="n">publishing</span>
+</pre></div>
+
+
+<p>Now, write your first blog post by typing in terminal(or your faviorite editor) : <code>vi content/&lt;post-name&gt;.md</code></p>
+<p>Note: you're not required to use '.md' formatting, you can also use <code>.rst</code> formats too.</p>
+<h3>Build, Commit and Push posts :</h3>
+<p>Note: if you run into issue that pelicanconf.py doesn't exist, its because you may not have python environment loaded. You would need to execute this on terminal re-activate environment: source ~/virtualenvs/pelican/bin/activate</p>
+<ol>
+<li>
+<p>To generate HTML contents and start local webserver, type this on terminal: 'make html &amp;&amp; make serve`</p>
+</li>
+<li>
+<p>Generate website using: <code>make publish</code></p>
+</li>
+<li>
+<p>Committing to Github:
+At this point you can add all contents to github. 
+To add submodule in output directory:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>cd  output
+git add .
+git commit -m “Adding my contents”
+git push -u origin master
+cd ..
+echo “*.pyc” &gt;&gt; .gitignore #you can also add this by manually editing .gitignore file
+git add .
+git commit -m “first commit”
+git push -u origin master
+</pre></div></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href=".">CodeCamp Playground</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="./category/python,-pelican,-github.html">Python, Pelican, Github (1)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://getpelican.com/">Pelican</a></li>
+							<li><a href="http://python.org/">Python.org</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Priyanka Tyagi 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>
