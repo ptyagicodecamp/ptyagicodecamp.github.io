@@ -114,4 +114,8 @@ git push -u origin master
 
 
 &lt;h3&gt;Visting your Brand new Blog&lt;/h3&gt;
-&lt;p&gt;You can visit your blog at https://username.github.io&lt;/p&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
+&lt;p&gt;You can visit your blog at https://username.github.io&lt;/p&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Here's wonderful tutorial about &lt;a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"&gt;Markdown syntax&lt;/a&gt; &lt;/li&gt;
+&lt;/ul&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
