@@ -51,23 +51,24 @@
 			<a href="http://ptyagicodecamp.github.io/tag/library.html" rel="tag">library</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><h2>A little about WebView widgets:</h2>
+	<div itemprop="articleBody" class="article-body"><h3>A little about WebView widgets:</h3>
 <p>Webview widget is used to display HTML contents in an Android app. HTML contents can be rendered in a TextView widget using Html.fromHtml() method to parse very basic text. So why do we need WebView widget ? WebView widget is capable of handling more advanced HTML tags, Javascript and CSS, which gives a native feel to HTML contents right in your app. But this doesn't come for free. WebViews are more memory intensive when compared to TextView widget.</p>
-<h2>Background:</h2>
+<h3>Background:</h3>
 <p>Pre Android 4.4, WebView was powered by WebKit. Starting Android 4.4, it’s powered by Chromium. Starting Android 5.0, WebView is distributed through Google Play Store. Starting Android 7.0, WebView uses Chrome browser app or System WebView app when Chrome browser is disabled.</p>
 <p>Downside of newer implementation starting Android 5.0: Since System WebView implementation is distributed through Play Store and no more bundled in Android OS, its challenging for OEMs to keep their implementation of WebView in sync with Play Store’s System WebView. The two can go out of sync very quickly.</p>
-<h2>Behaviors:</h2>
+<h3>Behaviors:</h3>
 <ol>
 <li>Any links embedded in a WebView widget will open in a WebView in Android 5.0 and over. </li>
 <li>On Android 4.4 and below, links embedded in a WebView will open in a Web Browser rather than in a WebView widget</li>
 <li>By default, javascript is disabled in WebView widget. It can be turned on by <code>getSettings().setJavaScriptEnabled(true)</code>. I’ve created convenience class <code>WebViewHelper</code> around <code>android.webkit.WebView</code> class features.</li>
 </ol>
-<h2>Using from Android Studio:</h2>
+<h3>Using from Android Studio:</h3>
+<p>Add following in your project's <code>build.gradle</code> under <code>dependencies</code> block.</p>
 <div class="highlight"><pre><span></span>compile &#39;org.ptyagicodecamp:webview-android:0.0.1&#39;
 </pre></div>
 
 
-<h2>How to use <code>WebViewHelper</code> class ?</h2>
+<h3>How to use <code>WebViewHelper</code> class ?</h3>
 <ol>
 <li>Initializing: You would need to pass reference to <code>WebView</code> widget into <code>WebViewHelper</code> like this:</li>
 </ol>
@@ -83,32 +84,34 @@
         //initialize WebViewHelper
         webViewApi = new WebViewHelper(webView);
     }
-
-2. Use it !
 </pre></div>
 
 
-<p>public void loadUrl(View view) {
-        webView.loadUrl("https://ptyagicodecamp.github.io/");
-    }</p>
-<div class="highlight"><pre><span></span>public void loadData(View view) {
-    webViewApi.loadData(&quot;<span class="nt">&lt;html&gt;&lt;a</span> <span class="na">href=</span><span class="s">\&quot;https://ptyagicodecamp.github.io/\&quot;</span><span class="nt">&gt;</span>Click Here to visit my Blog<span class="nt">&lt;/html&gt;</span>&quot;);
-}
-
-public void toggleJavaScript(View view) {
-
-    if (((ToggleButton)view).isChecked()) {
-        webViewApi.enableJS();
-        Toast.makeText(this, &quot;Javascript is enabled&quot;, Toast.LENGTH_LONG).show();
-    } else {
-        webViewApi.disableJS();
-        Toast.makeText(this, &quot;Javascript is disabled&quot;, Toast.LENGTH_LONG).show();
+<ol>
+<li>Use it !</li>
+</ol>
+<div class="highlight"><pre><span></span>public void loadUrl(View view) {
+        webView.loadUrl(&quot;https://ptyagicodecamp.github.io/&quot;);
     }
-}
+
+    public void loadData(View view) {
+        webViewApi.loadData(&quot;<span class="nt">&lt;html&gt;&lt;a</span> <span class="na">href=</span><span class="s">\&quot;https://ptyagicodecamp.github.io/\&quot;</span><span class="nt">&gt;</span>Click Here to visit my Blog<span class="nt">&lt;/html&gt;</span>&quot;);
+    }
+
+    public void toggleJavaScript(View view) {
+
+        if (((ToggleButton)view).isChecked()) {
+            webViewApi.enableJS();
+            Toast.makeText(this, &quot;Javascript is enabled&quot;, Toast.LENGTH_LONG).show();
+        } else {
+            webViewApi.disableJS();
+            Toast.makeText(this, &quot;Javascript is disabled&quot;, Toast.LENGTH_LONG).show();
+        }
+    }
 </pre></div>
 
 
-<p>```
+<p>Source code is available [here]{https://github.com/ptyagicodecamp/webview-android}
 </p></div>
 	<hr>
 	<h2>Comments</h2>
