@@ -12,7 +12,7 @@
 &lt;/ol&gt;
 &lt;h3&gt;Using from Android Studio:&lt;/h3&gt;
 &lt;p&gt;Add following in your project's &lt;code&gt;build.gradle&lt;/code&gt; under &lt;code&gt;dependencies&lt;/code&gt; block.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile &amp;#39;org.ptyagicodecamp:webview-android:0.0.1&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile &amp;#39;org.ptyagicodecamp:webview-android:0.0.2&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 
 
