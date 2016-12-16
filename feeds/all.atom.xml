@@ -1,5 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CodeCamp Playground</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2016-12-08T10:20:00-07:00</updated><entry><title>My take on Pelican and Github pages from a beginner's perspective</title><link href="http://ptyagicodecamp.github.io/my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html" rel="alternate"></link><published>2016-12-08T10:20:00-07:00</published><updated>2016-12-08T10:20:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-08:my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html</id><summary type="html">&lt;h3&gt;Setting up environment:&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CodeCamp Playground</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2016-12-16T15:06:00-07:00</updated><entry><title>WebViewHelper Utility library</title><link href="http://ptyagicodecamp.github.io/webviewhelper-utility-library.html" rel="alternate"></link><published>2016-12-16T15:06:00-07:00</published><updated>2016-12-16T15:06:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-16:webviewhelper-utility-library.html</id><summary type="html">&lt;h2&gt;A little about WebView widgets:&lt;/h2&gt;
+&lt;p&gt;Webview widget is used to display HTML contents in an Android app. HTML contents can be rendered in a TextView widget using Html.fromHtml() method to parse very basic text. So why do we need WebView widget ? WebView widget is capable of handling more advanced HTML tags, Javascript and CSS, which gives a native feel to HTML contents right in your app. But this doesn't come for free. WebViews are more memory intensive when compared to TextView widget.&lt;/p&gt;
+&lt;h2&gt;Background:&lt;/h2&gt;
+&lt;p&gt;Pre Android 4.4, WebView was powered by WebKit. Starting Android 4.4, it’s powered by Chromium. Starting Android 5.0, WebView is distributed through Google Play Store. Starting Android 7.0, WebView uses Chrome browser app or System WebView app when Chrome browser is disabled.&lt;/p&gt;
+&lt;p&gt;Downside of newer implementation starting Android 5.0: Since System WebView implementation is distributed through Play Store and no more bundled in Android OS, its challenging for OEMs to keep their implementation of WebView in sync with Play Store’s System WebView. The two can go out of sync very quickly.&lt;/p&gt;
+&lt;h2&gt;Behaviors:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Any links embedded in a WebView widget will open in a WebView in Android 5.0 and over. &lt;/li&gt;
+&lt;li&gt;On Android 4.4 and below, links embedded in a WebView will open in a Web Browser rather than in a WebView widget&lt;/li&gt;
+&lt;li&gt;By default, javascript is disabled in WebView widget. It can be turned on by &lt;code&gt;getSettings().setJavaScriptEnabled(true)&lt;/code&gt;. I’ve created convenience class &lt;code&gt;WebViewHelper&lt;/code&gt; around &lt;code&gt;android.webkit.WebView&lt;/code&gt; class features.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Using from Android Studio:&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile &amp;#39;org.ptyagicodecamp:webview-android:0.0.1&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;How to use &lt;code&gt;WebViewHelper&lt;/code&gt; class ?&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Initializing: You would need to pass reference to &lt;code&gt;WebView&lt;/code&gt; widget into &lt;code&gt;WebViewHelper&lt;/code&gt; like this:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WebViewHelper webViewApi;
+....
+
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        webView = (WebView) findViewById(R.id.webView);
+        //initialize WebViewHelper
+        webViewApi = new WebViewHelper(webView);
+    }
+
+2. Use it !
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;public void loadUrl(View view) {
+        webView.loadUrl("https://ptyagicodecamp.github.io/");
+    }&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public void loadData(View view) {
+    webViewApi.loadData(&amp;quot;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;\&amp;quot;https://ptyagicodecamp.github.io/\&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Click Here to visit my Blog&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&amp;quot;);
+}
+
+public void toggleJavaScript(View view) {
+
+    if (((ToggleButton)view).isChecked()) {
+        webViewApi.enableJS();
+        Toast.makeText(this, &amp;quot;Javascript is enabled&amp;quot;, Toast.LENGTH_LONG).show();
+    } else {
+        webViewApi.disableJS();
+        Toast.makeText(this, &amp;quot;Javascript is disabled&amp;quot;, Toast.LENGTH_LONG).show();
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;```
+&lt;/p&gt;</summary><category term="android"></category><category term="webview"></category><category term="library"></category></entry><entry><title>My take on Pelican and Github pages from a beginner's perspective</title><link href="http://ptyagicodecamp.github.io/my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html" rel="alternate"></link><published>2016-12-08T10:20:00-07:00</published><updated>2016-12-08T10:20:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-08:my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html</id><summary type="html">&lt;h3&gt;Setting up environment:&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;First we need a pacakge manager to install necessery tools and packages. I chose Homebrew. Install Homebrew package manager and other needed tools for Mac by pasting this command in terminal:
