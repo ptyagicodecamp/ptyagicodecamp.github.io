@@ -19,7 +19,7 @@
 &lt;h3&gt;How to use &lt;code&gt;WebViewHelper&lt;/code&gt; class ?&lt;/h3&gt;
 &lt;h5&gt;Initializing&lt;/h5&gt;
 &lt;p&gt;You would need to pass reference to &lt;code&gt;WebView&lt;/code&gt; widget into &lt;code&gt;WebViewHelper&lt;/code&gt; like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WebViewHelper webViewApi;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WebViewHelper webViewHelper;
 ....
 
 @Override
@@ -29,27 +29,27 @@
 
         webView = (WebView) findViewById(R.id.webView);
         //initialize WebViewHelper
-        webViewApi = new WebViewHelper(webView);
+        webViewHelper = new WebViewHelper(webView);
     }
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h5&gt;Using library&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public void loadUrl(View view) {
-        webView.loadUrl(&amp;quot;https://ptyagicodecamp.github.io/&amp;quot;);
+        webViewHelper.loadUrl(&amp;quot;https://ptyagicodecamp.github.io/&amp;quot;);
     }
 
     public void loadData(View view) {
-        webViewApi.loadData(&amp;quot;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;\&amp;quot;https://ptyagicodecamp.github.io/\&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Click Here to visit my Blog&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&amp;quot;);
+        webViewHelper.loadData(&amp;quot;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;\&amp;quot;https://ptyagicodecamp.github.io/\&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Click Here to visit my Blog&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&amp;quot;);
     }
 
     public void toggleJavaScript(View view) {
 
         if (((ToggleButton)view).isChecked()) {
-            webViewApi.enableJS();
+            webViewHelper.enableJS();
             Toast.makeText(this, &amp;quot;Javascript is enabled&amp;quot;, Toast.LENGTH_LONG).show();
         } else {
-            webViewApi.disableJS();
+            webViewHelper.disableJS();
             Toast.makeText(this, &amp;quot;Javascript is disabled&amp;quot;, Toast.LENGTH_LONG).show();
         }
     }

@@ -71,7 +71,7 @@
 <h3>How to use <code>WebViewHelper</code> class ?</h3>
 <h5>Initializing</h5>
 <p>You would need to pass reference to <code>WebView</code> widget into <code>WebViewHelper</code> like this:</p>
-<div class="highlight"><pre><span></span>WebViewHelper webViewApi;
+<div class="highlight"><pre><span></span>WebViewHelper webViewHelper;
 ....
 
 @Override
@@ -81,27 +81,27 @@
 
         webView = (WebView) findViewById(R.id.webView);
         //initialize WebViewHelper
-        webViewApi = new WebViewHelper(webView);
+        webViewHelper = new WebViewHelper(webView);
     }
 </pre></div>
 
 
 <h5>Using library</h5>
 <div class="highlight"><pre><span></span>public void loadUrl(View view) {
-        webView.loadUrl(&quot;https://ptyagicodecamp.github.io/&quot;);
+        webViewHelper.loadUrl(&quot;https://ptyagicodecamp.github.io/&quot;);
     }
 
     public void loadData(View view) {
-        webViewApi.loadData(&quot;<span class="nt">&lt;html&gt;&lt;a</span> <span class="na">href=</span><span class="s">\&quot;https://ptyagicodecamp.github.io/\&quot;</span><span class="nt">&gt;</span>Click Here to visit my Blog<span class="nt">&lt;/html&gt;</span>&quot;);
+        webViewHelper.loadData(&quot;<span class="nt">&lt;html&gt;&lt;a</span> <span class="na">href=</span><span class="s">\&quot;https://ptyagicodecamp.github.io/\&quot;</span><span class="nt">&gt;</span>Click Here to visit my Blog<span class="nt">&lt;/html&gt;</span>&quot;);
     }
 
     public void toggleJavaScript(View view) {
 
         if (((ToggleButton)view).isChecked()) {
-            webViewApi.enableJS();
+            webViewHelper.enableJS();
             Toast.makeText(this, &quot;Javascript is enabled&quot;, Toast.LENGTH_LONG).show();
         } else {
-            webViewApi.disableJS();
+            webViewHelper.disableJS();
             Toast.makeText(this, &quot;Javascript is disabled&quot;, Toast.LENGTH_LONG).show();
         }
     }
