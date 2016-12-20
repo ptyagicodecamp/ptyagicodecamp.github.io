@@ -18,7 +18,7 @@ DEBUG_KEYSTORE_PASSWORD=*****
 
 
 &lt;p&gt;Note: There is no quotes around file path, passwords and alias.&lt;/p&gt;
-&lt;h3&gt;Defning Signing config in &lt;code&gt;build.gradle&lt;/code&gt;&lt;/h3&gt;
+&lt;h3&gt;Defining Signing config in &lt;code&gt;build.gradle&lt;/code&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;signingConfigs {
         debug {
             storeFile file(new File(DEBUG_KEYSTORE_FILE))
