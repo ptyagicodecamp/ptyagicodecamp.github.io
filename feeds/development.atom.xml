@@ -1,5 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CodeCamp Playground</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2016-12-16T15:06:00-07:00</updated><entry><title>WebViewHelper library</title><link href="http://ptyagicodecamp.github.io/webviewhelper-library.html" rel="alternate"></link><published>2016-12-16T15:06:00-07:00</published><updated>2016-12-16T15:06:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-16:webviewhelper-library.html</id><summary type="html">&lt;h3&gt;A little about WebView widgets:&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CodeCamp Playground</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2016-12-20T12:51:00-07:00</updated><entry><title>Automatic Android APK Signing</title><link href="http://ptyagicodecamp.github.io/automatic-android-apk-signing.html" rel="alternate"></link><published>2016-12-20T12:51:00-07:00</published><updated>2016-12-20T12:51:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-20:automatic-android-apk-signing.html</id><summary type="html">&lt;h3&gt;Declaring Signing credentials&lt;/h3&gt;
+&lt;p&gt;Never put your signing apk credentials in github or any public sharable place. Always put them in a non-committable file. I'll be using &lt;path-to-.gradle-dir&gt;/.gradle/.gradle.properties to store signing creds.&lt;/p&gt;
+&lt;h5&gt;Declaring release apk crendentials&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;RELEASE_KEYSTORE_FILE={path to your release keystore}
+RELEASE_KEYSTORE_PASSWORD=*****
+RELEASE_KEYSTORE_ALIAS=*****
+RELEASE_KEYSTORE_PASSWORD=*****
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Declaring debug apk credentials&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;DEBUG_KEYSTORE_FILE={path to your debug keystore}
+DEBUG_KEYSTORE_PASSWORD=*****
+DEBUG_KEYSTORE_ALIAS=*****
+DEBUG_KEYSTORE_PASSWORD=*****
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note: There is no quotes around file path, passwords and alias.&lt;/p&gt;
+&lt;h3&gt;Defning Signing config in &lt;code&gt;build.gradle&lt;/code&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;signingConfigs {
+        debug {
+            storeFile file(new File(DEBUG_KEYSTORE_FILE))
+            storePassword DEBUG_KEYSTORE_PASSWORD
+            keyAlias DEBUG_KEY_ALIAS
+            keyPassword DEBUG_KEY_PASSWORD
+        }
+
+        release {
+            storeFile file(new File(RELEASE_KEYSTORE_FILE))
+            storePassword RELEASE_KEYSTORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+    }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note: Order of defining &lt;code&gt;buildTypes&lt;/code&gt; block and &lt;code&gt;signingConfigs&lt;/code&gt; block is very important. &lt;code&gt;signingConfigs&lt;/code&gt; comes before &lt;code&gt;buildTypes&lt;/code&gt; block.&lt;/p&gt;
+&lt;h3&gt;Putting All together&lt;/h3&gt;
+&lt;p&gt;Full signing configuration in &lt;code&gt;build.gradle&lt;/code&gt; will look like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apply plugin: &amp;#39;com.android.application&amp;#39;
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion &amp;quot;22.0.1&amp;quot;
+
+    defaultConfig {
+        applicationId &amp;quot;com.myawesomeproject.id&amp;quot;
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName &amp;quot;1.1&amp;quot;
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file(new File(DEBUG_KEYSTORE_FILE))
+            storePassword DEBUG_KEYSTORE_PASSWORD
+            keyAlias DEBUG_KEY_ALIAS
+            keyPassword DEBUG_KEY_PASSWORD
+        }
+
+        release {
+            storeFile file(new File(RELEASE_KEYSTORE_FILE))
+            storePassword RELEASE_KEYSTORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+        }
+
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile(&amp;#39;proguard-android.txt&amp;#39;), &amp;#39;proguard-rules.pro&amp;#39;
+        }
+    }
+} //closing android block
+
+
+dependencies {
+    compile fileTree(dir: &amp;#39;libs&amp;#39;, include: [&amp;#39;*.jar&amp;#39;])
+} 
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="android"></category><category term="gradle"></category><category term="signing"></category><category term="apk"></category><category term="dev"></category></entry><entry><title>WebViewHelper library</title><link href="http://ptyagicodecamp.github.io/webviewhelper-library.html" rel="alternate"></link><published>2016-12-16T15:06:00-07:00</published><updated>2016-12-16T15:06:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-16:webviewhelper-library.html</id><summary type="html">&lt;h3&gt;A little about WebView widgets:&lt;/h3&gt;
 &lt;p&gt;Webview widget is used to display HTML contents in an Android app. HTML contents can be rendered in a TextView widget using Html.fromHtml() method to parse very basic text. So why do we need WebView widget ? WebView widget is capable of handling more advanced HTML tags, Javascript and CSS, which gives a native feel to HTML contents right in your app. But this doesn't come for free. WebViews are more memory intensive when compared to TextView widget.&lt;/p&gt;
 &lt;h3&gt;Background:&lt;/h3&gt;
 &lt;p&gt;Pre Android 4.4, WebView was powered by WebKit. Starting Android 4.4, it’s powered by Chromium. Starting Android 5.0, WebView is distributed through Google Play Store. Starting Android 7.0, WebView uses Chrome browser app or System WebView app when Chrome browser is disabled.&lt;/p&gt;
