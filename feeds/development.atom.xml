@@ -1,5 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2016-12-20T12:51:00-07:00</updated><entry><title>Automatic Android APK Signing</title><link href="http://ptyagicodecamp.github.io/automatic-android-apk-signing.html" rel="alternate"></link><published>2016-12-20T12:51:00-07:00</published><updated>2016-12-20T12:51:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-20:automatic-android-apk-signing.html</id><summary type="html">&lt;h3&gt;Declaring Signing credentials&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-01-08T17:52:00-07:00</updated><entry><title>WebViewOverlay widget library</title><link href="http://ptyagicodecamp.github.io/webviewoverlay-widget-library.html" rel="alternate"></link><published>2017-01-08T17:52:00-07:00</published><updated>2017-01-08T17:52:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-01-08:webviewoverlay-widget-library.html</id><summary type="html">&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;I created a widget that can load a WebView widget in a closable overlay/modal. I wanted to re-use
+this new, shiny widget in my other projects as well to provide me easy way to load a WebView in a
+full-screen modal rather keep writing the same piece of code again and over again.
+So, decided to upload WebViewOverlay library to JCenter.&lt;/p&gt;
+&lt;h2&gt;WebViewOverlay Widget&lt;/h2&gt;
+&lt;p&gt;WebViewOverlay widget loads a WebView widget in a full-screen pop-up. It has option to close it by
+clicking on top-right corner 'x'&lt;/p&gt;
+&lt;h2&gt;API&lt;/h2&gt;
+&lt;p&gt;There're two APIs to load WebView either in full-screen mode or in a dialog with a custom title.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Full Screen Overlay&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void loadWebViewOverlay(String urlToBeLoaded, HashMap&amp;lt;String, String&amp;gt; params);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="Overlay FullScreen" src="http://ptyagicodecamp.github.io/OverlayFullScreen.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Full Screen Overlay With Custom Title&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void loadWebViewOverlay(String urlToBeLoaded, HashMap&amp;lt;String, String&amp;gt; params, String popupTitle);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="OverlayWithTitle" src="http://ptyagicodecamp.github.io/OverlayWithTitle.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;Integration&lt;/h2&gt;
+&lt;p&gt;In Android Studio, it can be added to your project by adding following in &lt;code&gt;build.gradle&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile &amp;#39;org.ptyagicodecamp:WebViewOverlay:1.0.2&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Initialization&lt;/h2&gt;
+&lt;p&gt;WebViewOverlay widget can be initialized in Activity or BaseActivity's &lt;code&gt;onCreate()&lt;/code&gt; method.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WebViewOverlay webViewOverlay;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    webViewOverlay = new WebViewOverlay(this);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;After initializing widget, it can simply be used by calling either of the API.
+Here's examples to demonstrate both APIs:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;void&lt;/span&gt; &lt;span class="nt"&gt;openWebViewOverlay&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;View&lt;/span&gt; &lt;span class="nt"&gt;view&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nb"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://ptyagicodecamp.github.io&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;webViewOverlay&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loadWebViewOverlay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;void&lt;/span&gt; &lt;span class="nt"&gt;openWebViewOverlayWithTitle&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;View&lt;/span&gt; &lt;span class="nt"&gt;view&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nb"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://ptyagicodecamp.github.io&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;webViewOverlay&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loadWebViewOverlay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;WebViewOverlay Demo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android"></category><category term="WebView"></category><category term="Library"></category><category term="OpenSource"></category><category term="Dev"></category></entry><entry><title>How did I publish library to JCenter from Android Studio</title><link href="http://ptyagicodecamp.github.io/how-did-i-publish-library-to-jcenter-from-android-studio.html" rel="alternate"></link><published>2017-01-07T17:27:00-07:00</published><updated>2017-01-07T17:27:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-01-07:how-did-i-publish-library-to-jcenter-from-android-studio.html</id><summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;I created a widget that can load a WebView widget in a closable overlay/modal. I wanted to re-use this new, shiny widget in my other projects as well to provide me easy way to load a WebView in a full-screen modal rather keep writing the same piece of code again and over again. So, decided to upload WebViewOverlay library to JCenter.
+JCenter is a Maven Repository or file server hosted by &lt;a href="https://bintray.com/"&gt;Bintray&lt;/a&gt; for Android libraries. It’s a default repository for Android Studio.&lt;/p&gt;
+&lt;h2&gt;Uploading Android library (in aar format) to Bintray&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Create log-in at https://bintray.com/. Scroll down to register for an open-source project.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a new repo:
+  &lt;img alt="Create Repo" src="http://ptyagicodecamp.github.io/create_repo.png" /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fill-in all required information and click "create repo". It'll redirect to "package" screen.
+  &lt;img alt="Repo Created" src="http://ptyagicodecamp.github.io/repo_created.png" /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on “Create Package”. Fill in your package name and click on "Add New Package":
+&lt;img alt="Add New Package" src="http://ptyagicodecamp.github.io/add_new_package.png" /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It'll take you to enter package details. Fill-in details and click on "Create Package" at the bottom.
+&lt;img alt="Create Package" src="http://ptyagicodecamp.github.io/create_package.png" /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And you’re Done with registering your Maven repository on Bintray !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt;: Link your Github account from Bintray, if you want to upload library from Android Studio/build.gradle.
+You can do this by going into your repository on Bintray and selecting “Import from Github” option. It’ll guide you through with rest of the steps.&lt;/p&gt;
+&lt;h3&gt;Setting up Android Studio Project&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a new project in Android Studio.&lt;/li&gt;
+&lt;li&gt;Module &lt;code&gt;WebViewOverlay&lt;/code&gt; contains all the library code and module &lt;code&gt;app&lt;/code&gt; has sample app to demonstrate the usage of library.
+Make sure that you name module same as of artifact name configured at Bintray. &lt;code&gt;WebViewOverlay&lt;/code&gt; in this example.&lt;/li&gt;
+&lt;li&gt;Setup Android Studio project to be able to publish library to &lt;code&gt;jcenter()&lt;/code&gt; Maven repo, and
+add Bintray plugin to project’s &lt;code&gt;build.gradle&lt;/code&gt;. Root level &lt;code&gt;build.gradle&lt;/code&gt; will look like this:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath &amp;#39;com.android.tools.build:gradle:2.2.3&amp;#39;
+        classpath &amp;#39;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4&amp;#39;
+        classpath &amp;#39;com.github.dcendents:android-maven-gradle-plugin:1.4.1&amp;#39;
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Update Bintray related credentials in &lt;code&gt;local.properties&lt;/code&gt; like this:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;bintray.user=YOUR_BINTRAY_USERNAME
+bintray.apikey=YOUR_BINTRAY_API_KEY
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note: Look for &lt;strong&gt;API KEY&lt;/strong&gt; in your Profile section on Bintray.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add following in library module’s &lt;code&gt;build.gradle&lt;/code&gt;. In this case &lt;code&gt;build.gradle&lt;/code&gt; of &lt;code&gt;WebOverlay&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apply plugin: &amp;#39;com.android.library&amp;#39;
+
+ext {
+    bintrayRepo = &amp;#39;WebViewOverlay&amp;#39;
+    bintrayName = &amp;#39;WebViewOverlay&amp;#39;
+
+    publishedGroupId = &amp;#39;org.pcc&amp;#39;
+    libraryName = &amp;#39;WebViewOverlay&amp;#39;
+    artifact = &amp;#39;WebViewOverlay&amp;#39;
+
+    libraryDescription = &amp;#39;A widget to load WebView as an Overlay.&amp;#39;
+
+    siteUrl = &amp;#39;https://github.com/ptyagicodecamp/webview-overlay&amp;#39;
+    gitUrl = &amp;#39;https://github.com/ptyagicodecamp/webview-overlay.git&amp;#39;
+
+    libraryVersion = &amp;#39;1.0.0&amp;#39;
+
+    developerId = &amp;#39;developerId&amp;#39;
+    developerName = &amp;#39;Developer Name&amp;#39;
+    developerEmail = &amp;#39;developer@email.com&amp;#39;
+
+    licenseName = &amp;#39;The Apache Software License, Version 2.0&amp;#39;
+    licenseUrl = &amp;#39;http://www.apache.org/licenses/LICENSE-2.0.txt&amp;#39;
+    allLicenses = [&amp;quot;Apache-2.0&amp;quot;]
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;You would need to add these scripts in order to publish libraries to Bintray:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Add these lines to publish library to bintray. This is the readymade scripts made by github user nuuneoi to make uploading to bintray easy.
+//Place it at the end of the file
+apply from: &amp;#39;https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle&amp;#39;
+apply from: &amp;#39;https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's all you ve to do in order to configure you Android Studio project.&lt;/p&gt;
+&lt;h3&gt;Uploading to Bintray:&lt;/h3&gt;
+&lt;p&gt;CD to Root of Android Studio Project, and run these commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gradlew install
+gradlew bintrayUpload
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That’s it ! your artifact will be uploaded to Bintray.&lt;/p&gt;
+&lt;h3&gt;Link to JCenter&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Your package needs to be linked to JCenter to be able to be resolved.
+&lt;img alt="Add to JCenter" src="http://ptyagicodecamp.github.io/add_to_jcenter.png" /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It'll take couple of hours to get request approved. Once approved, you'll see you package like this:
+&lt;img alt="Linked To JCenter" src="http://ptyagicodecamp.github.io/linked_to_jcenter.png" /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt;: You will have to wait for couple of hours before it'll be synced on JCenter.
+You can check if its available by going to "http://jcenter.bintray.com/&lt;path/to/package&gt;"&lt;/p&gt;
+&lt;h3&gt;Start using your hosted library:&lt;/h3&gt;
+&lt;p&gt;Now you can reference &lt;code&gt;WebViewOverlay&lt;/code&gt; library from your project's &lt;code&gt;build.gradle&lt;/code&gt; like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile &amp;#39;org.ptyagicodecamp:WebViewOverlay:1.0.0&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Refrences:&lt;/h3&gt;
+&lt;p&gt;I followed this tutorial to get me setup at Bintray: https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en&lt;/p&gt;</summary><category term="bintray"></category><category term="publishing"></category><category term="webview"></category><category term="library"></category><category term="open-source"></category><category term="dev"></category></entry><entry><title>Automatic Android APK Signing</title><link href="http://ptyagicodecamp.github.io/automatic-android-apk-signing.html" rel="alternate"></link><published>2016-12-20T12:51:00-07:00</published><updated>2016-12-20T12:51:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-20:automatic-android-apk-signing.html</id><summary type="html">&lt;h3&gt;Declaring Signing credentials&lt;/h3&gt;
 &lt;p&gt;Never put your signing apk credentials in github or any public sharable place. Always put them in a non-committable file. I'll be using &lt;path-to-.gradle-dir&gt;/.gradle/.gradle.properties to store signing creds.&lt;/p&gt;
 &lt;h4&gt;Declaring release apk credentials&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;RELEASE_KEYSTORE_FILE={path to your release keystore}
