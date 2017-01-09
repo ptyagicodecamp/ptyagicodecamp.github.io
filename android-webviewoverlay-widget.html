@@ -2,68 +2,83 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>WebViewOverlay widget library — techLog</title>
-	<meta name="description" content="Title: WebViewOverlay widget library; Date: 2017-01-08; Author: ptyagi">
+	<title>Android WebViewOverlay Widget — techLog</title>
+	<meta name="description" content="Title: Android WebViewOverlay Widget; Date: 2017-01-09; Author: ptyagi">
 	<meta name="author" content="Priyanka Tyagi">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
-		<script src="/theme/html5.js"></script>
+		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
 		<![endif]-->
-	<link href="/theme/css/ipython.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="/theme/css/local.css" rel="stylesheet">
-	<link href="/theme/css/pygments.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
 	<div class="page-header">
-		<h1><a href="/">techLog</a>
+		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
 			<br>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">WebViewOverlay widget library</h1>
+		<h1 itemprop="name headline" class="article-title">Android WebViewOverlay Widget</h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">ptyagi</h4>
 		</span>
-		<time datetime="2017-01-08T17:52:00-07:00" itemprop="datePublished">Sun 08 January 2017</time>
+		<time datetime="2017-01-09T11:16:00-07:00" itemprop="datePublished">Mon 09 January 2017</time>
 	</div>
 	<div>
 		Category:
 		<span itemprop="articleSection">
-			<a href="/category/development.html" rel="category">Development</a>
+			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
 		</span>
 	</div>
  
 	<div>
 		Tags:
 		<span itemprop="keywords">
-			<a href="/tag/android.html" rel="tag">Android</a>
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">Android</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/webview.html" rel="tag">WebView</a>
+			<a href="http://ptyagicodecamp.github.io/tag/webview.html" rel="tag">WebView</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/library.html" rel="tag">Library</a>
+			<a href="http://ptyagicodecamp.github.io/tag/webviewoverlay.html" rel="tag">WebViewOverlay</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/opensource.html" rel="tag">OpenSource</a>
+			<a href="http://ptyagicodecamp.github.io/tag/library.html" rel="tag">Library</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/dev.html" rel="tag">Dev</a>
+			<a href="http://ptyagicodecamp.github.io/tag/opensource.html" rel="tag">OpenSource</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/dev.html" rel="tag">Dev</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><h2>Motivation</h2>
+	<div itemprop="articleBody" class="article-body"><p>for loading a URL in an Overlay WebView in full screen mode.</p>
+<h2>Motivation</h2>
 <p>I needed a widget that can load a url in WebView in a full-screen closable overlay/modal.
 I wanted to re-use this new, shiny widget in my other projects as well. So, I decided to upload
 WebViewOverlay library in a central artifact repository. I chose JCenter because its one of the
-largest artifact repository for Java and Android libraries and has good integration with Android Studio IDE.</p>
+largest artifact repository for Java and Android libraries and has good integration with Android Studio IDE.
+If you're interested in learning how did I publish Android libary to JCenter,
+then <a href="https://ptyagicodecamp.github.io/how-did-i-publish-library-to-jcenter-from-android-studio.html">this post</a>
+will be helpful for you.</p>
+<h2>Introduction</h2>
+<p>This article describes how WebViewOverlay Widget can be integrated to your Android App in few minutes.
+Integrating WebViewOverlay widget in your app is as simple as adding following line in your project's
+<code>build.gradle</code>:</p>
+<div class="highlight"><pre><span></span>compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.0&#39;
+</pre></div>
+
+
 <h2>WebViewOverlay Widget</h2>
-<p>WebViewOverlay widget loads a WebView widget in a full-screen pop-up. It has option to close it by
+<p>WebViewOverlay widget loads a WebView widget in a full screen pop-up or modal. It has option to close it by
 clicking on top-right corner 'x'</p>
 <h2>API</h2>
 <p>There're two APIs to load WebView either in full-screen mode or in a dialog with a custom title.</p>
@@ -72,13 +87,13 @@ clicking on top-right corner 'x'</p>
 </pre></div>
 
 
-<p><img alt="Overlay FullScreen" src="/OverlayFullScreen.png" /></p>
+<p><img alt="Overlay FullScreen" src="http://ptyagicodecamp.github.io/OverlayFullScreen.png" /></p>
 <p><strong><em>Full Screen Overlay With Custom Title</em></strong></p>
 <div class="highlight"><pre><span></span>void loadWebViewOverlay(String urlToBeLoaded, HashMap&lt;String, String&gt; params, String popupTitle);
 </pre></div>
 
 
-<p><img alt="OverlayWithTitle" src="/OverlayWithTitle.png" /></p>
+<p><img alt="OverlayWithTitle" src="http://ptyagicodecamp.github.io/OverlayWithTitle.png" /></p>
 <h2>Integration</h2>
 <p>In Android Studio, it can be added to your project by adding following in <code>build.gradle</code></p>
 <div class="highlight"><pre><span></span>compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.2&#39;
@@ -111,7 +126,10 @@ Here's examples to demonstrate both APIs:</p>
     <span class="n">String</span> <span class="nb">url</span> <span class="o">=</span> <span class="s2">&quot;https://ptyagicodecamp.github.io&quot;</span><span class="p">;</span>
     <span class="n">webViewOverlay</span><span class="o">.</span><span class="n">loadWebViewOverlay</span><span class="p">(</span><span class="nb">url</span><span class="o">,</span> <span class="n">null</span><span class="o">,</span> <span class="s2">&quot;WebViewOverlay Demo&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-</pre></div></div>
+</pre></div>
+
+
+<p>If you're interested in checking out source code, then its available <a href="https://github.com/ptyagicodecamp/webview-overlay">here at Github</a></p></div>
 	<hr>
 	<h2>Comments</h2>
 </div>
@@ -126,7 +144,8 @@ Here's examples to demonstrate both APIs:</p>
 					<div class="col-md-3">
 						<h4>Navigation</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
@@ -137,7 +156,7 @@ Here's examples to demonstrate both APIs:</p>
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="/category/development.html">Development (5)</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (5)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">

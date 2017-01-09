@@ -2,31 +2,31 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>How did I publish library to JCenter from Android Studio — techLog</title>
-	<meta name="description" content="Title: How did I publish library to JCenter from Android Studio; Date: 2017-01-07; Author: ptyagi">
+	<title>How did I publish Android Library to JCenter from Android Studio — techLog</title>
+	<meta name="description" content="Title: How did I publish Android Library to JCenter from Android Studio; Date: 2017-01-07; Author: ptyagi">
 	<meta name="author" content="Priyanka Tyagi">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
-		<script src="/theme/html5.js"></script>
+		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
 		<![endif]-->
-	<link href="/theme/css/ipython.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="/theme/css/local.css" rel="stylesheet">
-	<link href="/theme/css/pygments.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
 	<div class="page-header">
-		<h1><a href="/">techLog</a>
+		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
 			<br>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">How did I publish library to JCenter from Android Studio</h1>
+		<h1 itemprop="name headline" class="article-title">How did I publish Android Library to JCenter from Android Studio</h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">ptyagi</h4>
 		</span>
@@ -35,64 +35,73 @@
 	<div>
 		Category:
 		<span itemprop="articleSection">
-			<a href="/category/development.html" rel="category">Development</a>
+			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
 		</span>
 	</div>
  
 	<div>
 		Tags:
 		<span itemprop="keywords">
-			<a href="/tag/bintray.html" rel="tag">BinTray</a>
+			<a href="http://ptyagicodecamp.github.io/tag/bintray.html" rel="tag">Bintray</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/publishing.html" rel="tag">Publishing</a>
+			<a href="http://ptyagicodecamp.github.io/tag/publishing.html" rel="tag">Publishing</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/jcenter.html" rel="tag">JCenter</a>
+			<a href="http://ptyagicodecamp.github.io/tag/jcenter.html" rel="tag">JCenter</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/library.html" rel="tag">Library</a>
+			<a href="http://ptyagicodecamp.github.io/tag/library.html" rel="tag">Library</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/opensource.html" rel="tag">OpenSource</a>
+			<a href="http://ptyagicodecamp.github.io/tag/opensource.html" rel="tag">OpenSource</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/dev.html" rel="tag">Dev</a>
+			<a href="http://ptyagicodecamp.github.io/tag/dev.html" rel="tag">Dev</a>
 		</span>
 	</div>
 	<div itemprop="articleBody" class="article-body"><h2>Introduction</h2>
 <p>JCenter is a Maven Repository or file server hosted by <a href="https://bintray.com/">Bintray</a> for
 Android libraries. It’s a default repository for Android Studio. To demonstrate the process of
 publishing an OpenSource Android library, I'm using <a href="https://ptyagicodecamp.github.io/webviewoverlay-widget-library.html">WebViewOverlay widget library</a>
-for example.</p>
+for example. After uploading to JCenter artifact repo, <code>WebViewOverlay</code> widget can be dropped-in to your
+project like this:</p>
+<div class="highlight"><pre><span></span>compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.0&#39;
+</pre></div>
+
+
 <h2>Uploading Android library (in aar format) to Bintray</h2>
 <ul>
-<li>Create log-in at https://bintray.com/. Scroll down to register for an open-source project.</li>
+<li>
+<p>Create log-in at <a href="https://bintray.com/">Bintray</a>. Scroll down to register for an open-source project.</p>
+</li>
 <li>
 <p>Create a new repo:
-  <img alt="Create Repo" src="/create_repo.png" /></p>
+  <img alt="Create Repo" src="http://ptyagicodecamp.github.io/create_repo.png" /></p>
 </li>
 <li>
 <p>Fill-in all required information and click "create repo". It'll redirect to "package" screen.
-  <img alt="Repo Created" src="/repo_created.png" /></p>
+  <img alt="Repo Created" src="http://ptyagicodecamp.github.io/repo_created.png" /></p>
 </li>
 <li>
 <p>Click on “Create Package”. Fill in your package name and click on "Add New Package":
-<img alt="Add New Package" src="/add_new_package.png" /></p>
+<img alt="Add New Package" src="http://ptyagicodecamp.github.io/add_new_package.png" /></p>
 </li>
 <li>
 <p>It'll take you to enter package details. Fill-in details and click on "Create Package" at the bottom.
-<img alt="Create Package" src="/create_package.png" /></p>
+<img alt="Create Package" src="http://ptyagicodecamp.github.io/create_package.png" /></p>
 </li>
 </ul>
 <p>And you’re Done with registering your Maven repository on Bintray !</p>
-<p><strong><em>Note</em></strong>: Link your Github account from Bintray, if you want to upload library from Android Studio/build.gradle.
-You can do this by going into your repository on Bintray and selecting “Import from Github” option. It’ll guide you through with rest of the steps.</p>
+<p><strong><em>Note</em></strong>: Link your Github account from Bintray, if you want to upload library from <code>build.gradle</code> (Android Studio).
+You can do this by going into your repository on Bintray and selecting "Import from Github” option.
+It’ll guide you through with rest of the steps.</p>
 <h3>Setting up Android Studio Project</h3>
 <ul>
 <li>Create a new project in Android Studio.</li>
 <li>Module <code>WebViewOverlay</code> contains all the library code and module <code>app</code> has sample app to demonstrate the usage of library.
-Make sure that you name module same as of artifact name configured at Bintray. <code>WebViewOverlay</code> in this example.</li>
+Make sure that you name module same as of artifact name configured at Bintray. <code>WebViewOverlay</code> in this example.
+Refer to <code>WebViewOverlay</code> at <a href="https://github.com/ptyagicodecamp/webview-overlay">Github for source code</a>.</li>
 <li>Setup Android Studio project to be able to publish library to <code>jcenter()</code> Maven repo, and
 add Bintray plugin to project’s <code>build.gradle</code>. Root level <code>build.gradle</code> will look like this:</li>
 </ul>
@@ -133,7 +142,7 @@ ext {
     bintrayRepo = &#39;WebViewOverlay&#39;
     bintrayName = &#39;WebViewOverlay&#39;
 
-    publishedGroupId = &#39;org.pcc&#39;
+    publishedGroupId = &#39;org.ptyagicodecamp&#39;
     libraryName = &#39;WebViewOverlay&#39;
     artifact = &#39;WebViewOverlay&#39;
 
@@ -155,6 +164,7 @@ ext {
 </pre></div>
 
 
+<p>Refer to <a href="https://github.com/ptyagicodecamp/webview-overlay/blob/master/WebViewOverlay/build.gradle">this <code>build.gradle</code></a></p>
 <ul>
 <li>You would need to add these scripts in order to publish libraries to Bintray:</li>
 </ul>
@@ -178,11 +188,11 @@ gradlew bintrayUpload
 <ul>
 <li>
 <p>Your package needs to be linked to JCenter to be able to be resolved.
-<img alt="Add to JCenter" src="/add_to_jcenter.png" /></p>
+<img alt="Add to JCenter" src="http://ptyagicodecamp.github.io/add_to_jcenter.png" /></p>
 </li>
 <li>
 <p>It'll take couple of hours to get request approved. Once approved, you'll see you package like this:
-<img alt="Linked To JCenter" src="/linked_to_jcenter.png" /></p>
+<img alt="Linked To JCenter" src="http://ptyagicodecamp.github.io/linked_to_jcenter.png" /></p>
 </li>
 </ul>
 <p><strong><em>Note</em></strong>: You will have to wait for couple of hours before it'll be synced on JCenter.
@@ -194,7 +204,7 @@ You can check if its available by going to "http://jcenter.bintray.com/<path/to/
 
 
 <h3>Refrences:</h3>
-<p>I followed this tutorial to get me setup at Bintray: https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en</p></div>
+<p>I followed <a href="https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en">this tutorial</a> to get me setup at Bintray.</p></div>
 	<hr>
 	<h2>Comments</h2>
 </div>
@@ -209,7 +219,8 @@ You can check if its available by going to "http://jcenter.bintray.com/<path/to/
 					<div class="col-md-3">
 						<h4>Navigation</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
@@ -220,7 +231,7 @@ You can check if its available by going to "http://jcenter.bintray.com/<path/to/
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="/category/development.html">Development (5)</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (5)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
