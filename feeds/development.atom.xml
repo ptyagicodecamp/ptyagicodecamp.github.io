@@ -11,7 +11,7 @@ will be helpful for you.&lt;/p&gt;
 &lt;p&gt;This article describes how WebViewOverlay Widget can be integrated to your Android App in few minutes.
 Integrating WebViewOverlay widget in your app is as simple as adding following line in your project's
 &lt;code&gt;build.gradle&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile &amp;#39;org.ptyagicodecamp:WebViewOverlay:1.0.0&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile &amp;#39;org.ptyagicodecamp:WebViewOverlay:1.0.2&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -73,7 +73,7 @@ Android libraries. It’s a default repository for Android Studio. To demonstrat
 publishing an OpenSource Android library, I'm using &lt;a href="https://ptyagicodecamp.github.io/webviewoverlay-widget-library.html"&gt;WebViewOverlay widget library&lt;/a&gt;
 for example. After uploading to JCenter artifact repo, &lt;code&gt;WebViewOverlay&lt;/code&gt; widget can be dropped-in to your
 project like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile &amp;#39;org.ptyagicodecamp:WebViewOverlay:1.0.0&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile &amp;#39;org.ptyagicodecamp:WebViewOverlay:1.0.2&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 
 
