@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-02-15T11:24:00-07:00</updated><entry><title>Creating Sub MenuItems for FAB (Floating Action Button)</title><link href="http://ptyagicodecamp.github.io/creating-sub-menuitems-for-fab-floating-action-button.html" rel="alternate"></link><published>2017-02-15T11:24:00-07:00</published><updated>2017-02-15T11:24:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-02-15:creating-sub-menuitems-for-fab-floating-action-button.html</id><summary type="html">&lt;h3&gt;Final Outcome&lt;/h3&gt;
-&lt;p&gt;Our target to integrate FAB into an existing Android App. &lt;code&gt;Settings&lt;/code&gt;
-icon is used as FAB. Clicking on it will open its sub menus: Save, Edit and Photo.
-Clicking on &lt;code&gt;X&lt;/code&gt; will close sub menus and &lt;code&gt;Settings&lt;/code&gt; icon will re-appear.&lt;/p&gt;
+&lt;p&gt;Our target to integrate FAB into an existing Android App and creating submenus. Settings icon is used as FAB. Clicking on it will open its submenus: Save, Edit and Photo. Clicking on X will close submenus and Settings icon will re-appear.&lt;/p&gt;
 &lt;p&gt;This is how main screen will look after FAB integrated into it.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="./images/device-settings-close.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Clicking on &lt;code&gt;Settings&lt;/code&gt; icon will open sub menus:&lt;/p&gt;
