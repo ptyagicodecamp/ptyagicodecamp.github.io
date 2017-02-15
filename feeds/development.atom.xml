@@ -4,7 +4,7 @@
 icon is used as FAB. Clicking on it will open its sub menus: Save, Edit and Photo.
 Clicking on &lt;code&gt;X&lt;/code&gt; will close sub menus and &lt;code&gt;Settings&lt;/code&gt; icon will re-appear.&lt;/p&gt;
 &lt;p&gt;This is how main screen will look after FAB integrated into it.&lt;/p&gt;
-&lt;p&gt;![](./images/device-settings-close.png =400x300)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./images/device-settings-close.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Clicking on &lt;code&gt;Settings&lt;/code&gt; icon will open sub menus:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="./images/device-settings-open.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;Create Android Studio Project&lt;/h3&gt;
