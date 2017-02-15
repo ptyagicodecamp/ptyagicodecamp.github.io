@@ -1,5 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-01-09T11:16:00-07:00</updated><entry><title>Android WebViewOverlay Widget</title><link href="http://ptyagicodecamp.github.io/android-webviewoverlay-widget.html" rel="alternate"></link><published>2017-01-09T11:16:00-07:00</published><updated>2017-01-09T11:16:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-01-09:android-webviewoverlay-widget.html</id><summary type="html">&lt;h2&gt;Motivation&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-02-15T11:24:00-07:00</updated><entry><title>Creating Sub MenuItems for FAB (Floating Action Button)</title><link href="http://ptyagicodecamp.github.io/creating-sub-menuitems-for-fab-floating-action-button.html" rel="alternate"></link><published>2017-02-15T11:24:00-07:00</published><updated>2017-02-15T11:24:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-02-15:creating-sub-menuitems-for-fab-floating-action-button.html</id><summary type="html">&lt;h3&gt;Final Outcome&lt;/h3&gt;
+&lt;p&gt;Our target to integrate FAB into an existing Android App. &lt;code&gt;Settings&lt;/code&gt;
+icon is used as FAB. Clicking on it will open its sub menus: Save, Edit and Photo.
+Clicking on &lt;code&gt;X&lt;/code&gt; will close sub menus and &lt;code&gt;Settings&lt;/code&gt; icon will re-appear.&lt;/p&gt;
+&lt;p&gt;This is how main screen will look after FAB integrated into it.&lt;/p&gt;
+&lt;p&gt;![](./images/device-settings-close.png =400x300)&lt;/p&gt;
+&lt;p&gt;Clicking on &lt;code&gt;Settings&lt;/code&gt; icon will open sub menus:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./images/device-settings-open.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Create Android Studio Project&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step#1:&lt;/em&gt;&lt;/strong&gt; Create New Project in Android Studio:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./images/create_project-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step#2:&lt;/em&gt;&lt;/strong&gt; Choose Blank Activity:
+&lt;img alt="" src="./images/create_project-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step#3:&lt;/em&gt;&lt;/strong&gt; This how your project would look like :
+&lt;img alt="" src="./images/create_project-3.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Preparation&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step#1:&lt;/em&gt;&lt;/strong&gt;  Assets:
+I need few assets to be used as FAB submenu icons.
+I used Android Studio’s built-in tool to generate Vector Assets.
+You can access this tool right clicking on &lt;code&gt;app&lt;/code&gt; module → Click &lt;code&gt;New&lt;/code&gt; → Click on &lt;code&gt;Vector Assets&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./images/create-vector-asset-1.png" /&gt;
+&lt;img alt="" src="./images/create-vector-asset-2.png" /&gt;
+&lt;img alt="" src="./images/create-vector-asset-3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step#2:&lt;/em&gt;&lt;/strong&gt;  Configuration:
+I’ll be using cardView component to display description for sub menu items.
+Here’s how you can add it as a dependency in your &lt;code&gt;build.gradle&lt;/code&gt;:
+&lt;code&gt;compile 'com.android.support:cardview-v7:25.1.0'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./images/cardview-dep-gradle.png" /&gt;&lt;/p&gt;
+&lt;h4&gt;XML Layout&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step#1:&lt;/em&gt;&lt;/strong&gt; Create a new layout file to contains FAB and its sub menu items.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./images/create-submenu-layout-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./images/create-submenu-layout-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;I named it as &lt;code&gt;layout_fab_submenu.xml&lt;/code&gt;. It’s a &lt;code&gt;FrameLayout&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I chose FrameLayout because I wanted a screen floating atop of existing screen and
+a holder for all FAB menu items. Don’t forget to set the top margin to &lt;code&gt;android:layout_marginTop="?attr/actionBarSize"&lt;/code&gt; to avoid Actionbar overlapping.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;FrameLayout&lt;/span&gt;
+    &lt;span class="na"&gt;xmlns:android=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;xmlns:app=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/fabFrame&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:layout_marginTop=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;?attr/actionBarSize&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingBottom=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_vertical_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingLeft=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_horizontal_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingRight=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_horizontal_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingTop=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_vertical_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:orientation=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;vertical&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+    .....
+&lt;span class="nt"&gt;&amp;lt;/FrameLayout&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step#2:&lt;/em&gt;&lt;/strong&gt; Layout for FAB SubMenu items&lt;/p&gt;
+&lt;p&gt;Now, I want to create one &lt;code&gt;LinearLayout&lt;/code&gt; for each &lt;strong&gt;&lt;em&gt;FAB&lt;/em&gt;&lt;/strong&gt;. Since I want all of the FAB items
+to be at bottom right corner of screen, so I will use &lt;code&gt;android:layout_gravity=bottom|end&lt;/code&gt;.
+Every sub menu will have its own &lt;code&gt;LinearLayout&lt;/code&gt; like following. Each &lt;code&gt;LinearLayout&lt;/code&gt; has one &lt;code&gt;CardView&lt;/code&gt;
+to hold &lt;code&gt;TextView&lt;/code&gt; for explaining FAB's purpose and one &lt;code&gt;android.support.design.widget.FloatingActionButton&lt;/code&gt; next to it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;LinearLayout
+        android:id=&amp;quot;@+id/layoutFabSave&amp;quot;
+        android:layout_width=&amp;quot;wrap_content&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:gravity=&amp;quot;center_vertical&amp;quot;
+        android:layout_gravity=&amp;quot;bottom|end&amp;quot;
+        android:layout_marginRight=&amp;quot;8dp&amp;quot;
+        android:layout_marginBottom=&amp;quot;120dp&amp;quot;
+        android:layout_marginEnd=&amp;quot;8dp&amp;quot;
+        android:orientation=&amp;quot;horizontal&amp;quot;&amp;gt;
+
+        &amp;lt;android.support.v7.widget.CardView
+            android:layout_width=&amp;quot;wrap_content&amp;quot;
+            android:layout_height=&amp;quot;wrap_content&amp;quot;
+            app:cardBackgroundColor=&amp;quot;@color/cardview_light_background&amp;quot;
+            app:cardCornerRadius=&amp;quot;@dimen/cardCornerRadius&amp;quot;
+            app:cardElevation=&amp;quot;@dimen/cardElevation&amp;quot;
+            app:cardUseCompatPadding=&amp;quot;true&amp;quot; &amp;gt;
+            &amp;lt;TextView
+                android:id=&amp;quot;@+id/cvtSave&amp;quot;
+                android:layout_width=&amp;quot;wrap_content&amp;quot;
+                android:layout_height=&amp;quot;wrap_content&amp;quot;
+                android:text=&amp;quot;@string/save&amp;quot;
+                android:textAppearance=&amp;quot;?android:attr/textAppearanceSmall&amp;quot;
+                android:textStyle=&amp;quot;bold&amp;quot;
+                android:paddingRight=&amp;quot;@dimen/cardview_horizontal_padding&amp;quot;
+                android:paddingLeft=&amp;quot;@dimen/cardview_horizontal_padding&amp;quot;
+                android:paddingBottom=&amp;quot;@dimen/cardview_vertical_padding&amp;quot;
+                android:paddingTop=&amp;quot;@dimen/cardview_vertical_padding&amp;quot; /&amp;gt;
+        &amp;lt;/android.support.v7.widget.CardView&amp;gt;
+
+        &amp;lt;android.support.design.widget.FloatingActionButton
+            android:id=&amp;quot;@+id/fabSave&amp;quot;
+            android:layout_width=&amp;quot;wrap_content&amp;quot;
+            android:layout_height=&amp;quot;wrap_content&amp;quot;
+            android:src=&amp;quot;@drawable/ic_save_black_24dp&amp;quot;
+            app:backgroundTint=&amp;quot;@android:color/holo_green_light&amp;quot;
+            app:fabSize=&amp;quot;mini&amp;quot; /&amp;gt;
+
+    &amp;lt;/LinearLayout&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Lets check out More Code&lt;/h3&gt;
+&lt;p&gt;In order to support FAB opening and closing, you would need to write two methods. One is to make sub menus
+visible, and other is to hide sub menus and only show main FAB which is &lt;code&gt;Settings&lt;/code&gt; icon is our case.
+When &lt;code&gt;Settings&lt;/code&gt; FAB expands, it turns into 'X' to give option to be able to close expanded sub menus.
+These are the two methods you would need:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//closes FAB submenus
+    private void closeSubMenusFab(){
+        layoutFabSave.setVisibility(View.INVISIBLE);
+        layoutFabEdit.setVisibility(View.INVISIBLE);
+        layoutFabPhoto.setVisibility(View.INVISIBLE);
+        fabSettings.setImageResource(R.drawable.ic_settings_black_24dp);
+        fabExpanded = false;
+    }
+
+    //Opens FAB submenus
+    private void openSubMenusFab(){
+        layoutFabSave.setVisibility(View.VISIBLE);
+        layoutFabEdit.setVisibility(View.VISIBLE);
+        layoutFabPhoto.setVisibility(View.VISIBLE);
+        //Change settings icon to &amp;#39;X&amp;#39; icon
+        fabSettings.setImageResource(R.drawable.ic_close_black_24dp);
+        fabExpanded = true;
+    }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, its time to hook them up in the main code to make it functional. Lets start with &lt;code&gt;onCreate()&lt;/code&gt; method:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class MainActivity extends AppCompatActivity {
+
+    //boolean flag to know if main FAB is in open or closed state.
+    private boolean fabExpanded = false;
+    private FloatingActionButton fabSettings;
+
+    //Linear layout holding the Save submenu
+    private LinearLayout layoutFabSave;
+
+    //Linear layout holding the Edit submenu
+    private LinearLayout layoutFabEdit;
+    private LinearLayout layoutFabPhoto;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        fabSettings = (FloatingActionButton) this.findViewById(R.id.fabSetting);
+
+        layoutFabSave = (LinearLayout) this.findViewById(R.id.layoutFabSave);
+        layoutFabEdit = (LinearLayout) this.findViewById(R.id.layoutFabEdit);
+        layoutFabPhoto = (LinearLayout) this.findViewById(R.id.layoutFabPhoto);
+
+        //When main Fab (Settings) is clicked, it expands if not expanded already.
+        //Collapses if main FAB was open already.
+        //This gives FAB (Settings) open/close behavior
+        fabSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (fabExpanded == true){
+                    closeSubMenusFab();
+                } else {
+                    openSubMenusFab();
+                }
+            }
+        });
+
+        //Only main FAB is visible in the beginning
+        closeSubMenusFab();
+    }
+
+    ....
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Congratulations!&lt;/h3&gt;
+&lt;p&gt;Yay ! You got FAB integrated along with sub menu in less than 5 minutes. Its time to celebrate :)&lt;/p&gt;</summary><category term="ANDROID"></category><category term="FAB"></category><category term="DEV"></category><category term="UI"></category></entry><entry><title>Android WebViewOverlay Widget</title><link href="http://ptyagicodecamp.github.io/android-webviewoverlay-widget.html" rel="alternate"></link><published>2017-01-09T11:16:00-07:00</published><updated>2017-01-09T11:16:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-01-09:android-webviewoverlay-widget.html</id><summary type="html">&lt;h2&gt;Motivation&lt;/h2&gt;
 &lt;p&gt;I needed a widget that can load a url in WebView in a full-screen closable overlay/modal.
 I wanted to re-use this new, shiny widget in my other projects as well. So, I decided to upload
 WebViewOverlay library in a central artifact repository. I chose JCenter because its one of the
