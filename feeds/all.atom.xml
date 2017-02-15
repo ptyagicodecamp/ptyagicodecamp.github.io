@@ -175,7 +175,8 @@ These are the two methods you would need:&lt;/p&gt;
 
 
 &lt;h3&gt;Congratulations!&lt;/h3&gt;
-&lt;p&gt;Yay ! You got FAB integrated along with sub menu in less than 5 minutes. Its time to celebrate :)&lt;/p&gt;</summary><category term="ANDROID"></category><category term="FAB"></category><category term="DEV"></category><category term="UI"></category></entry><entry><title>Android WebViewOverlay Widget</title><link href="http://ptyagicodecamp.github.io/android-webviewoverlay-widget.html" rel="alternate"></link><published>2017-01-09T11:16:00-07:00</published><updated>2017-01-09T11:16:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-01-09:android-webviewoverlay-widget.html</id><summary type="html">&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;Yay ! You got FAB integrated along with sub menu in less than 5 minutes. Its time to celebrate :)&lt;/p&gt;
+&lt;p&gt;Source code is available at &lt;a href="https://github.com/ptyagicodecamp/fab-submenu"&gt;Github &lt;/a&gt;&lt;/p&gt;</summary><category term="ANDROID"></category><category term="FAB"></category><category term="DEV"></category><category term="UI"></category></entry><entry><title>Android WebViewOverlay Widget</title><link href="http://ptyagicodecamp.github.io/android-webviewoverlay-widget.html" rel="alternate"></link><published>2017-01-09T11:16:00-07:00</published><updated>2017-01-09T11:16:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-01-09:android-webviewoverlay-widget.html</id><summary type="html">&lt;h2&gt;Motivation&lt;/h2&gt;
 &lt;p&gt;I needed a widget that can load a url in WebView in a full-screen closable overlay/modal.
 I wanted to re-use this new, shiny widget in my other projects as well. So, I decided to upload
 WebViewOverlay library in a central artifact repository. I chose JCenter because its one of the
