@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Automating Android App publishing to Play Store using Jenkins — techLog</title>
+	<meta name="description" content="Title: Automating Android App publishing to Play Store using Jenkins; Date: 2017-02-23; Author: ptyagi">
+	<meta name="author" content="Priyanka Tyagi">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Automating Android App publishing to Play Store using Jenkins</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">ptyagi</h4>
+		</span>
+		<time datetime="2017-02-23T12:02:00-07:00" itemprop="datePublished">Thu 23 February 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">Android</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/jenkins.html" rel="tag">Jenkins</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/devops.html" rel="tag">DevOps</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><h3>Installation</h3>
+<h4>Download Package</h4>
+<p>Download “.pkg” file <a href="http://mirrors.jenkins.io/osx/latest">here</a></p>
+<h4>Complete Installation</h4>
+<p>Follow the instructions to complete installation.
+<img alt="Alt installation" src="../images/jenkins/installation.png" /></p>
+<p><strong>Note:</strong> You’ll be asked to enter an additional password like below to ensure the security:
+<br>
+<img alt="Alt installation2" src="../images/jenkins/installation-2.png" /></p>
+<h4>Choosing Plugins</h4>
+<p>You can go with default plugins unless you know what plugins you want to install. I'll cover other plugins, if needed as their need arises.</p>
+<h4>Starting Jenkins</h4>
+<p>Once installation is complete, you can type  <a href="http://localhost:8080">http://localhost:8080</a> in your browser to start jenkins server. It’ll ask for temporary password it created at : /Users/Shared/Jenkins/Home/secrets/initialAdminPassword</p>
+<p>This is how it will look like:
+<img alt="Alt starting" src="../images/jenkins/starting.png" /></p>
+<p><strong>Note:</strong> Unless you’ve created an admin user explicitly, you can login as administrator using username <strong>“admin”</strong> and password created in <strong>“/Users/Shared/Jenkins/Home/secrets/initialAdminPassword”</strong> file.</p>
+<p>Click on “Start Jenkins” to start creating jobs on Jenkins to automate project building and publishing.</p>
+<h3>Setting up Job to Build Android project</h3>
+<h4><strong>Create Jenkins Job</strong></h4>
+<ol>
+<li>
+<p>Create a free-style project.
+<img alt="Alt free-style" src="../images/jenkins/project-1.png" /></p>
+</li>
+<li>
+<p>Add Repository in <strong>Source Code Management</strong> section. You will have to provide credentials to Jenkins to access source code repository.</p>
+</li>
+<li>
+<p>Add build specific configuration in <strong>Build</strong> section. I'll be using shell script to build my gradle based project.</p>
+</li>
+</ol>
+<p><strong>Note:</strong> If you're running into source code repo access issues, then you may want to add credentials like this:
+<img alt="Alt repo-creds" src="../images/jenkins/repo-creds.png" /></p>
+<h4><strong>Uploading APK to Play Store</strong></h4>
+<p><strong>Setup</strong></p>
+<ol>
+<li>
+<p>You'll need <a href="https://wiki.jenkins-ci.org/display/JENKINS/Google+Play+Android+Publisher+Plugin">Google Play Android Publisher Plugin</a> plugin to publish APKs automatically from Jenkins.</p>
+</li>
+<li>
+<p>Navigate to localhost:8080 in your browser to get to Jenkins. Click on <strong>Manage Jenkins</strong> --&gt; <strong>Manage Plugins</strong>. Look for 'Google Play Android Publisher Plugin' by typing it in search box and install. You'll need to add service account to Jenkins as well. Refer to <a href="https://wiki.jenkins-ci.org/display/JENKINS/Google+Play+Android+Publisher+Plugin">link for detailed process</a>).</p>
+</li>
+<li>
+<p>You'll need to enable API access from Jenkins. So, you have to be owner of your <a href="https://developer.android.com/distribute/googleplay/start.html">Google Play Publisher account</a></p>
+</li>
+<li>
+<p>Its important to know that you must have pre-existing app in Play Store already before you could upload another incremental update via Jenkins.</p>
+</li>
+<li>
+<p>Create Service account at Play Store publishing portal under 'API Access' category at left. It'll take you to Google project console. This is where, you'll create 'JSON' or 'p12' key to enable integration between Jenkins and Play Store publishing. Keep this key safe since you'll need this to enable Jenkins account to access Play store publishing. Also, Don't forget to grant 'Release Manager' permissions to this service account in Play store Publishing portal.</p>
+</li>
+<li>
+<p>Go back to Jenkins, and create credentials to access Play Store. This is where you'll need to provide JSON key that you created in step above.
+<img alt="Alt credentials" src="../images/jenkins/playstore-service-creds.png" /></p>
+</li>
+</ol>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Google+Play+Android+Publisher+Plugin">Here</a> is pretty good explanation of process to setup your accounts.</p>
+<p>Note 1: You can use following command on terminal to reset <code>jenkins</code> user password, if run into password related issues:</p>
+<div class="highlight"><pre><span></span>sudo passwd jenkins
+</pre></div>
+
+
+<p>Note 2: Jenkins will need its own installation of Android sdk. Don't forget to make sure that sdk installation has <code>license</code> directory. If its not available, then copy it from you other sdk instaltion to here at first level. Check <a href="https://developer.android.com/studio/intro/update.html#download-with-gradle">this link</a> for details.</p>
+<p><strong>Configuring Job</strong>
+1. Add post-build action: "Upload Android APK to Google Play"
+<img alt="Alt upload-apk-1" src="../images/jenkins/upload-apk-1.png" /></p>
+<ol>
+<li>Fill-in the path or pattern to APK created locally. In my case, its <code>**/*-release.apk</code>. Also, add languages supprted and add roll-out percentage if its being pushed in production channel. I'm publishing to <code>alpha</code> channel.
+<img alt="Alt upload-apk-2" src="../images/jenkins/upload-apk-2.png" /></li>
+</ol>
+<p>And you're done !</p>
+<p>For more details about configuring uploading job refer to <a href="https://wiki.jenkins-ci.org/display/JENKINS/Google+Play+Android+Publisher+Plugin">this link</a>. </p></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (7)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://getpelican.com/">Pelican</a></li>
+							<li><a href="http://python.org/">Python.org</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Priyanka Tyagi 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>
