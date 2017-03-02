@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Automating Android App publishing to Play Store using Jenkins — techLog</title>
-	<meta name="description" content="Title: Automating Android App publishing to Play Store using Jenkins; Date: 2017-02-23; Author: ptyagi">
+	<title>Automating Android App publishing to Play Store  using Jenkins — techLog</title>
+	<meta name="description" content="Title: Automating Android App publishing to Play Store  using Jenkins; Date: 2017-02-23; Author: ptyagi">
 	<meta name="author" content="Priyanka Tyagi">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -26,7 +26,7 @@
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">Automating Android App publishing to Play Store using Jenkins</h1>
+		<h1 itemprop="name headline" class="article-title">Automating Android App publishing to Play Store  using Jenkins</h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">ptyagi</h4>
 		</span>
@@ -51,9 +51,10 @@
 			<a href="http://ptyagicodecamp.github.io/tag/devops.html" rel="tag">DevOps</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><h3>Installation</h3>
+	<div itemprop="articleBody" class="article-body"><h3>Introduction</h3>
+<p>This article describes the journey I took from setting up Jenkins to automate publishing Android APKs to Google Play Publishing portal and useful notes that I collected along the way. I set up Jenkins-2.46 on Mac OSX 10.12.3.</p>
 <h4>Download Package</h4>
-<p>Download “.pkg” file <a href="http://mirrors.jenkins.io/osx/latest">here</a></p>
+<p>You can download “.pkg” file from <a href="http://mirrors.jenkins.io/osx/latest">here</a></p>
 <h4>Complete Installation</h4>
 <p>Follow the instructions to complete installation.
 <img alt="Alt installation" src="../images/jenkins/installation.png" /></p>
@@ -119,10 +120,10 @@
 <img alt="Alt upload-apk-1" src="../images/jenkins/upload-apk-1.png" /></p>
 <ol>
 <li>Fill-in the path or pattern to APK created locally. In my case, its <code>**/*-release.apk</code>. Also, add languages supprted and add roll-out percentage if its being pushed in production channel. I'm publishing to <code>alpha</code> channel.
-<img alt="Alt upload-apk-2" src="../images/jenkins/upload-apk-2.png" /></li>
+![Alt upload-apk-2](../images/jenkins/upload-apk-2.png =600x)</li>
 </ol>
 <p>And you're done !</p>
-<p>For more details about configuring uploading job refer to <a href="https://wiki.jenkins-ci.org/display/JENKINS/Google+Play+Android+Publisher+Plugin">this link</a>. </p></div>
+<p>For more details about configuring uploading job refer to <a href="https://wiki.jenkins-ci.org/display/JENKINS/Google+Play+Android+Publisher+Plugin">this link</a>.</p></div>
 	<hr>
 	<h2>Comments</h2>
 </div>
