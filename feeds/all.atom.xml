@@ -1,5 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-02-23T12:02:00-07:00</updated><entry><title>Automating Android App publishing to Play Store using Jenkins</title><link href="http://ptyagicodecamp.github.io/automating-android-app-publishing-to-play-store-using-jenkins.html" rel="alternate"></link><published>2017-02-23T12:02:00-07:00</published><updated>2017-02-23T12:02:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-02-23:automating-android-app-publishing-to-play-store-using-jenkins.html</id><summary type="html">&lt;h3&gt;Introduction&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-04-13T12:02:00-06:00</updated><entry><title>FileProvider Demo</title><link href="http://ptyagicodecamp.github.io/fileprovider-demo.html" rel="alternate"></link><published>2017-04-13T12:02:00-06:00</published><updated>2017-04-13T12:02:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:fileprovider-demo.html</id><summary type="html">&lt;h1&gt;FileProvider Demo&lt;/h1&gt;
+&lt;p&gt;This Project demos does two things:
+&lt;em&gt; Takes Picture
+&lt;/em&gt; Displays picture taken&lt;/p&gt;
+&lt;h4&gt;Scenario&lt;/h4&gt;
+&lt;p&gt;User Clicks FAB to take picture. Picture got displayed in ImageView.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt beforePic" src="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/tree/master/images/fileprovider/s1.png" title="FAB to take picture" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt AfterPic" src="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/tree/master/images/fileprovider/s1.png" title="Displaying recent picture" /&gt;&lt;/p&gt;
+&lt;h4&gt;Internals&lt;/h4&gt;
+&lt;p&gt;What happens when user clicks on FAB to initiate taking picture ?
+First of all a temporary file get created under picture directory for app. The storage location
+will be something like this: &lt;code&gt;/storage/emulated/0/Android/data/org.pcc.fileprovider/files/Pictures&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This file is queried using &lt;a href="https://developer.android.com/reference/android/support/v4/content/FileProvider.html"&gt;FileProvider&lt;/a&gt;
+and passed to the camera intent.&lt;/p&gt;
+&lt;p&gt;Code to query recently created image file in internal picture directory for app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+Uri imgUri = FileProvider.getUriForFile(this,
+                    &amp;quot;org.pcc.fileprovider&amp;quot;, imageFile.getFile());
+takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imgUri);
+startActivityForResult(takePictureIntent, REQUEST_CODE_IMAGE_CAPTURE);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Configuring FileProvider in Android Studio Project&lt;/h4&gt;
+&lt;p&gt;It's a two step process. First you've to declare &lt;code&gt;&amp;lt;provider&amp;gt;&lt;/code&gt; tag in your app's
+&lt;code&gt;AndroidManifest.xml&lt;/code&gt;. Second, you will need to create &lt;code&gt;file_paths.xml&lt;/code&gt; inside &lt;code&gt;res/xml&lt;/code&gt; folder.&lt;/p&gt;
+&lt;h5&gt;AndroidManifest.xml&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;provider&amp;gt;&lt;/code&gt; tag has to be declared inside &lt;code&gt;&amp;lt;application&amp;gt;&lt;/code&gt; tag.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;application&lt;/span&gt;
+        &lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;provider&lt;/span&gt;
+            &lt;span class="na"&gt;android:name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;android.support.v4.content.FileProvider&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:authorities=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;org.pcc.fileprovider&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:exported=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;false&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:grantUriPermissions=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;meta-data&lt;/span&gt;
+                &lt;span class="na"&gt;android:name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;android.support.FILE_PROVIDER_PATHS&amp;quot;&lt;/span&gt;
+                &lt;span class="na"&gt;android:resource=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@xml/file_paths&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/provider&amp;gt;&lt;/span&gt;
+       ....
+&lt;span class="nt"&gt;&amp;lt;/application&amp;gt;&lt;/span&gt;        
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;file_paths.xml&lt;/h5&gt;
+&lt;p&gt;Create a file &lt;code&gt;file_paths.xml&lt;/code&gt; inside &lt;code&gt;res/xml&lt;/code&gt; folder of your app. This file
+will have these contents in it:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;paths&lt;/span&gt; &lt;span class="na"&gt;xmlns:android=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;external-path&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;my_images&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;path=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Android/data/org.pcc.fileprovider/files/Pictures&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/paths&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's it !&lt;/p&gt;
+&lt;p&gt;Checkout source code in github to see &lt;code&gt;FileProviderDemo&lt;/code&gt; in action. &lt;/p&gt;</summary><category term="Android"></category><category term="FileProvider"></category></entry><entry><title>Automating Android App publishing to Play Store using Jenkins</title><link href="http://ptyagicodecamp.github.io/automating-android-app-publishing-to-play-store-using-jenkins.html" rel="alternate"></link><published>2017-02-23T12:02:00-07:00</published><updated>2017-02-23T12:02:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-02-23:automating-android-app-publishing-to-play-store-using-jenkins.html</id><summary type="html">&lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;This article describes the journey I took from setting up Jenkins to automate publishing Android APKs to Google Play Publishing portal and useful notes that I collected along the way. I set up Jenkins-2.46 on Mac OSX 10.12.3.&lt;/p&gt;
 &lt;h4&gt;Download Package&lt;/h4&gt;
 &lt;p&gt;You can download “.pkg” file from &lt;a href="http://mirrors.jenkins.io/osx/latest"&gt;here&lt;/a&gt;&lt;/p&gt;
