@@ -50,12 +50,13 @@
 	</div>
 	<div itemprop="articleBody" class="article-body"><h1>FileProvider Demo</h1>
 <p>This Project demos does two things:
-<em> Takes Picture
-</em> Displays picture taken</p>
+<em> Takes Picture: <a href="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/tree/master/images/fileprovider/s1.png">FAB to take picture</a>
+</em> Displays picture taken: <a href="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/tree/master/images/fileprovider/s1.png">Displaying recent picture</a></p>
 <h4>Scenario</h4>
-<p>User Clicks FAB to take picture. Picture got displayed in ImageView.</p>
-<p><img alt="Alt beforePic" src="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/tree/master/images/fileprovider/s1.png" title="FAB to take picture" /></p>
-<p><img alt="Alt AfterPic" src="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/tree/master/images/fileprovider/s1.png" title="Displaying recent picture" /></p>
+<p>User Clicks FAB to take picture. Picture got displayed in ImageView.
+we want to know what went behind the scenes from clicking the FAB to displaying a picture.
+How/where the image file got created ? What made it available to Camera Intent ?
+Yes, you guessed it ! FileProvider made newly created blank image file available to Camera Intent to store pixels/binary data of new pictures in it.</p>
 <h4>Internals</h4>
 <p>What happens when user clicks on FAB to initiate taking picture ?
 First of all a temporary file get created under picture directory for app. The storage location
