@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-04-13T12:02:00-06:00</updated><entry><title>FileProvider Demo</title><link href="http://ptyagicodecamp.github.io/fileprovider-demo.html" rel="alternate"></link><published>2017-04-13T12:02:00-06:00</published><updated>2017-04-13T12:02:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:fileprovider-demo.html</id><summary type="html">&lt;h1&gt;FileProvider Demo&lt;/h1&gt;
 &lt;p&gt;This Project demos does two things:
-&lt;em&gt; Takes Picture: &lt;a href="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/tree/master/images/fileprovider/s1.png"&gt;FAB to take picture&lt;/a&gt;
-&lt;/em&gt; Displays picture taken: &lt;a href="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/tree/master/images/fileprovider/s1.png"&gt;Displaying recent picture&lt;/a&gt;&lt;/p&gt;
+&lt;br&gt;
+1. Takes Picture: &lt;a href="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/tree/master/images/fileprovider/s1.png"&gt;FAB to take picture&lt;/a&gt;
+&lt;br&gt;
+2. Displays picture taken: &lt;a href="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/tree/master/images/fileprovider/s2.png"&gt;Displaying recent picture&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Scenario&lt;/h4&gt;
 &lt;p&gt;User Clicks FAB to take picture. Picture got displayed in ImageView.
 we want to know what went behind the scenes from clicking the FAB to displaying a picture.
