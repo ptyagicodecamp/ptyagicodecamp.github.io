@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>github — techLog</title>
-	<meta name="description" content="All posts which refer to tag github">
+	<title>How to get SHA1 fingerprint for digitally signed APK — techLog</title>
+	<meta name="description" content="Title: How to get SHA1 fingerprint for digitally signed APK; Date: 2017-04-13; Author: ptyagi">
 	<meta name="author" content="Priyanka Tyagi">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -24,15 +24,43 @@
 			<br>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-<h1>Tag <small>github</small></h1>
-<table class="table">
-    <tbody>
-        <tr>
-        <td>08 Dec 2016</td>
-        <td><a href='http://ptyagicodecamp.github.io/my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html'>My take on Pelican and Github pages from a beginner's perspective</a></td>
-        </tr>
-    </tbody>
-</table>
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">How to get SHA1 fingerprint for digitally signed APK</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">ptyagi</h4>
+		</span>
+		<time datetime="2017-04-13T13:06:00-06:00" itemprop="datePublished">Thu 13 April 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">Android</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android-studio.html" rel="tag">Android Studio</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/tips-tricks.html" rel="tag">Tips & Tricks</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><h2>How to get SHA1 fingerprint for digitally signed APK</h2>
+<ul>
+<li>Open terminal in Android Studio</li>
+<li>Run Keytool utility to get SHA1 for your APK:</li>
+</ul>
+<div class="highlight"><pre><span></span>keytool -exportcert -alias &lt;your_alias&gt; -keystore &lt;path-to-keystore&gt; -list -v
+</pre></div></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
 		</div>
 	</div> 	<!-- <hr> -->
 </div> <!-- /container -->
