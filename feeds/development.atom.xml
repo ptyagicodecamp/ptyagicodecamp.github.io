@@ -1,5 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-04-13T13:06:00-06:00</updated><entry><title>Android Studio Tips &amp; Tricks Series</title><link href="http://ptyagicodecamp.github.io/android-studio-tips-tricks-series.html" rel="alternate"></link><published>2017-04-13T13:06:00-06:00</published><updated>2017-04-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:android-studio-tips-tricks-series.html</id><summary type="html">&lt;h2&gt;Tips And Tricks&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-04-18T15:33:00-06:00</updated><entry><title>Scheduling Repeating Local Notifications using Alarm Manager</title><link href="http://ptyagicodecamp.github.io/scheduling-repeating-local-notifications-using-alarm-manager.html" rel="alternate"></link><published>2017-04-18T15:33:00-06:00</published><updated>2017-04-18T15:33:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-18:scheduling-repeating-local-notifications-using-alarm-manager.html</id><summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This tutorial is a quick start guide to get you started with
+Local Notifications in Android.&lt;/p&gt;
+&lt;h3&gt;Scheduling Repeating Local Notifications using Alarm Manager&lt;/h3&gt;
+&lt;p&gt;I'll be using Alarm Manager to schedule repeating local notifications in this sample app.
+This sample app will send a local notification every morning at 8am.
+I'm covering the use case that app is either in background or killed at the time when notification is received.
+When user clicks on the notification, it takes user to app's main activity.&lt;/p&gt;
+&lt;h4&gt;Give user option to enable/disable notifications&lt;/h4&gt;
+&lt;p&gt;It's very important to give user option to opt-out or opt-in for local notifications.
+You may want to do this in Settings Activity. When user has opted-in for local notifications,
+then AlarmManager starts sending local notifications to user every morning. Time to send notifications
+can be configured or just be default. I'll be using a default of 8am in this demo.&lt;/p&gt;
+&lt;h3&gt;Components&lt;/h3&gt;
+&lt;h4&gt;Scheduling notifications using Alarm Manager&lt;/h4&gt;
+&lt;p&gt;There're two types of Alarms can be scheduled:
+- Wall clock time
+- Elapsed time (since device is booted).
+Read more about them &lt;a href="https://developer.android.com/training/scheduling/alarms.html#set"&gt;here&lt;/a&gt;
+I'll be scheduling notifications using both kind of alarms.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//TODO: Code to create notification and assiging to alarm manager
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Don't forget to add Alarm permission in &lt;code&gt;&amp;lt;uses-permissions&amp;gt;&lt;/code&gt; tag in &lt;code&gt;AndroidManifest.xml&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; //TODO: code to include uses-permissions tag
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;AlarmReceiver (BroadcastReceiver)&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;AlarmReceiver&lt;/code&gt; class extends &lt;code&gt;BroadcastReceiver&lt;/code&gt;. This handles the AlarmManager's broadcast
+ about sending local notifications at a given time.
+ &lt;code&gt;//TODO Code to override onReceived() method&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Don't forget to add &lt;code&gt;&amp;lt;receiver&amp;gt;&lt;/code&gt; tag in &lt;code&gt;AndroidManifest.xml&lt;/code&gt;
+ &lt;code&gt;//TODO: code to include receiver tag&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;NotificationHelper&lt;/h4&gt;
+&lt;p&gt;Convenience helper class to generate notification&lt;/p&gt;
+&lt;h4&gt;Don't loose your notifications settings across device boots&lt;/h4&gt;
+&lt;p&gt;Alarms will be cancelled when a device re-boots, so your notification settings.
+In order to persist your notifications setting or alarms across device reboots,
+you would need to reset alarm when a device boots up.&lt;/p&gt;
+&lt;h5&gt;AndroidManifest.xml configuration&lt;/h5&gt;
+&lt;p&gt;Add this permission in &lt;code&gt;AndroidManifest.xml&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;uses-permission&lt;/span&gt; &lt;span class="na"&gt;android:name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;android.permission.RECEIVE_BOOT_COMPLETED&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;application&lt;/span&gt;
+&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;receiver&lt;/span&gt; &lt;span class="na"&gt;android:name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;.notification.AlarmBootReceiver&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:enabled=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;false&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;intent-filter&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;action&lt;/span&gt; &lt;span class="na"&gt;android:name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;android.intent.action.BOOT_COMPLETED&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/action&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/intent-filter&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/receiver&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;/application&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;Implementing Boot Receiver&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;AlarmBootReceiver&lt;/code&gt; will look like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class AlarmBootReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (intent.getAction().equals(&amp;quot;android.intent.action.BOOT_COMPLETED&amp;quot;)) {
+            //only enabling one type of notifications for demo purposes
+            NotificationHelper.scheduleRepeatingElapsedNotification(context);
+        }
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Enable boot receiver when Alarm is set. It means if user opts-into notifications, then
+enable boot receiver as part of enabling notification code.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ComponentName receiver = new ComponentName(context, AlarmBootReceiver.class);
+PackageManager pm = context.getPackageManager();
+
+pm.setComponentEnabledSetting(receiver,
+        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+        PackageManager.DONT_KILL_APP);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When user opts-out from notifications, you can cancel alarm and also disable boot receiver like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ComponentName receiver = new ComponentName(context, AlarmBootReceiver.class);
+PackageManager pm = context.getPackageManager();
+
+pm.setComponentEnabledSetting(receiver,
+        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+        PackageManager.DONT_KILL_APP);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's it !&lt;/p&gt;
+&lt;p&gt;References:
+- Source Code is available &lt;a href=""&gt;here&lt;/a&gt;
+- More details you can find &lt;a href="https://developer.android.com/training/scheduling/alarms.html"&gt;here&lt;/a&gt;&lt;/p&gt;</summary><category term="Android"></category><category term="Notifications"></category><category term="AlarmManager"></category></entry><entry><title>Android Studio Tips &amp; Tricks Series</title><link href="http://ptyagicodecamp.github.io/android-studio-tips-tricks-series.html" rel="alternate"></link><published>2017-04-13T13:06:00-06:00</published><updated>2017-04-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:android-studio-tips-tricks-series.html</id><summary type="html">&lt;h2&gt;Tips And Tricks&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="./how-to-get-sha1-fingerprint-for-digitally-signed-apk.html"&gt;How to get SHA1 fingerprint for digitally signed APK&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;</summary><category term="Android"></category><category term="Android Studio"></category><category term="Tips &amp; Tricks"></category></entry><entry><title>How to get SHA1 fingerprint for digitally signed APK</title><link href="http://ptyagicodecamp.github.io/how-to-get-sha1-fingerprint-for-digitally-signed-apk.html" rel="alternate"></link><published>2017-04-13T13:06:00-06:00</published><updated>2017-04-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:how-to-get-sha1-fingerprint-for-digitally-signed-apk.html</id><summary type="html">&lt;h2&gt;How to get SHA1 fingerprint for digitally signed APK&lt;/h2&gt;

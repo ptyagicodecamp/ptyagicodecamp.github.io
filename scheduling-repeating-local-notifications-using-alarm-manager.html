@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Scheduling Repeating Local Notifications using Alarm Manager — techLog</title>
+	<meta name="description" content="Title: Scheduling Repeating Local Notifications using Alarm Manager; Date: 2017-04-18; Author: ptyagi">
+	<meta name="author" content="Priyanka Tyagi">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Scheduling Repeating Local Notifications using Alarm Manager</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">ptyagi</h4>
+		</span>
+		<time datetime="2017-04-18T15:33:00-06:00" itemprop="datePublished">Tue 18 April 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">Android</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/notifications.html" rel="tag">Notifications</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/alarmmanager.html" rel="tag">AlarmManager</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><h2>Introduction</h2>
+<p>This tutorial is a quick start guide to get you started with
+Local Notifications in Android.</p>
+<h3>Scheduling Repeating Local Notifications using Alarm Manager</h3>
+<p>I'll be using Alarm Manager to schedule repeating local notifications in this sample app.
+This sample app will send a local notification every morning at 8am.
+I'm covering the use case that app is either in background or killed at the time when notification is received.
+When user clicks on the notification, it takes user to app's main activity.</p>
+<h4>Give user option to enable/disable notifications</h4>
+<p>It's very important to give user option to opt-out or opt-in for local notifications.
+You may want to do this in Settings Activity. When user has opted-in for local notifications,
+then AlarmManager starts sending local notifications to user every morning. Time to send notifications
+can be configured or just be default. I'll be using a default of 8am in this demo.</p>
+<h3>Components</h3>
+<h4>Scheduling notifications using Alarm Manager</h4>
+<p>There're two types of Alarms can be scheduled:
+- Wall clock time
+- Elapsed time (since device is booted).
+Read more about them <a href="https://developer.android.com/training/scheduling/alarms.html#set">here</a>
+I'll be scheduling notifications using both kind of alarms.</p>
+<div class="highlight"><pre><span></span>//TODO: Code to create notification and assiging to alarm manager
+</pre></div>
+
+
+<p><strong><em>Note:</em></strong> Don't forget to add Alarm permission in <code>&lt;uses-permissions&gt;</code> tag in <code>AndroidManifest.xml</code></p>
+<div class="highlight"><pre><span></span> //TODO: code to include uses-permissions tag
+</pre></div>
+
+
+<h4>AlarmReceiver (BroadcastReceiver)</h4>
+<p><code>AlarmReceiver</code> class extends <code>BroadcastReceiver</code>. This handles the AlarmManager's broadcast
+ about sending local notifications at a given time.
+ <code>//TODO Code to override onReceived() method</code></p>
+<p><strong><em>Note:</em></strong> Don't forget to add <code>&lt;receiver&gt;</code> tag in <code>AndroidManifest.xml</code>
+ <code>//TODO: code to include receiver tag</code></p>
+<h4>NotificationHelper</h4>
+<p>Convenience helper class to generate notification</p>
+<h4>Don't loose your notifications settings across device boots</h4>
+<p>Alarms will be cancelled when a device re-boots, so your notification settings.
+In order to persist your notifications setting or alarms across device reboots,
+you would need to reset alarm when a device boots up.</p>
+<h5>AndroidManifest.xml configuration</h5>
+<p>Add this permission in <code>AndroidManifest.xml</code></p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;application</span>
+<span class="err">...</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;receiver</span> <span class="na">android:name=</span><span class="s">&quot;.notification.AlarmBootReceiver&quot;</span>
+            <span class="na">android:enabled=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;intent-filter&gt;</span>
+            <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.action.BOOT_COMPLETED&quot;</span><span class="nt">&gt;&lt;/action&gt;</span>
+        <span class="nt">&lt;/intent-filter&gt;</span>
+    <span class="nt">&lt;/receiver&gt;</span>
+
+<span class="nt">&lt;/application&gt;</span>
+</pre></div>
+
+
+<h5>Implementing Boot Receiver</h5>
+<p><code>AlarmBootReceiver</code> will look like this:</p>
+<div class="highlight"><pre><span></span>public class AlarmBootReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (intent.getAction().equals(&quot;android.intent.action.BOOT_COMPLETED&quot;)) {
+            //only enabling one type of notifications for demo purposes
+            NotificationHelper.scheduleRepeatingElapsedNotification(context);
+        }
+    }
+}
+</pre></div>
+
+
+<p>Enable boot receiver when Alarm is set. It means if user opts-into notifications, then
+enable boot receiver as part of enabling notification code.</p>
+<div class="highlight"><pre><span></span>ComponentName receiver = new ComponentName(context, AlarmBootReceiver.class);
+PackageManager pm = context.getPackageManager();
+
+pm.setComponentEnabledSetting(receiver,
+        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+        PackageManager.DONT_KILL_APP);
+</pre></div>
+
+
+<p>When user opts-out from notifications, you can cancel alarm and also disable boot receiver like this:</p>
+<div class="highlight"><pre><span></span>ComponentName receiver = new ComponentName(context, AlarmBootReceiver.class);
+PackageManager pm = context.getPackageManager();
+
+pm.setComponentEnabledSetting(receiver,
+        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+        PackageManager.DONT_KILL_APP);
+</pre></div>
+
+
+<p>That's it !</p>
+<p>References:
+- Source Code is available <a href="">here</a>
+- More details you can find <a href="https://developer.android.com/training/scheduling/alarms.html">here</a></p></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (11)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://getpelican.com/">Pelican</a></li>
+							<li><a href="http://python.org/">Python.org</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Priyanka Tyagi 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>
