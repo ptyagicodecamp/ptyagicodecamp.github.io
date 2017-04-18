@@ -19,21 +19,105 @@ can be configured or just be default. I'll be using a default of 8am in this dem
 - Elapsed time (since device is booted).
 Read more about them &lt;a href="https://developer.android.com/training/scheduling/alarms.html#set"&gt;here&lt;/a&gt;
 I'll be scheduling notifications using both kind of alarms.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//TODO: Code to create notification and assiging to alarm manager
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Scheduling RTC&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/**&lt;/span&gt;
+&lt;span class="cm"&gt; * This is the real time /wall clock time&lt;/span&gt;
+&lt;span class="cm"&gt; * @param context&lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+public&lt;span class="w"&gt; &lt;/span&gt;static&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;scheduleRepeatingRTCNotification&lt;span class="o"&gt;(&lt;/span&gt;Context&lt;span class="w"&gt; &lt;/span&gt;context&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;String&lt;span class="w"&gt; &lt;/span&gt;hour&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;String&lt;span class="w"&gt; &lt;/span&gt;min&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;get&lt;span class="w"&gt; &lt;/span&gt;calendar&lt;span class="w"&gt; &lt;/span&gt;instance&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;be&lt;span class="w"&gt; &lt;/span&gt;able&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;select&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;what&lt;span class="w"&gt; &lt;/span&gt;time&lt;span class="w"&gt; &lt;/span&gt;notification&lt;span class="w"&gt; &lt;/span&gt;should&lt;span class="w"&gt; &lt;/span&gt;be&lt;span class="w"&gt; &lt;/span&gt;scheduled&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;Calendar&lt;span class="w"&gt; &lt;/span&gt;calendar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;Calendar&lt;span class="o"&gt;.&lt;/span&gt;getInstance&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;calendar&lt;span class="o"&gt;.&lt;/span&gt;setTimeInMillis&lt;span class="o"&gt;(&lt;/span&gt;System&lt;span class="o"&gt;.&lt;/span&gt;currentTimeMillis&lt;span class="o"&gt;())&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;Setting&lt;span class="w"&gt; &lt;/span&gt;time&lt;span class="w"&gt; &lt;/span&gt;of&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;day&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;am&lt;span class="w"&gt; &lt;/span&gt;here&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;when&lt;span class="w"&gt; &lt;/span&gt;notification&lt;span class="w"&gt; &lt;/span&gt;will&lt;span class="w"&gt; &lt;/span&gt;be&lt;span class="w"&gt; &lt;/span&gt;sent&lt;span class="w"&gt; &lt;/span&gt;every&lt;span class="w"&gt; &lt;/span&gt;day&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;default&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;calendar&lt;span class="o"&gt;.&lt;/span&gt;set&lt;span class="o"&gt;(&lt;/span&gt;Calendar&lt;span class="o"&gt;.&lt;/span&gt;HOUR_OF_DAY&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;Integer&lt;span class="o"&gt;.&lt;/span&gt;getInteger&lt;span class="o"&gt;(&lt;/span&gt;hour&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="o"&gt;),&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;Integer&lt;span class="o"&gt;.&lt;/span&gt;getInteger&lt;span class="o"&gt;(&lt;/span&gt;min&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;Setting&lt;span class="w"&gt; &lt;/span&gt;intent&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;class&lt;span class="w"&gt; &lt;/span&gt;where&lt;span class="w"&gt; &lt;/span&gt;Alarm&lt;span class="w"&gt; &lt;/span&gt;broadcast&lt;span class="w"&gt; &lt;/span&gt;message&lt;span class="w"&gt; &lt;/span&gt;will&lt;span class="w"&gt; &lt;/span&gt;be&lt;span class="w"&gt; &lt;/span&gt;handled&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;Intent&lt;span class="w"&gt; &lt;/span&gt;intent&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;Intent&lt;span class="o"&gt;(&lt;/span&gt;context&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;AlarmReceiver&lt;span class="o"&gt;.&lt;/span&gt;class&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;Setting&lt;span class="w"&gt; &lt;/span&gt;alarm&lt;span class="w"&gt; &lt;/span&gt;pending&lt;span class="w"&gt; &lt;/span&gt;intent&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;alarmIntentRTC&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;PendingIntent&lt;span class="o"&gt;.&lt;/span&gt;getBroadcast&lt;span class="o"&gt;(&lt;/span&gt;context&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ALARM_TYPE_RTC&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;intent&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;PendingIntent&lt;span class="o"&gt;.&lt;/span&gt;FLAG_UPDATE_CURRENT&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;getting&lt;span class="w"&gt; &lt;/span&gt;instance&lt;span class="w"&gt; &lt;/span&gt;of&lt;span class="w"&gt; &lt;/span&gt;AlarmManager&lt;span class="w"&gt; &lt;/span&gt;service&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;alarmManagerRTC&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;AlarmManager&lt;span class="o"&gt;)&lt;/span&gt;context&lt;span class="o"&gt;.&lt;/span&gt;getSystemService&lt;span class="o"&gt;(&lt;/span&gt;ALARM_SERVICE&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;Setting&lt;span class="w"&gt; &lt;/span&gt;alarm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;wake&lt;span class="w"&gt; &lt;/span&gt;up&lt;span class="w"&gt; &lt;/span&gt;device&lt;span class="w"&gt; &lt;/span&gt;every&lt;span class="w"&gt; &lt;/span&gt;day&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;clock&lt;span class="w"&gt; &lt;/span&gt;time&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;AlarmManager&lt;span class="o"&gt;.&lt;/span&gt;RTC_WAKEUP&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;responsible&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;wake&lt;span class="w"&gt; &lt;/span&gt;up&lt;span class="w"&gt; &lt;/span&gt;device&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sure&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;which&lt;span class="w"&gt; &lt;/span&gt;may&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;be&lt;span class="w"&gt; &lt;/span&gt;good&lt;span class="w"&gt; &lt;/span&gt;practice&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;time&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;Use&lt;span class="w"&gt; &lt;/span&gt;this&lt;span class="w"&gt; &lt;/span&gt;when&lt;span class="w"&gt; &lt;/span&gt;you&lt;span class="w"&gt; &lt;/span&gt;know&lt;span class="w"&gt; &lt;/span&gt;what&lt;span class="w"&gt; &lt;/span&gt;you&lt;span class="s"&gt;&amp;#39;re doing.&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;Use&lt;span class="w"&gt; &lt;/span&gt;RTC&lt;span class="w"&gt; &lt;/span&gt;when&lt;span class="w"&gt; &lt;/span&gt;you&lt;span class="w"&gt; &lt;/span&gt;don&lt;span class="s"&gt;&amp;#39;t need to wake up device, but want to deliver the notification whenever device is woke-up&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;We&lt;span class="s"&gt;&amp;#39;ll be using RTC.WAKEUP for demo purpose only&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;alarmManagerRTC&lt;span class="o"&gt;.&lt;/span&gt;setInexactRepeating&lt;span class="o"&gt;(&lt;/span&gt;AlarmManager&lt;span class="o"&gt;.&lt;/span&gt;RTC_WAKEUP&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;calendar&lt;span class="o"&gt;.&lt;/span&gt;getTimeInMillis&lt;span class="o"&gt;(),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;AlarmManager&lt;span class="o"&gt;.&lt;/span&gt;INTERVAL_DAY&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;alarmIntentRTC&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Don't forget to add Alarm permission in &lt;code&gt;&amp;lt;uses-permissions&amp;gt;&lt;/code&gt; tag in &lt;code&gt;AndroidManifest.xml&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; //TODO: code to include uses-permissions tag
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Scheduling Elapsed&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/***&lt;/span&gt;
+&lt;span class="cm"&gt; * This is another way to schedule notifications using the elapsed time.&lt;/span&gt;
+&lt;span class="cm"&gt; * Its based on the relative time since device was booted up.&lt;/span&gt;
+&lt;span class="cm"&gt; * @param context&lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+public&lt;span class="w"&gt; &lt;/span&gt;static&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;scheduleRepeatingElapsedNotification&lt;span class="o"&gt;(&lt;/span&gt;Context&lt;span class="w"&gt; &lt;/span&gt;context&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;Setting&lt;span class="w"&gt; &lt;/span&gt;intent&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;class&lt;span class="w"&gt; &lt;/span&gt;where&lt;span class="w"&gt; &lt;/span&gt;notification&lt;span class="w"&gt; &lt;/span&gt;will&lt;span class="w"&gt; &lt;/span&gt;be&lt;span class="w"&gt; &lt;/span&gt;handled&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;Intent&lt;span class="w"&gt; &lt;/span&gt;intent&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;Intent&lt;span class="o"&gt;(&lt;/span&gt;context&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;AlarmReceiver&lt;span class="o"&gt;.&lt;/span&gt;class&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;Setting&lt;span class="w"&gt; &lt;/span&gt;pending&lt;span class="w"&gt; &lt;/span&gt;intent&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;respond&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;broadcast&lt;span class="w"&gt; &lt;/span&gt;sent&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;by&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;AlarmManager&lt;span class="w"&gt; &lt;/span&gt;everyday&lt;span class="w"&gt; &lt;/span&gt;at&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;am&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;alarmIntentElapsed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;PendingIntent&lt;span class="o"&gt;.&lt;/span&gt;getBroadcast&lt;span class="o"&gt;(&lt;/span&gt;context&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ALARM_TYPE_ELAPSED&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;intent&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;PendingIntent&lt;span class="o"&gt;.&lt;/span&gt;FLAG_UPDATE_CURRENT&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;getting&lt;span class="w"&gt; &lt;/span&gt;instance&lt;span class="w"&gt; &lt;/span&gt;of&lt;span class="w"&gt; &lt;/span&gt;AlarmManager&lt;span class="w"&gt; &lt;/span&gt;service&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;alarmManagerElapsed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;AlarmManager&lt;span class="o"&gt;)&lt;/span&gt;context&lt;span class="o"&gt;.&lt;/span&gt;getSystemService&lt;span class="o"&gt;(&lt;/span&gt;ALARM_SERVICE&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;Inexact&lt;span class="w"&gt; &lt;/span&gt;alarm&lt;span class="w"&gt; &lt;/span&gt;everyday&lt;span class="w"&gt; &lt;/span&gt;since&lt;span class="w"&gt; &lt;/span&gt;device&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;booted&lt;span class="w"&gt; &lt;/span&gt;up&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;This&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;better&lt;span class="w"&gt; &lt;/span&gt;choice&lt;span class="w"&gt; &lt;/span&gt;and&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;scales&lt;span class="w"&gt; &lt;/span&gt;well&lt;span class="w"&gt; &lt;/span&gt;when&lt;span class="w"&gt; &lt;/span&gt;device&lt;span class="w"&gt; &lt;/span&gt;time&lt;span class="w"&gt; &lt;/span&gt;settings&lt;span class="o"&gt;/&lt;/span&gt;locale&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;changed&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;We&lt;span class="s"&gt;&amp;#39;re setting alarm to fire notification after 15 minutes, and every 15 minutes there on&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;alarmManagerElapsed&lt;span class="o"&gt;.&lt;/span&gt;setInexactRepeating&lt;span class="o"&gt;(&lt;/span&gt;AlarmManager&lt;span class="o"&gt;.&lt;/span&gt;ELAPSED_REALTIME&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;SystemClock&lt;span class="o"&gt;.&lt;/span&gt;elapsedRealtime&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;AlarmManager&lt;span class="o"&gt;.&lt;/span&gt;INTERVAL_FIFTEEN_MINUTES&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;AlarmManager&lt;span class="o"&gt;.&lt;/span&gt;INTERVAL_FIFTEEN_MINUTES&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;alarmIntentElapsed&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;AlarmReceiver (BroadcastReceiver)&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;AlarmReceiver&lt;/code&gt; class extends &lt;code&gt;BroadcastReceiver&lt;/code&gt;. This handles the AlarmManager's broadcast
  about sending local notifications at a given time.
- &lt;code&gt;//TODO Code to override onReceived() method&lt;/code&gt;&lt;/p&gt;
+ ```
+ public class AlarmReceiver extends BroadcastReceiver {
+     @Override
+     public void onReceive(Context context, Intent intent) {
+         //Intent to invoke app when click on notification.
+         //In this sample, we want to start/launch this sample app when user clicks on notification
+         Intent intentToRepeat = new Intent(context, MainActivity.class);
+         //set flag to restart/relaunch the app
+         intentToRepeat.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;     //Pending intent to handle launch of Activity in intent above
+     PendingIntent pendingIntent =
+             PendingIntent.getActivity(context, NotificationHelper.ALARM_TYPE_RTC, intentToRepeat, PendingIntent.FLAG_UPDATE_CURRENT);
+
+     //Build notification
+     Notification repeatedNotification = buildLocalNotification(context, pendingIntent).build();
+
+     //Send local notification
+     NotificationHelper.getNotificationManager(context).notify(NotificationHelper.ALARM_TYPE_RTC, repeatedNotification);
+ }
+
+ public NotificationCompat.Builder buildLocalNotification(Context context, PendingIntent pendingIntent) {
+     NotificationCompat.Builder builder =
+             (NotificationCompat.Builder) new NotificationCompat.Builder(context)
+             .setContentIntent(pendingIntent)
+             .setSmallIcon(android.R.drawable.arrow_up_float)
+             .setContentTitle(&amp;quot;Morning Notification&amp;quot;)
+             .setAutoCancel(true);
+
+     return builder;
+ }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;```&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Don't forget to add &lt;code&gt;&amp;lt;receiver&amp;gt;&lt;/code&gt; tag in &lt;code&gt;AndroidManifest.xml&lt;/code&gt;
- &lt;code&gt;//TODO: code to include receiver tag&lt;/code&gt;&lt;/p&gt;
+ &lt;code&gt;&amp;lt;receiver android:name=".notification.AlarmReceiver"/&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;h4&gt;NotificationHelper&lt;/h4&gt;
 &lt;p&gt;Convenience helper class to generate notification&lt;/p&gt;
 &lt;h4&gt;Don't loose your notifications settings across device boots&lt;/h4&gt;
