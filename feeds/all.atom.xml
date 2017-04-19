@@ -1,5 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-04-18T15:33:00-06:00</updated><entry><title>Scheduling Repeating Local Notifications using Alarm Manager</title><link href="http://ptyagicodecamp.github.io/scheduling-repeating-local-notifications-using-alarm-manager.html" rel="alternate"></link><published>2017-04-18T15:33:00-06:00</published><updated>2017-04-18T15:33:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-18:scheduling-repeating-local-notifications-using-alarm-manager.html</id><summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-04-19T00:00:00-06:00</updated><entry><title>Adding Menu Items in Navigation Drawer Dynamically</title><link href="http://ptyagicodecamp.github.io/adding-menu-items-in-navigation-drawer-dynamically.html" rel="alternate"></link><published>2017-04-19T00:00:00-06:00</published><updated>2017-04-19T00:00:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-19:adding-menu-items-in-navigation-drawer-dynamically.html</id><summary type="html">&lt;h1&gt;Adding Menu Items in Navigation Drawer Dynamically&lt;/h1&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Android Studio provides support to add Navigation Drawer Activity from IDE itself. With such Activity,
+it automatically generates menu items for navigation drawer in form of a xml file resource located
+inside &lt;code&gt;res/menu&lt;/code&gt; directory. By default, this xml file is named &lt;code&gt;activity_main_drawer.xml&lt;/code&gt;, and contains
+menu items statically like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;menu&lt;/span&gt; &lt;span class="na"&gt;xmlns:android=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;group&lt;/span&gt; &lt;span class="na"&gt;android:checkableBehavior=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;single&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;item&lt;/span&gt;
+            &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/nav_camera&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:icon=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@drawable/ic_menu_camera&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Import&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;item&lt;/span&gt;
+            &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/nav_gallery&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:icon=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@drawable/ic_menu_gallery&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Gallery&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;item&lt;/span&gt;
+            &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/nav_slideshow&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:icon=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@drawable/ic_menu_slideshow&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Slideshow&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;item&lt;/span&gt;
+            &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/nav_manage&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:icon=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@drawable/ic_menu_manage&amp;quot;&lt;/span&gt;
+            &lt;span class="na"&gt;android:title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Tools&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/group&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;item&lt;/span&gt; &lt;span class="na"&gt;android:title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Communicate&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;menu&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;item&lt;/span&gt;
+                &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/nav_share&amp;quot;&lt;/span&gt;
+                &lt;span class="na"&gt;android:icon=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@drawable/ic_menu_share&amp;quot;&lt;/span&gt;
+                &lt;span class="na"&gt;android:title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Share&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;item&lt;/span&gt;
+                &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/nav_send&amp;quot;&lt;/span&gt;
+                &lt;span class="na"&gt;android:icon=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@drawable/ic_menu_send&amp;quot;&lt;/span&gt;
+                &lt;span class="na"&gt;android:title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Send&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/menu&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;/menu&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;What if you want to generate or add more menu items dynamically ? If you're like me, then you would
+not want to have support to add menu items without making changes in static file. One reason for doing so
+is to be able to read new menu items data from remote servers and generate UI on the fly. In other words,
+automating UI generation !&lt;/p&gt;
+&lt;p&gt;Actually, its pretty simple to do so !&lt;/p&gt;
+&lt;h4&gt;Show me code&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;private void addMenuItemInNavMenuDrawer() {
+    NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+
+    Menu menu = navView.getMenu();
+    Menu submenu = menu.addSubMenu(&amp;quot;New Super SubMenu&amp;quot;);
+
+    submenu.add(&amp;quot;Super Item1&amp;quot;);
+    submenu.add(&amp;quot;Super Item2&amp;quot;);
+    submenu.add(&amp;quot;Super Item3&amp;quot;);
+
+    navView.invalidate();
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Call &lt;code&gt;addMenuItemInNavMenuDrawer&lt;/code&gt; in &lt;code&gt;onCreate()&lt;/code&gt; method before launching your app.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ....
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        addMenuItemInNavMenuDrawer();
+    }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And that's pretty much it !&lt;/p&gt;
+&lt;p&gt;You can checkout source code at &lt;a href=""&gt;github here&lt;/a&gt;&lt;/p&gt;</summary><category term="Android"></category><category term="Material Design"></category><category term="UI/UX"></category></entry><entry><title>Scheduling Repeating Local Notifications using Alarm Manager</title><link href="http://ptyagicodecamp.github.io/scheduling-repeating-local-notifications-using-alarm-manager.html" rel="alternate"></link><published>2017-04-18T15:33:00-06:00</published><updated>2017-04-18T15:33:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-18:scheduling-repeating-local-notifications-using-alarm-manager.html</id><summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;This tutorial is a quick start guide to get you started with
 Local Notifications in Android.&lt;/p&gt;
 &lt;h3&gt;Scheduling Repeating Local Notifications using Alarm Manager&lt;/h3&gt;

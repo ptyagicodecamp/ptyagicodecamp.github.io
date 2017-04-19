@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Adding Menu Items in Navigation Drawer Dynamically — techLog</title>
+	<meta name="description" content="Title: Adding Menu Items in Navigation Drawer Dynamically; Date: 2017-04-19; Author: ptyagi">
+	<meta name="author" content="Priyanka Tyagi">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Adding Menu Items in Navigation Drawer Dynamically</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">ptyagi</h4>
+		</span>
+		<time datetime="2017-04-19T00:00:00-06:00" itemprop="datePublished">Wed 19 April 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">Android</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/material-design.html" rel="tag">Material Design</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/uiux.html" rel="tag">UI/UX</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><h1>Adding Menu Items in Navigation Drawer Dynamically</h1>
+<h2>Introduction</h2>
+<p>Android Studio provides support to add Navigation Drawer Activity from IDE itself. With such Activity,
+it automatically generates menu items for navigation drawer in form of a xml file resource located
+inside <code>res/menu</code> directory. By default, this xml file is named <code>activity_main_drawer.xml</code>, and contains
+menu items statically like this:</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;menu</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;group</span> <span class="na">android:checkableBehavior=</span><span class="s">&quot;single&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;item</span>
+            <span class="na">android:id=</span><span class="s">&quot;@+id/nav_camera&quot;</span>
+            <span class="na">android:icon=</span><span class="s">&quot;@drawable/ic_menu_camera&quot;</span>
+            <span class="na">android:title=</span><span class="s">&quot;Import&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;item</span>
+            <span class="na">android:id=</span><span class="s">&quot;@+id/nav_gallery&quot;</span>
+            <span class="na">android:icon=</span><span class="s">&quot;@drawable/ic_menu_gallery&quot;</span>
+            <span class="na">android:title=</span><span class="s">&quot;Gallery&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;item</span>
+            <span class="na">android:id=</span><span class="s">&quot;@+id/nav_slideshow&quot;</span>
+            <span class="na">android:icon=</span><span class="s">&quot;@drawable/ic_menu_slideshow&quot;</span>
+            <span class="na">android:title=</span><span class="s">&quot;Slideshow&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;item</span>
+            <span class="na">android:id=</span><span class="s">&quot;@+id/nav_manage&quot;</span>
+            <span class="na">android:icon=</span><span class="s">&quot;@drawable/ic_menu_manage&quot;</span>
+            <span class="na">android:title=</span><span class="s">&quot;Tools&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+
+    <span class="nt">&lt;item</span> <span class="na">android:title=</span><span class="s">&quot;Communicate&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;menu&gt;</span>
+            <span class="nt">&lt;item</span>
+                <span class="na">android:id=</span><span class="s">&quot;@+id/nav_share&quot;</span>
+                <span class="na">android:icon=</span><span class="s">&quot;@drawable/ic_menu_share&quot;</span>
+                <span class="na">android:title=</span><span class="s">&quot;Share&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;item</span>
+                <span class="na">android:id=</span><span class="s">&quot;@+id/nav_send&quot;</span>
+                <span class="na">android:icon=</span><span class="s">&quot;@drawable/ic_menu_send&quot;</span>
+                <span class="na">android:title=</span><span class="s">&quot;Send&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/menu&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+
+<span class="nt">&lt;/menu&gt;</span>
+</pre></div>
+
+
+<p>What if you want to generate or add more menu items dynamically ? If you're like me, then you would
+not want to have support to add menu items without making changes in static file. One reason for doing so
+is to be able to read new menu items data from remote servers and generate UI on the fly. In other words,
+automating UI generation !</p>
+<p>Actually, its pretty simple to do so !</p>
+<h4>Show me code</h4>
+<div class="highlight"><pre><span></span>private void addMenuItemInNavMenuDrawer() {
+    NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+
+    Menu menu = navView.getMenu();
+    Menu submenu = menu.addSubMenu(&quot;New Super SubMenu&quot;);
+
+    submenu.add(&quot;Super Item1&quot;);
+    submenu.add(&quot;Super Item2&quot;);
+    submenu.add(&quot;Super Item3&quot;);
+
+    navView.invalidate();
+}
+</pre></div>
+
+
+<p>Call <code>addMenuItemInNavMenuDrawer</code> in <code>onCreate()</code> method before launching your app.</p>
+<div class="highlight"><pre><span></span>@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ....
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        addMenuItemInNavMenuDrawer();
+    }
+</pre></div>
+
+
+<p>And that's pretty much it !</p>
+<p>You can checkout source code at <a href="">github here</a></p></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (12)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://getpelican.com/">Pelican</a></li>
+							<li><a href="http://python.org/">Python.org</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Priyanka Tyagi 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>
