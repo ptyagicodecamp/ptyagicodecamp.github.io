@@ -82,7 +82,12 @@ automating UI generation !&lt;/p&gt;
 
 
 &lt;p&gt;And that's pretty much it !&lt;/p&gt;
-&lt;p&gt;You can checkout source code at &lt;a href=""&gt;github here&lt;/a&gt;&lt;/p&gt;</summary><category term="Android"></category><category term="Material Design"></category><category term="UI/UX"></category></entry><entry><title>Scheduling Repeating Local Notifications using Alarm Manager</title><link href="http://ptyagicodecamp.github.io/scheduling-repeating-local-notifications-using-alarm-manager.html" rel="alternate"></link><published>2017-04-18T15:33:00-06:00</published><updated>2017-04-18T15:33:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-18:scheduling-repeating-local-notifications-using-alarm-manager.html</id><summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;h5&gt;Before Adding New Submenu&lt;/h5&gt;
+&lt;p&gt;&lt;a href="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/blob/master/images/navdrawermenu/before_adding_menus.png"&gt;Here's&lt;/a&gt;
+how Navigation drawer looks like before adding new sub menu.&lt;/p&gt;
+&lt;h5&gt;After Adding New Submenu&lt;/h5&gt;
+&lt;p&gt;&lt;a href="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/blob/master/images/navdrawermenu/after_adding_menus.png"&gt;Here's&lt;/a&gt; Navigation Drawer after adding brand new submenu.&lt;/p&gt;
+&lt;p&gt;You can checkout source code at &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/NavDrawerDynamicMenu"&gt;github here&lt;/a&gt;&lt;/p&gt;</summary><category term="Android"></category><category term="Material Design"></category><category term="UI/UX"></category></entry><entry><title>Scheduling Repeating Local Notifications using Alarm Manager</title><link href="http://ptyagicodecamp.github.io/scheduling-repeating-local-notifications-using-alarm-manager.html" rel="alternate"></link><published>2017-04-18T15:33:00-06:00</published><updated>2017-04-18T15:33:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-18:scheduling-repeating-local-notifications-using-alarm-manager.html</id><summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;This tutorial is a quick start guide to get you started with
 Local Notifications in Android.&lt;/p&gt;
 &lt;h3&gt;Scheduling Repeating Local Notifications using Alarm Manager&lt;/h3&gt;
