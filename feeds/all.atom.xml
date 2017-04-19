@@ -80,46 +80,48 @@ public&lt;span class="w"&gt; &lt;/span&gt;static&lt;span class="w"&gt; &lt;/span
 
 &lt;h4&gt;AlarmReceiver (BroadcastReceiver)&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;AlarmReceiver&lt;/code&gt; class extends &lt;code&gt;BroadcastReceiver&lt;/code&gt;. This handles the AlarmManager's broadcast
- about sending local notifications at a given time.
- ```
- public class AlarmReceiver extends BroadcastReceiver {
+ about sending local notifications at a given time.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; public class AlarmReceiver extends BroadcastReceiver {
      @Override
      public void onReceive(Context context, Intent intent) {
          //Intent to invoke app when click on notification.
          //In this sample, we want to start/launch this sample app when user clicks on notification
          Intent intentToRepeat = new Intent(context, MainActivity.class);
          //set flag to restart/relaunch the app
-         intentToRepeat.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;     //Pending intent to handle launch of Activity in intent above
-     PendingIntent pendingIntent =
-             PendingIntent.getActivity(context, NotificationHelper.ALARM_TYPE_RTC, intentToRepeat, PendingIntent.FLAG_UPDATE_CURRENT);
+         intentToRepeat.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-     //Build notification
-     Notification repeatedNotification = buildLocalNotification(context, pendingIntent).build();
+         //Pending intent to handle launch of Activity in intent above
+         PendingIntent pendingIntent =
+                 PendingIntent.getActivity(context, NotificationHelper.ALARM_TYPE_RTC, intentToRepeat, PendingIntent.FLAG_UPDATE_CURRENT);
 
-     //Send local notification
-     NotificationHelper.getNotificationManager(context).notify(NotificationHelper.ALARM_TYPE_RTC, repeatedNotification);
- }
+         //Build notification
+         Notification repeatedNotification = buildLocalNotification(context, pendingIntent).build();
 
- public NotificationCompat.Builder buildLocalNotification(Context context, PendingIntent pendingIntent) {
-     NotificationCompat.Builder builder =
-             (NotificationCompat.Builder) new NotificationCompat.Builder(context)
-             .setContentIntent(pendingIntent)
-             .setSmallIcon(android.R.drawable.arrow_up_float)
-             .setContentTitle(&amp;quot;Morning Notification&amp;quot;)
-             .setAutoCancel(true);
+         //Send local notification
+         NotificationHelper.getNotificationManager(context).notify(NotificationHelper.ALARM_TYPE_RTC, repeatedNotification);
+     }
 
-     return builder;
+     public NotificationCompat.Builder buildLocalNotification(Context context, PendingIntent pendingIntent) {
+         NotificationCompat.Builder builder =
+                 (NotificationCompat.Builder) new NotificationCompat.Builder(context)
+                 .setContentIntent(pendingIntent)
+                 .setSmallIcon(android.R.drawable.arrow_up_float)
+                 .setContentTitle(&amp;quot;Morning Notification&amp;quot;)
+                 .setAutoCancel(true);
+
+         return builder;
+     }
  }
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;```&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Don't forget to add &lt;code&gt;&amp;lt;receiver&amp;gt;&lt;/code&gt; tag in &lt;code&gt;AndroidManifest.xml&lt;/code&gt;
- &lt;code&gt;&amp;lt;receiver android:name=".notification.AlarmReceiver"/&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Don't forget to add &lt;code&gt;&amp;lt;receiver&amp;gt;&lt;/code&gt; tag in &lt;code&gt;AndroidManifest.xml&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;receiver android:name=&amp;quot;.notification.AlarmReceiver&amp;quot;/&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h4&gt;NotificationHelper&lt;/h4&gt;
-&lt;p&gt;Convenience helper class to generate notification&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ptyagicodecamp/RepeatingLocalNotifications/blob/master/app/src/main/java/org/pcc/repeatinglocalnotifications/notification/NotificationHelper.java"&gt;Convenience helper class&lt;/a&gt; to generate notification&lt;/p&gt;
 &lt;h4&gt;Don't loose your notifications settings across device boots&lt;/h4&gt;
 &lt;p&gt;Alarms will be cancelled when a device re-boots, so your notification settings.
 In order to persist your notifications setting or alarms across device reboots,

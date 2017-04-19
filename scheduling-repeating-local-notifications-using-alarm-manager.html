@@ -132,46 +132,48 @@ public<span class="w"> </span>static<span class="w"> </span>void<span class="w">
 
 <h4>AlarmReceiver (BroadcastReceiver)</h4>
 <p><code>AlarmReceiver</code> class extends <code>BroadcastReceiver</code>. This handles the AlarmManager's broadcast
- about sending local notifications at a given time.
- ```
- public class AlarmReceiver extends BroadcastReceiver {
+ about sending local notifications at a given time.</p>
+<div class="highlight"><pre><span></span> public class AlarmReceiver extends BroadcastReceiver {
      @Override
      public void onReceive(Context context, Intent intent) {
          //Intent to invoke app when click on notification.
          //In this sample, we want to start/launch this sample app when user clicks on notification
          Intent intentToRepeat = new Intent(context, MainActivity.class);
          //set flag to restart/relaunch the app
-         intentToRepeat.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);</p>
-<div class="highlight"><pre><span></span>     //Pending intent to handle launch of Activity in intent above
-     PendingIntent pendingIntent =
-             PendingIntent.getActivity(context, NotificationHelper.ALARM_TYPE_RTC, intentToRepeat, PendingIntent.FLAG_UPDATE_CURRENT);
+         intentToRepeat.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-     //Build notification
-     Notification repeatedNotification = buildLocalNotification(context, pendingIntent).build();
+         //Pending intent to handle launch of Activity in intent above
+         PendingIntent pendingIntent =
+                 PendingIntent.getActivity(context, NotificationHelper.ALARM_TYPE_RTC, intentToRepeat, PendingIntent.FLAG_UPDATE_CURRENT);
 
-     //Send local notification
-     NotificationHelper.getNotificationManager(context).notify(NotificationHelper.ALARM_TYPE_RTC, repeatedNotification);
- }
+         //Build notification
+         Notification repeatedNotification = buildLocalNotification(context, pendingIntent).build();
 
- public NotificationCompat.Builder buildLocalNotification(Context context, PendingIntent pendingIntent) {
-     NotificationCompat.Builder builder =
-             (NotificationCompat.Builder) new NotificationCompat.Builder(context)
-             .setContentIntent(pendingIntent)
-             .setSmallIcon(android.R.drawable.arrow_up_float)
-             .setContentTitle(&quot;Morning Notification&quot;)
-             .setAutoCancel(true);
+         //Send local notification
+         NotificationHelper.getNotificationManager(context).notify(NotificationHelper.ALARM_TYPE_RTC, repeatedNotification);
+     }
 
-     return builder;
+     public NotificationCompat.Builder buildLocalNotification(Context context, PendingIntent pendingIntent) {
+         NotificationCompat.Builder builder =
+                 (NotificationCompat.Builder) new NotificationCompat.Builder(context)
+                 .setContentIntent(pendingIntent)
+                 .setSmallIcon(android.R.drawable.arrow_up_float)
+                 .setContentTitle(&quot;Morning Notification&quot;)
+                 .setAutoCancel(true);
+
+         return builder;
+     }
  }
 </pre></div>
 
 
-<p>}</p>
-<p>```</p>
-<p><strong><em>Note:</em></strong> Don't forget to add <code>&lt;receiver&gt;</code> tag in <code>AndroidManifest.xml</code>
- <code>&lt;receiver android:name=".notification.AlarmReceiver"/&gt;</code></p>
+<p><strong><em>Note:</em></strong> Don't forget to add <code>&lt;receiver&gt;</code> tag in <code>AndroidManifest.xml</code></p>
+<div class="highlight"><pre><span></span>&lt;receiver android:name=&quot;.notification.AlarmReceiver&quot;/&gt;
+</pre></div>
+
+
 <h4>NotificationHelper</h4>
-<p>Convenience helper class to generate notification</p>
+<p><a href="https://github.com/ptyagicodecamp/RepeatingLocalNotifications/blob/master/app/src/main/java/org/pcc/repeatinglocalnotifications/notification/NotificationHelper.java">Convenience helper class</a> to generate notification</p>
 <h4>Don't loose your notifications settings across device boots</h4>
 <p>Alarms will be cancelled when a device re-boots, so your notification settings.
 In order to persist your notifications setting or alarms across device reboots,
