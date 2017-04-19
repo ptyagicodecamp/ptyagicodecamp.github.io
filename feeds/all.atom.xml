@@ -50,6 +50,7 @@ is to be able to read new menu items data from remote servers and generate UI on
 automating UI generation !&lt;/p&gt;
 &lt;p&gt;Actually, its pretty simple to do so !&lt;/p&gt;
 &lt;h4&gt;Show me code&lt;/h4&gt;
+&lt;p&gt;Here’s code that’s responsible for generating new menu items on the fly.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;private void addMenuItemInNavMenuDrawer() {
     NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
 
