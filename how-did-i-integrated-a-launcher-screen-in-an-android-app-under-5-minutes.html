@@ -54,13 +54,13 @@
 			<a href="http://ptyagicodecamp.github.io/tag/design.html" rel="tag">design</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><h5>Why Launcher Screen</h5>
+	<div itemprop="articleBody" class="article-body"><h3>Why Launcher Screen</h3>
 <p>A launch screen is the splash screen that is presented (optionally) to user when an app starts up. The main purpose for this screen is to keep user entertained while data is loading in the background and hence leave a good impression to your first time users. If your app takes some time to show the contents, then user is usually shown a blank screen. A blank screen may discourage users to wait and they just might get out of the app to not to return again, which could be very sad for your app.
 So, to make the waiting process bit less boring, the launcher screen (aka splash screen) can either be used to show app's logo to promote your brand or some interesting contents that makes user's waiting period more interesting.</p>
-<h4>How to implement Launcher Screen</h4>
+<h3>How to implement Launcher Screen</h3>
 <p>Actually, its pretty straight-forward to implement a luncher screen. It's as simple as setting theme for the launcher activity in AndroidManifest.xml.
 Let's see the steps:</p>
-<p>Step #1: Create the first activity that will launch your app. I'm using <code>LauncherActivity</code> as my launcher activity. This activity doesn't need a layout file of its own since it redirect flow to <code>MainActivity</code> (See Step #5 to know how its being done). It is declared with intent-filter category <code>android.intent.category.LAUNCHER</code> in <code>AndroidManifest.xml</code>.</p>
+<p><strong><em>Step #1:</em></strong> Create the first activity that will launch your app. I'm using <code>LauncherActivity</code> as my launcher activity. This activity doesn't need a layout file of its own since it redirect flow to <code>MainActivity</code> (See Step #5 to know how its being done). It is declared with intent-filter category <code>android.intent.category.LAUNCHER</code> in <code>AndroidManifest.xml</code>.</p>
 <div class="highlight"><pre><span></span><span class="nt">&lt;activity</span>
   <span class="na">android:name=</span><span class="s">&quot;.LauncherActivity&quot;</span>
   <span class="na">android:theme=</span><span class="s">&quot;@style/LauncherScreenTheme&quot;</span><span class="nt">&gt;</span>
@@ -73,13 +73,13 @@ Let's see the steps:</p>
 </pre></div>
 
 
-<p>Step #2: Create main activity for your app. I'm calling it <code>MainActivity</code>. This is the activity which presents the real app contents of the app. It could be data loaded in background when app is launching.
+<p><strong><em>Step #2:</em></strong> Create main activity for your app. I'm calling it <code>MainActivity</code>. This is the activity which presents the real app contents of the app. It could be data loaded in background when app is launching.
 Don't forget to add this activity in your <code>AndroidManifest.xml</code>.</p>
 <div class="highlight"><pre><span></span><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;.MainActivity&quot;</span><span class="nt">&gt;&lt;/activity&gt;</span>
 </pre></div>
 
 
-<p>Step #3: Now, we need to create a drawable for the launcher screen. A logo or any graphic that you want to show user in splash screen, needs to be set as background in this res file. Create the launcher screen xml resource file: <code>launch_screen.xml</code> under <code>res/drawable</code> folder. Basically, background set in here will be displayed as splash/launcher screen. I'm just using default android launcher logo for demonstration purpose. It could be your brand logo or any other graphic of your choice.</p>
+<p><strong><em>Step #3:</em></strong> Now, we need to create a drawable for the launcher screen. A logo or any graphic that you want to show user in splash screen, needs to be set as background in this res file. Create the launcher screen xml resource file: <code>launch_screen.xml</code> under <code>res/drawable</code> folder. Basically, background set in here will be displayed as splash/launcher screen. I'm just using default android launcher logo for demonstration purpose. It could be your brand logo or any other graphic of your choice.</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 
 <span class="nt">&lt;layer-list</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
@@ -96,14 +96,14 @@ Don't forget to add this activity in your <code>AndroidManifest.xml</code>.</p>
 </pre></div>
 
 
-<p>Step #4: Create a theme <code>LauncherScreenTheme</code> for <code>LauncherActivity</code>. Set <code>LauncherActivity</code> theme to <code>LauncherScreenTheme</code> in <code>AndroidManifest.xml</code> as shown in Step #1. <code>LauncherScreenTheme</code> theme is defined in <code>styles.xml</code>:</p>
+<p><strong><em>Step #4:</em></strong> Create a theme <code>LauncherScreenTheme</code> for <code>LauncherActivity</code>. Set <code>LauncherActivity</code> theme to <code>LauncherScreenTheme</code> in <code>AndroidManifest.xml</code> as shown in Step #1. <code>LauncherScreenTheme</code> theme is defined in <code>styles.xml</code>:</p>
 <div class="highlight"><pre><span></span><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&quot;LauncherScreenTheme&quot;</span> <span class="na">parent=</span><span class="s">&quot;Theme.AppCompat.Light.NoActionBar&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:windowBackground&quot;</span><span class="nt">&gt;</span>@drawable/launch_screen<span class="nt">&lt;/item&gt;</span>
 <span class="nt">&lt;/style&gt;</span>
 </pre></div>
 
 
-<p>Step #5: Redirect to <code>MainActivity</code> from <code>LauncherActivity</code>:</p>
+<p><strong><em>Step #5:</em></strong> Redirect to <code>MainActivity</code> from <code>LauncherActivity</code>:</p>
 <div class="highlight"><pre><span></span>public class LauncherActivity extends AppCompatActivity {
 
     @Override
@@ -119,10 +119,9 @@ Don't forget to add this activity in your <code>AndroidManifest.xml</code>.</p>
 
 <p>And That's all you needed to do to setup a launcher screen for your app.</p>
 <p>Here's how the launcher screen looks for the sample app:
-<img alt="" src="../launcher_screen/launcher_screen.png" /></p>
-<p><strong><em>SourceCode</em></strong>
-Soure code for sample app is available <a href="">here</a></p>
-<p>***References:
+<img alt="" src="../images/launcher_screen/launcher_screen.png" /></p>
+<p>Checkout the Source code for sample app available at <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/LauncherScreen">github</a></p>
+<p><strong><em>References:</em></strong>
 <a href="https://material.io/guidelines/patterns/launch-screens.html">Launch Screen Patterns</a></p></div>
 	<hr>
 	<h2>Comments</h2>
@@ -150,7 +149,7 @@ Soure code for sample app is available <a href="">here</a></p>
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (14)</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (13)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
