@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Creating Kotlin Project in Android Studio 3 — techLog</title>
+	<meta name="description" content="Title: Creating Kotlin Project in Android Studio 3; Date: 2017-06-18; Author: ptyagi">
+	<meta name="author" content="Priyanka Tyagi">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+		<![endif]-->
+	<link href="/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/local.css" rel="stylesheet">
+	<link href="/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="/">techLog</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Creating Kotlin Project in Android Studio 3</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">ptyagi</h4>
+		</span>
+		<time datetime="2017-06-18T15:55:00-06:00" itemprop="datePublished">Sun 18 June 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="/category/development.html" rel="category">Development</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="/tag/android.html" rel="tag">android</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="/tag/gradle.html" rel="tag">gradle</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="/tag/kotlin.html" rel="tag">kotlin</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="/tag/android-studio-3.html" rel="tag">android studio 3</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="/tag/dev.html" rel="tag">dev</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><h3>Creating Kotlin Project in Android Studio (&gt;=3)</h3>
+<p>In Android Studio 3 and higher, there's an option to select to create projects supporting Kolin. It's super simple to start writing your app from scratch in Kotlin. Here are screenshots to demo creating a Navigation Drawer based app in Kotlin:</p>
+<p><strong><em>Creating New Project in Android Studio</em></strong>
+Don't forget to check Kotlin support checkbox.</p>
+<p><img alt="Create Kotlin Project" src="../images/kotlin/create_project_kotlin_1.png" /></p>
+<p><strong><em>Choosing MainActivity</em></strong>
+I'm using Navigation Drawer activity as MainActivity for this sample app.</p>
+<p><img alt="Choosing MainActivity" src="../images/kotlin/navigation-drawer-activity-kotlin.png" /></p>
+<p><strong><em>build.gradle</em></strong>
+<code>build.gradle</code> will automatically add support for Kotlin language and other related plugins/libraries:</p>
+<p><img alt="Kotlin Project build.gradle" src="../images/kotlin/kotlin-project-2-build.gradle.png" /></p>
+<p><strong><em>MainActivity</em></strong>
+MainActivity will be generated in Kotlin automatically. This is how it would look like:</p>
+<p><img alt="MainActivity Source code" src="../images/kotlin/kotlin-project-3-mainactivity.png" /></p>
+<p><strong><em>Running First Kotlin App</em></strong>
+This is how running Kotlin sample on device would look like:</p>
+<p><img alt="Running sample app on device" src="../images/kotlin/kotlin-sampleapp.png" /></p>
+<h4>Facts about Kotlin</h4>
+<ol>
+<li>
+<p>Kotlin's runtime library file size is about 859KB (as of version 1.1..2-5), which doesn't increase final APK size significantly.</p>
+</li>
+<li>
+<p>There's no visual difference between Kotlin vs Java applications on Android platform, because Kotlin compiler produces byte-code.</p>
+</li>
+</ol></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="">techLog</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="/category/development.html">Development (14)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://getpelican.com/">Pelican</a></li>
+							<li><a href="http://python.org/">Python.org</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Priyanka Tyagi 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

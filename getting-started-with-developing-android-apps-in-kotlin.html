@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>How to get SHA1 fingerprint for digitally signed APK — techLog</title>
-	<meta name="description" content="Title: How to get SHA1 fingerprint for digitally signed APK; Date: 2017-04-13; Author: ptyagi">
+	<title>Getting started with developing Android apps in Kotlin — techLog</title>
+	<meta name="description" content="Title: Getting started with developing Android apps in Kotlin; Date: 2017-06-18; Author: ptyagi">
 	<meta name="author" content="Priyanka Tyagi">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -26,11 +26,11 @@
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">How to get SHA1 fingerprint for digitally signed APK</h1>
+		<h1 itemprop="name headline" class="article-title">Getting started with developing Android apps in Kotlin</h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">ptyagi</h4>
 		</span>
-		<time datetime="2017-04-13T13:06:00-06:00" itemprop="datePublished">Thu 13 April 2017</time>
+		<time datetime="2017-06-18T15:55:00-06:00" itemprop="datePublished">Sun 18 June 2017</time>
 	</div>
 	<div>
 		Category:
@@ -42,22 +42,50 @@
 	<div>
 		Tags:
 		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">Android</a>
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">android</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/android-studio.html" rel="tag">Android Studio</a>
+			<a href="http://ptyagicodecamp.github.io/tag/gradle.html" rel="tag">gradle</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/tips-tricks.html" rel="tag">Tips & Tricks</a>
+			<a href="http://ptyagicodecamp.github.io/tag/kotlin.html" rel="tag">kotlin</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android-studio-3.html" rel="tag">android studio 3</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/dev.html" rel="tag">dev</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><h2>How to get SHA1 fingerprint for digitally signed APK</h2>
-<ul>
-<li>Open terminal in Android Studio</li>
-<li>Run Keytool utility to get SHA1 for your APK:</li>
-</ul>
-<div class="highlight"><pre><span></span>keytool -exportcert -alias &lt;your_alias&gt; -keystore &lt;path-to-keystore&gt; -list -v
-</pre></div></div>
+	<div itemprop="articleBody" class="article-body"><h3>Creating Kotlin Project in Android Studio (&gt;=3)</h3>
+<p>In Android Studio 3 and higher, there's an option to select to create projects supporting Kolin. It's super simple to start writing your app from scratch in Kotlin. Here are screenshots to demo creating a Navigation Drawer based app in Kotlin:</p>
+<p><strong><em>Creating New Project in Android Studio</em></strong>
+Don't forget to check Kotlin support checkbox.</p>
+<p><img alt="Create Kotlin Project" src="../images/kotlin/create_project_kotlin_1.png" /></p>
+<p><strong><em>Choosing MainActivity</em></strong>
+I'm using Navigation Drawer activity as MainActivity for this sample app.</p>
+<p><img alt="Choosing MainActivity" src="../images/kotlin/navigation-drawer-activity-kotlin.png" /></p>
+<p><strong><em>build.gradle</em></strong>
+<code>build.gradle</code> will automatically add support for Kotlin language and other related plugins/libraries:</p>
+<p><img alt="Kotlin Project build.gradle" src="../images/kotlin/kotlin-project-2-build.gradle.png" /></p>
+<p><strong><em>MainActivity</em></strong>
+MainActivity will be generated in Kotlin automatically. This is how it would look like:</p>
+<p><img alt="MainActivity Source code" src="../images/kotlin/kotlin-project-3-mainactivity.png" /></p>
+<p><strong><em>Running First Kotlin App</em></strong>
+This is how running Kotlin sample on device would look like:</p>
+<p><img alt="Running sample app on device" src="../images/kotlin/kotlin-sampleapp.png" /></p>
+<h4>Facts about Kotlin</h4>
+<ol>
+<li>
+<p>Kotlin's runtime library file size is about 859KB (as of version 1.1..2-5), which doesn't increase final APK size significantly.</p>
+</li>
+<li>
+<p>There's no visual difference between Kotlin vs Java applications on Android platform, because Kotlin compiler produces byte-code.</p>
+</li>
+</ol>
+<p>Interested in checking out source code for this demo sample app ? Find it on <a href="https://github.com/ptyagicodecamp/kotlin-android">Github</a>
+<strong><em>References:</em></strong>
+<a href="http://kotlinlang.org/">Kotlin language's official site</a></p></div>
 	<hr>
 	<h2>Comments</h2>
 </div>

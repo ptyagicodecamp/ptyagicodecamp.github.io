@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-06-16T07:28:00-06:00</updated><entry><title>How did I integrated a launcher screen in an Android App under 5 minutes</title><link href="http://ptyagicodecamp.github.io/how-did-i-integrated-a-launcher-screen-in-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-06-16T07:28:00-06:00</published><updated>2017-06-16T07:28:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-16:how-did-i-integrated-a-launcher-screen-in-an-android-app-under-5-minutes.html</id><summary type="html">&lt;h3&gt;Why Launcher Screen&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-06-18T15:55:00-06:00</updated><entry><title>Getting started with developing Android apps in Kotlin</title><link href="http://ptyagicodecamp.github.io/getting-started-with-developing-android-apps-in-kotlin.html" rel="alternate"></link><published>2017-06-18T15:55:00-06:00</published><updated>2017-06-18T15:55:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-18:getting-started-with-developing-android-apps-in-kotlin.html</id><summary type="html">&lt;h3&gt;Creating Kotlin Project in Android Studio (&amp;gt;=3)&lt;/h3&gt;
+&lt;p&gt;In Android Studio 3 and higher, there's an option to select to create projects supporting Kolin. It's super simple to start writing your app from scratch in Kotlin. Here are screenshots to demo creating a Navigation Drawer based app in Kotlin:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Creating New Project in Android Studio&lt;/em&gt;&lt;/strong&gt;
+Don't forget to check Kotlin support checkbox.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Create Kotlin Project" src="../images/kotlin/create_project_kotlin_1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Choosing MainActivity&lt;/em&gt;&lt;/strong&gt;
+I'm using Navigation Drawer activity as MainActivity for this sample app.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Choosing MainActivity" src="../images/kotlin/navigation-drawer-activity-kotlin.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;build.gradle&lt;/em&gt;&lt;/strong&gt;
+&lt;code&gt;build.gradle&lt;/code&gt; will automatically add support for Kotlin language and other related plugins/libraries:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Kotlin Project build.gradle" src="../images/kotlin/kotlin-project-2-build.gradle.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;MainActivity&lt;/em&gt;&lt;/strong&gt;
+MainActivity will be generated in Kotlin automatically. This is how it would look like:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="MainActivity Source code" src="../images/kotlin/kotlin-project-3-mainactivity.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Running First Kotlin App&lt;/em&gt;&lt;/strong&gt;
+This is how running Kotlin sample on device would look like:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Running sample app on device" src="../images/kotlin/kotlin-sampleapp.png" /&gt;&lt;/p&gt;
+&lt;h4&gt;Facts about Kotlin&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Kotlin's runtime library file size is about 859KB (as of version 1.1..2-5), which doesn't increase final APK size significantly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;There's no visual difference between Kotlin vs Java applications on Android platform, because Kotlin compiler produces byte-code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Interested in checking out source code for this demo sample app ? Find it on &lt;a href="https://github.com/ptyagicodecamp/kotlin-android"&gt;Github&lt;/a&gt;
+&lt;strong&gt;&lt;em&gt;References:&lt;/em&gt;&lt;/strong&gt;
+&lt;a href="http://kotlinlang.org/"&gt;Kotlin language's official site&lt;/a&gt;&lt;/p&gt;</summary><category term="android"></category><category term="gradle"></category><category term="kotlin"></category><category term="android studio 3"></category><category term="dev"></category></entry><entry><title>How did I integrated a launcher screen in an Android App under 5 minutes</title><link href="http://ptyagicodecamp.github.io/how-did-i-integrated-a-launcher-screen-in-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-06-16T07:28:00-06:00</published><updated>2017-06-16T07:28:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-16:how-did-i-integrated-a-launcher-screen-in-an-android-app-under-5-minutes.html</id><summary type="html">&lt;h3&gt;Why Launcher Screen&lt;/h3&gt;
 &lt;p&gt;A launch screen is the splash screen that is presented (optionally) to user when an app starts up. The main purpose for this screen is to keep user entertained while data is loading in the background and hence leave a good impression to your first time users. If your app takes some time to show the contents, then user is usually shown a blank screen. A blank screen may discourage users to wait and they just might get out of the app to not to return again, which could be very sad for your app.
 So, to make the waiting process bit less boring, the launcher screen (aka splash screen) can either be used to show app's logo to promote your brand or some interesting contents that makes user's waiting period more interesting.&lt;/p&gt;
 &lt;h3&gt;How to implement Launcher Screen&lt;/h3&gt;
