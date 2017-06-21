@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Requesting Audio permission at Runtime — techLog</title>
+	<meta name="description" content="Title: Requesting Audio permission at Runtime; Date: 2017-06-20; Author: ptyagi">
+	<meta name="author" content="Priyanka Tyagi">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Requesting Audio permission at Runtime</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">ptyagi</h4>
+		</span>
+		<time datetime="2017-06-20T12:51:00-06:00" itemprop="datePublished">Tue 20 June 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">android</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/runtime-permissions.html" rel="tag">runtime permissions</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/audio-recording.html" rel="tag">audio recording</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/dev.html" rel="tag">dev</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><h1>Requesting Audio permission at Runtime</h1>
+<p>This recipe will show how to request run-time permissions to enable audio recording.</p>
+<p>As you may know already that adding <code>&lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&gt;</code>
+permission in <code>AndroidManifest.xml</code> is not enough on devices running Android 6.0 and greater.
+This permission has to be requested dynamically at the run-time when user uses your app's
+recording/mic feature for first time (in addition to declaring this permission in <code>AndroidManifest.xml</code>).</p>
+<h3>Sample App</h3>
+<p>This sample has two buttons:
+<em> Start/Stop Recording Toggle button : Click this button to start or stop recording.
+</em> Play: You can listen to recorded audio by clicking on this button.</p>
+<p><img alt="Sample App" src="images/audio/sample_app.png" /></p>
+<h3>AndroidManifest.xml</h3>
+<div class="highlight"><pre><span></span>&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot; /&gt;
+</pre></div>
+
+
+<h3>Requesting Permissions in Run time</h3>
+<p>Here's the code that's responsible for handling runtime permissions. I've added the inline comments
+to explain what's going on with code.</p>
+<div class="highlight"><pre><span></span>    //Requesting run-time permissions
+
+    //Create placeholder for user&#39;s consent to record_audio permission.
+    //This will be used in handling callback
+    private final int MY_PERMISSIONS_RECORD_AUDIO = 1;
+
+    private void requestAudioPermissions() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.RECORD_AUDIO)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            //When permission is not granted by user, show them message why this permission is needed.
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.RECORD_AUDIO)) {
+                Toast.makeText(this, &quot;Please grant permissions to record audio&quot;, Toast.LENGTH_LONG).show();
+
+                //Give user option to still opt-in the permissions
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.RECORD_AUDIO},
+                        MY_PERMISSIONS_RECORD_AUDIO);
+
+            } else {
+                // Show user dialog to grant permission to record audio
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.RECORD_AUDIO},
+                        MY_PERMISSIONS_RECORD_AUDIO);
+            }
+        }
+        //If permission is granted, then go ahead recording audio
+        else if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.RECORD_AUDIO)
+                == PackageManager.PERMISSION_GRANTED) {
+
+            //Go ahead with recording audio now
+            recordAudio();
+        }
+    }
+
+    //Handling callback
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_RECORD_AUDIO: {
+                if (grantResults.length &gt; 0
+                        &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay!
+                    recordAudio();
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(this, &quot;Permissions Denied to record audio&quot;, Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+        }
+    }
+</pre></div>
+
+
+<p>App shows user a permission dialog box to either allow or not the given permission.</p>
+<p><img alt="Runtime Audio Permission" src="../images/audio/audio_permissions_req.png" /></p>
+<h3>Recording Audio</h3>
+<p>First, a file needs to be created to store audio data in it. Here's how I'm creating a file when 
+app launches.</p>
+<div class="highlight"><pre><span></span>    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        try {
+            mAudioFile = createAudioFile(this, &quot;demo&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static File createAudioFile(Context context, String audioName) throws IOException {
+        File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PODCASTS);
+        File audio = File.createTempFile(
+                audioName,  /* prefix */
+                &quot;.3gp&quot;,         /* suffix */
+                storageDir      /* directory */
+        );
+
+        return audio;
+    }
+</pre></div>
+
+
+<p>Once file is created, it can be used to store audio data in it:</p>
+<div class="highlight"><pre><span></span>    private void recordAudio() {
+        if (mRecorder == null) {
+            mRecorder = new MediaRecorder();
+            mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            mRecorder.setOutputFile(mAudioFile.getAbsolutePath());
+            mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        }
+
+        if (!isRecording) {
+            try {
+                mRecorder.prepare();
+                mRecorder.start();
+                isRecording = true;
+            } catch (IOException e) {
+                Log.e(&quot;Audio&quot;, &quot;prepare() failed&quot;);
+            }
+        } else if (isRecording) {
+            isRecording = false;
+            stopRecording();
+        }
+    }
+</pre></div>
+
+
+<p>At this point, you've a working Audio recorder app, that can record audio and replay it.</p>
+<p>Checkout the source code at <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/AudioRuntimePermissions">Github</a></p></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (15)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://getpelican.com/">Pelican</a></li>
+							<li><a href="http://python.org/">Python.org</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Priyanka Tyagi 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

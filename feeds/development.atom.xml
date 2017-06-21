@@ -1,5 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-06-18T15:55:00-06:00</updated><entry><title>Getting started with developing Android apps in Kotlin</title><link href="http://ptyagicodecamp.github.io/getting-started-with-developing-android-apps-in-kotlin.html" rel="alternate"></link><published>2017-06-18T15:55:00-06:00</published><updated>2017-06-18T15:55:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-18:getting-started-with-developing-android-apps-in-kotlin.html</id><summary type="html">&lt;h3&gt;Creating Kotlin Project in Android Studio (&amp;gt;=3)&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-06-20T12:51:00-06:00</updated><entry><title>Requesting Audio permission at Runtime</title><link href="http://ptyagicodecamp.github.io/requesting-audio-permission-at-runtime.html" rel="alternate"></link><published>2017-06-20T12:51:00-06:00</published><updated>2017-06-20T12:51:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-20:requesting-audio-permission-at-runtime.html</id><summary type="html">&lt;h1&gt;Requesting Audio permission at Runtime&lt;/h1&gt;
+&lt;p&gt;This recipe will show how to request run-time permissions to enable audio recording.&lt;/p&gt;
+&lt;p&gt;As you may know already that adding &lt;code&gt;&amp;lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&amp;gt;&lt;/code&gt;
+permission in &lt;code&gt;AndroidManifest.xml&lt;/code&gt; is not enough on devices running Android 6.0 and greater.
+This permission has to be requested dynamically at the run-time when user uses your app's
+recording/mic feature for first time (in addition to declaring this permission in &lt;code&gt;AndroidManifest.xml&lt;/code&gt;).&lt;/p&gt;
+&lt;h3&gt;Sample App&lt;/h3&gt;
+&lt;p&gt;This sample has two buttons:
+&lt;em&gt; Start/Stop Recording Toggle button : Click this button to start or stop recording.
+&lt;/em&gt; Play: You can listen to recorded audio by clicking on this button.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Sample App" src="images/audio/sample_app.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;AndroidManifest.xml&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;uses-permission android:name=&amp;quot;android.permission.RECORD_AUDIO&amp;quot; /&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Requesting Permissions in Run time&lt;/h3&gt;
+&lt;p&gt;Here's the code that's responsible for handling runtime permissions. I've added the inline comments
+to explain what's going on with code.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    //Requesting run-time permissions
+
+    //Create placeholder for user&amp;#39;s consent to record_audio permission.
+    //This will be used in handling callback
+    private final int MY_PERMISSIONS_RECORD_AUDIO = 1;
+
+    private void requestAudioPermissions() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.RECORD_AUDIO)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            //When permission is not granted by user, show them message why this permission is needed.
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.RECORD_AUDIO)) {
+                Toast.makeText(this, &amp;quot;Please grant permissions to record audio&amp;quot;, Toast.LENGTH_LONG).show();
+
+                //Give user option to still opt-in the permissions
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.RECORD_AUDIO},
+                        MY_PERMISSIONS_RECORD_AUDIO);
+
+            } else {
+                // Show user dialog to grant permission to record audio
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.RECORD_AUDIO},
+                        MY_PERMISSIONS_RECORD_AUDIO);
+            }
+        }
+        //If permission is granted, then go ahead recording audio
+        else if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.RECORD_AUDIO)
+                == PackageManager.PERMISSION_GRANTED) {
+
+            //Go ahead with recording audio now
+            recordAudio();
+        }
+    }
+
+    //Handling callback
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_RECORD_AUDIO: {
+                if (grantResults.length &amp;gt; 0
+                        &amp;amp;&amp;amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay!
+                    recordAudio();
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(this, &amp;quot;Permissions Denied to record audio&amp;quot;, Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+        }
+    }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;App shows user a permission dialog box to either allow or not the given permission.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Runtime Audio Permission" src="../images/audio/audio_permissions_req.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Recording Audio&lt;/h3&gt;
+&lt;p&gt;First, a file needs to be created to store audio data in it. Here's how I'm creating a file when 
+app launches.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        try {
+            mAudioFile = createAudioFile(this, &amp;quot;demo&amp;quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static File createAudioFile(Context context, String audioName) throws IOException {
+        File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PODCASTS);
+        File audio = File.createTempFile(
+                audioName,  /* prefix */
+                &amp;quot;.3gp&amp;quot;,         /* suffix */
+                storageDir      /* directory */
+        );
+
+        return audio;
+    }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once file is created, it can be used to store audio data in it:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    private void recordAudio() {
+        if (mRecorder == null) {
+            mRecorder = new MediaRecorder();
+            mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            mRecorder.setOutputFile(mAudioFile.getAbsolutePath());
+            mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        }
+
+        if (!isRecording) {
+            try {
+                mRecorder.prepare();
+                mRecorder.start();
+                isRecording = true;
+            } catch (IOException e) {
+                Log.e(&amp;quot;Audio&amp;quot;, &amp;quot;prepare() failed&amp;quot;);
+            }
+        } else if (isRecording) {
+            isRecording = false;
+            stopRecording();
+        }
+    }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At this point, you've a working Audio recorder app, that can record audio and replay it.&lt;/p&gt;
+&lt;p&gt;Checkout the source code at &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/AudioRuntimePermissions"&gt;Github&lt;/a&gt;&lt;/p&gt;</summary><category term="android"></category><category term="runtime permissions"></category><category term="audio recording"></category><category term="dev"></category></entry><entry><title>Getting started with developing Android apps in Kotlin</title><link href="http://ptyagicodecamp.github.io/getting-started-with-developing-android-apps-in-kotlin.html" rel="alternate"></link><published>2017-06-18T15:55:00-06:00</published><updated>2017-06-18T15:55:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-18:getting-started-with-developing-android-apps-in-kotlin.html</id><summary type="html">&lt;h3&gt;Creating Kotlin Project in Android Studio (&amp;gt;=3)&lt;/h3&gt;
 &lt;p&gt;In Android Studio 3 and higher, there's an option to select to create projects supporting Kolin. It's super simple to start writing your app from scratch in Kotlin. Here are screenshots to demo creating a Navigation Drawer based app in Kotlin:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Creating New Project in Android Studio&lt;/em&gt;&lt;/strong&gt;
 Don't forget to check Kotlin support checkbox.&lt;/p&gt;
