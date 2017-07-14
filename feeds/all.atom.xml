@@ -1,5 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-06-20T12:51:00-06:00</updated><entry><title>Requesting Audio permission at Runtime</title><link href="http://ptyagicodecamp.github.io/requesting-audio-permission-at-runtime.html" rel="alternate"></link><published>2017-06-20T12:51:00-06:00</published><updated>2017-06-20T12:51:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-20:requesting-audio-permission-at-runtime.html</id><summary type="html">&lt;h1&gt;Requesting Audio permission at Runtime&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-07-13T13:06:00-06:00</updated><entry><title>Android Model-View-Presenter (MVP) Design Pattern</title><link href="http://ptyagicodecamp.github.io/android-model-view-presenter-mvp-design-pattern.html" rel="alternate"></link><published>2017-07-13T13:06:00-06:00</published><updated>2017-07-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-13:android-model-view-presenter-mvp-design-pattern.html</id><summary type="html">&lt;h1&gt;Android Model-View-Presenter (MVP) Design Pattern&lt;/h1&gt;
+&lt;h2&gt;Quick Introduction&lt;/h2&gt;
+&lt;p&gt;There's enough material available on internet about what a
+Model-View-Presenter (MVP) design pattern is, and why it should be used.
+The motivation behind utilizing this design pattern is to separate UI related code from business
+logic. &lt;strong&gt;Presenter&lt;/strong&gt; is a facilitator between &lt;strong&gt;View&lt;/strong&gt; (UI related code) and &lt;strong&gt;Model&lt;/strong&gt; (real data objects).
+For example, if a TextView widget wants to display a &lt;code&gt;Person&lt;/code&gt;'s name (data object model), then View will
+send a request to Presenter to fetch Data object's information. Presenter in turn will fetch Model class (&lt;code&gt;Person&lt;/code&gt; data model)
+information and pass it on back to View. That way View would never have to directly interact with Model classes.
+So, what's the benefit of this separation ? Any guesses ? Yes, you got it ... Clean code !
+Such clean code separates UI related code base from model classes, and makes it super simple to unit tests without
+running instrumentation tests.&lt;/p&gt;
+&lt;p&gt;Alright, I'll be using a simple example to demonstrate the real working of MVP pattern. In this example,
+user can pick an image from Gallery, and display it in the main UI (fragment). Along with displaying
+picture in ImageView widget, it also shows FilePath below the ImageView.&lt;/p&gt;
+&lt;h3&gt;Selecting picture from Gallery&lt;/h3&gt;
+&lt;p&gt;This sample app does following 4 things using MVP pattern:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Allows user to pick a picture from Gallery and shows in an ImageView&lt;/li&gt;
+&lt;li&gt;Displays File's path in TextView under ImageView&lt;/li&gt;
+&lt;li&gt;Give user option to copy chosen image into app's data directory&lt;/li&gt;
+&lt;li&gt;Give user option to rename picture (copied into app's data directory)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Show me code&lt;/h3&gt;
+&lt;p&gt;There're two Interfaces dedicated to View and Presenter related contracts:
+* &lt;a href="https://github.com/ptyagicodecamp/android-recipes/blob/develop/CopyGalleryPic/app/src/main/java/org/pcc/copygallerypic/view/ContractView.java#L12:L22"&gt;ContractView&lt;/a&gt; Interface.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public interface ContractView {
+    //displays image in Imageview widget
+    void showImagePreview(@NonNull Uri uri);
+
+    //Displays image file information in textview
+    void showImageInfo(String infoSting);
+
+    //That&amp;#39;s how a presenter is assigned to a view
+    void setUserActionListener(ContractUserActionListener userActionListener);
+
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/ptyagicodecamp/android-recipes/blob/develop/CopyGalleryPic/app/src/main/java/org/pcc/copygallerypic/presenter/ContractUserActionListener.java#L12:L25"&gt;ContractUserActionListener&lt;/a&gt; Interface&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public interface ContractUserActionListener {
+
+    //An action taken by user to load a image from gallery into ImageView widget
+    void loadImage(Context context, Uri uri) throws IOException;
+
+    //User initiates action to display image file information in textView UI
+    void loadImageInfo();
+
+    //User action to copy an image from gallery in to app&amp;#39;s picture directory (app&amp;#39;s data directory)
+    void copyImageIntoAppDir(Context context) throws IOException;
+
+    //User can rename a image file (in app&amp;#39;s data directory)
+    void renameImage(Context context, String newName);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Activity or Fragment class implements &lt;code&gt;ContractView&lt;/code&gt; while Presenter would implements
+&lt;code&gt;ContractUserActionListener&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In this sample, UI class &lt;code&gt;ImageViewerFragment&lt;/code&gt; is implementing &lt;code&gt;ContractView&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class ImageViewerFragment extends Fragment implements ContractView {
+  ...
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And, Presenter class &lt;code&gt;ImagePresenter&lt;/code&gt; implements &lt;code&gt;ContractUserActionListener&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class ImagePresenter implements ContractUserActionListener {
+  ...
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;ImageViewerFragment&lt;/code&gt; holds a reference to &lt;code&gt;ImagePresenter&lt;/code&gt;, so that it can pass
+requests to query data from models. At the same time, &lt;code&gt;ImagePresenter&lt;/code&gt; holds a reference
+back to &lt;code&gt;ImageViewerFragment&lt;/code&gt; to pass back on the results.&lt;/p&gt;
+&lt;p&gt;That concludes the theory part.&lt;/p&gt;
+&lt;p&gt;Here are few screenshots from the sample app:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Start state:&lt;/strong&gt;
+This is how sample app looks just after start up. The FAB '+' is clicked to select image from gallery.
+&lt;img alt="Alt launch screen" src="../images/android-mvp/start.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Picture loaded from Gallery state:&lt;/strong&gt;
+&lt;img alt="Alt Picture loaded from gallery" src="../images/android-mvp/picture_loaded_from_gallery.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Image copied to App's data dir state:&lt;/strong&gt;
+&lt;img alt="Alt Image copied to App's data dir state" src="../images/android-mvp/image_copied_to_datadir.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Renaming image - Enter new name:&lt;/strong&gt;
+&lt;img alt="Alt Renaming image" src="../images/android-mvp/rename_1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Renaming image - Final:&lt;/strong&gt;
+&lt;img alt="Alt Renaming image" src="../images/android-mvp/rename_2.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Source Code&lt;/h3&gt;
+&lt;p&gt;Source is available at &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/CopyGalleryPic"&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Happy Exploring !&lt;/p&gt;</summary><category term="Android"></category><category term="Android Design Pattern"></category><category term="MVP"></category><category term="Tips &amp; Tricks"></category><category term="Model-View-Presenter"></category></entry><entry><title>Requesting Audio permission at Runtime</title><link href="http://ptyagicodecamp.github.io/requesting-audio-permission-at-runtime.html" rel="alternate"></link><published>2017-06-20T12:51:00-06:00</published><updated>2017-06-20T12:51:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-20:requesting-audio-permission-at-runtime.html</id><summary type="html">&lt;h1&gt;Requesting Audio permission at Runtime&lt;/h1&gt;
 &lt;p&gt;This recipe will show how to request run-time permissions to enable audio recording.&lt;/p&gt;
 &lt;p&gt;As you may know already that adding &lt;code&gt;&amp;lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&amp;gt;&lt;/code&gt;
 permission in &lt;code&gt;AndroidManifest.xml&lt;/code&gt; is not enough on devices running Android 6.0 and greater.

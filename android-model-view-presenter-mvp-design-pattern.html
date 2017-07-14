@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Android Model-View-Presenter (MVP) Design Pattern — techLog</title>
+	<meta name="description" content="Title: Android Model-View-Presenter (MVP) Design Pattern; Date: 2017-07-13; Author: ptyagi">
+	<meta name="author" content="Priyanka Tyagi">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Android Model-View-Presenter (MVP) Design Pattern</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">ptyagi</h4>
+		</span>
+		<time datetime="2017-07-13T13:06:00-06:00" itemprop="datePublished">Thu 13 July 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">Android</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android-design-pattern.html" rel="tag">Android Design Pattern</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/mvp.html" rel="tag">MVP</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/tips-tricks.html" rel="tag">Tips & Tricks</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/model-view-presenter.html" rel="tag">Model-View-Presenter</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><h1>Android Model-View-Presenter (MVP) Design Pattern</h1>
+<h2>Quick Introduction</h2>
+<p>There's enough material available on internet about what a
+Model-View-Presenter (MVP) design pattern is, and why it should be used.
+The motivation behind utilizing this design pattern is to separate UI related code from business
+logic. <strong>Presenter</strong> is a facilitator between <strong>View</strong> (UI related code) and <strong>Model</strong> (real data objects).
+For example, if a TextView widget wants to display a <code>Person</code>'s name (data object model), then View will
+send a request to Presenter to fetch Data object's information. Presenter in turn will fetch Model class (<code>Person</code> data model)
+information and pass it on back to View. That way View would never have to directly interact with Model classes.
+So, what's the benefit of this separation ? Any guesses ? Yes, you got it ... Clean code !
+Such clean code separates UI related code base from model classes, and makes it super simple to unit tests without
+running instrumentation tests.</p>
+<p>Alright, I'll be using a simple example to demonstrate the real working of MVP pattern. In this example,
+user can pick an image from Gallery, and display it in the main UI (fragment). Along with displaying
+picture in ImageView widget, it also shows FilePath below the ImageView.</p>
+<h3>Selecting picture from Gallery</h3>
+<p>This sample app does following 4 things using MVP pattern:</p>
+<ul>
+<li>Allows user to pick a picture from Gallery and shows in an ImageView</li>
+<li>Displays File's path in TextView under ImageView</li>
+<li>Give user option to copy chosen image into app's data directory</li>
+<li>Give user option to rename picture (copied into app's data directory)</li>
+</ul>
+<h3>Show me code</h3>
+<p>There're two Interfaces dedicated to View and Presenter related contracts:
+* <a href="https://github.com/ptyagicodecamp/android-recipes/blob/develop/CopyGalleryPic/app/src/main/java/org/pcc/copygallerypic/view/ContractView.java#L12:L22">ContractView</a> Interface.</p>
+<div class="highlight"><pre><span></span>public interface ContractView {
+    //displays image in Imageview widget
+    void showImagePreview(@NonNull Uri uri);
+
+    //Displays image file information in textview
+    void showImageInfo(String infoSting);
+
+    //That&#39;s how a presenter is assigned to a view
+    void setUserActionListener(ContractUserActionListener userActionListener);
+
+}
+</pre></div>
+
+
+<ul>
+<li><a href="https://github.com/ptyagicodecamp/android-recipes/blob/develop/CopyGalleryPic/app/src/main/java/org/pcc/copygallerypic/presenter/ContractUserActionListener.java#L12:L25">ContractUserActionListener</a> Interface</li>
+</ul>
+<div class="highlight"><pre><span></span>public interface ContractUserActionListener {
+
+    //An action taken by user to load a image from gallery into ImageView widget
+    void loadImage(Context context, Uri uri) throws IOException;
+
+    //User initiates action to display image file information in textView UI
+    void loadImageInfo();
+
+    //User action to copy an image from gallery in to app&#39;s picture directory (app&#39;s data directory)
+    void copyImageIntoAppDir(Context context) throws IOException;
+
+    //User can rename a image file (in app&#39;s data directory)
+    void renameImage(Context context, String newName);
+}
+</pre></div>
+
+
+<p>Activity or Fragment class implements <code>ContractView</code> while Presenter would implements
+<code>ContractUserActionListener</code>.</p>
+<p>In this sample, UI class <code>ImageViewerFragment</code> is implementing <code>ContractView</code>.</p>
+<div class="highlight"><pre><span></span>public class ImageViewerFragment extends Fragment implements ContractView {
+  ...
+}
+</pre></div>
+
+
+<p>And, Presenter class <code>ImagePresenter</code> implements <code>ContractUserActionListener</code>:</p>
+<div class="highlight"><pre><span></span>public class ImagePresenter implements ContractUserActionListener {
+  ...
+}
+</pre></div>
+
+
+<p><code>ImageViewerFragment</code> holds a reference to <code>ImagePresenter</code>, so that it can pass
+requests to query data from models. At the same time, <code>ImagePresenter</code> holds a reference
+back to <code>ImageViewerFragment</code> to pass back on the results.</p>
+<p>That concludes the theory part.</p>
+<p>Here are few screenshots from the sample app:</p>
+<p><strong>Start state:</strong>
+This is how sample app looks just after start up. The FAB '+' is clicked to select image from gallery.
+<img alt="Alt launch screen" src="../images/android-mvp/start.png" /></p>
+<p><strong>Picture loaded from Gallery state:</strong>
+<img alt="Alt Picture loaded from gallery" src="../images/android-mvp/picture_loaded_from_gallery.png" /></p>
+<p><strong>Image copied to App's data dir state:</strong>
+<img alt="Alt Image copied to App's data dir state" src="../images/android-mvp/image_copied_to_datadir.png" /></p>
+<p><strong>Renaming image - Enter new name:</strong>
+<img alt="Alt Renaming image" src="../images/android-mvp/rename_1.png" /></p>
+<p><strong>Renaming image - Final:</strong>
+<img alt="Alt Renaming image" src="../images/android-mvp/rename_2.png" /></p>
+<h3>Source Code</h3>
+<p>Source is available at <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/CopyGalleryPic">Github</a></p>
+<p>Happy Exploring !</p></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (16)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://getpelican.com/">Pelican</a></li>
+							<li><a href="http://python.org/">Python.org</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Priyanka Tyagi 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>
