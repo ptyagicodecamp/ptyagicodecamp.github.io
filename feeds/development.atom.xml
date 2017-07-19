@@ -42,7 +42,7 @@ That's where &lt;strong&gt;&lt;em&gt;Android Flavors&lt;/em&gt;&lt;/strong&gt; h
 &lt;p&gt;Each flavor can have its own application Id. An 'applicationId' makes a app in Play Store unique.
 In this example, the free version will be published on Play Store with packageId/applicationId as &lt;code&gt;com.pcc.flavors.free&lt;/code&gt;
 and paid one will have &lt;code&gt;com.pcc.flavors.paid&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Note: I'll be showing &lt;code&gt;build.gradle&lt;/code&gt; with all the configuration until til point.&lt;/p&gt;
+&lt;p&gt;Note: I'll be showing &lt;code&gt;build.gradle&lt;/code&gt; with all the configuration until this point.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;android {
     flavorDimensions &amp;quot;version&amp;quot;
 
