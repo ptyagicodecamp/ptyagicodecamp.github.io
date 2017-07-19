@@ -1,5 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-07-13T13:06:00-06:00</updated><entry><title>Android Model-View-Presenter (MVP) Design Pattern</title><link href="http://ptyagicodecamp.github.io/android-model-view-presenter-mvp-design-pattern.html" rel="alternate"></link><published>2017-07-13T13:06:00-06:00</published><updated>2017-07-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-13:android-model-view-presenter-mvp-design-pattern.html</id><summary type="html">&lt;h1&gt;Android Model-View-Presenter (MVP) Design Pattern&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-07-18T15:50:00-06:00</updated><entry><title>How did I set up multiple flavors for an Android App under 5 minutes</title><link href="http://ptyagicodecamp.github.io/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-18T15:50:00-06:00</published><updated>2017-07-18T15:50:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-18:how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;Let's start with understanding few key terms.&lt;/p&gt;
+&lt;h2&gt;Understanding differences between "Build Types", "Flavor" and "Build Variant"&lt;/h2&gt;
+&lt;p&gt;***Build Types:
+Build Type refers to build and packaging settings like signing configuration for a project.&lt;/p&gt;
+&lt;p&gt;***Flavor:
+A flavor is used to specify custom features, minimum and target API levels, device and API requirements like layout, drawable and custom code (for example, if production code is slightly different than development code).&lt;/p&gt;
+&lt;p&gt;***Build Variant:
+The combination of Build Type and Flavor is known as Build Variant.&lt;/p&gt;
+&lt;p&gt;And, now time to dig deeper !&lt;/p&gt;
+&lt;h2&gt;Android Apps: Flavors&lt;/h2&gt;
+&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;The motivation behind &lt;strong&gt;&lt;em&gt;Android Flavors&lt;/em&gt;&lt;/strong&gt; is &lt;strong&gt;&lt;em&gt;code reuse&lt;/em&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;em&gt;code maintainability&lt;/em&gt;&lt;/strong&gt;.
+Time to time, we might want to publish different versions of the same app with slight changes in
+assets or functionality. For example, in free version of the app, you may want to show ads while in
+paid version, you may decide not to show ads and integrate in-app purchase or upfront price rather.
+That's where &lt;strong&gt;&lt;em&gt;Android Flavors&lt;/em&gt;&lt;/strong&gt; help us to achieve this flexibility.&lt;/p&gt;
+&lt;h2&gt;Setting up Flavors in &lt;code&gt;build.gradle&lt;/code&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;android {
+    flavorDimensions &amp;quot;version&amp;quot;
+
+    productFlavors {
+        freeVersion {
+            dimension &amp;quot;version&amp;quot;
+
+        }
+
+        paidVersion {
+            dimension &amp;quot;version&amp;quot;
+        }
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;These newly created flavors appears in "Build Variants" tab of Android Studio:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt Build Variants" src="../images/flavors/build_variants_1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Note 1: You'll have to choose the configuration from "Build Variants" drop down menu before runnind the app on device/emulator.&lt;/p&gt;
+&lt;p&gt;Note 2: &lt;a href="https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html?utm_source=android-studio#variant_aware"&gt;Starting Android Studion 3.0&lt;/a&gt;,
+ &lt;code&gt;flavorDimension&lt;/code&gt; attribute needs to be added.&lt;/p&gt;
+&lt;h2&gt;Application Id&lt;/h2&gt;
+&lt;p&gt;Each flavor can have its own application Id. An 'applicationId' makes a app in Play Store unique.
+In this example, the free version will be published on Play Store with packageId/applicationId as &lt;code&gt;com.pcc.flavors.free&lt;/code&gt;
+and paid one will have &lt;code&gt;com.pcc.flavors.paid&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Note: I'll be showing &lt;code&gt;build.gradle&lt;/code&gt; with all the configuration until til point.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;android {
+    flavorDimensions &amp;quot;version&amp;quot;
+
+    productFlavors {
+        freeVersion {
+            dimension &amp;quot;version&amp;quot;
+
+            applicationId &amp;quot;com.pcc.flavors.free&amp;quot;
+
+        }
+
+        paidVersion {
+            dimension &amp;quot;version&amp;quot;
+
+            applicationId &amp;quot;com.pcc.flavors.paid&amp;quot;
+        }
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Configuring App's name&lt;/h2&gt;
+&lt;p&gt;Each flavor can have its own name as well. For example, free version has app name shown to users
+in Play Store as "Free Great App" and paid version has its name displayed in Play Store as "Paid Great App".
+Let's see how this can be configured in &lt;code&gt;build.gradle&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;android {
+    flavorDimensions &amp;quot;version&amp;quot;
+
+    productFlavors {
+        freeVersion {
+            //select the dimension of flavor
+            dimension &amp;quot;version&amp;quot;
+
+            //configure applicationId for app published to Play store
+            applicationId &amp;quot;com.pcc.flavors.free&amp;quot;
+
+            //Configure this flavor specific app name published in Play Store
+            resValue &amp;quot;string&amp;quot;, &amp;quot;flavored_app_name&amp;quot;, &amp;quot;Free Great App&amp;quot;
+
+        }
+
+        paidVersion {
+            dimension &amp;quot;version&amp;quot;
+
+            applicationId &amp;quot;com.pcc.flavors.paid&amp;quot;
+            resValue &amp;quot;string&amp;quot;, &amp;quot;flavored_app_name&amp;quot;, &amp;quot;Paid Great App&amp;quot;
+        }
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Don't forget to use &lt;code&gt;flavored_app_name&lt;/code&gt; string resource from &lt;code&gt;AndroidManifest.xml&lt;/code&gt; to defined app's name:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;manifest&lt;/span&gt; &lt;span class="na"&gt;xmlns:android=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;package=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;org.pcc.flavors&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;application&lt;/span&gt;
+        &lt;span class="na"&gt;android:label=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/flavored_app_name&amp;quot;&lt;/span&gt;
+    &lt;span class="err"&gt;&amp;lt;/application&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;/manifest&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Flavor specific Icons for apps&lt;/h2&gt;
+&lt;p&gt;Each differently named/flavored app may want to have its own icon. Lets see how would we achieve this.
+First we have to create a flavor specific directory at the same level of &lt;code&gt;main&lt;/code&gt;. Basically, we need to mimic
+the &lt;code&gt;main&lt;/code&gt; directory for each flavor to support fully functional flavors (when there's code changes are involved).
+These directories must be named same as its flavor definition names. In our example, these two additional
+directories are : &lt;code&gt;freeVersion&lt;/code&gt; and &lt;code&gt;paidVersion&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt Flavored Icons" src="../images/flavors/flavored_icons.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Make sure that you've the icon's name same as referenced from &lt;code&gt;AndroidManifest.xml&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;manifest&lt;/span&gt; &lt;span class="na"&gt;xmlns:android=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;package=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;org.pcc.flavors&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;application&lt;/span&gt;
+
+        &lt;span class="na"&gt;android:icon=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@mipmap/ic_launcher&amp;quot;&lt;/span&gt;
+
+    &lt;span class="err"&gt;&amp;lt;/application&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;/manifest&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Finally, flavor some code !&lt;/h2&gt;
+&lt;p&gt;It's very similar to flavoring icons for specific app. Remember that you've the same directory/package
+structure across all the flavors. That's how the changes are overridden.
+For demonstration purposes, I'll update &lt;code&gt;TextView&lt;/code&gt; widget text differently for each app. Free version's
+&lt;code&gt;TextView&lt;/code&gt; will read "Hello Free Great App !", and Paid version will read : "Hello Paid App !".
+It involves two steps:
+1. Make sure that you've the same code directory structure.
+2. Write your custom code !&lt;/p&gt;
+&lt;p&gt;Note: There's one gotcha though. You can't have the same class defined in &lt;code&gt;src/main/java&lt;/code&gt; and &lt;code&gt;src/&amp;lt;flavorNmae&amp;gt;/java&lt;/code&gt; directories. Gradle will throw Duplicate class error while building. Either you can have one class in &lt;code&gt;src/main/java&lt;/code&gt; or in other flavors. I've &lt;code&gt;MainActivity2&lt;/code&gt; in &lt;code&gt;src/freeVersion/java&lt;/code&gt; and &lt;code&gt;src/paidVersion/java&lt;/code&gt;, but not in &lt;code&gt;src/main/java&lt;/code&gt;. &lt;code&gt;AndroidManifest.xml&lt;/code&gt; has reference to &lt;code&gt;MainActivity2&lt;/code&gt;, so it picks &lt;code&gt;MainActivity2&lt;/code&gt; for a selected build variant's flavor.&lt;/p&gt;
+&lt;p&gt;Project structure would look like this:
+&lt;img alt="Alt flavored code" src="../images/flavors/flavor_code.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Checkout the demo app in &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/Flavors"&gt;Github&lt;/a&gt;&lt;/p&gt;</summary><category term="android"></category><category term="gradle"></category><category term="flavors"></category><category term="build-variants"></category><category term="dev"></category><category term="5-minutes-series"></category></entry><entry><title>Android Model-View-Presenter (MVP) Design Pattern</title><link href="http://ptyagicodecamp.github.io/android-model-view-presenter-mvp-design-pattern.html" rel="alternate"></link><published>2017-07-13T13:06:00-06:00</published><updated>2017-07-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-13:android-model-view-presenter-mvp-design-pattern.html</id><summary type="html">&lt;h1&gt;Android Model-View-Presenter (MVP) Design Pattern&lt;/h1&gt;
 &lt;h2&gt;Quick Introduction&lt;/h2&gt;
 &lt;p&gt;There's enough material available on internet about what a
 Model-View-Presenter (MVP) design pattern is, and why it should be used.

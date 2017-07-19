@@ -3,24 +3,24 @@
 <head>
 	<meta charset="utf-8">
 	<title>How did I set up multiple flavors for an Android App under 5 minutes — techLog</title>
-	<meta name="description" content="Title: How did I set up multiple flavors for an Android App under 5 minutes; Date: 2017-06-04; Author: ptyagi">
+	<meta name="description" content="Title: How did I set up multiple flavors for an Android App under 5 minutes; Date: 2017-07-18; Author: ptyagi">
 	<meta name="author" content="Priyanka Tyagi">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
-		<script src="/theme/html5.js"></script>
+		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
 		<![endif]-->
-	<link href="/theme/css/ipython.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="/theme/css/local.css" rel="stylesheet">
-	<link href="/theme/css/pygments.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
 	<div class="page-header">
-		<h1><a href="/">techLog</a>
+		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
 			<br>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -30,42 +30,178 @@
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">ptyagi</h4>
 		</span>
-		<time datetime="2017-06-04T07:28:00-06:00" itemprop="datePublished">Sun 04 June 2017</time>
+		<time datetime="2017-07-18T15:50:00-06:00" itemprop="datePublished">Tue 18 July 2017</time>
 	</div>
 	<div>
 		Category:
 		<span itemprop="articleSection">
-			<a href="/category/development.html" rel="category">Development</a>
+			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
 		</span>
 	</div>
  
 	<div>
 		Tags:
 		<span itemprop="keywords">
-			<a href="/tag/android.html" rel="tag">android</a>
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">android</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/gradle.html" rel="tag">gradle</a>
+			<a href="http://ptyagicodecamp.github.io/tag/gradle.html" rel="tag">gradle</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/flavors.html" rel="tag">flavors</a>
+			<a href="http://ptyagicodecamp.github.io/tag/flavors.html" rel="tag">flavors</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/build-variants.html" rel="tag">build-variants</a>
+			<a href="http://ptyagicodecamp.github.io/tag/build-variants.html" rel="tag">build-variants</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/dev.html" rel="tag">dev</a>
+			<a href="http://ptyagicodecamp.github.io/tag/dev.html" rel="tag">dev</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/5-minutes-series.html" rel="tag">5-minutes-series</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><h3>Understanding differences between "Build Types", "Flavor" and "Build Variant"</h3>
+	<div itemprop="articleBody" class="article-body"><p>Let's start with understanding few key terms.</p>
+<h2>Understanding differences between "Build Types", "Flavor" and "Build Variant"</h2>
 <p>***Build Types:
 Build Type refers to build and packaging settings like signing configuration for a project.</p>
 <p>***Flavor:
 A flavor is used to specify custom features, minimum and target API levels, device and API requirements like layout, drawable and custom code (for example, if production code is slightly different than development code).</p>
 <p>***Build Variant:
 The combination of Build Type and Flavor is known as Build Variant.</p>
-<p>***References:
-http://www.androidauthority.com/building-multiple-flavors-android-app-706436/</p></div>
+<p>And, now time to dig deeper !</p>
+<h2>Android Apps: Flavors</h2>
+<h2>Motivation</h2>
+<p>The motivation behind <strong><em>Android Flavors</em></strong> is <strong><em>code reuse</em></strong> and <strong><em>code maintainability</em></strong>.
+Time to time, we might want to publish different versions of the same app with slight changes in
+assets or functionality. For example, in free version of the app, you may want to show ads while in
+paid version, you may decide not to show ads and integrate in-app purchase or upfront price rather.
+That's where <strong><em>Android Flavors</em></strong> help us to achieve this flexibility.</p>
+<h2>Setting up Flavors in <code>build.gradle</code></h2>
+<div class="highlight"><pre><span></span>android {
+    flavorDimensions &quot;version&quot;
+
+    productFlavors {
+        freeVersion {
+            dimension &quot;version&quot;
+
+        }
+
+        paidVersion {
+            dimension &quot;version&quot;
+        }
+    }
+}
+</pre></div>
+
+
+<p>These newly created flavors appears in "Build Variants" tab of Android Studio:</p>
+<p><img alt="Alt Build Variants" src="../images/flavors/build_variants_1.png" /></p>
+<p>Note 1: You'll have to choose the configuration from "Build Variants" drop down menu before runnind the app on device/emulator.</p>
+<p>Note 2: <a href="https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html?utm_source=android-studio#variant_aware">Starting Android Studion 3.0</a>,
+ <code>flavorDimension</code> attribute needs to be added.</p>
+<h2>Application Id</h2>
+<p>Each flavor can have its own application Id. An 'applicationId' makes a app in Play Store unique.
+In this example, the free version will be published on Play Store with packageId/applicationId as <code>com.pcc.flavors.free</code>
+and paid one will have <code>com.pcc.flavors.paid</code>.</p>
+<p>Note: I'll be showing <code>build.gradle</code> with all the configuration until til point.</p>
+<div class="highlight"><pre><span></span>android {
+    flavorDimensions &quot;version&quot;
+
+    productFlavors {
+        freeVersion {
+            dimension &quot;version&quot;
+
+            applicationId &quot;com.pcc.flavors.free&quot;
+
+        }
+
+        paidVersion {
+            dimension &quot;version&quot;
+
+            applicationId &quot;com.pcc.flavors.paid&quot;
+        }
+    }
+}
+</pre></div>
+
+
+<h2>Configuring App's name</h2>
+<p>Each flavor can have its own name as well. For example, free version has app name shown to users
+in Play Store as "Free Great App" and paid version has its name displayed in Play Store as "Paid Great App".
+Let's see how this can be configured in <code>build.gradle</code>.</p>
+<div class="highlight"><pre><span></span>android {
+    flavorDimensions &quot;version&quot;
+
+    productFlavors {
+        freeVersion {
+            //select the dimension of flavor
+            dimension &quot;version&quot;
+
+            //configure applicationId for app published to Play store
+            applicationId &quot;com.pcc.flavors.free&quot;
+
+            //Configure this flavor specific app name published in Play Store
+            resValue &quot;string&quot;, &quot;flavored_app_name&quot;, &quot;Free Great App&quot;
+
+        }
+
+        paidVersion {
+            dimension &quot;version&quot;
+
+            applicationId &quot;com.pcc.flavors.paid&quot;
+            resValue &quot;string&quot;, &quot;flavored_app_name&quot;, &quot;Paid Great App&quot;
+        }
+    }
+}
+</pre></div>
+
+
+<p>Don't forget to use <code>flavored_app_name</code> string resource from <code>AndroidManifest.xml</code> to defined app's name:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;manifest</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="na">package=</span><span class="s">&quot;org.pcc.flavors&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;application</span>
+        <span class="na">android:label=</span><span class="s">&quot;@string/flavored_app_name&quot;</span>
+    <span class="err">&lt;/application</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;/manifest&gt;</span>
+</pre></div>
+
+
+<h2>Flavor specific Icons for apps</h2>
+<p>Each differently named/flavored app may want to have its own icon. Lets see how would we achieve this.
+First we have to create a flavor specific directory at the same level of <code>main</code>. Basically, we need to mimic
+the <code>main</code> directory for each flavor to support fully functional flavors (when there's code changes are involved).
+These directories must be named same as its flavor definition names. In our example, these two additional
+directories are : <code>freeVersion</code> and <code>paidVersion</code>.</p>
+<p><img alt="Alt Flavored Icons" src="../images/flavors/flavored_icons.png" /></p>
+<p>Make sure that you've the icon's name same as referenced from <code>AndroidManifest.xml</code></p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;manifest</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="na">package=</span><span class="s">&quot;org.pcc.flavors&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;application</span>
+
+        <span class="na">android:icon=</span><span class="s">&quot;@mipmap/ic_launcher&quot;</span>
+
+    <span class="err">&lt;/application</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;/manifest&gt;</span>
+</pre></div>
+
+
+<h2>Finally, flavor some code !</h2>
+<p>It's very similar to flavoring icons for specific app. Remember that you've the same directory/package
+structure across all the flavors. That's how the changes are overridden.
+For demonstration purposes, I'll update <code>TextView</code> widget text differently for each app. Free version's
+<code>TextView</code> will read "Hello Free Great App !", and Paid version will read : "Hello Paid App !".
+It involves two steps:
+1. Make sure that you've the same code directory structure.
+2. Write your custom code !</p>
+<p>Note: There's one gotcha though. You can't have the same class defined in <code>src/main/java</code> and <code>src/&lt;flavorNmae&gt;/java</code> directories. Gradle will throw Duplicate class error while building. Either you can have one class in <code>src/main/java</code> or in other flavors. I've <code>MainActivity2</code> in <code>src/freeVersion/java</code> and <code>src/paidVersion/java</code>, but not in <code>src/main/java</code>. <code>AndroidManifest.xml</code> has reference to <code>MainActivity2</code>, so it picks <code>MainActivity2</code> for a selected build variant's flavor.</p>
+<p>Project structure would look like this:
+<img alt="Alt flavored code" src="../images/flavors/flavor_code.png" /></p>
+<p>Checkout the demo app in <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/Flavors">Github</a></p></div>
 	<hr>
 	<h2>Comments</h2>
 </div>
@@ -80,7 +216,8 @@ http://www.androidauthority.com/building-multiple-flavors-android-app-706436/</p
 					<div class="col-md-3">
 						<h4>Navigation</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
@@ -91,7 +228,7 @@ http://www.androidauthority.com/building-multiple-flavors-android-app-706436/</p
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="/category/development.html">Development (14)</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (17)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
