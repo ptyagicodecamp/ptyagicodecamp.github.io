@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-07-18T15:50:00-06:00</updated><entry><title>How did I set up multiple flavors for an Android App under 5 minutes</title><link href="http://ptyagicodecamp.github.io/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-18T15:50:00-06:00</published><updated>2017-07-18T15:50:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-18:how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;Let's start with understanding few key terms.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-07-26T22:15:00-06:00</updated><entry><title>How to start using custom fonts in an Android App under 5 minutes</title><link href="http://ptyagicodecamp.github.io/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-26T22:15:00-06:00</published><updated>2017-07-26T22:15:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-26:how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.&lt;/p&gt;
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;In this recipe, I'll show you how did I use a custom font to write text "Hello Fonts !" in &lt;code&gt;TextView&lt;/code&gt; widget.&lt;/p&gt;
+&lt;h3&gt;Download and setup custom Font&lt;/h3&gt;
+&lt;p&gt;First, decide on the font that you're planning to use. Download it.
+I'm referring this sample font as "dot2dot.ttf".&lt;/p&gt;
+&lt;p&gt;Second, add this custom font in resource directory of android app.
+&lt;img alt="Alt font_1.png" src="../images/font/font_1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Clicking on font will open it in side window.
+&lt;img alt="Alt font_2" src="../images/font/font_2.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Creating Font family (XML resource file)&lt;/h3&gt;
+&lt;p&gt;Now, create the font family or a xml resource file to access this custom font from code.
+Right click on &lt;code&gt;res/font&lt;/code&gt; folder and create a xml file:
+&lt;img alt="Alt fontfamily" src="../images/font/font_family.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt fontfamily2" src="../images/font/fontfamily2.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Using the Font Family in TextView&lt;/h3&gt;
+&lt;p&gt;Here's how font resource created in previous step can be accessed from &lt;code&gt;TextView&lt;/code&gt; widget:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &amp;lt;TextView
+        ...
+
+        android:text=&amp;quot;Hello Fonts !&amp;quot;
+        android:fontFamily=&amp;quot;@font/dot2dot&amp;quot;
+        android:textSize=&amp;quot;36sp&amp;quot;
+
+        ...
+       /&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's pretty much all you've to do to start using a custom Font in your Android App.&lt;/p&gt;
+&lt;p&gt;This is how the sample app's output look like:
+&lt;img alt="Alt output sample app" src="../images/font/output.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Checkout the source code on &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/Fonts"&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Checkout this article on &lt;a href="https://ptyagicodecamp.github.io/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html"&gt;my blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Keep Exploring !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt;: This feature of Fonts in XML is got introduced in Android O.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Reference&lt;/em&gt;&lt;/strong&gt; : &lt;a href="https://developer.android.com/preview/features/working-with-fonts.html"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</summary><category term="android"></category><category term="fonts"></category><category term="dev"></category><category term="5-minutes-series"></category></entry><entry><title>How did I set up multiple flavors for an Android App under 5 minutes</title><link href="http://ptyagicodecamp.github.io/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-18T15:50:00-06:00</published><updated>2017-07-18T15:50:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-18:how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;Let's start with understanding few key terms.&lt;/p&gt;
 &lt;h2&gt;Understanding differences between "Build Types", "Flavor" and "Build Variant"&lt;/h2&gt;
 &lt;p&gt;***Build Types:
 Build Type refers to build and packaging settings like signing configuration for a project.&lt;/p&gt;
@@ -141,41 +177,7 @@ It involves two steps:
 &lt;p&gt;Project structure would look like this:
 &lt;img alt="Alt flavored code" src="../images/flavors/flavor_code.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Checkout the demo app in &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/Flavors"&gt;Github&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Checkout this article on &lt;a href="https://ptyagicodecamp.github.io/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html"&gt;my blog&lt;/a&gt;&lt;/p&gt;</summary><category term="android"></category><category term="gradle"></category><category term="flavors"></category><category term="build-variants"></category><category term="dev"></category><category term="5-minutes-series"></category></entry><entry><title>How to start using custom fonts in an Android App under 5 minutes</title><link href="http://ptyagicodecamp.github.io/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-16T22:15:00-06:00</published><updated>2017-07-16T22:15:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-16:how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.&lt;/p&gt;
-&lt;h3&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;In this recipe, I'll show you how did I use a custom font to write text "Hello Fonts !" in &lt;code&gt;TextView&lt;/code&gt; widget.&lt;/p&gt;
-&lt;h3&gt;Download and setup custom Font&lt;/h3&gt;
-&lt;p&gt;First, decide on the font that you're planning to use. Download it.
-I'm referring this sample font as "dot2dot.ttf".&lt;/p&gt;
-&lt;p&gt;Second, add this custom font in resource directory of android app.
-&lt;img alt="Alt font_1.png" src="../images/font/font_1.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Clicking on font will open it in side window.
-&lt;img alt="Alt font_2" src="../images/font/font_2.png" /&gt;&lt;/p&gt;
-&lt;h3&gt;Creating Font family (XML resource file)&lt;/h3&gt;
-&lt;p&gt;Now, create the font family or a xml resource file to access this custom font from code.
-Right click on &lt;code&gt;res/font&lt;/code&gt; folder and create a xml file:
-&lt;img alt="Alt fontfamily" src="../images/font/font_family.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt fontfamily2" src="../images/font/fontfamily2.png" /&gt;&lt;/p&gt;
-&lt;h3&gt;Using the Font Family in TextView&lt;/h3&gt;
-&lt;p&gt;Here's how font resource created in previous step can be accessed from &lt;code&gt;TextView&lt;/code&gt; widget:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &amp;lt;TextView
-        ...
-
-        android:text=&amp;quot;Hello Fonts !&amp;quot;
-        android:fontFamily=&amp;quot;@font/dot2dot&amp;quot;
-        android:textSize=&amp;quot;36sp&amp;quot;
-
-        ...
-       /&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;That's pretty much all you've to do to start using a custom Font in your Android App.&lt;/p&gt;
-&lt;p&gt;This is how the sample app's output look like:
-&lt;img alt="Alt output sample app" src="../images/font/output.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Checkout the source code on &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/Fonts"&gt;Github&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Keep Exploring !&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Reference&lt;/em&gt;&lt;/strong&gt; : &lt;a href="https://developer.android.com/preview/features/working-with-fonts.html"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</summary><category term="android"></category><category term="fonts"></category><category term="dev"></category><category term="5-minutes-series"></category></entry><entry><title>Android Model-View-Presenter (MVP) Design Pattern</title><link href="http://ptyagicodecamp.github.io/android-model-view-presenter-mvp-design-pattern.html" rel="alternate"></link><published>2017-07-13T13:06:00-06:00</published><updated>2017-07-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-13:android-model-view-presenter-mvp-design-pattern.html</id><summary type="html">&lt;h1&gt;Android Model-View-Presenter (MVP) Design Pattern&lt;/h1&gt;
+&lt;p&gt;Checkout this article on &lt;a href="https://ptyagicodecamp.github.io/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html"&gt;my blog&lt;/a&gt;&lt;/p&gt;</summary><category term="android"></category><category term="gradle"></category><category term="flavors"></category><category term="build-variants"></category><category term="dev"></category><category term="5-minutes-series"></category></entry><entry><title>Android Model-View-Presenter (MVP) Design Pattern</title><link href="http://ptyagicodecamp.github.io/android-model-view-presenter-mvp-design-pattern.html" rel="alternate"></link><published>2017-07-13T13:06:00-06:00</published><updated>2017-07-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-13:android-model-view-presenter-mvp-design-pattern.html</id><summary type="html">&lt;h1&gt;Android Model-View-Presenter (MVP) Design Pattern&lt;/h1&gt;
 &lt;h2&gt;Quick Introduction&lt;/h2&gt;
 &lt;p&gt;There's enough material available on internet about what a
 Model-View-Presenter (MVP) design pattern is, and why it should be used.
