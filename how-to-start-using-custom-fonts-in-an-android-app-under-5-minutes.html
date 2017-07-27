@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>How to get SHA1 fingerprint for digitally signed APK — techLog</title>
-	<meta name="description" content="Title: How to get SHA1 fingerprint for digitally signed APK; Date: 2017-04-13; Author: ptyagi">
+	<title>How to start using custom fonts in an Android App under 5 minutes — techLog</title>
+	<meta name="description" content="Title: How to start using custom fonts in an Android App under 5 minutes; Date: 2017-07-16; Author: ptyagi">
 	<meta name="author" content="Priyanka Tyagi">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -26,11 +26,11 @@
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">How to get SHA1 fingerprint for digitally signed APK</h1>
+		<h1 itemprop="name headline" class="article-title">How to start using custom fonts in an Android App under 5 minutes</h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">ptyagi</h4>
 		</span>
-		<time datetime="2017-04-13T13:06:00-06:00" itemprop="datePublished">Thu 13 April 2017</time>
+		<time datetime="2017-07-16T22:15:00-06:00" itemprop="datePublished">Sun 16 July 2017</time>
 	</div>
 	<div>
 		Category:
@@ -42,22 +42,53 @@
 	<div>
 		Tags:
 		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">Android</a>
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">android</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/android-studio.html" rel="tag">Android Studio</a>
+			<a href="http://ptyagicodecamp.github.io/tag/fonts.html" rel="tag">fonts</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/tips-tricks.html" rel="tag">Tips & Tricks</a>
+			<a href="http://ptyagicodecamp.github.io/tag/dev.html" rel="tag">dev</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/5-minutes-series.html" rel="tag">5-minutes-series</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><h2>How to get SHA1 fingerprint for digitally signed APK</h2>
-<ul>
-<li>Open terminal in Android Studio</li>
-<li>Run Keytool utility to get SHA1 for your APK:</li>
-</ul>
-<div class="highlight"><pre><span></span>keytool -exportcert -alias &lt;your_alias&gt; -keystore &lt;path-to-keystore&gt; -list -v
-</pre></div></div>
+	<div itemprop="articleBody" class="article-body"><p>This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.</p>
+<h3>Introduction</h3>
+<p>In this recipe, I'll show you how did I use a custom font to write text "Hello Fonts !" in <code>TextView</code> widget.</p>
+<h3>Download and setup custom Font</h3>
+<p>First, decide on the font that you're planning to use. Download it.
+I'm referring this sample font as "dot2dot.ttf".</p>
+<p>Second, add this custom font in resource directory of android app.
+<img alt="Alt font_1.png" src="../images/font/font_1.png" /></p>
+<p>Clicking on font will open it in side window.
+<img alt="Alt font_2" src="../images/font/font_2.png" /></p>
+<h3>Creating Font family (XML resource file)</h3>
+<p>Now, create the font family or a xml resource file to access this custom font from code.
+Right click on <code>res/font</code> folder and create a xml file:
+<img alt="Alt fontfamily" src="../images/font/font_family.png" /></p>
+<p><img alt="Alt fontfamily2" src="../images/font/fontfamily2.png" /></p>
+<h3>Using the Font Family in TextView</h3>
+<p>Here's how font resource created in previous step can be accessed from <code>TextView</code> widget:</p>
+<div class="highlight"><pre><span></span> &lt;TextView
+        ...
+
+        android:text=&quot;Hello Fonts !&quot;
+        android:fontFamily=&quot;@font/dot2dot&quot;
+        android:textSize=&quot;36sp&quot;
+
+        ...
+       /&gt;
+</pre></div>
+
+
+<p>That's pretty much all you've to do to start using a custom Font in your Android App.</p>
+<p>This is how the sample app's output look like:
+<img alt="Alt output sample app" src="../images/font/output.png" /></p>
+<p>Checkout the source code on <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/Fonts">Github</a></p>
+<p>Keep Exploring !</p>
+<p><strong><em>Reference</em></strong> : <a href="https://developer.android.com/preview/features/working-with-fonts.html">Documentation</a></p></div>
 	<hr>
 	<h2>Comments</h2>
 </div>
