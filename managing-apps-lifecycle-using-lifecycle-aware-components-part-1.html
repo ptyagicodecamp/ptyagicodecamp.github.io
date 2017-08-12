@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Managing App's Lifecycle using "Lifecycle Aware components" (Part 1) — techLog</title>
+	<meta name="description" content="Title: Managing App's Lifecycle using "Lifecycle Aware components" (Part 1); Date: 2017-08-12; Author: ptyagi">
+	<meta name="author" content="Priyanka Tyagi">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
+	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">ptyagi</h4>
+		</span>
+		<time datetime="2017-08-12T22:15:00-06:00" itemprop="datePublished">Sat 12 August 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">android</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/android-architecture.html" rel="tag">android-architecture</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://ptyagicodecamp.github.io/tag/architecture-components.html" rel="tag">architecture-components</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>This covers using ViewModel component to persist Activity configuration data across screen rotations.</p>
+<h2>Managing App's Lifecycle using "Lifecycle Aware components" (ViewModel)</h2>
+<h3>Introduction</h3>
+<p>This post is first part of 3 parts series about recently introduced architecture components.
+This covers using ViewModel component to persist Activity configuration data across screen rotations.</p>
+<p>This sample demonstrate how an app's lifecycle can be managed using recently introduced
+lifecycle aware components. Classes that can work with <a href="https://developer.android.com/reference/android/arch/lifecycle/Lifecycle.html">Lifecyle</a>
+are known as lifecycle aware components.</p>
+<p>These components helps app to :
+<em> Survive configuration changes.
+</em> Avoid memory leaks.
+* Easy data loading into app's UI.</p>
+<p>Above is achieved using these libraries:
+* <strong><a href="https://developer.android.com/topic/libraries/architecture/livedata.html">LiveData</a></strong>:
+ LiveData is a data holder that keeps a value and allows it to be observed with in a specified lifecycle.</p>
+<ul>
+<li>
+<p><strong><a href="https://developer.android.com/topic/libraries/architecture/viewmodel.html">ViewModel</a></strong>:
+ViewModel class helps to store and manage data related to UI. Keeping UI related data in a separate
+ViewModel class helps to survive activity configuration data across screen rotation. Basically, ViewModel
+class prepares and provide data for/to UI.</p>
+</li>
+<li>
+<p><strong><a href="https://developer.android.com/reference/android/arch/lifecycle/LifecycleOwner.html">LifecycleOwner</a></strong>:
+It's a class that has an Android Life cycle. Your Fragment/Activity may want to extend on of its
+subclasses like LifecycleFragment/LifecycleActivity to incorporate automatic handling of Lifecycle events.</p>
+</li>
+<li>
+<p><strong><a href="https://developer.android.com/reference/android/arch/lifecycle/LifecycleObserver.html">LifecycleObserver</a></strong>:
+Marks a class as a LifecycleObserver.</p>
+</li>
+</ul>
+<p><strong><em>Useful links:</em></strong>
+* <a href="https://developer.android.com/topic/libraries/architecture/adding-components.html">Importing architecture components to your project</a></p>
+<h3>Set up</h3>
+<p>I'm using Android Studio 3.0 Beta1.</p>
+<p><code>build.gradle</code> dependencies for ViewModel, Lifecycle and LiveData:</p>
+<div class="highlight"><pre><span></span>dependencies {
+    compile &quot;android.arch.lifecycle:runtime:1.0.0-alpha5&quot;
+    compile &quot;android.arch.lifecycle:extensions:1.0.0-alpha5&quot;
+    annotationProcessor &quot;android.arch.lifecycle:compiler:1.0.0-alpha5&quot;
+}
+</pre></div>
+
+
+<h3>Using ViewModel to retain data across lifecylce of Activity/Fragment</h3>
+<p>I've a sample app with a simple <code>TextView</code>. This textView displays a text
+'Hello Random Number: <generated random number>'. This number is generated and set in
+<code>onCreate()</code> method.</p>
+<h3>Before (Regular implementation)</h3>
+<p>Every time screen is rotated, <code>onCreate()</code> method is called and generates
+a new random number.  This is how <code>HelloRandomNumberActivity</code> looks like:</p>
+<div class="highlight"><pre><span></span><span class="nt">public</span> <span class="nt">class</span> <span class="nt">HelloRandomNumberActivity</span> <span class="nt">extends</span> <span class="nt">AppCompatActivity</span> <span class="p">{</span>
+
+    <span class="o">@</span><span class="n">Override</span>
+    <span class="n">protected</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="err">{</span>
+        <span class="nb">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">activity_hello_random_number</span><span class="p">);</span>
+
+        <span class="n">TextView</span> <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">helloRandomNumber</span><span class="p">);</span>
+        <span class="nb">double</span> <span class="n">randomNumber</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+
+        <span class="n">textView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Hello Random Number: &quot;</span> <span class="o">+</span> <span class="n">randomNumber</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Feel free to try and run this code in action. You'll see every time you rotate your device's screen,
+a new random number is generated and displayed.</p>
+<p><img alt="Alt without_viewmodel" src="../videos/android-architecture/lifecycle_no_viewmodel" /></p>
+<h3>After (Using ViewModel to retain Activity config data)</h3>
+<p>I'll be using <a href="https://developer.android.com/topic/libraries/architecture/viewmodel.html">ViewModel</a>
+component to achieve the data persistence across screen rotations.</p>
+<p>Here's is ViewModel to keep track of random number generated:</p>
+<div class="highlight"><pre><span></span>public class RandomNumberViewModel extends ViewModel {
+
+    @Nullable
+    private Double randomNumber;
+
+    @Nullable
+    public Double getRandomNumber() {
+        return randomNumber;
+    }
+
+    public void setRandomNumber(Double randomNumber) {
+        this.randomNumber = randomNumber;
+    }
+}
+</pre></div>
+
+
+<p>This is how <code>HelloRandomNumberActivity</code> looks like now:</p>
+<div class="highlight"><pre><span></span><span class="nt">public</span> <span class="nt">class</span> <span class="nt">HelloRandomNumberActivity</span> <span class="nt">extends</span> <span class="nt">LifecycleActivity</span> <span class="p">{</span>
+
+    <span class="o">@</span><span class="n">Override</span>
+    <span class="n">protected</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="err">{</span>
+        <span class="nb">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">activity_hello_random_number</span><span class="p">);</span>
+
+        <span class="o">//</span><span class="n">ViewModelStore</span> <span class="n">provides</span> <span class="n">a</span> <span class="n">new</span> <span class="n">ViewModel</span> <span class="n">or</span> <span class="n">one</span> <span class="n">previously</span> <span class="n">created</span><span class="o">.</span>
+        <span class="n">RandomNumberViewModel</span> <span class="n">randomNumberViewModel</span> <span class="o">=</span>
+                <span class="n">ViewModelProviders</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">RandomNumberViewModel</span><span class="o">.</span><span class="n">class</span><span class="p">);</span>
+
+        <span class="n">TextView</span> <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">helloRandomNumber</span><span class="p">);</span>
+        <span class="n">String</span> <span class="nb">text</span> <span class="o">=</span> <span class="s2">&quot;Hello Random Number: &quot;</span><span class="p">;</span>
+
+        <span class="n">if</span> <span class="p">(</span><span class="n">randomNumberViewModel</span><span class="o">.</span><span class="n">getRandomNumber</span><span class="p">()</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span> <span class="err">{</span>
+            <span class="nb">double</span> <span class="n">randomNumber</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+            <span class="o">//</span><span class="n">assigning</span> <span class="n">value</span> <span class="n">to</span> <span class="n">ViewModel</span>
+            <span class="n">randomNumberViewModel</span><span class="o">.</span><span class="n">setRandomNumber</span><span class="p">(</span><span class="n">randomNumber</span><span class="p">);</span>
+            <span class="n">textView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="nb">text</span> <span class="o">+</span> <span class="n">randomNumber</span><span class="p">);</span>
+        <span class="p">}</span> <span class="nt">else</span> <span class="p">{</span>
+            <span class="o">//</span><span class="nb">display</span> <span class="n">data</span> <span class="n">from</span> <span class="n">previous</span> <span class="n">retained</span> <span class="n">ViewModel</span>
+            <span class="n">textView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="nb">text</span> <span class="o">+</span> <span class="n">randomNumberViewModel</span><span class="o">.</span><span class="n">getRandomNumber</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p><strong><em>Note</em></strong>: You may noticed that 'AppCompatActivity' is replaced with 'LifecycleActivity'.
+This is because lifecycle classes are not not supported in support libraries. Once Lifecycle classes
+are release, then it'll be available in Support library and so in 'AppCompatActivity'.</p>
+<p>Try the code now ! There's no change in number every time screen is rotated.</p>
+<p>TODO: //video here</p></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
+							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (19)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://getpelican.com/">Pelican</a></li>
+							<li><a href="http://python.org/">Python.org</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Priyanka Tyagi 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

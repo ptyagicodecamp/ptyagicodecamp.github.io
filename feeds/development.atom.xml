@@ -1,5 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-07-26T22:15:00-06:00</updated><entry><title>How to start using custom fonts in an Android App under 5 minutes</title><link href="http://ptyagicodecamp.github.io/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-26T22:15:00-06:00</published><updated>2017-07-26T22:15:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-26:how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="http://ptyagicodecamp.github.io/" rel="alternate"></link><link href="http://ptyagicodecamp.github.io/feeds/development.atom.xml" rel="self"></link><id>http://ptyagicodecamp.github.io/</id><updated>2017-08-12T22:15:00-06:00</updated><entry><title>Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)</title><link href="http://ptyagicodecamp.github.io/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html" rel="alternate"></link><published>2017-08-12T22:15:00-06:00</published><updated>2017-08-12T22:15:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-08-12:managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html</id><summary type="html">&lt;p&gt;This covers using ViewModel component to persist Activity configuration data across screen rotations.&lt;/p&gt;
+&lt;h2&gt;Managing App's Lifecycle using "Lifecycle Aware components" (ViewModel)&lt;/h2&gt;
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;This post is first part of 3 parts series about recently introduced architecture components.
+This covers using ViewModel component to persist Activity configuration data across screen rotations.&lt;/p&gt;
+&lt;p&gt;This sample demonstrate how an app's lifecycle can be managed using recently introduced
+lifecycle aware components. Classes that can work with &lt;a href="https://developer.android.com/reference/android/arch/lifecycle/Lifecycle.html"&gt;Lifecyle&lt;/a&gt;
+are known as lifecycle aware components.&lt;/p&gt;
+&lt;p&gt;These components helps app to :
+&lt;em&gt; Survive configuration changes.
+&lt;/em&gt; Avoid memory leaks.
+* Easy data loading into app's UI.&lt;/p&gt;
+&lt;p&gt;Above is achieved using these libraries:
+* &lt;strong&gt;&lt;a href="https://developer.android.com/topic/libraries/architecture/livedata.html"&gt;LiveData&lt;/a&gt;&lt;/strong&gt;:
+ LiveData is a data holder that keeps a value and allows it to be observed with in a specified lifecycle.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developer.android.com/topic/libraries/architecture/viewmodel.html"&gt;ViewModel&lt;/a&gt;&lt;/strong&gt;:
+ViewModel class helps to store and manage data related to UI. Keeping UI related data in a separate
+ViewModel class helps to survive activity configuration data across screen rotation. Basically, ViewModel
+class prepares and provide data for/to UI.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developer.android.com/reference/android/arch/lifecycle/LifecycleOwner.html"&gt;LifecycleOwner&lt;/a&gt;&lt;/strong&gt;:
+It's a class that has an Android Life cycle. Your Fragment/Activity may want to extend on of its
+subclasses like LifecycleFragment/LifecycleActivity to incorporate automatic handling of Lifecycle events.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developer.android.com/reference/android/arch/lifecycle/LifecycleObserver.html"&gt;LifecycleObserver&lt;/a&gt;&lt;/strong&gt;:
+Marks a class as a LifecycleObserver.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Useful links:&lt;/em&gt;&lt;/strong&gt;
+* &lt;a href="https://developer.android.com/topic/libraries/architecture/adding-components.html"&gt;Importing architecture components to your project&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Set up&lt;/h3&gt;
+&lt;p&gt;I'm using Android Studio 3.0 Beta1.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;build.gradle&lt;/code&gt; dependencies for ViewModel, Lifecycle and LiveData:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dependencies {
+    compile &amp;quot;android.arch.lifecycle:runtime:1.0.0-alpha5&amp;quot;
+    compile &amp;quot;android.arch.lifecycle:extensions:1.0.0-alpha5&amp;quot;
+    annotationProcessor &amp;quot;android.arch.lifecycle:compiler:1.0.0-alpha5&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Using ViewModel to retain data across lifecylce of Activity/Fragment&lt;/h3&gt;
+&lt;p&gt;I've a sample app with a simple &lt;code&gt;TextView&lt;/code&gt;. This textView displays a text
+'Hello Random Number: &lt;generated random number&gt;'. This number is generated and set in
+&lt;code&gt;onCreate()&lt;/code&gt; method.&lt;/p&gt;
+&lt;h3&gt;Before (Regular implementation)&lt;/h3&gt;
+&lt;p&gt;Every time screen is rotated, &lt;code&gt;onCreate()&lt;/code&gt; method is called and generates
+a new random number.  This is how &lt;code&gt;HelloRandomNumberActivity&lt;/code&gt; looks like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;class&lt;/span&gt; &lt;span class="nt"&gt;HelloRandomNumberActivity&lt;/span&gt; &lt;span class="nt"&gt;extends&lt;/span&gt; &lt;span class="nt"&gt;AppCompatActivity&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Override&lt;/span&gt;
+    &lt;span class="n"&gt;protected&lt;/span&gt; &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;onCreate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onCreate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;setContentView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;activity_hello_random_number&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="n"&gt;TextView&lt;/span&gt; &lt;span class="n"&gt;textView&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;findViewById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;helloRandomNumber&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="nb"&gt;double&lt;/span&gt; &lt;span class="n"&gt;randomNumber&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="n"&gt;textView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setText&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Hello Random Number: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;randomNumber&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Feel free to try and run this code in action. You'll see every time you rotate your device's screen,
+a new random number is generated and displayed.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt without_viewmodel" src="../videos/android-architecture/lifecycle_no_viewmodel" /&gt;&lt;/p&gt;
+&lt;h3&gt;After (Using ViewModel to retain Activity config data)&lt;/h3&gt;
+&lt;p&gt;I'll be using &lt;a href="https://developer.android.com/topic/libraries/architecture/viewmodel.html"&gt;ViewModel&lt;/a&gt;
+component to achieve the data persistence across screen rotations.&lt;/p&gt;
+&lt;p&gt;Here's is ViewModel to keep track of random number generated:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class RandomNumberViewModel extends ViewModel {
+
+    @Nullable
+    private Double randomNumber;
+
+    @Nullable
+    public Double getRandomNumber() {
+        return randomNumber;
+    }
+
+    public void setRandomNumber(Double randomNumber) {
+        this.randomNumber = randomNumber;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This is how &lt;code&gt;HelloRandomNumberActivity&lt;/code&gt; looks like now:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;class&lt;/span&gt; &lt;span class="nt"&gt;HelloRandomNumberActivity&lt;/span&gt; &lt;span class="nt"&gt;extends&lt;/span&gt; &lt;span class="nt"&gt;LifecycleActivity&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Override&lt;/span&gt;
+    &lt;span class="n"&gt;protected&lt;/span&gt; &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;onCreate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onCreate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;setContentView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;activity_hello_random_number&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;ViewModelStore&lt;/span&gt; &lt;span class="n"&gt;provides&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ViewModel&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;one&lt;/span&gt; &lt;span class="n"&gt;previously&lt;/span&gt; &lt;span class="n"&gt;created&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+        &lt;span class="n"&gt;RandomNumberViewModel&lt;/span&gt; &lt;span class="n"&gt;randomNumberViewModel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
+                &lt;span class="n"&gt;ViewModelProviders&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RandomNumberViewModel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="n"&gt;TextView&lt;/span&gt; &lt;span class="n"&gt;textView&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;findViewById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;helloRandomNumber&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nb"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Hello Random Number: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="n"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;randomNumberViewModel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getRandomNumber&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+            &lt;span class="nb"&gt;double&lt;/span&gt; &lt;span class="n"&gt;randomNumber&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+            &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;assigning&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;ViewModel&lt;/span&gt;
+            &lt;span class="n"&gt;randomNumberViewModel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setRandomNumber&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;randomNumber&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="n"&gt;textView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setText&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;text&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;randomNumber&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nt"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nb"&gt;display&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;previous&lt;/span&gt; &lt;span class="n"&gt;retained&lt;/span&gt; &lt;span class="n"&gt;ViewModel&lt;/span&gt;
+            &lt;span class="n"&gt;textView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setText&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;text&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;randomNumberViewModel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getRandomNumber&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt;: You may noticed that 'AppCompatActivity' is replaced with 'LifecycleActivity'.
+This is because lifecycle classes are not not supported in support libraries. Once Lifecycle classes
+are release, then it'll be available in Support library and so in 'AppCompatActivity'.&lt;/p&gt;
+&lt;p&gt;Try the code now ! There's no change in number every time screen is rotated.&lt;/p&gt;
+&lt;p&gt;TODO: //video here&lt;/p&gt;</summary><category term="android"></category><category term="android-architecture"></category><category term="architecture-components"></category></entry><entry><title>How to start using custom fonts in an Android App under 5 minutes</title><link href="http://ptyagicodecamp.github.io/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-26T22:15:00-06:00</published><updated>2017-07-26T22:15:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-26:how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.&lt;/p&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;In this recipe, I'll show you how did I use a custom font to write text "Hello Fonts !" in &lt;code&gt;TextView&lt;/code&gt; widget.&lt;/p&gt;
 &lt;h3&gt;Download and setup custom Font&lt;/h3&gt;
