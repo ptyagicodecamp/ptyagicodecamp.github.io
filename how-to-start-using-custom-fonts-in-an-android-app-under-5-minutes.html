@@ -1,74 +1,104 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>How to start using custom fonts in an Android App under 5 minutes — techLog</title>
-	<meta name="description" content="Title: How to start using custom fonts in an Android App under 5 minutes; Date: 2017-07-26; Author: ptyagi">
-	<meta name="author" content="Priyanka Tyagi">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
-		<![endif]-->
-	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
-	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="techLog Atom">
+
+
+
+
+
+<meta name="author" content="ptyagi" />
+<meta name="description" content="This post is part of the &#34;under 5 minutes series&#34;. In this post I&#39;ll talk about how did I set up custom fonts to render text in TextView in an Android app." />
+<meta name="keywords" content="android, fonts, dev, 5-minutes-series">
+
+<meta property="og:site_name" content="techLog"/>
+<meta property="og:title" content="How to start using custom fonts in an Android App under 5 minutes"/>
+<meta property="og:description" content="This post is part of the &#34;under 5 minutes series&#34;. In this post I&#39;ll talk about how did I set up custom fonts to render text in TextView in an Android app."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://ptyagicodecamp.github.io/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-07-26 22:15:00-06:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Development"/>
+<meta property="article:tag" content="android"/>
+<meta property="article:tag" content="fonts"/>
+<meta property="article:tag" content="dev"/>
+<meta property="article:tag" content="5-minutes-series"/>
+<meta property="og:image" content="">
+
+  <title>techLog &ndash; How to start using custom fonts in an Android App under 5 minutes</title>
+
 </head>
 <body>
-<div class="container">
-	<div class="page-header">
-		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
-			<br>	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">How to start using custom fonts in an Android App under 5 minutes</h1>
-		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<h4 itemprop="name">ptyagi</h4>
-		</span>
-		<time datetime="2017-07-26T22:15:00-06:00" itemprop="datePublished">Wed 26 July 2017</time>
-	</div>
-	<div>
-		Category:
-		<span itemprop="articleSection">
-			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
-		</span>
-	</div>
- 
-	<div>
-		Tags:
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">android</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/fonts.html" rel="tag">fonts</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/dev.html" rel="tag">dev</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/5-minutes-series.html" rel="tag">5-minutes-series</a>
-		</span>
-	</div>
-	<div itemprop="articleBody" class="article-body"><p>This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.</p>
+  <aside>
+    <div>
+      <a href="http://ptyagicodecamp.github.io">
+        <img src="http://ptyagicodecamp.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="http://ptyagicodecamp.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+
+          <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+          <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes">How to start using custom fonts in an Android App under 5 minutes</h1>
+    <p>
+          Posted on Wed 26 July 2017 in <a href="http://ptyagicodecamp.github.io/category/development.html">Development</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.</p>
 <h3>Introduction</h3>
 <p>In this recipe, I'll show you how did I use a custom font to write text "Hello Fonts !" in <code>TextView</code> widget.</p>
 <h3>Download and setup custom Font</h3>
 <p>First, decide on the font that you're planning to use. Download it.
 I'm referring this sample font as "dot2dot.ttf".</p>
 <p>Second, add this custom font in resource directory of android app.
-<img alt="Alt font_1.png" src="../images/font/font_1.png" /></p>
+<img alt="Alt font_1.png" src="../images/font/font_1.png"></p>
 <p>Clicking on font will open it in side window.
-<img alt="Alt font_2" src="../images/font/font_2.png" /></p>
+<img alt="Alt font_2" src="../images/font/font_2.png"></p>
 <h3>Creating Font family (XML resource file)</h3>
 <p>Now, create the font family or a xml resource file to access this custom font from code.
 Right click on <code>res/font</code> folder and create a xml file:
-<img alt="Alt fontfamily" src="../images/font/font_family.png" /></p>
-<p><img alt="Alt fontfamily2" src="../images/font/fontfamily2.png" /></p>
+<img alt="Alt fontfamily" src="../images/font/font_family.png"></p>
+<p><img alt="Alt fontfamily2" src="../images/font/fontfamily2.png"></p>
 <h3>Using the Font Family in TextView</h3>
 <p>Here's how font resource created in previous step can be accessed from <code>TextView</code> widget:</p>
 <div class="highlight"><pre><span></span> &lt;TextView
@@ -85,76 +115,47 @@ Right click on <code>res/font</code> folder and create a xml file:
 
 <p>That's pretty much all you've to do to start using a custom Font in your Android App.</p>
 <p>This is how the sample app's output look like:
-<img alt="Alt output sample app" src="../images/font/output.png" /></p>
+<img alt="Alt output sample app" src="../images/font/output.png"></p>
 <p>Checkout the source code on <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/Fonts">Github</a></p>
 <p>Checkout this article on <a href="https://ptyagicodecamp.github.io/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html">my blog</a></p>
 <p>Keep Exploring !</p>
 <p><strong><em>Note</em></strong>: This feature of Fonts in XML is got introduced in Android O.</p>
-<p><strong><em>Reference</em></strong> : <a href="https://developer.android.com/preview/features/working-with-fonts.html">Documentation</a></p></div>
-	<hr>
-	<h2>Comments</h2>
-</div>
-		</div>
-	</div> 	<!-- <hr> -->
-</div> <!-- /container -->
-<footer class="aw-footer bg-danger">
-	<div class="container"> <!-- footer -->
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="col-md-3">
-						<h4>Navigation</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
-							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Author</h4>
-						<ul class="list-unstyled my-list-style">
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Categories</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (19)</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Links</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://getpelican.com/">Pelican</a></li>
-							<li><a href="http://python.org/">Python.org</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 text-center center-block aw-bottom">
-			<p>&copy; Priyanka Tyagi 2016</p>
-			<p>Powered by Pelican</p>
-		</div>
-	</div>
-</div>
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$("div.collapseheader").click(function () {
-		$header = $(this).children("span").first();
-		$codearea = $(this).children(".input_area");
-		$codearea.slideToggle(500, function () {
-			$header.text(function () {
-				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
-			});
-		});
-	});
-});
+<p><strong><em>Reference</em></strong> : <a href="https://developer.android.com/preview/features/working-with-fonts.html">Documentation</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://ptyagicodecamp.github.io/tag/android.html">android</a>
+      <a href="http://ptyagicodecamp.github.io/tag/fonts.html">fonts</a>
+      <a href="http://ptyagicodecamp.github.io/tag/dev.html">dev</a>
+      <a href="http://ptyagicodecamp.github.io/tag/5-minutes-series.html">5-minutes-series</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " techLog ",
+  "url" : "http://ptyagicodecamp.github.io",
+  "image": "",
+  "description": ""
+}
 </script>
+
 </body>
 </html>

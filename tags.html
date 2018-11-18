@@ -1,125 +1,139 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Tags — techLog</title>
-	<meta name="description" content="The Tags page lists all tags used to classify the posts. Each post has at least one tag helping readers find out easily what they are looking for.">
-	<meta name="author" content="Priyanka Tyagi">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
-		<![endif]-->
-	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
-	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
-<style type="text/css" media="screen">
-ul.tagcloud {
-	list-style: none;
-	padding: 0;
-	padding-top: 7em;
-	padding-bottom: 7em;
-	width: 50%;
-	margin-left: 25%;
-}
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
 
-ul.tagcloud li {
-	display: inline-block;
-}
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-li.tag-1 {
-	font-size: 150%;
-}
+    <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
 
-li.tag-2 {
-	font-size: 120%;
-}
+  <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
 
-li.tag-3 {
-	font-size: 100%;
-}
 
-li.tag-4 {
-	font-size: 80%;
-}
-</style>
+    <link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="techLog Atom">
+
+
+
+
+
+    <meta name="author" content="Priyanka Tyagi" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="techLog"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="techLog"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://ptyagicodecamp.github.io"/>
+
+  <title>techLog &ndash;     Tags
+</title>
+
 </head>
 <body>
-<div class="container">
-	<div class="page-header">
-		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
-			<br>	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-<h1>Tags</h1>
-<div class="text-center">
-<ul class="tagcloud">
-</ul>
-</div>
-		</div>
-	</div> 	<!-- <hr> -->
-</div> <!-- /container -->
-<footer class="aw-footer bg-danger">
-	<div class="container"> <!-- footer -->
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="col-md-3">
-						<h4>Navigation</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
-							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Author</h4>
-						<ul class="list-unstyled my-list-style">
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Categories</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (19)</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Links</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://getpelican.com/">Pelican</a></li>
-							<li><a href="http://python.org/">Python.org</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 text-center center-block aw-bottom">
-			<p>&copy; Priyanka Tyagi 2016</p>
-			<p>Powered by Pelican</p>
-		</div>
-	</div>
-</div>
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$("div.collapseheader").click(function () {
-		$header = $(this).children("span").first();
-		$codearea = $(this).children(".input_area");
-		$codearea.slideToggle(500, function () {
-			$header.text(function () {
-				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
-			});
-		});
-	});
-});
+  <aside>
+    <div>
+      <a href="http://ptyagicodecamp.github.io">
+        <img src="http://ptyagicodecamp.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="http://ptyagicodecamp.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+
+          <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+          <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+    <h1>    Tags
+</h1>
+  </header>
+  <div>
+    <ul class="list">          <li><a href="http://ptyagicodecamp.github.io/tag/5-minutes-series.html">5-minutes-series</a> (2)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/alarmmanager.html">AlarmManager</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/android.html">android</a> (17)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/android-architecture.html">android-architecture</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/android-design-pattern.html">Android Design Pattern</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a> (2)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/android-studio-3.html">android studio 3</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/apk.html">apk</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/architecture-components.html">architecture-components</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/audio-recording.html">audio recording</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/bintray.html">Bintray</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/build-variants.html">build-variants</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/design.html">design</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/dev.html">dev</a> (11)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/devops.html">DevOps</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/fab.html">FAB</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/fileprovider.html">FileProvider</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/flavors.html">flavors</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/fonts.html">fonts</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/github.html">github</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/githubpages.html">githubpages</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/gradle.html">gradle</a> (3)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/jcenter.html">JCenter</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/jenkins.html">Jenkins</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/kotlin.html">kotlin</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/launcher-screen.html">launcher screen</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/library.html">Library</a> (3)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/material-design.html">Material Design</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/model-view-presenter.html">Model-View-Presenter</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/mvp.html">MVP</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/notifications.html">Notifications</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/open-source.html">open-source</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/opensource.html">OpenSource</a> (2)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/pelican.html">pelican</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/publishing.html">Publishing</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/python.html">python</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/runtime-permissions.html">runtime permissions</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/signing.html">signing</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/tips-tricks.html">Tips & Tricks</a> (3)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/ui.html">UI</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/uiux.html">UI/UX</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/web.html">web</a> (1)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/webview.html">WebView</a> (2)</li>
+          <li><a href="http://ptyagicodecamp.github.io/tag/webviewoverlay.html">WebViewOverlay</a> (1)</li>
+    </ul>
+  </div>
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " techLog ",
+  "url" : "http://ptyagicodecamp.github.io",
+  "image": "",
+  "description": ""
+}
 </script>
+
 </body>
 </html>

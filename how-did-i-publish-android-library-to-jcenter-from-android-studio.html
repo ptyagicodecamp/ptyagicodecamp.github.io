@@ -1,66 +1,92 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>How did I publish Android Library to JCenter from Android Studio — techLog</title>
-	<meta name="description" content="Title: How did I publish Android Library to JCenter from Android Studio; Date: 2017-01-07; Author: ptyagi">
-	<meta name="author" content="Priyanka Tyagi">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
-		<![endif]-->
-	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
-	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="techLog Atom">
+
+
+
+
+
+<meta name="author" content="ptyagi" />
+<meta name="description" content="This article walks through the process of publishing an OpenSourced Android library to JCenter." />
+<meta name="keywords" content="Bintray, Publishing, JCenter, Library, OpenSource, Dev">
+
+<meta property="og:site_name" content="techLog"/>
+<meta property="og:title" content="How did I publish Android Library to JCenter from Android Studio"/>
+<meta property="og:description" content="This article walks through the process of publishing an OpenSourced Android library to JCenter."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://ptyagicodecamp.github.io/how-did-i-publish-android-library-to-jcenter-from-android-studio.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-01-07 17:27:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Development"/>
+<meta property="article:tag" content="Bintray"/>
+<meta property="article:tag" content="Publishing"/>
+<meta property="article:tag" content="JCenter"/>
+<meta property="article:tag" content="Library"/>
+<meta property="article:tag" content="OpenSource"/>
+<meta property="article:tag" content="Dev"/>
+<meta property="og:image" content="">
+
+  <title>techLog &ndash; How did I publish Android Library to JCenter from Android Studio</title>
+
 </head>
 <body>
-<div class="container">
-	<div class="page-header">
-		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
-			<br>	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">How did I publish Android Library to JCenter from Android Studio</h1>
-		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<h4 itemprop="name">ptyagi</h4>
-		</span>
-		<time datetime="2017-01-07T17:27:00-07:00" itemprop="datePublished">Sat 07 January 2017</time>
-	</div>
-	<div>
-		Category:
-		<span itemprop="articleSection">
-			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
-		</span>
-	</div>
- 
-	<div>
-		Tags:
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/bintray.html" rel="tag">Bintray</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/publishing.html" rel="tag">Publishing</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/jcenter.html" rel="tag">JCenter</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/library.html" rel="tag">Library</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/opensource.html" rel="tag">OpenSource</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/dev.html" rel="tag">Dev</a>
-		</span>
-	</div>
-	<div itemprop="articleBody" class="article-body"><h2>Introduction</h2>
+  <aside>
+    <div>
+      <a href="http://ptyagicodecamp.github.io">
+        <img src="http://ptyagicodecamp.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="http://ptyagicodecamp.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+
+          <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+          <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="how-did-i-publish-android-library-to-jcenter-from-android-studio">How did I publish Android Library to JCenter from Android Studio</h1>
+    <p>
+          Posted on Sat 07 January 2017 in <a href="http://ptyagicodecamp.github.io/category/development.html">Development</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h2>Introduction</h2>
 <p>JCenter is a Maven Repository or file server hosted by <a href="https://bintray.com/">Bintray</a> for
 Android libraries. It’s a default repository for Android Studio. To demonstrate the process of
 publishing an OpenSource Android library, I'm using <a href="https://ptyagicodecamp.github.io/webviewoverlay-widget-library.html">WebViewOverlay widget library</a>
@@ -77,19 +103,19 @@ project like this:</p>
 </li>
 <li>
 <p>Create a new repo:
-  <img alt="Create Repo" src="http://ptyagicodecamp.github.io/create_repo.png" /></p>
+  <img alt="Create Repo" src="http://ptyagicodecamp.github.io/create_repo.png"></p>
 </li>
 <li>
 <p>Fill-in all required information and click "create repo". It'll redirect to "package" screen.
-  <img alt="Repo Created" src="http://ptyagicodecamp.github.io/repo_created.png" /></p>
+  <img alt="Repo Created" src="http://ptyagicodecamp.github.io/repo_created.png"></p>
 </li>
 <li>
 <p>Click on “Create Package”. Fill in your package name and click on "Add New Package":
-<img alt="Add New Package" src="http://ptyagicodecamp.github.io/add_new_package.png" /></p>
+<img alt="Add New Package" src="http://ptyagicodecamp.github.io/add_new_package.png"></p>
 </li>
 <li>
 <p>It'll take you to enter package details. Fill-in details and click on "Create Package" at the bottom.
-<img alt="Create Package" src="http://ptyagicodecamp.github.io/create_package.png" /></p>
+<img alt="Create Package" src="http://ptyagicodecamp.github.io/create_package.png"></p>
 </li>
 </ul>
 <p>And you’re Done with registering your Maven repository on Bintray !</p>
@@ -188,11 +214,11 @@ gradlew bintrayUpload
 <ul>
 <li>
 <p>Your package needs to be linked to JCenter to be able to be resolved.
-<img alt="Add to JCenter" src="http://ptyagicodecamp.github.io/add_to_jcenter.png" /></p>
+<img alt="Add to JCenter" src="http://ptyagicodecamp.github.io/add_to_jcenter.png"></p>
 </li>
 <li>
 <p>It'll take couple of hours to get request approved. Once approved, you'll see you package like this:
-<img alt="Linked To JCenter" src="http://ptyagicodecamp.github.io/linked_to_jcenter.png" /></p>
+<img alt="Linked To JCenter" src="http://ptyagicodecamp.github.io/linked_to_jcenter.png"></p>
 </li>
 </ul>
 <p><strong><em>Note</em></strong>: You will have to wait for couple of hours before it'll be synced on JCenter.
@@ -204,71 +230,44 @@ You can check if its available by going to "http://jcenter.bintray.com/<path/to/
 
 
 <h3>References:</h3>
-<p>I followed <a href="https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en">this tutorial</a> to get me setup at Bintray.</p></div>
-	<hr>
-	<h2>Comments</h2>
-</div>
-		</div>
-	</div> 	<!-- <hr> -->
-</div> <!-- /container -->
-<footer class="aw-footer bg-danger">
-	<div class="container"> <!-- footer -->
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="col-md-3">
-						<h4>Navigation</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
-							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Author</h4>
-						<ul class="list-unstyled my-list-style">
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Categories</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (19)</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Links</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://getpelican.com/">Pelican</a></li>
-							<li><a href="http://python.org/">Python.org</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 text-center center-block aw-bottom">
-			<p>&copy; Priyanka Tyagi 2016</p>
-			<p>Powered by Pelican</p>
-		</div>
-	</div>
-</div>
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$("div.collapseheader").click(function () {
-		$header = $(this).children("span").first();
-		$codearea = $(this).children(".input_area");
-		$codearea.slideToggle(500, function () {
-			$header.text(function () {
-				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
-			});
-		});
-	});
-});
+<p>I followed <a href="https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en">this tutorial</a> to get me setup at Bintray.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://ptyagicodecamp.github.io/tag/bintray.html">Bintray</a>
+      <a href="http://ptyagicodecamp.github.io/tag/publishing.html">Publishing</a>
+      <a href="http://ptyagicodecamp.github.io/tag/jcenter.html">JCenter</a>
+      <a href="http://ptyagicodecamp.github.io/tag/library.html">Library</a>
+      <a href="http://ptyagicodecamp.github.io/tag/opensource.html">OpenSource</a>
+      <a href="http://ptyagicodecamp.github.io/tag/dev.html">Dev</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " techLog ",
+  "url" : "http://ptyagicodecamp.github.io",
+  "image": "",
+  "description": ""
+}
 </script>
+
 </body>
 </html>

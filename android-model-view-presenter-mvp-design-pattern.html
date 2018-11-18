@@ -1,63 +1,91 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Android Model-View-Presenter (MVP) Design Pattern — techLog</title>
-	<meta name="description" content="Title: Android Model-View-Presenter (MVP) Design Pattern; Date: 2017-07-13; Author: ptyagi">
-	<meta name="author" content="Priyanka Tyagi">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-		<script src="http://ptyagicodecamp.github.io/theme/html5.js"></script>
-		<![endif]-->
-	<link href="http://ptyagicodecamp.github.io/theme/css/ipython.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="http://ptyagicodecamp.github.io/theme/css/local.css" rel="stylesheet">
-	<link href="http://ptyagicodecamp.github.io/theme/css/pygments.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="http://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="techLog Atom">
+
+
+
+
+
+<meta name="author" content="ptyagi" />
+<meta name="description" content="A Quick tour to Model-View-Presenter (MVP) Android Design Pattern." />
+<meta name="keywords" content="Android, Android Design Pattern, MVP, Tips &amp; Tricks, Model-View-Presenter">
+
+<meta property="og:site_name" content="techLog"/>
+<meta property="og:title" content="Android Model-View-Presenter (MVP) Design Pattern"/>
+<meta property="og:description" content="A Quick tour to Model-View-Presenter (MVP) Android Design Pattern."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://ptyagicodecamp.github.io/android-model-view-presenter-mvp-design-pattern.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-07-13 13:06:00-06:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Development"/>
+<meta property="article:tag" content="Android"/>
+<meta property="article:tag" content="Android Design Pattern"/>
+<meta property="article:tag" content="MVP"/>
+<meta property="article:tag" content="Tips &amp; Tricks"/>
+<meta property="article:tag" content="Model-View-Presenter"/>
+<meta property="og:image" content="">
+
+  <title>techLog &ndash; Android Model-View-Presenter (MVP) Design Pattern</title>
+
 </head>
 <body>
-<div class="container">
-	<div class="page-header">
-		<h1><a href="http://ptyagicodecamp.github.io/">techLog</a>
-			<br>	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">Android Model-View-Presenter (MVP) Design Pattern</h1>
-		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<h4 itemprop="name">ptyagi</h4>
-		</span>
-		<time datetime="2017-07-13T13:06:00-06:00" itemprop="datePublished">Thu 13 July 2017</time>
-	</div>
-	<div>
-		Category:
-		<span itemprop="articleSection">
-			<a href="http://ptyagicodecamp.github.io/category/development.html" rel="category">Development</a>
-		</span>
-	</div>
- 
-	<div>
-		Tags:
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/android.html" rel="tag">Android</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/android-design-pattern.html" rel="tag">Android Design Pattern</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/mvp.html" rel="tag">MVP</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/tips-tricks.html" rel="tag">Tips & Tricks</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://ptyagicodecamp.github.io/tag/model-view-presenter.html" rel="tag">Model-View-Presenter</a>
-		</span>
-	</div>
-	<div itemprop="articleBody" class="article-body"><h1>Android Model-View-Presenter (MVP) Design Pattern</h1>
+  <aside>
+    <div>
+      <a href="http://ptyagicodecamp.github.io">
+        <img src="http://ptyagicodecamp.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="http://ptyagicodecamp.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+
+          <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+          <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="android-model-view-presenter-mvp-design-pattern">Android Model-View-Presenter (MVP) Design Pattern</h1>
+    <p>
+          Posted on Thu 13 July 2017 in <a href="http://ptyagicodecamp.github.io/category/development.html">Development</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>Android Model-View-Presenter (MVP) Design Pattern</h1>
 <h2>Quick Introduction</h2>
 <p>There's enough material available on internet about what a
 Model-View-Presenter (MVP) design pattern is, and why it should be used.
@@ -140,82 +168,54 @@ back to <code>ImageViewerFragment</code> to pass back on the results.</p>
 <p>Here are few screenshots from the sample app:</p>
 <p><strong>Start state:</strong>
 This is how sample app looks just after start up. The FAB '+' is clicked to select image from gallery.
-<img alt="Alt launch screen" src="../images/android-mvp/start.png" /></p>
+<img alt="Alt launch screen" src="../images/android-mvp/start.png"></p>
 <p><strong>Picture loaded from Gallery state:</strong>
-<img alt="Alt Picture loaded from gallery" src="../images/android-mvp/picture_loaded_from_gallery.png" /></p>
+<img alt="Alt Picture loaded from gallery" src="../images/android-mvp/picture_loaded_from_gallery.png"></p>
 <p><strong>Image copied to App's data dir state:</strong>
-<img alt="Alt Image copied to App's data dir state" src="../images/android-mvp/image_copied_to_datadir.png" /></p>
+<img alt="Alt Image copied to App's data dir state" src="../images/android-mvp/image_copied_to_datadir.png"></p>
 <p><strong>Renaming image - Enter new name:</strong>
-<img alt="Alt Renaming image" src="../images/android-mvp/rename_1.png" /></p>
+<img alt="Alt Renaming image" src="../images/android-mvp/rename_1.png"></p>
 <p><strong>Renaming image - Final:</strong>
-<img alt="Alt Renaming image" src="../images/android-mvp/rename_2.png" /></p>
+<img alt="Alt Renaming image" src="../images/android-mvp/rename_2.png"></p>
 <h3>Source Code</h3>
 <p>Source is available at <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/CopyGalleryPic">Github</a></p>
-<p>Happy Exploring !</p></div>
-	<hr>
-	<h2>Comments</h2>
-</div>
-		</div>
-	</div> 	<!-- <hr> -->
-</div> <!-- /container -->
-<footer class="aw-footer bg-danger">
-	<div class="container"> <!-- footer -->
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="col-md-3">
-						<h4>Navigation</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://ptyagicodecamp.github.io">techLog</a></li>
-							<li><a href="http://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Author</h4>
-						<ul class="list-unstyled my-list-style">
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Categories</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://ptyagicodecamp.github.io/category/development.html">Development (19)</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Links</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://getpelican.com/">Pelican</a></li>
-							<li><a href="http://python.org/">Python.org</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 text-center center-block aw-bottom">
-			<p>&copy; Priyanka Tyagi 2016</p>
-			<p>Powered by Pelican</p>
-		</div>
-	</div>
-</div>
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$("div.collapseheader").click(function () {
-		$header = $(this).children("span").first();
-		$codearea = $(this).children(".input_area");
-		$codearea.slideToggle(500, function () {
-			$header.text(function () {
-				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
-			});
-		});
-	});
-});
+<p>Happy Exploring !</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://ptyagicodecamp.github.io/tag/android.html">Android</a>
+      <a href="http://ptyagicodecamp.github.io/tag/android-design-pattern.html">Android Design Pattern</a>
+      <a href="http://ptyagicodecamp.github.io/tag/mvp.html">MVP</a>
+      <a href="http://ptyagicodecamp.github.io/tag/tips-tricks.html">Tips & Tricks</a>
+      <a href="http://ptyagicodecamp.github.io/tag/model-view-presenter.html">Model-View-Presenter</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " techLog ",
+  "url" : "http://ptyagicodecamp.github.io",
+  "image": "",
+  "description": ""
+}
 </script>
+
 </body>
 </html>
