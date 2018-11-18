@@ -1,99 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-          <title>techLog</title>
+          <title>techLog - Accessing Pictures using FileProvider</title>
         <meta charset="utf-8" />
+
+
 
 
     <meta name="tags" content="Android" />
     <meta name="tags" content="FileProvider" />
 
-        <link rel="stylesheet" href="/theme/css/main.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="/theme/js/ie/html5shiv.js"></script><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
 </head>
 
-<body>
+<body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="/">techLog <strong></strong></a></h1>
         </header><!-- /#banner -->
-<!-- Sidebar -->
-            <div id="sidebar">
-
-                <!-- Logo -->
-                    <h1 id="logo"><a href="/">techLog</a></h1>
-                    <!-- Text -->
-                    <section class="box text-style1">
-                        <div class="inner">
-                            <p>
-                                <strong>Ut scelerisque nec sapien ut sollicitudin:</strong><br />
-                            </p>
-                        </div>
-                    </section>
-                <!-- Nav -->
-                    <nav id="nav">
-                        <ul>
-                            
-                            <li><a href="#">Nam euismod dui</a></li>
-                            <li><a href="#">Integer eget eros</a></li>
-                            <li><a href="#">Proin vehicula tortor</a></li>
-                            <li><a href="#">Vestibulum consectetur tellus</a></li>
-                        </ul>
-                    </nav>
-
-                <!-- Search -->
-                    <!-- <section class="box search">
-                        <form method="post" action="#">
-                            <input type="text" class="text" name="search" placeholder="Search" />
-                        </form>
-                    </section> -->
-
-                
-
-                <!-- Recent Posts -->
-                    <section class="box recent-posts">
-                        <header>
-                            <h2>Contact Me</h2>
-                        </header>
-                        <ul>
-                            <li><a class="icon fa-envelope" href="#"> eMail</a></li>
-                            <li><a class="icon fa-twitter" href="#"> Twitter</a></li>
-                            <li><a class="icon fa-facebook" href="#"> Facebook</a></li>
-                            <li><a class="icon fa-github" href="#"> Github</a></li>
-                            
-                        </ul>
-                    </section>
-
-
-
-                <!-- Copyright -->
-                    <ul id="copyright">
-                        <li>Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.</li>
-                        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                        <li>Modified under a <a href="https://creativecommons.org/licenses/by/3.0/">CC:BY</a> license.</li>
-                    </ul>
-
-            </div><!-- /#menu -->
-<div id="content">
-<div class="inner">
-        <article class="box post post-excerpt">
-                <header> 
-                <h2><a href="/accessing-pictures-using-fileprovider.html" rel="bookmark" title="Permalink to Accessing Pictures using FileProvider">Accessing Pictures using FileProvider</a></h2> 
-                <p></p>
-                </header>
-                <div class="info">
-                    <span class="date" datetime="2017-04-13T12:02:00-06:00"><span class="month">Apr</span> <span class="day">13</span> <span class="month"> 2017</span></span>
-                    <ul class="stats">
-                                    <li><a href="mailto:?Subject=Accessing Pictures using FileProvider&Body=I%20saw%20this%20and%20thought%20of%20you!%20 /accessing-pictures-using-fileprovider.html" class="icon fa-envelope">&nbsp;</a></li>
-                                    <li><a href="http://reddit.com/submit?url=/accessing-pictures-using-fileprovider.html&title=#Accessing Pictures using FileProvider"" class="icon fa-reddit">&nbsp;</a></li>
-                                    <li><a href="https://twitter.com/share?url=/accessing-pictures-using-fileprovider.html&text=&hashtags=GnotC" class="icon fa-twitter">&nbsp;</a></li>
-                                    <li><a href="https://www.facebook.com/sharer.php?u=/accessing-pictures-using-fileprovider.html" class="icon fa-facebook">&nbsp;</a></li>
-                                </ul>
-                </div><!-- /.post-info -->
-                <div class="entry-content"> &nbsp; </div><!-- /.entry-content -->
-        </article>
+        <nav id="menu"><ul>
+            <li class="active"><a href="/category/development.html">Development</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="/accessing-pictures-using-fileprovider.html" rel="bookmark"
+         title="Permalink to Accessing Pictures using FileProvider">Accessing Pictures using FileProvider</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2017-04-13T12:02:00-06:00">
+      Thu 13 April 2017
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="/author/ptyagi.html">ptyagi</a>
+    </address>
+    <div class="category">
+        Category: <a href="/category/development.html">Development</a>
+    </div>
+    <div class="tags">
+        Tags:
+            <a href="/tag/android.html">Android</a>
+            <a href="/tag/fileprovider.html">FileProvider</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
     <h1>Accessing Pictures using FileProvider</h1>
 <p>FileProvider is the backbone which helps in secure sharing of files across file-system on Android device.</p>
 <p>I’m using example of taking picture using camera on Android device to understand how FileProvider works. This Project demos does two things:
@@ -155,12 +104,12 @@ will have these contents in it:</p>
 <p>That's it !</p>
 <p>Checkout <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/FileProvider">source code</a> in github to see <code>FileProviderDemo</code> in action.</p>
   </div><!-- /.entry-content -->
-  <!-- Pagination -->
-            <div class="pagination">
-            </div>
- 
-</div>
-</div>
-<!-- /#contentinfo -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
 </body>
 </html>

@@ -1,100 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-          <title>techLog</title>
+          <title>techLog - Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)</title>
         <meta charset="utf-8" />
+
+
 
 
     <meta name="tags" content="android" />
     <meta name="tags" content="android-architecture" />
     <meta name="tags" content="architecture-components" />
 
-        <link rel="stylesheet" href="/theme/css/main.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="/theme/js/ie/html5shiv.js"></script><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
 </head>
 
-<body>
+<body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="/">techLog <strong></strong></a></h1>
         </header><!-- /#banner -->
-<!-- Sidebar -->
-            <div id="sidebar">
-
-                <!-- Logo -->
-                    <h1 id="logo"><a href="/">techLog</a></h1>
-                    <!-- Text -->
-                    <section class="box text-style1">
-                        <div class="inner">
-                            <p>
-                                <strong>Ut scelerisque nec sapien ut sollicitudin:</strong><br />
-                            </p>
-                        </div>
-                    </section>
-                <!-- Nav -->
-                    <nav id="nav">
-                        <ul>
-                            
-                            <li><a href="#">Nam euismod dui</a></li>
-                            <li><a href="#">Integer eget eros</a></li>
-                            <li><a href="#">Proin vehicula tortor</a></li>
-                            <li><a href="#">Vestibulum consectetur tellus</a></li>
-                        </ul>
-                    </nav>
-
-                <!-- Search -->
-                    <!-- <section class="box search">
-                        <form method="post" action="#">
-                            <input type="text" class="text" name="search" placeholder="Search" />
-                        </form>
-                    </section> -->
-
-                
-
-                <!-- Recent Posts -->
-                    <section class="box recent-posts">
-                        <header>
-                            <h2>Contact Me</h2>
-                        </header>
-                        <ul>
-                            <li><a class="icon fa-envelope" href="#"> eMail</a></li>
-                            <li><a class="icon fa-twitter" href="#"> Twitter</a></li>
-                            <li><a class="icon fa-facebook" href="#"> Facebook</a></li>
-                            <li><a class="icon fa-github" href="#"> Github</a></li>
-                            
-                        </ul>
-                    </section>
-
-
-
-                <!-- Copyright -->
-                    <ul id="copyright">
-                        <li>Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.</li>
-                        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                        <li>Modified under a <a href="https://creativecommons.org/licenses/by/3.0/">CC:BY</a> license.</li>
-                    </ul>
-
-            </div><!-- /#menu -->
-<div id="content">
-<div class="inner">
-        <article class="box post post-excerpt">
-                <header> 
-                <h2><a href="/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html" rel="bookmark" title="Permalink to Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)">Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)</a></h2> 
-                <p></p>
-                </header>
-                <div class="info">
-                    <span class="date" datetime="2017-08-12T22:15:00-06:00"><span class="month">Aug</span> <span class="day">12</span> <span class="month"> 2017</span></span>
-                    <ul class="stats">
-                                    <li><a href="mailto:?Subject=Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)&Body=I%20saw%20this%20and%20thought%20of%20you!%20 /managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html" class="icon fa-envelope">&nbsp;</a></li>
-                                    <li><a href="http://reddit.com/submit?url=/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html&title=#Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)"" class="icon fa-reddit">&nbsp;</a></li>
-                                    <li><a href="https://twitter.com/share?url=/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html&text=&hashtags=GnotC" class="icon fa-twitter">&nbsp;</a></li>
-                                    <li><a href="https://www.facebook.com/sharer.php?u=/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html" class="icon fa-facebook">&nbsp;</a></li>
-                                </ul>
-                </div><!-- /.post-info -->
-                <div class="entry-content"> &nbsp; </div><!-- /.entry-content -->
-        </article>
+        <nav id="menu"><ul>
+            <li class="active"><a href="/category/development.html">Development</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html" rel="bookmark"
+         title="Permalink to Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)">Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2017-08-12T22:15:00-06:00">
+      Sat 12 August 2017
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="/author/ptyagi.html">ptyagi</a>
+    </address>
+    <div class="category">
+        Category: <a href="/category/development.html">Development</a>
+    </div>
+    <div class="tags">
+        Tags:
+            <a href="/tag/android.html">android</a>
+            <a href="/tag/android-architecture.html">android-architecture</a>
+            <a href="/tag/architecture-components.html">architecture-components</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
     <p>This covers using ViewModel component to persist Activity configuration data across screen rotations.</p>
 <h2>Managing App's Lifecycle using "Lifecycle Aware components" (ViewModel)</h2>
 <h3>Introduction</h3>
@@ -227,12 +177,12 @@ Activity configuration data</a></p>
 <p>I'll cover LiveData architecture component in next post.</p>
 <p>Happy exploring !</p>
   </div><!-- /.entry-content -->
-  <!-- Pagination -->
-            <div class="pagination">
-            </div>
- 
-</div>
-</div>
-<!-- /#contentinfo -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
 </body>
 </html>
