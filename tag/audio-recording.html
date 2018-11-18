@@ -1,334 +1,145 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <!--<![endif]-->
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>techLog - audio recording tag</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<link rel="shortcut icon" href="../" type="">
-<meta name="author" content="Priyanka Tyagi">
-<meta name="copyright" content="Priyanka Tyagi">
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@" />
-<meta property="og:site_name" content="techLog" />
-<meta property="og:title" content="techLog" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content=".." />
-<meta name="twitter:url" content=".." />
-<meta itemprop="name" content="techLog" />
-<meta itemprop="url" content=".."/>
-<link href="../feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="techLog ATOM Feed"/>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.15.0/css/uikit.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.15.0/css/components/search.min.css">
-<link rel="stylesheet" href="/theme/css/tipuesearch.css">
-<link rel="stylesheet" href="/theme/css/solarized.css">
-<link rel="stylesheet" href="/theme/css/main.css">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content=" Posts tagged with audio recording" />
+    <meta name="author" content="Priyanka Tyagi" />
+    <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-</head>
-<body>
-<!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <title>Tag:audio recording - techLog</title>
 
-<header class=" mg-header uk-navbar uk-navbar-attached">
-
-    <div class="uk-container uk-container-center">
-        <div class="uk-grid" data-uk-grid-margin>
-
-            <a class="mg-brand uk-navbar-brand uk-hidden-small" href="..">techLog</a>
-            <div class="mg-tagline uk-navbar-content uk-hidden-small"></div>
-            <a class="uk-navbar-toggle uk-visible-small" href="#mg-offcanvas" data-uk-offcanvas></a>
-            <a class="mg-brand uk-navbar-brand uk-navbar-center uk-visible-small" href="..">techLog</a>
-
-        </div>
-    </div>
-</header>
-
-<main class="mg-main">
-
-<div class="uk-container uk-container-center">
-
-    <div class="uk-grid" data-uk-grid-margin>
-        
-<div class="uk-width-medium-4-5">
+   
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous" />
+      <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+            crossorigin="anonymous">
 
 
-            <article class="uk-article" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-                <a href="../requesting-audio-permission-at-runtime.html" class="uk-article-title uk-link-muted" itemprop="name">Requesting Audio permission at Runtime</a>
-                <p class="uk-article-meta"><time datetime="2017-06-20" itemprop="datePublished">Tue 20 June 2017</time> • <a href="../category/development.html">Development</a> • <br class="uk-visible-small"><i class="uk-icon-comment"></i> <a href="../requesting-audio-permission-at-runtime.html#disqus_thread" itemprop="discussionUrl"></a></p>
-</p>
-                <p class="uk-article-lead" itemprop="description">This post will show how to request run-time permissions to enable audio recording in a recipe style.</p>
-                <section itemprop="articleBody"><h1>Requesting Audio permission at Runtime</h1>
-<p>This recipe will show how to request run-time permissions to enable audio recording.</p>
-<p>As you may know already that adding <code>&lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&gt;</code>
-permission in <code>AndroidManifest.xml</code> is not enough on devices running Android 6.0 and greater.
-This permission has to be requested dynamically at the run-time when user uses your app's
-recording/mic feature for first time (in addition to declaring this permission in <code>AndroidManifest.xml</code>).</p>
-<h3>Sample App</h3>
-<p>This sample has two buttons:
-<em> Start/Stop Recording Toggle button : Click this button to start or stop recording.
-</em> Play: You can listen to recorded audio by clicking on this button.</p>
-<p><img alt="Sample App" src="images/audio/sample_app.png"></p>
-<h3>AndroidManifest.xml</h3>
-<div class="highlight"><pre><span></span>&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot; /&gt;
-</pre></div>
 
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" integrity="sha384-FFgGfda92tXC8nCNOxrCQ3R8x1TNkMFqDZVQdDaaJiiVbjkPBXIJBx0o7ETjy8Bh" crossorigin="anonymous"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
 
-<h3>Requesting Permissions in Run time</h3>
-<p>Here's the code that's responsible for handling runtime permissions. I've added the inline comments
-to explain what's going on with code.</p>
-<div class="highlight"><pre><span></span>    //Requesting run-time permissions
+    <link rel="shortcut icon" href="../favicon.ico" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="techLog Atom Feed" />
+  </head>
 
-    //Create placeholder for user&#39;s consent to record_audio permission.
-    //This will be used in handling callback
-    private final int MY_PERMISSIONS_RECORD_AUDIO = 1;
+  <body>
+   
+    <nav class="navbar navbar-default">
+      <div class="container">
+	   <div class="navbar-header">
+		<button type="button" class="navbar-toggle" 
+				data-toggle="collapse" data-target="#main-navbar-collapse">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="../" rel="home">
+          <i class="fa fa-home fa-fw fa-lg"> </i> </a>
+       </div>
 
-    private void requestAudioPermissions() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.RECORD_AUDIO)
-                != PackageManager.PERMISSION_GRANTED) {
+      <div class="collapse navbar-collapse" id="main-navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="divider"></li>
+            <li class="">
+              <a href="../archives.html">Archives</a>
+            </li>
+          <li class="divider"></li>
+            <li><a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" 
+                   type="application/atom+xml" rel="alternate">
+                <i class="fa fa-rss fa-fw fa-lg"></i> </a></li>
+        </ul> <!-- /nav -->
+      </div> <!-- /navbar-collapse -->
+	  </div> <!-- /container -->
+    </nav> <!-- /navbar -->
 
-            //When permission is not granted by user, show them message why this permission is needed.
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.RECORD_AUDIO)) {
-                Toast.makeText(this, &quot;Please grant permissions to record audio&quot;, Toast.LENGTH_LONG).show();
+	<div class="jumbotron" id="overview">
+	  <div class="container">
+		<h1><a href="../">techLog</a></h1>
+	  </div>
+	</div>
 
-                //Give user option to still opt-in the permissions
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.RECORD_AUDIO},
-                        MY_PERMISSIONS_RECORD_AUDIO);
+    <div class="container" id="main-container">
+        <div class="" id="content">
+<ol class="breadcrumb">
+    <li><a href="../" title="Home" rel="home">
+		<i class="fa fa-home fa-fw fa-lg"></i> </a></li>
+    <li>Tags </li>
+    <li class="active">audio recording</li>
+</ol>
+    <article>
+<abbr class="article-header-date">
+  Tue 20 June 2017
+</abbr> <h1>
+  <a href="../requesting-audio-permission-at-runtime.html" rel="bookmark"
+     title="Permalink to Requesting Audio permission at Runtime">
+    Requesting Audio permission at Runtime
+  </a>
+</h1><div class="article-header-info">
+  <p>
+      Posted by <a href="../author/ptyagi.html">ptyagi</a>
+    in 
+    <a href="../category/development.html">
+      Development</a>
+    &nbsp;&nbsp;
+  </p>
+</div> <!-- /.article-header-info -->
+      <div class="summary">
+		<p>This post will show how to request run-time permissions to enable audio recording in a recipe style.</p>
+		<p class="content-emphasis"><a href="../requesting-audio-permission-at-runtime.html">
+			Read more... <i class="fa fa-arrow-circle-right fa-fw fa-lg"></i> 
+		</a></p>
+      </div>    </article>
+    <hr />
 
-            } else {
-                // Show user dialog to grant permission to record audio
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.RECORD_AUDIO},
-                        MY_PERMISSIONS_RECORD_AUDIO);
-            }
-        }
-        //If permission is granted, then go ahead recording audio
-        else if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.RECORD_AUDIO)
-                == PackageManager.PERMISSION_GRANTED) {
+<nav class="index-pager">
 
-            //Go ahead with recording audio now
-            recordAudio();
-        }
-    }
+</nav> <!-- /index-pager -->
+        </div><!-- /content -->
 
-    //Handling callback
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_RECORD_AUDIO: {
-                if (grantResults.length &gt; 0
-                        &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission was granted, yay!
-                    recordAudio();
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                    Toast.makeText(this, &quot;Permissions Denied to record audio&quot;, Toast.LENGTH_LONG).show();
-                }
-                return;
-            }
-        }
-    }
-</pre></div>
+    </div><!--/.container /#main-container -->
 
-
-<p>App shows user a permission dialog box to either allow or not the given permission.</p>
-<p><img alt="Runtime Audio Permission" src="../images/audio/audio_permissions_req.png"></p>
-<h3>Recording Audio</h3>
-<p>First, a file needs to be created to store audio data in it. Here's how I'm creating a file when 
-app launches.</p>
-<div class="highlight"><pre><span></span>    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        try {
-            mAudioFile = createAudioFile(this, &quot;demo&quot;);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static File createAudioFile(Context context, String audioName) throws IOException {
-        File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PODCASTS);
-        File audio = File.createTempFile(
-                audioName,  /* prefix */
-                &quot;.3gp&quot;,         /* suffix */
-                storageDir      /* directory */
-        );
-
-        return audio;
-    }
-</pre></div>
-
-
-<p>Once file is created, it can be used to store audio data in it:</p>
-<div class="highlight"><pre><span></span>    private void recordAudio() {
-        if (mRecorder == null) {
-            mRecorder = new MediaRecorder();
-            mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-            mRecorder.setOutputFile(mAudioFile.getAbsolutePath());
-            mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-        }
-
-        if (!isRecording) {
-            try {
-                mRecorder.prepare();
-                mRecorder.start();
-                isRecording = true;
-            } catch (IOException e) {
-                Log.e(&quot;Audio&quot;, &quot;prepare() failed&quot;);
-            }
-        } else if (isRecording) {
-            isRecording = false;
-            stopRecording();
-        }
-    }
-</pre></div>
-
-
-<p>At this point, you've a working Audio recorder app, that can record audio and replay it.</p>
-<p>Checkout the source code at <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/AudioRuntimePermissions">Github</a></p></section>
-                <a href="../requesting-audio-permission-at-runtime.html#disqus_thread"></a>
-                <hr class="uk-article-divider">
-            </article>
-
-
-</div>
+    <footer id="site-footer">
  
-    
-        <div class="uk-width-medium-1-5 uk-hidden-small">
-            
-            <div class="uk-panel uk-panel-box">
-                <form class="uk-search" action="search.html" data-uk-search>
-                    <input class="uk-search-field tipue_search" type="search" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
-                </form>
-            </div>
+      <address id="site-colophon">
+        <p class="text-center text-muted">
+        Site built using <a href="http://getpelican.com/" target="_blank">Pelican</a>
+        &nbsp;&bull;&nbsp; Theme based on
+        <a href="http://www.voidynullness.net/page/voidy-bootstrap-pelican-theme/"
+           target="_blank">VoidyBootstrap</a> by 
+        <a href="http://www.robertiwancz.com/"
+           target="_blank">RKI</a>  
+        </p>
+      </address><!-- /colophon  -->
+    </footer>
 
-            <div class="uk-panel uk-panel-box">
-                <ul class="uk-nav uk-nav-side">
-                    <li class="uk-nav-header">Categories</li>
-                    <li ><a href="../category/development.html">Development</a></li>
-                    <li class="uk-nav-header">Pages</li>
-                    
-                    
-
-                    <li class="uk-nav-divider"></li>
-                    <li ><a href="../archives.html">Archives</a></li>
-                </ul>
-            </div>
-
-            <div class="uk-panel uk-panel-box">
-                <h3 class="uk-panel-title">Receive Updates</h3>
-                <a rel="alternate" type="application/atom+xml" href="../feeds/all.atom.xml" class="mg-feed"><i class="uk-icon-rss uk-icon-medium"></i> ATOM</a>
-            </div>
-            
-            <div class="uk-panel uk-panel-box">
-                <h3 class="uk-panel-title">Contacts</h3>
-                <a class="mg-icon-link" href="https://www.linkedin.com/in/priyankatyagi">
-                    <i class="uk-icon-LinkedIn uk-icon-medium"></i>
-                </a>
-                <a class="mg-icon-link" href="https://github.com/ptyagicodecamp">
-                    <i class="uk-icon-Github uk-icon-medium"></i>
-                </a>
-                <a class="mg-icon-link" href="https://medium.com/@ptyagicodecamp">
-                    <i class="uk-icon-Medium uk-icon-medium"></i>
-                </a>
-                <a class="mg-icon-link" href="https://about.me/priyankatyagi">
-                    <i class="uk-icon-About Me uk-icon-medium"></i>
-                </a>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</main>
-
-<footer class="mg-footer">
-    <div class="uk-container uk-container-center uk-text-center">
-
-        <div class="mg-icons-small uk-subnav uk-visible-small">
-            <li><a rel="alternate" type="application/atom+xml" href="../feeds/all.atom.xml" class="uk-icon-button uk-icon-rss"></a></li>
-            <li>
-                <a href="https://www.linkedin.com/in/priyankatyagi" class="uk-icon-button uk-icon-LinkedIn"></a>
-            </li>
-            <li>
-                <a href="https://github.com/ptyagicodecamp" class="uk-icon-button uk-icon-Github"></a>
-            </li>
-            <li>
-                <a href="https://medium.com/@ptyagicodecamp" class="uk-icon-button uk-icon-Medium"></a>
-            </li>
-            <li>
-                <a href="https://about.me/priyankatyagi" class="uk-icon-button uk-icon-About Me"></a>
-            </li>
-        </div>
-
-        <div class="mg-author uk-panel">
-            <p></p>
-
-            <p>Powered by <a href="http://blog.getpelican.com">Pelican</a>.<br class="uk-visible-small"> Theme <a href="https://github.com/lucachr/pelican-mg">mg</a> by <a href="https://github.com/lucachr">Luca Chiricozzi</a>.</p>
-        </div>
-    </div> 
-</footer>
-
-<div id="mg-offcanvas" class="uk-offcanvas">
-    <div class="uk-offcanvas-bar">
-
-        <form class="uk-search" action="search.html" data-uk-search>
-            <input class="uk-search-field" type="search" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
-        </form>
-
-        <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
-            <li class="uk-nav-header">Categories</li>
-            <li ><a href="../category/development.html">Development</a></li>
-            <li class="uk-nav-header">Pages</li>        
-                    
-
-            <li class="uk-nav-divider"></li>
-            <li><a href="../">Archives</a></li>
-        </ul>
-    </div>
-</div>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.15.0/js/uikit.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.15.0/js/components/search.min.js"></script>
-<script src="/theme/js/jquery.sticky-kit.js"></script>
-<script src="/theme/js/tipuesearch_set.js"></script>
-<script src="/theme/js/tipuesearch.js"></script>
-<script src="/theme/js/plugins.js"></script>
-<script src="/theme/js/main.js"></script>
-
+<!-- DISQUS script for displaying comment count -->
 <script type="text/javascript">
-/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'https://disqus.com/by/ptyagicodecamp/'; // required: replace example with your forum shortname
-
-/* * * DON'T EDIT BELOW THIS LINE * * */
-(function () {
- var s = document.createElement('script'); s.async = true;
- s.type = 'text/javascript';
- s.src = '//' + disqus_shortname + '.disqus.com/count.js';
- (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
- }());
+    var disqus_shortname = 'https://disqus.com/by/ptyagicodecamp/';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
 </script>
 
+    <!-- javascript -->
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
-</body>
+
+  </body>
 </html>
