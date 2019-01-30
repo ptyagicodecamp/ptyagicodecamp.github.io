@@ -12,7 +12,7 @@
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; Fade in and out a blue rectangle on click of button. 
 Interface is super simple and will look like this:&lt;/p&gt;
 &lt;p&gt;Blue Rectangle animates when button is pressed: &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt Blue Rectangle animates when button is pressed" src="https://ptyagicodecamp.github.io/step1.webp"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt Blue Rectangle animates when button is pressed" src="https://ptyagicodecamp.github.io/step1.webp =200x400"&gt;&lt;/p&gt;
 &lt;p&gt;Checkout AnimatedOpacity animation: 
 &lt;img alt="Alt Checkout AnimatedOpacity animation" src="https://ptyagicodecamp.github.io/animated_opacity.webm"&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/lKO8YTq_QcU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
