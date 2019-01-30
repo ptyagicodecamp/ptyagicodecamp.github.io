@@ -5,7 +5,7 @@
 &lt;h3&gt;Animation&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-animatedopacity-widget.html"&gt;AnimatedOpacity&lt;/a&gt;: Making a rectangle fade in and out&lt;/li&gt;
-&lt;li&gt;&lt;a href="lib/animation/animation_hero.md"&gt;Hero Animation&lt;/a&gt;: Navigating from one page to another using Hero animation.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-hero-animation.html"&gt;Hero Animation&lt;/a&gt;: Navigating from one page to another using Hero animation.&lt;/li&gt;
 &lt;/ul&gt;</content><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for AnimatedOpacity widget</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-animatedopacity-widget.html" rel="alternate"></link><published>2018-01-30T23:33:00-08:00</published><updated>2018-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2018-01-30:/flutter-code-recipe-for-animatedopacity-widget.html</id><summary type="html">&lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;AnimatedOpacity&lt;/h2&gt;
 &lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Achieve a smooth animation when transitioning from one UI element to another.&lt;/p&gt;
