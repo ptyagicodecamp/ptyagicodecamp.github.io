@@ -1,5 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2017-08-12T22:15:00-06:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)</title><link href="https://ptyagicodecamp.github.io/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html" rel="alternate"></link><published>2017-08-12T22:15:00-06:00</published><updated>2017-08-12T22:15:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-08-12:/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html</id><summary type="html">&lt;p&gt;This post is first part of 3 parts series about recently introduced architecture components.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This covers using ViewModel component to persist Activity configuration data across screen rotations.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2018-01-30T23:33:00-08:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>A Flutter Live Booklet: Flutter component recipes</title><link href="https://ptyagicodecamp.github.io/a-flutter-live-booklet-flutter-component-recipes.html" rel="alternate"></link><published>2018-01-30T23:33:00-08:00</published><updated>2018-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2018-01-30:/a-flutter-live-booklet-flutter-component-recipes.html</id><summary type="html">&lt;p&gt;How to get SHA1 fingerprint for digitally signed APK&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Flutter Live Booklet: Flutter component recipes&lt;/h2&gt;
+&lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;
+&lt;p&gt;Components covered:&lt;/p&gt;
+&lt;h3&gt;Animation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="../githubpages/content/posts/flutter_recipes/animated_opacity.md"&gt;AnimatedOpacity&lt;/a&gt;: Making a rectangle fade in and out&lt;/li&gt;
+&lt;/ul&gt;</content><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for AnimatedOpacity widget</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-animatedopacity-widget.html" rel="alternate"></link><published>2018-01-30T23:33:00-08:00</published><updated>2018-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2018-01-30:/flutter-code-recipe-for-animatedopacity-widget.html</id><summary type="html">&lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;AnimatedOpacity&lt;/h2&gt;
+&lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Achieve a smooth animation when transitioning from one UI element to another.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Focus Widget:&lt;/em&gt;&lt;/strong&gt; AnimatedOpacity&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; Fade in and out a blue rectangle on click of button. 
+Interface is super simple and will look like this:&lt;/p&gt;
+&lt;p&gt;Blue Rectangle animates when button is pressed: &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt Blue Rectangle animates when button is pressed" src="https://ptyagicodecamp.github.io/step1.png"&gt;&lt;/p&gt;
+&lt;p&gt;Checkout AnimatedOpacity animation: 
+&lt;img alt="Alt Checkout AnimatedOpacity animation" src="https://ptyagicodecamp.github.io/animated_opacity.webm"&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/lKO8YTq_QcU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h3&gt;Lets's go!&lt;/h3&gt;
+&lt;p&gt;We need three things to accomplish our goal of animating a blue rectangle.
+1. Widget to animate: A blue rectangle&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    Container(
+        width: 100,
+        height: 150,
+        color: Colors.blue,
+    );
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;StatefulWidget: A way to hold visibility state of rectangle.
+&lt;code&gt;StatefulWidget&lt;/code&gt; has &lt;code&gt;State&lt;/code&gt; object that can hold and update some data for app. 
+&lt;code&gt;State&lt;/code&gt; object's &lt;a href="https://docs.flutter.io/flutter/widgets/State/setState.html"&gt;&lt;code&gt;setState&lt;/code&gt;&lt;/a&gt; method helps to rebuild widget reflecting the updated state of the app data.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_AnimatedOpacityRecipe&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;StatefulWidget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_AnimatedOpacityRecipeState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The State object will have the flag about the rectangle widget's visibility state say &lt;code&gt;_visible&lt;/code&gt;.
+&lt;code&gt;_visible&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; means that rectangle is visible or vice versa.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_AnimatedOpacityRecipeState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;_AnimatedOpacityRecipe&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nx"&gt;_visible&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Method &lt;code&gt;animatedOpacityWidget&lt;/code&gt; returns the AnimatedOpacity widget.
+&lt;code&gt;duration&lt;/code&gt; property is to control the speed of animation. 
+In this example, it takes 900 milliseconds to fade out the rectangle.
+This is important to show a smooth transition. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget animatedOpacityWidget() {
+    return AnimatedOpacity(
+      duration: Duration(milliseconds: 900),
+      opacity: _visible ? 1 : 0,
+      child: _blueRectangle(),
+    );
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;OutlineButton widget: A button to toggle fade in/out rectangle
+Button labeled 'Animate' to fade in/out rectangle.
+&lt;code&gt;setState()&lt;/code&gt; method toggles the visibility flag for the rectangle widget.
+It forces Flutter to rebuilt &lt;code&gt;AnimatedOpacity&lt;/code&gt; widget in accordance with new value of &lt;code&gt;_visible&lt;/code&gt; flag.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
+OutlineButton(
+  shape: new RoundedRectangleBorder(
+    borderRadius: new BorderRadius.circular(8.0),
+  ),
+  child: Text(&amp;quot;Press to Animate&amp;quot;),
+  onPressed: () {
+    setState(() =&amp;gt; _visible = !_visible);
+  },
+)
+...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Complete example code&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter/material.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;starting&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;runApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MyApp&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyApp&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;widget&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;MaterialApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Flutter Cookbook&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;theme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ThemeData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;theme&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+        &lt;span class="n"&gt;primarySwatch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Colors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;green&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AnimatedOpacityRecipe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;AnimatedOpacity Demo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AnimatedOpacityRecipe&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="n"&gt;AnimatedOpacityRecipe&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;StatefulWidget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;_AnimatedOpacityRecipeState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;_AnimatedOpacityRecipeState&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AnimatedOpacityRecipe&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nb"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;_visible&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;_blueRectangle&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;150&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Colors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;blue&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;animatedOpacityWidget&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;AnimatedOpacity&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;duration&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Duration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;milliseconds&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;900&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="n"&gt;opacity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;_visible&lt;/span&gt; &lt;span class="err"&gt;?&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;_blueRectangle&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;appBar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;widget&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;buildDemoComponent&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;buildDemoComponent&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Material&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Padding&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;EdgeInsets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="n"&gt;mainAxisAlignment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;MainAxisAlignment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+            &lt;span class="n"&gt;Padding&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                  &lt;span class="s1"&gt;&amp;#39;Press button to see blue rectangle fade out and in&amp;#39;&lt;/span&gt;
+              &lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;EdgeInsets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;20.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;animatedOpacityWidget&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+            &lt;span class="n"&gt;OutlineButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="n"&gt;shape&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;RoundedRectangleBorder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;borderRadius&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;BorderRadius&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;circular&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Press to Animate&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="n"&gt;onPressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Toggles&lt;/span&gt; &lt;span class="n"&gt;visibility&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;rectangle&lt;/span&gt;
+                &lt;span class="n"&gt;setState&lt;/span&gt;&lt;span class="p"&gt;(()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;_visible&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;!&lt;/span&gt;&lt;span class="n"&gt;_visible&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+              &lt;span class="p"&gt;},&lt;/span&gt;
+            &lt;span class="p"&gt;)&lt;/span&gt;
+          &lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt; 
+Recipe source code is available &lt;a href="animated_opacity.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;https://flutter.io/docs/cookbook/animation/opacity-animation.html&lt;/li&gt;
+&lt;li&gt;https://docs.flutter.io/flutter/widgets/Opacity-class.html&lt;/li&gt;
+&lt;/ol&gt;</content><category term="AnimatedOpacity"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)</title><link href="https://ptyagicodecamp.github.io/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html" rel="alternate"></link><published>2017-08-12T22:15:00-07:00</published><updated>2017-08-12T22:15:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-08-12:/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html</id><summary type="html">&lt;p&gt;This post is first part of 3 parts series about recently introduced architecture components.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This covers using ViewModel component to persist Activity configuration data across screen rotations.&lt;/p&gt;
 &lt;h2&gt;Managing App's Lifecycle using "Lifecycle Aware components" (ViewModel)&lt;/h2&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;This post is first part of 3 parts series about recently introduced architecture components.
@@ -11,10 +190,12 @@ are known as lifecycle aware components.&lt;/p&gt;
 &lt;em&gt; Survive configuration changes.
 &lt;/em&gt; Avoid memory leaks.
 * Easy data loading into app's UI.&lt;/p&gt;
-&lt;p&gt;Above is achieved using these libraries:
-* &lt;strong&gt;&lt;a href="https://developer.android.com/topic/libraries/architecture/livedata.html"&gt;LiveData&lt;/a&gt;&lt;/strong&gt;:
- LiveData is a data holder that keeps a value and allows it to be observed with in a specified lifecycle.&lt;/p&gt;
+&lt;p&gt;Above is achieved using these libraries:&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developer.android.com/topic/libraries/architecture/livedata.html"&gt;LiveData&lt;/a&gt;&lt;/strong&gt;:
+ LiveData is a data holder that keeps a value and allows it to be observed with in a specified lifecycle.&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href="https://developer.android.com/topic/libraries/architecture/viewmodel.html"&gt;ViewModel&lt;/a&gt;&lt;/strong&gt;:
 ViewModel class helps to store and manage data related to UI. Keeping UI related data in a separate
@@ -129,21 +310,21 @@ Activity configuration data&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;That's all you have to know to get started with using ViewModel architecture components in order to write better and maintainable android apps !&lt;/p&gt;
 &lt;p&gt;Checkout the source code at &lt;a href="https://github.com/ptyagicodecamp/android-architecture/tree/master/lifecycle"&gt;Github&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I'll cover LiveData architecture component in next post.&lt;/p&gt;
-&lt;p&gt;Happy exploring !&lt;/p&gt;</content><category term="android"></category><category term="android-architecture"></category><category term="architecture-components"></category></entry><entry><title>How to start using custom fonts in an Android App under 5 minutes</title><link href="https://ptyagicodecamp.github.io/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-26T22:15:00-06:00</published><updated>2017-07-26T22:15:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-26:/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.&lt;/p&gt;
+&lt;p&gt;Happy exploring !&lt;/p&gt;</content><category term="android"></category><category term="android-architecture"></category><category term="architecture-components"></category></entry><entry><title>How to start using custom fonts in an Android App under 5 minutes</title><link href="https://ptyagicodecamp.github.io/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-26T22:15:00-07:00</published><updated>2017-07-26T22:15:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-26:/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up custom fonts to render text in TextView in an Android app.&lt;/p&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;In this recipe, I'll show you how did I use a custom font to write text "Hello Fonts !" in &lt;code&gt;TextView&lt;/code&gt; widget.&lt;/p&gt;
 &lt;h3&gt;Download and setup custom Font&lt;/h3&gt;
 &lt;p&gt;First, decide on the font that you're planning to use. Download it.
 I'm referring this sample font as "dot2dot.ttf".&lt;/p&gt;
 &lt;p&gt;Second, add this custom font in resource directory of android app.
-&lt;img alt="Alt font_1.png" src="../images/font/font_1.png"&gt;&lt;/p&gt;
+&lt;img alt="Alt font_1.png" src="https://ptyagicodecamp.github.io/font_1.png"&gt;&lt;/p&gt;
 &lt;p&gt;Clicking on font will open it in side window.
-&lt;img alt="Alt font_2" src="../images/font/font_2.png"&gt;&lt;/p&gt;
+&lt;img alt="Alt font_2" src="https://ptyagicodecamp.github.io/font_2.png"&gt;&lt;/p&gt;
 &lt;h3&gt;Creating Font family (XML resource file)&lt;/h3&gt;
 &lt;p&gt;Now, create the font family or a xml resource file to access this custom font from code.
 Right click on &lt;code&gt;res/font&lt;/code&gt; folder and create a xml file:
-&lt;img alt="Alt fontfamily" src="../images/font/font_family.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt fontfamily2" src="../images/font/fontfamily2.png"&gt;&lt;/p&gt;
+&lt;img alt="Alt fontfamily" src="https://ptyagicodecamp.github.io/font_family.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt fontfamily2" src="https://ptyagicodecamp.github.io/fontfamily2.png"&gt;&lt;/p&gt;
 &lt;h3&gt;Using the Font Family in TextView&lt;/h3&gt;
 &lt;p&gt;Here's how font resource created in previous step can be accessed from &lt;code&gt;TextView&lt;/code&gt; widget:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &amp;lt;TextView
@@ -165,7 +346,7 @@ Right click on &lt;code&gt;res/font&lt;/code&gt; folder and create a xml file:
 &lt;p&gt;Checkout this article on &lt;a href="https://ptyagicodecamp.github.io/how-to-start-using-custom-fonts-in-an-android-app-under-5-minutes.html"&gt;my blog&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Keep Exploring !&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt;: This feature of Fonts in XML is got introduced in Android O.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Reference&lt;/em&gt;&lt;/strong&gt; : &lt;a href="https://developer.android.com/preview/features/working-with-fonts.html"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="fonts"></category><category term="dev"></category><category term="5-minutes-series"></category></entry><entry><title>How did I set up multiple flavors for an Android App under 5 minutes</title><link href="https://ptyagicodecamp.github.io/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-18T15:50:00-06:00</published><updated>2017-07-18T15:50:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-18:/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up flavors for an Android app.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Let's start with understanding few key terms.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Reference&lt;/em&gt;&lt;/strong&gt; : &lt;a href="https://developer.android.com/preview/features/working-with-fonts.html"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="fonts"></category><category term="dev"></category><category term="5-minutes-series"></category></entry><entry><title>How did I set up multiple flavors for an Android App under 5 minutes</title><link href="https://ptyagicodecamp.github.io/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-07-18T15:50:00-07:00</published><updated>2017-07-18T15:50:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-18:/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;This post is part of the "under 5 minutes series". In this post I'll talk about how did I set up flavors for an Android app.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Let's start with understanding few key terms.&lt;/p&gt;
 &lt;h2&gt;Understanding differences between "Build Types", "Flavor" and "Build Variant"&lt;/h2&gt;
 &lt;p&gt;***Build Types:
 Build Type refers to build and packaging settings like signing configuration for a project.&lt;/p&gt;
@@ -200,7 +381,7 @@ That's where &lt;strong&gt;&lt;em&gt;Android Flavors&lt;/em&gt;&lt;/strong&gt; h
 
 
 &lt;p&gt;These newly created flavors appears in "Build Variants" tab of Android Studio:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt Build Variants" src="../images/flavors/build_variants_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt Build Variants" src="https://ptyagicodecamp.github.io/build_varaints_1.png"&gt;&lt;/p&gt;
 &lt;p&gt;Note 1: You'll have to choose the configuration from "Build Variants" drop down menu before runnind the app on device/emulator.&lt;/p&gt;
 &lt;p&gt;Note 2: &lt;a href="https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html?utm_source=android-studio#variant_aware"&gt;Starting Android Studion 3.0&lt;/a&gt;,
  &lt;code&gt;flavorDimension&lt;/code&gt; attribute needs to be added.&lt;/p&gt;
@@ -279,7 +460,7 @@ First we have to create a flavor specific directory at the same level of &lt;cod
 the &lt;code&gt;main&lt;/code&gt; directory for each flavor to support fully functional flavors (when there's code changes are involved).
 These directories must be named same as its flavor definition names. In our example, these two additional
 directories are : &lt;code&gt;freeVersion&lt;/code&gt; and &lt;code&gt;paidVersion&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt Flavored Icons" src="../images/flavors/flavored_icons.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt Flavored Icons" src="https://ptyagicodecamp.github.io/flavored_icons.png"&gt;&lt;/p&gt;
 &lt;p&gt;Make sure that you've the icon's name same as referenced from &lt;code&gt;AndroidManifest.xml&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;manifest&lt;/span&gt; &lt;span class="na"&gt;xmlns:android=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;
@@ -307,7 +488,7 @@ It involves two steps:
 &lt;p&gt;Project structure would look like this:
 &lt;img alt="Alt flavored code" src="../images/flavors/flavor_code.png"&gt;&lt;/p&gt;
 &lt;p&gt;Checkout the demo app in &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/Flavors"&gt;Github&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Checkout this article on &lt;a href="https://ptyagicodecamp.github.io/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html"&gt;my blog&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="gradle"></category><category term="flavors"></category><category term="build-variants"></category><category term="dev"></category><category term="5-minutes-series"></category></entry><entry><title>Android Model-View-Presenter (MVP) Design Pattern</title><link href="https://ptyagicodecamp.github.io/android-model-view-presenter-mvp-design-pattern.html" rel="alternate"></link><published>2017-07-13T13:06:00-06:00</published><updated>2017-07-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-13:/android-model-view-presenter-mvp-design-pattern.html</id><summary type="html">&lt;p&gt;A Quick tour to Model-View-Presenter (MVP) Android Design Pattern.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Android Model-View-Presenter (MVP) Design Pattern&lt;/h1&gt;
+&lt;p&gt;Checkout this article on &lt;a href="https://ptyagicodecamp.github.io/how-did-i-set-up-multiple-flavors-for-an-android-app-under-5-minutes.html"&gt;my blog&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="gradle"></category><category term="flavors"></category><category term="build-variants"></category><category term="dev"></category><category term="5-minutes-series"></category></entry><entry><title>Android Model-View-Presenter (MVP) Design Pattern</title><link href="https://ptyagicodecamp.github.io/android-model-view-presenter-mvp-design-pattern.html" rel="alternate"></link><published>2017-07-13T13:06:00-07:00</published><updated>2017-07-13T13:06:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-07-13:/android-model-view-presenter-mvp-design-pattern.html</id><summary type="html">&lt;p&gt;A Quick tour to Model-View-Presenter (MVP) Android Design Pattern.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Android Model-View-Presenter (MVP) Design Pattern&lt;/h1&gt;
 &lt;h2&gt;Quick Introduction&lt;/h2&gt;
 &lt;p&gt;There's enough material available on internet about what a
 Model-View-Presenter (MVP) design pattern is, and why it should be used.
@@ -401,7 +582,7 @@ This is how sample app looks just after start up. The FAB '+' is clicked to sele
 &lt;img alt="Alt Renaming image" src="../images/android-mvp/rename_2.png"&gt;&lt;/p&gt;
 &lt;h3&gt;Source Code&lt;/h3&gt;
 &lt;p&gt;Source is available at &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/CopyGalleryPic"&gt;Github&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Happy Exploring !&lt;/p&gt;</content><category term="Android"></category><category term="Android Design Pattern"></category><category term="MVP"></category><category term="Tips &amp; Tricks"></category><category term="Model-View-Presenter"></category></entry><entry><title>Requesting Audio permission at Runtime</title><link href="https://ptyagicodecamp.github.io/requesting-audio-permission-at-runtime.html" rel="alternate"></link><published>2017-06-20T12:51:00-06:00</published><updated>2017-06-20T12:51:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-20:/requesting-audio-permission-at-runtime.html</id><summary type="html">&lt;p&gt;This post will show how to request run-time permissions to enable audio recording in a recipe style.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Requesting Audio permission at Runtime&lt;/h1&gt;
+&lt;p&gt;Happy Exploring !&lt;/p&gt;</content><category term="Android"></category><category term="Android Design Pattern"></category><category term="MVP"></category><category term="Tips &amp; Tricks"></category><category term="Model-View-Presenter"></category></entry><entry><title>Requesting Audio permission at Runtime</title><link href="https://ptyagicodecamp.github.io/requesting-audio-permission-at-runtime.html" rel="alternate"></link><published>2017-06-20T12:51:00-07:00</published><updated>2017-06-20T12:51:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-20:/requesting-audio-permission-at-runtime.html</id><summary type="html">&lt;p&gt;This post will show how to request run-time permissions to enable audio recording in a recipe style.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Requesting Audio permission at Runtime&lt;/h1&gt;
 &lt;p&gt;This recipe will show how to request run-time permissions to enable audio recording.&lt;/p&gt;
 &lt;p&gt;As you may know already that adding &lt;code&gt;&amp;lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&amp;gt;&lt;/code&gt;
 permission in &lt;code&gt;AndroidManifest.xml&lt;/code&gt; is not enough on devices running Android 6.0 and greater.
@@ -537,7 +718,7 @@ app launches.&lt;/p&gt;
 
 
 &lt;p&gt;At this point, you've a working Audio recorder app, that can record audio and replay it.&lt;/p&gt;
-&lt;p&gt;Checkout the source code at &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/AudioRuntimePermissions"&gt;Github&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="runtime permissions"></category><category term="audio recording"></category><category term="dev"></category></entry><entry><title>Getting started with developing Android apps in Kotlin</title><link href="https://ptyagicodecamp.github.io/getting-started-with-developing-android-apps-in-kotlin.html" rel="alternate"></link><published>2017-06-18T15:55:00-06:00</published><updated>2017-06-18T15:55:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-18:/getting-started-with-developing-android-apps-in-kotlin.html</id><summary type="html">&lt;p&gt;This post shows how to get started with creating Android apps in Kotlin language using Android Studio 3 and higher.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Creating Kotlin Project in Android Studio (&amp;gt;=3)&lt;/h3&gt;
+&lt;p&gt;Checkout the source code at &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/AudioRuntimePermissions"&gt;Github&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="runtime permissions"></category><category term="audio recording"></category><category term="dev"></category></entry><entry><title>Getting started with developing Android apps in Kotlin</title><link href="https://ptyagicodecamp.github.io/getting-started-with-developing-android-apps-in-kotlin.html" rel="alternate"></link><published>2017-06-18T15:55:00-07:00</published><updated>2017-06-18T15:55:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-18:/getting-started-with-developing-android-apps-in-kotlin.html</id><summary type="html">&lt;p&gt;This post shows how to get started with creating Android apps in Kotlin language using Android Studio 3 and higher.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Creating Kotlin Project in Android Studio (&amp;gt;=3)&lt;/h3&gt;
 &lt;p&gt;In Android Studio 3 and higher, there's an option to select to create projects supporting Kolin. It's super simple to start writing your app from scratch in Kotlin. Here are screenshots to demo creating a Navigation Drawer based app in Kotlin:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Creating New Project in Android Studio&lt;/em&gt;&lt;/strong&gt;
 Don't forget to check Kotlin support checkbox.&lt;/p&gt;
@@ -565,7 +746,7 @@ This is how running Kotlin sample on device would look like:&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;Interested in checking out source code for this demo sample app ? Find it on &lt;a href="https://github.com/ptyagicodecamp/kotlin-android"&gt;Github&lt;/a&gt;
 &lt;strong&gt;&lt;em&gt;References:&lt;/em&gt;&lt;/strong&gt;
-&lt;a href="http://kotlinlang.org/"&gt;Kotlin language's official site&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="gradle"></category><category term="kotlin"></category><category term="android studio 3"></category><category term="dev"></category></entry><entry><title>How did I integrated a launcher screen in an Android App under 5 minutes</title><link href="https://ptyagicodecamp.github.io/how-did-i-integrated-a-launcher-screen-in-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-06-16T07:28:00-06:00</published><updated>2017-06-16T07:28:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-16:/how-did-i-integrated-a-launcher-screen-in-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;This post shows to integrate a launcher screen in an Android App.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Why Launcher Screen&lt;/h3&gt;
+&lt;a href="http://kotlinlang.org/"&gt;Kotlin language's official site&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="gradle"></category><category term="kotlin"></category><category term="android studio 3"></category><category term="dev"></category></entry><entry><title>How did I integrated a launcher screen in an Android App under 5 minutes</title><link href="https://ptyagicodecamp.github.io/how-did-i-integrated-a-launcher-screen-in-an-android-app-under-5-minutes.html" rel="alternate"></link><published>2017-06-16T07:28:00-07:00</published><updated>2017-06-16T07:28:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-06-16:/how-did-i-integrated-a-launcher-screen-in-an-android-app-under-5-minutes.html</id><summary type="html">&lt;p&gt;This post shows to integrate a launcher screen in an Android App.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Why Launcher Screen&lt;/h3&gt;
 &lt;p&gt;A launch screen is the splash screen that is presented (optionally) to user when an app starts up. The main purpose for this screen is to keep user entertained while data is loading in the background and hence leave a good impression to your first time users. If your app takes some time to show the contents, then user is usually shown a blank screen. A blank screen may discourage users to wait and they just might get out of the app to not to return again, which could be very sad for your app.
 So, to make the waiting process bit less boring, the launcher screen (aka splash screen) can either be used to show app's logo to promote your brand or some interesting contents that makes user's waiting period more interesting.&lt;/p&gt;
 &lt;h3&gt;How to implement Launcher Screen&lt;/h3&gt;
@@ -633,7 +814,7 @@ Don't forget to add this activity in your &lt;code&gt;AndroidManifest.xml&lt;/co
 &lt;img alt="" src="../images/launcher_screen/launcher_screen.png"&gt;&lt;/p&gt;
 &lt;p&gt;Checkout the Source code for sample app available at &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/LauncherScreen"&gt;github&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;References:&lt;/em&gt;&lt;/strong&gt;
-&lt;a href="https://material.io/guidelines/patterns/launch-screens.html"&gt;Launch Screen Patterns&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="launcher screen"></category><category term="dev"></category><category term="design"></category></entry><entry><title>Adding Menu Items in Navigation Drawer Dynamically</title><link href="https://ptyagicodecamp.github.io/adding-menu-items-in-navigation-drawer-dynamically.html" rel="alternate"></link><published>2017-04-19T00:00:00-06:00</published><updated>2017-04-19T00:00:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-19:/adding-menu-items-in-navigation-drawer-dynamically.html</id><summary type="html">&lt;p&gt;Quick code recipe to demonstrate the dynamic addition of menu items in Navigation Drawer.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Adding Menu Items in Navigation Drawer Dynamically&lt;/h1&gt;
+&lt;a href="https://material.io/guidelines/patterns/launch-screens.html"&gt;Launch Screen Patterns&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="launcher screen"></category><category term="dev"></category><category term="design"></category></entry><entry><title>Adding Menu Items in Navigation Drawer Dynamically</title><link href="https://ptyagicodecamp.github.io/adding-menu-items-in-navigation-drawer-dynamically.html" rel="alternate"></link><published>2017-04-19T00:00:00-07:00</published><updated>2017-04-19T00:00:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-19:/adding-menu-items-in-navigation-drawer-dynamically.html</id><summary type="html">&lt;p&gt;Quick code recipe to demonstrate the dynamic addition of menu items in Navigation Drawer.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Adding Menu Items in Navigation Drawer Dynamically&lt;/h1&gt;
 &lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Android Studio provides support to add Navigation Drawer Activity from IDE itself. With such Activity,
 it automatically generates menu items for navigation drawer in form of a xml file resource located
@@ -722,7 +903,7 @@ automating UI generation !&lt;/p&gt;
 how Navigation drawer looks like before adding new sub menu.&lt;/p&gt;
 &lt;h5&gt;After Adding New Submenu&lt;/h5&gt;
 &lt;p&gt;&lt;a href="https://github.com/ptyagicodecamp/ptyagicodecamp.github.io/blob/master/images/navdrawermenu/after_adding_menus.png"&gt;Here's&lt;/a&gt; Navigation Drawer after adding brand new submenu.&lt;/p&gt;
-&lt;p&gt;You can checkout source code at &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/NavDrawerDynamicMenu"&gt;github here&lt;/a&gt;&lt;/p&gt;</content><category term="Android"></category><category term="Material Design"></category><category term="UI/UX"></category></entry><entry><title>Scheduling Repeating Local Notifications using Alarm Manager</title><link href="https://ptyagicodecamp.github.io/scheduling-repeating-local-notifications-using-alarm-manager.html" rel="alternate"></link><published>2017-04-18T15:33:00-06:00</published><updated>2017-04-18T15:33:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-18:/scheduling-repeating-local-notifications-using-alarm-manager.html</id><summary type="html">&lt;p&gt;Introduction to scheduling repeating local notification in Android using AlarmManager.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;You can checkout source code at &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/NavDrawerDynamicMenu"&gt;github here&lt;/a&gt;&lt;/p&gt;</content><category term="Android"></category><category term="Material Design"></category><category term="UI/UX"></category></entry><entry><title>Scheduling Repeating Local Notifications using Alarm Manager</title><link href="https://ptyagicodecamp.github.io/scheduling-repeating-local-notifications-using-alarm-manager.html" rel="alternate"></link><published>2017-04-18T15:33:00-07:00</published><updated>2017-04-18T15:33:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-18:/scheduling-repeating-local-notifications-using-alarm-manager.html</id><summary type="html">&lt;p&gt;Introduction to scheduling repeating local notification in Android using AlarmManager.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;This tutorial is a quick start guide to get you started with
 Local Notifications in Android.&lt;/p&gt;
 &lt;h3&gt;Scheduling Repeating Local Notifications using Alarm Manager&lt;/h3&gt;
@@ -906,16 +1087,16 @@ pm.setComponentEnabledSetting(receiver,
 &lt;ul&gt;
 &lt;li&gt;Source Code is available &lt;a href="https://github.com/ptyagicodecamp/RepeatingLocalNotifications"&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;More details you can find &lt;a href="https://developer.android.com/training/scheduling/alarms.html"&gt;here&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Android"></category><category term="Notifications"></category><category term="AlarmManager"></category></entry><entry><title>Android Studio Tips &amp; Tricks Series</title><link href="https://ptyagicodecamp.github.io/android-studio-tips-tricks-series.html" rel="alternate"></link><published>2017-04-13T13:06:00-06:00</published><updated>2017-04-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:/android-studio-tips-tricks-series.html</id><summary type="html">&lt;p&gt;This post is an on-going series on various tips and tricks related to Android Development and Android Studio IDE.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Tips And Tricks&lt;/h2&gt;
+&lt;/ul&gt;</content><category term="Android"></category><category term="Notifications"></category><category term="AlarmManager"></category></entry><entry><title>Android Studio Tips &amp; Tricks Series</title><link href="https://ptyagicodecamp.github.io/android-studio-tips-tricks-series.html" rel="alternate"></link><published>2017-04-13T13:06:00-07:00</published><updated>2017-04-13T13:06:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:/android-studio-tips-tricks-series.html</id><summary type="html">&lt;p&gt;This post is an on-going series on various tips and tricks related to Android Development and Android Studio IDE.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Tips And Tricks&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="./how-to-get-sha1-fingerprint-for-digitally-signed-apk.html"&gt;How to get SHA1 fingerprint for digitally signed APK&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Android"></category><category term="Android Studio"></category><category term="Tips &amp; Tricks"></category></entry><entry><title>How to get SHA1 fingerprint for digitally signed APK</title><link href="https://ptyagicodecamp.github.io/how-to-get-sha1-fingerprint-for-digitally-signed-apk.html" rel="alternate"></link><published>2017-04-13T13:06:00-06:00</published><updated>2017-04-13T13:06:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:/how-to-get-sha1-fingerprint-for-digitally-signed-apk.html</id><summary type="html">&lt;p&gt;How to get SHA1 fingerprint for digitally signed APK&lt;/p&gt;</summary><content type="html">&lt;h2&gt;How to get SHA1 fingerprint for digitally signed APK&lt;/h2&gt;
+&lt;/ol&gt;</content><category term="Android"></category><category term="Android Studio"></category><category term="Tips &amp; Tricks"></category></entry><entry><title>How to get SHA1 fingerprint for digitally signed APK</title><link href="https://ptyagicodecamp.github.io/how-to-get-sha1-fingerprint-for-digitally-signed-apk.html" rel="alternate"></link><published>2017-04-13T13:06:00-07:00</published><updated>2017-04-13T13:06:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:/how-to-get-sha1-fingerprint-for-digitally-signed-apk.html</id><summary type="html">&lt;p&gt;How to get SHA1 fingerprint for digitally signed APK&lt;/p&gt;</summary><content type="html">&lt;h2&gt;How to get SHA1 fingerprint for digitally signed APK&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Open terminal in Android Studio&lt;/li&gt;
 &lt;li&gt;Run Keytool utility to get SHA1 for your APK:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;keytool -exportcert -alias &amp;lt;your_alias&amp;gt; -keystore &amp;lt;path-to-keystore&amp;gt; -list -v
-&lt;/pre&gt;&lt;/div&gt;</content><category term="Android"></category><category term="Android Studio"></category><category term="Tips &amp; Tricks"></category></entry><entry><title>Accessing Pictures using FileProvider</title><link href="https://ptyagicodecamp.github.io/accessing-pictures-using-fileprovider.html" rel="alternate"></link><published>2017-04-13T12:02:00-06:00</published><updated>2017-04-13T12:02:00-06:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:/accessing-pictures-using-fileprovider.html</id><summary type="html">&lt;p&gt;This post shows usage of FileProvider in Android App to retrieve the image file for Camera intent usage.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Accessing Pictures using FileProvider&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Android"></category><category term="Android Studio"></category><category term="Tips &amp; Tricks"></category></entry><entry><title>Accessing Pictures using FileProvider</title><link href="https://ptyagicodecamp.github.io/accessing-pictures-using-fileprovider.html" rel="alternate"></link><published>2017-04-13T12:02:00-07:00</published><updated>2017-04-13T12:02:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-13:/accessing-pictures-using-fileprovider.html</id><summary type="html">&lt;p&gt;This post shows usage of FileProvider in Android App to retrieve the image file for Camera intent usage.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Accessing Pictures using FileProvider&lt;/h1&gt;
 &lt;p&gt;FileProvider is the backbone which helps in secure sharing of files across file-system on Android device.&lt;/p&gt;
 &lt;p&gt;I’m using example of taking picture using camera on Android device to understand how FileProvider works. This Project demos does two things:
 &lt;br&gt;
@@ -974,7 +1155,7 @@ will have these contents in it:&lt;/p&gt;
 
 
 &lt;p&gt;That's it !&lt;/p&gt;
-&lt;p&gt;Checkout &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/FileProvider"&gt;source code&lt;/a&gt; in github to see &lt;code&gt;FileProviderDemo&lt;/code&gt; in action.&lt;/p&gt;</content><category term="Android"></category><category term="FileProvider"></category></entry><entry><title>Automating Android App publishing to Play Store using Jenkins</title><link href="https://ptyagicodecamp.github.io/automating-android-app-publishing-to-play-store-using-jenkins.html" rel="alternate"></link><published>2017-02-23T12:02:00-07:00</published><updated>2017-02-23T12:02:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-02-23:/automating-android-app-publishing-to-play-store-using-jenkins.html</id><summary type="html">&lt;p&gt;This post shows how to automate Android App publishing to Play Store using Jenkins on Mac OSX 10.12.3 and Jenkins 2.46.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Checkout &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/FileProvider"&gt;source code&lt;/a&gt; in github to see &lt;code&gt;FileProviderDemo&lt;/code&gt; in action.&lt;/p&gt;</content><category term="Android"></category><category term="FileProvider"></category></entry><entry><title>Automating Android App publishing to Play Store using Jenkins</title><link href="https://ptyagicodecamp.github.io/automating-android-app-publishing-to-play-store-using-jenkins.html" rel="alternate"></link><published>2017-02-23T12:02:00-08:00</published><updated>2017-02-23T12:02:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-02-23:/automating-android-app-publishing-to-play-store-using-jenkins.html</id><summary type="html">&lt;p&gt;This post shows how to automate Android App publishing to Play Store using Jenkins on Mac OSX 10.12.3 and Jenkins 2.46.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;This article describes the journey I took from setting up Jenkins to automate publishing Android APKs to Google Play Publishing portal and useful notes that I collected along the way. I set up Jenkins-2.46 on Mac OSX 10.12.3.&lt;/p&gt;
 &lt;h4&gt;Download Package&lt;/h4&gt;
 &lt;p&gt;You can download “.pkg” file from &lt;a href="http://mirrors.jenkins.io/osx/latest"&gt;here&lt;/a&gt;&lt;/p&gt;
@@ -1048,7 +1229,7 @@ will have these contents in it:&lt;/p&gt;
 &lt;p&gt;And you're done !&lt;/p&gt;
 &lt;p&gt;For more details about configuring uploading job refer to &lt;a href="https://wiki.jenkins-ci.org/display/JENKINS/Google+Play+Android+Publisher+Plugin"&gt;this link&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Extra Credits:
-&lt;a href="https://wiki.jenkins-ci.org/display/JENKINS/EnvInject+Plugin"&gt;EnvInject Plugin&lt;/a&gt; can be used to supply APK signing password to Jenkins job. Checkout &lt;a href="https://stackoverflow.com/questions/27234506/android-build-release-apk-on-jenkins-without-storing-my-password-in-plain-text?answertab=votes#tab-top"&gt;this&lt;/a&gt; StackOverflow answer on how to set it up.&lt;/p&gt;</content><category term="Android"></category><category term="Jenkins"></category><category term="DevOps"></category></entry><entry><title>Creating Sub MenuItems for FAB (Floating Action Button)</title><link href="https://ptyagicodecamp.github.io/creating-sub-menuitems-for-fab-floating-action-button.html" rel="alternate"></link><published>2017-02-15T11:24:00-07:00</published><updated>2017-02-15T11:24:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-02-15:/creating-sub-menuitems-for-fab-floating-action-button.html</id><summary type="html">&lt;p&gt;This post shows how to integrate sub menu items for FAB (Floating Action Button) in an existing Android app.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Final Outcome&lt;/h3&gt;
+&lt;a href="https://wiki.jenkins-ci.org/display/JENKINS/EnvInject+Plugin"&gt;EnvInject Plugin&lt;/a&gt; can be used to supply APK signing password to Jenkins job. Checkout &lt;a href="https://stackoverflow.com/questions/27234506/android-build-release-apk-on-jenkins-without-storing-my-password-in-plain-text?answertab=votes#tab-top"&gt;this&lt;/a&gt; StackOverflow answer on how to set it up.&lt;/p&gt;</content><category term="Android"></category><category term="Jenkins"></category><category term="DevOps"></category></entry><entry><title>Creating Sub MenuItems for FAB (Floating Action Button)</title><link href="https://ptyagicodecamp.github.io/creating-sub-menuitems-for-fab-floating-action-button.html" rel="alternate"></link><published>2017-02-15T11:24:00-08:00</published><updated>2017-02-15T11:24:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-02-15:/creating-sub-menuitems-for-fab-floating-action-button.html</id><summary type="html">&lt;p&gt;This post shows how to integrate sub menu items for FAB (Floating Action Button) in an existing Android app.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Final Outcome&lt;/h3&gt;
 &lt;p&gt;Our target to integrate FAB into an existing Android App and creating submenus. Settings icon is used as FAB. Clicking on it will open its submenus: Save, Edit and Photo. Clicking on X will close submenus and Settings icon will re-appear.&lt;/p&gt;
 &lt;p&gt;This is how main screen will look after FAB integrated into it.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="./images/device-settings-close.png"&gt;&lt;/p&gt;
@@ -1225,7 +1406,7 @@ These are the two methods you would need:&lt;/p&gt;
 
 &lt;h3&gt;Congratulations!&lt;/h3&gt;
 &lt;p&gt;Yay ! You got FAB integrated along with sub menu in less than 5 minutes. Its time to celebrate :)&lt;/p&gt;
-&lt;p&gt;Source code is available at &lt;a href="https://github.com/ptyagicodecamp/fab-submenu"&gt;Github &lt;/a&gt;&lt;/p&gt;</content><category term="ANDROID"></category><category term="FAB"></category><category term="DEV"></category><category term="UI"></category></entry><entry><title>Android WebViewOverlay Widget</title><link href="https://ptyagicodecamp.github.io/android-webviewoverlay-widget.html" rel="alternate"></link><published>2017-01-09T11:16:00-07:00</published><updated>2017-01-09T11:16:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-01-09:/android-webviewoverlay-widget.html</id><summary type="html">&lt;p&gt;WebViewOverlay Widget is an OpenSourced Android library that provides a drop-in solution for loading a URL in an Overlay WebView in full screen mode.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;Source code is available at &lt;a href="https://github.com/ptyagicodecamp/fab-submenu"&gt;Github &lt;/a&gt;&lt;/p&gt;</content><category term="ANDROID"></category><category term="FAB"></category><category term="DEV"></category><category term="UI"></category></entry><entry><title>Android WebViewOverlay Widget</title><link href="https://ptyagicodecamp.github.io/android-webviewoverlay-widget.html" rel="alternate"></link><published>2017-01-09T11:16:00-08:00</published><updated>2017-01-09T11:16:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-01-09:/android-webviewoverlay-widget.html</id><summary type="html">&lt;p&gt;WebViewOverlay Widget is an OpenSourced Android library that provides a drop-in solution for loading a URL in an Overlay WebView in full screen mode.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Motivation&lt;/h2&gt;
 &lt;p&gt;I needed a widget that can load a url in WebView in a full-screen closable overlay/modal.
 I wanted to re-use this new, shiny widget in my other projects as well. So, I decided to upload
 WebViewOverlay library in a central artifact repository. I chose JCenter because its one of the
@@ -1293,7 +1474,7 @@ Here's examples to demonstrate both APIs:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;If you're interested in checking out source code, then its available &lt;a href="https://github.com/ptyagicodecamp/webview-overlay"&gt;here at Github&lt;/a&gt;&lt;/p&gt;</content><category term="Android"></category><category term="WebView"></category><category term="WebViewOverlay"></category><category term="Library"></category><category term="OpenSource"></category><category term="Dev"></category></entry><entry><title>How did I publish Android Library to JCenter from Android Studio</title><link href="https://ptyagicodecamp.github.io/how-did-i-publish-android-library-to-jcenter-from-android-studio.html" rel="alternate"></link><published>2017-01-07T17:27:00-07:00</published><updated>2017-01-07T17:27:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-01-07:/how-did-i-publish-android-library-to-jcenter-from-android-studio.html</id><summary type="html">&lt;p&gt;This article walks through the process of publishing an OpenSourced Android library to JCenter.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;If you're interested in checking out source code, then its available &lt;a href="https://github.com/ptyagicodecamp/webview-overlay"&gt;here at Github&lt;/a&gt;&lt;/p&gt;</content><category term="Android"></category><category term="WebView"></category><category term="WebViewOverlay"></category><category term="Library"></category><category term="OpenSource"></category><category term="Dev"></category></entry><entry><title>How did I publish Android Library to JCenter from Android Studio</title><link href="https://ptyagicodecamp.github.io/how-did-i-publish-android-library-to-jcenter-from-android-studio.html" rel="alternate"></link><published>2017-01-07T17:27:00-08:00</published><updated>2017-01-07T17:27:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-01-07:/how-did-i-publish-android-library-to-jcenter-from-android-studio.html</id><summary type="html">&lt;p&gt;This article walks through the process of publishing an OpenSourced Android library to JCenter.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;JCenter is a Maven Repository or file server hosted by &lt;a href="https://bintray.com/"&gt;Bintray&lt;/a&gt; for
 Android libraries. It’s a default repository for Android Studio. To demonstrate the process of
 publishing an OpenSource Android library, I'm using &lt;a href="https://ptyagicodecamp.github.io/webviewoverlay-widget-library.html"&gt;WebViewOverlay widget library&lt;/a&gt;
@@ -1437,7 +1618,7 @@ You can check if its available by going to "http://jcenter.bintray.com/&lt;path/
 
 
 &lt;h3&gt;References:&lt;/h3&gt;
-&lt;p&gt;I followed &lt;a href="https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en"&gt;this tutorial&lt;/a&gt; to get me setup at Bintray.&lt;/p&gt;</content><category term="Bintray"></category><category term="Publishing"></category><category term="JCenter"></category><category term="Library"></category><category term="OpenSource"></category><category term="Dev"></category></entry><entry><title>Automatic Android APK Signing</title><link href="https://ptyagicodecamp.github.io/automatic-android-apk-signing.html" rel="alternate"></link><published>2016-12-20T12:51:00-07:00</published><updated>2016-12-20T12:51:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-20:/automatic-android-apk-signing.html</id><summary type="html">&lt;p&gt;This post shows how build.gradle can be configured to sign Android APKs automatically without manual interventions.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Declaring Signing credentials&lt;/h3&gt;
+&lt;p&gt;I followed &lt;a href="https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en"&gt;this tutorial&lt;/a&gt; to get me setup at Bintray.&lt;/p&gt;</content><category term="Bintray"></category><category term="Publishing"></category><category term="JCenter"></category><category term="Library"></category><category term="OpenSource"></category><category term="Dev"></category></entry><entry><title>Automatic Android APK Signing</title><link href="https://ptyagicodecamp.github.io/automatic-android-apk-signing.html" rel="alternate"></link><published>2016-12-20T12:51:00-08:00</published><updated>2016-12-20T12:51:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-20:/automatic-android-apk-signing.html</id><summary type="html">&lt;p&gt;This post shows how build.gradle can be configured to sign Android APKs automatically without manual interventions.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Declaring Signing credentials&lt;/h3&gt;
 &lt;p&gt;Never put your signing apk credentials in github or any public sharable place. Always put them in a non-committable file. I'll be using local gradle installations's &lt;code&gt;gradle.properties&lt;/code&gt; to store signing creds. It sits at root level of your project. Alternately, you can also use &lt;path-to-.gradle-dir&gt;/.gradle/.gradle.properties.&lt;/p&gt;
 &lt;h4&gt;Declaring release apk credentials&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;RELEASE_KEYSTORE_FILE={path to your release keystore}
@@ -1537,7 +1718,7 @@ android {
 dependencies {
     compile fileTree(dir: &amp;#39;libs&amp;#39;, include: [&amp;#39;*.jar&amp;#39;])
 }
-&lt;/pre&gt;&lt;/div&gt;</content><category term="android"></category><category term="gradle"></category><category term="signing"></category><category term="apk"></category><category term="dev"></category></entry><entry><title>WebViewHelper library</title><link href="https://ptyagicodecamp.github.io/webviewhelper-library.html" rel="alternate"></link><published>2016-12-16T15:06:00-07:00</published><updated>2016-12-16T15:06:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-16:/webviewhelper-library.html</id><summary type="html">&lt;p&gt;This post is about Opensource WebViewHelper library at &lt;a href="https://github.com/ptyagicodecamp/webview-android"&gt;Github&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h3&gt;A little about WebView widgets:&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="android"></category><category term="gradle"></category><category term="signing"></category><category term="apk"></category><category term="dev"></category></entry><entry><title>WebViewHelper library</title><link href="https://ptyagicodecamp.github.io/webviewhelper-library.html" rel="alternate"></link><published>2016-12-16T15:06:00-08:00</published><updated>2016-12-16T15:06:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-16:/webviewhelper-library.html</id><summary type="html">&lt;p&gt;This post is about Opensource WebViewHelper library at &lt;a href="https://github.com/ptyagicodecamp/webview-android"&gt;Github&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h3&gt;A little about WebView widgets:&lt;/h3&gt;
 &lt;p&gt;Webview widget is used to display HTML contents in an Android app. HTML contents can be rendered in a TextView widget using Html.fromHtml() method to parse very basic text. So why do we need WebView widget ? WebView widget is capable of handling more advanced HTML tags, Javascript and CSS, which gives a native feel to HTML contents right in your app. But this doesn't come for free. WebViews are more memory intensive when compared to TextView widget.&lt;/p&gt;
 &lt;h3&gt;Background:&lt;/h3&gt;
 &lt;p&gt;Pre Android 4.4, WebView was powered by WebKit. Starting Android 4.4, it’s powered by Chromium. Starting Android 5.0, WebView is distributed through Google Play Store. Starting Android 7.0, WebView uses Chrome browser app or System WebView app when Chrome browser is disabled.&lt;/p&gt;
@@ -1595,7 +1776,7 @@ dependencies {
 
 
 &lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/webview-android"&gt;here&lt;/a&gt;
-&lt;/p&gt;</content><category term="android"></category><category term="webview"></category><category term="library"></category><category term="open-source"></category><category term="dev"></category></entry><entry><title>My take on Pelican and Github pages from a beginner's perspective</title><link href="https://ptyagicodecamp.github.io/my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html" rel="alternate"></link><published>2016-12-08T10:20:00-07:00</published><updated>2016-12-08T10:20:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-08:/my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html</id><summary type="html">&lt;p&gt;This post is about my experience setting up githup pages using Pelican from scratch assuming no prior experience in Python webframeworks.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Setting up environment:&lt;/h3&gt;
+&lt;/p&gt;</content><category term="android"></category><category term="webview"></category><category term="library"></category><category term="open-source"></category><category term="dev"></category></entry><entry><title>My take on Pelican and Github pages from a beginner's perspective</title><link href="https://ptyagicodecamp.github.io/my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html" rel="alternate"></link><published>2016-12-08T10:20:00-08:00</published><updated>2016-12-08T10:20:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2016-12-08:/my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html</id><summary type="html">&lt;p&gt;This post is about my experience setting up githup pages using Pelican from scratch assuming no prior experience in Python webframeworks.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Setting up environment:&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;First we need a pacakge manager to install necessery tools and packages. I chose Homebrew. Install Homebrew package manager and other needed tools for Mac by pasting this command in terminal:
