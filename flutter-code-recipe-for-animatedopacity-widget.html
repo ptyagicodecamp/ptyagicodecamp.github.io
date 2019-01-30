@@ -97,7 +97,7 @@
 <p>AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.</p>
 <p><strong><em>Recipe:</em></strong> Achieve a smooth animation when transitioning from one UI element to another.</p>
 <p><strong><em>Focus Widget:</em></strong> AnimatedOpacity</p>
-<p><strong><em>Goal:</em></strong> Fade in and out a blue rectangle on click of button. 
+<p><strong><em>Goal:</em></strong> Fade in and out a blue rectangle on a click of button. 
 Interface is super simple and will look like this:</p>
 <p>Blue Rectangle animates when button is pressed:
 <img alt="Alt Blue Rectangle animates when button is pressed" src="https://ptyagicodecamp.github.io/animated_opacity.png"></p>
@@ -119,7 +119,7 @@ Interface is super simple and will look like this:</p>
 <code>StatefulWidget</code> has <code>State</code> object that can hold and update some data for app. 
 <code>State</code> object's <a href="https://docs.flutter.io/flutter/widgets/State/setState.html"><code>setState</code></a> method helps to rebuild widget reflecting the updated state of the app data.</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">_AnimatedOpacityRecipe</span> <span class="kr">extends</span> <span class="nx">StatefulWidget</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">AnimatedOpacityRecipe</span> <span class="kr">extends</span> <span class="nx">StatefulWidget</span> <span class="p">{</span>
   <span class="kd">@override</span>
   <span class="nx">State</span><span class="o">&lt;</span><span class="nx">StatefulWidget</span><span class="o">&gt;</span> <span class="nx">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">_AnimatedOpacityRecipeState</span><span class="p">();</span>
 <span class="p">}</span>
@@ -128,7 +128,7 @@ Interface is super simple and will look like this:</p>
 
 <p>The State object will have the flag about the rectangle widget's visibility state say <code>_visible</code>.
 <code>_visible</code> to <code>true</code> means that rectangle is visible or vice versa.</p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">_AnimatedOpacityRecipeState</span> <span class="kr">extends</span> <span class="nx">State</span><span class="o">&lt;</span><span class="nx">_AnimatedOpacityRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">_AnimatedOpacityRecipeState</span> <span class="kr">extends</span> <span class="nx">State</span><span class="o">&lt;</span><span class="nx">AnimatedOpacityRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
   <span class="kt">bool</span> <span class="nx">_visible</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
 <span class="p">}</span> 

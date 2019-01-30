@@ -9,7 +9,7 @@
 &lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Achieve a smooth animation when transitioning from one UI element to another.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Focus Widget:&lt;/em&gt;&lt;/strong&gt; AnimatedOpacity&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; Fade in and out a blue rectangle on click of button. 
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; Fade in and out a blue rectangle on a click of button. 
 Interface is super simple and will look like this:&lt;/p&gt;
 &lt;p&gt;Blue Rectangle animates when button is pressed:
 &lt;img alt="Alt Blue Rectangle animates when button is pressed" src="https://ptyagicodecamp.github.io/animated_opacity.png"&gt;&lt;/p&gt;
@@ -31,7 +31,7 @@ Interface is super simple and will look like this:&lt;/p&gt;
 &lt;code&gt;StatefulWidget&lt;/code&gt; has &lt;code&gt;State&lt;/code&gt; object that can hold and update some data for app. 
 &lt;code&gt;State&lt;/code&gt; object's &lt;a href="https://docs.flutter.io/flutter/widgets/State/setState.html"&gt;&lt;code&gt;setState&lt;/code&gt;&lt;/a&gt; method helps to rebuild widget reflecting the updated state of the app data.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_AnimatedOpacityRecipe&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;AnimatedOpacityRecipe&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="kd"&gt;@override&lt;/span&gt;
   &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;StatefulWidget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_AnimatedOpacityRecipeState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
@@ -40,7 +40,7 @@ Interface is super simple and will look like this:&lt;/p&gt;
 
 &lt;p&gt;The State object will have the flag about the rectangle widget's visibility state say &lt;code&gt;_visible&lt;/code&gt;.
 &lt;code&gt;_visible&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; means that rectangle is visible or vice versa.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_AnimatedOpacityRecipeState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;_AnimatedOpacityRecipe&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_AnimatedOpacityRecipeState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;AnimatedOpacityRecipe&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nx"&gt;_visible&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="p"&gt;}&lt;/span&gt; 
