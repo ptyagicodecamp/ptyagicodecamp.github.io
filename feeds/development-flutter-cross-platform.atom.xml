@@ -5,6 +5,7 @@
 &lt;h3&gt;Animation&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-animatedopacity-widget.html"&gt;AnimatedOpacity&lt;/a&gt;: Making a rectangle fade in and out&lt;/li&gt;
+&lt;li&gt;&lt;a href="lib/animation/animation_hero.md"&gt;Hero Animation&lt;/a&gt;: Navigating from one page to another using Hero animation.&lt;/li&gt;
 &lt;/ul&gt;</content><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for AnimatedOpacity widget</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-animatedopacity-widget.html" rel="alternate"></link><published>2018-01-30T23:33:00-08:00</published><updated>2018-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2018-01-30:/flutter-code-recipe-for-animatedopacity-widget.html</id><summary type="html">&lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;AnimatedOpacity&lt;/h2&gt;
 &lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Achieve a smooth animation when transitioning from one UI element to another.&lt;/p&gt;
@@ -177,4 +178,201 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 &lt;ol&gt;
 &lt;li&gt;https://flutter.io/docs/cookbook/animation/opacity-animation.html&lt;/li&gt;
 &lt;li&gt;https://docs.flutter.io/flutter/widgets/Opacity-class.html&lt;/li&gt;
-&lt;/ol&gt;</content><category term="AnimatedOpacity"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry></feed>
+&lt;/ol&gt;</content><category term="AnimatedOpacity"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for Hero animation</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-hero-animation.html" rel="alternate"></link><published>2018-01-30T23:33:00-08:00</published><updated>2018-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2018-01-30:/flutter-code-recipe-for-hero-animation.html</id><summary type="html">&lt;p&gt;Navigating from one page to another using Hero animation.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Animation Hero&lt;/h2&gt;
+&lt;p&gt;Hero animation is a useful transition when items are listed with small icons. Tapping on 
+icons can open in another page with enlarged icon widget.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Hero animation to transition a list icon into an enlarged view on another detail page.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Focus Widget:&lt;/em&gt;&lt;/strong&gt; Hero Widget&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Hero(
+    tag: &amp;#39;hero-rectangle&amp;#39;, 
+    child: _blueDetailRectangle(),
+),
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; Animate and enlarge list item icon using &lt;code&gt;Hero&lt;/code&gt; widget. 
+Tapping on a list item icon, opens up the item in another page with enlarged icon.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="List item icon" src="../../media/flutter/animationHero/1.png"&gt; 
+&lt;img alt="Detail page icon" src="../../media/flutter/animationHero/2.png"&gt;&lt;/p&gt;
+&lt;p&gt;Checkout Hero animation: 
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/InhIo7HNU-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h3&gt;Lets's go!&lt;/h3&gt;
+&lt;p&gt;We need these things to accomplish our goal.
+1. List item along with Icon: I'll be using a rectangle widget for icon.&lt;/p&gt;
+&lt;p&gt;Icon widget in list item at first page:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    Widget _blueIconRectangle() {
+        return Container(
+          width: 50,
+          height: 50,
+          color: Colors.blue,
+    );
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;Hero&lt;/code&gt; widget in list:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget buildWidget(BuildContext context) {
+    return Center(
+        ...
+              child: Hero(
+                tag: &amp;#39;hero-rectangle&amp;#39;,
+                child: _blueIconRectangle(),
+              ),
+              onTap: () =&amp;gt; _gotoDetailsPage(context),
+
+        ...
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Enlarged icon to display on the second page.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  Widget _blueDetailRectangle() {
+    return Container(
+      width: 200,
+      height: 200,
+      color: Colors.blue,
+    );
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Using enlarged icon in second page:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void _gotoDetailsPage(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (ctx) =&amp;gt; Scaffold(
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: &amp;lt;Widget&amp;gt;[
+                  Hero(
+                    tag: &amp;#39;hero-rectangle&amp;#39;,
+                    child: _blueDetailRectangle(),
+                  ),
+                  Text(
+                      &amp;#39;This is where you can see details about the list item tapped at previous page.&amp;#39;),
+                ],
+              ),
+            ),
+          ),
+    ));
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Notice that &lt;code&gt;Navigator.of(context).push()&lt;/code&gt; is needed to navigate to second page from first page
+using the same tag. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Making sure both widgets in step #1 and step #2 &lt;strong&gt;&lt;em&gt;have same tag&lt;/em&gt;&lt;/strong&gt;. 
+Hero transitions use the same tag to identify the start and destination widgets.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Complete example code&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter/material.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;runApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MyApp&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyApp&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;widget&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;MaterialApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Flutter Demo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;theme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ThemeData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;primarySwatch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Colors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;green&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;HeroAnimationRecipe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hero Animation&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;HeroAnimationRecipe&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;HeroAnimationRecipe&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;_HeroAnimationRecipeState&lt;/span&gt; &lt;span class="n"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;_HeroAnimationRecipeState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;_HeroAnimationRecipeState&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;HeroAnimationRecipe&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;_blueIconRectangle&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Colors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;blue&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;_blueDetailRectangle&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Colors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;blue&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;appBar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;widget&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;buildDemoWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;buildDemoWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Center&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;crossAxisAlignment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;CrossAxisAlignment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+          &lt;span class="n"&gt;SizedBox&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;20.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="n"&gt;ListTile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;leading&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;GestureDetector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Hero&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;hero-rectangle&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;_blueIconRectangle&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+              &lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="n"&gt;onTap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;_gotoDetailsPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Tap on the icon to view hero animation transition.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;],&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;_gotoDetailsPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;Navigator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MaterialPageRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ctx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Center&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;mainAxisAlignment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;MainAxisAlignment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+              &lt;span class="n"&gt;Hero&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;hero-rectangle&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;_blueDetailRectangle&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+              &lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                  &lt;span class="s1"&gt;&amp;#39;This is where you can see details about the list item tapped at previous page.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;],&lt;/span&gt;
+          &lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;));&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt; 
+Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/flutter_hero_animation"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://flutter.io/docs/development/ui/animations/hero-animations"&gt;Cookbook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://flutterbyexample.com/hero-transition"&gt;Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Be9UH1kXFDw"&gt;Youtube video&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="hero-animation"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry></feed>
