@@ -192,8 +192,8 @@ icons can open in another page with enlarged icon widget.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; Animate and enlarge list item icon using &lt;code&gt;Hero&lt;/code&gt; widget. 
 Tapping on a list item icon, opens up the item in another page with enlarged icon.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="List item icon" src="../../media/flutter/animationHero/1.png"&gt; 
-&lt;img alt="Detail page icon" src="../../media/flutter/animationHero/2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="List item icon" src="https://ptyagicodecamp.github.io/1.png"&gt; 
+&lt;img alt="Detail page icon" src="https://ptyagicodecamp.github.io/2.png"&gt;&lt;/p&gt;
 &lt;p&gt;Checkout Hero animation: 
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/InhIo7HNU-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
