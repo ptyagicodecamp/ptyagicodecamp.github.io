@@ -87,7 +87,7 @@
 <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
   <header class="article-header">
 <abbr class="article-header-date">
-  Fri 02 February 2018
+  Sat 02 February 2019
 </abbr> <h1>
   <a href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-appbar-widget.html" rel="bookmark"
      title="Permalink to Flutter code recipe for AppBar widget">
@@ -136,7 +136,7 @@ Clicking on action/overflow menu items displays status message.</p>
 </pre></div>
 
 
-<p>Step #4. Add AppBar's title</p>
+<p>Step #3. Add AppBar's title</p>
 <div class="highlight"><pre><span></span>return Scaffold(
       appBar: AppBar(
         ...
@@ -147,7 +147,7 @@ Clicking on action/overflow menu items displays status message.</p>
 </pre></div>
 
 
-<p>Step #5. Add <code>IconButton</code> action item to send message.</p>
+<p>Step #4. Add <code>IconButton</code> action item to send message.</p>
 <div class="highlight"><pre><span></span>return Scaffold(
       appBar: AppBar(
         ...
@@ -164,7 +164,7 @@ Clicking on action/overflow menu items displays status message.</p>
 </pre></div>
 
 
-<p>Step #6. Add overflow action item using <code>PopupMenuButton</code></p>
+<p>Step #5. Add overflow action item using <code>PopupMenuButton</code></p>
 <div class="highlight"><pre><span></span>return Scaffold(
       appBar: AppBar(
         ...
@@ -188,7 +188,7 @@ Clicking on action/overflow menu items displays status message.</p>
 </pre></div>
 
 
-<p>Step #7. Handle action item clicks</p>
+<p>Step #6. Handle action item clicks</p>
 <div class="highlight"><pre><span></span>void clicked(BuildContext context, menu) {
     final scaffold = Scaffold.of(context);
     scaffold.showSnackBar(

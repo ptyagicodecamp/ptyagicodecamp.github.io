@@ -1,5 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Development, Flutter, Cross-platform</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/development-flutter-cross-platform.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2018-02-02T23:33:00-08:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Flutter code recipe for AppBar widget</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-appbar-widget.html" rel="alternate"></link><published>2018-02-02T23:33:00-08:00</published><updated>2018-02-02T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2018-02-02:/flutter-code-recipe-for-appbar-widget.html</id><summary type="html">&lt;p&gt;Implement a basic appBar with a title, actions, and an overflow dropdown menu.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;AppBar&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Development, Flutter, Cross-platform</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/development-flutter-cross-platform.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-02-05T00:00:00-08:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>BottomNavigationBar with menu, search and overflow action items</title><link href="https://ptyagicodecamp.github.io/bottomnavigationbar-with-menu-search-and-overflow-action-items.html" rel="alternate"></link><published>2019-02-05T00:00:00-08:00</published><updated>2019-02-05T00:00:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-02-05:/bottomnavigationbar-with-menu-search-and-overflow-action-items.html</id><summary type="html">&lt;p&gt;Implement a BottomNavigationBar with menu, search and overflow action items.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;BottomNavigationBar&lt;/h2&gt;
+&lt;p&gt;BottomNavigationBar is used to put action menus at the bottom of a Flutter app.
+This widget is useful to put actions menus intended for the current page. 
+This recipe will show how to implement a bottom navigation bar with a menu to 
+open drawer for more action items like "add" &amp;amp; "edit", a "search" menu action and finally 
+an overflow menu action item. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Implement a BottomNavigationBar with menu, search and overflow action items.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Focus Widget:&lt;/em&gt;&lt;/strong&gt; BottomAppBar&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; BottomNavigationBar displays a menu to bring up bottom navigation drawer, 
+a dummy search action icon and overflow action items menu. Clicking on each menu action 
+will display a message using &lt;a href="https://pub.dartlang.org/packages/fluttertoast"&gt;Fluttertoast&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="List item icon" src="https://ptyagicodecamp.github.io/TODO.png"&gt;&lt;/p&gt;
+&lt;h3&gt;Lets's go!&lt;/h3&gt;
+&lt;p&gt;Step #1. Since we'll be using &lt;code&gt;fluttertoast&lt;/code&gt; for showing status messages, first we'll be adding 
+&lt;code&gt;fluttertoast&lt;/code&gt; library dependency in &lt;code&gt;pubspec.yaml&lt;/code&gt; like below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;flutter&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;sdk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;flutter&lt;/span&gt;
+  &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;added&lt;/span&gt; &lt;span class="n"&gt;fluttertoast&lt;/span&gt; &lt;span class="n"&gt;library&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt; &lt;span class="n"&gt;status&lt;/span&gt; &lt;span class="n"&gt;messages&lt;/span&gt;
+  &lt;span class="n"&gt;fluttertoast&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;2.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Click on get/upgrade dependencies when prompt is shown. You may want to make sure that all dependencies are refreshed.&lt;/p&gt;
+&lt;p&gt;Step #2. Add a placeholder top part for the app using &lt;code&gt;Center&lt;/code&gt; widget. 
+I'll be using &lt;code&gt;Text&lt;/code&gt; widget to show demo message.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text(&amp;#39;Checkout BottomNavigationBar in action below&amp;#39;),
+      ),
+    ...
+
+    );
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Step #3. Add &lt;code&gt;BottomAppBar&lt;/code&gt; widget using &lt;code&gt;bottomNavigationBar&lt;/code&gt; attribute.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      ...
+
+      bottomNavigationBar: BottomAppBar(
+          ...
+    );
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Step #4. Add child component &lt;code&gt;Row&lt;/code&gt; to &lt;code&gt;BottomAppBar&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      ...
+
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+
+        ),
+          ...
+    );
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Step #5. Now, its time to add menu action widgets. Widgets are added as &lt;code&gt;children&lt;/code&gt; to &lt;code&gt;Row&lt;/code&gt; component.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      ...
+
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+            children: &amp;lt;Widget&amp;gt;[
+                ...
+            ],
+        ),
+          ...
+    );
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Step #6. Next, I'll add our very first menu action item as first child menu action widget.
+I'll be using &lt;code&gt;IconButton&lt;/code&gt; widget. When this action menu is clicked, it'll open &lt;a href="https://flutterdoc.com/bottom-sheets-in-flutter-ec05c90453e7"&gt;ModalBottomSheet&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      ...
+
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+            children: &amp;lt;Widget&amp;gt;[
+                // Bottom that pops up from the bottom of the screen.
+                IconButton(
+                    icon: Icon(Icons.menu),
+                    onPressed: () {
+                      showModalBottomSheet&amp;lt;Null&amp;gt;(
+                        context: context,
+                        builder: (BuildContext context) =&amp;gt; openBottomDrawer(),
+                      );
+                    },
+                ),
+            ],
+        ),
+          ...
+    );
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Drawer opened in modal bottom sheet has two menu actions for "Edit" and "Add". 
+It looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget openBottomDrawer() {
+    return Drawer(
+      child: Column(
+        children: const &amp;lt;Widget&amp;gt;[
+          //Add menu item to edit
+          const ListTile(
+            leading: const Icon(Icons.mode_edit),
+            title: const Text(&amp;#39;Edit&amp;#39;),
+          ),
+          const ListTile(
+            //Add menu item to add a new item
+            leading: const Icon(Icons.add),
+            title: const Text(&amp;#39;Add&amp;#39;),
+          ),
+        ],
+      ),
+    );
+  }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Step #7. Two more &lt;code&gt;IconButton&lt;/code&gt; widgets are added for "Search" and overflow menu action items as &lt;code&gt;children&lt;/code&gt; widgets.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;override&lt;/span&gt;
+  &lt;span class="nt"&gt;Widget&lt;/span&gt; &lt;span class="nt"&gt;build&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;BuildContext&lt;/span&gt; &lt;span class="nt"&gt;context&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;return&lt;/span&gt; &lt;span class="nt"&gt;Scaffold&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+      &lt;span class="o"&gt;...&lt;/span&gt;
+
+      &lt;span class="nt"&gt;bottomNavigationBar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;BottomAppBar&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+        &lt;span class="nt"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Row&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+            &lt;span class="nt"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;
+                &lt;span class="c1"&gt;//First action menu widget&lt;/span&gt;
+                &lt;span class="c1"&gt;// Bottom that pops up from the bottom of the screen.&lt;/span&gt;
+                &lt;span class="nx"&gt;IconButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                    &lt;span class="nx"&gt;icon&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Icons.menu&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                    &lt;span class="nx"&gt;onPressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                      &lt;span class="nx"&gt;showModalBottomSheet&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;Null&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                        &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                        &lt;span class="nx"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;openBottomDrawer&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+                      &lt;span class="p"&gt;);&lt;/span&gt;
+                    &lt;span class="p"&gt;},&lt;/span&gt;
+                &lt;span class="p"&gt;),&lt;/span&gt;
+
+                &lt;span class="c1"&gt;//Second action menu widget for Search&lt;/span&gt;
+                &lt;span class="nx"&gt;IconButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                    &lt;span class="nx"&gt;icon&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Icons.search&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                    &lt;span class="nx"&gt;onPressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                      &lt;span class="nx"&gt;Fluttertoast.showToast&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Clicked on Search menu action.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+                    &lt;span class="p"&gt;},&lt;/span&gt;
+                &lt;span class="p"&gt;),&lt;/span&gt;   
+
+                &lt;span class="c1"&gt;//Third action menu widget for overflow action&lt;/span&gt;
+                &lt;span class="nx"&gt;IconButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                    &lt;span class="nx"&gt;icon&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Icons.more_vert&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                    &lt;span class="nx"&gt;onPressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                      &lt;span class="nx"&gt;Fluttertoast.showToast&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;This is where overflow menu actions will go&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+                    &lt;span class="p"&gt;},&lt;/span&gt;
+                &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="o"&gt;),&lt;/span&gt;
+    &lt;span class="o"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Complete example code&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter/material.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:fluttertoast/fluttertoast.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;runApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MyApp&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyApp&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;widget&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;MaterialApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;BottomNavigationBarRecipe&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;theme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ThemeData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;primarySwatch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Colors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;blue&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;BottomNavigationBarRecipe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Flutter Demo Home Page&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BottomNavigationBarRecipe&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;BottomNavigationBarRecipe&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;_BottomNavigationBarRecipeState&lt;/span&gt; &lt;span class="n"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;_BottomNavigationBarRecipeState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;_BottomNavigationBarRecipeState&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;BottomNavigationBarRecipe&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Center&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Checkout BottomNavigationBar in action below&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="n"&gt;bottomNavigationBar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;BottomAppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+              &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;Bottom&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;pops&lt;/span&gt; &lt;span class="n"&gt;up&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;the&lt;/span&gt; &lt;span class="nn"&gt;bottom&lt;/span&gt; &lt;span class="nn"&gt;of&lt;/span&gt; &lt;span class="nn"&gt;the&lt;/span&gt; &lt;span class="nn"&gt;screen.&lt;/span&gt;
+              &lt;span class="n"&gt;IconButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;icon&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Icons&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;menu&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="n"&gt;onPressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                  &lt;span class="n"&gt;showModalBottomSheet&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Null&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                    &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;openBottomDrawer&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+                  &lt;span class="p"&gt;);&lt;/span&gt;
+                &lt;span class="p"&gt;},&lt;/span&gt;
+              &lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="n"&gt;IconButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;icon&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Icons&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="n"&gt;onPressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                  &lt;span class="n"&gt;Fluttertoast&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;showToast&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Clicked on Search menu action.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+                &lt;span class="p"&gt;},&lt;/span&gt;
+              &lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="n"&gt;IconButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;icon&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Icons&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;more_vert&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="n"&gt;onPressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                  &lt;span class="n"&gt;Fluttertoast&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;showToast&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;This is where overflow menu actions will go&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+                &lt;span class="p"&gt;},&lt;/span&gt;
+              &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;],&lt;/span&gt;
+          &lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;drawer&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;opened&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;modal&lt;/span&gt; &lt;span class="n"&gt;bottom&lt;/span&gt; &lt;span class="n"&gt;sheet&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;openBottomDrawer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Drawer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+          &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;menu&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;edit&lt;/span&gt;
+          &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;ListTile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;leading&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Icons&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mode_edit&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Edit&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;ListTile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Add&lt;/span&gt; &lt;span class="n"&gt;menu&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;
+            &lt;span class="n"&gt;leading&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Icons&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Add&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;],&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;
+Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/bottom_navigation_bar"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://docs.flutter.io/flutter/material/BottomNavigationBar-class.html"&gt;BottomNavigationBar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.flutter.io/flutter/material/BottomAppBar-class.html"&gt;BottomAppBar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://flutterdoc.com/bottom-sheets-in-flutter-ec05c90453e7"&gt;ModalBottomSheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Bottom AppBar"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for AppBar widget</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-appbar-widget.html" rel="alternate"></link><published>2019-02-02T23:33:00-08:00</published><updated>2019-02-02T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-02-02:/flutter-code-recipe-for-appbar-widget.html</id><summary type="html">&lt;p&gt;Implement a basic appBar with a title, actions, and an overflow dropdown menu.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;AppBar&lt;/h2&gt;
 &lt;p&gt;AppBar widget is the main widget in any Android app. It sits at the top of the application,
 and mostly controls major action items. In today's recipe, I'll show you how to design an AppBar for
 a phonebook style app. The AppBar will have a phonebook icon, a title saying 'Contacts' and action items in 
@@ -32,7 +309,7 @@ Clicking on action/overflow menu items displays status message.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Step #4. Add AppBar's title&lt;/p&gt;
+&lt;p&gt;Step #3. Add AppBar's title&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;return Scaffold(
       appBar: AppBar(
         ...
@@ -43,7 +320,7 @@ Clicking on action/overflow menu items displays status message.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Step #5. Add &lt;code&gt;IconButton&lt;/code&gt; action item to send message.&lt;/p&gt;
+&lt;p&gt;Step #4. Add &lt;code&gt;IconButton&lt;/code&gt; action item to send message.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;return Scaffold(
       appBar: AppBar(
         ...
@@ -60,7 +337,7 @@ Clicking on action/overflow menu items displays status message.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Step #6. Add overflow action item using &lt;code&gt;PopupMenuButton&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Step #5. Add overflow action item using &lt;code&gt;PopupMenuButton&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;return Scaffold(
       appBar: AppBar(
         ...
@@ -84,7 +361,7 @@ Clicking on action/overflow menu items displays status message.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Step #7. Handle action item clicks&lt;/p&gt;
+&lt;p&gt;Step #6. Handle action item clicks&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void clicked(BuildContext context, menu) {
     final scaffold = Scaffold.of(context);
     scaffold.showSnackBar(
@@ -184,7 +461,7 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;https://docs.flutter.io/flutter/material/AppBar-class.html&lt;/li&gt;
-&lt;/ol&gt;</content><category term="AppBar"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>A Flutter Live Booklet: Flutter component recipes</title><link href="https://ptyagicodecamp.github.io/a-flutter-live-booklet-flutter-component-recipes.html" rel="alternate"></link><published>2018-01-30T23:33:00-08:00</published><updated>2018-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2018-01-30:/a-flutter-live-booklet-flutter-component-recipes.html</id><summary type="html">&lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Flutter Live Booklet: Flutter component recipes&lt;/h2&gt;
+&lt;/ol&gt;</content><category term="AppBar"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>A Flutter Live Booklet: Flutter component recipes</title><link href="https://ptyagicodecamp.github.io/a-flutter-live-booklet-flutter-component-recipes.html" rel="alternate"></link><published>2019-01-30T23:33:00-08:00</published><updated>2019-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-01-30:/a-flutter-live-booklet-flutter-component-recipes.html</id><summary type="html">&lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Flutter Live Booklet: Flutter component recipes&lt;/h2&gt;
 &lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;
 &lt;p&gt;Components covered:&lt;/p&gt;
 &lt;h3&gt;Animation&lt;/h3&gt;
@@ -195,7 +472,8 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 &lt;h3&gt;Design&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-appbar-widget.html"&gt;Basic Appbar&lt;/a&gt;: Basic AppBar with a title, actions, and an overflow dropdown menu.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for AnimatedOpacity widget</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-animatedopacity-widget.html" rel="alternate"></link><published>2018-01-30T23:33:00-08:00</published><updated>2018-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2018-01-30:/flutter-code-recipe-for-animatedopacity-widget.html</id><summary type="html">&lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;AnimatedOpacity&lt;/h2&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for AnimatedOpacity widget</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-animatedopacity-widget.html" rel="alternate"></link><published>2019-01-30T23:33:00-08:00</published><updated>2019-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-01-30:/flutter-code-recipe-for-animatedopacity-widget.html</id><summary type="html">&lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;AnimatedOpacity&lt;/h2&gt;
 &lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner
 &lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Achieve a smooth animation when transitioning from one UI element to another.&lt;/p&gt;
@@ -368,7 +646,7 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 &lt;ol&gt;
 &lt;li&gt;https://flutter.io/docs/cookbook/animation/opacity-animation.html&lt;/li&gt;
 &lt;li&gt;https://docs.flutter.io/flutter/widgets/Opacity-class.html&lt;/li&gt;
-&lt;/ol&gt;</content><category term="AnimatedOpacity"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for Hero animation</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-hero-animation.html" rel="alternate"></link><published>2018-01-30T23:33:00-08:00</published><updated>2018-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2018-01-30:/flutter-code-recipe-for-hero-animation.html</id><summary type="html">&lt;p&gt;Navigating from one page to another using Hero animation.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Animation Hero&lt;/h2&gt;
+&lt;/ol&gt;</content><category term="AnimatedOpacity"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for Hero animation</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-hero-animation.html" rel="alternate"></link><published>2019-01-30T23:33:00-08:00</published><updated>2019-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-01-30:/flutter-code-recipe-for-hero-animation.html</id><summary type="html">&lt;p&gt;Navigating from one page to another using Hero animation.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Animation Hero&lt;/h2&gt;
 &lt;p&gt;Hero animation is a useful transition when items are listed with small icons. Tapping on 
 icons can open in another page with enlarged icon widget.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner
