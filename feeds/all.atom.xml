@@ -6,7 +6,7 @@ This recipe will show how to implement a bottom navigation bar with a menu to
 open drawer for more action items like "add" &amp;amp; "edit", a "search" menu action and finally 
 an overflow menu action item. &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Implement a BottomNavigationBar with menu, search and overflow action items.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Implement a BottomNavigationBar using BottomAppBar with menu, search and overflow action items.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Focus Widget:&lt;/em&gt;&lt;/strong&gt; BottomAppBar&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; BottomNavigationBar displays a menu to bring up bottom navigation drawer, 
 a dummy search action icon and overflow action items menu. Clicking on each menu action 
@@ -474,7 +474,7 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 &lt;h3&gt;Design&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-appbar-widget.html"&gt;Basic Appbar&lt;/a&gt;: Basic AppBar with a title, actions, and an overflow dropdown menu.&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/bottomnavigationbar-with-menu-search-and-overflow-action-items.html"&gt;BottomAppBar&lt;/a&gt;: Implement a BottomNavigationBar with menu, search and overflow action items.&lt;/li&gt;
 &lt;/ul&gt;</content><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for AnimatedOpacity widget</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-animatedopacity-widget.html" rel="alternate"></link><published>2019-01-30T23:33:00-08:00</published><updated>2019-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-01-30:/flutter-code-recipe-for-animatedopacity-widget.html</id><summary type="html">&lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;AnimatedOpacity&lt;/h2&gt;
 &lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner
