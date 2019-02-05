@@ -12,6 +12,8 @@ an overflow menu action item. &lt;/p&gt;
 a dummy search action icon and overflow action items menu. Clicking on each menu action 
 will display a message using &lt;a href="https://pub.dartlang.org/packages/fluttertoast"&gt;Fluttertoast&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="List item icon" src="https://ptyagicodecamp.github.io/bottom_appbar.png"&gt;&lt;/p&gt;
+&lt;p&gt;Checkout in action:
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/qID2Wut7rEM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
 &lt;p&gt;Step #1. Since we'll be using &lt;code&gt;fluttertoast&lt;/code&gt; for showing status messages, first we'll be adding 
 &lt;code&gt;fluttertoast&lt;/code&gt; library dependency in &lt;code&gt;pubspec.yaml&lt;/code&gt; like below:&lt;/p&gt;
