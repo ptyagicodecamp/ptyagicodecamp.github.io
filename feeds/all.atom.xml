@@ -11,7 +11,7 @@ an overflow menu action item. &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; BottomNavigationBar displays a menu to bring up bottom navigation drawer, 
 a dummy search action icon and overflow action items menu. Clicking on each menu action 
 will display a message using &lt;a href="https://pub.dartlang.org/packages/fluttertoast"&gt;Fluttertoast&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="List item icon" src="https://ptyagicodecamp.github.io/TODO.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="List item icon" src="https://ptyagicodecamp.github.io/bottom_appbar.png"&gt;&lt;/p&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
 &lt;p&gt;Step #1. Since we'll be using &lt;code&gt;fluttertoast&lt;/code&gt; for showing status messages, first we'll be adding 
 &lt;code&gt;fluttertoast&lt;/code&gt; library dependency in &lt;code&gt;pubspec.yaml&lt;/code&gt; like below:&lt;/p&gt;
