@@ -279,8 +279,8 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 &lt;li&gt;&lt;a href="https://docs.flutter.io/flutter/material/BottomAppBar-class.html"&gt;BottomAppBar&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://flutterdoc.com/bottom-sheets-in-flutter-ec05c90453e7"&gt;ModalBottomSheet&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;_Liked the article ?
-Couldn't find a topic of your interest ? Please leave comments below about topics you would like me to write.
+&lt;p&gt;__Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments below about topics you would like me to write !
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/p&gt;</content><category term="Bottom AppBar"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for AppBar widget</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-appbar-widget.html" rel="alternate"></link><published>2019-02-02T23:33:00-08:00</published><updated>2019-02-02T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-02-02:/flutter-code-recipe-for-appbar-widget.html</id><summary type="html">&lt;p&gt;Implement a basic appBar with a title, actions, and an overflow dropdown menu.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;AppBar&lt;/h2&gt;
 &lt;p&gt;AppBar widget is the main widget in any Android app. It sits at the top of the application,
 and mostly controls major action items. In today's recipe, I'll show you how to design an AppBar for
@@ -467,8 +467,8 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 &lt;ol&gt;
 &lt;li&gt;https://docs.flutter.io/flutter/material/AppBar-class.html&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;_Liked the article ?
-Couldn't find a topic of your interest ? Please leave comments below about topics you would like me to write.
+&lt;p&gt;__Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments below about topics you would like me to write !
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/p&gt;</content><category term="AppBar"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>A Flutter Live Booklet: Flutter component recipes</title><link href="https://ptyagicodecamp.github.io/a-flutter-live-booklet-flutter-component-recipes.html" rel="alternate"></link><published>2019-01-30T23:33:00-08:00</published><updated>2019-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-01-30:/a-flutter-live-booklet-flutter-component-recipes.html</id><summary type="html">&lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Flutter Live Booklet: Flutter component recipes&lt;/h2&gt;
 &lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;
 &lt;p&gt;Components covered:&lt;/p&gt;
@@ -655,8 +655,8 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 &lt;li&gt;https://flutter.io/docs/cookbook/animation/opacity-animation.html&lt;/li&gt;
 &lt;li&gt;https://docs.flutter.io/flutter/widgets/Opacity-class.html&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;_Liked the article ?
-Couldn't find a topic of your interest ? Please leave comments below about topics you would like me to write.
+&lt;p&gt;__Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments below about topics you would like me to write !
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/p&gt;</content><category term="AnimatedOpacity"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Flutter code recipe for Hero animation</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-hero-animation.html" rel="alternate"></link><published>2019-01-30T23:33:00-08:00</published><updated>2019-01-30T23:33:00-08:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-01-30:/flutter-code-recipe-for-hero-animation.html</id><summary type="html">&lt;p&gt;Navigating from one page to another using Hero animation.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Animation Hero&lt;/h2&gt;
 &lt;p&gt;Hero animation is a useful transition when items are listed with small icons. Tapping on 
 icons can open in another page with enlarged icon widget.&lt;/p&gt;
@@ -856,8 +856,8 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 &lt;li&gt;&lt;a href="https://flutterbyexample.com/hero-transition"&gt;Reference&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Be9UH1kXFDw"&gt;Youtube video&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;_Liked the article ?
-Couldn't find a topic of your interest ? Please leave comments below about topics you would like me to write.
+&lt;p&gt;__Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments below about topics you would like me to write !
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/p&gt;</content><category term="hero-animation"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Managing App's Lifecycle using "Lifecycle Aware components" (Part 1)</title><link href="https://ptyagicodecamp.github.io/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html" rel="alternate"></link><published>2017-08-12T22:15:00-07:00</published><updated>2017-08-12T22:15:00-07:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-08-12:/managing-apps-lifecycle-using-lifecycle-aware-components-part-1.html</id><summary type="html">&lt;p&gt;This post is first part of 3 parts series about recently introduced architecture components.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This covers using ViewModel component to persist Activity configuration data across screen rotations.&lt;/p&gt;
 &lt;h2&gt;Managing App's Lifecycle using "Lifecycle Aware components" (ViewModel)&lt;/h2&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
