@@ -14,7 +14,8 @@ populate the list of words.&lt;/p&gt;
 3. How to add actions like "clear" to reset search bar, and a dummy action "mic" for voice input.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Sorted Wordlist" src="https://ptyagicodecamp.github.io/wordlist.png"&gt;
 &lt;img alt="Search in Wordlist" src="https://ptyagicodecamp.github.io/wordlist_search.png"&gt;&lt;/p&gt;
-&lt;p&gt;//TODO: Youtube video in action&lt;/p&gt;
+&lt;p&gt;Checkout in action:
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/GuP1Voc4pTw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
 &lt;p&gt;Step #0: Create "Flutter Application" project in Android Studio.&lt;/p&gt;
 &lt;p&gt;Step #1. Get dependencies. First thing to add &lt;code&gt;english_words&lt;/code&gt; dependency in
