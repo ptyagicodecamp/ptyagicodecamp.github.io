@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
+
+    <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="techLog Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-133714063-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="ptyagi" />
+<meta name="description" content="This post is about how to design landing page for a hypothetical mobile and web app for Flutter resources say &#34;Flutter-to-Fly !&#34;." />
+<meta name="keywords" content="Cross-platform, Flutter, Code-recipes, Android, Android Studio, iOS">
+
+<meta property="og:site_name" content="techLog"/>
+<meta property="og:title" content="Designing Flutter prototype for Landing Page"/>
+<meta property="og:description" content="This post is about how to design landing page for a hypothetical mobile and web app for Flutter resources say &#34;Flutter-to-Fly !&#34;."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/designing-flutter-prototype-for-landing-page.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-06-03 00:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Flutter"/>
+<meta property="article:tag" content="Cross-platform"/>
+<meta property="article:tag" content="Flutter"/>
+<meta property="article:tag" content="Code-recipes"/>
+<meta property="article:tag" content="Android"/>
+<meta property="article:tag" content="Android Studio"/>
+<meta property="article:tag" content="iOS"/>
+<meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
+
+  <title>techLog &ndash; Designing Flutter prototype for Landing Page</title>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6359982310050489",
+      enable_page_level_ads: true
+    });
+  </script>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://ptyagicodecamp.github.io">
+        <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="techLog" title="techLog">
+      </a>
+      <h1><a href="https://ptyagicodecamp.github.io">techLog</a></h1>
+
+<p>Explore | Android | Software Engineering</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="https://www.paypal.me/pritya" target="_blank">Support</a></li>
+          <li><a href="https://www.linkedin.com/in/priyankatyagi" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/ptyagicodecamp" target="_blank">GitHub</a></li>
+          <li><a href="https://medium.com/@ptyagicodecamp" target="_blank">Medium</a></li>
+          <li><a href="https://twitter.com/ptyagi13" target="_blank">Twitter</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-LinkedIn" href="https://www.linkedin.com/in/priyankatyagi" target="_blank"><i class="fa fa-LinkedIn"></i></a></li>
+        <li><a class="sc-GitHub" href="https://github.com/ptyagicodecamp" target="_blank"><i class="fa fa-GitHub"></i></a></li>
+        <li><a class="sc-Medium" href="https://medium.com/@ptyagicodecamp" target="_blank"><i class="fa fa-Medium"></i></a></li>
+        <li><a class="sc-Twitter" href="https://twitter.com/ptyagi13" target="_blank"><i class="fa fa-Twitter"></i></a></li>
+      </ul>
+    </div>
+
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle ads-aside"
+           data-ad-client="ca-pub-6359982310050489"
+           data-ad-slot="8977779775"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+  </aside>
+  <main>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle ads-responsive"
+           data-ad-client="ca-pub-6359982310050489"
+           data-ad-slot="8977779775"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+    <nav>
+      <a href="https://ptyagicodecamp.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="designing-flutter-prototype-for-landing-page">Designing Flutter prototype for Landing Page</h1>
+    <p>
+          Posted on June 03, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h3>Introduction</h3>
+<p>This post is about how to design landing page for a hypothetical mobile and web app for Flutter resources say "Flutter-to-Fly !". This post will have two sections to it:
+1. Designing and implementing the landing page for Android/iOS platform.
+2. Since Flutter's web implementation is in tech preview as of now, so I'll show how web version of the same landing page can be implemented for Web.</p>
+<h4>Part-1: Flutter-to-fly landing page for Web</h4>
+<p>Note: As of now (June 3rd, 2019), there's no actually one code base solution exists for cross-platform Flutter. Web app's code uses specific web libraries. Plug-ins used in flutter native apps can't be used in web apps. Its recommended to create a git branch to host web app code for now until web comes out of tech-preview and experimentation.</p>
+<p><strong><em>Setup</em></strong>*
+1. Create a Flutter Project in Android Studio.
+2. Create a git branch <code>web</code>
+3. Copy <code>pubspec.yaml</code> to <code>pubspec.yaml.native</code> for backing up native platform settings. We would need this for native project in another branch say <code>master</code>. I would keep native code in default branch <code>master</code>.</p>
+<p><strong><em>Configure <code>pubspec.yaml</code></em></strong>
+Adapt <code>pubspec.yaml</code> for Web as described in <a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md">this link</a>.</p>
+<p>This is how <code>pubspec.yaml</code> for web app will look like:</p>
+<div class="highlight"><pre><span></span><span class="n">name</span><span class="o">:</span> <span class="n">landingpage</span>
+<span class="n">description</span><span class="o">:</span> <span class="n">Cross</span> <span class="n">platform</span> <span class="n">sample</span> <span class="n">landing</span> <span class="n">page</span> <span class="n">implemented</span> <span class="k">in</span> <span class="n">Flutter</span>
+
+<span class="n">version</span><span class="o">:</span> <span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="n">dependencies</span><span class="o">:</span>
+  <span class="n">flutter_web</span><span class="o">:</span> <span class="n">any</span>
+
+<span class="n">dev_dependencies</span><span class="o">:</span>
+  <span class="n">flutter_web_test</span><span class="o">:</span> <span class="n">any</span>
+  <span class="err">#</span><span class="n">dependencies</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">the</span> <span class="n">Dart</span> <span class="n">web</span> <span class="n">build</span> <span class="n">system</span>
+  <span class="n">build_runner</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">2</span>
+  <span class="n">build_web_compilers</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span>
+  <span class="n">test</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.3</span><span class="o">.</span><span class="mi">4</span>
+
+  <span class="err">##</span> <span class="n">These</span> <span class="n">overrides</span> <span class="n">tell</span> <span class="n">the</span> <span class="k">package</span> <span class="nn">tools</span> <span class="n">to</span> <span class="kd">get</span> <span class="n">them</span> <span class="n">from</span> <span class="n">GitHub</span>
+<span class="n">dependency_overrides</span><span class="o">:</span>
+  <span class="n">flutter_web</span><span class="o">:</span>
+    <span class="n">git</span><span class="o">:</span>
+      <span class="n">url</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/flutter/</span><span class="n">flutter_web</span>
+      <span class="n">path</span><span class="o">:</span> <span class="n">packages</span><span class="o">/</span><span class="n">flutter_web</span>
+  <span class="n">flutter_web_ui</span><span class="o">:</span>
+    <span class="n">git</span><span class="o">:</span>
+      <span class="n">url</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/flutter/</span><span class="n">flutter_web</span>
+      <span class="n">path</span><span class="o">:</span> <span class="n">packages</span><span class="o">/</span><span class="n">flutter_web_ui</span>
+  <span class="n">flutter_web_test</span><span class="o">:</span>
+    <span class="n">git</span><span class="o">:</span>
+      <span class="n">url</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/flutter/</span><span class="n">flutter_web</span>
+      <span class="n">path</span><span class="o">:</span> <span class="n">packages</span><span class="o">/</span><span class="n">flutter_web_test</span>
+</pre></div>
+
+
+<p><strong><em>Create <code>web</code> directory</em></strong>
+Create a <code>web</code> directory to host the entry point for the web app at root level (same level as <code>lib</code> directory). <code>web/index.html</code> and <code>web/main.dart</code> needs to be added as mentioned <a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md#webindexhtml-and-webmaindart">here</a></p>
+<p><strong><em>Building web app</em></strong>
+Navigate to current working directory and get all dependencies.</p>
+<div class="highlight"><pre><span></span>cd landingpage
+pub get
+</pre></div>
+
+
+<p>Dart uses <code>webdev</code> to build and run project. Make sure to activate <code>webdev</code> before building project like below. Don't forget to include it in system PATH using <code>export PATH="$PATH":"$HOME/.pub-cache/bin"</code> after activation.</p>
+<div class="highlight"><pre><span></span>pub global activate webdev
+webdev serve
+</pre></div>
+
+
+<p>Web app will start running at localhost port 8080</p>
+<p>Note: Make sure that you've replaced all <code>package:flutter</code> packages with <code>package:flutter_web</code> variant.</p>
+<p>At this point, we're done with setting up Flutter project to start building web app. You'll see default counter app running, provided as part of built-in examples.</p>
+<p><img alt="Flutter Web Setup" src="https://ptyagicodecamp.github.io/flutter_web_setup.jpg"></p>
+<p><strong><em>Step1</em></strong>
+Clean up the pre-generated code by Flutter. Make <code>MyHomePage</code> <code>Stateless</code> widget. Remove the title passed into <code>MyHomePage</code>. Update the title of the app to <code>Flutter to fly !</code>.
+This is how your <code>main.dart</code> should look like:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter_web/material.dart&#39;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span>
+
+<span class="k">class</span> <span class="nc">MyApp</span> <span class="n">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="n">This</span> <span class="n">widget</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">root</span> <span class="n">of</span> <span class="n">your</span> <span class="n">application</span><span class="o">.</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">MaterialApp</span><span class="p">(</span>
+      <span class="n">title</span><span class="p">:</span> <span class="s1">&#39;Flutter to fly !&#39;</span><span class="p">,</span>
+      <span class="n">theme</span><span class="p">:</span> <span class="n">ThemeData</span><span class="p">(</span>
+        <span class="n">primarySwatch</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span>
+      <span class="p">),</span>
+      <span class="n">home</span><span class="p">:</span> <span class="n">MyHomePage</span><span class="p">(),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">MyHomePage</span> <span class="n">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">implement</span> <span class="n">build</span>
+    <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Now, lets add header and body for the landing page. Header will have site's logo and navigation links. Body will have background image, text box to submit emails to subscribe to mailing list for any content updates.</p>
+<p>First, add a linear gradient on the whole page using two different shades of white (I created a class <code>MyColors.dar</code> to hold all my custom colors).</p>
+<div class="highlight"><pre><span></span>@override
+  Widget build(BuildContext context) {
+    //Add a container and provide a linear gradient.
+    //basically use different shades of same color.
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [MyColors.white1, MyColors.white2])),
+    );
+  }
+</pre></div>
+
+
+<p>Add a <code>Scaffold</code> as child to <code>Container</code> above to hold the whole page like below:</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">MyHomePage</span> <span class="kr">extends</span> <span class="nx">StatelessWidget</span> <span class="p">{</span>
+  <span class="kd">@override</span>
+  <span class="nx">Widget</span> <span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Add a container and provide a linear gradient.</span>
+    <span class="c1">//basically use different shades of same color.</span>
+    <span class="k">return</span> <span class="nx">Container</span><span class="p">(</span>
+      <span class="nx">decoration</span>: <span class="kt">BoxDecoration</span><span class="p">(</span>
+          <span class="nx">gradient</span>: <span class="kt">LinearGradient</span><span class="p">(</span><span class="nx">colors</span><span class="o">:</span> <span class="p">[</span><span class="nx">MyColors</span><span class="p">.</span><span class="nx">white1</span><span class="p">,</span> <span class="nx">MyColors</span><span class="p">.</span><span class="nx">white2</span><span class="p">])),</span>
+      <span class="nx">child</span>: <span class="kt">Scaffold</span><span class="p">(</span>
+        <span class="nx">backgroundColor</span>: <span class="kt">Colors.transparent</span><span class="p">,</span>
+        <span class="nx">body</span>: <span class="kt">SingleChildScrollView</span><span class="p">(</span>
+          <span class="nx">child</span>: <span class="kt">Column</span><span class="p">(</span>
+            <span class="nx">children</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="nx">Header</span><span class="p">(),</span> <span class="nx">Body</span><span class="p">()],</span>
+          <span class="p">),</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><code>SingleChildScrollView</code> will contain header and body of the page. I've created two classes: <code>Header</code> and <code>Body</code> to help us with header and body section/widgets.</p>
+<p><em>Header Widget</em>
+Header section/widget contains logo and site's title at left side, and navigation links and login button at right side.
+I'll use <code>Padding</code> widget to contain header section's logo and links.
+<img alt="Header logo" src="https://ptyagicodecamp.github.io/ftf_logo.jpg"></p>
+<p>Below is the code snippet that's responsible for generating logo above:</p>
+<div class="highlight"><pre><span></span>//Builds rectangle with circular corners and Text on it and next to it as title
+Widget buildLogo() {
+  return Row(
+    children: &lt;Widget&gt;[
+      Container(
+        width: 60,
+        height: 60,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+          gradient: LinearGradient(colors: [MyColors.blue1, MyColors.blue2],
+          begin: Alignment.bottomRight, end: Alignment.topLeft),
+        ),
+        child: Center(
+          child: Text(Strings.logoTitle,
+          style: TextStyle(fontSize: 30, color: MyColors.white1),),
+        ),
+      ),
+      //give some space between logo box and title
+      SizedBox(
+        width: 16,
+      ),
+      Text(Strings.appTitle, style: TextStyle(fontSize: 26),)
+    ],
+  );
+}
+</pre></div>
+
+
+<p><em>LogIn Button</em>
+<img alt="Header logo" src="https://ptyagicodecamp.github.io/ftf_login.jpg"></p>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Builds</span> <span class="nt">and</span> <span class="nt">decorates</span> <span class="nt">login</span> <span class="nt">button</span>
+<span class="nt">Widget</span> <span class="nt">buildLoginButton</span><span class="o">()</span> <span class="p">{</span>
+  <span class="err">return</span> <span class="err">Padding(</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="nf">all</span><span class="p">(</span><span class="mf">8.0</span><span class="p">),</span>
+    <span class="n">child</span><span class="o">:</span> <span class="nf">InkWell</span><span class="p">(</span>
+      <span class="n">child</span><span class="err">:</span> <span class="nf">Container</span><span class="p">(</span>
+        <span class="n">margin</span><span class="err">:</span> <span class="n">EdgeInsets</span><span class="err">.</span><span class="nf">only</span><span class="p">(</span><span class="kc">left</span><span class="err">:</span> <span class="mi">20</span><span class="p">),</span>
+        <span class="n">width</span><span class="err">:</span> <span class="mi">120</span><span class="p">,</span>
+        <span class="n">height</span><span class="err">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="n">decoration</span><span class="err">:</span> <span class="nf">BoxDecoration</span><span class="p">(</span>
+          <span class="n">gradient</span><span class="err">:</span> <span class="nf">LinearGradient</span><span class="p">(</span><span class="n">colors</span><span class="err">:</span> <span class="cp">[</span>
+            <span class="nx">MyColors.blue1</span><span class="p">,</span> <span class="nx">MyColors.blue2</span>
+          <span class="cp">]</span><span class="p">,</span>
+          <span class="n">begin</span><span class="err">:</span> <span class="n">Alignment</span><span class="err">.</span><span class="n">bottomRight</span><span class="p">,</span>
+          <span class="kc">end</span><span class="err">:</span> <span class="n">Alignment</span><span class="err">.</span><span class="n">topLeft</span><span class="p">),</span>
+          <span class="n">borderRadius</span><span class="err">:</span> <span class="n">BorderRadius</span><span class="err">.</span><span class="nf">circular</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+          <span class="n">boxShadow</span><span class="err">:</span> <span class="cp">[</span>
+            <span class="nx">BoxShadow</span><span class="p">(</span>
+              <span class="nx">color</span><span class="p">:</span> <span class="nx">MyColors.blue3.withOpacity</span><span class="p">(</span><span class="mf">0.3</span><span class="p">),</span>
+              <span class="nx">offset</span><span class="p">:</span> <span class="nx">Offset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="c1">//Shadow starts at x=0, y=8</span>
+              <span class="nx">blurRadius</span><span class="p">:</span> <span class="mi">8</span>
+            <span class="p">)</span>
+          <span class="cp">]</span>
+        <span class="p">),</span>
+        <span class="n">child</span><span class="err">:</span> <span class="nf">Material</span><span class="p">(</span>
+          <span class="kc">color</span><span class="err">:</span> <span class="n">Colors</span><span class="err">.</span><span class="kc">transparent</span><span class="p">,</span>
+          <span class="n">child</span><span class="err">:</span> <span class="nf">Center</span><span class="p">(</span>
+            <span class="n">child</span><span class="err">:</span> <span class="nf">Text</span><span class="p">(</span><span class="n">Strings</span><span class="err">.</span><span class="n">loginButton</span><span class="p">,</span>
+            <span class="kc">style</span><span class="err">:</span> <span class="nf">TextStyle</span><span class="p">(</span>
+              <span class="kc">color</span><span class="err">:</span> <span class="n">MyColors</span><span class="err">.</span><span class="n">white1</span><span class="p">,</span>
+              <span class="n">fontSize</span><span class="err">:</span> <span class="mi">18</span><span class="p">,</span>
+              <span class="n">letterSpacing</span><span class="err">:</span> <span class="mi">1</span>
+            <span class="p">),),</span>
+          <span class="p">),</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">),</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><em>Header Navigation Links</em>
+Now add header navigation links just before the login button created above to finish header section.</p>
+<p>Get the list of links to be shown in the header:</p>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Builds</span> <span class="nt">navigation</span> <span class="nt">list</span> <span class="nt">for</span> <span class="nt">header</span>
+<span class="nt">List</span><span class="o">&lt;</span><span class="nt">Widget</span><span class="o">&gt;</span> <span class="nt">getLinksListing</span><span class="o">()</span> <span class="p">{</span>
+  <span class="err">var</span> <span class="err">links</span> <span class="err">=</span> <span class="cp">[</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="s2">&quot;Samples&quot;</span><span class="p">,</span> <span class="s2">&quot;Videos&quot;</span><span class="p">,</span> <span class="s2">&quot;Plugins&quot;</span><span class="cp">]</span><span class="p">;</span>
+  <span class="err">return</span> <span class="err">links.map((link)</span> <span class="err">{</span>
+    <span class="err">return</span> <span class="err">Padding(</span>
+      <span class="k">padding</span><span class="p">:</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="nf">only</span><span class="p">(</span><span class="kc">left</span><span class="err">:</span> <span class="mi">18</span><span class="p">),</span>
+      <span class="n">child</span><span class="o">:</span> <span class="nf">Text</span><span class="p">(</span>
+        <span class="n">link</span><span class="p">,</span>
+        <span class="kc">style</span><span class="err">:</span> <span class="nf">TextStyle</span><span class="p">(</span><span class="n">fontSize</span><span class="err">:</span> <span class="mi">15</span><span class="p">,</span> <span class="n">fontWeight</span><span class="err">:</span> <span class="n">FontWeight</span><span class="err">.</span><span class="kc">bold</span><span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span><span class="o">)</span><span class="p">.</span><span class="nc">toList</span><span class="o">();</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Add links listing to Header:</p>
+<div class="highlight"><pre><span></span>//Builds navigation links at the right top of landing page
+Widget buildHeaderLinks() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: getLinksListing()..add(buildLoginButton()),
+  );
+}
+</pre></div>
+
+
+<p>Finally, build header widget:</p>
+<div class="highlight"><pre><span></span><span class="p">@</span><span class="k">override</span>
+<span class="nt">Widget</span> <span class="nt">build</span><span class="o">(</span><span class="nt">BuildContext</span> <span class="nt">context</span><span class="o">)</span> <span class="p">{</span>
+  <span class="nt">return</span> <span class="nt">Padding</span><span class="o">(</span>
+    <span class="nt">padding</span><span class="o">:</span> <span class="nt">EdgeInsets</span><span class="p">.</span><span class="nc">symmetric</span><span class="o">(</span><span class="nt">horizontal</span><span class="o">:</span> <span class="nt">45</span><span class="o">,</span> <span class="nt">vertical</span><span class="o">:</span> <span class="nt">38</span><span class="o">),</span>
+    <span class="nt">child</span><span class="o">:</span> <span class="nt">buildHeader</span><span class="o">(),</span>
+  <span class="o">);</span>
+<span class="p">}</span>
+
+<span class="nt">Widget</span> <span class="nt">buildHeader</span><span class="o">()</span> <span class="p">{</span>
+  <span class="err">return</span> <span class="err">Row(</span>
+    <span class="n">mainAxisAlignment</span><span class="p">:</span> <span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">spaceBetween</span><span class="p">,</span>
+    <span class="n">children</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="cp">[</span><span class="nx">buildLogo</span><span class="p">(),</span> <span class="nx">buildHeaderLinks</span><span class="p">()</span><span class="cp">]</span><span class="p">,</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>This is how header looks at this point:
+<img alt="Flutter Web Setup" src="https://ptyagicodecamp.github.io/ftf_header.jpg"></p>
+<p>We're done with header for now. Let's move to body section in Step2.</p>
+<p><strong><em>Step2</em></strong>
+Body section has three components to it.
+1. Background image showing flutter art work.
+2. Welcome text.
+3. Mailing list subscription: Text box to let user enter their email addresses to subscribe to the newsletter.</p>
+<p><em>Adding Background image</em>
+All images goes inside <code>web/assets</code> directory. Background image is added aligned to right side of the page.</p>
+<div class="highlight"><pre><span></span>//Adds background Image
+Widget addBackground() {
+  return FractionallySizedBox(
+    alignment: Alignment.centerRight, //to keep images aligned to right
+    widthFactor: .6, //covers about 60% of the screen width
+    child: Image.network(backgroundImage, scale: .85,),
+  );
+}
+</pre></div>
+
+
+<p>Let's work on welcome text title.</p>
+<p><em>Adding Welcome Text</em>
+I've added welcome text at this point, and it looks like below:
+<img alt="Flutter Web Setup" src="https://ptyagicodecamp.github.io/ftf_body1.jpg"></p>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Adds</span> <span class="nt">welcome</span> <span class="nt">text</span>
+<span class="nt">Widget</span> <span class="nt">addWelcomeText</span><span class="o">()</span> <span class="p">{</span>
+  <span class="err">return</span> <span class="err">FractionallySizedBox(</span>
+    <span class="n">alignment</span><span class="p">:</span> <span class="n">Alignment</span><span class="o">.</span><span class="n">centerLeft</span><span class="p">,</span> <span class="o">//</span><span class="kc">text</span> <span class="n">aligned</span> <span class="kc">to</span> <span class="kc">left</span> <span class="n">side</span>
+    <span class="n">widthFactor</span><span class="o">:</span> <span class="mf">.6</span><span class="p">,</span> <span class="o">//</span><span class="n">covers</span> <span class="n">about</span> <span class="n">half</span> <span class="n">of</span> <span class="n">the</span> <span class="kc">screen</span>
+    <span class="n">child</span><span class="o">:</span> <span class="nf">Padding</span><span class="p">(</span>
+      <span class="n">padding</span><span class="err">:</span> <span class="n">EdgeInsets</span><span class="err">.</span><span class="nf">only</span><span class="p">(</span><span class="kc">left</span><span class="err">:</span> <span class="mi">48</span><span class="p">),</span>
+      <span class="n">child</span><span class="err">:</span> <span class="nf">Column</span><span class="p">(</span>
+        <span class="n">crossAxisAlignment</span><span class="err">:</span> <span class="n">CrossAxisAlignment</span><span class="err">.</span><span class="kc">start</span><span class="p">,</span>
+        <span class="n">mainAxisAlignment</span><span class="err">:</span> <span class="n">MainAxisAlignment</span><span class="err">.</span><span class="kc">center</span><span class="p">,</span>
+        <span class="n">children</span><span class="err">:</span> <span class="err">&lt;</span><span class="n">Widget</span><span class="err">&gt;</span><span class="cp">[</span>
+          <span class="nx">Text</span><span class="p">(</span>
+            <span class="nx">Strings.hello</span><span class="p">,</span>
+            <span class="nx">style</span><span class="p">:</span> <span class="nx">TextStyle</span><span class="p">(</span>
+              <span class="nx">fontWeight</span><span class="p">:</span> <span class="nx">FontWeight.bold</span><span class="p">,</span>
+              <span class="nx">fontSize</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+              <span class="nx">color</span><span class="p">:</span> <span class="nx">MyColors.blue4</span><span class="p">,</span>
+            <span class="p">),</span>
+          <span class="p">),</span>
+          <span class="nx">RichText</span><span class="p">(</span>
+            <span class="nx">text</span><span class="p">:</span> <span class="nx">TextSpan</span><span class="p">(</span>
+              <span class="nx">text</span><span class="p">:</span> <span class="nx">Strings.welcomeTo</span><span class="p">,</span>
+              <span class="nx">style</span><span class="p">:</span> <span class="nx">TextStyle</span><span class="p">(</span>
+                <span class="nx">fontSize</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+                <span class="nx">color</span><span class="p">:</span> <span class="nx">MyColors.blue4</span>
+              <span class="p">),</span>
+              <span class="nx">children</span><span class="p">:</span> <span class="err">[</span>
+                <span class="nx">TextSpan</span><span class="p">(</span>
+                  <span class="nx">text</span><span class="p">:</span> <span class="nx">Strings.ftf</span><span class="p">,</span>
+                  <span class="nx">style</span><span class="p">:</span> <span class="nx">TextStyle</span><span class="p">(</span>
+                    <span class="nx">fontSize</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+                    <span class="nx">fontWeight</span><span class="p">:</span> <span class="nx">FontWeight.bold</span><span class="p">,</span>
+                    <span class="nx">color</span><span class="p">:</span> <span class="nx">Colors.black54</span>
+                  <span class="p">)</span>
+                <span class="p">)</span>
+              <span class="cp">]</span>
+            <span class="p">),</span>
+          <span class="p">),</span>
+          <span class="nf">Padding</span><span class="p">(</span>
+            <span class="n">padding</span><span class="err">:</span> <span class="n">EdgeInsets</span><span class="err">.</span><span class="nf">only</span><span class="p">(</span><span class="kc">left</span><span class="err">:</span> <span class="mf">12.0</span><span class="p">,</span> <span class="kc">top</span><span class="err">:</span> <span class="mi">20</span><span class="p">),</span>
+            <span class="n">child</span><span class="err">:</span> <span class="nf">Text</span><span class="p">(</span><span class="n">Strings</span><span class="err">.</span><span class="n">subscribeText</span><span class="p">),</span>
+          <span class="p">),</span>
+          <span class="nf">SizedBox</span><span class="p">(</span><span class="n">height</span><span class="err">:</span> <span class="mi">40</span><span class="p">,),</span> <span class="o">//</span><span class="n">Give</span> <span class="n">some</span> <span class="n">spacing</span>
+          <span class="nf">EmailBox</span><span class="p">()</span> <span class="o">//</span><span class="n">Alert</span> <span class="o">:</span> <span class="n">this</span> <span class="n">will</span> <span class="n">be</span> <span class="n">added</span> <span class="n">after</span> <span class="n">next</span> <span class="n">step</span>
+        <span class="p">],</span>
+      <span class="p">),</span>
+    <span class="p">),</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Let's work on the third part of the body section: users inputting their email addresses in text box to subscribe to site.</p>
+<p><em>Mailing list subscription</em>
+There're two parts to this component. One is text box for user to enter email addresses. Let's call this widget <code>EmailBox</code>. Another is button to click on to subscribe. I'm naming this widget as <code>SubscribeButton</code></p>
+<p>Here's how EmailBox code looks like:</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">EmailBox</span> <span class="kr">extends</span> <span class="nx">StatelessWidget</span> <span class="p">{</span>
+  <span class="kd">@override</span>
+  <span class="nx">Widget</span> <span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Padding</span><span class="p">(</span>
+      <span class="nx">padding</span>: <span class="kt">EdgeInsets.only</span><span class="p">(</span><span class="nx">left</span>: <span class="kt">4.0</span><span class="p">,</span> <span class="nx">right</span>: <span class="kt">74</span><span class="p">,</span> <span class="nx">top</span>: <span class="kt">10</span><span class="p">,</span> <span class="nx">bottom</span>: <span class="kt">40</span><span class="p">),</span>
+      <span class="nx">child</span>: <span class="kt">Container</span><span class="p">(</span>
+        <span class="nx">height</span>: <span class="kt">60</span><span class="p">,</span>
+        <span class="nx">decoration</span>: <span class="kt">BoxDecoration</span><span class="p">(</span>
+            <span class="nx">color</span>: <span class="kt">MyColors.white1</span><span class="p">,</span>
+            <span class="nx">borderRadius</span>: <span class="kt">BorderRadius.circular</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+            <span class="nx">boxShadow</span><span class="o">:</span> <span class="p">[</span>
+              <span class="nx">BoxShadow</span><span class="p">(</span>
+                  <span class="nx">color</span>: <span class="kt">Colors.black12</span><span class="p">,</span> <span class="nx">offset</span>: <span class="kt">Offset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="nx">blurRadius</span>: <span class="kt">8</span><span class="p">)</span>
+            <span class="p">]),</span>
+        <span class="nx">child</span>: <span class="kt">Padding</span><span class="p">(</span>
+          <span class="nx">padding</span>: <span class="kt">EdgeInsets.symmetric</span><span class="p">(</span><span class="nx">horizontal</span>: <span class="kt">20</span><span class="p">),</span>
+          <span class="nx">child</span>: <span class="kt">Row</span><span class="p">(</span>
+            <span class="nx">mainAxisAlignment</span>: <span class="kt">MainAxisAlignment.spaceBetween</span><span class="p">,</span>
+            <span class="nx">children</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+              <span class="nx">Expanded</span><span class="p">(</span>
+                <span class="nx">flex</span>: <span class="kt">8</span><span class="p">,</span>
+                <span class="nx">child</span>: <span class="kt">TextField</span><span class="p">(</span>
+                  <span class="nx">decoration</span>: <span class="kt">InputDecoration</span><span class="p">(</span>
+                      <span class="nx">border</span>: <span class="kt">InputBorder.none</span><span class="p">,</span> <span class="nx">hintText</span>: <span class="kt">Strings.email_hint</span><span class="p">),</span>
+                <span class="p">),</span>
+              <span class="p">),</span>
+              <span class="nx">Expanded</span><span class="p">(</span>
+                <span class="nx">flex</span>: <span class="kt">2</span><span class="p">,</span>
+                <span class="nx">child</span>: <span class="kt">SubscribeButton</span><span class="p">(),</span>
+              <span class="p">)</span>
+            <span class="p">],</span>
+          <span class="p">),</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>SubscribeButton is called from <code>EmailBox</code>. SubscribeButton widget looks like below:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter_web/material.dart&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="s1">&#39;package:landingpage/utils/myColors.dart&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="s1">&#39;package:landingpage/utils/strings.dart&#39;</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SubscribeButton</span> <span class="n">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="n">var</span> <span class="n">emailImage</span> <span class="o">=</span> <span class="s2">&quot;assets/email.png&quot;</span><span class="p">;</span>
+
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">InkWell</span><span class="p">(</span>
+      <span class="n">child</span><span class="p">:</span> <span class="n">Container</span><span class="p">(</span>
+        <span class="n">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="n">decoration</span><span class="p">:</span> <span class="n">BoxDecoration</span><span class="p">(</span>
+            <span class="n">gradient</span><span class="p">:</span> <span class="n">LinearGradient</span><span class="p">(</span>
+                <span class="n">colors</span><span class="p">:</span> <span class="p">[</span><span class="n">MyColors</span><span class="o">.</span><span class="n">blue1</span><span class="p">,</span> <span class="n">MyColors</span><span class="o">.</span><span class="n">blue2</span><span class="p">],</span>
+                <span class="n">begin</span><span class="p">:</span> <span class="n">Alignment</span><span class="o">.</span><span class="n">bottomRight</span><span class="p">,</span>
+                <span class="n">end</span><span class="p">:</span> <span class="n">Alignment</span><span class="o">.</span><span class="n">topLeft</span><span class="p">),</span>
+            <span class="n">borderRadius</span><span class="p">:</span> <span class="n">BorderRadius</span><span class="o">.</span><span class="n">circular</span><span class="p">(</span><span class="mf">20.0</span><span class="p">),</span>
+            <span class="n">boxShadow</span><span class="p">:</span> <span class="p">[</span>
+              <span class="n">BoxShadow</span><span class="p">(</span>
+                  <span class="n">color</span><span class="p">:</span> <span class="n">MyColors</span><span class="o">.</span><span class="n">blue3</span><span class="o">.</span><span class="n">withOpacity</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">),</span>
+                  <span class="n">offset</span><span class="p">:</span> <span class="n">Offset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                  <span class="n">blurRadius</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">)</span>
+            <span class="p">]),</span>
+        <span class="n">child</span><span class="p">:</span> <span class="n">Material</span><span class="p">(</span>
+          <span class="n">color</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">transparent</span><span class="p">,</span>
+          <span class="n">child</span><span class="p">:</span> <span class="n">InkWell</span><span class="p">(</span>
+            <span class="n">onTap</span><span class="p">:</span> <span class="p">()</span> <span class="p">{},</span> <span class="o">//</span><span class="n">TODO</span>
+            <span class="n">child</span><span class="p">:</span> <span class="n">Center</span><span class="p">(</span>
+              <span class="n">child</span><span class="p">:</span> <span class="n">Row</span><span class="p">(</span>
+                <span class="n">mainAxisAlignment</span><span class="p">:</span> <span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+                  <span class="n">Text</span><span class="p">(</span>
+                    <span class="n">Strings</span><span class="o">.</span><span class="n">subscribeButton</span><span class="p">,</span>
+                    <span class="n">style</span><span class="p">:</span> <span class="n">TextStyle</span><span class="p">(</span>
+                        <span class="n">color</span><span class="p">:</span> <span class="n">MyColors</span><span class="o">.</span><span class="n">white1</span><span class="p">,</span> <span class="n">fontSize</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="n">letterSpacing</span><span class="p">:</span> <span class="mi">1</span><span class="p">),</span>
+                  <span class="p">),</span>
+                  <span class="n">SizedBox</span><span class="p">(</span>
+                    <span class="n">width</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                  <span class="p">),</span>
+                  <span class="n">Image</span><span class="o">.</span><span class="n">network</span><span class="p">(</span>
+                    <span class="n">emailImage</span><span class="p">,</span>
+                    <span class="n">color</span><span class="p">:</span> <span class="n">MyColors</span><span class="o">.</span><span class="n">white1</span><span class="p">,</span>
+                    <span class="n">width</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                    <span class="n">height</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                  <span class="p">)</span>
+                <span class="p">],</span>
+              <span class="p">),</span>
+            <span class="p">),</span>
+          <span class="p">),</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The final landing page looks like this:
+<img alt="Flutter to fly landing page" src="https://ptyagicodecamp.github.io/ftf_final.jpg"></p>
+<p>Next post: I'll be writing about making this page responsive in my next post.</p>
+<h3>Part-2: Flutter-to-fly landing page for Native platform</h3>
+<p>I want to show you how this code can be converted into native, and can be built and run on Android and iOS platforms.
+First we need to create a separate branch and adapt its <code>pubspec.yaml</code> for native Flutter. Remember that you can use any plug-ins in native code, but not in web variation at this point. So, it makes sense to create web app first and then adapt it at native platform.
+As I mentioned before that you'll need to replace <code>flutter_web</code> to <code>flutter</code> packages.
+Note: You may need to refresh packages in native environment. Don't forget to update the assets in appropriate location for Flutter native.</p>
+<p>I've created branch named <code>native</code> to play around in Android and iOS platforms. At this point, I see few dimensions issues there since layout is designed for large screen point of view. In next post, I'll explain how we can make it responsive on different form factors.</p>
+<p>Until then keep Fluttering !</p>
+<p><strong><em>Source code repo:</em></strong>
+Source code for <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/step2">web</a></p>
+<p>Source code for <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native">Native</a></p>
+<h3>References/Credits:</h3>
+<ol>
+<li><a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md">Migration to Web</a></li>
+<li>I've adapted design of "Flutter-to-fly" hypothetical app's landing page from <a href="https://dribbble.com/shots/4790752-Britu-Landing-Page">this dribble design</a></li>
+<li>Adapted <a href="https://github.com/devefy/Flutter-Web-Landing-Page">this web app example</a> to Native Flutter platforms to demonstrate Flutter's cross-platform support.</li>
+</ol>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
+      <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+    </p>
+  </div>
+
+  <div class="center social-share">
+    <p>    Like this article? Share it with your friends!
+</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+
+</article>
+
+    <footer>
+<p>
+  &copy;  2019 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cf387135c8761da" async="async"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " techLog ",
+  "url" : "https://ptyagicodecamp.github.io",
+  "image": "https://ptyagicodecamp.github.io/images/profile.jpg",
+  "description": "Mobile engineering tech logger."
+}
+</script>
+
+<a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></body>
+</html>
