@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-06-03T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Designing Flutter prototype for Landing Page</title><link href="https://ptyagicodecamp.github.io/designing-flutter-prototype-for-landing-page.html" rel="alternate"></link><published>2019-06-03T00:00:00-04:00</published><updated>2019-06-03T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-03:/designing-flutter-prototype-for-landing-page.html</id><summary type="html">&lt;p&gt;This post is about how to design landing page for a hypothetical mobile and web app for Flutter resources say "Flutter-to-Fly !".&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;This post is about how to design landing page for a hypothetical mobile and web app for Flutter resources say "Flutter-to-Fly !". This post will have two sections to it:
-1. Designing and implementing the landing page for Android/iOS platform.
-2. Since Flutter's web implementation is in tech preview as of now, so I'll show how web version of the same landing page can be implemented for Web.&lt;/p&gt;
+&lt;em&gt; Designing and implementing the landing page for Android/iOS platform.
+&lt;/em&gt; Since Flutter's web implementation is in tech preview as of now, so I'll show how web version of the same landing page can be implemented for Web.&lt;/p&gt;
 &lt;h4&gt;Part-1: Flutter-to-fly landing page for Web&lt;/h4&gt;
 &lt;p&gt;Note: As of now (June 3rd, 2019), there's no actually one code base solution exists for cross-platform Flutter. Web app's code uses specific web libraries. Plug-ins used in flutter native apps can't be used in web apps. Its recommended to create a git branch to host web app code for now until web comes out of tech-preview and experimentation.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Setup:&lt;/em&gt;&lt;/strong&gt;*
-- Create a Flutter Project in Android Studio.
-- Create a git branch &lt;code&gt;web&lt;/code&gt;
-- Copy &lt;code&gt;pubspec.yaml&lt;/code&gt; to &lt;code&gt;pubspec.yaml.native&lt;/code&gt; for backing up native platform settings. We would need this for native project in another branch say &lt;code&gt;master&lt;/code&gt;. I would keep native code in default branch &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Configure &lt;code&gt;pubspec.yaml&lt;/code&gt;:&lt;/em&gt;&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;Setup:&lt;/strong&gt;&lt;em&gt;
+&lt;/em&gt; Create a Flutter Project in Android Studio.
+&lt;em&gt; Create a git branch &lt;code&gt;web&lt;/code&gt;
+&lt;/em&gt; Copy &lt;code&gt;pubspec.yaml&lt;/code&gt; to &lt;code&gt;pubspec.yaml.native&lt;/code&gt; for backing up native platform settings. We would need this for native project in another branch say &lt;code&gt;master&lt;/code&gt;. I would keep native code in default branch &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Configuring &lt;code&gt;pubspec.yaml&lt;/code&gt;:&lt;/strong&gt;
 Adapt &lt;code&gt;pubspec.yaml&lt;/code&gt; for Web as described in &lt;a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md"&gt;this link&lt;/a&gt;. This is how &lt;code&gt;pubspec.yaml&lt;/code&gt; for web app will look like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;landingpage&lt;/span&gt;
 &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Cross&lt;/span&gt; &lt;span class="n"&gt;platform&lt;/span&gt; &lt;span class="n"&gt;sample&lt;/span&gt; &lt;span class="n"&gt;landing&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="n"&gt;implemented&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;Flutter&lt;/span&gt;
@@ -43,9 +43,9 @@ Adapt &lt;code&gt;pubspec.yaml&lt;/code&gt; for Web as described in &lt;a href="
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Create &lt;code&gt;web&lt;/code&gt; directory&lt;/em&gt;&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;Create &lt;code&gt;web&lt;/code&gt; directory:&lt;/strong&gt;
 Create a &lt;code&gt;web&lt;/code&gt; directory to host the entry point for the web app at root level (same level as &lt;code&gt;lib&lt;/code&gt; directory). &lt;code&gt;web/index.html&lt;/code&gt; and &lt;code&gt;web/main.dart&lt;/code&gt; needs to be added as mentioned &lt;a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md#webindexhtml-and-webmaindart"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Building web app&lt;/em&gt;&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;Building web app:&lt;/strong&gt;
 Navigate to current working directory and get all dependencies.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd landingpage
 pub get
@@ -62,8 +62,8 @@ webdev serve
 &lt;p&gt;Note: Make sure that you've replaced all &lt;code&gt;package:flutter&lt;/code&gt; packages with &lt;code&gt;package:flutter_web&lt;/code&gt; variant.&lt;/p&gt;
 &lt;p&gt;At this point, we're done with setting up Flutter project to start building web app. You'll see default counter app running, provided as part of built-in examples.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Flutter Web Setup" src="https://ptyagicodecamp.github.io/flutter_web_setup.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step1:&lt;/em&gt;&lt;/strong&gt;
-Clean up the pre-generated code by Flutter. Make &lt;code&gt;MyHomePage&lt;/code&gt; &lt;code&gt;Stateless&lt;/code&gt; widget. Remove the title passed into &lt;code&gt;MyHomePage&lt;/code&gt;. Update the title of the app to &lt;code&gt;Flutter to fly !&lt;/code&gt;.
+&lt;h4&gt;Step1: Getting ready &amp;amp; Page Header&lt;/h4&gt;
+&lt;p&gt;Clean up the pre-generated code by Flutter. Make &lt;code&gt;MyHomePage&lt;/code&gt; &lt;code&gt;Stateless&lt;/code&gt; widget. Remove the title passed into &lt;code&gt;MyHomePage&lt;/code&gt;. Update the title of the app to &lt;code&gt;Flutter to fly !&lt;/code&gt;.
 This is how your &lt;code&gt;main.dart&lt;/code&gt; should look like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter_web/material.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
@@ -132,7 +132,7 @@ This is how your &lt;code&gt;main.dart&lt;/code&gt; should look like:&lt;/p&gt;
 
 
 &lt;p&gt;&lt;code&gt;SingleChildScrollView&lt;/code&gt; will contain header and body of the page. I've created two classes: &lt;code&gt;Header&lt;/code&gt; and &lt;code&gt;Body&lt;/code&gt; to help us with header and body section/widgets.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Header Widget&lt;/em&gt;
+&lt;p&gt;&lt;strong&gt;Header Widget&lt;/strong&gt;
 Header section/widget contains logo and site's title at left side, and navigation links and login button at right side.
 I'll use &lt;code&gt;Padding&lt;/code&gt; widget to contain header section's logo and links.
 &lt;img alt="Header logo" src="https://ptyagicodecamp.github.io/ftf_logo.jpg"&gt;&lt;/p&gt;
@@ -165,7 +165,7 @@ Widget buildLogo() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;em&gt;LogIn Button&lt;/em&gt;
+&lt;p&gt;&lt;strong&gt;LogIn Button&lt;/strong&gt;
 &lt;img alt="Header logo" src="https://ptyagicodecamp.github.io/ftf_login.jpg"&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Builds&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="nt"&gt;decorates&lt;/span&gt; &lt;span class="nt"&gt;login&lt;/span&gt; &lt;span class="nt"&gt;button&lt;/span&gt;
 &lt;span class="nt"&gt;Widget&lt;/span&gt; &lt;span class="nt"&gt;buildLoginButton&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -209,7 +209,7 @@ Widget buildLogo() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;em&gt;Header Navigation Links&lt;/em&gt;
+&lt;p&gt;&lt;strong&gt;Header Navigation Links:&lt;/strong&gt;
 Now add header navigation links just before the login button created above to finish header section.&lt;/p&gt;
 &lt;p&gt;Get the list of links to be shown in the header:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Builds&lt;/span&gt; &lt;span class="nt"&gt;navigation&lt;/span&gt; &lt;span class="nt"&gt;list&lt;/span&gt; &lt;span class="nt"&gt;for&lt;/span&gt; &lt;span class="nt"&gt;header&lt;/span&gt;
@@ -260,11 +260,11 @@ Widget buildHeaderLinks() {
 &lt;p&gt;This is how header looks at this point:
 &lt;img alt="Flutter Web Setup" src="https://ptyagicodecamp.github.io/ftf_header.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;We're done with header for now. Let's move to body section in Step2.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step2:&lt;/em&gt;&lt;/strong&gt;
-Body section has three components to it.
-1. Background image showing flutter art work.
-2. Welcome text.
-3. Mailing list subscription: Text box to let user enter their email addresses to subscribe to the newsletter.&lt;/p&gt;
+&lt;h4&gt;Step2: Page Body:&lt;/h4&gt;
+&lt;p&gt;Body section has three components to it.
+&lt;em&gt; Background image showing flutter art work.
+&lt;/em&gt; Welcome text.
+* Mailing list subscription: Text box to let user enter their email addresses to subscribe to the newsletter.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Adding Background image:&lt;/strong&gt;
 All images goes inside &lt;code&gt;web/assets&lt;/code&gt; directory. Background image is added aligned to right side of the page.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Adds background Image
