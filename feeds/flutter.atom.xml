@@ -3,10 +3,10 @@
 &lt;p&gt;This post is about how to design landing page for a hypothetical mobile and web app for Flutter resources say "Flutter-to-Fly !". This post will have two sections to it:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Flutter-to-fly landing page for Web (&lt;code&gt;web&lt;/code&gt; branch of source code).&lt;/p&gt;
+&lt;p&gt;Flutter-to-fly landing page for Web (&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web"&gt;&lt;code&gt;web&lt;/code&gt;&lt;/a&gt; branch of source code).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Flutter-to-fly landing page for Native Android and iOS platforms (&lt;code&gt;native&lt;/code&gt; branch of source code).&lt;/p&gt;
+&lt;p&gt;Flutter-to-fly landing page for Native Android and iOS platforms (&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native"&gt;&lt;code&gt;native&lt;/code&gt;&lt;/a&gt; branch of source code).&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4&gt;Part-1: Flutter-to-fly landing page for Web&lt;/h4&gt;
