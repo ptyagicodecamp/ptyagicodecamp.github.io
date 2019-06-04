@@ -154,13 +154,12 @@
 2. Since Flutter's web implementation is in tech preview as of now, so I'll show how web version of the same landing page can be implemented for Web.</p>
 <h4>Part-1: Flutter-to-fly landing page for Web</h4>
 <p>Note: As of now (June 3rd, 2019), there's no actually one code base solution exists for cross-platform Flutter. Web app's code uses specific web libraries. Plug-ins used in flutter native apps can't be used in web apps. Its recommended to create a git branch to host web app code for now until web comes out of tech-preview and experimentation.</p>
-<p><strong><em>Setup</em></strong>*
-1. Create a Flutter Project in Android Studio.
-2. Create a git branch <code>web</code>
-3. Copy <code>pubspec.yaml</code> to <code>pubspec.yaml.native</code> for backing up native platform settings. We would need this for native project in another branch say <code>master</code>. I would keep native code in default branch <code>master</code>.</p>
-<p><strong><em>Configure <code>pubspec.yaml</code></em></strong>
-Adapt <code>pubspec.yaml</code> for Web as described in <a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md">this link</a>.</p>
-<p>This is how <code>pubspec.yaml</code> for web app will look like:</p>
+<p><strong><em>Setup:</em></strong>*
+- Create a Flutter Project in Android Studio.
+- Create a git branch <code>web</code>
+- Copy <code>pubspec.yaml</code> to <code>pubspec.yaml.native</code> for backing up native platform settings. We would need this for native project in another branch say <code>master</code>. I would keep native code in default branch <code>master</code>.</p>
+<p><strong><em>Configure <code>pubspec.yaml</code>:</em></strong>
+Adapt <code>pubspec.yaml</code> for Web as described in <a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md">this link</a>. This is how <code>pubspec.yaml</code> for web app will look like:</p>
 <div class="highlight"><pre><span></span><span class="n">name</span><span class="o">:</span> <span class="n">landingpage</span>
 <span class="n">description</span><span class="o">:</span> <span class="n">Cross</span> <span class="n">platform</span> <span class="n">sample</span> <span class="n">landing</span> <span class="n">page</span> <span class="n">implemented</span> <span class="k">in</span> <span class="n">Flutter</span>
 

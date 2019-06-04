@@ -5,13 +5,12 @@
 2. Since Flutter's web implementation is in tech preview as of now, so I'll show how web version of the same landing page can be implemented for Web.&lt;/p&gt;
 &lt;h4&gt;Part-1: Flutter-to-fly landing page for Web&lt;/h4&gt;
 &lt;p&gt;Note: As of now (June 3rd, 2019), there's no actually one code base solution exists for cross-platform Flutter. Web app's code uses specific web libraries. Plug-ins used in flutter native apps can't be used in web apps. Its recommended to create a git branch to host web app code for now until web comes out of tech-preview and experimentation.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Setup&lt;/em&gt;&lt;/strong&gt;*
-1. Create a Flutter Project in Android Studio.
-2. Create a git branch &lt;code&gt;web&lt;/code&gt;
-3. Copy &lt;code&gt;pubspec.yaml&lt;/code&gt; to &lt;code&gt;pubspec.yaml.native&lt;/code&gt; for backing up native platform settings. We would need this for native project in another branch say &lt;code&gt;master&lt;/code&gt;. I would keep native code in default branch &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Configure &lt;code&gt;pubspec.yaml&lt;/code&gt;&lt;/em&gt;&lt;/strong&gt;
-Adapt &lt;code&gt;pubspec.yaml&lt;/code&gt; for Web as described in &lt;a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md"&gt;this link&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This is how &lt;code&gt;pubspec.yaml&lt;/code&gt; for web app will look like:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Setup:&lt;/em&gt;&lt;/strong&gt;*
+- Create a Flutter Project in Android Studio.
+- Create a git branch &lt;code&gt;web&lt;/code&gt;
+- Copy &lt;code&gt;pubspec.yaml&lt;/code&gt; to &lt;code&gt;pubspec.yaml.native&lt;/code&gt; for backing up native platform settings. We would need this for native project in another branch say &lt;code&gt;master&lt;/code&gt;. I would keep native code in default branch &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Configure &lt;code&gt;pubspec.yaml&lt;/code&gt;:&lt;/em&gt;&lt;/strong&gt;
+Adapt &lt;code&gt;pubspec.yaml&lt;/code&gt; for Web as described in &lt;a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md"&gt;this link&lt;/a&gt;. This is how &lt;code&gt;pubspec.yaml&lt;/code&gt; for web app will look like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;landingpage&lt;/span&gt;
 &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Cross&lt;/span&gt; &lt;span class="n"&gt;platform&lt;/span&gt; &lt;span class="n"&gt;sample&lt;/span&gt; &lt;span class="n"&gt;landing&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="n"&gt;implemented&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;Flutter&lt;/span&gt;
 
