@@ -165,8 +165,7 @@ Widget buildLogo() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;LogIn Button&lt;/strong&gt;
-&lt;img alt="Header logo" src="https://ptyagicodecamp.github.io/ftf_login.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LogIn Button:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Builds&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="nt"&gt;decorates&lt;/span&gt; &lt;span class="nt"&gt;login&lt;/span&gt; &lt;span class="nt"&gt;button&lt;/span&gt;
 &lt;span class="nt"&gt;Widget&lt;/span&gt; &lt;span class="nt"&gt;buildLoginButton&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;Padding(&lt;/span&gt;
@@ -209,6 +208,7 @@ Widget buildLogo() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;img alt="Header logo" src="https://ptyagicodecamp.github.io/ftf_login.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Header Navigation Links:&lt;/strong&gt;
 Now add header navigation links just before the login button created above to finish header section.&lt;/p&gt;
 &lt;p&gt;Get the list of links to be shown in the header:&lt;/p&gt;
