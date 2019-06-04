@@ -3,17 +3,19 @@
 &lt;p&gt;This post is about how to design landing page for a hypothetical mobile and web app for Flutter resources say "Flutter-to-Fly !". This post will have two sections to it:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Designing and implementing the landing page for Android/iOS platform.&lt;/p&gt;
+&lt;p&gt;Flutter-to-fly landing page for Web (&lt;code&gt;web&lt;/code&gt; branch of source code).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Since Flutter's web implementation is in tech preview as of now, so I'll show how web version of the same landing page can be implemented for Web.&lt;/p&gt;
+&lt;p&gt;Flutter-to-fly landing page for Native Android and iOS platforms (&lt;code&gt;native&lt;/code&gt; branch of source code).&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4&gt;Part-1: Flutter-to-fly landing page for Web&lt;/h4&gt;
 &lt;p&gt;Note: As of now (June 3rd, 2019), there's no actually one code base solution exists for cross-platform Flutter. Web app's code uses specific web libraries. Plug-ins used in flutter native apps can't be used in web apps. Its recommended to create a git branch to host web app code for now until web comes out of tech-preview and experimentation.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Setup:&lt;/strong&gt;*
-1. Create a Flutter Project in Android Studio.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Setup:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Create a Flutter Project in Android Studio.&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Create a git branch &lt;code&gt;web&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
