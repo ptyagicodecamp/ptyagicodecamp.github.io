@@ -62,7 +62,7 @@ webdev serve
 &lt;p&gt;Note: Make sure that you've replaced all &lt;code&gt;package:flutter&lt;/code&gt; packages with &lt;code&gt;package:flutter_web&lt;/code&gt; variant.&lt;/p&gt;
 &lt;p&gt;At this point, we're done with setting up Flutter project to start building web app. You'll see default counter app running, provided as part of built-in examples.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Flutter Web Setup" src="https://ptyagicodecamp.github.io/flutter_web_setup.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step1&lt;/em&gt;&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step1:&lt;/em&gt;&lt;/strong&gt;
 Clean up the pre-generated code by Flutter. Make &lt;code&gt;MyHomePage&lt;/code&gt; &lt;code&gt;Stateless&lt;/code&gt; widget. Remove the title passed into &lt;code&gt;MyHomePage&lt;/code&gt;. Update the title of the app to &lt;code&gt;Flutter to fly !&lt;/code&gt;.
 This is how your &lt;code&gt;main.dart&lt;/code&gt; should look like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter_web/material.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -95,7 +95,7 @@ This is how your &lt;code&gt;main.dart&lt;/code&gt; should look like:&lt;/p&gt;
 
 
 &lt;p&gt;Now, lets add header and body for the landing page. Header will have site's logo and navigation links. Body will have background image, text box to submit emails to subscribe to mailing list for any content updates.&lt;/p&gt;
-&lt;p&gt;First, add a linear gradient on the whole page using two different shades of white (I created a class &lt;code&gt;MyColors.dar&lt;/code&gt; to hold all my custom colors).&lt;/p&gt;
+&lt;p&gt;First, add a linear gradient on the whole page using two different shades of white (I created a class &lt;code&gt;MyColors.dart&lt;/code&gt; to hold all my custom colors).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@override
   Widget build(BuildContext context) {
     //Add a container and provide a linear gradient.
@@ -260,12 +260,12 @@ Widget buildHeaderLinks() {
 &lt;p&gt;This is how header looks at this point:
 &lt;img alt="Flutter Web Setup" src="https://ptyagicodecamp.github.io/ftf_header.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;We're done with header for now. Let's move to body section in Step2.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step2&lt;/em&gt;&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Step2:&lt;/em&gt;&lt;/strong&gt;
 Body section has three components to it.
 1. Background image showing flutter art work.
 2. Welcome text.
 3. Mailing list subscription: Text box to let user enter their email addresses to subscribe to the newsletter.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Adding Background image&lt;/em&gt;
+&lt;p&gt;&lt;strong&gt;Adding Background image:&lt;/strong&gt;
 All images goes inside &lt;code&gt;web/assets&lt;/code&gt; directory. Background image is added aligned to right side of the page.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Adds background Image
 Widget addBackground() {
@@ -279,7 +279,7 @@ Widget addBackground() {
 
 
 &lt;p&gt;Let's work on welcome text title.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Adding Welcome Text&lt;/em&gt;
+&lt;p&gt;&lt;strong&gt;Adding Welcome Text:&lt;/strong&gt;
 I've added welcome text at this point, and it looks like below:
 &lt;img alt="Flutter Web Setup" src="https://ptyagicodecamp.github.io/ftf_body1.jpg"&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Adds&lt;/span&gt; &lt;span class="nt"&gt;welcome&lt;/span&gt; &lt;span class="nt"&gt;text&lt;/span&gt;
@@ -335,7 +335,7 @@ I've added welcome text at this point, and it looks like below:
 
 
 &lt;p&gt;Let's work on the third part of the body section: users inputting their email addresses in text box to subscribe to site.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Mailing list subscription&lt;/em&gt;
+&lt;p&gt;&lt;strong&gt;Mailing list subscription:&lt;/strong&gt;
 There're two parts to this component. One is text box for user to enter email addresses. Let's call this widget &lt;code&gt;EmailBox&lt;/code&gt;. Another is button to click on to subscribe. I'm naming this widget as &lt;code&gt;SubscribeButton&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Here's how EmailBox code looks like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;EmailBox&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
