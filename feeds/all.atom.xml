@@ -9,6 +9,11 @@
 &lt;p&gt;Flutter-to-fly landing page for Native Android and iOS platforms (&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native"&gt;&lt;code&gt;native&lt;/code&gt;&lt;/a&gt; branch of source code).&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;Checkout the companion video tutorials
+&lt;strong&gt;Part - 1:&lt;/strong&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/WJjirsqImy0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Part - 2:&lt;/strong&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/VUYKTTo2jt4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;h4&gt;Part-1: Flutter-to-fly landing page for Web&lt;/h4&gt;
 &lt;p&gt;Note: As of now (June 3rd, 2019), there's no actually one code base solution exists for cross-platform Flutter. Web app's code uses specific web libraries. Plug-ins used in flutter native apps can't be used in web apps. Its recommended to create a git branch to host web app code for now until web comes out of tech-preview and experimentation.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Setup:&lt;/strong&gt;&lt;/p&gt;
