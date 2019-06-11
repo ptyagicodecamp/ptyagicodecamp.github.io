@@ -182,49 +182,55 @@
 <h4>ResponsiveWidget utility class</h4>
 <p>Let's implement a StatelessWidget <code>ResponsiveWidget</code> that uses <a href="https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html">LayoutBuilder</a>. LayoutBuilder is a widget which builds a widget tree that can depend on the parent widget's size. This class is responsible for detecting the screen size, and put them in one of the three buckets: Large, Medium and Small. It has utility static functions/methods to check the screen sizes.</p>
 <p>I'll be using <a href="https://api.flutter.dev/flutter/widgets/MediaQuery-class.html"><code>MediaQuery</code></a> to access the size of the screen. This is how I'll be checking the size of the screens by using width of the screen in pixels.</p>
-<div class="highlight"><pre><span></span>//Large screen is any screen whose width is more than 1200 pixels
-static bool isLargeScreen(BuildContext context) {
-  return MediaQuery.of(context).size.width &gt; 1200;
-}
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">ResponsiveWidget</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="c1">//Large screen is any screen whose width is more than 1200 pixels</span>
+  <span class="kr">static</span> <span class="kt">bool</span> <span class="nx">isLargeScreen</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">MediaQuery</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">context</span><span class="p">).</span><span class="nx">size</span><span class="p">.</span><span class="nx">width</span> <span class="o">&gt;</span> <span class="mi">1200</span><span class="p">;</span>
+  <span class="p">}</span>
 
-//Small screen is any screen whose width is less than 800 pixels
-static bool isSmallScreen(BuildContext context) {
-  return MediaQuery.of(context).size.width &lt; 800;
-}
+  <span class="c1">//Small screen is any screen whose width is less than 800 pixels</span>
+  <span class="kr">static</span> <span class="kt">bool</span> <span class="nx">isSmallScreen</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">MediaQuery</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">context</span><span class="p">).</span><span class="nx">size</span><span class="p">.</span><span class="nx">width</span> <span class="o">&lt;</span> <span class="mi">800</span><span class="p">;</span>
+  <span class="p">}</span>
 
-//Medium screen is any screen whose width is less than 1200 pixels,
-//and more than 800 pixels
-static bool isMediumScreen(BuildContext context) {
-  return MediaQuery.of(context).size.width &gt; 800 &amp;&amp;
-  MediaQuery.of(context).size.width &lt; 1200;
-}  
+  <span class="c1">//Medium screen is any screen whose width is less than 1200 pixels,</span>
+  <span class="c1">//and more than 800 pixels</span>
+  <span class="kr">static</span> <span class="kt">bool</span> <span class="nx">isMediumScreen</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">MediaQuery</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">context</span><span class="p">).</span><span class="nx">size</span><span class="p">.</span><span class="nx">width</span> <span class="o">&gt;</span> <span class="mi">800</span> <span class="o">&amp;&amp;</span>
+    <span class="nx">MediaQuery</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">context</span><span class="p">).</span><span class="nx">size</span><span class="p">.</span><span class="nx">width</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">;</span>
+  <span class="p">}</span>  
+<span class="p">}</span>
 </pre></div>
 
 
 <p>In the following section, I'll be building body of the landing page. In my <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">previous post</a>, I had only one design for landing page's body which is targeted to desktop size screens or say larger screens with width more than 1200 pixels. The widgets will give overflow signal when screen size is resized to smaller screen. To solve this problem, ideally you can design separate three designs for each of the screen buckets: Large, Medium and Small. In <code>ResponsiveWidget</code>'s <code>build</code> function, appropriate implementation will be picked like below:</p>
-<div class="highlight"><pre><span></span><span class="nt">final</span> <span class="nt">Widget</span> <span class="nt">largeScreen</span><span class="o">;</span>
-  <span class="nt">final</span> <span class="nt">Widget</span> <span class="nt">mediumScreen</span><span class="o">;</span>
-  <span class="nt">final</span> <span class="nt">Widget</span> <span class="nt">smallScreen</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">ResponsiveWidget</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="kr">final</span> <span class="nx">Widget</span> <span class="nx">largeScreen</span><span class="p">;</span>
+  <span class="kr">final</span> <span class="nx">Widget</span> <span class="nx">mediumScreen</span><span class="p">;</span>
+  <span class="kr">final</span> <span class="nx">Widget</span> <span class="nx">smallScreen</span><span class="p">;</span>
 
-  <span class="nt">const</span> <span class="nt">ResponsiveWidget</span><span class="o">(</span>
-      <span class="p">{</span><span class="err">Key</span> <span class="err">key,</span> <span class="err">this.largeScreen,</span> <span class="err">this.mediumScreen,</span> <span class="err">this.smallScreen</span><span class="p">}</span><span class="o">)</span>
-      <span class="o">:</span> <span class="nt">super</span><span class="o">(</span><span class="nt">key</span><span class="o">:</span> <span class="nt">key</span><span class="o">);</span>
+  <span class="kr">const</span> <span class="nx">ResponsiveWidget</span><span class="p">(</span>
+      <span class="p">{</span><span class="nx">Key</span> <span class="nx">key</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">largeScreen</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">mediumScreen</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">smallScreen</span><span class="p">})</span>
+      <span class="o">:</span> <span class="kr">super</span><span class="p">(</span><span class="nx">key</span>: <span class="kt">key</span><span class="p">);</span>
 
-  <span class="p">@</span><span class="k">override</span>
-  <span class="nt">Widget</span> <span class="nt">build</span><span class="o">(</span><span class="nt">BuildContext</span> <span class="nt">context</span><span class="o">)</span> <span class="p">{</span>
-    <span class="o">//</span><span class="nt">Returns</span> <span class="nt">the</span> <span class="nt">widget</span> <span class="nt">which</span> <span class="nt">is</span> <span class="nt">more</span> <span class="nt">appropriate</span> <span class="nt">for</span> <span class="nt">the</span> <span class="nt">screen</span> <span class="nt">size</span>
-    <span class="nt">return</span> <span class="nt">LayoutBuilder</span><span class="o">(</span><span class="nt">builder</span><span class="o">:</span> <span class="o">(</span><span class="nt">context</span><span class="o">,</span> <span class="nt">constraints</span><span class="o">)</span> <span class="p">{</span>
-      <span class="err">if</span> <span class="err">(constraints.maxWidth</span> <span class="err">&gt;</span> <span class="err">1200)</span> <span class="err">{</span>
-        <span class="err">return</span> <span class="err">largeScreen</span><span class="p">;</span>
-      <span class="p">}</span> <span class="nt">else</span> <span class="nt">if</span> <span class="o">(</span><span class="nt">constraints</span><span class="p">.</span><span class="nc">maxWidth</span> <span class="o">&gt;</span> <span class="nt">800</span> <span class="o">&amp;&amp;</span> <span class="nt">constraints</span><span class="p">.</span><span class="nc">maxWidth</span> <span class="o">&lt;</span> <span class="nt">1200</span><span class="o">)</span> <span class="p">{</span>
-        <span class="err">//if</span> <span class="err">medium</span> <span class="err">screen</span> <span class="err">not</span> <span class="err">available,</span> <span class="err">then</span> <span class="err">return</span> <span class="err">large</span> <span class="err">screen</span>
-        <span class="err">return</span> <span class="err">mediumScreen</span> <span class="err">??</span> <span class="err">largeScreen</span><span class="p">;</span>
-      <span class="p">}</span> <span class="nt">else</span> <span class="p">{</span>
-        <span class="err">//if</span> <span class="err">small</span> <span class="err">screen</span> <span class="err">implementation</span> <span class="err">not</span> <span class="err">available,</span> <span class="err">then</span> <span class="err">return</span> <span class="err">large</span> <span class="err">screen</span>
-        <span class="err">return</span> <span class="err">smallScreen</span> <span class="err">??</span> <span class="err">largeScreen</span><span class="p">;</span>
+  <span class="kd">@override</span>
+  <span class="nx">Widget</span> <span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Returns the widget which is more appropriate for the screen size</span>
+    <span class="k">return</span> <span class="nx">LayoutBuilder</span><span class="p">(</span><span class="nx">builder</span><span class="o">:</span> <span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">constraints</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">constraints</span><span class="p">.</span><span class="nx">maxWidth</span> <span class="o">&gt;</span> <span class="mi">1200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">largeScreen</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">constraints</span><span class="p">.</span><span class="nx">maxWidth</span> <span class="o">&gt;</span> <span class="mi">800</span> <span class="o">&amp;&amp;</span> <span class="nx">constraints</span><span class="p">.</span><span class="nx">maxWidth</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//if medium screen not available, then return large screen</span>
+        <span class="k">return</span> <span class="nx">mediumScreen</span> <span class="o">??</span> <span class="nx">largeScreen</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">//if small screen implementation not available, then return large screen</span>
+        <span class="k">return</span> <span class="nx">smallScreen</span> <span class="o">??</span> <span class="nx">largeScreen</span><span class="p">;</span>
       <span class="p">}</span>
-    <span class="p">}</span><span class="o">);</span>
-  <span class="err">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 
