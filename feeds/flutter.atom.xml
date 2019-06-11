@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-06-10T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Making of Responsive Flutter Landing Page for Web &amp; Native app</title><link href="https://ptyagicodecamp.github.io/making-of-responsive-flutter-landing-page-for-web-native-app.html" rel="alternate"></link><published>2019-06-10T00:00:00-04:00</published><updated>2019-06-10T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-10:/making-of-responsive-flutter-landing-page-for-web-native-app.html</id><summary type="html">&lt;p&gt;This post is continuation of &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Our goal is to make Flutter page responsive for Web and Native apps.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Web landing page:&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Web landing page comparison" src="https://ptyagicodecamp.github.io/responsive_web_comp.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Native landing page:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Native landing screen:&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Native landing page comparison" src="https://ptyagicodecamp.github.io/responsive_native_comp.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;This post is continuation of &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;. In this article, I'll show you how to make landing page responsive (meaning adapting to given screen size).&lt;/p&gt;
@@ -200,8 +200,10 @@ First, "EmailBox" to inputting email addresses is aligned towards left and far a
 &lt;p&gt;Second, you might notice that "Subscribe" button still have overflow text like shown in screenshot below:
 &lt;img alt="Overflow subscribe button" src="https://ptyagicodecamp.github.io/web_overflow_subscribe.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Let's fix the overflow text issue with &lt;code&gt;SubscribeButton&lt;/code&gt;.
-There're three places, where we need to adjust the size rendering to fit on smaller screens.
-* Make the font of the text "Subscribe" on button adaptive to the screen at run time.&lt;/p&gt;
+There're three places, where we need to adjust the size rendering to fit on smaller screens.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Make the font of the text "Subscribe" on button adaptive to the screen at run time.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Text(
     Strings.subscribeButton,
     style: TextStyle(
@@ -297,7 +299,7 @@ There're three places, where we need to adjust the size rendering to fit on smal
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;code&gt;Image.network&lt;/code&gt; needs to be replaced with &lt;code&gt;Image.asset&lt;/code&gt; for Native implementation. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;code&gt;Image.network&lt;/code&gt; needs to be replaced with &lt;code&gt;Image.asset&lt;/code&gt; for Native implementation.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Responsive navigation for smaller screen for Web" src="https://ptyagicodecamp.github.io/web_responsive_3.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;So, this concludes making landing page responsive for all screen form factors.&lt;/p&gt;
 &lt;h4&gt;Running in Native environment&lt;/h4&gt;
