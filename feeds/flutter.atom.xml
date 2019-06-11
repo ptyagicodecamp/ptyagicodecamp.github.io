@@ -297,6 +297,7 @@ There're three places, where we need to adjust the size rendering to fit on smal
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;code&gt;Image.network&lt;/code&gt; needs to be replaced with &lt;code&gt;Image.asset&lt;/code&gt; for Native implementation. &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Responsive navigation for smaller screen for Web" src="https://ptyagicodecamp.github.io/web_responsive_3.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;So, this concludes making landing page responsive for all screen form factors.&lt;/p&gt;
 &lt;h4&gt;Running in Native environment&lt;/h4&gt;
