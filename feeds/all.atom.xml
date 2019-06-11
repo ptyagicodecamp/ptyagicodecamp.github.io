@@ -303,6 +303,11 @@ There're three places, where we need to adjust the size rendering to fit on smal
 &lt;p&gt;&lt;img alt="Responsive navigation for smaller screen for Web" src="https://ptyagicodecamp.github.io/web_responsive_3.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;So, this concludes making landing page responsive for all screen form factors.&lt;/p&gt;
 &lt;h4&gt;Running in Native environment&lt;/h4&gt;
+&lt;p&gt;You may want to make few changes to adapt to native code. I've native source code available &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-responsive"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Image.network&lt;/code&gt; needs to be replaced with &lt;code&gt;Image.asset&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;flutter_web&lt;/code&gt; imports need to be replaced with it's native variant &lt;code&gt;flutter&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Responsive page at Native platform looks like below in Android:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Responsive navigation for smaller screen for Android" src="https://ptyagicodecamp.github.io/native_responsive_final.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Keep Fluttering !&lt;/p&gt;
