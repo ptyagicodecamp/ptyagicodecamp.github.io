@@ -1489,11 +1489,11 @@ First we need to create a separate branch and adapt its &lt;code&gt;pubspec.yaml
 As I mentioned before that you would need to replace &lt;code&gt;flutter_web&lt;/code&gt; to &lt;code&gt;flutter&lt;/code&gt; packages.
 Note: You may need to refresh packages in native environment. Don't forget to update the assets in appropriate location for Flutter native.&lt;/p&gt;
 &lt;p&gt;I've created branch named &lt;code&gt;native&lt;/code&gt; to play around in Android and iOS platforms. At this point, I see few dimensions issues there since layout is designed for large screen point of view. In next post, I'll explain how we can make it responsive on different form factors.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://ptyagicodecamp.github.io/making-of-responsive-flutter-landing-page-for-web-native-app.html"&gt;Next Article: Make landing page responsive&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Until then keep Fluttering !&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;
 Source code for &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/step2"&gt;web&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Source code for &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native"&gt;Native&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://ptyagicodecamp.github.io/making-of-responsive-flutter-landing-page-for-web-native-app.html"&gt;Next Article: Make landing page responsive&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h3&gt;References/Credits:&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md"&gt;Migration to Web&lt;/a&gt;&lt;/li&gt;
