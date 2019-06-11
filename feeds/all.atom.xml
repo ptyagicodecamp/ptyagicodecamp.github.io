@@ -1469,14 +1469,14 @@ There're two parts to this component. One is text box for user to enter email ad
 &lt;p&gt;The final landing page looks like this:
 &lt;img alt="Flutter to fly landing page" src="https://ptyagicodecamp.github.io/ftf_final.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Next post: I'll be writing about making this page responsive in my next post.
-&lt;strong&gt;&lt;a href="https://ptyagicodecamp.github.io/making-of-responsive-flutter-landing-page-for-web-native-app.html"&gt;EDIT-Part2: Making page responsive&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;strong&gt;&lt;a href="https://ptyagicodecamp.github.io/making-of-responsive-flutter-landing-page-for-web-native-app.html"&gt;EDIT: Making page responsive&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h3&gt;Part-2: Flutter-to-fly landing page for Native platform&lt;/h3&gt;
 &lt;p&gt;I want to show you how this code can be converted into native, and can be built and run on Android and iOS platforms.
 First we need to create a separate branch and adapt its &lt;code&gt;pubspec.yaml&lt;/code&gt; for native Flutter. Remember that you can use any plug-ins in native code, but not in web variation at this point. So, it makes sense to create web app first and then adapt it at native platform.
 As I mentioned before that you would need to replace &lt;code&gt;flutter_web&lt;/code&gt; to &lt;code&gt;flutter&lt;/code&gt; packages.
 Note: You may need to refresh packages in native environment. Don't forget to update the assets in appropriate location for Flutter native.&lt;/p&gt;
-&lt;p&gt;I've created branch named &lt;code&gt;native&lt;/code&gt; to play around in Android and iOS platforms. At this point, I see few dimensions issues there since layout is designed for large screen point of view. In next post, I'll explain how we can make it responsive on different form factors.
-&lt;strong&gt;&lt;a href="https://ptyagicodecamp.github.io/making-of-responsive-flutter-landing-page-for-web-native-app.html"&gt;EDIT-Part2: Making page responsive&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I've created branch named &lt;code&gt;native&lt;/code&gt; to play around in Android and iOS platforms. At this point, I see few dimensions issues there since layout is designed for large screen point of view. In next post, I'll explain how we can make it responsive on different form factors.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://ptyagicodecamp.github.io/making-of-responsive-flutter-landing-page-for-web-native-app.html"&gt;EDIT: Making page responsive&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Until then keep Fluttering !&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;
 Source code for &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/step2"&gt;web&lt;/a&gt;&lt;/p&gt;
