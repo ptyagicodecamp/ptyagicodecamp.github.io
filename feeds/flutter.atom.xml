@@ -280,15 +280,19 @@ There're three places, where we need to adjust the size rendering to fit on smal
 &lt;p&gt;At this point, we've made body of the landing page responsive. Now let's make header responsive.&lt;/p&gt;
 &lt;h4&gt;Adapting landing page's Header&lt;/h4&gt;
 &lt;p&gt;In large screens, there's enough room to show all navigation links. However, as far as smaller screens are concerned, there's not enough space to show all links next to each other. For smaller screens, it makes sense to show a menu icon. Clicking on menu icon can bring up all the links. Implementing menu icon interaction is out of the scope of this article.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Builds&lt;/span&gt; &lt;span class="nt"&gt;navigation&lt;/span&gt; &lt;span class="nt"&gt;links&lt;/span&gt; &lt;span class="nt"&gt;at&lt;/span&gt; &lt;span class="nt"&gt;the&lt;/span&gt; &lt;span class="nt"&gt;right&lt;/span&gt; &lt;span class="nt"&gt;top&lt;/span&gt; &lt;span class="nt"&gt;of&lt;/span&gt; &lt;span class="nt"&gt;landing&lt;/span&gt; &lt;span class="nt"&gt;page&lt;/span&gt;
-&lt;span class="nt"&gt;Widget&lt;/span&gt; &lt;span class="nt"&gt;buildHeaderLinks&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;BuildContext&lt;/span&gt; &lt;span class="nt"&gt;context&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="err"&gt;if&lt;/span&gt; &lt;span class="err"&gt;(!ResponsiveWidget.isSmallScreen(context))&lt;/span&gt;
-    &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;Row(&lt;/span&gt;
-      &lt;span class="n"&gt;mainAxisAlignment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;MainAxisAlignment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;spaceAround&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-      &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;getLinksListing&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;buildLoginButton&lt;/span&gt;&lt;span class="p"&gt;()),&lt;/span&gt;
-    &lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="err"&gt;else&lt;/span&gt;
-    &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;Image.network(&amp;quot;assets/menu.png&amp;quot;,&lt;/span&gt; &lt;span class="k"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Header&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="p"&gt;...&lt;/span&gt;
+  &lt;span class="c1"&gt;//Builds navigation links at the right top of landing page&lt;/span&gt;
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;buildHeaderLinks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;ResponsiveWidget&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;isSmallScreen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;mainAxisAlignment&lt;/span&gt;: &lt;span class="kt"&gt;MainAxisAlignment.spaceAround&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;children&lt;/span&gt;: &lt;span class="kt"&gt;getLinksListing&lt;/span&gt;&lt;span class="p"&gt;()..&lt;/span&gt;&lt;span class="nx"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;buildLoginButton&lt;/span&gt;&lt;span class="p"&gt;()),&lt;/span&gt;
+      &lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;network&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;assets/menu.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;width&lt;/span&gt;: &lt;span class="kt"&gt;25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;height&lt;/span&gt;: &lt;span class="kt"&gt;25&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;...&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

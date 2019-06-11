@@ -437,15 +437,19 @@ There're three places, where we need to adjust the size rendering to fit on smal
 <p>At this point, we've made body of the landing page responsive. Now let's make header responsive.</p>
 <h4>Adapting landing page's Header</h4>
 <p>In large screens, there's enough room to show all navigation links. However, as far as smaller screens are concerned, there's not enough space to show all links next to each other. For smaller screens, it makes sense to show a menu icon. Clicking on menu icon can bring up all the links. Implementing menu icon interaction is out of the scope of this article.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Builds</span> <span class="nt">navigation</span> <span class="nt">links</span> <span class="nt">at</span> <span class="nt">the</span> <span class="nt">right</span> <span class="nt">top</span> <span class="nt">of</span> <span class="nt">landing</span> <span class="nt">page</span>
-<span class="nt">Widget</span> <span class="nt">buildHeaderLinks</span><span class="o">(</span><span class="nt">BuildContext</span> <span class="nt">context</span><span class="o">)</span> <span class="p">{</span>
-  <span class="err">if</span> <span class="err">(!ResponsiveWidget.isSmallScreen(context))</span>
-    <span class="err">return</span> <span class="err">Row(</span>
-      <span class="n">mainAxisAlignment</span><span class="p">:</span> <span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">spaceAround</span><span class="p">,</span>
-      <span class="n">children</span><span class="o">:</span> <span class="nf">getLinksListing</span><span class="p">()</span><span class="o">..</span><span class="nf">add</span><span class="p">(</span><span class="nf">buildLoginButton</span><span class="p">()),</span>
-    <span class="p">);</span>
-  <span class="err">else</span>
-    <span class="err">return</span> <span class="err">Image.network(&quot;assets/menu.png&quot;,</span> <span class="k">width</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="k">height</span><span class="o">:</span> <span class="mi">25</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Header</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="c1">//Builds navigation links at the right top of landing page</span>
+  <span class="nx">Widget</span> <span class="nx">buildHeaderLinks</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">ResponsiveWidget</span><span class="p">.</span><span class="nx">isSmallScreen</span><span class="p">(</span><span class="nx">context</span><span class="p">))</span>
+      <span class="k">return</span> <span class="nx">Row</span><span class="p">(</span>
+        <span class="nx">mainAxisAlignment</span>: <span class="kt">MainAxisAlignment.spaceAround</span><span class="p">,</span>
+        <span class="nx">children</span>: <span class="kt">getLinksListing</span><span class="p">()..</span><span class="nx">add</span><span class="p">(</span><span class="nx">buildLoginButton</span><span class="p">()),</span>
+      <span class="p">);</span>
+    <span class="k">else</span>
+      <span class="k">return</span> <span class="nx">Image</span><span class="p">.</span><span class="nx">network</span><span class="p">(</span><span class="s2">&quot;assets/menu.png&quot;</span><span class="p">,</span> <span class="nx">width</span>: <span class="kt">25</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">25</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
 
