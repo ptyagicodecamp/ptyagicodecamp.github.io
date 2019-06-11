@@ -8,10 +8,10 @@
 &lt;p&gt;This post is continuation of &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;. In this article, I'll show you how to make landing page responsive (meaning adapting to given screen size).&lt;/p&gt;
 &lt;p&gt;Checkout the companion videos:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Part-1:&lt;/strong&gt;&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://youtu.be/bFpJA_RDDXQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/bFpJA_RDDXQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;p&gt;&lt;strong&gt;Part-2:&lt;/strong&gt;&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://youtu.be/krr7mKEUfE0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/krr7mKEUfE0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;p&gt;In previous post, we learned how to design and implement a cross-platform (Web, Android and iOS). It looked great on large screen like desktop/laptop. However, it's widgets overflown when web landing page was resized to smaller screen like below:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Overflow widgets for Web" src="https://ptyagicodecamp.github.io/web_overflow_screen.jpg"&gt;&lt;/p&gt;
