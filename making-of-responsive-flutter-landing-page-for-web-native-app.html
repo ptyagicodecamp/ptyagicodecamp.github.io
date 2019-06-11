@@ -167,11 +167,18 @@
 <p><img alt="Overflow widgets for Web" src="https://ptyagicodecamp.github.io/web_overflow_screen.jpg"></p>
 <p>On native environment for a phone screen, it looked like this:</p>
 <p><img alt="Overflow widgets for native" src="https://ptyagicodecamp.github.io/overflow_screen.jpg"></p>
-<p>In this post, I'll be showing how to :
-<em> Implement a StatelessWidget <code>ResponsiveWidget</code> to support dynamic screen sizes.
-</em> Adapt landing page's body to large vs smaller screens.
-* Adapt landing page's header to show menu icon at smaller screens.</p>
-<p>Checkout the companion video tutorial : TODO</p>
+<p>In this post, I'll be showing how to :</p>
+<ul>
+<li>
+<p>Implement a StatelessWidget <code>ResponsiveWidget</code> to support dynamic screen sizes.</p>
+</li>
+<li>
+<p>Adapt landing page's body to large vs smaller screens.</p>
+</li>
+<li>
+<p>Adapt landing page's header to show menu icon at smaller screens.</p>
+</li>
+</ul>
 <h4>ResponsiveWidget utility class</h4>
 <p>Let's implement a StatelessWidget <code>ResponsiveWidget</code> that uses <a href="https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html">LayoutBuilder</a>. LayoutBuilder is a widget which builds a widget tree that can depend on the parent widget's size. This class is responsible for detecting the screen size, and put them in one of the three buckets: Large, Medium and Small. It has utility static functions/methods to check the screen sizes.</p>
 <p>I'll be using <a href="https://api.flutter.dev/flutter/widgets/MediaQuery-class.html"><code>MediaQuery</code></a> to access the size of the screen. This is how I'll be checking the size of the screens by using width of the screen in pixels.</p>
