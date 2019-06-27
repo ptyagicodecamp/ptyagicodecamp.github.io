@@ -1,5 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-06-11T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Making Cross-platform Flutter Landing Page Responsive</title><link href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html" rel="alternate"></link><published>2019-06-11T00:00:00-04:00</published><updated>2019-06-11T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-11:/making-cross-platform-flutter-landing-page-responsive.html</id><summary type="html">&lt;p&gt;This post is continuation of &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Our goal is to make Flutter page responsive for Web and Native apps.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-06-27T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Using Themes for Flutter Landing Page (Web, Android, iOS)</title><link href="https://ptyagicodecamp.github.io/using-themes-for-flutter-landing-page-web-android-ios.html" rel="alternate"></link><published>2019-06-27T00:00:00-04:00</published><updated>2019-06-27T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-27:/using-themes-for-flutter-landing-page-web-android-ios.html</id><summary type="html">&lt;p&gt;This post is continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
+&lt;p&gt;This post is continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;. In previous post, we learned how to make a cross-platform (Web, Android and iOS) landing page responsive for various form-factors. In this post, we'll see how can we change look and feel or Theme of landing page quickly, just by modifying small piece of code.&lt;/p&gt;
+&lt;p&gt;Checkout the companion video:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Part-1:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Our goal is to create themes for Cross-platform Flutter landing page (Web and Native apps).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Theme #1: BlueTheme&lt;/em&gt; Uses custom font &lt;a href="https://fonts.google.com/specimen/Indie+Flower"&gt;Indie Flower&lt;/a&gt; and blue color for header section. "Subscribe" button demonstrates local widget theming.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Theme #1" src="https://ptyagicodecamp.github.io/ftf_theme_final_blue.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Theme #2: PurpleTheme&lt;/em&gt; Uses purple color for header section. No default font or text styling specified. "Subscribe" button demonstrates local widget theming.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Theme #2" src="https://ptyagicodecamp.github.io/ftf_theme_final_purple.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Theme #3: GreenTheme&lt;/em&gt; Uses green color for header section. No default font specified. Header navigational links are styled italic. "Subscribe" button demonstrates local widget theming.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Theme #3" src="https://ptyagicodecamp.github.io/ftf_theme_final_green.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;This article is third part of the &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;. In this article, I'll show you how to create and use &lt;a href="https://flutter.dev/docs/cookbook/design/themes"&gt;Flutter Themes&lt;/a&gt; for landing page.&lt;/p&gt;
+&lt;p&gt;There are two ways to implement Themes in Flutter:
+&lt;em&gt; Global Theme: This type of theme affects whole app. Global themes are implemented using &lt;a href="https://api.flutter.dev/flutter/material/ThemeData-class.html"&gt;&lt;code&gt;ThemeData&lt;/code&gt;&lt;/a&gt;
+&lt;/em&gt; Local Themes: This is responsible for making changes to one part of the app rather touching any other part of the app. Local themes are implemented using &lt;code&gt;Theme&lt;/code&gt; widget and passing specific &lt;a href="https://api.flutter.dev/flutter/material/ThemeData-class.html"&gt;&lt;code&gt;ThemeData&lt;/code&gt;&lt;/a&gt; instance to it.&lt;/p&gt;
+&lt;p&gt;Let's get started by defining global theme say &lt;code&gt;AppTheme&lt;/code&gt; for our landing page. Later on, I'll show you how a particular widget's (say SubscribeButton) theming could be changed using &lt;code&gt;Theme&lt;/code&gt; widget.&lt;/p&gt;
+&lt;p&gt;This article covers three aspects/parts of Flutter Themes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Part #1:&lt;/strong&gt; How to create and use Global App themes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part #2:&lt;/strong&gt; How to create and use local themes for a widget&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part #3:&lt;/strong&gt; How to use Custom Fonts in themes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong&gt;Part #1:&lt;/strong&gt; How to create and use Global App themes&lt;/h3&gt;
+&lt;p&gt;I've created a utility class &lt;code&gt;MyAppThemes&lt;/code&gt; to keep track of my all themes related configurations. All methods in this class are &lt;code&gt;static&lt;/code&gt;. I'll be using three theme colors: Blue (default), Green and Purple to demonstrate different themes. I've created another utility class &lt;code&gt;MyColors&lt;/code&gt; to keep all colors in one place. This gives me flexibility to change shades of any particular color to a desired one at one place rather hunting for each and every occurrence in whole code base.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Defining App's global theme&lt;/strong&gt;: We need to customize &lt;code&gt;ThemeData&lt;/code&gt;'s attributes to achieve our desired appearance of the app. I've used different hues of blue for &lt;code&gt;primaryColor&lt;/code&gt;, &lt;code&gt;secondaryHeaderColor&lt;/code&gt; and &lt;code&gt;accentColor&lt;/code&gt;. I'll be referring to one or another of these colors from my app's widgets later from the code base.
+&lt;em&gt;Note:&lt;/em&gt; I'm using pre-defined colors in &lt;code&gt;MyColors&lt;/code&gt; class that I've named as color name prefixed with a number like blue1, blue2 and so on for all colors that I've used in my web/native app.&lt;/p&gt;
+&lt;p&gt;This is how a basic theme in blue would look like (all colors are used as different shades of blue).
+&lt;em&gt;Note:&lt;/em&gt; In this article, I'll be implementing lighter theme only. You can read more about &lt;code&gt;brightness&lt;/code&gt; attribute &lt;a href="https://api.flutter.dev/flutter/material/ThemeData/brightness.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;static ThemeData AppThemeBlue(BuildContext context) {
+  return ThemeData(
+    brightness: Brightness.light,
+    primaryColor: MyColors.blue1,
+    secondaryHeaderColor: MyColors.blue2,
+    accentColor: MyColors.blue3,  
+
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's defined Green and Purple themes like below. All we've to do is to pick our favorite hues of those colors for &lt;code&gt;primaryColor&lt;/code&gt;, &lt;code&gt;secondaryHeaderColor&lt;/code&gt; and &lt;code&gt;accentColor&lt;/code&gt; attributes.&lt;/p&gt;
+&lt;p&gt;Green theme implementation:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;static ThemeData AppThemeGreen(BuildContext context) {
+   return ThemeData(
+     // Define the default brightness and colors for the overall app.
+     brightness: Brightness.light,
+     primaryColor: MyColors.green1,
+     secondaryHeaderColor: MyColors.green2,
+     accentColor: MyColors.green3,
+   );
+ }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Purple theme implementation:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;static ThemeData AppThemePurple(BuildContext context) {
+  return ThemeData(
+    // Define the default brightness and colors for the overall app.
+    brightness: Brightness.light,
+    primaryColor: MyColors.purple1,
+    secondaryHeaderColor: MyColors.purple2,
+    accentColor: MyColors.purple3,
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;TextThemes:&lt;/strong&gt;
+Let's define default text theme as below. We'll use this &lt;code&gt;textTheme&lt;/code&gt; for our Blue and Purple themes.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;// Define the default TextTheme for headline, title and body text
+static TextTheme getDefaultTextTheme(BuildContext context) {
+  return TextTheme(
+    headline: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
+    title: TextStyle(
+        fontSize: 20.0,
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.bold),
+    body1: TextStyle(
+        fontSize: 26.0,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.normal),
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Extending parent themes:&lt;/strong&gt;
+Extending parent themes means to be able to change few attributes of parent theme, while keep other attributes same. In this example, we'll update &lt;code&gt;textTheme&lt;/code&gt;. Our GreenTheme will make use of this example. Say, we want to make our title text as italic. Notice the italic text in header section in images above.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example of extending the parent theme. Overwrites textTheme with given attributes
+static TextTheme getItalicTitleTextTheme(BuildContext context) {
+  return Theme.of(context).textTheme.copyWith(
+        title: TextStyle(
+            fontSize: 20.0,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold),
+      );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Integrating &lt;code&gt;TextTheme&lt;/code&gt; in ThemeData:&lt;/strong&gt;
+Blue and Purple themes will use default textTheme:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;static ThemeData AppThemeBlue(BuildContext context) {
+  return ThemeData(
+    ...
+    textTheme: getDefaultTextTheme(context),
+  );
+}
+
+static ThemeData AppThemePurple(BuildContext context) {
+  return ThemeData(
+    ...
+    textTheme: getDefaultTextTheme(context),
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Green theme will use extended textTheme &lt;code&gt;getItalicTitleTextTheme()&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;static ThemeData AppThemeGreen(BuildContext context) {
+  return ThemeData(
+    ...
+    textTheme: getItalicTitleTextTheme(context),
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Using Custom themes in &lt;code&gt;main.dart&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You can customize theme by changing &lt;code&gt;theme&lt;/code&gt; attribute of &lt;code&gt;MaterialApp&lt;/code&gt; as show below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;//entrance into app&lt;/span&gt;
+&lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;runApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;MyApp&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;MyApp&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;// This widget is the root of your application.&lt;/span&gt;
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;MaterialApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="p"&gt;...&lt;/span&gt;
+
+      &lt;span class="c1"&gt;//This is where you can call a new theme !&lt;/span&gt;
+      &lt;span class="nx"&gt;theme&lt;/span&gt;: &lt;span class="kt"&gt;MyAppThemes.AppThemeGreen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+
+      &lt;span class="p"&gt;...&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You'll notice same textTheme for Blue and Purple theme. For GreenTheme, you'll see italic navigational links in the header section. Below are the screen shots for all themes at this stage. Note that all buttons are themed similarly as per their main theme color.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Theme #1 BlueTheme:&lt;/em&gt; Using blue color for all buttons.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Theme #1" src="https://ptyagicodecamp.github.io/ftf_theme_part1_blue.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Theme #2 PurpleTheme:&lt;/em&gt; Using purple color for all buttons.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Theme #2" src="https://ptyagicodecamp.github.io/ftf_theme_part2_purple.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Theme #3 GreenTheme:&lt;/em&gt; Using green color for all buttons. Header navigational links are styled italic.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Theme #3" src="https://ptyagicodecamp.github.io/ftf_theme_part1_green.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Part #2:&lt;/strong&gt; How to create and use local themes for a widget&lt;/h3&gt;
+&lt;p&gt;Now, we want a particular button say "Subscribe" hued in orange theme. How would we do that ? This is where local themes come handy. Let's see how can we define a local theme.
+In &lt;code&gt;EmailBox&lt;/code&gt; class, subscribe button is added as below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
+
+Expanded(
+  flex: 2,
+  child: SubscribeButton(),
+)
+
+...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can use &lt;code&gt;Theme&lt;/code&gt; widget to wrap &lt;code&gt;SubscribeButton()&lt;/code&gt; widget. Pass local theme &lt;code&gt;ThemeData&lt;/code&gt; as &lt;code&gt;data&lt;/code&gt; attribute of &lt;code&gt;Theme&lt;/code&gt; widget, and add &lt;code&gt;SubscribeButton()&lt;/code&gt; widget as child. In local &lt;code&gt;ThemeData&lt;/code&gt;, you can overwrite &lt;code&gt;primaryColor&lt;/code&gt;, &lt;code&gt;secondaryHeaderColor&lt;/code&gt; and &lt;code&gt;accentColor&lt;/code&gt;. I'm using orange hues in this example.
+The benefit of this approach is to keep widgets theme agnostic. For example, branding logo is something that you may want to keep as is, even if you may want to change look and feel of all your app.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Expanded(
+    flex: 2,
+    child:
+        //Example of applying local themes to a certain widget in app
+        Theme(
+      data: ThemeData(
+        primaryColor: MyColors.orange1,
+        secondaryHeaderColor: MyColors.orange2,
+        accentColor: MyColors.orange3,
+      ),
+      child: SubscribeButton(),
+    ))
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This is how SubscribeButton would look like for all themes:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Susbscribe Local Theme" src="https://ptyagicodecamp.github.io/ftf_theme_part2_subscribe.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Part #3:&lt;/strong&gt; How to use Custom Fonts in themes&lt;/h3&gt;
+&lt;p&gt;Let's move on to be able to use custom fonts in your landing page. First, you may want to download (or get it from your designer) custom font of your choice from your favorite platform. I'm using Google fonts website to download custom font for this example. I want to use &lt;a href="https://fonts.google.com/specimen/Indie+Flower"&gt;Indie Flower Font&lt;/a&gt; for my BlueTheme only.
+Configuring custom fonts in Flutter Web is slightly different than Flutter Native apps.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Custom fonts for Web :&lt;/strong&gt;
+Let's explore Flutter Web first:
+&lt;em&gt; I've downloaded &lt;code&gt;IndieFlower.ttf&lt;/code&gt; from &lt;a href="https://fonts.google.com/specimen/Indie+Flower"&gt;Google Fonts Website&lt;/a&gt;.
+&lt;/em&gt; Copy &lt;code&gt;IndieFlower.ttf&lt;/code&gt; file into &lt;code&gt;web/assets&lt;/code&gt; directory.
+* Create &lt;code&gt;FontManifest.json&lt;/code&gt; file inside &lt;code&gt;web/assets&lt;/code&gt; directory with following contents:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[
+    {
+        &amp;quot;family&amp;quot;: &amp;quot;Indie Flower&amp;quot;,
+        &amp;quot;fonts&amp;quot;: [
+            {
+                &amp;quot;asset&amp;quot;: &amp;quot;IndieFlower.ttf&amp;quot;
+            }
+        ]
+    }
+
+]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Update BlueTheme to include &lt;code&gt;fontFamily&lt;/code&gt; as 'Indie Flower':&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;static ThemeData AppThemeBlue(BuildContext context) {
+  return ThemeData(
+    ...
+
+    // I used custom font for the default font family.
+    fontFamily: &amp;#39;Indie Flower&amp;#39;,
+
+    ...
+  );
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's pretty much to it ! Here's screen shot of the web version:
+&lt;img alt="Custom Font-Web" src="https://ptyagicodecamp.github.io/ftf_theme_final_blue.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Custom fonts on Native (Android, iOS) :&lt;/strong&gt;
+Let's make custom fonts work for native landing page:&lt;/p&gt;
+&lt;p&gt;Coming soon&lt;/p&gt;
+&lt;p&gt;Keep Fluttering !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;
+&lt;em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part1"&gt;Part #1 Source Code&lt;/a&gt;
+&lt;/em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part2"&gt;Part #2 Source Code&lt;/a&gt;
+&lt;em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-final"&gt;Final Source Code - Web&lt;/a&gt;
+&lt;/em&gt; &lt;a href=""&gt;Final Source Code - Native&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;References/Credits:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://flutter.dev/docs/cookbook/design/themes"&gt;Official Flutter Doc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="Themes"></category></entry><entry><title>Making Cross-platform Flutter Landing Page Responsive</title><link href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html" rel="alternate"></link><published>2019-06-11T00:00:00-04:00</published><updated>2019-06-11T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-11:/making-cross-platform-flutter-landing-page-responsive.html</id><summary type="html">&lt;p&gt;This post is continuation of &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Our goal is to make Flutter page responsive for Web and Native apps.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Web landing page:&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Web landing page comparison" src="https://ptyagicodecamp.github.io/responsive_web_comp.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Native landing screen:&lt;/em&gt;&lt;/p&gt;
