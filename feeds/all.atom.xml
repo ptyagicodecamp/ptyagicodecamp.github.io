@@ -156,7 +156,7 @@ static ThemeData AppThemePurple(BuildContext context) {
 &lt;p&gt;&lt;em&gt;Theme #1 BlueTheme:&lt;/em&gt; Using blue color for all buttons.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Theme #1" src="https://ptyagicodecamp.github.io/ftf_theme_part1_blue.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Theme #2 PurpleTheme:&lt;/em&gt; Using purple color for all buttons.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Theme #2" src="https://ptyagicodecamp.github.io/ftf_theme_part2_purple.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Theme #2" src="https://ptyagicodecamp.github.io/ftf_theme_part1_purple.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Theme #3 GreenTheme:&lt;/em&gt; Using green color for all buttons. Header navigational links are styled italic.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Theme #3" src="https://ptyagicodecamp.github.io/ftf_theme_part1_green.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;&lt;strong&gt;Part #2:&lt;/strong&gt; How to create and use local themes for a widget&lt;/h3&gt;
