@@ -153,7 +153,7 @@ static ThemeData AppThemePurple(BuildContext context) {
 
 
 &lt;p&gt;You'll notice same textTheme for Blue and Purple theme. For GreenTheme, you'll see italic navigational links in the header section. Below are the screen shots for all themes at this stage. Note that all buttons are themed similarly as per their main theme color.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;&lt;em&gt;Theme #1 BlueTheme:&lt;/em&gt;&lt;/em&gt;&lt;/strong&gt; Using blue color for all buttons.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;&lt;em&gt;Theme #1 BlueTheme:&lt;/em&gt;&lt;/strong&gt;&lt;/em&gt; Using blue color for all buttons.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Theme #1" src="https://ptyagicodecamp.github.io/ftf_theme_part1_blue.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Theme #2 PurpleTheme:&lt;/em&gt; Using purple color for all buttons.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Theme #2" src="https://ptyagicodecamp.github.io/ftf_theme_part1_purple.jpg"&gt;&lt;/p&gt;
@@ -232,14 +232,23 @@ Let's explore Flutter Web first:
 &lt;p&gt;That's pretty much to it ! Here's screen shot of the web version:
 &lt;img alt="Custom Font-Web" src="https://ptyagicodecamp.github.io/ftf_theme_final_blue.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Custom fonts on Native (Android, iOS) :&lt;/strong&gt;
-Let's make custom fonts work for native landing page:&lt;/p&gt;
-&lt;p&gt;Coming soon&lt;/p&gt;
+Let's make custom fonts work for native landing page. We would need to make two changes:
+&lt;em&gt; Don't forget to update native version of flutter dependencies as described in my another article about &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;running flutter landing page cross-platform on web and native&lt;/a&gt;.
+&lt;/em&gt; Copy over fonts file 'IndieFlower.ttf' inside fonts directory as &lt;code&gt;fonts/IndieFlower.ttf&lt;/code&gt; directory.
+* Update fonts related configuration in &lt;code&gt;pubspec.yaml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fonts:
+  - family: Indie Flower
+    fonts:
+      - asset: fonts/IndieFlower.ttf
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;Keep Fluttering !&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;
 &lt;em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part1"&gt;Part #1 Source Code&lt;/a&gt;
 &lt;/em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part2"&gt;Part #2 Source Code&lt;/a&gt;
 &lt;em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-final"&gt;Final Source Code - Web&lt;/a&gt;
-&lt;/em&gt; &lt;a href=""&gt;Final Source Code - Native&lt;/a&gt;&lt;/p&gt;
+&lt;/em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-themes-final"&gt;Final Source Code - Native&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;References/Credits:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://flutter.dev/docs/cookbook/design/themes"&gt;Official Flutter Doc&lt;/a&gt;&lt;/li&gt;

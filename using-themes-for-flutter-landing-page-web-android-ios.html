@@ -310,7 +310,7 @@ static ThemeData AppThemePurple(BuildContext context) {
 
 
 <p>You'll notice same textTheme for Blue and Purple theme. For GreenTheme, you'll see italic navigational links in the header section. Below are the screen shots for all themes at this stage. Note that all buttons are themed similarly as per their main theme color.</p>
-<p><strong><em><em>Theme #1 BlueTheme:</em></em></strong> Using blue color for all buttons.</p>
+<p><em><strong><em>Theme #1 BlueTheme:</em></strong></em> Using blue color for all buttons.</p>
 <p><img alt="Theme #1" src="https://ptyagicodecamp.github.io/ftf_theme_part1_blue.jpg"></p>
 <p><em>Theme #2 PurpleTheme:</em> Using purple color for all buttons.</p>
 <p><img alt="Theme #2" src="https://ptyagicodecamp.github.io/ftf_theme_part1_purple.jpg"></p>
@@ -389,14 +389,23 @@ Let's explore Flutter Web first:
 <p>That's pretty much to it ! Here's screen shot of the web version:
 <img alt="Custom Font-Web" src="https://ptyagicodecamp.github.io/ftf_theme_final_blue.jpg"></p>
 <p><strong>Custom fonts on Native (Android, iOS) :</strong>
-Let's make custom fonts work for native landing page:</p>
-<p>Coming soon</p>
+Let's make custom fonts work for native landing page. We would need to make two changes:
+<em> Don't forget to update native version of flutter dependencies as described in my another article about <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">running flutter landing page cross-platform on web and native</a>.
+</em> Copy over fonts file 'IndieFlower.ttf' inside fonts directory as <code>fonts/IndieFlower.ttf</code> directory.
+* Update fonts related configuration in <code>pubspec.yaml</code>:</p>
+<div class="highlight"><pre><span></span>fonts:
+  - family: Indie Flower
+    fonts:
+      - asset: fonts/IndieFlower.ttf
+</pre></div>
+
+
 <p>Keep Fluttering !</p>
 <p><strong><em>Source code repo:</em></strong>
 <em> <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part1">Part #1 Source Code</a>
 </em> <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part2">Part #2 Source Code</a>
 <em> <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-final">Final Source Code - Web</a>
-</em> <a href="">Final Source Code - Native</a></p>
+</em> <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-themes-final">Final Source Code - Native</a></p>
 <h3>References/Credits:</h3>
 <ul>
 <li><a href="https://flutter.dev/docs/cookbook/design/themes">Official Flutter Doc</a></li>
