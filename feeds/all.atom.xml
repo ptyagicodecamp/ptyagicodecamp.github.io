@@ -236,6 +236,7 @@ Configuring custom fonts in Flutter Web is slightly different than Flutter Nativ
 &lt;p&gt;That's pretty much to it ! Here's screen shot of the web version:
 &lt;img alt="Custom Font-Web" src="https://ptyagicodecamp.github.io/ftf_theme_final_blue.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Custom fonts on Native (Android, iOS) :&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="Android" src="https://ptyagicodecamp.github.io/ftf_themes_native.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Let's make custom fonts work for native landing page. We would need to make two changes:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Don't forget to update native version of flutter dependencies as described in my another article about &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;running flutter landing page cross-platform on web and native&lt;/a&gt;.&lt;/li&gt;
@@ -253,7 +254,6 @@ Configuring custom fonts in Flutter Web is slightly different than Flutter Nativ
 &lt;p&gt;&lt;img alt="Android" src="https://ptyagicodecamp.github.io/ftf_theme_final_native_a.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Screenshot of final landing page at iOS platform:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Android" src="https://ptyagicodecamp.github.io/ftf_theme_final_native_ios.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Android" src="https://ptyagicodecamp.github.io/ftf_themes_native.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Keep Fluttering !&lt;/p&gt;
 &lt;h3&gt;Source code repo:&lt;/h3&gt;
 &lt;ul&gt;
