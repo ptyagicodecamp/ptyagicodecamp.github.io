@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-06-27T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Using Flutter Themes for Cross-platform Landing Page (Web, Android, iOS)</title><link href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-android-ios.html" rel="alternate"></link><published>2019-06-27T00:00:00-04:00</published><updated>2019-06-27T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-27:/using-flutter-themes-for-cross-platform-landing-page-web-android-ios.html</id><summary type="html">&lt;p&gt;This post is in continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
-&lt;p&gt;This post is continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;. In previous post, we learned how to make a cross-platform (Web, Android and iOS) landing page responsive for various form-factors. In this post, we'll see how can we change look and feel or theme of the landing page quickly, just by modifying small piece of code.&lt;/p&gt;
+&lt;p&gt;This article is in continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;. In previous post, we learned how to make a cross-platform (Web, Android and iOS) landing page responsive for various form-factors. In this post, we'll see how can we change look and feel or theme of the landing page quickly, just by modifying small piece of code.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Our goal is to create themes for Cross-platform Flutter landing page (Web and Native apps).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Theme#1: BlueTheme&lt;/em&gt;&lt;/strong&gt; Uses custom font &lt;a href="https://fonts.google.com/specimen/Indie+Flower"&gt;Indie Flower&lt;/a&gt; and blue color for header section. "Subscribe" button demonstrates local widget theming.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theme#1: BlueTheme&lt;/strong&gt; Uses custom font &lt;a href="https://fonts.google.com/specimen/Indie+Flower"&gt;Indie Flower&lt;/a&gt; and blue color for header section. "Subscribe" button demonstrates local widget theming.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Theme #1" src="https://ptyagicodecamp.github.io/ftf_theme_final_blue.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Theme#2: PurpleTheme&lt;/em&gt;&lt;/strong&gt; Uses purple color for header section. No default font or text styling specified. "Subscribe" button demonstrates local widget theming.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theme#2: PurpleTheme&lt;/strong&gt; Uses purple color for header section. No default font or text styling specified. "Subscribe" button demonstrates local widget theming.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Theme #2" src="https://ptyagicodecamp.github.io/ftf_theme_final_purple.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Theme#3: GreenTheme&lt;/em&gt;&lt;/strong&gt; Uses green color for header section. No default font specified. Header navigational links are styled italic. "Subscribe" button demonstrates local widget theming.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theme#3: GreenTheme&lt;/strong&gt; Uses green color for header section. No default font specified. Header navigational links are styled italic. "Subscribe" button demonstrates local widget theming.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Theme #3" src="https://ptyagicodecamp.github.io/ftf_theme_final_green.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;This article is third part of the &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;. In this article, I'll show you how to create and use &lt;a href="https://flutter.dev/docs/cookbook/design/themes"&gt;Flutter Themes&lt;/a&gt; for landing page.&lt;/p&gt;
@@ -244,11 +244,11 @@ Let's make custom fonts work for native landing page. We would need to make two 
 &lt;p&gt;Screen shot of final landing page at iOS platform:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Android" src="https://ptyagicodecamp.github.io/ftf_theme_final_native_ios.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Keep Fluttering !&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;
-&lt;em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part1"&gt;Part #1 Source Code&lt;/a&gt;
-&lt;/em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part2"&gt;Part #2 Source Code&lt;/a&gt;
-&lt;em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-final"&gt;Final Source Code - Web&lt;/a&gt;
-&lt;/em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-themes-final"&gt;Final Source Code - Native&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part1"&gt;Part #1 Source Code&lt;/a&gt;
+&lt;/em&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part2"&gt;Part #2 Source Code&lt;/a&gt;
+&lt;em&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-final"&gt;Final Source Code - Web&lt;/a&gt;
+&lt;/em&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-themes-final"&gt;Final Source Code - Native&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;References/Credits:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://flutter.dev/docs/cookbook/design/themes"&gt;Official Flutter Doc&lt;/a&gt;&lt;/li&gt;
