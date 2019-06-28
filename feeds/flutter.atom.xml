@@ -243,6 +243,10 @@ Let's make custom fonts work for native landing page. We would need to make two 
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;Screen shot of final landing page at Android platform:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Android" src="https://ptyagicodecamp.github.io/ftf_theme_final_native_a.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Screen shot of final landing page at iOS platform:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Android" src="https://ptyagicodecamp.github.io/ftf_theme_final_native_ios.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Keep Fluttering !&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;
 &lt;em&gt; &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part1"&gt;Part #1 Source Code&lt;/a&gt;
