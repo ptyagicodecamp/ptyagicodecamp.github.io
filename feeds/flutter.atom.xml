@@ -153,7 +153,7 @@ static ThemeData AppThemePurple(BuildContext context) {
 
 
 &lt;p&gt;You'll notice same textTheme for Blue and Purple theme. For GreenTheme, you'll see italic navigational links in the header section. Below are the screen shots for all themes at this stage. Note that all buttons are themed similarly as per their main theme color.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Theme #1 BlueTheme:&lt;/em&gt; Using blue color for all buttons.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Theme #1 BlueTheme:&lt;/em&gt;&lt;/strong&gt; Using blue color for all buttons.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Theme #1" src="https://ptyagicodecamp.github.io/ftf_theme_part1_blue.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Theme #2 PurpleTheme:&lt;/em&gt; Using purple color for all buttons.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Theme #2" src="https://ptyagicodecamp.github.io/ftf_theme_part1_purple.jpg"&gt;&lt;/p&gt;
