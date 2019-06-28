@@ -19,8 +19,8 @@
 &lt;p&gt;Local Themes: This is responsible for making changes to one part of the app rather touching any other part of the app. Local themes are implemented using &lt;code&gt;Theme&lt;/code&gt; widget and passing specific &lt;a href="https://api.flutter.dev/flutter/material/ThemeData-class.html"&gt;&lt;code&gt;ThemeData&lt;/code&gt;&lt;/a&gt; instance to it.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Let's get started by defining global theme say &lt;code&gt;AppTheme&lt;/code&gt; for our landing page. Later on, I'll show you how a particular widget's (say SubscribeButton) theming could be changed using &lt;code&gt;Theme&lt;/code&gt; widget.&lt;/p&gt;
-&lt;p&gt;This article covers three aspects/parts of Flutter Themes:&lt;/p&gt;
+&lt;p&gt;Let's get started by defining global theme say &lt;code&gt;AppThemeBlue&lt;/code&gt; for our landing page. Later on, I'll show you how a particular widget's (say SubscribeButton) theming could be changed using &lt;code&gt;Theme&lt;/code&gt; widget.&lt;/p&gt;
+&lt;p&gt;This article covers three aspects of Flutter Themes:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Part #1:&lt;/strong&gt; How to create and use Global App themes&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Part #2:&lt;/strong&gt; How to create and use local themes for a widget&lt;/li&gt;
