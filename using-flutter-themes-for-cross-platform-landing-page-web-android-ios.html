@@ -356,10 +356,12 @@ The benefit of this approach is to keep widgets theme agnostic. For example, bra
 <p>Let's move on to be able to use custom fonts in your landing page. First, you may want to download (or get it from your designer) custom font of your choice from your favorite platform. I'm using Google fonts website to download custom font for this example. I want to use <a href="https://fonts.google.com/specimen/Indie+Flower">Indie Flower Font</a> for my BlueTheme only.
 Configuring custom fonts in Flutter Web is slightly different than Flutter Native apps.</p>
 <h4>Custom fonts for Web :</h4>
-<p>Let's explore Flutter Web first:
-<em> I've downloaded <code>IndieFlower.ttf</code> from <a href="https://fonts.google.com/specimen/Indie+Flower">Google Fonts Website</a>.
-</em> Copy <code>IndieFlower.ttf</code> file into <code>web/assets</code> directory.
-* Create <code>FontManifest.json</code> file inside <code>web/assets</code> directory with following contents:</p>
+<p>Let's explore Flutter Web first:</p>
+<ul>
+<li>I've downloaded <code>IndieFlower.ttf</code> from <a href="https://fonts.google.com/specimen/Indie+Flower">Google Fonts Website</a>.</li>
+<li>Copy <code>IndieFlower.ttf</code> file into <code>web/assets</code> directory.</li>
+<li>Create <code>FontManifest.json</code> file inside <code>web/assets</code> directory with following contents:</li>
+</ul>
 <div class="highlight"><pre><span></span>[
     {
         &quot;family&quot;: &quot;Indie Flower&quot;,

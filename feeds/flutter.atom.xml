@@ -198,10 +198,12 @@ The benefit of this approach is to keep widgets theme agnostic. For example, bra
 &lt;p&gt;Let's move on to be able to use custom fonts in your landing page. First, you may want to download (or get it from your designer) custom font of your choice from your favorite platform. I'm using Google fonts website to download custom font for this example. I want to use &lt;a href="https://fonts.google.com/specimen/Indie+Flower"&gt;Indie Flower Font&lt;/a&gt; for my BlueTheme only.
 Configuring custom fonts in Flutter Web is slightly different than Flutter Native apps.&lt;/p&gt;
 &lt;h4&gt;Custom fonts for Web :&lt;/h4&gt;
-&lt;p&gt;Let's explore Flutter Web first:
-&lt;em&gt; I've downloaded &lt;code&gt;IndieFlower.ttf&lt;/code&gt; from &lt;a href="https://fonts.google.com/specimen/Indie+Flower"&gt;Google Fonts Website&lt;/a&gt;.
-&lt;/em&gt; Copy &lt;code&gt;IndieFlower.ttf&lt;/code&gt; file into &lt;code&gt;web/assets&lt;/code&gt; directory.
-* Create &lt;code&gt;FontManifest.json&lt;/code&gt; file inside &lt;code&gt;web/assets&lt;/code&gt; directory with following contents:&lt;/p&gt;
+&lt;p&gt;Let's explore Flutter Web first:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I've downloaded &lt;code&gt;IndieFlower.ttf&lt;/code&gt; from &lt;a href="https://fonts.google.com/specimen/Indie+Flower"&gt;Google Fonts Website&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Copy &lt;code&gt;IndieFlower.ttf&lt;/code&gt; file into &lt;code&gt;web/assets&lt;/code&gt; directory.&lt;/li&gt;
+&lt;li&gt;Create &lt;code&gt;FontManifest.json&lt;/code&gt; file inside &lt;code&gt;web/assets&lt;/code&gt; directory with following contents:&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[
     {
         &amp;quot;family&amp;quot;: &amp;quot;Indie Flower&amp;quot;,
