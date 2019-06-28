@@ -9,10 +9,16 @@
 &lt;p&gt;&lt;strong&gt;Theme#3: GreenTheme&lt;/strong&gt; Uses green color for header section. No default font specified. Header navigational links are styled italic. "Subscribe" button demonstrates local widget theming.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Theme #3" src="https://ptyagicodecamp.github.io/ftf_theme_final_green.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;This article is third part of the &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;. In this article, I'll show you how to create and use &lt;a href="https://flutter.dev/docs/cookbook/design/themes"&gt;Flutter Themes&lt;/a&gt; for landing page.&lt;/p&gt;
-&lt;p&gt;There are two ways to implement Themes in Flutter:
-&lt;em&gt; Global Theme: This type of theme affects whole app. Global themes are implemented using &lt;a href="https://api.flutter.dev/flutter/material/ThemeData-class.html"&gt;&lt;code&gt;ThemeData&lt;/code&gt;&lt;/a&gt;
-&lt;/em&gt; Local Themes: This is responsible for making changes to one part of the app rather touching any other part of the app. Local themes are implemented using &lt;code&gt;Theme&lt;/code&gt; widget and passing specific &lt;a href="https://api.flutter.dev/flutter/material/ThemeData-class.html"&gt;&lt;code&gt;ThemeData&lt;/code&gt;&lt;/a&gt; instance to it.&lt;/p&gt;
+&lt;p&gt;This article is third in &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt; series. In this article, I'll show you how to create and use &lt;a href="https://flutter.dev/docs/cookbook/design/themes"&gt;Flutter Themes&lt;/a&gt; for landing page.&lt;/p&gt;
+&lt;h4&gt;Two ways to implement Themes in Flutter:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Global Theme: This type of theme affects whole app. Global themes are implemented using &lt;a href="https://api.flutter.dev/flutter/material/ThemeData-class.html"&gt;&lt;code&gt;ThemeData&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Local Themes: This is responsible for making changes to one part of the app rather touching any other part of the app. Local themes are implemented using &lt;code&gt;Theme&lt;/code&gt; widget and passing specific &lt;a href="https://api.flutter.dev/flutter/material/ThemeData-class.html"&gt;&lt;code&gt;ThemeData&lt;/code&gt;&lt;/a&gt; instance to it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Let's get started by defining global theme say &lt;code&gt;AppTheme&lt;/code&gt; for our landing page. Later on, I'll show you how a particular widget's (say SubscribeButton) theming could be changed using &lt;code&gt;Theme&lt;/code&gt; widget.&lt;/p&gt;
 &lt;p&gt;This article covers three aspects/parts of Flutter Themes:&lt;/p&gt;
 &lt;ul&gt;
