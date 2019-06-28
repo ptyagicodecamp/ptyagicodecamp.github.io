@@ -276,12 +276,8 @@ Configuring custom fonts in Flutter Web is slightly different than Flutter Nativ
 &lt;li&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part1"&gt;Part #1 Source Code (Web)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part2"&gt;Part #2 Source Code (Web)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-final"&gt;Final Source Code (Web)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-themes-final"&gt;Final Source Code (Native)&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/playlist?list=PL9hJBK4eqz6NQiumJc6Iwt7r6eLk8ZZP3"&gt;Youtube playlist for Designing Flutter Landing page&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-themes-final"&gt;Final Source Code (Native)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/playlist?list=PL9hJBK4eqz6NQiumJc6Iwt7r6eLk8ZZP3"&gt;Youtube playlist for Designing Flutter Landing page&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;References/Credits:&lt;/h3&gt;
 &lt;ul&gt;
@@ -611,9 +607,12 @@ There're three places, where we need to adjust the size rendering to fit on smal
 &lt;p&gt;Responsive page at Native platform looks like below in Android:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Responsive navigation for smaller screen for Android" src="https://ptyagicodecamp.github.io/native_responsive_final.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Keep Fluttering !&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;
-Source code for &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-responsive"&gt;web&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Source code for &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-responsive"&gt;Native&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Source code repo:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Source code for &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-responsive"&gt;web&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Source code for &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-responsive"&gt;Native&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/playlist?list=PL9hJBK4eqz6NQiumJc6Iwt7r6eLk8ZZP3"&gt;Youtube playlist for Designing Flutter Landing page&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Liked the article ?
 Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
@@ -1783,9 +1782,12 @@ As I mentioned before that you would need to replace &lt;code&gt;flutter_web&lt;
 Note: You may need to refresh packages in native environment. Don't forget to update the assets in appropriate location for Flutter native.&lt;/p&gt;
 &lt;p&gt;I've created branch named &lt;code&gt;native&lt;/code&gt; to play around in Android and iOS platforms. At this point, I see few dimensions issues there since layout is designed for large screen point of view. In next post, I'll explain how we can make it responsive on different form factors.&lt;/p&gt;
 &lt;p&gt;Until then keep Fluttering !&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;
-Source code for &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/step2"&gt;web&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Source code for &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native"&gt;Native&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Source code repo:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/step2"&gt;Source code for web&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native"&gt;Source code for Native&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/playlist?list=PL9hJBK4eqz6NQiumJc6Iwt7r6eLk8ZZP3"&gt;Youtube playlist for Designing Flutter Landing page&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href="https://ptyagicodecamp.github.io/making-of-responsive-flutter-landing-page-for-web-native-app.html"&gt;Next Article: Make landing page responsive&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h3&gt;References/Credits:&lt;/h3&gt;
 &lt;ol&gt;
