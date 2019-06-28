@@ -394,10 +394,12 @@ Configuring custom fonts in Flutter Web is slightly different than Flutter Nativ
 <p>That's pretty much to it ! Here's screen shot of the web version:
 <img alt="Custom Font-Web" src="https://ptyagicodecamp.github.io/ftf_theme_final_blue.jpg"></p>
 <h3>Custom fonts on Native (Android, iOS) :</h3>
-<p>Let's make custom fonts work for native landing page. We would need to make two changes:
-<em> Don't forget to update native version of flutter dependencies as described in my another article about <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">running flutter landing page cross-platform on web and native</a>.
-</em> Copy over fonts file 'IndieFlower.ttf' inside fonts directory as <code>fonts/IndieFlower.ttf</code> directory.
-* Update fonts related configuration in <code>pubspec.yaml</code>:</p>
+<p>Let's make custom fonts work for native landing page. We would need to make two changes:</p>
+<ul>
+<li>Don't forget to update native version of flutter dependencies as described in my another article about <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">running flutter landing page cross-platform on web and native</a>.</li>
+<li>Copy over fonts file 'IndieFlower.ttf' inside fonts directory as <code>fonts/IndieFlower.ttf</code> directory.</li>
+<li>Update fonts related configuration in <code>pubspec.yaml</code>:</li>
+</ul>
 <div class="highlight"><pre><span></span>fonts:
   - family: Indie Flower
     fonts:
