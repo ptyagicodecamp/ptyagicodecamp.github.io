@@ -3,9 +3,10 @@
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Material Icons for Flutter Web (Hummingbird).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; Material Icons&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Fix MaterialIcon rendering for Flutter WebApps.&lt;/p&gt;
-&lt;p&gt;Material Icons Default rendering in Flutter WebApp:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Goal" src="https://ptyagicodecamp.github.io/web_material_icon.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[Before]&lt;/strong&gt; Default Material Icons rendering in Flutter WebApp:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Material Icons Default rendering" src="https://ptyagicodecamp.github.io/web_materialicon_1.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;Material Icons rendering correctly for Flutter WebApp:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[After]&lt;/strong&gt; Fixed Material Icons rendering for Flutter WebApp:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Fixed Material Icons rendering" src="https://ptyagicodecamp.github.io/web_materialicon_2.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
 &lt;h4&gt;Step #1. &lt;code&gt;pubspec.yaml&lt;/code&gt;&lt;/h4&gt;
