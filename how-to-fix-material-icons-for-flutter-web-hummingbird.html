@@ -44,18 +44,32 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333333">
 
-    <meta name="author" content="Priyanka Tyagi" />
-    <meta name="description" content="Mobile engineering tech logger." />
+<meta name="author" content="ptyagi" />
+<meta name="description" content="At this point, Flutter Web (aka Hummingbird) doesn&#39;t render Material Icons for Web. In this post, we&#39;ll see how Material Icons can be rendered for WebApps developed using Flutter." />
+<meta name="keywords" content="Material Icons, Hummingbird, Cross-platform, Flutter, Code-recipes, Android, Android Studio, iOS, development">
+
 <meta property="og:site_name" content="techLog"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="techLog"/>
-<meta property="og:description" content="Mobile engineering tech logger."/>
+<meta property="og:title" content="How to fix Material Icons for Flutter Web (Hummingbird)"/>
+<meta property="og:description" content="At this point, Flutter Web (aka Hummingbird) doesn&#39;t render Material Icons for Web. In this post, we&#39;ll see how Material Icons can be rendered for WebApps developed using Flutter."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://ptyagicodecamp.github.io"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/how-to-fix-material-icons-for-flutter-web-hummingbird.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-07-18 00:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Flutter"/>
+<meta property="article:tag" content="Material Icons"/>
+<meta property="article:tag" content="Hummingbird"/>
+<meta property="article:tag" content="Cross-platform"/>
+<meta property="article:tag" content="Flutter"/>
+<meta property="article:tag" content="Code-recipes"/>
+<meta property="article:tag" content="Android"/>
+<meta property="article:tag" content="Android Studio"/>
+<meta property="article:tag" content="iOS"/>
+<meta property="article:tag" content="development"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash;     Authors
-</title>
+  <title>techLog &ndash; How to fix Material Icons for Flutter Web (Hummingbird)</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -126,14 +140,110 @@
 
 <article class="single">
   <header>
-    <h1>    Authors
-</h1>
+      
+    <h1 id="how-to-fix-material-icons-for-flutter-web-hummingbird">How to fix Material Icons for Flutter Web (Hummingbird)</h1>
+    <p>
+          Posted on July 18, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+
+
+    </p>
   </header>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
   <div>
-    <ul class="list">
-      <li><a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a> (32)</li>
-    </ul>
+    <p><strong><em>Target Audience:</em></strong> Beginner</p>
+<p><strong><em>Recipe:</em></strong> Material Icons for Flutter Web (Hummingbird).</p>
+<p><strong><em>Focus Widget:</em></strong> Material Icons</p>
+<p><strong><em>Goal:</em></strong> Fix MaterialIcon rendering for Flutter WebApps.</p>
+<p>Material Icons Default rendering in Flutter WebApp:
+<img alt="Material Icons Default rendering" src="https://ptyagicodecamp.github.io/web_materialicon_1.jpg"></p>
+<p>Fixed Material Icons rendering for Flutter WebApp:
+<img alt="Fixed Material Icons rendering" src="https://ptyagicodecamp.github.io/web_materialicon_2.jpg"></p>
+<h3>Lets's go!</h3>
+<h4>Step #1. <code>pubspec.yaml</code></h4>
+<p>Add material icon dependency in <code>pubspec.yaml</code>:</p>
+<div class="highlight"><pre><span></span><span class="n">flutter</span><span class="o">:</span>
+  <span class="n">uses</span><span class="o">-</span><span class="n">material</span><span class="o">-</span><span class="n">design</span><span class="o">:</span> <span class="kc">true</span>
+</pre></div>
+
+
+<h4>Step #2. Download Material Icons font</h4>
+<p>Download MaterialIcons fonts from <a href="https://github.com/google/material-design-icons/raw/master/iconfont/MaterialIcons-Regular.ttf">here</a>. Copy <code>MaterialIcons-Regular.ttf</code> file under <code>web/assets/fonts</code> directory.</p>
+<h4>Step #3. <code>FontManifest.json</code></h4>
+<p>Add <code>FontManifest.json</code> in <code>web/assets</code> directory.</p>
+<div class="highlight"><pre><span></span>[
+  {
+    &quot;fonts&quot;: [
+      {
+        &quot;asset&quot;: &quot;fonts/MaterialIcons-Regular.ttf&quot;
+      }
+    ],
+    &quot;family&quot;: &quot;MaterialIcons&quot;
+  }
+]
+</pre></div>
+
+
+<p><em>Note:</em> I've removed debug banner to be able to show Settings vertical dots. All you need to do is to set <code>debugShowCheckedModeBanner</code> flag to false in <code>MaterialApp</code> like below:</p>
+<div class="highlight"><pre><span></span>return new MaterialApp(
+      debugShowCheckedModeBanner: false,
+      ...
+    );
+</pre></div>
+
+
+<p><strong><em>Source code repo:</em></strong>
+Source code is <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/popupmenubutton-web/flutter_widgets">here</a></p>
+<h3>References:</h3>
+<ol>
+<li><a href="https://github.com/flutter/flutter/issues/32540">This Github issue</a></li>
+</ol>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+<p>Follow me at <a href="https://twitter.com/ptyagi13">twitter</a></p>
   </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://ptyagicodecamp.github.io/tag/material-icons.html">Material Icons</a>
+      <a href="https://ptyagicodecamp.github.io/tag/hummingbird.html">Hummingbird</a>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
+      <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+      <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+    </p>
+  </div>
+
+  <div class="center social-share">
+    <p>    Like this article? Share it with your friends!
+</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
 </article>
 
     <footer>

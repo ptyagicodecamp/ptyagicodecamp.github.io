@@ -1,5 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-06-27T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Using Flutter Themes for Cross-platform Landing Page (Web, Android, iOS)</title><link href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-android-ios.html" rel="alternate"></link><published>2019-06-27T00:00:00-04:00</published><updated>2019-06-27T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-27:/using-flutter-themes-for-cross-platform-landing-page-web-android-ios.html</id><summary type="html">&lt;p&gt;This post is in continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-07-18T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>How to fix Material Icons for Flutter Web (Hummingbird)</title><link href="https://ptyagicodecamp.github.io/how-to-fix-material-icons-for-flutter-web-hummingbird.html" rel="alternate"></link><published>2019-07-18T00:00:00-04:00</published><updated>2019-07-18T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-07-18:/how-to-fix-material-icons-for-flutter-web-hummingbird.html</id><summary type="html">&lt;p&gt;At this point, Flutter Web (aka Hummingbird) doesn't render Material Icons for Web. In this post, we'll see how Material Icons can be rendered for WebApps developed using Flutter.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Material Icons for Flutter Web (Hummingbird).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Focus Widget:&lt;/em&gt;&lt;/strong&gt; Material Icons&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; Fix MaterialIcon rendering for Flutter WebApps.&lt;/p&gt;
+&lt;p&gt;Material Icons Default rendering in Flutter WebApp:
+&lt;img alt="Material Icons Default rendering" src="https://ptyagicodecamp.github.io/web_materialicon_1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Fixed Material Icons rendering for Flutter WebApp:
+&lt;img alt="Fixed Material Icons rendering" src="https://ptyagicodecamp.github.io/web_materialicon_2.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;Lets's go!&lt;/h3&gt;
+&lt;h4&gt;Step #1. &lt;code&gt;pubspec.yaml&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;Add material icon dependency in &lt;code&gt;pubspec.yaml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;flutter&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;uses&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;material&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;design&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Step #2. Download Material Icons font&lt;/h4&gt;
+&lt;p&gt;Download MaterialIcons fonts from &lt;a href="https://github.com/google/material-design-icons/raw/master/iconfont/MaterialIcons-Regular.ttf"&gt;here&lt;/a&gt;. Copy &lt;code&gt;MaterialIcons-Regular.ttf&lt;/code&gt; file under &lt;code&gt;web/assets/fonts&lt;/code&gt; directory.&lt;/p&gt;
+&lt;h4&gt;Step #3. &lt;code&gt;FontManifest.json&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;Add &lt;code&gt;FontManifest.json&lt;/code&gt; in &lt;code&gt;web/assets&lt;/code&gt; directory.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[
+  {
+    &amp;quot;fonts&amp;quot;: [
+      {
+        &amp;quot;asset&amp;quot;: &amp;quot;fonts/MaterialIcons-Regular.ttf&amp;quot;
+      }
+    ],
+    &amp;quot;family&amp;quot;: &amp;quot;MaterialIcons&amp;quot;
+  }
+]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; I've removed debug banner to be able to show Settings vertical dots. All you need to do is to set &lt;code&gt;debugShowCheckedModeBanner&lt;/code&gt; flag to false in &lt;code&gt;MaterialApp&lt;/code&gt; like below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;return new MaterialApp(
+      debugShowCheckedModeBanner: false,
+      ...
+    );
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt;
+Source code is &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/popupmenubutton-web/flutter_widgets"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/flutter/flutter/issues/32540"&gt;This Github issue&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Material Icons"></category><category term="Hummingbird"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Using Flutter Themes for Cross-platform Landing Page (Web, Android, iOS)</title><link href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-android-ios.html" rel="alternate"></link><published>2019-06-27T00:00:00-04:00</published><updated>2019-06-27T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-27:/using-flutter-themes-for-cross-platform-landing-page-web-android-ios.html</id><summary type="html">&lt;p&gt;This post is in continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
 &lt;p&gt;This article is in continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;. In previous post, we learned how to make a cross-platform (Web, Android and iOS) landing page responsive for various form-factors. In this post, we'll see how can we change look and feel or theme of the landing page quickly, just by modifying small piece of code.&lt;/p&gt;
 &lt;p&gt;Checkout the companion video:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Part-1. (Themes Introduction):&lt;/strong&gt;&lt;/p&gt;
