@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
+
+    <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="techLog Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-133714063-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="ptyagi" />
+<meta name="description" content="This post is in continuation of Making Cross-platform Flutter Landing Page Responsive." />
+<meta name="keywords" content="Cross-platform, Flutter, Code-recipes, Android, Android Studio, iOS, Web, Themes">
+
+<meta property="og:site_name" content="techLog"/>
+<meta property="og:title" content="Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)"/>
+<meta property="og:description" content="This post is in continuation of Making Cross-platform Flutter Landing Page Responsive."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-06-27 00:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Flutter"/>
+<meta property="article:tag" content="Cross-platform"/>
+<meta property="article:tag" content="Flutter"/>
+<meta property="article:tag" content="Code-recipes"/>
+<meta property="article:tag" content="Android"/>
+<meta property="article:tag" content="Android Studio"/>
+<meta property="article:tag" content="iOS"/>
+<meta property="article:tag" content="Web"/>
+<meta property="article:tag" content="Themes"/>
+<meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
+
+  <title>techLog &ndash; Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)</title>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6359982310050489",
+      enable_page_level_ads: true
+    });
+  </script>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://ptyagicodecamp.github.io">
+        <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="techLog" title="techLog">
+      </a>
+      <h1><a href="https://ptyagicodecamp.github.io">techLog</a></h1>
+
+<p>Explore | Android | Software Engineering</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="https://www.paypal.me/pritya" target="_blank">Support</a></li>
+          <li><a href="https://www.linkedin.com/in/priyankatyagi" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/ptyagicodecamp" target="_blank">GitHub</a></li>
+          <li><a href="https://medium.com/@ptyagicodecamp" target="_blank">Medium</a></li>
+          <li><a href="https://twitter.com/ptyagi13" target="_blank">Twitter</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-LinkedIn" href="https://www.linkedin.com/in/priyankatyagi" target="_blank"><i class="fa fa-LinkedIn"></i></a></li>
+        <li><a class="sc-GitHub" href="https://github.com/ptyagicodecamp" target="_blank"><i class="fa fa-GitHub"></i></a></li>
+        <li><a class="sc-Medium" href="https://medium.com/@ptyagicodecamp" target="_blank"><i class="fa fa-Medium"></i></a></li>
+        <li><a class="sc-Twitter" href="https://twitter.com/ptyagi13" target="_blank"><i class="fa fa-Twitter"></i></a></li>
+      </ul>
+    </div>
+
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle ads-aside"
+           data-ad-client="ca-pub-6359982310050489"
+           data-ad-slot="8977779775"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+  </aside>
+  <main>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle ads-responsive"
+           data-ad-client="ca-pub-6359982310050489"
+           data-ad-slot="8977779775"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+    <nav>
+      <a href="https://ptyagicodecamp.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios">Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)</h1>
+    <p>
+          Posted on June 27, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+
+
+    </p>
+  </header>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+  <div>
+    <h3>Background</h3>
+<p>This article is in continuation of <a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html">Making Cross-platform Flutter Landing Page Responsive</a>. In previous post, we learned how to make a cross-platform (Web, Android and iOS) landing page responsive for various form-factors. In this post, we'll see how can we change look and feel or theme of the landing page quickly, just by modifying small piece of code.</p>
+<p>Checkout the companion video:</p>
+<p><strong>Part-1. (Themes Introduction):</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LuGI9VEQuYI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><strong>Part-1a. (Global Theme):</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u8rzSDPps3k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><strong>Part-2. (Local Theme):</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bPwpEvZzI_k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><strong>Part-3. (Custom Fonts-Web):</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MYQvaDIBOrY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><strong>Part-3a. (Custom Fonts-Native Demo):</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_LIwhK7WwMw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><strong>Goal:</strong> Our goal is to create themes for Cross-platform Flutter landing page (Web and Native apps).</p>
+<p><strong>Theme#1: BlueTheme</strong> Uses custom font <a href="https://fonts.google.com/specimen/Indie+Flower">Indie Flower</a> and blue color for header section. "Subscribe" button demonstrates local widget theming.</p>
+<p><img alt="Theme #1" src="https://ptyagicodecamp.github.io/ftf_theme_final_blue.jpg"></p>
+<p><strong>Theme#2: PurpleTheme</strong> Uses purple color for header section. No default font or text styling specified. "Subscribe" button demonstrates local widget theming.</p>
+<p><img alt="Theme #2" src="https://ptyagicodecamp.github.io/ftf_theme_final_purple.jpg"></p>
+<p><strong>Theme#3: GreenTheme</strong> Uses green color for header section. No default font specified. Header navigational links are styled italic. "Subscribe" button demonstrates local widget theming.</p>
+<p><img alt="Theme #3" src="https://ptyagicodecamp.github.io/ftf_theme_final_green.jpg"></p>
+<h3>Introduction</h3>
+<p>This article is third in <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">Designing Cross platform Flutter prototype for Landing Page</a> series. In this article, I'll show you how to create and use <a href="https://flutter.dev/docs/cookbook/design/themes">Flutter Themes</a> for landing page.</p>
+<h4>Two ways to implement Themes in Flutter:</h4>
+<ul>
+<li>
+<p>Global Theme: This type of theme affects whole app. Global themes are implemented using <a href="https://api.flutter.dev/flutter/material/ThemeData-class.html"><code>ThemeData</code></a></p>
+</li>
+<li>
+<p>Local Themes: This is responsible for making changes to one part of the app rather touching any other part of the app. Local themes are implemented using <code>Theme</code> widget and passing specific <a href="https://api.flutter.dev/flutter/material/ThemeData-class.html"><code>ThemeData</code></a> instance to it.</p>
+</li>
+</ul>
+<p>Let's get started by defining global theme say <code>AppThemeBlue</code> for our landing page. Later on, I'll show you how a particular widget's (say SubscribeButton) theming could be changed using <code>Theme</code> widget.</p>
+<p>This article covers three aspects of Flutter Themes:</p>
+<ul>
+<li><strong>Part #1:</strong> How to create and use Global App themes</li>
+<li><strong>Part #2:</strong> How to create and use local themes for a widget</li>
+<li><strong>Part #3:</strong> How to use Custom Fonts in themes</li>
+</ul>
+<h3><strong>Part #1:</strong> How to create and use Global App themes</h3>
+<p>I've created a utility class <code>MyAppThemes</code> to keep track of my all themes related configurations. All methods in this class are <code>static</code>. I'll be using three theme colors: Blue (default), Green and Purple to demonstrate different themes. I've created another utility class <code>MyColors</code> to keep all colors in one place. This gives me flexibility to change shades of any particular color to a desired one at one place rather hunting for each and every occurrence in whole code base.</p>
+<p><strong>Defining App's global theme</strong>: We need to customize <code>ThemeData</code>'s attributes to achieve our desired appearance of the app. I've used different hues of blue for <code>primaryColor</code>, <code>secondaryHeaderColor</code> and <code>accentColor</code>. I'll be referring to one or another of these colors from my app's widgets later from the code base.
+<em>Note:</em> I'm using pre-defined colors in <code>MyColors</code> class that I've named as color name prefixed with a number like blue1, blue2 and so on for all colors that I've used in my web/native app.</p>
+<p>This is how a basic theme in blue would look like (all colors are used as different shades of blue).
+<em>Note:</em> In this article, I'll be implementing lighter theme only. You can read more about <code>brightness</code> attribute <a href="https://api.flutter.dev/flutter/material/ThemeData/brightness.html">here</a>.</p>
+<div class="highlight"><pre><span></span>static ThemeData AppThemeBlue(BuildContext context) {
+  return ThemeData(
+    brightness: Brightness.light,
+    primaryColor: MyColors.blue1,
+    secondaryHeaderColor: MyColors.blue2,
+    accentColor: MyColors.blue3,  
+
+  );
+}
+</pre></div>
+
+
+<p>Let's define Green and Purple themes like below. All we've to do is to pick our favorite hues of those colors for <code>primaryColor</code>, <code>secondaryHeaderColor</code> and <code>accentColor</code> attributes.</p>
+<p>Green theme implementation:</p>
+<div class="highlight"><pre><span></span>static ThemeData AppThemeGreen(BuildContext context) {
+   return ThemeData(
+     // Define the default brightness and colors for the overall app.
+     brightness: Brightness.light,
+     primaryColor: MyColors.green1,
+     secondaryHeaderColor: MyColors.green2,
+     accentColor: MyColors.green3,
+   );
+ }
+</pre></div>
+
+
+<p>Purple theme implementation:</p>
+<div class="highlight"><pre><span></span>static ThemeData AppThemePurple(BuildContext context) {
+  return ThemeData(
+    // Define the default brightness and colors for the overall app.
+    brightness: Brightness.light,
+    primaryColor: MyColors.purple1,
+    secondaryHeaderColor: MyColors.purple2,
+    accentColor: MyColors.purple3,
+  );
+}
+</pre></div>
+
+
+<p><strong>TextThemes:</strong>
+Let's define default text theme as below. We'll use this <code>textTheme</code> for our Blue and Purple themes.</p>
+<div class="highlight"><pre><span></span>// Define the default TextTheme for headline, title and body text
+static TextTheme getDefaultTextTheme(BuildContext context) {
+  return TextTheme(
+    headline: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
+    title: TextStyle(
+        fontSize: 20.0,
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.bold),
+    body1: TextStyle(
+        fontSize: 26.0,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.normal),
+  );
+}
+</pre></div>
+
+
+<p><strong>Extending parent themes:</strong>
+Extending parent themes means to be able to change few attributes of parent theme, while keep other attributes same. In this example, we'll update <code>textTheme</code>. Our GreenTheme will make use of this example. Say, we want to make our title text as italic. Notice the italic text in header section in images above.</p>
+<div class="highlight"><pre><span></span>//Example of extending the parent theme. Overwrites textTheme with given attributes
+static TextTheme getItalicTitleTextTheme(BuildContext context) {
+  return Theme.of(context).textTheme.copyWith(
+        title: TextStyle(
+            fontSize: 20.0,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold),
+      );
+}
+</pre></div>
+
+
+<p><strong>Integrating <code>TextTheme</code> in ThemeData:</strong>
+Blue and Purple themes will use default textTheme:</p>
+<div class="highlight"><pre><span></span>static ThemeData AppThemeBlue(BuildContext context) {
+  return ThemeData(
+    ...
+    textTheme: getDefaultTextTheme(context),
+  );
+}
+
+static ThemeData AppThemePurple(BuildContext context) {
+  return ThemeData(
+    ...
+    textTheme: getDefaultTextTheme(context),
+  );
+}
+</pre></div>
+
+
+<p>Green theme will use extended textTheme <code>getItalicTitleTextTheme()</code>:</p>
+<div class="highlight"><pre><span></span>static ThemeData AppThemeGreen(BuildContext context) {
+  return ThemeData(
+    ...
+    textTheme: getItalicTitleTextTheme(context),
+  );
+}
+</pre></div>
+
+
+<p><strong>Using Custom themes in <code>main.dart</code>:</strong></p>
+<p>You can customize theme by changing <code>theme</code> attribute of <code>MaterialApp</code> as show below:</p>
+<div class="highlight"><pre><span></span><span class="c1">//entrance into app</span>
+<span class="k">void</span> <span class="nx">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">runApp</span><span class="p">(</span><span class="nx">MyApp</span><span class="p">());</span>
+
+<span class="kr">class</span> <span class="nx">MyApp</span> <span class="kr">extends</span> <span class="nx">StatelessWidget</span> <span class="p">{</span>
+  <span class="c1">// This widget is the root of your application.</span>
+  <span class="kd">@override</span>
+  <span class="nx">Widget</span> <span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">MaterialApp</span><span class="p">(</span>
+      <span class="p">...</span>
+
+      <span class="c1">//This is where you can call a new theme !</span>
+      <span class="nx">theme</span>: <span class="kt">MyAppThemes.AppThemeGreen</span><span class="p">(</span><span class="nx">context</span><span class="p">),</span>
+
+      <span class="p">...</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>You'll notice same textTheme for Blue and Purple theme. For GreenTheme, you'll see italic navigational links in the header section. Below are the screen shots for all themes at this stage. Note that all buttons are themed similarly as per their main theme color.</p>
+<p><em><strong><em>Theme #1 BlueTheme:</em></strong></em> Using blue color for all buttons.</p>
+<p><img alt="Theme #1" src="https://ptyagicodecamp.github.io/ftf_theme_part1_blue.jpg"></p>
+<p><em><strong><em>Theme #2 PurpleTheme:</em></strong></em> Using purple color for all buttons.</p>
+<p><img alt="Theme #2" src="https://ptyagicodecamp.github.io/ftf_theme_part1_purple.jpg"></p>
+<p><em><strong><em>Theme #3 GreenTheme:</em></strong></em> Using green color for all buttons. Header navigational links are styled italic.</p>
+<p><img alt="Theme #3" src="https://ptyagicodecamp.github.io/ftf_theme_part1_green.jpg"></p>
+<h3><strong>Part #2:</strong> How to create and use local themes for a widget</h3>
+<p>Now, we want a particular button say "Subscribe" hued in orange theme. How would we do that ? This is where local themes come handy. Let's see how can we define a local theme.
+In <code>EmailBox</code> class, subscribe button is added as below:</p>
+<div class="highlight"><pre><span></span>...
+
+Expanded(
+  flex: 2,
+  child: SubscribeButton(),
+)
+
+...
+</pre></div>
+
+
+<p>We can use <code>Theme</code> widget to wrap <code>SubscribeButton()</code> widget. Pass local theme <code>ThemeData</code> as <code>data</code> attribute of <code>Theme</code> widget, and add <code>SubscribeButton()</code> widget as child. In local <code>ThemeData</code>, you can overwrite <code>primaryColor</code>, <code>secondaryHeaderColor</code> and <code>accentColor</code>. I'm using orange hues in this example.
+The benefit of this approach is to keep widgets theme agnostic. For example, branding logo is something that you may want to keep as is, even if you may want to change look and feel of all your app.</p>
+<div class="highlight"><pre><span></span>Expanded(
+    flex: 2,
+    child:
+        //Example of applying local themes to a certain widget in app
+        Theme(
+      data: ThemeData(
+        primaryColor: MyColors.orange1,
+        secondaryHeaderColor: MyColors.orange2,
+        accentColor: MyColors.orange3,
+      ),
+      child: SubscribeButton(),
+    ))
+</pre></div>
+
+
+<p>This is how SubscribeButton would look like for all themes:</p>
+<p><img alt="Susbscribe Local Theme" src="https://ptyagicodecamp.github.io/ftf_theme_part2_subscribe.jpg"></p>
+<h3><strong>Part #3:</strong> How to use Custom Fonts in themes</h3>
+<p>Let's move on to be able to use custom fonts in your landing page. First, you may want to download (or get it from your designer) custom font of your choice from your favorite platform. I'm using Google fonts website to download custom font for this example. I want to use <a href="https://fonts.google.com/specimen/Indie+Flower">Indie Flower Font</a> for my BlueTheme only.
+Configuring custom fonts in Flutter Web is slightly different than Flutter Native apps.</p>
+<h4>Custom fonts for Web :</h4>
+<p>Let's explore Flutter Web first:</p>
+<ul>
+<li>I've downloaded <code>IndieFlower.ttf</code> from <a href="https://fonts.google.com/specimen/Indie+Flower">Google Fonts Website</a>.</li>
+<li>Copy <code>IndieFlower.ttf</code> file into <code>web/assets</code> directory.</li>
+<li>Create <code>FontManifest.json</code> file inside <code>web/assets</code> directory with following contents:</li>
+</ul>
+<div class="highlight"><pre><span></span>[
+    {
+        &quot;family&quot;: &quot;Indie Flower&quot;,
+        &quot;fonts&quot;: [
+            {
+                &quot;asset&quot;: &quot;IndieFlower.ttf&quot;
+            }
+        ]
+    }
+
+]
+</pre></div>
+
+
+<ul>
+<li>Update BlueTheme to include <code>fontFamily</code> as 'Indie Flower':</li>
+</ul>
+<div class="highlight"><pre><span></span>static ThemeData AppThemeBlue(BuildContext context) {
+  return ThemeData(
+    ...
+
+    // I used custom font for the default font family.
+    fontFamily: &#39;Indie Flower&#39;,
+
+    ...
+  );
+</pre></div>
+
+
+<p>That's pretty much to it ! Here's screen shot of the web version:
+<img alt="Custom Font-Web" src="https://ptyagicodecamp.github.io/ftf_theme_final_blue.jpg"></p>
+<h3>Custom fonts on Native (Android, iOS) :</h3>
+<p><img alt="Android" src="https://ptyagicodecamp.github.io/ftf_themes_native.jpg"></p>
+<p>Let's make custom fonts work for native landing page. We would need to make two changes:</p>
+<ul>
+<li>Don't forget to update native version of flutter dependencies as described in my another article about <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">running flutter landing page cross-platform on web and native</a>.</li>
+<li>Copy over fonts file 'IndieFlower.ttf' inside fonts directory as <code>fonts/IndieFlower.ttf</code> directory.</li>
+<li>Update fonts related configuration in <code>pubspec.yaml</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span>fonts:
+  - family: Indie Flower
+    fonts:
+      - asset: fonts/IndieFlower.ttf
+</pre></div>
+
+
+<p><strong>Screenshot of final landing page at Android platform:</strong></p>
+<p><img alt="Android" src="https://ptyagicodecamp.github.io/ftf_theme_final_native_a.jpg"></p>
+<p><strong>Screenshot of final landing page at iOS platform:</strong></p>
+<p><img alt="Android" src="https://ptyagicodecamp.github.io/ftf_theme_final_native_ios.jpg"></p>
+<p>Keep Fluttering !</p>
+<h3>Source code repo:</h3>
+<ul>
+<li><a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part1">Part #1 Source Code (Web)</a></li>
+<li><a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-part2">Part #2 Source Code (Web)</a></li>
+<li><a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-themes-final">Final Source Code (Web)</a></li>
+<li><a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-themes-final">Final Source Code (Native)</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PL9hJBK4eqz6NQiumJc6Iwt7r6eLk8ZZP3">Youtube playlist for Designing Flutter Landing page</a></li>
+</ul>
+<h3>References/Credits:</h3>
+<ul>
+<li><a href="https://flutter.dev/docs/cookbook/design/themes">Official Flutter Doc</a></li>
+<li><a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html">Making Cross-platform Flutter Landing Page Responsive</a></li>
+<li><a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">Designing Cross platform Flutter prototype for Landing Page</a></li>
+</ul>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
+      <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+      <a href="https://ptyagicodecamp.github.io/tag/web.html">Web</a>
+      <a href="https://ptyagicodecamp.github.io/tag/themes.html">Themes</a>
+    </p>
+  </div>
+
+  <div class="center social-share">
+    <p>    Like this article? Share it with your friends!
+</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</article>
+
+    <footer>
+<p>
+  &copy;  2019 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cf387135c8761da" async="async"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " techLog ",
+  "url" : "https://ptyagicodecamp.github.io",
+  "image": "https://ptyagicodecamp.github.io/images/profile.jpg",
+  "description": "Mobile engineering tech logger."
+}
+</script>
+
+<a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></body>
+</html>
