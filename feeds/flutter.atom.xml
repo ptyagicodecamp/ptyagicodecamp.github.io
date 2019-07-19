@@ -4,7 +4,7 @@
 &lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; Material Icons&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Fix MaterialIcon rendering for Flutter WebApps.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Goal" src="https://ptyagicodecamp.github.io/web_material_icon.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Check out the full video below:&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/bgLiVIIu3bA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;[Before]&lt;/strong&gt; Default Material Icons rendering in Flutter WebApp:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Material Icons Default rendering" src="https://ptyagicodecamp.github.io/web_materialicon_1.jpg"&gt;&lt;/p&gt;
