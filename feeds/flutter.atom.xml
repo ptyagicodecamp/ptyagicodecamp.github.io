@@ -9,17 +9,19 @@
 &lt;/ol&gt;
 &lt;p&gt;&lt;img alt="PopupMenuButton" src="https://ptyagicodecamp.github.io/popupmenubutton_1.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;In this recipe, I'll show you how to use PopupMenuButton widget as Stateless and Stateful widgets, and when to use one over another.&lt;/p&gt;
-&lt;p&gt;As we know that Stateless widgets are passed in to values/properties when they're initiated, and don't change thereafter. They are immutable and can't change their properties dynamically. For example, when a screen or page is created as a Stateless widget, it can't update properties or state of its children widgets.
-For instance, when you're implementing a counter, and expect a button to update the number of times it's tapped on page's body (Text) widget, you may want to use Stateful widget rather a Stateless widget.
-A good example of Stateless widget is &lt;a href="https://api.flutter.dev/flutter/material/RaisedButton-class.html"&gt;&lt;code&gt;RaisedButton&lt;/code&gt;&lt;/a&gt;. Certain properties are passed into RaisedButton when initializing, which remains unchanged during the lifecycle of the widget like color, size etc.&lt;/p&gt;
+&lt;p&gt;As we know that Stateless widgets are passed in to values/properties when they're initiated, and don't change thereafter. They are immutable and can't change their properties dynamically. For example, when a screen or page is created as a Stateless widget, it can't update properties or state of its children widgets.&lt;/p&gt;
+&lt;p&gt;For instance, when you're implementing a counter, and expect a button to update the number of times it's tapped on page's body (Text) widget, you may want to use Stateful widget rather a Stateless widget.&lt;/p&gt;
+&lt;p&gt;A good example of Stateless widget is &lt;a href="https://api.flutter.dev/flutter/material/RaisedButton-class.html"&gt;&lt;code&gt;RaisedButton&lt;/code&gt;&lt;/a&gt;. Certain properties are passed into RaisedButton when initializing, which remains unchanged during the lifecycle of the widget like color, size etc.&lt;/p&gt;
 &lt;p&gt;For demonstration purposes, I'll create two pages with Settings menu in AppBar. This Settings menu will have few pre-defined menu-items.&lt;/p&gt;
 &lt;p&gt;First page inherits &lt;code&gt;Stateless&lt;/code&gt; widget. Selecting different options from Settings menu, would happily print value on the console, but wouldn't update any other widget on that given page. However, we can navigate to another page when a selection is made.&lt;/p&gt;
 &lt;p&gt;Second page inherits &lt;code&gt;Stateful&lt;/code&gt; widget. Choosing an option from Settings menu will update the selection in body's Text widget of the same screen.&lt;/p&gt;
 &lt;p&gt;Let's go ahead and implement four menu items ('Home', 'Github', 'Videos' and 'Jobs') for "Settings" menu. In case you're not aware what Settings menu is referred in the Material design world: it's the three vertical dots in top-right corner of 'AppBar'. This page is simple.&lt;/p&gt;
-&lt;p&gt;It has three main widgets:
-- AppBar: AppBar contains Settings vertical dotted icon.
-- PopupMenuButton: Settings menu uses this widget to list all options.
-- Body: Current choice is updated in body part in Text widget.&lt;/p&gt;
+&lt;p&gt;It has three main widgets:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AppBar: AppBar contains Settings vertical dotted icon.&lt;/li&gt;
+&lt;li&gt;PopupMenuButton: Settings menu uses this widget to list all options.&lt;/li&gt;
+&lt;li&gt;Body: Current choice is updated in body part in Text widget.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Expected behavior is that whenever a choice is selected in Settings menu, it gets printed page's body area. If "Github" option is selected, then "Github" should be printed in body. We'll also print this chosen selection on console/terminal to make sure that control is coming at the right place.&lt;/p&gt;
 &lt;h3&gt;PopupMenuButton (Stateless)&lt;/h3&gt;
 &lt;p&gt;Choosing an option from Settings menu will open the selected link in WebView.&lt;/p&gt;
