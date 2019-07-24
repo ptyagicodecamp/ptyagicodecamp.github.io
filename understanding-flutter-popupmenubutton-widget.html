@@ -221,22 +221,24 @@ A good example of Stateless widget is <a href="https://api.flutter.dev/flutter/m
 
 <p>As I've mentioned above, choosing an option can be acknowledged that an option has been picked by printing current selection on console with help of <code>print(value)</code>. In this case body's default text doesn't change. However, current selection is printed on terminal correctly. Basically, this(Stateless) type of widget is not capable of handling state of the widget and does justice to its name being Stateless :)</p>
 <p>To make better sense for menu item selection. Let's open those links in a WebView.</p>
-<div class="highlight"><pre><span></span><span class="nt">onSelected</span><span class="o">:</span> <span class="o">(</span><span class="nt">value</span><span class="o">)</span> <span class="p">{</span>
-              <span class="err">//print</span> <span class="err">the</span> <span class="err">selected</span> <span class="err">option</span>
-              <span class="err">print(value)</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">onSelected</span><span class="o">:</span>
+<span class="o">(</span><span class="nt">value</span><span class="o">)</span>
+<span class="p">{</span>
+    <span class="err">//print</span> <span class="err">the</span> <span class="err">selected</span> <span class="err">option</span>
+    <span class="err">print(value)</span><span class="p">;</span>
 
-              <span class="err">//Update</span> <span class="err">the</span> <span class="err">current</span> <span class="err">choice.</span>
-              <span class="err">//However,</span> <span class="err">this</span> <span class="err">choice</span> <span class="err">won&#39;t</span> <span class="err">be</span> <span class="err">updated</span> <span class="err">in</span> <span class="err">body</span> <span class="err">section</span> <span class="err">since</span> <span class="err">it&#39;s</span> <span class="err">a</span> <span class="err">Stateless</span> <span class="err">widget.</span>
-              <span class="err">choice</span> <span class="err">=</span> <span class="err">displayString(value)</span><span class="p">;</span>
+    <span class="err">//Update</span> <span class="err">the</span> <span class="err">current</span> <span class="err">choice.</span>
+    <span class="err">//However,</span> <span class="err">this</span> <span class="err">choice</span> <span class="err">won&#39;t</span> <span class="err">be</span> <span class="err">updated</span> <span class="err">in</span> <span class="err">body</span> <span class="err">section</span> <span class="err">since</span> <span class="err">it&#39;s</span> <span class="err">a</span> <span class="err">Stateless</span> <span class="err">widget.choice</span> <span class="err">=</span> <span class="err">displayString(value)</span><span class="p">;</span>
 
-              <span class="err">Navigator.pushNamed(context,</span> <span class="err">WEBVIEW,</span>
-                  <span class="n">arguments</span><span class="p">:</span> <span class="nf">WebViewArguments</span><span class="p">(</span>
-                      <span class="n">title</span><span class="err">:</span> <span class="nf">displayString</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="n">url</span><span class="err">:</span> <span class="nf">linkUrl</span><span class="p">(</span><span class="n">value</span><span class="p">)));</span>
-            <span class="p">}</span>
+    <span class="err">Navigator.pushNamed(context,</span>
+      <span class="err">WEBVIEW,</span>
+      <span class="n">arguments</span><span class="p">:</span> <span class="nf">WebViewArguments</span><span class="p">(</span>
+            <span class="n">title</span><span class="err">:</span> <span class="nf">displayString</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="n">url</span><span class="err">:</span> <span class="nf">linkUrl</span><span class="p">(</span><span class="n">value</span><span class="p">)));</span>
+<span class="p">}</span>
 </pre></div>
 
 
-<p><code>WEBVIEW</code> tells system how to find WebView page. Checkout the <code>[router.dart](https://github.com/ptyagicodecamp/flutter_cookbook/blob/popupmenubutton/flutter_widgets/lib/router.dart)</code> to get better understanding of navigation and routing.</p>
+<p><code>WEBVIEW</code> tells system how to find WebView page. Checkout the <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/popupmenubutton/flutter_widgets/lib/router.dart">router.dart</a> to get better understanding of navigation and routing.</p>
 <p><strong><em>Note:</em></strong> To open WebView for iOS, you would need to add key <code>io.flutter.embedded_views_preview</code> and value <code>YES</code> in <code>Info.plist</code>.</p>
 <p><img alt="iOS WebView" src="https://ptyagicodecamp.github.io/webview_ios.jpg"></p>
 <p>Now, let's move on to observe Stateful widget's behavior.</p>

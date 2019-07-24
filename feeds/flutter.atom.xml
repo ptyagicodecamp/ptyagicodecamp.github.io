@@ -67,22 +67,24 @@ A good example of Stateless widget is &lt;a href="https://api.flutter.dev/flutte
 
 &lt;p&gt;As I've mentioned above, choosing an option can be acknowledged that an option has been picked by printing current selection on console with help of &lt;code&gt;print(value)&lt;/code&gt;. In this case body's default text doesn't change. However, current selection is printed on terminal correctly. Basically, this(Stateless) type of widget is not capable of handling state of the widget and does justice to its name being Stateless :)&lt;/p&gt;
 &lt;p&gt;To make better sense for menu item selection. Let's open those links in a WebView.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;onSelected&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;value&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-              &lt;span class="err"&gt;//print&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;selected&lt;/span&gt; &lt;span class="err"&gt;option&lt;/span&gt;
-              &lt;span class="err"&gt;print(value)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;onSelected&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;value&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;//print&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;selected&lt;/span&gt; &lt;span class="err"&gt;option&lt;/span&gt;
+    &lt;span class="err"&gt;print(value)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-              &lt;span class="err"&gt;//Update&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;choice.&lt;/span&gt;
-              &lt;span class="err"&gt;//However,&lt;/span&gt; &lt;span class="err"&gt;this&lt;/span&gt; &lt;span class="err"&gt;choice&lt;/span&gt; &lt;span class="err"&gt;won&amp;#39;t&lt;/span&gt; &lt;span class="err"&gt;be&lt;/span&gt; &lt;span class="err"&gt;updated&lt;/span&gt; &lt;span class="err"&gt;in&lt;/span&gt; &lt;span class="err"&gt;body&lt;/span&gt; &lt;span class="err"&gt;section&lt;/span&gt; &lt;span class="err"&gt;since&lt;/span&gt; &lt;span class="err"&gt;it&amp;#39;s&lt;/span&gt; &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;Stateless&lt;/span&gt; &lt;span class="err"&gt;widget.&lt;/span&gt;
-              &lt;span class="err"&gt;choice&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;displayString(value)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;//Update&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;choice.&lt;/span&gt;
+    &lt;span class="err"&gt;//However,&lt;/span&gt; &lt;span class="err"&gt;this&lt;/span&gt; &lt;span class="err"&gt;choice&lt;/span&gt; &lt;span class="err"&gt;won&amp;#39;t&lt;/span&gt; &lt;span class="err"&gt;be&lt;/span&gt; &lt;span class="err"&gt;updated&lt;/span&gt; &lt;span class="err"&gt;in&lt;/span&gt; &lt;span class="err"&gt;body&lt;/span&gt; &lt;span class="err"&gt;section&lt;/span&gt; &lt;span class="err"&gt;since&lt;/span&gt; &lt;span class="err"&gt;it&amp;#39;s&lt;/span&gt; &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;Stateless&lt;/span&gt; &lt;span class="err"&gt;widget.choice&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;displayString(value)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-              &lt;span class="err"&gt;Navigator.pushNamed(context,&lt;/span&gt; &lt;span class="err"&gt;WEBVIEW,&lt;/span&gt;
-                  &lt;span class="n"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;WebViewArguments&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-                      &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;displayString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;linkUrl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
-            &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="err"&gt;Navigator.pushNamed(context,&lt;/span&gt;
+      &lt;span class="err"&gt;WEBVIEW,&lt;/span&gt;
+      &lt;span class="n"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;WebViewArguments&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;displayString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;linkUrl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;code&gt;WEBVIEW&lt;/code&gt; tells system how to find WebView page. Checkout the &lt;code&gt;[router.dart](https://github.com/ptyagicodecamp/flutter_cookbook/blob/popupmenubutton/flutter_widgets/lib/router.dart)&lt;/code&gt; to get better understanding of navigation and routing.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;WEBVIEW&lt;/code&gt; tells system how to find WebView page. Checkout the &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/popupmenubutton/flutter_widgets/lib/router.dart"&gt;router.dart&lt;/a&gt; to get better understanding of navigation and routing.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; To open WebView for iOS, you would need to add key &lt;code&gt;io.flutter.embedded_views_preview&lt;/code&gt; and value &lt;code&gt;YES&lt;/code&gt; in &lt;code&gt;Info.plist&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="iOS WebView" src="https://ptyagicodecamp.github.io/webview_ios.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Now, let's move on to observe Stateful widget's behavior.&lt;/p&gt;
