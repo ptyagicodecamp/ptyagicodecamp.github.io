@@ -169,8 +169,8 @@ A good example of Stateless widget is <a href="https://api.flutter.dev/flutter/m
 <p>For demonstration purposes, I'll create two pages with Settings menu in AppBar. This Settings menu will have few pre-defined menu-items.</p>
 <p>First page inherits <code>Stateless</code> widget. Selecting different options from Settings menu, would happily print value on the console, but wouldn't update any other widget on that given page. However, we can navigate to another page when a selection is made.</p>
 <p>Second page inherits <code>Stateful</code> widget. Choosing an option from Settings menu will update the selection in body's Text widget of the same screen.</p>
-<p>Let's go ahead and implement four menu items ('Home', 'Github', 'Videos' and 'Jobs') for "Settings" menu. In case you're not aware what Settings menu is referred in the Material design world: it's the three vertical dots in top-right corner of 'AppBar'. This page is simple.
-It has three main widgets:
+<p>Let's go ahead and implement four menu items ('Home', 'Github', 'Videos' and 'Jobs') for "Settings" menu. In case you're not aware what Settings menu is referred in the Material design world: it's the three vertical dots in top-right corner of 'AppBar'. This page is simple.</p>
+<p>It has three main widgets:
 - AppBar: AppBar contains Settings vertical dotted icon.
 - PopupMenuButton: Settings menu uses this widget to list all options.
 - Body: Current choice is updated in body part in Text widget.</p>
