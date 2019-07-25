@@ -7,7 +7,10 @@
 &lt;li&gt;Understanding the difference between Stateful vs Stateless PopupMenuButton widget implementations.&lt;/li&gt;
 &lt;li&gt;"Settings" menu using PopupMenuButton to display four menu items : 'Home', 'Github', 'Videos' and 'Jobs'.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img alt="PopupMenuButton" src="https://ptyagicodecamp.github.io/popupmenubutton_1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PopupMenuButton (Stateless) workflow:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="PopupMenuButton (Stateless)" src="https://ptyagicodecamp.github.io/popupmenubutton_stateless.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PopupMenuButton (Stateful) workflow:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="PopupMenuButton" src="https://ptyagicodecamp.github.io/popupmenubutton_stateful.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/ferHTZ6cym4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;p&gt;In this recipe, I'll show you how to use PopupMenuButton widget as Stateless and Stateful widgets, and when to use one over another.&lt;/p&gt;
