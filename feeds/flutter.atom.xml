@@ -1,5 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-07-19T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Understanding Flutter PopupMenuButton Widget</title><link href="https://ptyagicodecamp.github.io/understanding-flutter-popupmenubutton-widget.html" rel="alternate"></link><published>2019-07-19T00:00:00-04:00</published><updated>2019-07-19T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-07-19:/understanding-flutter-popupmenubutton-widget.html</id><summary type="html">&lt;p&gt;In this article, I'll show you implementing "Settings" menu using PopupMenuButton Widget as Stateless vs Stateful widget in Flutter for Android, iOS and Web (Hummingbird).&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-08-07T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Using ColorTween in Flutter app</title><link href="https://ptyagicodecamp.github.io/using-colortween-in-flutter-app.html" rel="alternate"></link><published>2019-08-07T00:00:00-04:00</published><updated>2019-08-07T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-08-07:/using-colortween-in-flutter-app.html</id><summary type="html">&lt;p&gt;This recipe demonstrates using &lt;a href="https://api.flutter.dev/flutter/animation/ColorTween-class.html"&gt;ColorTween&lt;/a&gt; animation class to achieve transition from one color to another.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Implement animation using ColorTween for Android, iOS and WebApp.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;a href="https://api.flutter.dev/flutter/animation/ColorTween-class.html"&gt;ColorTween&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Animating from one color to another for a quiz card's background based on the correct answer. We'll implement a card with picture of an animal in it, along with two choices to select from: 'Carnivorous' or 'Herbivorous'. When correct option is picked, background color of card will transition from grey to blue color in order to indicate correct selection otherwise background stays grey or turns grey from blue.&lt;/p&gt;
+&lt;div style="width:100%;height:100%;padding-bottom:50%;position:relative;"&gt;&lt;iframe src="https://giphy.com/embed/MCitgRspdAVS9l7geK" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+
+&lt;h3&gt;ColorTween for Native platforms (Android &amp;amp; iOS)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Step #1. Data (&lt;code&gt;items.dart&lt;/code&gt;)&lt;/strong&gt;
+I'll be creating a little data structure &lt;code&gt;CardItem&lt;/code&gt; to keep track of model for UI card.
+It has four parts to represent a Quiz card: &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;image&lt;/code&gt; and &lt;code&gt;animalType&lt;/code&gt;.
+&lt;code&gt;title&lt;/code&gt; and &lt;code&gt;description&lt;/code&gt; are not used to render on Card UI. &lt;code&gt;image&lt;/code&gt; has path to image in &lt;code&gt;assets&lt;/code&gt; directory in Android Studio.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;CardItem&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;description&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;image&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;animalType&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="nx"&gt;CardItem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;description&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;image&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;animalType&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="nx"&gt;CardItem&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;fromMap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;dynamic&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="nx"&gt;description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="nx"&gt;image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;image&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="nx"&gt;animalType&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;animalType&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+
+  &lt;span class="kr"&gt;static&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;CardItem&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;fromData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;dynamic&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;CardItem&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;fromMap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)).&lt;/span&gt;&lt;span class="nx"&gt;toList&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In the class above, you might have noticed &lt;code&gt;fromMap(...)&lt;/code&gt; and &lt;code&gt;fromData(...)&lt;/code&gt; methods, which are used to parse &lt;code&gt;json&lt;/code&gt; data (intended to be fetched over network). In this recipe, I've hard-wired the sample &lt;code&gt;json&lt;/code&gt; data as below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[  
+   {  
+      &amp;quot;title&amp;quot;:&amp;quot;cat&amp;quot;,
+      &amp;quot;description&amp;quot;:&amp;quot;Cat is carnivorous animal.&amp;quot;,
+      &amp;quot;image&amp;quot;:&amp;quot;assets/images/carnivorous_cat.jpg&amp;quot;,
+      &amp;quot;animalType&amp;quot;:&amp;quot;carnivorous&amp;quot;
+   },
+   {
+     ...
+   },
+   ...
+]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Parsing json string above is done as below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;final List&amp;lt;CardItem&amp;gt; cardItems =
+    CardItem.fromData(json.decode(Samples.jsonData()));
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, importing &lt;code&gt;items.dart&lt;/code&gt; in any class/file, will give access to &lt;code&gt;cardItems&lt;/code&gt;. An item in list can be accessed as &lt;code&gt;cardItems[0], cardItems[1]&lt;/code&gt; and so on.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step #2. User Interface (&lt;code&gt;color_tween.dart&lt;/code&gt;)&lt;/strong&gt;
+We'll be implementing following quiz like card to demonstrate transitioning from grey color to blue and vice versa.&lt;/p&gt;
+&lt;p&gt;UI's body has main three parts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/widgets/Positioned-class.html"&gt;&lt;code&gt;Positioned Widget&lt;/code&gt;&lt;/a&gt;: To display card.&lt;/li&gt;
+&lt;li&gt;Image: image of the animal to quiz on.&lt;/li&gt;
+&lt;li&gt;Row of &lt;a href="https://api.flutter.dev/flutter/material/FlatButton-class.html"&gt;FlatButton&lt;/a&gt; widgets: Two FlatButton to present choice of &lt;code&gt;Carnivorous&lt;/code&gt; in red and &lt;code&gt;Herbivorous&lt;/code&gt; in green color.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Color Tween" src="https://ptyagicodecamp.github.io/color_tween1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step #2-a. Quiz Card UI anatomy:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;override&lt;/span&gt;
+&lt;span class="nt"&gt;Widget&lt;/span&gt; &lt;span class="nt"&gt;build&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;BuildContext&lt;/span&gt; &lt;span class="nt"&gt;context&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;we&lt;/span&gt; &lt;span class="nt"&gt;need&lt;/span&gt; &lt;span class="nt"&gt;screenSize&lt;/span&gt; &lt;span class="nt"&gt;to&lt;/span&gt; &lt;span class="nt"&gt;render&lt;/span&gt; &lt;span class="nt"&gt;card&lt;/span&gt; &lt;span class="nt"&gt;relative&lt;/span&gt; &lt;span class="nt"&gt;to&lt;/span&gt; &lt;span class="nt"&gt;the&lt;/span&gt; &lt;span class="nt"&gt;given&lt;/span&gt; &lt;span class="nt"&gt;device&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt; &lt;span class="nt"&gt;screen&lt;/span&gt; &lt;span class="nt"&gt;size&lt;/span&gt;
+  &lt;span class="nt"&gt;Size&lt;/span&gt; &lt;span class="nt"&gt;screenSize&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;MediaQuery&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;of&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;context&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;size&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Fetching&lt;/span&gt; &lt;span class="nt"&gt;image&lt;/span&gt; &lt;span class="nt"&gt;from&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="nt"&gt;assets&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="nt"&gt;folder&lt;/span&gt;
+  &lt;span class="nt"&gt;DecorationImage&lt;/span&gt; &lt;span class="nt"&gt;decorationImage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;DecorationImage&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+      &lt;span class="nt"&gt;image&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;AssetImage&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;cardItems&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;image&lt;/span&gt;&lt;span class="o"&gt;),&lt;/span&gt; &lt;span class="nt"&gt;fit&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;BoxFit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;fitWidth&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+  &lt;span class="nt"&gt;return&lt;/span&gt; &lt;span class="nt"&gt;Scaffold&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+    &lt;span class="nt"&gt;appBar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;AppBar&lt;/span&gt;&lt;span class="o"&gt;(...),&lt;/span&gt;
+    &lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Container&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+      &lt;span class="o"&gt;...&lt;/span&gt;
+
+      &lt;span class="nt"&gt;Positioned&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+        &lt;span class="nt"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Card&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+          &lt;span class="o"&gt;...&lt;/span&gt;
+          &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;parent&lt;/span&gt; &lt;span class="nt"&gt;container&lt;/span&gt; &lt;span class="nt"&gt;to&lt;/span&gt; &lt;span class="nt"&gt;host&lt;/span&gt; &lt;span class="nt"&gt;the&lt;/span&gt; &lt;span class="nt"&gt;quiz&lt;/span&gt; &lt;span class="nt"&gt;card&lt;/span&gt;
+          &lt;span class="nt"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Container&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+            &lt;span class="nt"&gt;alignment&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Alignment&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;center&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+            &lt;span class="nt"&gt;width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;screenSize&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;width&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+            &lt;span class="nt"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;screenSize&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;height&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;7&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+            &lt;span class="o"&gt;...,&lt;/span&gt;
+
+            &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Contents&lt;/span&gt; &lt;span class="nt"&gt;of&lt;/span&gt; &lt;span class="nt"&gt;card&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Image&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="nt"&gt;FlatButtons&lt;/span&gt; &lt;span class="nt"&gt;for&lt;/span&gt; &lt;span class="nt"&gt;quiz&lt;/span&gt; &lt;span class="nt"&gt;options&lt;/span&gt;
+            &lt;span class="nt"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Column&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+              &lt;span class="nt"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;
+
+                &lt;span class="c1"&gt;//Image of quiz animal&lt;/span&gt;
+                &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                  &lt;span class="c1"&gt;//Note: width of image is same as parent&lt;/span&gt;
+                  &lt;span class="nx"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;screenSize.width&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;1.2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+                  &lt;span class="c1"&gt;//Note: Image&amp;#39;s height is smaller than parent, so that parent can contain image inside it.&lt;/span&gt;
+                  &lt;span class="nx"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;screenSize.height&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;2.2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+                  &lt;span class="c1"&gt;//Rendering image&lt;/span&gt;
+                  &lt;span class="nx"&gt;decoration&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;BoxDecoration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                      &lt;span class="nx"&gt;borderRadius&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;BorderRadius.only&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                        &lt;span class="nx"&gt;topLeft&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Radius.circular&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                        &lt;span class="nx"&gt;topRight&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Radius.circular&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                      &lt;span class="p"&gt;),&lt;/span&gt;
+                      &lt;span class="nb"&gt;image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;decorationImage&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="c1"&gt;//Widget to contain FlatButtons for quiz options&lt;/span&gt;
+                &lt;span class="nf"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                  &lt;span class="c1"&gt;//Width remains same as of parent, however height needs to be calculated to position in under image.&lt;/span&gt;
+                  &lt;span class="na"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;screenSize.width&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;1.2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="na"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                      &lt;span class="nx"&gt;screenSize.height&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;1.7&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nx"&gt;screenSize.height&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;2.2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+                  &lt;span class="na"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                    &lt;span class="bp"&gt;...&lt;/span&gt;
+                    &lt;span class="na"&gt;children&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;
+                      &lt;span class="nx"&gt;FlatButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                        &lt;span class="nx"&gt;..&lt;/span&gt;
+                        &lt;span class="c1"&gt;//Animation trigger: This is where animation will be triggered&lt;/span&gt;
+                        &lt;span class="na"&gt;onPressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
+                        &lt;span class="nx"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                          &lt;span class="bp"&gt;..&lt;/span&gt;
+&lt;span class="bp"&gt;                          &lt;/span&gt;&lt;span class="nx nx-Member"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Carnivorous&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                        &lt;span class="p"&gt;),&lt;/span&gt;
+                      &lt;span class="p"&gt;),&lt;/span&gt;
+                      &lt;span class="nf"&gt;FlatButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                        &lt;span class="nx"&gt;..&lt;/span&gt;
+                        &lt;span class="c1"&gt;//Animation trigger: This is where animation will be triggered&lt;/span&gt;
+                        &lt;span class="na"&gt;onPressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
+                        &lt;span class="nx"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                          &lt;span class="bp"&gt;..&lt;/span&gt;
+&lt;span class="bp"&gt;                          &lt;/span&gt;&lt;span class="nx nx-Member"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Herbivorous&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                        &lt;span class="p"&gt;),&lt;/span&gt;
+                      &lt;span class="p"&gt;),&lt;/span&gt;
+                    &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+                  &lt;span class="o"&gt;),&lt;/span&gt;
+                &lt;span class="o"&gt;)&lt;/span&gt;
+              &lt;span class="o"&gt;],&lt;/span&gt;
+            &lt;span class="o"&gt;),&lt;/span&gt;
+          &lt;span class="o"&gt;),&lt;/span&gt;
+        &lt;span class="o"&gt;),&lt;/span&gt;
+
+      &lt;span class="o"&gt;),&lt;/span&gt;
+    &lt;span class="o"&gt;),&lt;/span&gt;
+  &lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Step #3: Implementing ColorTween Animation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finally, time to implement transition animation from grey to blue color using ColorTween class. There are couple of steps that we would need to achieve that.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using &lt;a href="https://api.flutter.dev/flutter/widgets/SingleTickerProviderStateMixin-mixin.html"&gt;&lt;code&gt;SingleTickerProviderStateMixin&lt;/code&gt;&lt;/a&gt; with &lt;code&gt;Stateful&lt;/code&gt; parent's &lt;code&gt;State&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;ColorTweenAnimationDemo&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;_ColorTweenAnimationDemoState&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+      &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;_ColorTweenAnimationDemoState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_ColorTweenAnimationDemoState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;ColorTweenAnimationDemo&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="kd"&gt;with&lt;/span&gt; &lt;span class="nx"&gt;SingleTickerProviderStateMixin&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Initializing &lt;a href="https://api.flutter.dev/flutter/animation/AnimationController-class.html"&gt;&lt;code&gt;AnimationController&lt;/code&gt;&lt;/a&gt; and &lt;a href="https://api.flutter.dev/flutter/animation/Animation-class.html"&gt;&lt;code&gt;Animation&lt;/code&gt;&lt;/a&gt; inside &lt;code&gt;initState()&lt;/code&gt;. AnimationController is intended to control the state of the animation like starting using &lt;code&gt;forward()&lt;/code&gt;, revering using &lt;code&gt;reverse()&lt;/code&gt; and stopping. &lt;code&gt;Animation&amp;lt;Color&amp;gt;&lt;/code&gt; will be used to define value change between one color to another, which is from grey to blue in our case. &lt;code&gt;ColorTween&lt;/code&gt; class is exactly what it says &lt;code&gt;between colors&lt;/code&gt;. It begins with beginning color 'grey' and ends with &lt;code&gt;blue&lt;/code&gt;. This transition behavior is attached with AnimationController &lt;code&gt;_controller&lt;/code&gt; to manage the animation. A listener can be added to listen to state changes from where it starts until it stops.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
+
+AnimationController _controller;
+Animation&amp;lt;Color&amp;gt; animation;
+
+@override
+void initState() {
+  super.initState();
+
+  _controller = AnimationController(
+    duration: const Duration(milliseconds: 2000),
+    vsync: this,
+  );
+
+  animation = ColorTween(
+    begin: Colors.grey,
+    end: Colors.blue,
+  ).animate(_controller)
+    ..addListener(() {
+      setState(() {});
+    });
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Animating Card's background:&lt;/strong&gt; &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/animations-native/flutter_widgets/lib/anims/color_tween.dart#L62:L65"&gt;Add &lt;code&gt;animation.value&lt;/code&gt; as &lt;code&gt;color&lt;/code&gt; attribute for &lt;code&gt;BoxDecoration(...)&lt;/code&gt; in parent's card widget like below:&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
+//parent container to host the quiz card
+child: Container(
+                  ...
+                  width: screenSize.width / 1.2,
+                  height: screenSize.height / 1.7,
+                  decoration: BoxDecoration(
+                    color: animation.value,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  ...
+                )
+...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Triggering animation:&lt;/strong&gt; We want our color change animation starts when we click the right answer which is &lt;code&gt;Carnivorous&lt;/code&gt; in out case. When we press &lt;code&gt;FlatButton&lt;/code&gt; at left, background color changes from grey to blue. When &lt;code&gt;FlatButton&lt;/code&gt; at right, &lt;code&gt;Herbivorous&lt;/code&gt; is clicked, &lt;code&gt;reverse()&lt;/code&gt; animation is called, which changes color from blue to back to grey. Let's see how animation is started from FlatButton's &lt;code&gt;onPressed()&lt;/code&gt; methods:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;children: &amp;lt;Widget&amp;gt;[
+  FlatButton(
+    ..
+    //Animation trigger: This is where animation will be triggered, responsible to change color from grey to blue.
+    onPressed: () =&amp;gt; {_controller.forward()},
+    child: Container(
+      ..
+      child: Text(&amp;quot;Carnivorous&amp;quot;),
+    ),
+  ),
+  FlatButton(
+    ..
+    //Animation trigger: This is where the reverse animation will be triggered, responsible to change color back to grey.
+    onPressed: () =&amp;gt; {_controller.reverse()},
+    child: Container(
+      ..
+      child: Text(&amp;quot;Herbivorous&amp;quot;),
+    ),
+  ),
+],
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Disposing AnimationController:&lt;/strong&gt; Don't forget to dispose AnimationController.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@override
+dispose() {
+  _controller?.dispose();
+  super.dispose();
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;What about Flutter Web ?&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; As of today Aug 7th, 2019- There's &lt;a href="https://github.com/flutter/flutter/issues/37761"&gt;an issue&lt;/a&gt; in running Flutter Web App after upgrading to the latest version of Flutter SDK.&lt;/p&gt;
+&lt;p&gt;Let's achieve the same animations on Web platform. Please refer to my &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html"&gt;this article&lt;/a&gt;, if you're new to Flutter-Web / Hummingbird and need help with setting up web project.
+In short, we would need to create an another branch say &lt;code&gt;animations-web&lt;/code&gt; to host all web related code since web libraries are not pushed to same repository as of native platform. You'll need to fetch libraries directly from their Github repo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It means imports in native vs web platform are different. Make sure that all files have correct web intended imports.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Native&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter/material.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;Web&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter_web/material.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt;: I keep a backup for native and web &lt;code&gt;pubspec.yaml&lt;/code&gt; config as &lt;code&gt;pubspec.yaml.web&lt;/code&gt; and &lt;code&gt;pubspec.yaml.native&lt;/code&gt; in both branches. Copy correct file's content into current &lt;code&gt;pubspec.yaml&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Building project in web branch &lt;code&gt;animations-web&lt;/code&gt;:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;flutter clean
+
+flutter pub get
+
+flutter packages pub global run webdev serve
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Source code repo:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Native (Android / iOS) recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations-native/flutter_widgets"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Web (Hummingbird) recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations-web/flutter_widgets"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/animation/ColorTween-class.html"&gt;ColorTween&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/animation/AnimationController-class.html"&gt;AnimationController&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/animation/Animation-class.html"&gt;Animation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/widgets/SingleTickerProviderStateMixin-mixin.html"&gt;SingleTickerProviderStateMixin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/widgets/Positioned-class.html"&gt;Positioned Widget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/material/FlatButton-class.html"&gt;FlatButton&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="ColorTween"></category><category term="Animations"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category><category term="Hummingbird"></category></entry><entry><title>Understanding Flutter PopupMenuButton Widget</title><link href="https://ptyagicodecamp.github.io/understanding-flutter-popupmenubutton-widget.html" rel="alternate"></link><published>2019-07-19T00:00:00-04:00</published><updated>2019-07-19T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-07-19:/understanding-flutter-popupmenubutton-widget.html</id><summary type="html">&lt;p&gt;In this article, I'll show you implementing "Settings" menu using PopupMenuButton Widget as Stateless vs Stateful widget in Flutter for Android, iOS and Web (Hummingbird).&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Implementing "Settings" menu using PopupMenuButton widget in Stateless vs Stateful manner.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;a href="https://api.flutter.dev/flutter/material/PopupMenuButton-class.html"&gt;PopupMenuButton Widget&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt;&lt;/p&gt;

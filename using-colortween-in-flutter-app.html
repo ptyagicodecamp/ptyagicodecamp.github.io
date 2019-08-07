@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
+
+    <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="techLog Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-133714063-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="ptyagi" />
+<meta name="description" content="This recipe demonstrates using ColorTween animation class to achieve transition from one color to another." />
+<meta name="keywords" content="ColorTween, Animations, Cross-platform, Flutter, Code-recipes, Android, Android Studio, iOS, development, Hummingbird">
+
+<meta property="og:site_name" content="techLog"/>
+<meta property="og:title" content="Using ColorTween in Flutter app"/>
+<meta property="og:description" content="This recipe demonstrates using ColorTween animation class to achieve transition from one color to another."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/using-colortween-in-flutter-app.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-08-07 00:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Flutter"/>
+<meta property="article:tag" content="ColorTween"/>
+<meta property="article:tag" content="Animations"/>
+<meta property="article:tag" content="Cross-platform"/>
+<meta property="article:tag" content="Flutter"/>
+<meta property="article:tag" content="Code-recipes"/>
+<meta property="article:tag" content="Android"/>
+<meta property="article:tag" content="Android Studio"/>
+<meta property="article:tag" content="iOS"/>
+<meta property="article:tag" content="development"/>
+<meta property="article:tag" content="Hummingbird"/>
+<meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
+
+  <title>techLog &ndash; Using ColorTween in Flutter app</title>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6359982310050489",
+      enable_page_level_ads: true
+    });
+  </script>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://ptyagicodecamp.github.io">
+        <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="techLog" title="techLog">
+      </a>
+      <h1><a href="https://ptyagicodecamp.github.io">techLog</a></h1>
+
+<p>Explore | Android | Software Engineering</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="https://www.paypal.me/pritya" target="_blank">Support</a></li>
+          <li><a href="https://www.linkedin.com/in/priyankatyagi" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/ptyagicodecamp" target="_blank">GitHub</a></li>
+          <li><a href="https://medium.com/@ptyagicodecamp" target="_blank">Medium</a></li>
+          <li><a href="https://twitter.com/ptyagi13" target="_blank">Twitter</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-LinkedIn" href="https://www.linkedin.com/in/priyankatyagi" target="_blank"><i class="fa fa-LinkedIn"></i></a></li>
+        <li><a class="sc-GitHub" href="https://github.com/ptyagicodecamp" target="_blank"><i class="fa fa-GitHub"></i></a></li>
+        <li><a class="sc-Medium" href="https://medium.com/@ptyagicodecamp" target="_blank"><i class="fa fa-Medium"></i></a></li>
+        <li><a class="sc-Twitter" href="https://twitter.com/ptyagi13" target="_blank"><i class="fa fa-Twitter"></i></a></li>
+      </ul>
+    </div>
+
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle ads-aside"
+           data-ad-client="ca-pub-6359982310050489"
+           data-ad-slot="8977779775"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://ptyagicodecamp.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="using-colortween-in-flutter-app">Using ColorTween in Flutter app</h1>
+    <p>
+          Posted on August 07, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+
+
+    </p>
+  </header>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+  <div>
+    <p><strong>Target Audience:</strong> Beginner</p>
+<p><strong>Recipe:</strong> Implement animation using ColorTween for Android, iOS and WebApp.</p>
+<p><strong>Focus Widget:</strong> <a href="https://api.flutter.dev/flutter/animation/ColorTween-class.html">ColorTween</a></p>
+<p><strong>Goal:</strong> Animating from one color to another for a quiz card's background based on the correct answer. We'll implement a card with picture of an animal in it, along with two choices to select from: 'Carnivorous' or 'Herbivorous'. When correct option is picked, background color of card will transition from grey to blue color in order to indicate correct selection otherwise background stays grey or turns grey from blue.</p>
+<div style="width:100%;height:100%;padding-bottom:50%;position:relative;"><iframe src="https://giphy.com/embed/MCitgRspdAVS9l7geK" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+
+<h3>ColorTween for Native platforms (Android &amp; iOS)</h3>
+<p><strong>Step #1. Data (<code>items.dart</code>)</strong>
+I'll be creating a little data structure <code>CardItem</code> to keep track of model for UI card.
+It has four parts to represent a Quiz card: <code>title</code>, <code>description</code>, <code>image</code> and <code>animalType</code>.
+<code>title</code> and <code>description</code> are not used to render on Card UI. <code>image</code> has path to image in <code>assets</code> directory in Android Studio.</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">CardItem</span> <span class="p">{</span>
+  <span class="kr">final</span> <span class="nb">String</span> <span class="nx">title</span><span class="p">;</span>
+  <span class="kr">final</span> <span class="nb">String</span> <span class="nx">description</span><span class="p">;</span>
+  <span class="kr">final</span> <span class="nb">String</span> <span class="nx">image</span><span class="p">;</span>
+  <span class="kr">final</span> <span class="nb">String</span> <span class="nx">animalType</span><span class="p">;</span>
+
+  <span class="nx">CardItem</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">description</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">image</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">animalType</span><span class="p">);</span>
+
+  <span class="nx">CardItem</span><span class="p">.</span><span class="nx">fromMap</span><span class="p">(</span><span class="nx">Map</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span> <span class="nx">dynamic</span><span class="o">&gt;</span> <span class="nx">data</span><span class="p">)</span>
+      <span class="o">:</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">],</span>
+        <span class="nx">description</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">],</span>
+        <span class="nx">image</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span>
+        <span class="nx">animalType</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="s1">&#39;animalType&#39;</span><span class="p">];</span>
+
+  <span class="kr">static</span> <span class="nx">List</span><span class="o">&lt;</span><span class="nx">CardItem</span><span class="o">&gt;</span> <span class="nx">fromData</span><span class="p">(</span><span class="nx">List</span><span class="o">&lt;</span><span class="nx">dynamic</span><span class="o">&gt;</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">CardItem</span><span class="p">.</span><span class="nx">fromMap</span><span class="p">(</span><span class="nx">item</span><span class="p">)).</span><span class="nx">toList</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>In the class above, you might have noticed <code>fromMap(...)</code> and <code>fromData(...)</code> methods, which are used to parse <code>json</code> data (intended to be fetched over network). In this recipe, I've hard-wired the sample <code>json</code> data as below:</p>
+<div class="highlight"><pre><span></span>[  
+   {  
+      &quot;title&quot;:&quot;cat&quot;,
+      &quot;description&quot;:&quot;Cat is carnivorous animal.&quot;,
+      &quot;image&quot;:&quot;assets/images/carnivorous_cat.jpg&quot;,
+      &quot;animalType&quot;:&quot;carnivorous&quot;
+   },
+   {
+     ...
+   },
+   ...
+]
+</pre></div>
+
+
+<p>Parsing json string above is done as below:</p>
+<div class="highlight"><pre><span></span>final List&lt;CardItem&gt; cardItems =
+    CardItem.fromData(json.decode(Samples.jsonData()));
+</pre></div>
+
+
+<p>Now, importing <code>items.dart</code> in any class/file, will give access to <code>cardItems</code>. An item in list can be accessed as <code>cardItems[0], cardItems[1]</code> and so on.</p>
+<p><strong>Step #2. User Interface (<code>color_tween.dart</code>)</strong>
+We'll be implementing following quiz like card to demonstrate transitioning from grey color to blue and vice versa.</p>
+<p>UI's body has main three parts:</p>
+<ul>
+<li><a href="https://api.flutter.dev/flutter/widgets/Positioned-class.html"><code>Positioned Widget</code></a>: To display card.</li>
+<li>Image: image of the animal to quiz on.</li>
+<li>Row of <a href="https://api.flutter.dev/flutter/material/FlatButton-class.html">FlatButton</a> widgets: Two FlatButton to present choice of <code>Carnivorous</code> in red and <code>Herbivorous</code> in green color.</li>
+</ul>
+<p><img alt="Color Tween" src="https://ptyagicodecamp.github.io/color_tween1.jpg"></p>
+<p><strong>Step #2-a. Quiz Card UI anatomy:</strong></p>
+<div class="highlight"><pre><span></span><span class="p">@</span><span class="k">override</span>
+<span class="nt">Widget</span> <span class="nt">build</span><span class="o">(</span><span class="nt">BuildContext</span> <span class="nt">context</span><span class="o">)</span> <span class="p">{</span>
+  <span class="o">//</span><span class="nt">we</span> <span class="nt">need</span> <span class="nt">screenSize</span> <span class="nt">to</span> <span class="nt">render</span> <span class="nt">card</span> <span class="nt">relative</span> <span class="nt">to</span> <span class="nt">the</span> <span class="nt">given</span> <span class="nt">device</span><span class="err">&#39;</span><span class="nt">s</span> <span class="nt">screen</span> <span class="nt">size</span>
+  <span class="nt">Size</span> <span class="nt">screenSize</span> <span class="o">=</span> <span class="nt">MediaQuery</span><span class="p">.</span><span class="nc">of</span><span class="o">(</span><span class="nt">context</span><span class="o">)</span><span class="p">.</span><span class="nc">size</span><span class="o">;</span>
+
+  <span class="o">//</span><span class="nt">Fetching</span> <span class="nt">image</span> <span class="nt">from</span> <span class="err">`</span><span class="nt">assets</span><span class="err">`</span> <span class="nt">folder</span>
+  <span class="nt">DecorationImage</span> <span class="nt">decorationImage</span> <span class="o">=</span> <span class="nt">DecorationImage</span><span class="o">(</span>
+      <span class="nt">image</span><span class="o">:</span> <span class="nt">AssetImage</span><span class="o">(</span><span class="nt">cardItems</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span><span class="p">.</span><span class="nc">image</span><span class="o">),</span> <span class="nt">fit</span><span class="o">:</span> <span class="nt">BoxFit</span><span class="p">.</span><span class="nc">fitWidth</span><span class="o">);</span>
+
+  <span class="nt">return</span> <span class="nt">Scaffold</span><span class="o">(</span>
+    <span class="nt">appBar</span><span class="o">:</span> <span class="nt">AppBar</span><span class="o">(...),</span>
+    <span class="nt">body</span><span class="o">:</span> <span class="nt">Container</span><span class="o">(</span>
+      <span class="o">...</span>
+
+      <span class="nt">Positioned</span><span class="o">(</span>
+        <span class="nt">child</span><span class="o">:</span> <span class="nt">Card</span><span class="o">(</span>
+          <span class="o">...</span>
+          <span class="o">//</span><span class="nt">parent</span> <span class="nt">container</span> <span class="nt">to</span> <span class="nt">host</span> <span class="nt">the</span> <span class="nt">quiz</span> <span class="nt">card</span>
+          <span class="nt">child</span><span class="o">:</span> <span class="nt">Container</span><span class="o">(</span>
+            <span class="nt">alignment</span><span class="o">:</span> <span class="nt">Alignment</span><span class="p">.</span><span class="nc">center</span><span class="o">,</span>
+            <span class="nt">width</span><span class="o">:</span> <span class="nt">screenSize</span><span class="p">.</span><span class="nc">width</span> <span class="o">/</span> <span class="nt">1</span><span class="p">.</span><span class="nc">2</span><span class="o">,</span>
+            <span class="nt">height</span><span class="o">:</span> <span class="nt">screenSize</span><span class="p">.</span><span class="nc">height</span> <span class="o">/</span> <span class="nt">1</span><span class="p">.</span><span class="nc">7</span><span class="o">,</span>
+            <span class="o">...,</span>
+
+            <span class="o">//</span><span class="nt">Contents</span> <span class="nt">of</span> <span class="nt">card</span><span class="o">:</span> <span class="nt">Image</span> <span class="nt">and</span> <span class="nt">FlatButtons</span> <span class="nt">for</span> <span class="nt">quiz</span> <span class="nt">options</span>
+            <span class="nt">child</span><span class="o">:</span> <span class="nt">Column</span><span class="o">(</span>
+              <span class="nt">children</span><span class="o">:</span> <span class="o">&lt;</span><span class="nt">Widget</span><span class="o">&gt;</span><span class="cp">[</span>
+
+                <span class="c1">//Image of quiz animal</span>
+                <span class="nx">Container</span><span class="p">(</span>
+                  <span class="c1">//Note: width of image is same as parent</span>
+                  <span class="nx">width</span><span class="p">:</span> <span class="nx">screenSize.width</span> <span class="o">/</span> <span class="mf">1.2</span><span class="p">,</span>
+
+                  <span class="c1">//Note: Image&#39;s height is smaller than parent, so that parent can contain image inside it.</span>
+                  <span class="nx">height</span><span class="p">:</span> <span class="nx">screenSize.height</span> <span class="o">/</span> <span class="mf">2.2</span><span class="p">,</span>
+
+                  <span class="c1">//Rendering image</span>
+                  <span class="nx">decoration</span><span class="p">:</span> <span class="nx">BoxDecoration</span><span class="p">(</span>
+                      <span class="nx">borderRadius</span><span class="p">:</span> <span class="nx">BorderRadius.only</span><span class="p">(</span>
+                        <span class="nx">topLeft</span><span class="p">:</span> <span class="nx">Radius.circular</span><span class="p">(</span><span class="mf">8.0</span><span class="p">),</span>
+                        <span class="nx">topRight</span><span class="p">:</span> <span class="nx">Radius.circular</span><span class="p">(</span><span class="mf">8.0</span><span class="p">),</span>
+                      <span class="p">),</span>
+                      <span class="nb">image</span><span class="p">:</span> <span class="nx">decorationImage</span><span class="p">),</span>
+                <span class="p">),</span>
+                <span class="c1">//Widget to contain FlatButtons for quiz options</span>
+                <span class="nf">Container</span><span class="p">(</span>
+                  <span class="c1">//Width remains same as of parent, however height needs to be calculated to position in under image.</span>
+                  <span class="na">width</span><span class="p">:</span> <span class="nx">screenSize.width</span> <span class="o">/</span> <span class="mf">1.2</span><span class="p">,</span>
+                  <span class="na">height</span><span class="p">:</span>
+                      <span class="nx">screenSize.height</span> <span class="o">/</span> <span class="mf">1.7</span> <span class="o">-</span> <span class="nx">screenSize.height</span> <span class="o">/</span> <span class="mf">2.2</span><span class="p">,</span>
+
+                  <span class="na">child</span><span class="p">:</span> <span class="nx">Row</span><span class="p">(</span>
+                    <span class="bp">...</span>
+                    <span class="na">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">Widget</span><span class="o">&gt;</span><span class="err">[</span>
+                      <span class="nx">FlatButton</span><span class="p">(</span>
+                        <span class="nx">..</span>
+                        <span class="c1">//Animation trigger: This is where animation will be triggered</span>
+                        <span class="na">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{},</span>
+                        <span class="nx">child</span><span class="p">:</span> <span class="nx">Container</span><span class="p">(</span>
+                          <span class="bp">..</span>
+<span class="bp">                          </span><span class="nx nx-Member">child</span><span class="p">:</span> <span class="nx">Text</span><span class="p">(</span><span class="s2">&quot;Carnivorous&quot;</span><span class="p">),</span>
+                        <span class="p">),</span>
+                      <span class="p">),</span>
+                      <span class="nf">FlatButton</span><span class="p">(</span>
+                        <span class="nx">..</span>
+                        <span class="c1">//Animation trigger: This is where animation will be triggered</span>
+                        <span class="na">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{},</span>
+                        <span class="nx">child</span><span class="p">:</span> <span class="nx">Container</span><span class="p">(</span>
+                          <span class="bp">..</span>
+<span class="bp">                          </span><span class="nx nx-Member">child</span><span class="p">:</span> <span class="nx">Text</span><span class="p">(</span><span class="s2">&quot;Herbivorous&quot;</span><span class="p">),</span>
+                        <span class="p">),</span>
+                      <span class="p">),</span>
+                    <span class="cp">]</span><span class="o">,</span>
+                  <span class="o">),</span>
+                <span class="o">)</span>
+              <span class="o">],</span>
+            <span class="o">),</span>
+          <span class="o">),</span>
+        <span class="o">),</span>
+
+      <span class="o">),</span>
+    <span class="o">),</span>
+  <span class="o">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Step #3: Implementing ColorTween Animation</strong></p>
+<p>Finally, time to implement transition animation from grey to blue color using ColorTween class. There are couple of steps that we would need to achieve that.</p>
+<ul>
+<li>Using <a href="https://api.flutter.dev/flutter/widgets/SingleTickerProviderStateMixin-mixin.html"><code>SingleTickerProviderStateMixin</code></a> with <code>Stateful</code> parent's <code>State</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">ColorTweenAnimationDemo</span> <span class="kr">extends</span> <span class="nx">StatefulWidget</span> <span class="p">{</span>
+  <span class="kd">@override</span>
+  <span class="nx">_ColorTweenAnimationDemoState</span> <span class="nx">createState</span><span class="p">()</span> <span class="o">=&gt;</span>
+      <span class="k">new</span> <span class="nx">_ColorTweenAnimationDemoState</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">_ColorTweenAnimationDemoState</span> <span class="kr">extends</span> <span class="nx">State</span><span class="o">&lt;</span><span class="nx">ColorTweenAnimationDemo</span><span class="o">&gt;</span>
+    <span class="kd">with</span> <span class="nx">SingleTickerProviderStateMixin</span> <span class="p">{</span>
+      <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>Initializing <a href="https://api.flutter.dev/flutter/animation/AnimationController-class.html"><code>AnimationController</code></a> and <a href="https://api.flutter.dev/flutter/animation/Animation-class.html"><code>Animation</code></a> inside <code>initState()</code>. AnimationController is intended to control the state of the animation like starting using <code>forward()</code>, revering using <code>reverse()</code> and stopping. <code>Animation&lt;Color&gt;</code> will be used to define value change between one color to another, which is from grey to blue in our case. <code>ColorTween</code> class is exactly what it says <code>between colors</code>. It begins with beginning color 'grey' and ends with <code>blue</code>. This transition behavior is attached with AnimationController <code>_controller</code> to manage the animation. A listener can be added to listen to state changes from where it starts until it stops.</li>
+</ul>
+<div class="highlight"><pre><span></span>...
+
+AnimationController _controller;
+Animation&lt;Color&gt; animation;
+
+@override
+void initState() {
+  super.initState();
+
+  _controller = AnimationController(
+    duration: const Duration(milliseconds: 2000),
+    vsync: this,
+  );
+
+  animation = ColorTween(
+    begin: Colors.grey,
+    end: Colors.blue,
+  ).animate(_controller)
+    ..addListener(() {
+      setState(() {});
+    });
+}
+</pre></div>
+
+
+<ul>
+<li><strong>Animating Card's background:</strong> <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/animations-native/flutter_widgets/lib/anims/color_tween.dart#L62:L65">Add <code>animation.value</code> as <code>color</code> attribute for <code>BoxDecoration(...)</code> in parent's card widget like below:</a></li>
+</ul>
+<div class="highlight"><pre><span></span>...
+//parent container to host the quiz card
+child: Container(
+                  ...
+                  width: screenSize.width / 1.2,
+                  height: screenSize.height / 1.7,
+                  decoration: BoxDecoration(
+                    color: animation.value,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  ...
+                )
+...
+</pre></div>
+
+
+<ul>
+<li><strong>Triggering animation:</strong> We want our color change animation starts when we click the right answer which is <code>Carnivorous</code> in out case. When we press <code>FlatButton</code> at left, background color changes from grey to blue. When <code>FlatButton</code> at right, <code>Herbivorous</code> is clicked, <code>reverse()</code> animation is called, which changes color from blue to back to grey. Let's see how animation is started from FlatButton's <code>onPressed()</code> methods:</li>
+</ul>
+<div class="highlight"><pre><span></span>children: &lt;Widget&gt;[
+  FlatButton(
+    ..
+    //Animation trigger: This is where animation will be triggered, responsible to change color from grey to blue.
+    onPressed: () =&gt; {_controller.forward()},
+    child: Container(
+      ..
+      child: Text(&quot;Carnivorous&quot;),
+    ),
+  ),
+  FlatButton(
+    ..
+    //Animation trigger: This is where the reverse animation will be triggered, responsible to change color back to grey.
+    onPressed: () =&gt; {_controller.reverse()},
+    child: Container(
+      ..
+      child: Text(&quot;Herbivorous&quot;),
+    ),
+  ),
+],
+</pre></div>
+
+
+<ul>
+<li><strong>Disposing AnimationController:</strong> Don't forget to dispose AnimationController.</li>
+</ul>
+<div class="highlight"><pre><span></span>@override
+dispose() {
+  _controller?.dispose();
+  super.dispose();
+}
+</pre></div>
+
+
+<h3>What about Flutter Web ?</h3>
+<p><strong>Note:</strong> As of today Aug 7th, 2019- There's <a href="https://github.com/flutter/flutter/issues/37761">an issue</a> in running Flutter Web App after upgrading to the latest version of Flutter SDK.</p>
+<p>Let's achieve the same animations on Web platform. Please refer to my <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html">this article</a>, if you're new to Flutter-Web / Hummingbird and need help with setting up web project.
+In short, we would need to create an another branch say <code>animations-web</code> to host all web related code since web libraries are not pushed to same repository as of native platform. You'll need to fetch libraries directly from their Github repo.</p>
+<ul>
+<li>It means imports in native vs web platform are different. Make sure that all files have correct web intended imports.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">Native</span><span class="p">:</span>
+<span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="n">Web</span><span class="p">:</span>
+<span class="kn">import</span> <span class="s1">&#39;package:flutter_web/material.dart&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p><code>pubspec.yaml</code>: I keep a backup for native and web <code>pubspec.yaml</code> config as <code>pubspec.yaml.web</code> and <code>pubspec.yaml.native</code> in both branches. Copy correct file's content into current <code>pubspec.yaml</code>.</p>
+</li>
+<li>
+<p>Building project in web branch <code>animations-web</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>flutter clean
+
+flutter pub get
+
+flutter packages pub global run webdev serve
+</pre></div>
+
+
+<p><strong>Source code repo:</strong></p>
+<ul>
+<li>
+<p>Native (Android / iOS) recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations-native/flutter_widgets">here</a></p>
+</li>
+<li>
+<p>Web (Hummingbird) recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations-web/flutter_widgets">here</a></p>
+</li>
+</ul>
+<h3>References:</h3>
+<ol>
+<li><a href="https://api.flutter.dev/flutter/animation/ColorTween-class.html">ColorTween</a></li>
+<li><a href="https://api.flutter.dev/flutter/animation/AnimationController-class.html">AnimationController</a></li>
+<li><a href="https://api.flutter.dev/flutter/animation/Animation-class.html">Animation</a></li>
+<li><a href="https://api.flutter.dev/flutter/widgets/SingleTickerProviderStateMixin-mixin.html">SingleTickerProviderStateMixin</a></li>
+<li><a href="https://api.flutter.dev/flutter/widgets/Positioned-class.html">Positioned Widget</a></li>
+<li><a href="https://api.flutter.dev/flutter/material/FlatButton-class.html">FlatButton</a></li>
+</ol>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+<p>Follow me at <a href="https://twitter.com/ptyagi13">twitter</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://ptyagicodecamp.github.io/tag/colortween.html">ColorTween</a>
+      <a href="https://ptyagicodecamp.github.io/tag/animations.html">Animations</a>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
+      <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+      <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+      <a href="https://ptyagicodecamp.github.io/tag/hummingbird.html">Hummingbird</a>
+    </p>
+  </div>
+
+  <div class="center social-share">
+    <p>    Like this article? Share it with your friends!
+</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</article>
+
+    <footer>
+<p>
+  &copy;  2019 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cf387135c8761da" async="async"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " techLog ",
+  "url" : "https://ptyagicodecamp.github.io",
+  "image": "https://ptyagicodecamp.github.io/images/profile.jpg",
+  "description": "Mobile engineering tech logger."
+}
+</script>
+
+<a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></body>
+</html>
