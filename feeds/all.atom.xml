@@ -275,10 +275,14 @@ In short, we would need to create an another branch say &lt;code&gt;animations-w
 &lt;p&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt;: I keep a backup for native and web &lt;code&gt;pubspec.yaml&lt;/code&gt; config as &lt;code&gt;pubspec.yaml.web&lt;/code&gt; and &lt;code&gt;pubspec.yaml.native&lt;/code&gt; in both branches. Copy correct file's content into current &lt;code&gt;pubspec.yaml&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Building project in web branch &lt;code&gt;animations-web&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Building project in web branch &lt;code&gt;animations-web&lt;/code&gt;. Make sure that you're in &lt;code&gt;stable&lt;/code&gt; channel:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;flutter clean
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;flutter channel stable
+
+flutter clean
+
+flutter pub upgrade
 
 flutter pub get
 
@@ -286,6 +290,17 @@ flutter packages pub global run webdev serve
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You may notice that image doesn't render using &lt;code&gt;AssetImage&lt;/code&gt;. I use &lt;code&gt;Image.network()&lt;/code&gt; to render images in web version like below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Container(
+  width: screenSize.width / 1.2,
+  height: screenSize.height / 2.2,
+  child: Image.network(cardItems[0].image),
+),
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here's screenshot of the web version:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Color Tween" src="https://ptyagicodecamp.github.io/color_tween_web.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Source code repo:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;

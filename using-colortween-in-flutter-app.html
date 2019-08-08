@@ -428,10 +428,14 @@ In short, we would need to create an another branch say <code>animations-web</co
 <p><code>pubspec.yaml</code>: I keep a backup for native and web <code>pubspec.yaml</code> config as <code>pubspec.yaml.web</code> and <code>pubspec.yaml.native</code> in both branches. Copy correct file's content into current <code>pubspec.yaml</code>.</p>
 </li>
 <li>
-<p>Building project in web branch <code>animations-web</code>:</p>
+<p>Building project in web branch <code>animations-web</code>. Make sure that you're in <code>stable</code> channel:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>flutter clean
+<div class="highlight"><pre><span></span>flutter channel stable
+
+flutter clean
+
+flutter pub upgrade
 
 flutter pub get
 
@@ -439,6 +443,17 @@ flutter packages pub global run webdev serve
 </pre></div>
 
 
+<p><strong>Note:</strong> You may notice that image doesn't render using <code>AssetImage</code>. I use <code>Image.network()</code> to render images in web version like below:</p>
+<div class="highlight"><pre><span></span>Container(
+  width: screenSize.width / 1.2,
+  height: screenSize.height / 2.2,
+  child: Image.network(cardItems[0].image),
+),
+</pre></div>
+
+
+<p>Here's screenshot of the web version:</p>
+<p><img alt="Color Tween" src="https://ptyagicodecamp.github.io/color_tween_web.jpg"></p>
 <p><strong>Source code repo:</strong></p>
 <ul>
 <li>
