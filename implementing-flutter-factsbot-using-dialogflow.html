@@ -45,16 +45,16 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="ptyagi" />
-<meta name="description" content="This is 5th article in Designing Cross platform Flutter prototype for Landing Page (Web-Hummingbird, Android, iOS) series. In this article, I&#39;ll show you how can we integrate DialogFlow in a Flutter app for enriched conversational experience." />
+<meta name="description" content="In this article, we&#39;ll learn to integrate DialogFlow in a Flutter app for enriched conversational experience." />
 <meta name="keywords" content="DialogFlow, Flutter, Code-recipes, Android, Android Studio, iOS">
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="Implementing Flutter FactsBot using DialogFlow"/>
-<meta property="og:description" content="This is 5th article in Designing Cross platform Flutter prototype for Landing Page (Web-Hummingbird, Android, iOS) series. In this article, I&#39;ll show you how can we integrate DialogFlow in a Flutter app for enriched conversational experience."/>
+<meta property="og:description" content="In this article, we&#39;ll learn to integrate DialogFlow in a Flutter app for enriched conversational experience."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2019-06-27 00:00:00-04:00"/>
+<meta property="article:published_time" content="2019-08-20 00:00:00-04:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
 <meta property="article:section" content="Flutter"/>
@@ -133,7 +133,7 @@
       
     <h1 id="implementing-flutter-factsbot-using-dialogflow">Implementing Flutter FactsBot using DialogFlow</h1>
     <p>
-          Posted on June 27, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+          Posted on August 20, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
 
     </p>
@@ -149,26 +149,23 @@
 
   <div>
     <h3>Background</h3>
-<p>This is 5th article in <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html">Designing Cross platform Flutter prototype for Landing Page (Web-Hummingbird, Android, iOS)</a> series.
-You can refer to previous articles here:
-1. <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">Designing Cross platform Flutter prototype for Landing Page</a>
-2. <a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html">Making Cross-platform Flutter Landing Page Responsive</a>
-3. <a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html">Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)</a>
-4. Menus
-5. Flutter Facts Bot using DialogFlow</p>
+<p>In this article, we'll learn to integrate <a href="https://dialogflow.com/">DialogFlow</a> in a Flutter app for enriched conversational experience. I'll use the sample app that we built earlier in my previous article <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html">Designing Cross platform Flutter prototype for Landing Page (Web-Hummingbird, Android, iOS)</a>. We'll be integrating DialogFlow conversational API in native Flutter App.</p>
+<p>You can refer to previous articles here:</p>
+<ol>
+<li><a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">Designing Cross platform Flutter prototype for Landing Page</a></li>
+<li><a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html">Making Cross-platform Flutter Landing Page Responsive</a></li>
+<li><a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html">Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)</a></li>
+</ol>
 <h3>Introduction</h3>
-<p>In this article, I'll show you how can we integrate <a href="https://dialogflow.com/">DialogFlow</a> in a Flutter app for enriched conversational experience. We'll keep it to a fun app for demonstration purposes only. We'll add a chat icon on our landing page. Clicking on this chat icon, will take user to a chat like screen. Whenever user type sentence or word consisting "Flutter" in it, our "Flutter Facts Bot" will present user a fact about Flutter :) Simple !</p>
+<p>In this article, I'll show you how can we integrate <a href="https://dialogflow.com/">DialogFlow</a> in a Flutter app for enriched conversational experience. We'll keep it to a fun app for demonstration purposes. We'll add a chat icon on our landing page. Clicking on this chat icon, will take user to a chat like screen. Whenever user type sentence or word consisting "Flutter" in it, our "Flutter Facts Bot" will present user a fact about Flutter :) Simple !</p>
 <p>To adapt our existing landing page app to this new conversational style, we'll be taking following steps:</p>
 <ol>
 <li>Setting up DialogFlow</li>
 <li>App's Integration with DialogFlow</li>
-<li>Adding Chat Icon at Landing Page</li>
+<li>Adding Chat like Icon at Landing Page</li>
 <li>Developing "FlutterFactsDialogFlow" interface</li>
 </ol>
-<p><strong>Checkout the companion video:</strong></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h4>Setting up DialogFlow</h4>
+<h4>#1. Setting up DialogFlow</h4>
 <ol>
 <li>Create an account at <a href="https://dialogflow.com/">DialogFlow</a>. It's free to create account.</li>
 </ol>
@@ -198,7 +195,7 @@ You can refer to previous articles here:
 </ol>
 <p><img alt="DialogFlow Training #2" src="https://ptyagicodecamp.github.io/dialogflow_training2.jpg"></p>
 <p>DialogFlow agent is trained and ready to return text responses for default intent !</p>
-<h4>App's Integration with DialogFlow</h4>
+<h4>#2. App's Integration with DialogFlow</h4>
 <p>Now, we want to integrate our newly trained DialogFlow intent into "Flutter Facts" feature of our app.</p>
 <ol>
 <li>Head over to <a href="https://console.cloud.google.com">Google Cloud Console</a>.</li>
@@ -233,7 +230,7 @@ You can refer to previous articles here:
 
 
 <p>At this point your Flutter app is ready to send requests to DialogFlow APIs.</p>
-<h4>Adding Chat like Icon at Landing Page</h4>
+<h4>#3. Adding Chat like Icon at Landing Page</h4>
 <p>Let's add a chat like icon to invoke conversation with DialogFlow. Clicking on this chat icon will open a new page with an input box for user to enter their query. For every query entered by user will fetch a flutter fact from DialogFlow.</p>
 <p>In this section, I'll be adding a chat icon in the bottomRight corner of the landing page like below:</p>
 <p><img alt="DialogFlow Chat icon" src="https://ptyagicodecamp.github.io/df_chat_icon.jpg"></p>
@@ -294,11 +291,13 @@ Let's quickly review <code>router.dart</code>. This file defines a string to rep
 
 <p>You'll notice that I imported <code>router.dart</code> as first thing, and then set <code>onGenerateRoute</code> property of <code>MaterialApp</code> to re-route to given page. Don't forget to provide <code>initialRoute</code> attribute. This attribute dictates which page will be opened as first thing after app launch.</p>
 <p>User and FlutterFacts bot interaction is implemented in <code>FlutterFactsDialogFlow()</code> class. Let's checkout the details in next section.</p>
-<h4>Developing "FlutterFactsDialogFlow" interface</h4>
-<p>In this section, I'll be building a simple chat window looking interface to interact with 'FlutterFactsBot'. Interface will have following components in addition to <code>AppBar</code>:
-- User input box at the bottom
-- Top part to show interaction log between user and 'FlutterFactsBot'
-- User and 'FlutterFactsBot' icons</p>
+<h4>#4. Developing "FlutterFactsDialogFlow" interface</h4>
+<p>In this section, I'll be building a simple chat window looking interface to interact with 'FlutterFactsBot'. Interface will have following components in addition to <code>AppBar</code>:</p>
+<ul>
+<li>User input box at the bottom</li>
+<li>Top part to show interaction log between user and 'FlutterFactsBot'</li>
+<li>User and 'FlutterFactsBot' icons</li>
+</ul>
 <p><img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts.jpg"></p>
 <p><strong>FlutterFactsBot in Action !</strong>*</p>
 <p>This is how user and FlutterFactsBot interaction log would like:</p>
