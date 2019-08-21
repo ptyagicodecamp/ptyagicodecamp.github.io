@@ -8,7 +8,7 @@
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"&gt;Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;In this article, I'll show you how can we integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience. We'll keep it to a fun app for demonstration purposes. We'll add a chat icon on our landing page. Clicking on this chat icon, will take user to a chat like screen. Whenever user type sentence or word consisting "Flutter" in it, our "Flutter Facts Bot" will present user a fact about Flutter :) Simple !&lt;/p&gt;
+&lt;p&gt;In this article, I'll show you how we can integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience. We'll keep it to a fun app for demonstration purposes. We'll add a chat icon on our landing page. Clicking on this chat icon, will take user to a chat like screen. Whenever user type sentence or word consisting "Flutter" in it, our "Flutter Facts Bot" will present user a fact about Flutter :) Simple !&lt;/p&gt;
 &lt;p&gt;To adapt our existing landing page app to this new conversational style, we'll be taking following steps:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Setting up DialogFlow&lt;/li&gt;
@@ -16,14 +16,14 @@
 &lt;li&gt;Adding Chat like Icon at Landing Page&lt;/li&gt;
 &lt;li&gt;Developing "FlutterFactsDialogFlow" interface&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;#1. Setting up DialogFlow&lt;/h4&gt;
-&lt;ol&gt;
+&lt;h3&gt;1. Setting up DialogFlow&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;Create an account at &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt;. It's free to create account.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;img alt="DialogFlow #1" src="https://ptyagicodecamp.github.io/dialogflow_intro1.jpg"&gt;&lt;/p&gt;
-&lt;ol&gt;
+&lt;ul&gt;
 &lt;li&gt;Create agent by clicking on "Create Agent" button as shown in image below:&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;img alt="DialogFlow #2" src="https://ptyagicodecamp.github.io/dialogflow_intro2.jpg"&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Assign a google cloud project. Navigate to &lt;a href="https://console.cloud.google.com"&gt;Google Cloud Console&lt;/a&gt; to create a new project, if you don't have a project yet. I'll choosing my existing google cloud project named - "flutter-to-fly".&lt;/li&gt;
