@@ -165,7 +165,7 @@
 <li>Adding Chat like Icon at Landing Page</li>
 <li>Developing "FlutterFactsDialogFlow" interface</li>
 </ol>
-<h3>1. Setting up DialogFlow</h3>
+<h3>Setting up DialogFlow</h3>
 <ul>
 <li>Create an account at <a href="https://dialogflow.com/">DialogFlow</a>. It's free to create account.</li>
 </ul>
@@ -174,63 +174,67 @@
 <li>Create agent by clicking on "Create Agent" button as shown in image below:</li>
 </ul>
 <p><img alt="DialogFlow #2" src="https://ptyagicodecamp.github.io/dialogflow_intro2.jpg"></p>
-<ol>
+<ul>
 <li>Assign a google cloud project. Navigate to <a href="https://console.cloud.google.com">Google Cloud Console</a> to create a new project, if you don't have a project yet. I'll choosing my existing google cloud project named - "flutter-to-fly".</li>
-</ol>
+</ul>
 <p><img alt="DialogFlow #3" src="https://ptyagicodecamp.github.io/dialogflow_intro3.jpg"></p>
-<ol>
+<ul>
 <li>Create/Choose Intent. I'll be using default welcome intent for this tutorial. This is the very first intent presented to user at the beginning of conversation.</li>
-</ol>
+</ul>
 <p><img alt="DialogFlow #4" src="https://ptyagicodecamp.github.io/dialogflow_intro4.jpg"></p>
-<ol>
+<ul>
 <li>Train intent. Add training phrases at this step. Training phrases will include words or sentence(s) which you think user could use to invoke conversation. I'm using word "flutter" in various combinations. As far as user has "flutter" keyword in their sentence, they'll be presented a fact about flutter. Click "Save" when you're done adding all possible keywords/phrases. It'll start agent training.</li>
-</ol>
+</ul>
 <p><img alt="DialogFlow Training #1" src="https://ptyagicodecamp.github.io/dialogflow_training1.jpg"></p>
-<ol>
+<ul>
 <li>Add Responses. I'll be adding simple text responses for this tutorial. Response text is the output for the phrases tried out by user. If a match is found for user input text, one of the text response will be returned to user. In our case, as far as user says "flutter" in its query, a Flutter fact will be returned.</li>
-</ol>
+</ul>
 <p><img alt="DialogFlow Training #2" src="https://ptyagicodecamp.github.io/dialogflow_training3.jpg"></p>
-<ol>
+<ul>
 <li>You can try out responses at the right panel either by typing or speaking out phrases in order to test the fulfillment.</li>
-</ol>
+</ul>
 <p><img alt="DialogFlow Training #2" src="https://ptyagicodecamp.github.io/dialogflow_training2.jpg"></p>
 <p>DialogFlow agent is trained and ready to return text responses for default intent !</p>
-<h4>#2. App's Integration with DialogFlow</h4>
+<h3>App's Integration with DialogFlow</h3>
 <p>Now, we want to integrate our newly trained DialogFlow intent into "Flutter Facts" feature of our app.</p>
-<ol>
-<li>Head over to <a href="https://console.cloud.google.com">Google Cloud Console</a>.</li>
-<li>Choose Google Cloud project.</li>
+<ul>
+<li>
+<p>Head over to <a href="https://console.cloud.google.com">Google Cloud Console</a>.</p>
+</li>
+<li>
+<p>Choose Google Cloud project.</p>
+</li>
 <li>Select "API &amp; Services"</li>
 <li>Click on credentials.</li>
-</ol>
+</ul>
 <p><img alt="GC Credentials #1" src="https://ptyagicodecamp.github.io/df_gc_creds1.jpg"></p>
-<ol>
+<ul>
 <li>Click on "Create credentials" drop down menu, and choose "Service account key" option.</li>
-</ol>
+</ul>
 <p><img alt="GC Credentials #2" src="https://ptyagicodecamp.github.io/df_gc_creds2.jpg"></p>
-<ol>
+<ul>
 <li>Select "DialogFlow integrations" option in Service account drop-down. Choose recommended "JSON" format for key type.</li>
-</ol>
+</ul>
 <p><img alt="GC Credentials #3" src="https://ptyagicodecamp.github.io/df_gc_creds3.jpg"></p>
-<ol>
+<ul>
 <li>Download you private key to your machine. Keep this safe somewhere private to you. DO NOT commit this key into version control system.</li>
-</ol>
+</ul>
 <p><img alt="GC Credentials #4" src="https://ptyagicodecamp.github.io/df_gc_creds4.jpg"></p>
 <p><strong>Note:</strong> Save your credentials file at a safe location. DO NOT check-in this file in version control system like Github, BitBucket etc.</p>
-<ol>
+<ul>
 <li>Copy credentials file <code>flutter-to-fly-creds.json</code> in to <code>assets</code> directory. I prefer to make <a href="https://www.shellhacks.com/symlink-create-symbolic-link-linux/">symlink</a> for this file inside <code>assets</code> folder to save me from accidentally checking it in Github.</li>
-</ol>
+</ul>
 <p><img alt="GC Credentials #5" src="https://ptyagicodecamp.github.io/df_gc_creds5.jpg"></p>
-<ol>
+<ul>
 <li><code>pubspec.yaml</code> dependencies for DialogFlow plug-in:</li>
-</ol>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
   <span class="n">flutter_dialogflow</span><span class="o">:</span> <span class="o">^</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">2</span>
 </pre></div>
 
 
 <p>At this point your Flutter app is ready to send requests to DialogFlow APIs.</p>
-<h4>#3. Adding Chat like Icon at Landing Page</h4>
+<h3>Adding Chat like Icon at Landing Page</h3>
 <p>Let's add a chat like icon to invoke conversation with DialogFlow. Clicking on this chat icon will open a new page with an input box for user to enter their query. For every query entered by user will fetch a flutter fact from DialogFlow.</p>
 <p>In this section, I'll be adding a chat icon in the bottomRight corner of the landing page like below:</p>
 <p><img alt="DialogFlow Chat icon" src="https://ptyagicodecamp.github.io/df_chat_icon.jpg"></p>
@@ -291,7 +295,7 @@ Let's quickly review <code>router.dart</code>. This file defines a string to rep
 
 <p>You'll notice that I imported <code>router.dart</code> as first thing, and then set <code>onGenerateRoute</code> property of <code>MaterialApp</code> to re-route to given page. Don't forget to provide <code>initialRoute</code> attribute. This attribute dictates which page will be opened as first thing after app launch.</p>
 <p>User and FlutterFacts bot interaction is implemented in <code>FlutterFactsDialogFlow()</code> class. Let's checkout the details in next section.</p>
-<h4>#4. Developing "FlutterFactsDialogFlow" interface</h4>
+<h3>Developing "FlutterFactsDialogFlow" interface</h3>
 <p>In this section, I'll be building a simple chat window looking interface to interact with 'FlutterFactsBot'. Interface will have following components in addition to <code>AppBar</code>:</p>
 <ul>
 <li>User input box at the bottom</li>
