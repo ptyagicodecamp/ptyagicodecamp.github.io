@@ -1,5 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-08-20T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Implementing Flutter FactsBot using DialogFlow</title><link href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html" rel="alternate"></link><published>2019-08-20T00:00:00-04:00</published><updated>2019-08-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-08-20:/implementing-flutter-factsbot-using-dialogflow.html</id><summary type="html">&lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-08-22T00:00:00-04:00</updated><subtitle>Explore | Android | Software Engineering</subtitle><entry><title>Custom switch widget for accepting Privacy Policy in Flutter Apps</title><link href="https://ptyagicodecamp.github.io/custom-switch-widget-for-accepting-privacy-policy-in-flutter-apps.html" rel="alternate"></link><published>2019-08-22T00:00:00-04:00</published><updated>2019-08-22T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-08-22:/custom-switch-widget-for-accepting-privacy-policy-in-flutter-apps.html</id><summary type="html">&lt;p&gt;In this code recipe, we'll implement a custom switch widget to accept privacy policy in an app.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Implementing Custom Switch Widget to accept privacy policy from Settings screen.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;a href="https://api.flutter.dev/flutter/material/Switch-class.html"&gt;Switch Widget&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; In our demo app, we'll implement a custom stateless widget &lt;code&gt;HyperlinkedLabelSwitch&lt;/code&gt;. It'll contain two main visual parts:
+1. Label 'Privacy Policy' aligned to start. Clicking / tapping on this label will open url in a &lt;a href="https://pub.dev/packages/webview_flutter"&gt;&lt;code&gt;WebView&lt;/code&gt;&lt;/a&gt;. I'll be using a Google Doc for sample privacy policy accessible via a hyperlink.
+2. Toggle switch aligned to the end of the screen. On switch means privacy policies are accepted. This accepted status is updated as 'Privacy Policy (Accepted)' in left label. Toggling this switch to "off" update text label back to 'Privacy Policy'.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Privacy policy #1" src="https://ptyagicodecamp.github.io/recipe_switch_privacy.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Screenshot of Privacy policy loaded in WebView:
+&lt;img alt="Privacy policy #1" src="https://ptyagicodecamp.github.io/recipe_switch_privacy2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Screenshot of updated text label after accepting privacy policy:
+&lt;img alt="Privacy policy #1" src="https://ptyagicodecamp.github.io/recipe_switch_privacy3.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h3&gt;Implementing Custom Switch Widget : &lt;code&gt;HyperlinkedLabelSwitch&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;We'll be creating custom switch widget with clickable text label and switch.
+Screenshot of custom widget in 'off' mode (Privacy privacy is not accepted):
+&lt;img alt="Privacy policy #4" src="https://ptyagicodecamp.github.io/recipe_switch_privacy4.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Screenshot of custom widget in 'on' mode (Privacy privacy accepted):
+&lt;img alt="Privacy policy #4" src="https://ptyagicodecamp.github.io/recipe_switch_privacy5.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Step #1. Create a class &lt;code&gt;HyperlinkedLabelSwitch&lt;/code&gt; extending &lt;code&gt;StatelessWidget&lt;/code&gt;. This widget has following members:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;label&lt;/code&gt;: Text displaying 'Privacy Policy'&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hyperlink&lt;/code&gt;: Web link (url) to privacy policy document.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;selected&lt;/code&gt;: Boolean value to determine whether policy is accepted or not.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;onChange&lt;/code&gt;: Function to be assigned to &lt;code&gt;Switch&lt;/code&gt; widget's &lt;code&gt;onChanged:&lt;/code&gt; property.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;padding&lt;/code&gt;: This is the padding around the custom widget. Ability to pass this value (rather hard coding) from parent make custom widget reusable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;HyperlinkedLabelSwitch&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;label&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;hyperlink&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nx"&gt;selected&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;Function&lt;/span&gt; &lt;span class="nx"&gt;onChange&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;EdgeInsets&lt;/span&gt; &lt;span class="nx"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, let's build the custom widget that contains a clickable label and toggle switch. We need a padding around this widget for visual appeal. We'll use the padding passed from parent as &lt;code&gt;padding&lt;/code&gt; parameter.
+I'm using &lt;code&gt;Row&lt;/code&gt; widget to put label and toggle switch next to each other. Clickable label stays at the start of the screen, so it'll be the first child, and &lt;code&gt;Switch&lt;/code&gt; widget is placed as second children to the &lt;code&gt;Row&lt;/code&gt; widget. Since label consist of text, and it gets updated when user accepts the privacy policy, so we need it keep this widget flexible. We need to allow it to expand to claim the available space. That's why we'll use &lt;code&gt;Expand&lt;/code&gt; widget to claim empty area.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;override&lt;/span&gt;
+&lt;span class="nt"&gt;Widget&lt;/span&gt; &lt;span class="nt"&gt;build&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;BuildContext&lt;/span&gt; &lt;span class="nt"&gt;context&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;return&lt;/span&gt; &lt;span class="nt"&gt;Padding&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+    &lt;span class="nt"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Row&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+      &lt;span class="nt"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;
+        &lt;span class="nx"&gt;Expanded&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+        &lt;span class="nx"&gt;Switch&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+      &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+    &lt;span class="o"&gt;),&lt;/span&gt;
+  &lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I'll make use of &lt;code&gt;RichText&lt;/code&gt; widget to create clickable text label. &lt;code&gt;TextSpan&lt;/code&gt; widget is great choice for rendering more than just plain text. It's &lt;code&gt;recognizer&lt;/code&gt; property can be used for responding to gestures more appropriately. In this case, I'll use &lt;code&gt;TapGestureRecognizer&lt;/code&gt; as recognizer. &lt;code&gt;TapGestureRecognizer&lt;/code&gt; helps to disambiguate gestures from other potential gestures. Clicking / tapping on link will open up the url in a WebView. In this example, it's a Google Doc with sample privacy policy text in it. Let's put all it together as code below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;Expanded&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+  &lt;span class="nt"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;RichText&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+      &lt;span class="nt"&gt;text&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;TextSpan&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+          &lt;span class="nt"&gt;text&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;label&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+          &lt;span class="nt"&gt;style&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;TextStyle&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+              &lt;span class="nt"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Colors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;redAccent&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+              &lt;span class="nt"&gt;decoration&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;TextDecoration&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;underline&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+              &lt;span class="nt"&gt;fontSize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;20&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;0&lt;/span&gt;&lt;span class="o"&gt;),&lt;/span&gt;
+          &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;TapGestureRecognizer&lt;/span&gt; &lt;span class="nt"&gt;helps&lt;/span&gt; &lt;span class="nt"&gt;to&lt;/span&gt; &lt;span class="nt"&gt;disambiguate&lt;/span&gt; &lt;span class="nt"&gt;gestures&lt;/span&gt; &lt;span class="nt"&gt;from&lt;/span&gt; &lt;span class="nt"&gt;other&lt;/span&gt; &lt;span class="nt"&gt;potential&lt;/span&gt; &lt;span class="nt"&gt;gestures&lt;/span&gt;
+          &lt;span class="nt"&gt;recognizer&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;TapGestureRecognizer&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+            &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;onTap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+              &lt;span class="err"&gt;//open&lt;/span&gt; &lt;span class="err"&gt;hyperlink&lt;/span&gt; &lt;span class="err"&gt;in&lt;/span&gt; &lt;span class="err"&gt;webview&lt;/span&gt;
+              &lt;span class="err"&gt;Navigator.pushNamed(context,&lt;/span&gt; &lt;span class="err"&gt;WEBVIEW,&lt;/span&gt;
+                  &lt;span class="n"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                      &lt;span class="nf"&gt;WebViewArguments&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="n"&gt;hyperlink&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)),&lt;/span&gt;
+&lt;span class="o"&gt;),&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next comes the &lt;code&gt;Switch&lt;/code&gt; widget. It's fairly simple. Widget's &lt;code&gt;value&lt;/code&gt;, &lt;code&gt;onChanged&lt;/code&gt; attributes are assigned values from parent widget. &lt;code&gt;selected&lt;/code&gt; boolean is assigned to &lt;code&gt;value&lt;/code&gt;, and &lt;code&gt;onChange()&lt;/code&gt; is assigned to &lt;code&gt;onChanged&lt;/code&gt; attribute like below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Switch(
+  value: selected,
+  onChanged: (bool v) {
+    onChange(v);
+  },
+)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's all to it. We're ready to move on to using this widget from another widget or page. Settings page is one example where this widget can be used in to create clickable label along with switch settings.&lt;/p&gt;
+&lt;h3&gt;Using Custom Switch Widget&lt;/h3&gt;
+&lt;p&gt;I've created a sample page &lt;code&gt;SwitchListTile1&lt;/code&gt; to demonstrate integrating our brand new custom widget &lt;code&gt;HyperlinkedLabelSwitch&lt;/code&gt;. &lt;code&gt;SwitchListTile1&lt;/code&gt; page is a &lt;code&gt;StatefulWidget&lt;/code&gt;. We chose it to be StatefulWidget because we want to update the value of toggle switch to reflect privacy policy acceptance status.
+As usual, we need a &lt;code&gt;State&lt;/code&gt; for &lt;code&gt;StatefulWidget&lt;/code&gt;, say &lt;code&gt;_SwitchListTileState&lt;/code&gt; like below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SwitchListTile1&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;StatefulWidget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;createState() {&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;_SwitchListTileState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_SwitchListTileState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;SwitchListTile1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;_SwitchListTileState&lt;/code&gt; has two parameters:
+1. &lt;code&gt;accepted&lt;/code&gt;: A boolean flag to keep track of state of privacy policy acceptance status.
+2. &lt;code&gt;privacyLabel&lt;/code&gt;: Text message shown to user. It's 'Privacy Policy' by default. It changes to 'Privacy Policy (Accepted)', when &lt;code&gt;accepted&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;body&lt;/code&gt; of this sample page is simple, and consists of one &lt;code&gt;Column&lt;/code&gt; widget. This &lt;code&gt;Column&lt;/code&gt; has only one child &lt;code&gt;HyperlinkedLabelSwitch&lt;/code&gt; widget.
+&lt;code&gt;HyperlinkedLabelSwitch&lt;/code&gt; is initialized with default values for &lt;code&gt;privacyLabel&lt;/code&gt; and &lt;code&gt;accepted&lt;/code&gt;. The value of &lt;code&gt;hyperlink&lt;/code&gt; remains constant and hence hard wired, since we don't accept the location of privacy policy to be changed frequently. &lt;code&gt;setState(){}&lt;/code&gt; is called whenever value of switch changes. &lt;code&gt;privacyLabel&lt;/code&gt;'s value is updated to include &lt;code&gt;(Accepted)&lt;/code&gt; when &lt;code&gt;accepted&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+  &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;HyperlinkedLabelSwitch&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+          &lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="n"&gt;EdgeInsets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;symmetric&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;horizontal&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;20.0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vertical&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;50.0&lt;/span&gt;&lt;span class="o"&gt;),&lt;/span&gt;
+      &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;privacyLabel&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;hyperlink&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+          &lt;span class="s1"&gt;&amp;#39;https://docs.google.com/document/d/1TAqTE7MBzuIagISHHzjGxSHoY1z884LXR3iGIojz1sA/edit?usp=sharing&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;selected&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;accepted&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;onChange&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;setState&lt;/span&gt;&lt;span class="o"&gt;(()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+          &lt;span class="n"&gt;accepted&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+          &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;accepted&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;privacyLabel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Privacy Policy (Accepted)&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+          &lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;privacyLabel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Privacy Policy&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+          &lt;span class="o"&gt;}&lt;/span&gt;
+        &lt;span class="o"&gt;});&lt;/span&gt;
+      &lt;span class="o"&gt;},&lt;/span&gt;
+    &lt;span class="o"&gt;)&lt;/span&gt;
+  &lt;span class="o"&gt;],&lt;/span&gt;
+&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and, we are done !&lt;/p&gt;
+&lt;p&gt;Next section has complete example code for easy reference.&lt;/p&gt;
+&lt;h4&gt;Complete example code&lt;/h4&gt;
+&lt;p&gt;This section has full example code for your reference. There are few dependencies like &lt;code&gt;webview.dart&lt;/code&gt;, &lt;code&gt;router.dart&lt;/code&gt;. They are meant to be included for app navigation purposes and showing privacy policy documents in a web view. Please refer to &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/swtch"&gt;Github repo&lt;/a&gt; for access to full code.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter/gestures.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter/material.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter_widgets/menus/webview.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;package:flutter_widgets/router.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SwitchListTile1&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;StatefulWidget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;_SwitchListTileState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;_SwitchListTileState&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;SwitchListTile1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nb"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;accepted&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;privacyLabel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Privacy Policy&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;appBar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;SwitchListTile: Clickable label&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+          &lt;span class="n"&gt;HyperlinkedLabelSwitch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;EdgeInsets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;symmetric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;horizontal&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;20.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vertical&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;50.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;privacyLabel&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;hyperlink&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="s1"&gt;&amp;#39;https://docs.google.com/document/d/1TAqTE7MBzuIagISHHzjGxSHoY1z884LXR3iGIojz1sA/edit?usp=sharing&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;selected&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;accepted&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;onChange&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+              &lt;span class="n"&gt;setState&lt;/span&gt;&lt;span class="p"&gt;(()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="n"&gt;accepted&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;accepted&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                  &lt;span class="n"&gt;privacyLabel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Privacy Policy (Accepted)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                  &lt;span class="n"&gt;privacyLabel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Privacy Policy&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                &lt;span class="p"&gt;}&lt;/span&gt;
+              &lt;span class="p"&gt;});&lt;/span&gt;
+            &lt;span class="p"&gt;},&lt;/span&gt;
+          &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;],&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;HyperlinkedLabelSwitch&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;hyperlink&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;selected&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;Function&lt;/span&gt; &lt;span class="n"&gt;onChange&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;EdgeInsets&lt;/span&gt; &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+
+  &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;HyperlinkedLabelSwitch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;selected&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onChange&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hyperlink&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Padding&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+          &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="n"&gt;First&lt;/span&gt; &lt;span class="n"&gt;widget&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;
+          &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Expanded&lt;/span&gt; &lt;span class="n"&gt;widget&lt;/span&gt; &lt;span class="n"&gt;claims&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;empty&lt;/span&gt; &lt;span class="n"&gt;area&lt;/span&gt;
+          &lt;span class="n"&gt;Expanded&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;RichText&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;TextSpan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                    &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;TextStyle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                        &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Colors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;redAccent&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                        &lt;span class="n"&gt;decoration&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;TextDecoration&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;underline&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                        &lt;span class="n"&gt;fontSize&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;20.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;TapGestureRecognizer&lt;/span&gt; &lt;span class="n"&gt;helps&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;disambiguate&lt;/span&gt; &lt;span class="n"&gt;gestures&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;other&lt;/span&gt; &lt;span class="nn"&gt;potential&lt;/span&gt; &lt;span class="nn"&gt;gestures&lt;/span&gt;
+                    &lt;span class="n"&gt;recognizer&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;TapGestureRecognizer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+                      &lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="n"&gt;onTap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                        &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt; &lt;span class="n"&gt;hyperlink&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;webview&lt;/span&gt;
+                        &lt;span class="n"&gt;Navigator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pushNamed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;WEBVIEW&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                            &lt;span class="n"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                                &lt;span class="n"&gt;WebViewArguments&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;hyperlink&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+                      &lt;span class="p"&gt;})),&lt;/span&gt;
+          &lt;span class="p"&gt;),&lt;/span&gt;
+
+          &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="n"&gt;comes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;switch&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;save&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s selection&lt;/span&gt;
+          &lt;span class="n"&gt;Switch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;selected&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;onChanged&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+              &lt;span class="n"&gt;onChange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="p"&gt;},&lt;/span&gt;
+          &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;],&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Source code repo:&lt;/strong&gt;
+Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/swtch"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/material/Switch-class.html"&gt;Switch Widget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/widgets/Expanded-class.html"&gt;Expanded Widget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/painting/TextSpan-class.html"&gt;TextSpan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/gestures/TapGestureRecognizer-class.html"&gt;TapGestureRecognizer&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Switch"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Implementing Flutter FactsBot using DialogFlow</title><link href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html" rel="alternate"></link><published>2019-08-20T00:00:00-04:00</published><updated>2019-08-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-08-20:/implementing-flutter-factsbot-using-dialogflow.html</id><summary type="html">&lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
 &lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience. I'll use the sample app that we built earlier in my previous article &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html"&gt;Designing Cross platform Flutter prototype for Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;. We'll be integrating DialogFlow conversational API in native Flutter App.&lt;/p&gt;
 &lt;p&gt;You can refer to previous articles here:&lt;/p&gt;
 &lt;ol&gt;
