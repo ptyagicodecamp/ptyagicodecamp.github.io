@@ -6,18 +6,16 @@
 1. Label 'Privacy Policy' aligned to start. Clicking / tapping on this label will open url in a &lt;a href="https://pub.dev/packages/webview_flutter"&gt;&lt;code&gt;WebView&lt;/code&gt;&lt;/a&gt;. I'll be using a Google Doc for sample privacy policy accessible via a hyperlink.
 2. Toggle switch aligned to the end of the screen. On switch means privacy policies are accepted. This accepted status is updated as 'Privacy Policy (Accepted)' in left label. Toggling this switch to "off" update text label back to 'Privacy Policy'.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Privacy policy #1" src="https://ptyagicodecamp.github.io/recipe_switch_privacy.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;Screenshot of Privacy policy loaded in WebView:
-&lt;img alt="Privacy policy #1" src="https://ptyagicodecamp.github.io/recipe_switch_privacy2.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;Screenshot of updated text label after accepting privacy policy:
-&lt;img alt="Privacy policy #1" src="https://ptyagicodecamp.github.io/recipe_switch_privacy3.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;Screenshot of Privacy policy loaded in WebView:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Privacy policy #1" src="https://ptyagicodecamp.github.io/recipe_switch_privacy2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Screenshot of updated text label after accepting privacy policy:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Privacy policy #1" src="https://ptyagicodecamp.github.io/recipe_switch_privacy3.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Implementing Custom Switch Widget : &lt;code&gt;HyperlinkedLabelSwitch&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;We'll be creating custom switch widget with clickable text label and switch.
-Screenshot of custom widget in 'off' mode (Privacy privacy is not accepted):
-&lt;img alt="Privacy policy #4" src="https://ptyagicodecamp.github.io/recipe_switch_privacy4.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;Screenshot of custom widget in 'on' mode (Privacy privacy accepted):
-&lt;img alt="Privacy policy #4" src="https://ptyagicodecamp.github.io/recipe_switch_privacy5.jpg"&gt;&lt;/p&gt;
+Screenshot of custom widget in 'off' mode (Privacy privacy is not accepted):&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Privacy policy #4" src="https://ptyagicodecamp.github.io/recipe_switch_privacy4.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Screenshot of custom widget in 'on' mode (Privacy privacy accepted):&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Privacy policy #4" src="https://ptyagicodecamp.github.io/recipe_switch_privacy5.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Step #1. Create a class &lt;code&gt;HyperlinkedLabelSwitch&lt;/code&gt; extending &lt;code&gt;StatelessWidget&lt;/code&gt;. This widget has following members:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;label&lt;/code&gt;: Text displaying 'Privacy Policy'&lt;/li&gt;
