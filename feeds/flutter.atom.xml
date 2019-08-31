@@ -10,8 +10,9 @@
 &lt;p&gt;&lt;img alt="Privacy policy #1" src="https://ptyagicodecamp.github.io/recipe_switch_privacy2.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Screenshot of updated text label after accepting privacy policy:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Privacy policy #1" src="https://ptyagicodecamp.github.io/recipe_switch_privacy3.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/NXRbj9EfPEY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/NXRbj9EfPEY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
 &lt;h3&gt;Implementing Custom Switch Widget : &lt;code&gt;HyperlinkedLabelSwitch&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;We'll be creating custom switch widget with clickable text label and switch.
 Screenshot of custom widget in 'off' mode (Privacy privacy is not accepted):&lt;/p&gt;
