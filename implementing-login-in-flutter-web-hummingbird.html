@@ -378,6 +378,12 @@
 <h3>User Profile Page</h3>
 <p>A <code>UserProfilePage</code> displays very basic information about the logged-in user. Right now, it shows: welcoming user with their email used as display name, placeholder for profile picture and sign-out button. Please refer to source code for details of implementing user interface.</p>
 <p><img alt="UserProfile-page" src="https://ptyagicodecamp.github.io/login_ftf4.jpg"></p>
+<h3>A note on iOS Firebase integration</h3>
+<p>You may run into trouble building your code for iOS complaining about Firebase imports as shown in screenshot below:</p>
+<p><img alt="ios-firebase" src="https://ptyagicodecamp.github.io/ios_firebase_issue.jpg"></p>
+<p><strong>Solution:</strong>
+I found <a href="https://stackoverflow.com/questions/41709912/error-could-not-build-objective-c-module-firebase">this StackOverflow post</a> useful to debug and fix this issue:</p>
+<p><img alt="ios-firebase-fix" src="https://ptyagicodecamp.github.io/ios_firebase_issue.jpg"></p>
 <h3>Conclusion</h3>
 <p>We learned how to implement Firebase authentication in Flutter Web / Hummingbird for 'Login' button in our demo web app. We overviewed dependencies, and ChangeNotifier responsible for authentication, registering and creating user, and creating a user record in FireStore. Please refer to code below for Web and Native (Android &amp; iOS) implementations.</p>
 <p>Keep Fluttering !</p>
