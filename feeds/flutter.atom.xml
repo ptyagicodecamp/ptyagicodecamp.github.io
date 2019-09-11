@@ -234,7 +234,7 @@
 &lt;p&gt;&lt;img alt="ios-firebase" src="https://ptyagicodecamp.github.io/ios_firebase_issue.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;
 I found &lt;a href="https://stackoverflow.com/questions/41709912/error-could-not-build-objective-c-module-firebase"&gt;this StackOverflow post&lt;/a&gt; useful to debug and fix this issue:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ios-firebase-fix" src="https://ptyagicodecamp.github.io/ios_firebase_issue.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ios-firebase-fix" src="https://ptyagicodecamp.github.io/ios_firebase_issue_fix.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Conclusion&lt;/h3&gt;
 &lt;p&gt;We learned how to implement Firebase authentication in Flutter Web / Hummingbird for 'Login' button in our demo web app. We overviewed dependencies, and ChangeNotifier responsible for authentication, registering and creating user, and creating a user record in FireStore. Please refer to code below for Web and Native (Android &amp;amp; iOS) implementations.&lt;/p&gt;
 &lt;p&gt;Keep Fluttering !&lt;/p&gt;
