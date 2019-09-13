@@ -5,9 +5,9 @@
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Implementing themes using Provider plugin. Implement a simple UI with an image, text and a button to switch themes. Page's default theme is light. Clicking on "Switch Theme" button will apply dark theme to page, and vice versa.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="switching-themes-animation-Android" src="https://ptyagicodecamp.github.io/themes_inaction.mp4"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Light Theme:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="light-theme" src="https://ptyagicodecamp.github.io/ios-themes2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="light-theme" src="https://ptyagicodecamp.github.io/ios_themes2.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Light Theme:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="dark-theme" src="https://ptyagicodecamp.github.io/ios-themes3.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="dark-theme" src="https://ptyagicodecamp.github.io/ios_themes3.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;What is Provider&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://pub.dev/packages/provider"&gt;Provider&lt;/a&gt; is a plugin/package that provides dependency injection and state management solution for a Flutter App. It's built with robust and scalable Flutter widgets.&lt;/p&gt;
 &lt;h3&gt;Step #1. &lt;code&gt;pubspec.yaml&lt;/code&gt;&lt;/h3&gt;
