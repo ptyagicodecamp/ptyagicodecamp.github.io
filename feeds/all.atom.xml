@@ -8,6 +8,8 @@
 &lt;p&gt;&lt;img alt="light-theme" src="https://ptyagicodecamp.github.io/ios_themes2.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Dark Theme:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="dark-theme" src="https://ptyagicodecamp.github.io/ios_themes3.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/eJZMJFSQbgs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;h3&gt;What is Provider&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://pub.dev/packages/provider"&gt;Provider&lt;/a&gt; is a plugin/package that provides dependency injection and state management solution for a Flutter App. It's built with robust and scalable Flutter widgets.&lt;/p&gt;
 &lt;h3&gt;Step #1. &lt;code&gt;pubspec.yaml&lt;/code&gt;&lt;/h3&gt;
