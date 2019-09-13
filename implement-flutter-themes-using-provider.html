@@ -10,8 +10,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <link rel="stylesheet/less" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.less">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
 
   <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
   <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
@@ -24,7 +23,17 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-133714063-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333333">
     <!-- Windows Phone -->
@@ -40,10 +49,10 @@
 <meta name="keywords" content="Provider, Cross-platform, Flutter, Code-recipes, Android, Android Studio, iOS, development">
 
 <meta property="og:site_name" content="techLog"/>
-<meta property="og:title" content="Flutter themes using Provider"/>
+<meta property="og:title" content="Implement Flutter themes using Provider"/>
 <meta property="og:description" content="Implementing switching from light to dark theme and vice versa using Provider plugin for dependency injection and state management."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://ptyagicodecamp.github.io/flutter-themes-using-provider.html"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/implement-flutter-themes-using-provider.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-09-12 00:00:00-04:00"/>
 <meta property="article:modified_time" content=""/>
@@ -59,7 +68,7 @@
 <meta property="article:tag" content="development"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash; Flutter themes using Provider</title>
+  <title>techLog &ndash; Implement Flutter themes using Provider</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -124,7 +133,7 @@
 <article class="single">
   <header>
       
-    <h1 id="flutter-themes-using-provider">Flutter themes using Provider</h1>
+    <h1 id="implement-flutter-themes-using-provider">Implement Flutter themes using Provider</h1>
     <p>
           Posted on September 12, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
@@ -146,7 +155,10 @@
 <p><strong>Focus Widget:</strong> <a href="https://pub.dev/packages/provider">Provider plugin</a></p>
 <p><strong>Goal:</strong> Implementing themes using Provider plugin. Implement a simple UI with an image, text and a button to switch themes. Page's default theme is light. Clicking on "Switch Theme" button will apply dark theme to page, and vice versa.</p>
 <p><img alt="switching-themes-animation-Android" src="https://ptyagicodecamp.github.io/themes_inaction.mp4"></p>
-<p><img alt="switching-themes-animation-ios" src="https://ptyagicodecamp.github.io/ios-themes-switch.gif"></p>
+<p><strong>Light Theme:</strong></p>
+<p><img alt="light-theme" src="https://ptyagicodecamp.github.io/ios-themes2.jpg"></p>
+<p><strong>Light Theme:</strong></p>
+<p><img alt="dark-theme" src="https://ptyagicodecamp.github.io/ios-themes3.jpg"></p>
 <h3>What is Provider</h3>
 <p><a href="https://pub.dev/packages/provider">Provider</a> is a plugin/package that provides dependency injection and state management solution for a Flutter App. It's built with robust and scalable Flutter widgets.</p>
 <h3>Step #1. <code>pubspec.yaml</code></h3>
