@@ -100,7 +100,12 @@ void main() {
 
 &lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;Happy coding :)&lt;/p&gt;
+&lt;h3&gt;Useful Links&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://play.kotlinlang.org"&gt;Kotlin Playground&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dartpad.dartlang.org/"&gt;DartPad&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;&lt;em&gt;Liked the article ?
 Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
