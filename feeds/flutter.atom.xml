@@ -1,5 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-09-12T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Implement Flutter themes using Provider</title><link href="https://ptyagicodecamp.github.io/implement-flutter-themes-using-provider.html" rel="alternate"></link><published>2019-09-12T00:00:00-04:00</published><updated>2019-09-12T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-09-12:/implement-flutter-themes-using-provider.html</id><summary type="html">&lt;p&gt;Implementing switching from light to dark theme and vice versa using &lt;a href="https://pub.dev/packages/provider"&gt;Provider plugin&lt;/a&gt; for dependency injection and state management.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="x-platform-themes" src="https://ptyagicodecamp.github.io/x-provider-themes.jpg"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-09-16T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Dart cheat-sheet for Kotlin (Android) developers</title><link href="https://ptyagicodecamp.github.io/dart-cheat-sheet-for-kotlin-android-developers.html" rel="alternate"></link><published>2019-09-16T00:00:00-04:00</published><updated>2019-09-16T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-09-16:/dart-cheat-sheet-for-kotlin-android-developers.html</id><summary type="html">&lt;p&gt;Dart reference guide for Kotlin (Android) developers&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post is my effort to provide my fellow Kotlin developers a hand to pick up on Dart. Idea is to provide equivalent solution in both languages. The demonstrated code is not the only solution for a particular problem, but just one way of doing things. Style of article is to perform a task in both languages. For example, print "Hello World!" in Kotlin and Dart.&lt;/p&gt;
+&lt;p&gt;I've used &lt;a href="https://play.kotlinlang.org"&gt;Kotlin Playground&lt;/a&gt; and &lt;a href="https://dartpad.dartlang.org/"&gt;DartPad&lt;/a&gt; to run and play around with languages.&lt;/p&gt;
+&lt;h3&gt;Task: Print "Hello World"&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Kotlin:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fun main() {
+  println(&amp;quot;Hello World&amp;quot;)
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Hello World
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Dart:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main() {
+  print(&amp;quot;Hello World&amp;quot;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Hello World
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Task: How to delete duplicates in a List&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Kotlin:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fun main() {
+  var myList = listOf(&amp;#39;A&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;)
+  myList = myList.distinct()
+  print(myList)
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[A, B, C, D]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Another way in Kotlin. Note usage of &lt;code&gt;arrayOf()&lt;/code&gt; instead &lt;code&gt;listOf&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fun main() {
+  val myList = arrayOf(&amp;#39;A&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;)
+  val noDupsList = myList.distinct()
+  print(noDupsList)
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[A, B, C, D]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Dart:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Delete duplicates from myList
+void main() {
+  var myList = [&amp;#39;A&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;];
+  myList = Set.of(myList).toList();
+  print(myList);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[A, B, C, D]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Task:&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Kotlin:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dart:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Task:&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Kotlin:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dart:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Kotlin"></category><category term="Dart"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Implement Flutter themes using Provider</title><link href="https://ptyagicodecamp.github.io/implement-flutter-themes-using-provider.html" rel="alternate"></link><published>2019-09-12T00:00:00-04:00</published><updated>2019-09-12T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-09-12:/implement-flutter-themes-using-provider.html</id><summary type="html">&lt;p&gt;Implementing switching from light to dark theme and vice versa using &lt;a href="https://pub.dev/packages/provider"&gt;Provider plugin&lt;/a&gt; for dependency injection and state management.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="x-platform-themes" src="https://ptyagicodecamp.github.io/x-provider-themes.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Toggle Flutter themes from one type to another using Provider dependency injection and state management package.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;a href="https://pub.dev/packages/provider"&gt;Provider plugin&lt;/a&gt;&lt;/p&gt;
@@ -1572,112 +1677,7 @@ Source code is &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tr
 &lt;p&gt;&lt;em&gt;Liked the article ?
 Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Material Icons"></category><category term="Hummingbird"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Dart cheat-sheet for Kotlin (Android) developers</title><link href="https://ptyagicodecamp.github.io/dart-cheat-sheet-for-kotlin-android-developers.html" rel="alternate"></link><published>2019-07-13T00:00:00-04:00</published><updated>2019-07-13T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-07-13:/dart-cheat-sheet-for-kotlin-android-developers.html</id><summary type="html">&lt;p&gt;Dart reference guide for Kotlin (Android) developers&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post is my effort to provide my fellow Kotlin developers a hand to pick up on Dart. Idea is to provide equivalent solution in both languages. The demonstrated code is not the only solution for a particular problem, but just one way of doing things. Style of article is to perform a task in both languages. For example, print "Hello World!" in Kotlin and Dart.&lt;/p&gt;
-&lt;p&gt;I've used &lt;a href="https://play.kotlinlang.org"&gt;Kotlin Playground&lt;/a&gt; and &lt;a href="https://dartpad.dartlang.org/"&gt;DartPad&lt;/a&gt; to run and play around with languages.&lt;/p&gt;
-&lt;h3&gt;Task: Print "Hello World"&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Kotlin:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fun main() {
-  println(&amp;quot;Hello World&amp;quot;)
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Hello World
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Dart:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main() {
-  print(&amp;quot;Hello World&amp;quot;);
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Hello World
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr&gt;
-&lt;h3&gt;Task: How to delete duplicates in a List&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Kotlin:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fun main() {
-  var myList = listOf(&amp;#39;A&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;)
-  myList = myList.distinct()
-  print(myList)
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[A, B, C, D]
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Another way in Kotlin. Note usage of &lt;code&gt;arrayOf()&lt;/code&gt; instead &lt;code&gt;listOf&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fun main() {
-  val myList = arrayOf(&amp;#39;A&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;)
-  val noDupsList = myList.distinct()
-  print(noDupsList)
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[A, B, C, D]
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Dart:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Delete duplicates from myList
-void main() {
-  var myList = [&amp;#39;A&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;];
-  myList = Set.of(myList).toList();
-  print(myList);
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[A, B, C, D]
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr&gt;
-&lt;h3&gt;Task:&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Kotlin:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Dart:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;Task:&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Kotlin:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Dart:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;em&gt;Output:&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Liked the article ?
-Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
-&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Kotlin"></category><category term="Dart"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)</title><link href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html" rel="alternate"></link><published>2019-06-27T00:00:00-04:00</published><updated>2019-06-27T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-27:/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html</id><summary type="html">&lt;p&gt;This post is in continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
+&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Material Icons"></category><category term="Hummingbird"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)</title><link href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html" rel="alternate"></link><published>2019-06-27T00:00:00-04:00</published><updated>2019-06-27T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-27:/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html</id><summary type="html">&lt;p&gt;This post is in continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
 &lt;p&gt;This article is in continuation of &lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;. In previous post, we learned how to make a cross-platform (Web, Android and iOS) landing page responsive for various form-factors. In this post, we'll see how can we change look and feel or theme of the landing page quickly, just by modifying small piece of code.&lt;/p&gt;
 &lt;p&gt;Checkout the companion video:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Part-1. (Themes Introduction):&lt;/strong&gt;&lt;/p&gt;
