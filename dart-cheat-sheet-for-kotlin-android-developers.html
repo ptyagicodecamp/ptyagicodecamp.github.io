@@ -44,18 +44,32 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333333">
 
-    <meta name="author" content="Priyanka Tyagi" />
-    <meta name="description" content="Mobile engineering tech logger." />
+<meta name="author" content="ptyagi" />
+<meta name="description" content="Dart reference guide for Kotlin (Android) developers" />
+<meta name="keywords" content="Kotlin, Dart, Cross-platform, Flutter, Code-recipes, Android, Android Studio, iOS, development">
+
 <meta property="og:site_name" content="techLog"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="techLog"/>
-<meta property="og:description" content="Mobile engineering tech logger."/>
+<meta property="og:title" content="Dart cheat-sheet for Kotlin (Android) developers"/>
+<meta property="og:description" content="Dart reference guide for Kotlin (Android) developers"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://ptyagicodecamp.github.io"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/dart-cheat-sheet-for-kotlin-android-developers.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-07-13 00:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Flutter"/>
+<meta property="article:tag" content="Kotlin"/>
+<meta property="article:tag" content="Dart"/>
+<meta property="article:tag" content="Cross-platform"/>
+<meta property="article:tag" content="Flutter"/>
+<meta property="article:tag" content="Code-recipes"/>
+<meta property="article:tag" content="Android"/>
+<meta property="article:tag" content="Android Studio"/>
+<meta property="article:tag" content="iOS"/>
+<meta property="article:tag" content="development"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash;     Posts by ptyagi
-:</title>
+  <title>techLog &ndash; Dart cheat-sheet for Kotlin (Android) developers</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -117,186 +131,167 @@
 
     </nav>
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="https://ptyagicodecamp.github.io/how-to-get-sha1-fingerprint-for-digitally-signed-apk.html#how-to-get-sha1-fingerprint-for-digitally-signed-apk">How to get SHA1 fingerprint for digitally signed APK</a></h2>
+      
+    <h1 id="dart-cheat-sheet-for-kotlin-android-developers">Dart cheat-sheet for Kotlin (Android) developers</h1>
     <p>
-          Posted on April 13, 2017 in <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
-
+          Posted on July 13, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
 
     </p>
   </header>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
   <div>
-      <p>How to get SHA1 fingerprint for digitally signed APK</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/how-to-get-sha1-fingerprint-for-digitally-signed-apk.html#how-to-get-sha1-fingerprint-for-digitally-signed-apk">    Continue reading
-</a>
+    <p>This post is my effort to provide my fellow Kotlin developers a hand to pick up on Dart. Idea is to provide equivalent solution in both languages. The demonstrated code is not the only solution for a particular problem, but just one way of doing things. Style of article is to perform a task in both languages. For example, print "Hello World!" in Kotlin and Dart.</p>
+<p>I've used <a href="https://play.kotlinlang.org">Kotlin Playground</a> and <a href="https://dartpad.dartlang.org/">DartPad</a> to run and play around with languages.</p>
+<h3>Task: Print "Hello World"</h3>
+<p><strong>Kotlin:</strong></p>
+<div class="highlight"><pre><span></span>fun main() {
+  println(&quot;Hello World&quot;)
+}
+</pre></div>
+
+
+<p><em>Output:</em></p>
+<div class="highlight"><pre><span></span>Hello World
+</pre></div>
+
+
+<p><strong>Dart:</strong></p>
+<div class="highlight"><pre><span></span>void main() {
+  print(&quot;Hello World&quot;);
+}
+</pre></div>
+
+
+<p><em>Output:</em></p>
+<div class="highlight"><pre><span></span>Hello World
+</pre></div>
+
+
+<hr>
+<h3>Task: How to delete duplicates in a List</h3>
+<p><strong>Kotlin:</strong></p>
+<div class="highlight"><pre><span></span>fun main() {
+  var myList = listOf(&#39;A&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;D&#39;, &#39;B&#39;, &#39;C&#39;)
+  myList = myList.distinct()
+  print(myList)
+}
+</pre></div>
+
+
+<p><em>Output:</em></p>
+<div class="highlight"><pre><span></span>[A, B, C, D]
+</pre></div>
+
+
+<p>Another way in Kotlin. Note usage of <code>arrayOf()</code> instead <code>listOf</code>.</p>
+<div class="highlight"><pre><span></span>fun main() {
+  val myList = arrayOf(&#39;A&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;D&#39;, &#39;B&#39;, &#39;C&#39;)
+  val noDupsList = myList.distinct()
+  print(noDupsList)
+}
+</pre></div>
+
+
+<p><em>Output:</em></p>
+<div class="highlight"><pre><span></span>[A, B, C, D]
+</pre></div>
+
+
+<p><strong>Dart:</strong></p>
+<div class="highlight"><pre><span></span>//Delete duplicates from myList
+void main() {
+  var myList = [&#39;A&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;D&#39;, &#39;B&#39;, &#39;C&#39;];
+  myList = Set.of(myList).toList();
+  print(myList);
+}
+</pre></div>
+
+
+<p><em>Output:</em></p>
+<div class="highlight"><pre><span></span>[A, B, C, D]
+</pre></div>
+
+
+<hr>
+<h3>Task:</h3>
+<p><strong>Kotlin:</strong></p>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
+
+<p><em>Output:</em></p>
+<p><strong>Dart:</strong></p>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
+
+<p><em>Output:</em></p>
+<hr>
+<h3>Task:</h3>
+<p><strong>Kotlin:</strong></p>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
+
+<p><em>Output:</em></p>
+<p><strong>Dart:</strong></p>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
+
+<p><em>Output:</em></p>
+<hr>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+<p>Follow me at <a href="https://twitter.com/ptyagi13">twitter</a></p>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/accessing-pictures-using-fileprovider.html#accessing-pictures-using-fileprovider">Accessing Pictures using FileProvider</a></h2>
+  <div class="tag-cloud">
     <p>
-          Posted on April 13, 2017 in <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
-
-
-
+      <a href="https://ptyagicodecamp.github.io/tag/kotlin.html">Kotlin</a>
+      <a href="https://ptyagicodecamp.github.io/tag/dart.html">Dart</a>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
+      <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+      <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
-  </header>
-  <div>
-      <p>This post shows usage of FileProvider in Android App to retrieve the image file for Camera intent usage.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/accessing-pictures-using-fileprovider.html#accessing-pictures-using-fileprovider">    Continue reading
-</a>
   </div>
-  <hr />
+
+  <div class="center social-share">
+    <p>    Like this article? Share it with your friends!
+</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
 </article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/automating-android-app-publishing-to-play-store-using-jenkins.html#automating-android-app-publishing-to-play-store-using-jenkins">Automating Android App publishing to Play Store  using Jenkins</a></h2>
-    <p>
-          Posted on February 23, 2017 in <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
-
-
-
-    </p>
-  </header>
-  <div>
-      <p>This post shows how to automate Android App publishing to Play Store using Jenkins on Mac OSX 10.12.3 and Jenkins 2.46.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/automating-android-app-publishing-to-play-store-using-jenkins.html#automating-android-app-publishing-to-play-store-using-jenkins">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/creating-sub-menuitems-for-fab-floating-action-button.html#creating-sub-menuitems-for-fab-floating-action-button">Creating Sub MenuItems for FAB (Floating Action Button)</a></h2>
-    <p>
-          Posted on February 15, 2017 in <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
-
-
-
-    </p>
-  </header>
-  <div>
-      <p>This post shows how to integrate sub menu items for FAB (Floating Action Button) in an existing Android app.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/creating-sub-menuitems-for-fab-floating-action-button.html#creating-sub-menuitems-for-fab-floating-action-button">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/android-webviewoverlay-widget.html#android-webviewoverlay-widget">Android WebViewOverlay Widget</a></h2>
-    <p>
-          Posted on January 09, 2017 in <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
-
-
-
-    </p>
-  </header>
-  <div>
-      <p>WebViewOverlay Widget is an OpenSourced Android library that provides a drop-in solution for loading a URL in an Overlay WebView in full screen mode.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/android-webviewoverlay-widget.html#android-webviewoverlay-widget">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/how-did-i-publish-android-library-to-jcenter-from-android-studio.html#how-did-i-publish-android-library-to-jcenter-from-android-studio">How did I publish Android Library to JCenter from Android Studio</a></h2>
-    <p>
-          Posted on January 07, 2017 in <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
-
-
-
-    </p>
-  </header>
-  <div>
-      <p>This article walks through the process of publishing an OpenSourced Android library to JCenter.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/how-did-i-publish-android-library-to-jcenter-from-android-studio.html#how-did-i-publish-android-library-to-jcenter-from-android-studio">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/automatic-android-apk-signing.html#automatic-android-apk-signing">Automatic Android APK Signing</a></h2>
-    <p>
-          Posted on December 20, 2016 in <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
-
-
-
-    </p>
-  </header>
-  <div>
-      <p>This post shows how build.gradle can be configured to sign Android APKs automatically without manual interventions.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/automatic-android-apk-signing.html#automatic-android-apk-signing">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/webviewhelper-library.html#webviewhelper-library">WebViewHelper library</a></h2>
-    <p>
-          Posted on December 16, 2016 in <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
-
-
-
-    </p>
-  </header>
-  <div>
-      <p>This post is about Opensource WebViewHelper library at <a href="https://github.com/ptyagicodecamp/webview-android">Github</a></p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/webviewhelper-library.html#webviewhelper-library">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html#my-take-on-pelican-and-github-pages-from-a-beginners-perspective">My take on Pelican and Github pages from a beginner's perspective</a></h2>
-    <p>
-          Posted on December 08, 2016 in <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
-
-
-
-    </p>
-  </header>
-  <div>
-      <p>This post is about my experience setting up githup pages using Pelican from scratch assuming no prior experience in Python webframeworks.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/my-take-on-pelican-and-github-pages-from-a-beginners-perspective.html#my-take-on-pelican-and-github-pages-from-a-beginners-perspective">    Continue reading
-</a>
-  </div>
-</article>
-
-  <div class="pagination">
-    <a class="btn float-right" href="https://ptyagicodecamp.github.io/author/ptyagi3.html">
-          Newer Posts
- <i class="fa fa-angle-right"></i>
-    </a>
-  </div>
-
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <ins class="adsbygoogle ads-responsive"
-       data-ad-client="ca-pub-6359982310050489"
-       data-ad-slot="8977779775"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-
 
     <footer>
 <p>
