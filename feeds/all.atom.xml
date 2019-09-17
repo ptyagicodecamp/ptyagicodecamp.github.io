@@ -175,7 +175,7 @@ Medium: @ptyagicodecamp&lt;/p&gt;</content><category term="flutter"></category><
 &lt;p&gt;Running as part of code recipe app: Should you choose this option, you can see other code recipes listed in home page.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;--&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3&gt;Code Structure&lt;/h3&gt;
 &lt;p&gt;There are two files:
 1. &lt;code&gt;quizze_demo.dart&lt;/code&gt;: Contains the entry point to the sample code recipe.&lt;/p&gt;
@@ -268,10 +268,11 @@ Medium: @ptyagicodecamp&lt;/p&gt;</content><category term="flutter"></category><
 
 
 &lt;p&gt;Managing state takes place in &lt;code&gt;_QuizOptionsState&lt;/code&gt; class. All options are wrapped in &lt;code&gt;ListView&lt;/code&gt;. Using &lt;code&gt;enum&lt;/code&gt; for &lt;code&gt;Options&lt;/code&gt; make it easier to use in code.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;enum&lt;/span&gt; &lt;span class="n"&gt;Options&lt;/span&gt; { &lt;span class="n"&gt;fruit&lt;/span&gt;, &lt;span class="n"&gt;veggie&lt;/span&gt;, &lt;span class="nb"&gt;none&lt;/span&gt; }
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;code&gt;_QuizOptionsState:&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_QuizOptionsState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;QuizOptions&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nx"&gt;Options&lt;/span&gt; &lt;span class="nx"&gt;selection&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;Options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 

@@ -177,7 +177,7 @@
 <p>Running as part of code recipe app: Should you choose this option, you can see other code recipes listed in home page.</p>
 </li>
 </ol>
-<p>--</p>
+<hr>
 <h3>Code Structure</h3>
 <p>There are two files:
 1. <code>quizze_demo.dart</code>: Contains the entry point to the sample code recipe.</p>
@@ -270,10 +270,11 @@
 
 
 <p>Managing state takes place in <code>_QuizOptionsState</code> class. All options are wrapped in <code>ListView</code>. Using <code>enum</code> for <code>Options</code> make it easier to use in code.</p>
-<div class="highlight"><pre><span></span>
+<div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">Options</span> { <span class="n">fruit</span>, <span class="n">veggie</span>, <span class="nb">none</span> }
 </pre></div>
 
 
+<p><code>_QuizOptionsState:</code></p>
 <div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">_QuizOptionsState</span> <span class="kr">extends</span> <span class="nx">State</span><span class="o">&lt;</span><span class="nx">QuizOptions</span><span class="o">&gt;</span> <span class="p">{</span>
   <span class="nx">Options</span> <span class="nx">selection</span> <span class="o">=</span> <span class="nx">Options</span><span class="p">.</span><span class="nx">none</span><span class="p">;</span>
 
