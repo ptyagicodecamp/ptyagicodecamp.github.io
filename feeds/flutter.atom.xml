@@ -2,11 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-09-17T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Using ColorFiltered widget in Flutter Apps</title><link href="https://ptyagicodecamp.github.io/using-colorfiltered-widget-in-flutter-apps.html" rel="alternate"></link><published>2019-09-17T00:00:00-04:00</published><updated>2019-09-17T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-09-17:/using-colorfiltered-widget-in-flutter-apps.html</id><summary type="html">&lt;p&gt;Using ColorFiltered widget to update quiz card feedback screen's background color&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Using ColorFiltered widget to update quiz card feedback screen's background color.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;a href="https://api.flutter.dev/flutter/widgets/ColorFiltered-class.html"&gt;ColorFiltered Widget&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Update BottomSheet feedback widget's background color to reflect status of the correct or wrong answer to quiz question. A shade of red color is generated using ColorFilter for wrong selection and green shade is for right answer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Update BottomSheet feedback widget's background color to reflect status of the correct or wrong answer to quiz question. A shade of red color is generated using color filter for wrong selection and green shade is for right answer.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="ios-colorFiltered" src="https://ptyagicodecamp.github.io/color-filter-ios.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="android-colorFiltered" src="https://ptyagicodecamp.github.io/color-filter-android.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/PhLPbBDVtbI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/PhLPbBDVtbI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;hr&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://api.flutter.dev/flutter/dart-ui/ColorFilter-class.html"&gt;ColorFilter Widget&lt;/a&gt; is added to &lt;a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1"&gt;Flutter 1.9 release&lt;/a&gt;. This widget allows to generate dynamic and vibrant shades depending on the chosen blend modes, a part of &lt;code&gt;dart.ui&lt;/code&gt; in Flutter framework's &lt;code&gt;painting.dart&lt;/code&gt; file. I'm using &lt;code&gt;BlendMode.hue&lt;/code&gt; mode to mix red and green colors with &lt;code&gt;QuizPage&lt;/code&gt;'s &lt;code&gt;Colors.lightBlueAccent&lt;/code&gt; color.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; &lt;code&gt;ColorFilter&lt;/code&gt; doesn't seem to work on Web. Refer to a related issue &lt;a href="https://github.com/flutter/flutter/issues/40649"&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -20,6 +23,7 @@
 &lt;p&gt;Running as part of code recipe app: Should you choose this option, you can see other code recipes listed in home page.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;--&lt;/p&gt;
 &lt;h3&gt;Code Structure&lt;/h3&gt;
 &lt;p&gt;There are two files:
 1. &lt;code&gt;quizze_demo.dart&lt;/code&gt;: Contains the entry point to the sample code recipe.&lt;/p&gt;
@@ -226,8 +230,10 @@
 
 
 &lt;p&gt;And, you're done !&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Source code repo:&lt;/strong&gt;
 Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets-web/flutter_widgets/lib/quizzie"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1"&gt;Flutter 1.9 release notes&lt;/a&gt;&lt;/li&gt;

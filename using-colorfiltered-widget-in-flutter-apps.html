@@ -145,11 +145,14 @@
     <p><strong>Target Audience:</strong> Beginner</p>
 <p><strong>Recipe:</strong> Using ColorFiltered widget to update quiz card feedback screen's background color.</p>
 <p><strong>Focus Widget:</strong> <a href="https://api.flutter.dev/flutter/widgets/ColorFiltered-class.html">ColorFiltered Widget</a></p>
-<p><strong>Goal:</strong> Update BottomSheet feedback widget's background color to reflect status of the correct or wrong answer to quiz question. A shade of red color is generated using ColorFilter for wrong selection and green shade is for right answer.</p>
+<p><strong>Goal:</strong> Update BottomSheet feedback widget's background color to reflect status of the correct or wrong answer to quiz question. A shade of red color is generated using color filter for wrong selection and green shade is for right answer.</p>
 <p><img alt="ios-colorFiltered" src="https://ptyagicodecamp.github.io/color-filter-ios.jpg"></p>
 <p><img alt="android-colorFiltered" src="https://ptyagicodecamp.github.io/color-filter-android.jpg"></p>
-<p><strong>Checkout the companion video tutorial:</strong>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PhLPbBDVtbI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<hr>
+<p><strong>Checkout the companion video tutorial:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PhLPbBDVtbI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
 <h3>Lets's go!</h3>
 <p><a href="https://api.flutter.dev/flutter/dart-ui/ColorFilter-class.html">ColorFilter Widget</a> is added to <a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1">Flutter 1.9 release</a>. This widget allows to generate dynamic and vibrant shades depending on the chosen blend modes, a part of <code>dart.ui</code> in Flutter framework's <code>painting.dart</code> file. I'm using <code>BlendMode.hue</code> mode to mix red and green colors with <code>QuizPage</code>'s <code>Colors.lightBlueAccent</code> color.</p>
 <p><strong>NOTE:</strong> <code>ColorFilter</code> doesn't seem to work on Web. Refer to a related issue <a href="https://github.com/flutter/flutter/issues/40649">here</a>.</p>
@@ -163,6 +166,7 @@
 <p>Running as part of code recipe app: Should you choose this option, you can see other code recipes listed in home page.</p>
 </li>
 </ol>
+<p>--</p>
 <h3>Code Structure</h3>
 <p>There are two files:
 1. <code>quizze_demo.dart</code>: Contains the entry point to the sample code recipe.</p>
@@ -369,8 +373,10 @@
 
 
 <p>And, you're done !</p>
+<hr>
 <p><strong>Source code repo:</strong>
 Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets-web/flutter_widgets/lib/quizzie">here</a></p>
+<hr>
 <h3>References:</h3>
 <ol>
 <li><a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1">Flutter 1.9 release notes</a></li>
