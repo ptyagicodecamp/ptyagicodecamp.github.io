@@ -10,8 +10,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <link rel="stylesheet/less" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.less">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
 
   <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
   <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
@@ -24,7 +23,17 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-133714063-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333333">
     <!-- Windows Phone -->
@@ -122,11 +131,7 @@
 
 <article class="single">
   <header>
-          <div class="translations">
-    <a class="active" href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html">en</a>
-        <a href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html">en</a>
-    </div>
-
+      
     <h1 id="implementing-flutter-factsbot-using-dialogflow">Implementing Flutter FactsBot using DialogFlow</h1>
     <p>
           Posted on August 20, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
@@ -307,7 +312,7 @@ Let's quickly review <code>router.dart</code>. This file defines a string to rep
 <p>This is how user and FlutterFactsBot interaction log would like:</p>
 <p><img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts2.jpg"></p>
 <p>Let's dive in coding the interface now!</p>
-<p><strong>Show me the code</strong></p>
+<p><strong>Show me the code:</strong></p>
 <p>When user clicks on the chat icon, it'll launch <code>FlutterFactsDialogFlow</code> page, which is <code>StatefulWidget</code>. This widget will have a list of fact messages <code>_messages</code> to display the interaction log of conversation between user and FlutterFactsBot. This list will be displayed in reverse order, that means most recent messages will be at the bottom.</p>
 <p>Page has two parts: <code>appBar</code> &amp; <code>body</code>. AppBar has title for the page whereas body part has three widgets inside a <code>Column</code> widget. <code>Flexible</code> widget contains a <code>ListView</code> to show <code>_messages</code> list in reverse order. <code>Divider</code> widget is used to give a visual separation between interaction log and text box <code>_queryInputWidget</code> to input user's query.</p>
 <div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">FlutterFactsDialogFlow</span> <span class="kr">extends</span> <span class="nx">StatefulWidget</span> <span class="p">{</span>
