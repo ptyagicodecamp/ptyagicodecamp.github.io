@@ -5,8 +5,8 @@
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Update BottomSheet feedback widget's background color to reflect status of the correct or wrong answer to quiz question. A shade of red color is generated using color filter for wrong selection and green shade is for right answer.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;iOS QuizPage:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="ios-colorFiltered" src="https://ptyagicodecamp.github.io/color-filter-ios.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Android QuizPage:&lt;/strong&gt;
-&lt;img alt="android-colorFiltered" src="https://ptyagicodecamp.github.io/color-filter-android.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Android QuizPage:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="android-colorFiltered" src="https://ptyagicodecamp.github.io/color-filter-android.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/PhLPbBDVtbI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
