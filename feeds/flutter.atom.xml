@@ -197,7 +197,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;code&gt;FeedbackWidget&lt;/code&gt; is a StatelessWidget. It shows feedback text message in a &lt;code&gt;Container&lt;/code&gt; widget, with a &lt;code&gt;BoxDecoration&lt;/code&gt; color as &lt;code&gt;Colors.lightBlueAccent&lt;/code&gt;. When&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;FeedbackWidget&lt;/code&gt; is a StatelessWidget. It shows feedback text message in a &lt;code&gt;Container&lt;/code&gt; widget, with a &lt;code&gt;BoxDecoration&lt;/code&gt; color as &lt;code&gt;Colors.lightBlueAccent&lt;/code&gt;. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;FeedbackWidget&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;FeedbackWidget&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
     &lt;span class="nx"&gt;Key&lt;/span&gt; &lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
