@@ -106,7 +106,7 @@ flutter run -d chrome
 &lt;li&gt;&lt;a href="https://flutter-to-fly.firebaseapp.com/#/"&gt;Flutter-to-Fly App&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://pub.dev/packages/fb_auth"&gt;fb_auth plugin&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://pub.dev/packages/universal_html"&gt;universal_html plugin&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://pub.dev/packages/url_launcher"&gt;url_launcher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pub.dev/packages/url_launcher"&gt;url_launcher plugin&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"&gt;Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;&lt;/li&gt;
