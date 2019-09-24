@@ -1,5 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-09-17T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Flutter Live Booklet: Flutter component recipes</title><link href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html" rel="alternate"></link><published>2019-09-17T00:00:00-04:00</published><updated>2019-09-17T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-09-17:/flutter-live-booklet-flutter-component-recipes.html</id><summary type="html">&lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Flutter Live Booklet: Flutter component recipes&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-09-23T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Implementing Cross-platform Firebase Login functionality in Flutter Apps (Flutter 1.9)</title><link href="https://ptyagicodecamp.github.io/implementing-cross-platform-firebase-login-functionality-in-flutter-apps-flutter-19.html" rel="alternate"></link><published>2019-09-23T00:00:00-04:00</published><updated>2019-09-23T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-09-23:/implementing-cross-platform-firebase-login-functionality-in-flutter-apps-flutter-19.html</id><summary type="html">&lt;p&gt;In this article, I'll show you how &lt;a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1"&gt;Flutter 1.9 release&lt;/a&gt; make developing cross-platform Flutter applications simple while maximizing code reuse.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
+&lt;p&gt;I've been experimenting with Flutter Web (aka Hummingbird earlier) since it was announced in &lt;a href="https://medium.com/flutter/bringing-flutter-to-the-web-904de05f0df0"&gt;Google IO 2019&lt;/a&gt;. I remember submitting &lt;a href="https://github.com/flutter/samples/pull/78"&gt;pull request&lt;/a&gt; to add instructions for running Flutter sample web apps. Since then I liked the challenge of exploring fast paced and ever changing Flutter Web. I wrote couple of articles to design and implement a landing page in Flutter which can work seamlessly on all three platforms: Android, iOS and Web. I kept on improving upon this landing page to include login using Firebase, FactsBot, themes, and so on.&lt;/p&gt;
+&lt;p&gt;Please refer to previous related articles below:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"&gt;Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html"&gt;Implementing Flutter FactsBot using DialogFlow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/implementing-login-in-flutter-web-hummingbird.html"&gt;Implementing Login in Flutter Web (Hummingbird)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the companion video:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;In this article, I'll show you how &lt;a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1"&gt;Flutter 1.9 release&lt;/a&gt; makes developing cross-platform Flutter applications simple while maximizing code reuse. I'll be using my old Flutter-to-Fly sample app to demonstrate this transition to Flutter 1.9.&lt;/p&gt;
+&lt;h3&gt;Migrating project to Flutter 1.9&lt;/h3&gt;
+&lt;p&gt;There are pretty good documentation on migrating existing project to Flutter 1.9 or creating a new project available on &lt;a href="https://flutter.dev/docs/get-started/web"&gt;official Flutter website&lt;/a&gt;. Basically, you would need to run these following commands in one directory up of your project directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;flutter channel master
+flutter upgrade
+flutter config --enable-web
+cd &amp;lt;into project directory&amp;gt;
+flutter create .
+flutter run -d chrome
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; In case you run into &lt;a href="https://github.com/flutter/flutter/issues/40876#issuecomment-533506158"&gt;White screen issue&lt;/a&gt;, you may want to change your Flutter channel to &lt;code&gt;flutter channel dev&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Deploying Web App&lt;/h3&gt;
+&lt;p&gt;Deploying Web App is just a command away:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; $ flutter build web
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Above command will generate a &lt;code&gt;build&lt;/code&gt; folder in the root directory. Copy its contents into &lt;code&gt;public&lt;/code&gt; directory of your hosting site.&lt;/p&gt;
+&lt;h3&gt;Launching URL(s)&lt;/h3&gt;
+&lt;p&gt;So far, we kept web and native codebases in separate branches to manage launching URL in web and mobile environments differently. Flutter 1.9 makes it possible to be able to keep both (web and mobile/native) codebases in one branch, and pick the right implementation by detecting the platform using &lt;code&gt;dart.library.html&lt;/code&gt; for web and &lt;code&gt;dart.library.io&lt;/code&gt; for mobile platform.&lt;/p&gt;
+&lt;p&gt;You can organize your code base for &lt;code&gt;plugins&lt;/code&gt; as below as recommended by Flutter team:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="plugins" src="https://ptyagicodecamp.github.io/plugins.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Above image shows two plugins:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;url_launcher&lt;/code&gt;: Managing launching URLs based on target platform.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;firetop&lt;/code&gt;: Manages firebase related functionality for mobile and web platforms. We'll dive deeper into this plugin in next section.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;pubspec.yaml:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;flutter&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;sdk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;flutter&lt;/span&gt;
+
+  &lt;span class="n"&gt;universal_html&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;1.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="n"&gt;url_launcher&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;5.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's see contents of &lt;code&gt;url_launcher.dart&lt;/code&gt; below. This is where target platform is detected and appropriate implementation is used.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export &amp;#39;unsupported.dart&amp;#39;
+    if (dart.library.html) &amp;#39;web.dart&amp;#39;
+    if (dart.library.io) &amp;#39;mobile.dart&amp;#39;;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Firebase login functionality&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;pubspec.yaml:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;flutter&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;sdk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;flutter&lt;/span&gt;
+
+  &lt;span class="n"&gt;fb_auth&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's checkout &lt;code&gt;fire_auth_service.dart&lt;/code&gt; below. Please refer to source code in Gihub repo to refer other files.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export &amp;#39;unsupported.dart&amp;#39;
+    if (dart.library.html) &amp;#39;web.dart&amp;#39;
+    if (dart.library.io) &amp;#39;mobile.dart&amp;#39;;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You would notice that &lt;code&gt;web.dart&lt;/code&gt; and &lt;code&gt;mobile.dart&lt;/code&gt; are very similar and use &lt;code&gt;FBAuth()&lt;/code&gt;. We still need to keep them separate because not everything is available in &lt;a href="https://pub.dev/packages/fb_auth"&gt;&lt;code&gt;fb_auth&lt;/code&gt; plugin&lt;/a&gt;. For example, &lt;a href="https://github.com/flutter/flutter/issues/40360#issuecomment-531262594"&gt;FireStore support is missing&lt;/a&gt; for Flutter Web.&lt;/p&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;I kept this article short to give a quick update on most important changes that are happening in Flutter Web world. We saw how we can get started merging our Flutter Web code branches into Native code, and how to target platform specific code.&lt;/p&gt;
+&lt;p&gt;Keep Fluttering !&lt;/p&gt;
+&lt;h3&gt;Source code&lt;/h3&gt;
+&lt;p&gt;Flutter-to-Fly sample app's source code is &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage"&gt;available here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;References/Credits:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1"&gt;Flutter 1.9 release&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://flutter.dev/docs/get-started/web"&gt;Getting started on Flutter Web&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://flutter-to-fly.firebaseapp.com/#/"&gt;Flutter-to-Fly App&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pub.dev/packages/fb_auth"&gt;fb_auth plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pub.dev/packages/universal_html"&gt;universal_html plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pub.dev/packages/url_launcher"&gt;url_launcher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"&gt;Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html"&gt;Implementing Flutter FactsBot using DialogFlow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/implementing-login-in-flutter-web-hummingbird.html"&gt;Implementing Login in Flutter Web (Hummingbird)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Flutter1.9"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="Web"></category><category term="Mobile"></category><category term="Cross-platform"></category></entry><entry><title>Flutter Live Booklet: Flutter component recipes</title><link href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html" rel="alternate"></link><published>2019-09-17T00:00:00-04:00</published><updated>2019-09-17T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-09-17:/flutter-live-booklet-flutter-component-recipes.html</id><summary type="html">&lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Flutter Live Booklet: Flutter component recipes&lt;/h2&gt;
 &lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;
 &lt;p&gt;Components covered:&lt;/p&gt;
 &lt;h3&gt;Animation&lt;/h3&gt;
