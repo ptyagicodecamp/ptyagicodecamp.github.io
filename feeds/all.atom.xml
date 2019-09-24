@@ -26,6 +26,9 @@ flutter run -d chrome
 
 
 &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; In case you run into &lt;a href="https://github.com/flutter/flutter/issues/40876#issuecomment-533506158"&gt;White screen issue&lt;/a&gt;, you may want to change your Flutter channel to &lt;code&gt;flutter channel dev&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Running X-platform apps from Android Studio&lt;/h3&gt;
+&lt;p&gt;Starting from Flutter 1.9, you can run apps on Android, iOS, and Chrome right from Android Studio:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="plugins" src="https://ptyagicodecamp.github.io/as_running.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Deploying Web App&lt;/h3&gt;
 &lt;p&gt;Deploying Web App is just a command away:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; $ flutter build web
@@ -39,8 +42,8 @@ flutter run -d chrome
 &lt;p&gt;&lt;img alt="plugins" src="https://ptyagicodecamp.github.io/plugins.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Above image shows two plugins:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;code&gt;url_launcher&lt;/code&gt;: Managing launching URLs based on target platform.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;firetop&lt;/code&gt;: Manages firebase related functionality for mobile and web platforms. We'll dive deeper into this plugin in next section.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;url_launcher&lt;/code&gt;: Managing launching URLs based on target platform. Refer to complete source code &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage/lib/plugins/url_launcher"&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;firetop&lt;/code&gt;: Manages firebase related functionality for mobile and web platforms. We'll dive deeper into this plugin in next section. Refer to complete source code &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage/lib/plugins/firetop"&gt;here&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;pubspec.yaml:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;

@@ -177,6 +177,9 @@ flutter run -d chrome
 
 
 <p><strong>NOTE:</strong> In case you run into <a href="https://github.com/flutter/flutter/issues/40876#issuecomment-533506158">White screen issue</a>, you may want to change your Flutter channel to <code>flutter channel dev</code>.</p>
+<h3>Running X-platform apps from Android Studio</h3>
+<p>Starting from Flutter 1.9, you can run apps on Android, iOS, and Chrome right from Android Studio:</p>
+<p><img alt="plugins" src="https://ptyagicodecamp.github.io/as_running.jpg"></p>
 <h3>Deploying Web App</h3>
 <p>Deploying Web App is just a command away:</p>
 <div class="highlight"><pre><span></span> $ flutter build web
@@ -190,8 +193,8 @@ flutter run -d chrome
 <p><img alt="plugins" src="https://ptyagicodecamp.github.io/plugins.jpg"></p>
 <p>Above image shows two plugins:</p>
 <ol>
-<li><code>url_launcher</code>: Managing launching URLs based on target platform.</li>
-<li><code>firetop</code>: Manages firebase related functionality for mobile and web platforms. We'll dive deeper into this plugin in next section.</li>
+<li><code>url_launcher</code>: Managing launching URLs based on target platform. Refer to complete source code <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage/lib/plugins/url_launcher">here</a></li>
+<li><code>firetop</code>: Manages firebase related functionality for mobile and web platforms. We'll dive deeper into this plugin in next section. Refer to complete source code <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage/lib/plugins/firetop">here</a>.</li>
 </ol>
 <p><strong>pubspec.yaml:</strong></p>
 <div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
