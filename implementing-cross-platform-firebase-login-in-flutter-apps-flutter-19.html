@@ -151,22 +151,34 @@
 
   <div>
     <h3>Background</h3>
-<p>I've been experimenting with Flutter Web (aka Hummingbird earlier) since it was announced in <a href="https://medium.com/flutter/bringing-flutter-to-the-web-904de05f0df0">Google IO 2019</a>. I remember submitting <a href="https://github.com/flutter/samples/pull/78">pull request</a> to add instructions for running Flutter sample web apps. Since then I liked the challenge of exploring fast paced and ever changing Flutter Web. I wrote couple of articles to design and implement a landing page in Flutter which can work seamlessly on all three platforms: Android, iOS and Web. I kept on improving upon this landing page to include login using Firebase, FactsBot, themes, and so on.</p>
+<p>I've been experimenting with Flutter Web (aka Hummingbird earlier) since it was announced in <a href="https://medium.com/flutter/bringing-flutter-to-the-web-904de05f0df0">Google IO 2019</a>.</p>
+<p>I remember submitting <a href="https://github.com/flutter/samples/pull/78">pull request</a> to add instructions for running Flutter sample web apps. Since then I liked the challenge of exploring fast paced and ever changing Flutter Web.</p>
+<p>I wrote couple of articles to design and implement a landing page in Flutter which can work seamlessly on all three platforms: Android, iOS and Web. I kept on improving upon this landing page to include login using Firebase, FactsBot, themes, and so on.</p>
 <p>Please refer to previous related articles below:</p>
 <ol>
-<li><a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">Designing Cross platform Flutter prototype for Landing Page</a></li>
-<li><a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html">Making Cross-platform Flutter Landing Page Responsive</a></li>
-<li><a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html">Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)</a></li>
-<li><a href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html">Implementing Flutter FactsBot using DialogFlow</a></li>
-<li><a href="https://ptyagicodecamp.github.io/implementing-login-in-flutter-web-hummingbird.html">Implementing Login in Flutter Web (Hummingbird)</a></li>
+<li>
+<p><a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">Designing Cross platform Flutter prototype for Landing Page</a></p>
+</li>
+<li>
+<p><a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html">Making Cross-platform Flutter Landing Page Responsive</a></p>
+</li>
+<li>
+<p><a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html">Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)</a></p>
+</li>
+<li>
+<p><a href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html">Implementing Flutter FactsBot using DialogFlow</a></p>
+</li>
+<li>
+<p><a href="https://ptyagicodecamp.github.io/implementing-login-in-flutter-web-hummingbird.html">Implementing Login in Flutter Web (Hummingbird)</a></p>
+</li>
 </ol>
 <p><strong>Checkout the companion video:</strong></p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <h3>Introduction</h3>
-<p>In this article, I'll show you how <a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1">Flutter 1.9 release</a> makes developing cross-platform Flutter applications simple while maximizing code reuse. I'll be using my old Flutter-to-Fly sample app to demonstrate this transition to Flutter 1.9.</p>
+<p>In this article, I'll show you how <a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1">Flutter 1.9 release</a> makes developing cross-platform Flutter applications simple while maximizing code reuse. I'll be using <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/login-web/landingpage">my previous</a> Flutter-to-Fly sample app to demonstrate this transition to Flutter 1.9.</p>
 <h3>Migrating project to Flutter 1.9</h3>
-<p>There are pretty good documentation on migrating existing project to Flutter 1.9 or creating a new project available on <a href="https://flutter.dev/docs/get-started/web">official Flutter website</a>. Basically, you would need to run these following commands in one directory up of your project directory:</p>
+<p>There is pretty good documentation on migrating existing project to Flutter 1.9 and / or creating a new Flutter project available on <a href="https://flutter.dev/docs/get-started/web">official Flutter website</a>. Basically, you would need to run these following commands in one directory level up of your project directory:</p>
 <div class="highlight"><pre><span></span>flutter channel master
 flutter upgrade
 flutter config --enable-web
