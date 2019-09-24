@@ -200,19 +200,21 @@ flutter run -d chrome
 
 <p>Above command will generate a <code>build</code> folder in the root directory. Copy its contents into <code>public</code> directory of your hosting site.</p>
 <h3>Launching URL(s)</h3>
-<p>So far, we kept web and native codebases in separate branches to manage launching URL in web and mobile environments differently. Flutter 1.9 makes it possible to be able to keep both (web and mobile/native) codebases in one branch, and pick the right implementation by detecting the platform using <code>dart.library.html</code> for web and <code>dart.library.io</code> for mobile platform.</p>
+<p>So far, we kept web and native codebase in separate branches to manage launching URL in web and mobile environments differently. Flutter 1.9 makes it possible to be able to keep both (web and mobile/native) codebase in one branch, and pick the right implementation by detecting the platform using <code>dart.library.html</code> for web and <code>dart.library.io</code> for mobile platform.</p>
 <p>You can organize your code base for <code>plugins</code> as below as recommended by Flutter team:</p>
 <p><img alt="plugins" src="https://ptyagicodecamp.github.io/plugins.jpg"></p>
-<p>Above image shows two plugins:</p>
+<p>Above screenshot shows two plugins:</p>
 <ol>
-<li><code>url_launcher</code>: Managing launching URLs based on target platform. Refer to complete source code <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage/lib/plugins/url_launcher">here</a></li>
-<li><code>firetop</code>: Manages firebase related functionality for mobile and web platforms. We'll dive deeper into this plugin in next section. Refer to complete source code <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage/lib/plugins/firetop">here</a>.</li>
+<li>
+<p><code>url_launcher</code>: Managing launching URLs based on target platform. Refer to complete source code <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage/lib/plugins/url_launcher">here</a></p>
+</li>
+<li>
+<p><code>firetop</code>: Manages firebase related functionality for mobile and web platforms. We'll dive deeper into this plugin in next section. Refer to complete source code <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage/lib/plugins/firetop">here</a>.</p>
+</li>
 </ol>
 <p><strong>pubspec.yaml:</strong></p>
+<p>Following dependencies are needed for launching URLs from Flutter app.</p>
 <div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">flutter</span><span class="o">:</span>
-    <span class="n">sdk</span><span class="o">:</span> <span class="n">flutter</span>
-
   <span class="n">universal_html</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span>
   <span class="n">url_launcher</span><span class="o">:</span> <span class="o">^</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">2</span>
 </pre></div>
@@ -226,25 +228,25 @@ flutter run -d chrome
 
 
 <h3>Firebase login functionality</h3>
+<p>Flutter team is working on <a href="https://pub.dev/packages/fb_auth">fb_auth plugin</a> to provide cross-platform Firebase support.</p>
 <p><strong>pubspec.yaml:</strong></p>
+<p>Following dependency is needed for adding cross-platform support for Firebase.</p>
 <div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">flutter</span><span class="o">:</span>
-    <span class="n">sdk</span><span class="o">:</span> <span class="n">flutter</span>
 
   <span class="n">fb_auth</span><span class="o">:</span> <span class="n">any</span>
 </pre></div>
 
 
-<p>Let's checkout <code>fire_auth_service.dart</code> below. Please refer to source code in Gihub repo to refer other files.</p>
+<p>Let's checkout <code>fire_auth_service.dart</code> below. Please refer to <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage/lib/plugins/firetop">source code in Gihub repo</a> to refer other files.</p>
 <div class="highlight"><pre><span></span>export &#39;unsupported.dart&#39;
     if (dart.library.html) &#39;web.dart&#39;
     if (dart.library.io) &#39;mobile.dart&#39;;
 </pre></div>
 
 
-<p>You would notice that <code>web.dart</code> and <code>mobile.dart</code> are very similar and use <code>FBAuth()</code>. We still need to keep them separate because not everything is available in <a href="https://pub.dev/packages/fb_auth"><code>fb_auth</code> plugin</a>. For example, <a href="https://github.com/flutter/flutter/issues/40360#issuecomment-531262594">FireStore support is missing</a> for Flutter Web.</p>
+<p>You would notice that <code>web.dart</code> and <code>mobile.dart</code> are very similar and use <code>FBAuth()</code> to access Firebase functionality. We still need to keep them separate because not everything is available in <a href="https://pub.dev/packages/fb_auth"><code>fb_auth</code> plugin</a>. For example, <a href="https://github.com/flutter/flutter/issues/40360#issuecomment-531262594">FireStore support is missing</a> for Flutter Web.</p>
 <h3>Conclusion</h3>
-<p>I kept this article short to give a quick update on most important changes that are happening in Flutter Web world. We saw how we can get started merging our Flutter Web code branches into Native code, and how to target platform specific code.</p>
+<p>I kept this article short to give a quick update on most important changes that are happening in Flutter Web world. This article gave a peek into getting started with merging Flutter Web code branches into Native code, and how to target platform specific code. We saw how URLs can be launched for Web and Mobile apps using the same code base. Lastly, we covered integrating with Firebase from the one code base.</p>
 <p>Keep Fluttering !</p>
 <h3>Source code</h3>
 <p>Flutter-to-Fly sample app's source code is <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage">available here</a></p>
