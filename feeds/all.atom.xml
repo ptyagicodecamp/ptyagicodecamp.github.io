@@ -28,12 +28,12 @@
 &lt;p&gt;In this article, I'll show you how &lt;a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1"&gt;Flutter 1.9 release&lt;/a&gt; makes developing cross-platform Flutter applications simple while maximizing code reuse. I'll be using &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/login-web/landingpage"&gt;my previous&lt;/a&gt; Flutter-to-Fly sample app to demonstrate this transition to Flutter 1.9.&lt;/p&gt;
 &lt;h3&gt;Migrating project to Flutter 1.9&lt;/h3&gt;
 &lt;p&gt;There is pretty good documentation on migrating existing project to Flutter 1.9 and / or creating a new Flutter project available on &lt;a href="https://flutter.dev/docs/get-started/web"&gt;official Flutter website&lt;/a&gt;. Basically, you would need to run these following commands in one directory level up of your project directory:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;flutter channel master
-flutter upgrade
-flutter config --enable-web
-cd &amp;lt;into project directory&amp;gt;
-flutter create .
-flutter run -d chrome
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  $ flutter channel master
+  $ flutter upgrade
+  $ flutter config --enable-web
+  $ cd &amp;lt;into project directory&amp;gt;
+  $ flutter create .
+  $flutter run -d chrome
 &lt;/pre&gt;&lt;/div&gt;
 
 
