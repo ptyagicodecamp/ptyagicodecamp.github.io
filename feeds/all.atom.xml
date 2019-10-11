@@ -88,7 +88,7 @@ Today, we'll use our voice to enter the search term rather typing text in search
 &lt;p&gt;&lt;strong&gt;Android:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Prompting Android permissions" src="https://ptyagicodecamp.github.io/search_voice_perms.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;iOS:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Prompting iOS permissions" src="https://ptyagicodecamp.github.io/search_voice_perms_ios.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Prompting iOS permissions" src="https://ptyagicodecamp.github.io/search_voice_perms_ios.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Android:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Make sure that you've following permissions in &lt;code&gt;AndroidManifest.xml&lt;/code&gt;:
  &lt;code&gt;&amp;lt;uses-permission android:name="android.permission.INTERNET"/&amp;gt;
