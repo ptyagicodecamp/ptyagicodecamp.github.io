@@ -303,7 +303,7 @@ Couldn't find a topic of your interest ? Please leave comments or &lt;a href="ma
 &lt;p&gt;Following dependency is needed for adding cross-platform support for Firebase.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
 
-  &lt;span class="n"&gt;fb_auth&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt;
+  &lt;span class="n"&gt;fb_auth&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
