@@ -11,14 +11,6 @@ Today, we'll use our voice to enter the search term rather typing text in search
 &lt;li&gt;Handling permissions: Using &lt;a href="https://pub.dev/packages/permission_handler"&gt;permission_handler plugin&lt;/a&gt; to request audio permissions from user at Android and iOS platforms.&lt;/li&gt;
 &lt;li&gt;Integrating speech recognition using &lt;a href="https://github.com/rxlabz/speech_recognition"&gt;SpeechRecognition Flutter plugin&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;Mic icons in search bar:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Listening to user's voice:&lt;/strong&gt;
-&lt;img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice1.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Converting speech to text, and using text for searching in word list:&lt;/strong&gt;
-&lt;img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice2.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Displaying result:&lt;/strong&gt;
-&lt;img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice3.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice_small.gif"&gt;&lt;/p&gt;
 &lt;p&gt;Checkout in action:
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
@@ -40,6 +32,8 @@ Today, we'll use our voice to enter the search term rather typing text in search
 
 
 &lt;h3&gt;Adding mic icon in SearchBar&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Mic icons in search bar:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice.png"&gt;&lt;/p&gt;
 &lt;p&gt;First, we'll add a microphone icon in AppBar's actions. Please note the new code &lt;code&gt;_buildVoiceInput(..)&lt;/code&gt; responsible for accepting voice input. Refer to &lt;a href="https://ptyagicodecamp.github.io/implementing-search-action-in-appbar.html#implementing-search-action-in-appbar"&gt;previous article&lt;/a&gt; for other details.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;override&lt;/span&gt;
   &lt;span class="nt"&gt;Widget&lt;/span&gt; &lt;span class="nt"&gt;build&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;BuildContext&lt;/span&gt; &lt;span class="nt"&gt;context&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -209,6 +203,12 @@ void initState() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;strong&gt;Listening to user's voice:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice1.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Converting speech to text, and using text for searching in word list:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Displaying result:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice3.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Source code repo:&lt;/strong&gt;
 Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/search_voice/search_appbar/search_appbar"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;References:&lt;/h3&gt;

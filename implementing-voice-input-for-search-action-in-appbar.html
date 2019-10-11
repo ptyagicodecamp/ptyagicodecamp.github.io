@@ -164,14 +164,6 @@ Today, we'll use our voice to enter the search term rather typing text in search
 <li>Handling permissions: Using <a href="https://pub.dev/packages/permission_handler">permission_handler plugin</a> to request audio permissions from user at Android and iOS platforms.</li>
 <li>Integrating speech recognition using <a href="https://github.com/rxlabz/speech_recognition">SpeechRecognition Flutter plugin</a></li>
 </ol>
-<p><strong>Mic icons in search bar:</strong></p>
-<p><img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice.png"></p>
-<p><strong>Listening to user's voice:</strong>
-<img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice1.png"></p>
-<p><strong>Converting speech to text, and using text for searching in word list:</strong>
-<img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice2.png"></p>
-<p><strong>Displaying result:</strong>
-<img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice3.png"></p>
 <p><img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice_small.gif"></p>
 <p>Checkout in action:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
@@ -193,6 +185,8 @@ Today, we'll use our voice to enter the search term rather typing text in search
 
 
 <h3>Adding mic icon in SearchBar</h3>
+<p><strong>Mic icons in search bar:</strong></p>
+<p><img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice.png"></p>
 <p>First, we'll add a microphone icon in AppBar's actions. Please note the new code <code>_buildVoiceInput(..)</code> responsible for accepting voice input. Refer to <a href="https://ptyagicodecamp.github.io/implementing-search-action-in-appbar.html#implementing-search-action-in-appbar">previous article</a> for other details.</p>
 <div class="highlight"><pre><span></span><span class="p">@</span><span class="k">override</span>
   <span class="nt">Widget</span> <span class="nt">build</span><span class="o">(</span><span class="nt">BuildContext</span> <span class="nt">context</span><span class="o">)</span> <span class="p">{</span>
@@ -362,6 +356,12 @@ void initState() {
 </pre></div>
 
 
+<p><strong>Listening to user's voice:</strong></p>
+<p><img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice1.png"></p>
+<p><strong>Converting speech to text, and using text for searching in word list:</strong></p>
+<p><img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice2.png"></p>
+<p><strong>Displaying result:</strong></p>
+<p><img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice3.png"></p>
 <p><strong>Source code repo:</strong>
 Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/search_voice/search_appbar/search_appbar">here</a></p>
 <h3>References:</h3>
