@@ -196,6 +196,7 @@ void initState() {
   &lt;span class="err"&gt;setState(()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
     &lt;span class="err"&gt;transcription&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;text&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="err"&gt;showSearchPage(context,&lt;/span&gt; &lt;span class="err"&gt;_searchDelegate,&lt;/span&gt; &lt;span class="err"&gt;transcription)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;stop()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;//stop&lt;/span&gt; &lt;span class="err"&gt;listening&lt;/span&gt; &lt;span class="err"&gt;now&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
 
