@@ -13,7 +13,7 @@ Today, we'll use our voice to enter the search term rather typing text in search
 &lt;/ol&gt;
 &lt;p&gt;&lt;img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice_small.gif"&gt;&lt;/p&gt;
 &lt;p&gt;Checkout in action:
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/QzGGO5N3j6U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/FefiyOjHvLk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;h3&gt;Lets's get started!&lt;/h3&gt;
 &lt;h3&gt;Dependencies: &lt;code&gt;pubspec.yaml&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;We'll need two new dependencies:&lt;/p&gt;
@@ -355,6 +355,20 @@ Couldn't find a topic of your interest ? Please leave comments or &lt;a href="ma
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-appbar-widget.html"&gt;Basic Appbar&lt;/a&gt;: Basic AppBar with a title, actions, and an overflow dropdown menu.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/bottomnavigationbar-with-menu-search-and-overflow-action-items.html"&gt;BottomAppBar&lt;/a&gt;: Implement a BottomNavigationBar with menu, search and overflow action items.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/implementing-search-action-in-appbar.html"&gt;Search AppBar&lt;/a&gt;: Implementing Search action in AppBar.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Implementing Voice input for Search action in AppBar&lt;/h2&gt;
+&lt;p&gt;Implementing Voice input for Search action in AppBar using Flutter for Android and iOS mobile apps.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/implementing-voice-input-for-search-action-in-appbar.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/search_voice/search_appbar/search_appbar"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/FefiyOjHvLk"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2&gt;Migrating to Flutter 1.9: Implementing Cross-platform Firebase Login in Flutter Apps&lt;/h2&gt;
