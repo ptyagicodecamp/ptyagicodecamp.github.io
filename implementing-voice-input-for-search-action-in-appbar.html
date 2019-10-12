@@ -155,10 +155,10 @@
     <h2>Search in AppBar</h2>
 <p>This recipe is second part of <a href="https://ptyagicodecamp.github.io/implementing-search-action-in-appbar.html">Implementing Search action in AppBar</a> tutorial.
 Today, we'll use our voice to enter the search term rather typing text in search bar.</p>
-<p><strong><em>Target Audience:</em></strong> Beginner</p>
-<p><strong><em>Recipe:</em></strong> Implementing Voice input for Search action in AppBar using Flutter for Android and iOS mobile apps.</p>
-<p><strong><em>Focus Flutter plugin:</em></strong> <a href="https://github.com/rxlabz/speech_recognition">SpeechRecognition</a></p>
-<p><strong><em>Goal:</em></strong> In this recipe, I'll go over following items:</p>
+<p><strong>Target Audience:</strong> Beginner</p>
+<p><strong>Recipe:</strong> Implementing Voice input for Search action in AppBar using Flutter for Android and iOS mobile apps.</p>
+<p><strong>Focus Flutter plugin:</strong> <a href="https://github.com/rxlabz/speech_recognition">SpeechRecognition</a></p>
+<p><strong>Goal:</strong> In this recipe, I'll go over following items:</p>
 <ol>
 <li>Adding a mic icon in SearchBar</li>
 <li>Handling permissions: Using <a href="https://pub.dev/packages/permission_handler">permission_handler plugin</a> to request audio permissions from user at Android and iOS platforms.</li>
@@ -166,7 +166,7 @@ Today, we'll use our voice to enter the search term rather typing text in search
 </ol>
 <p><img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice_small.gif"></p>
 <p>Checkout in action:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QzGGO5N3j6U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <h3>Lets's get started!</h3>
 <h3>Dependencies: <code>pubspec.yaml</code></h3>
 <p>We'll need two new dependencies:</p>
@@ -243,15 +243,19 @@ Today, we'll use our voice to enter the search term rather typing text in search
 <p><strong>iOS:</strong></p>
 <p><img alt="Prompting iOS permissions" src="https://ptyagicodecamp.github.io/search_voice_perms_ios.jpg"></p>
 <p><strong>Android:</strong></p>
-<p>Make sure that you've following permissions in <code>AndroidManifest.xml</code>:
- <code>&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+<p>Make sure that you've following permissions in <code>AndroidManifest.xml</code>:</p>
+<p><code>&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
   &lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&gt;</code></p>
 <p><strong>iOS:</strong>
-Add following keys in <code>Info.plist</code>. Feel free to modify text description accordingly.
-1. Key: <code>Privacy - Microphone Usage Description</code>. Value: <code>This application needs to access your microphone</code>.</p>
-<ol>
-<li>Key: <code>Privacy- Speech Recognition Usage Description</code>. Value: <code>This application needs the speech recognition permission</code>.</li>
-</ol>
+Add following keys in <code>Info.plist</code>. Feel free to modify text description accordingly.</p>
+<ul>
+<li>
+<p>Key: <code>Privacy - Microphone Usage Description</code>. Value: <code>This application needs to access your microphone</code>.</p>
+</li>
+<li>
+<p>Key: <code>Privacy- Speech Recognition Usage Description</code>. Value: <code>This application needs the speech recognition permission</code>.</p>
+</li>
+</ul>
 <p>Once <code>AndroidManifest.xml</code> and <code>Info.plist</code> in place, next step is to ask for permissions from Flutter app, <code>main.dart</code> in our case like below:</p>
 <div class="highlight"><pre><span></span>void requestPermission() async {
   PermissionStatus permission = await PermissionHandler()
@@ -290,7 +294,7 @@ void initState() {
 
 
 <p>Speech recognizer is activated with callbacks. Few of the important callbacks are:</p>
-<ol>
+<ul>
 <li>
 <p><code>onSpeechAvailability(bool result)</code>: It updates the status of the availability of speech in <code>_speechRecognitionAvailable</code> flag.</p>
 </li>
@@ -303,15 +307,15 @@ void initState() {
 <li>
 <p><code>onRecognitionResult(String text)</code>: This is where the actual magic happens. Voice input is transcribed to English text. We're using only 'en_US' locale for this code recipe. Once the transcribed text is available, it's sent over to search page like below:</p>
 </li>
-</ol>
+</ul>
 <div class="highlight"><pre><span></span>showSearchPage(context, _searchDelegate, transcription);
 </pre></div>
 
 
 <p>Transcribed text gets populated in search bar. When user accepts the search word by hitting enter, search result is displayed on result page similar to how it was displayed in <a href="https://ptyagicodecamp.github.io/implementing-search-action-in-appbar.html#implementing-search-action-in-appbar">previous tutorial</a>.</p>
-<ol>
+<ul>
 <li><code>onRecognitionComplete()</code>: This callback is called when user stops talking. At this point, <code>_isListening</code> flag is set to <code>false</code>.</li>
-</ol>
+</ul>
 <div class="highlight"><pre><span></span><span class="nt">void</span> <span class="nt">activateSpeechRecognizer</span><span class="o">()</span> <span class="p">{</span>
   <span class="err">requestPermission()</span><span class="p">;</span>
 
