@@ -172,7 +172,7 @@ For example word 'Their' can be appropriate for grade 2nd thru 5th. However, dif
 
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Interface's values are being reset inside &lt;code&gt;setState(..)&lt;/code&gt; function.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="starting slider state" src="https://ptyagicodecamp.github.io/slider_2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="starting slider state" src="https://ptyagicodecamp.github.io/slider_5.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Source code repo&lt;/h3&gt;
 &lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/sliders"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
