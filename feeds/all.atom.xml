@@ -1,5 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-10-10T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Implementing Voice input for Search action in AppBar</title><link href="https://ptyagicodecamp.github.io/implementing-voice-input-for-search-action-in-appbar.html" rel="alternate"></link><published>2019-10-10T00:00:00-04:00</published><updated>2019-10-10T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-10-10:/implementing-voice-input-for-search-action-in-appbar.html</id><summary type="html">&lt;p&gt;Implementing Voice input for Search action in AppBar using Flutter for Android and iOS mobile apps.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Voice Search in AppBar&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-11-08T00:00:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Implementing Slider &amp; RangeSlider</title><link href="https://ptyagicodecamp.github.io/implementing-slider-rangeslider.html" rel="alternate"></link><published>2019-11-08T00:00:00-05:00</published><updated>2019-11-08T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-11-08:/implementing-slider-rangeslider.html</id><summary type="html">&lt;p&gt;Code recipe to implement Slider and RangeSlider Flutter widgets.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Slider &amp;amp; RangeSlider Widgets&lt;/h2&gt;
+&lt;p&gt;Slider &amp;amp; RangeSlider widgets are used to select a value (Slider) or a range of values (RangeSlider) from a range of values. In this code recipe, I'll demonstrate usage of both of these widget with help of scenario that is common to elementary school teachers. In the beginning of the school year, most of the language teachers curate a word list appropriate for the Grade and based on difficulty level of the words.
+In today's code recipe, we'll make a Flutter app that'll display a random word from a given list of words. Teacher / user can choose the appropriate range of grades, and difficulty level for the given grade range. We'll make use of RangeSlider widget to select the Grade level ranges (from zero or Kindergarten to 5th grade), and Slider widget to choose difficulty level (three levels 1, 2, 3 represent Easy, Moderate and Advanced difficulty levels).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Implement RangeSlider and Slider widget to select Grade ranges and difficulty levels for the given words.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Focus Flutter plugin:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/material/Slider-class.html"&gt;Slider Widget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/material/RangeSlider-class.html"&gt;RangeSlider Widget&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; In this recipe, I'll go over following items:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Display a random English word from the given sample word list.&lt;/li&gt;
+&lt;li&gt;RangeSlider widget to represent the grades from 0 (K) to 5th.&lt;/li&gt;
+&lt;li&gt;Slider widget to represent three difficulty levels: Easy (1), Moderate (2), and Advanced (3).&lt;/li&gt;
+&lt;li&gt;Submit button for show the flow of app. Clicking on Submit button will rest the interface, and a word will be picked randomly from the sample wordlist.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="Slide demo gif" src="https://ptyagicodecamp.github.io/slider.gif"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;This recipe is part of collection of my other code recipes. Starting page for recipes look like below:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Code recipes home page" src="https://ptyagicodecamp.github.io/slider_1.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;1. Displaying word for rating&lt;/h3&gt;
+&lt;p&gt;Display a random English word from the given sample word list. I'm using a simple list of English words. In production application, this list either be stored in cache locally or streaming from backend depending your use case.&lt;/p&gt;
+&lt;p&gt;This is how it looks like in code recipe:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  var listOfWords = [
+    &amp;#39;Them&amp;#39;,
+    &amp;#39;Up&amp;#39;,
+    &amp;#39;Web&amp;#39;,
+    &amp;#39;Come&amp;#39;,
+    &amp;#39;Play&amp;#39;,
+    &amp;#39;They&amp;#39;,
+    &amp;#39;So&amp;#39;,
+    &amp;#39;Construct&amp;#39;,
+    &amp;#39;Tournament&amp;#39;,
+    &amp;#39;Glide&amp;#39;
+  ];
+
+  var word = &amp;#39;Their&amp;#39;;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;word&lt;/code&gt; variable keeps the currently displayed word ready for rating.&lt;/p&gt;
+&lt;p&gt;Showing current &lt;code&gt;word&lt;/code&gt; inside &lt;code&gt;Card&lt;/code&gt; widget:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;Center&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+  &lt;span class="nt"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Card&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+    &lt;span class="nt"&gt;elevation&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Padding&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+      &lt;span class="nt"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;const&lt;/span&gt; &lt;span class="nt"&gt;EdgeInsets&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;all&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;16&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;0&lt;/span&gt;&lt;span class="o"&gt;),&lt;/span&gt;
+      &lt;span class="nt"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Text&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+        &lt;span class="nt"&gt;word&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;style&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;TextStyle&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+            &lt;span class="nt"&gt;fontSize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;34&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;fontWeight&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;FontWeight&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;normal&lt;/span&gt;&lt;span class="o"&gt;),&lt;/span&gt;
+      &lt;span class="o"&gt;),&lt;/span&gt;
+    &lt;span class="o"&gt;),&lt;/span&gt;
+  &lt;span class="o"&gt;),&lt;/span&gt;
+&lt;span class="o"&gt;),&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once Submit button is called, it'll be randomly picked from &lt;code&gt;listOfWords&lt;/code&gt; and updated.&lt;/p&gt;
+&lt;h3&gt;2. Implementing RangeSlider widget&lt;/h3&gt;
+&lt;p&gt;RangeSlider widget to represent the grades from 0 (K) to 5th.&lt;/p&gt;
+&lt;p&gt;Remember that widget's values can only be updated for Stateful widget.&lt;/p&gt;
+&lt;p&gt;I chose &lt;code&gt;RangeSlider&lt;/code&gt; to represent different grades because, one word can be appropriate for a multiple grades. However, difficulty might vary from one grade to another.
+For example word 'Their' can be appropriate for grade 2nd thru 5th. However, difficulty level for 2nd grade can be 'Advanced', and 'Easy' for 5th grade. That's the reason range selection makes sense for grades whereas difficulty can be represented with one of the number from three possibilities: 1 (Easy), 2 (Moderate), or 3 (Advanced).&lt;/p&gt;
+&lt;p&gt;Since we're representing grades K thru 5 in numbers : 0, 1, 2, 3, 4, and 5, &lt;code&gt;min&lt;/code&gt; for &lt;code&gt;RangeSlider&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt; and &lt;code&gt;max&lt;/code&gt; is &lt;code&gt;5&lt;/code&gt;. We want discrete selection of grades, so we'll use &lt;code&gt;divisions&lt;/code&gt; attribute. That means there &lt;code&gt;2.5&lt;/code&gt; can not be selected for a grade.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;labels&lt;/code&gt; property displays the range of selection. &lt;code&gt;RangeLabels&lt;/code&gt; is required to display labels for &lt;code&gt;RangeSlider&lt;/code&gt;. It requires the start and end values of the range: &lt;code&gt;RangeLabels('${gradesRange.start}', '${gradesRange.end}')&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SliderDemo&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;_SliderDemoState&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_SliderDemoState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_SliderDemoState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;SliderDemo&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;gradesRange&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;RangeValues&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;appBar&lt;/span&gt;: &lt;span class="kt"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;title&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Sliders (Guess the Word&amp;#39;s level)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="nx"&gt;body&lt;/span&gt;: &lt;span class="kt"&gt;Stack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="p"&gt;...,&lt;/span&gt;
+        &lt;span class="nx"&gt;RangeSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="nx"&gt;min&lt;/span&gt;: &lt;span class="kt"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="nx"&gt;max&lt;/span&gt;: &lt;span class="kt"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="nx"&gt;divisions&lt;/span&gt;: &lt;span class="kt"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="nx"&gt;labels&lt;/span&gt;: &lt;span class="kt"&gt;RangeLabels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="s1"&gt;&amp;#39;${gradesRange.start}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;${gradesRange.end}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="nx"&gt;values&lt;/span&gt;: &lt;span class="kt"&gt;gradesRange&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="nx"&gt;onChanged&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;RangeValues&lt;/span&gt; &lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nx"&gt;setState&lt;/span&gt;&lt;span class="p"&gt;(()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+              &lt;span class="nx"&gt;gradesRange&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="p"&gt;});&lt;/span&gt;
+          &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;...,&lt;/span&gt;
+        &lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;        
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3. Implementing Slider widget&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Slider&lt;/code&gt; widget to represent three difficulty levels: Easy (1), Moderate (2), and Advanced (3).&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Slider&lt;/code&gt; widget expects values in &lt;code&gt;double&lt;/code&gt;. I'm using &lt;code&gt;2&lt;/code&gt; (Moderate) as default difficulty level for a chosen word. Since there are only three possible values for difficulty, &lt;code&gt;min&lt;/code&gt; is set to &lt;code&gt;1&lt;/code&gt;, and &lt;code&gt;max&lt;/code&gt; is &lt;code&gt;3&lt;/code&gt;. Similar to grades range, we want difficulty levels discrete as well. A word can fall in one of the 3 categories. We get two divisions by setting &lt;code&gt;divisions&lt;/code&gt; property to &lt;code&gt;2&lt;/code&gt;. Setting &lt;code&gt;label&lt;/code&gt; property to current selected value makes it informative for the user to make their selection.&lt;/p&gt;
+&lt;p&gt;Please note that I'm using &lt;code&gt;Slider.adaptive&lt;/code&gt; widget. This widget adapts to the target platform.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SliderDemo&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;_SliderDemoState&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_SliderDemoState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_SliderDemoState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;SliderDemo&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;double&lt;/span&gt; &lt;span class="nx"&gt;_diffLevel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;appBar&lt;/span&gt;: &lt;span class="kt"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;title&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Sliders (Guess the Word&amp;#39;s level)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="nx"&gt;body&lt;/span&gt;: &lt;span class="kt"&gt;Stack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="p"&gt;...,&lt;/span&gt;
+        &lt;span class="nx"&gt;Slider&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;adaptive&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="nx"&gt;value&lt;/span&gt;: &lt;span class="kt"&gt;_diffLevel.toDouble&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+          &lt;span class="nx"&gt;onChanged&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;double&lt;/span&gt; &lt;span class="nx"&gt;newValue&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nx"&gt;setState&lt;/span&gt;&lt;span class="p"&gt;(()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+              &lt;span class="nx"&gt;_diffLevel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;newValue&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="p"&gt;});&lt;/span&gt;
+          &lt;span class="p"&gt;},&lt;/span&gt;
+          &lt;span class="nx"&gt;min&lt;/span&gt;: &lt;span class="kt"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="nx"&gt;max&lt;/span&gt;: &lt;span class="kt"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="nx"&gt;divisions&lt;/span&gt;: &lt;span class="kt"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="nx"&gt;label&lt;/span&gt;: &lt;span class="kt"&gt;_diffLevel.toString&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;...,&lt;/span&gt;
+        &lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;        
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4. Submit button (Resetting interface)&lt;/h3&gt;
+&lt;p&gt;I added Submit button for completeness of workflow of page. Clicking on Submit button will rest the interface, and a word will be picked randomly from the sample wordlist.&lt;/p&gt;
+&lt;p&gt;Here's what happens when user clicks Submit button:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;RaisedButton&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+  &lt;span class="o"&gt;...&lt;/span&gt;
+  &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;Submit&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;TextStyle&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fontSize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;16.0&lt;/span&gt;&lt;span class="o"&gt;),&lt;/span&gt;
+  &lt;span class="o"&gt;),&lt;/span&gt;
+  &lt;span class="n"&gt;onPressed&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;setState&lt;/span&gt;&lt;span class="o"&gt;(()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+      &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;randomNumber&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="kt"&gt;Random&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="n"&gt;nextInt&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+      &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;listOfWords&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;randomNumber&lt;/span&gt;&lt;span class="o"&gt;];&lt;/span&gt;
+      &lt;span class="n"&gt;_diffLevel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="n"&gt;gradesRange&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RangeValues&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;});&lt;/span&gt;
+  &lt;span class="o"&gt;},&lt;/span&gt;
+&lt;span class="o"&gt;),&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Interface's values are being reset inside &lt;code&gt;setState(..)&lt;/code&gt; function.&lt;/p&gt;
+&lt;h3&gt;Source code repo&lt;/h3&gt;
+&lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/sliders"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/material/Slider-class.html"&gt;Slider Widget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/material/RangeSlider-class.html"&gt;RangeSlider Widget&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Slider"></category><category term="RangeSlider"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Implementing Voice input for Search action in AppBar</title><link href="https://ptyagicodecamp.github.io/implementing-voice-input-for-search-action-in-appbar.html" rel="alternate"></link><published>2019-10-10T00:00:00-04:00</published><updated>2019-10-10T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-10-10:/implementing-voice-input-for-search-action-in-appbar.html</id><summary type="html">&lt;p&gt;Implementing Voice input for Search action in AppBar using Flutter for Android and iOS mobile apps.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Voice Search in AppBar&lt;/h2&gt;
 &lt;p&gt;This recipe is second part of &lt;a href="https://ptyagicodecamp.github.io/implementing-search-action-in-appbar.html"&gt;Implementing Search action in AppBar&lt;/a&gt; tutorial.
 Today, we'll use our voice to enter the search term rather typing text in search bar.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
