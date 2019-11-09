@@ -257,6 +257,7 @@ For example word 'Their' can be appropriate for grade 2nd thru 5th. However, dif
 </pre></div>
 
 
+<p><img alt="Range Slider" src="https://ptyagicodecamp.github.io/slider_3.jpg"></p>
 <h3>3. Implementing Slider widget</h3>
 <p><code>Slider</code> widget to represent three difficulty levels: Easy (1), Moderate (2), and Advanced (3).</p>
 <p><code>Slider</code> widget expects values in <code>double</code>. I'm using <code>2</code> (Moderate) as default difficulty level for a chosen word. Since there are only three possible values for difficulty, <code>min</code> is set to <code>1</code>, and <code>max</code> is <code>3</code>. Similar to grades range, we want difficulty levels discrete as well. A word can fall in one of the 3 categories. We get two divisions by setting <code>divisions</code> property to <code>2</code>. Setting <code>label</code> property to current selected value makes it informative for the user to make their selection.</p>
@@ -298,6 +299,7 @@ For example word 'Their' can be appropriate for grade 2nd thru 5th. However, dif
 </pre></div>
 
 
+<p><img alt="Slider" src="https://ptyagicodecamp.github.io/slider_4.jpg"></p>
 <h3>4. Submit button (Resetting interface)</h3>
 <p>I added Submit button for completeness of workflow of page. Clicking on Submit button will rest the interface, and a word will be picked randomly from the sample wordlist.</p>
 <p>Here's what happens when user clicks Submit button:</p>
@@ -320,6 +322,7 @@ For example word 'Their' can be appropriate for grade 2nd thru 5th. However, dif
 
 
 <p><strong><em>Note:</em></strong> Interface's values are being reset inside <code>setState(..)</code> function.</p>
+<p><img alt="starting slider state" src="https://ptyagicodecamp.github.io/slider_2.jpg"></p>
 <h3>Source code repo</h3>
 <p>Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/sliders">here</a></p>
 <h3>References:</h3>

@@ -106,6 +106,7 @@ For example word 'Their' can be appropriate for grade 2nd thru 5th. However, dif
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;img alt="Range Slider" src="https://ptyagicodecamp.github.io/slider_3.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;3. Implementing Slider widget&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;Slider&lt;/code&gt; widget to represent three difficulty levels: Easy (1), Moderate (2), and Advanced (3).&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Slider&lt;/code&gt; widget expects values in &lt;code&gt;double&lt;/code&gt;. I'm using &lt;code&gt;2&lt;/code&gt; (Moderate) as default difficulty level for a chosen word. Since there are only three possible values for difficulty, &lt;code&gt;min&lt;/code&gt; is set to &lt;code&gt;1&lt;/code&gt;, and &lt;code&gt;max&lt;/code&gt; is &lt;code&gt;3&lt;/code&gt;. Similar to grades range, we want difficulty levels discrete as well. A word can fall in one of the 3 categories. We get two divisions by setting &lt;code&gt;divisions&lt;/code&gt; property to &lt;code&gt;2&lt;/code&gt;. Setting &lt;code&gt;label&lt;/code&gt; property to current selected value makes it informative for the user to make their selection.&lt;/p&gt;
@@ -147,6 +148,7 @@ For example word 'Their' can be appropriate for grade 2nd thru 5th. However, dif
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;img alt="Slider" src="https://ptyagicodecamp.github.io/slider_4.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;4. Submit button (Resetting interface)&lt;/h3&gt;
 &lt;p&gt;I added Submit button for completeness of workflow of page. Clicking on Submit button will rest the interface, and a word will be picked randomly from the sample wordlist.&lt;/p&gt;
 &lt;p&gt;Here's what happens when user clicks Submit button:&lt;/p&gt;
@@ -169,6 +171,7 @@ For example word 'Their' can be appropriate for grade 2nd thru 5th. However, dif
 
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Interface's values are being reset inside &lt;code&gt;setState(..)&lt;/code&gt; function.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="starting slider state" src="https://ptyagicodecamp.github.io/slider_2.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Source code repo&lt;/h3&gt;
 &lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/sliders"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
