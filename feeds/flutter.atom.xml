@@ -3,6 +3,7 @@
 &lt;p&gt;Slider &amp;amp; RangeSlider widgets are used to select a value (Slider) or a range of values (RangeSlider) from a range of values.&lt;/p&gt;
 &lt;p&gt;In this code recipe, I'll demonstrate usage of both of these widget with help of scenario that is common to elementary school teachers. In the beginning of the school year, most of the language teachers curate a word list appropriate for the Grade and based on difficulty level of the words.&lt;/p&gt;
 &lt;p&gt;In today's code recipe, we'll make a Flutter app that'll display a random word from a given list of words. Teacher / user can choose the appropriate range of grades, and difficulty level for the given grade range. We'll make use of RangeSlider widget to select the Grade level ranges (from zero or Kindergarten to 5th grade), and Slider widget to choose difficulty level (three levels 1, 2, 3 represent Easy, Moderate and Advanced difficulty levels).&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Implement RangeSlider and Slider widget to select Grade ranges and difficulty levels for the given words.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Flutter plugin:&lt;/strong&gt;&lt;/p&gt;
@@ -176,8 +177,10 @@ For example word 'Their' can be appropriate for grade 2nd thru 5th. However, dif
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Interface's values are being reset inside &lt;code&gt;setState(..)&lt;/code&gt; function.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="starting slider state" src="https://ptyagicodecamp.github.io/slider_5.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3&gt;Source code repo&lt;/h3&gt;
 &lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/sliders"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/material/Slider-class.html"&gt;Slider Widget&lt;/a&gt;&lt;/li&gt;
