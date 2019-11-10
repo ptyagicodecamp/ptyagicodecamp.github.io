@@ -23,8 +23,9 @@
 &lt;p&gt;This recipe is part of collection of &lt;a href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html#flutter-live-booklet-flutter-component-recipes"&gt;my other code recipes&lt;/a&gt;. Starting page for recipes look like below:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Code recipes home page" src="https://ptyagicodecamp.github.io/slider_1.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Checkout in action:
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/T-muHu9Ylwc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Checkout YouTube video:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/T-muHu9Ylwc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
 &lt;hr&gt;
 &lt;h3&gt;1. Displaying word for rating&lt;/h3&gt;
 &lt;p&gt;Display a random English word from the given sample word list. I'm using a simple list of English words. In production application, this list either be stored in cache locally or streaming from backend depending your use case.&lt;/p&gt;
