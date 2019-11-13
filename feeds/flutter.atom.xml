@@ -4630,14 +4630,14 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="AppBar"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Flutter code recipe for AnimatedOpacity widget</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-animatedopacity-widget.html" rel="alternate"></link><published>2019-01-30T23:33:00-05:00</published><updated>2019-01-30T23:33:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-01-30:/flutter-code-recipe-for-animatedopacity-widget.html</id><summary type="html">&lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;AnimatedOpacity&lt;/h2&gt;
 &lt;p&gt;AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner
-&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Achieve a smooth animation when transitioning from one UI element to another.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Focus Widget:&lt;/em&gt;&lt;/strong&gt; AnimatedOpacity&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; Fade in and out a blue rectangle on a click of button. 
+&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner
+&lt;strong&gt;Recipe:&lt;/strong&gt; Achieve a smooth animation when transitioning from one UI element to another.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; AnimatedOpacity&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Fade in and out a blue rectangle on a click of button.
 Interface is super simple and will look like this:&lt;/p&gt;
 &lt;p&gt;Blue Rectangle animates when button is pressed:
 &lt;img alt="Alt Blue Rectangle animates when button is pressed" src="https://ptyagicodecamp.github.io/animated_opacity.png"&gt;&lt;/p&gt;
-&lt;p&gt;Checkout AnimatedOpacity animation: 
+&lt;p&gt;Checkout AnimatedOpacity animation:
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/lKO8YTq_QcU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
 &lt;p&gt;We need three things to accomplish our goal of animating a blue rectangle.
@@ -4652,7 +4652,7 @@ Interface is super simple and will look like this:&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;StatefulWidget: A way to hold visibility state of rectangle.
-&lt;code&gt;StatefulWidget&lt;/code&gt; has &lt;code&gt;State&lt;/code&gt; object that can hold and update some data for app. 
+&lt;code&gt;StatefulWidget&lt;/code&gt; has &lt;code&gt;State&lt;/code&gt; object that can hold and update some data for app.
 &lt;code&gt;State&lt;/code&gt; object's &lt;a href="https://docs.flutter.io/flutter/widgets/State/setState.html"&gt;&lt;code&gt;setState&lt;/code&gt;&lt;/a&gt; method helps to rebuild widget reflecting the updated state of the app data.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;AnimatedOpacityRecipe&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -4667,14 +4667,14 @@ Interface is super simple and will look like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_AnimatedOpacityRecipeState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;AnimatedOpacityRecipe&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nx"&gt;_visible&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-&lt;span class="p"&gt;}&lt;/span&gt; 
+&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Method &lt;code&gt;animatedOpacityWidget&lt;/code&gt; returns the AnimatedOpacity widget.
-&lt;code&gt;duration&lt;/code&gt; property is to control the speed of animation. 
+&lt;code&gt;duration&lt;/code&gt; property is to control the speed of animation.
 In this example, it takes 900 milliseconds to fade out the rectangle.
-This is important to show a smooth transition. &lt;/p&gt;
+This is important to show a smooth transition.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget animatedOpacityWidget() {
     return AnimatedOpacity(
       duration: Duration(milliseconds: 900),
@@ -4795,7 +4795,7 @@ OutlineButton(
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt; 
+&lt;p&gt;&lt;strong&gt;Source code repo:&lt;/strong&gt; 
 Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/flutter_animated_opacity"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
@@ -4806,23 +4806,23 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 &lt;p&gt;&lt;em&gt;Liked the article ?
 Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="AnimatedOpacity"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Flutter code recipe for Hero animation</title><link href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-hero-animation.html" rel="alternate"></link><published>2019-01-30T23:33:00-05:00</published><updated>2019-01-30T23:33:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-01-30:/flutter-code-recipe-for-hero-animation.html</id><summary type="html">&lt;p&gt;Navigating from one page to another using Hero animation.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Animation Hero&lt;/h2&gt;
-&lt;p&gt;Hero animation is a useful transition when items are listed with small icons. Tapping on 
+&lt;p&gt;Hero animation is a useful transition when items are listed with small icons. Tapping on
 icons can open in another page with enlarged icon widget.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner
-&lt;strong&gt;&lt;em&gt;Recipe:&lt;/em&gt;&lt;/strong&gt; Hero animation to transition a list icon into an enlarged view on another detail page.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Focus Widget:&lt;/em&gt;&lt;/strong&gt; Hero Widget&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner
+&lt;strong&gt;Recipe:&lt;/strong&gt; Hero animation to transition a list icon into an enlarged view on another detail page.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; Hero Widget&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Hero(
-    tag: &amp;#39;hero-rectangle&amp;#39;, 
+    tag: &amp;#39;hero-rectangle&amp;#39;,
     child: _blueDetailRectangle(),
 ),
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Goal:&lt;/em&gt;&lt;/strong&gt; Animate and enlarge list item icon using &lt;code&gt;Hero&lt;/code&gt; widget. 
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Animate and enlarge list item icon using &lt;code&gt;Hero&lt;/code&gt; widget.
 Tapping on a list item icon, opens up the item in another page with enlarged icon.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="List item icon" src="https://ptyagicodecamp.github.io/1.png"&gt; 
+&lt;p&gt;&lt;img alt="List item icon" src="https://ptyagicodecamp.github.io/1.png"&gt;
 &lt;img alt="Detail page icon" src="https://ptyagicodecamp.github.io/2.png"&gt;&lt;/p&gt;
-&lt;p&gt;Checkout Hero animation: 
+&lt;p&gt;Checkout Hero animation:
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/InhIo7HNU-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
 &lt;p&gt;We need these things to accomplish our goal.
@@ -4890,9 +4890,9 @@ Tapping on a list item icon, opens up the item in another page with enlarged ico
 
 
 &lt;p&gt;Notice that &lt;code&gt;Navigator.of(context).push()&lt;/code&gt; is needed to navigate to second page from first page
-using the same tag. &lt;/p&gt;
+using the same tag.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Making sure both widgets in step #1 and step #2 &lt;strong&gt;&lt;em&gt;have same tag&lt;/em&gt;&lt;/strong&gt;. 
+&lt;li&gt;Making sure both widgets in step #1 and step #2 &lt;strong&gt;&lt;em&gt;have same tag&lt;/em&gt;&lt;/strong&gt;.
 Hero transitions use the same tag to identify the start and destination widgets.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4&gt;Complete example code&lt;/h4&gt;
@@ -4996,7 +4996,7 @@ Hero transitions use the same tag to identify the start and destination widgets.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Source code repo:&lt;/em&gt;&lt;/strong&gt; 
+&lt;p&gt;&lt;strong&gt;Source code repo:&lt;/strong&gt;
 Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/flutter_hero_animation"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;

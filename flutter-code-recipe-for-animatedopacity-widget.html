@@ -151,14 +151,14 @@
   <div>
     <h2>AnimatedOpacity</h2>
 <p>AnimatedOpacity widget is used to achieve a smooth transition from one UI element to another.</p>
-<p><strong><em>Target Audience:</em></strong> Beginner
-<strong><em>Recipe:</em></strong> Achieve a smooth animation when transitioning from one UI element to another.</p>
-<p><strong><em>Focus Widget:</em></strong> AnimatedOpacity</p>
-<p><strong><em>Goal:</em></strong> Fade in and out a blue rectangle on a click of button. 
+<p><strong>Target Audience:</strong> Beginner
+<strong>Recipe:</strong> Achieve a smooth animation when transitioning from one UI element to another.</p>
+<p><strong>Focus Widget:</strong> AnimatedOpacity</p>
+<p><strong>Goal:</strong> Fade in and out a blue rectangle on a click of button.
 Interface is super simple and will look like this:</p>
 <p>Blue Rectangle animates when button is pressed:
 <img alt="Alt Blue Rectangle animates when button is pressed" src="https://ptyagicodecamp.github.io/animated_opacity.png"></p>
-<p>Checkout AnimatedOpacity animation: 
+<p>Checkout AnimatedOpacity animation:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lKO8YTq_QcU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <h3>Lets's go!</h3>
 <p>We need three things to accomplish our goal of animating a blue rectangle.
@@ -173,7 +173,7 @@ Interface is super simple and will look like this:</p>
 
 <ol>
 <li>StatefulWidget: A way to hold visibility state of rectangle.
-<code>StatefulWidget</code> has <code>State</code> object that can hold and update some data for app. 
+<code>StatefulWidget</code> has <code>State</code> object that can hold and update some data for app.
 <code>State</code> object's <a href="https://docs.flutter.io/flutter/widgets/State/setState.html"><code>setState</code></a> method helps to rebuild widget reflecting the updated state of the app data.</li>
 </ol>
 <div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">AnimatedOpacityRecipe</span> <span class="kr">extends</span> <span class="nx">StatefulWidget</span> <span class="p">{</span>
@@ -188,14 +188,14 @@ Interface is super simple and will look like this:</p>
 <div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">_AnimatedOpacityRecipeState</span> <span class="kr">extends</span> <span class="nx">State</span><span class="o">&lt;</span><span class="nx">AnimatedOpacityRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
   <span class="kt">bool</span> <span class="nx">_visible</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
-<span class="p">}</span> 
+<span class="p">}</span>
 </pre></div>
 
 
 <p>Method <code>animatedOpacityWidget</code> returns the AnimatedOpacity widget.
-<code>duration</code> property is to control the speed of animation. 
+<code>duration</code> property is to control the speed of animation.
 In this example, it takes 900 milliseconds to fade out the rectangle.
-This is important to show a smooth transition. </p>
+This is important to show a smooth transition.</p>
 <div class="highlight"><pre><span></span>Widget animatedOpacityWidget() {
     return AnimatedOpacity(
       duration: Duration(milliseconds: 900),
@@ -316,7 +316,7 @@ OutlineButton(
 </pre></div>
 
 
-<p><strong><em>Source code repo:</em></strong> 
+<p><strong>Source code repo:</strong> 
 Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/flutter_animated_opacity">here</a></p>
 <h3>References:</h3>
 <ol>
