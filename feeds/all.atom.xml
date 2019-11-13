@@ -1,5 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-11-14T23:33:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Animating using AnimatedPadding Flutter widget</title><link href="https://ptyagicodecamp.github.io/animating-using-animatedpadding-flutter-widget.html" rel="alternate"></link><published>2019-11-14T23:33:00-05:00</published><updated>2019-11-14T23:33:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-11-14:/animating-using-animatedpadding-flutter-widget.html</id><summary type="html">&lt;p&gt;Code recipe for implementing AnimatedPadding Flutter widget.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-11-15T23:33:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Animating using AnimatedPositioned Flutter widget</title><link href="https://ptyagicodecamp.github.io/animating-using-animatedpositioned-flutter-widget.html" rel="alternate"></link><published>2019-11-15T23:33:00-05:00</published><updated>2019-11-15T23:33:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-11-15:/animating-using-animatedpositioned-flutter-widget.html</id><summary type="html">&lt;p&gt;Code recipe for implementing AnimatedPositioned Flutter widget.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;AnimatedPositioned&lt;/code&gt; widget is the animated version of the &lt;code&gt;Positioned&lt;/code&gt; widget.&lt;/p&gt;
+&lt;p&gt;In this article, we'll see how &lt;code&gt;AnimatedPositioned&lt;/code&gt; widget is used to animate an image in it. We'll observe animation behavior for various types of &lt;a href="https://api.flutter.dev/flutter/animation/Curves-class.html"&gt;curves&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Animating an image in &lt;code&gt;AnimatedPositioned&lt;/code&gt; widget.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;code&gt;AnimatedPositioned&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Animate an image inside &lt;code&gt;AnimatedPositioned&lt;/code&gt; using various types given &lt;a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262"&gt;AnimationCurves&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="code recipe demo" src="https://ptyagicodecamp.github.io/anim_positioned_1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AnimationCurves:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="animation curves" src="https://ptyagicodecamp.github.io/anim_curves.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;Structure of &lt;code&gt;AnimatedPositioned&lt;/code&gt; widget&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;AnimatedPositioned&lt;/code&gt; uses &lt;code&gt;duration&lt;/code&gt; and &lt;code&gt;curve&lt;/code&gt; properties to animate from previous position to a new position. The &lt;code&gt;duration&lt;/code&gt; value controls how long animation would take whereas &lt;code&gt;curve&lt;/code&gt; property's value provides the type of animation &lt;a href="https://api.flutter.dev/flutter/animation/Curves-class.html"&gt;Curve&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;AnimatedPositioned(
+      width: selected ? 400.0 : 200.0,
+      height: selected ? 200.0 : 400.0,
+      duration: Duration(seconds: 2),
+      curve: dropDownValue != null ? dropDownValue.curveCubic : Curves.linear,
+      child: Image.asset(&amp;#39;assets/images/sea.jpg&amp;#39;),
+    ),
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Recipe's Code Structure&lt;/h3&gt;
+&lt;p&gt;I'm using a drop down to choose the different type of &lt;code&gt;curve&lt;/code&gt;. Animation curves used in this code recipe are available in the source code as well as &lt;a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;AnimatedPositioned&lt;/code&gt; needs to be implemented inside a &lt;code&gt;StatefulWidget&lt;/code&gt; since it can only animate when position is changed.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;AnimationCurve dropDownValue&lt;/code&gt; holds the current selection from the &lt;a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262"&gt;AnimationCurves&lt;/a&gt; drop down widget.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;AnimatedPositionedDemo&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;_AnimatedPositionedDemoState&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_AnimatedPositionedDemoState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_AnimatedPositionedDemoState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;AnimatedPositionedDemo&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;AnimationCurve&lt;/span&gt; &lt;span class="nx"&gt;dropDownValue&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nx"&gt;selected&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Boolean &lt;code&gt;selected&lt;/code&gt; keeps track of when 'Animate' button is pressed or image is touched.&lt;/p&gt;
+&lt;p&gt;'Animate' button next to dropDown widget. It updates the value of &lt;code&gt;selected&lt;/code&gt; as below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget playAnimation(BuildContext context) {
+  return RaisedButton(
+    color: Colors.blueAccent,
+    child: Text(&amp;quot;Animate&amp;quot;),
+    onPressed: () =&amp;gt; setState(() {
+      selected = !selected;
+    }),
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Implementing &lt;code&gt;AnimatedPositioned&lt;/code&gt; widget&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;AnimatedPositioned&lt;/code&gt; widget's default &lt;code&gt;position&lt;/code&gt; or &lt;code&gt;width&lt;/code&gt; / &lt;code&gt;height&lt;/code&gt; are  200.0 and 400.0 respectively. When user presses 'Animate' button for a selected Curve type in dropDown widget, position or &lt;code&gt;width&lt;/code&gt; and &lt;code&gt;height&lt;/code&gt; are updated to 400.0 and 200.0 respectively. &lt;code&gt;AnimatedPositioned&lt;/code&gt; updates its position to a new value with in &lt;code&gt;2&lt;/code&gt; seconds as provided in &lt;code&gt;duration&lt;/code&gt; attribute using current selection for &lt;code&gt;curve&lt;/code&gt; property.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget animatedPositionedWidget(BuildContext context) {
+  return AnimatedPositioned(
+    width: selected ? 400.0 : 200.0,
+    height: selected ? 200.0 : 400.0,
+    duration: Duration(seconds: 2),
+    curve: dropDownValue != null ? dropDownValue.curveCubic : Curves.linear,
+    child: Image.asset(&amp;#39;assets/images/sea.jpg&amp;#39;),
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I encourage you to Checkout the code below, and play around with different types of Curve animations to pick an animation that would work best for you.&lt;/p&gt;
+&lt;h3&gt;Source code repo&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;AnimatedPositioned&lt;/code&gt; code recipe is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/animations/flutter_animations/flutter_animations/lib/animations/anim_padding.dart"&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Source code for all other animation code recipes is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations/flutter_animations/flutter_animations"&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/widgets/AnimatedPositioned-class.html"&gt;AnimatedPositioned&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/animation/Curves-class.html"&gt;Animation Curves&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="AnimatedPositioned"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Animating using AnimatedPadding Flutter widget</title><link href="https://ptyagicodecamp.github.io/animating-using-animatedpadding-flutter-widget.html" rel="alternate"></link><published>2019-11-14T23:33:00-05:00</published><updated>2019-11-14T23:33:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-11-14:/animating-using-animatedpadding-flutter-widget.html</id><summary type="html">&lt;p&gt;Code recipe for implementing AnimatedPadding Flutter widget.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;AnimatedPadding&lt;/code&gt; widget is the animated version of the &lt;code&gt;Padding&lt;/code&gt; widget.&lt;/p&gt;
 &lt;p&gt;In this article, we'll see how &lt;code&gt;AnimatedPadding&lt;/code&gt; widget is used to animate an image in it. We'll observe animation behavior for various types of &lt;a href="https://api.flutter.dev/flutter/animation/Curves-class.html"&gt;curves&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
