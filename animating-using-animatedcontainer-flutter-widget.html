@@ -159,6 +159,11 @@
 <p><img alt="code recipe demo" src="https://ptyagicodecamp.github.io/anim_container_1.jpg"></p>
 <p><strong>AnimationCurves:</strong></p>
 <p><img alt="animation curves" src="https://ptyagicodecamp.github.io/anim_curves.jpg"></p>
+<hr>
+<p><strong>Checkout YouTube video:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0NVLyjtWJqc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
 <h3>Structure of <code>AnimatedContainer</code> widget</h3>
 <p><code>AnimatedContainer</code> uses <code>duration</code> and <code>curve</code> properties to animate from previous values to new values of <code>width</code>, <code>height</code>, <code>color</code>, and <code>alignment</code>. <code>duration</code> value controls how long animation would take whereas <code>curve</code> property's value provides the type of animation <a href="https://api.flutter.dev/flutter/animation/Curves-class.html">Curve</a></p>
 <div class="highlight"><pre><span></span>AnimatedContainer(
@@ -173,6 +178,7 @@
 </pre></div>
 
 
+<hr>
 <h3>Recipe's Code Structure</h3>
 <p>I'm using a drop down to choose the different type of <code>curve</code>. Animation curves used in this code recipe are available in the source code as well as <a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262">here</a>.</p>
 <p><code>AnimatedContainer</code> needs to be implemented inside a <code>StatefulWidget</code> since its values are changed, and it provides animation while switching from old values to newer values.</p>
@@ -204,6 +210,7 @@
 </pre></div>
 
 
+<hr>
 <h3>Implementing <code>AnimatedContainer</code> widget</h3>
 <p><code>AnimatedContainer</code> is wrapped around <code>GestureDetector</code> to let user start animation by touch in addition to pressing 'Animate' button exclusively. User can choose one over another to start animation.</p>
 <p><code>AnimatedContainer</code> widget's default <code>width</code> is  200 and default <code>height</code> is 400, and its alignment is <code>topCenter</code>. When user presses 'Animate' button for a selected Curve type in dropDown widget, <code>width</code> updates to 400, <code>height</code> updated to 200, and its alignment changes to <code>center</code>. <code>AnimatedContainer</code> updates to new values with in <code>2</code> seconds as provided in <code>duration</code> attribute using current selection for <code>curve</code> property.</p>
@@ -228,11 +235,13 @@
 
 
 <p>I encourage you to Checkout the code below, and play around with different types of Curve animations to pick an animation that would work best for you.</p>
+<hr>
 <h3>Source code repo</h3>
 <ol>
 <li><code>AnimatedContainer</code> code recipe is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/animations/flutter_animations/flutter_animations/lib/animations/anim_container.dart">here</a></li>
 <li>Source code for all other animation code recipes is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations/flutter_animations/flutter_animations">here</a></li>
 </ol>
+<hr>
 <h3>References:</h3>
 <ol>
 <li><a href="https://api.flutter.dev/flutter/widgets/AnimatedContainer-class.html">AnimatedContainer</a></li>
