@@ -191,6 +191,7 @@
 &lt;p&gt;Code recipe project's source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://firebase.google.com/docs/android/setup"&gt;Configure Firebase project for Flutter Native Android app&lt;/a&gt;&lt;/li&gt;
