@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Development, Flutter, Cross-platform</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/development-flutter-cross-platform.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-11-21T00:00:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Flutter Live Booklet: Flutter component recipes</title><link href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html" rel="alternate"></link><published>2019-11-21T00:00:00-05:00</published><updated>2019-11-21T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-11-21:/flutter-live-booklet-flutter-component-recipes.html</id><summary type="html">&lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Flutter Live Booklet: Flutter component recipes&lt;/h2&gt;
 &lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;
+&lt;h2&gt;Loading image from Firebase Storage in Flutter App (Android, iOS &amp;amp; Web)&lt;/h2&gt;
+&lt;p&gt;Code recipe to demonstrate image Loading from Firebase Storage on multiple platforms (Android, iOS, and Web) using Flutter and Flutter Web.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/animating-using-animatedcontainer-flutter-widget.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/images"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;* Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/h2&gt;
 &lt;h2&gt;Animating using AnimatedContainer Flutter widget&lt;/h2&gt;
 &lt;p&gt;Code recipe for implementing AnimatedContainer Flutter widget.&lt;/p&gt;
 &lt;ul&gt;
