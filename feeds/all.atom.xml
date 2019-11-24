@@ -18,8 +18,9 @@
 &lt;p&gt;&lt;strong&gt;Flutter Web:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Flutter-Web" src="https://ptyagicodecamp.github.io/image_fb3_web.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the Youtube video:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/8xr2hZ2b2sw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
 &lt;hr&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
 &lt;p&gt;This code recipe would demonstrate image Loading from Firebase Storage in Flutter Native and Web Apps.&lt;/p&gt;
@@ -217,7 +218,7 @@ Couldn't find a topic of your interest ? Please leave comments or &lt;a href="ma
 &lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/images"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;* Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;* Youtube video is available &lt;a href="https://youtu.be/8xr2hZ2b2sw"&gt;here&lt;/a&gt;&lt;/h2&gt;
 &lt;h2&gt;Animating using AnimatedContainer Flutter widget&lt;/h2&gt;
 &lt;p&gt;Code recipe for implementing AnimatedContainer Flutter widget.&lt;/p&gt;
 &lt;ul&gt;
