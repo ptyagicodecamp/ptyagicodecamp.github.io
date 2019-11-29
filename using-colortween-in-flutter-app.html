@@ -409,6 +409,7 @@ dispose() {
 
 
 <h3>What about Flutter Web ?</h3>
+<p><strong>[UPDATE Sept 23rd, 2019]</strong> Since release of Flutter 1.9, there's no need of maintaining separate code bases for native and web Flutter implementations. Please refer to <a href="https://ptyagicodecamp.github.io/migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps.html">my article about migrating to Flutter 1.9 for details</a>.</p>
 <p><strong>Note:</strong> As of today Aug 7th, 2019- There's <a href="https://github.com/flutter/flutter/issues/37761">an issue</a> in running Flutter Web App after upgrading to the latest version of Flutter SDK.</p>
 <p>Let's achieve the same animations on Web platform. Please refer to my <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html">this article</a>, if you're new to Flutter-Web / Hummingbird and need help with setting up web project.
 In short, we would need to create an another branch say <code>animations-web</code> to host all web related code since web libraries are not pushed to same repository as of native platform. You'll need to fetch libraries directly from their Github repo.</p>
@@ -455,13 +456,9 @@ flutter packages pub global run webdev serve
 <p>Here's screenshot of the web version:</p>
 <p><img alt="Color Tween" src="https://ptyagicodecamp.github.io/color_tween_web.jpg"></p>
 <p><strong>Source code repo:</strong></p>
+<p><strong>[UPDATE]</strong> Native and Web codebases are merged into one codebase since release of Flutter 1.9.</p>
 <ul>
-<li>
-<p>Native (Android / iOS) recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations-native/flutter_widgets">here</a></p>
-</li>
-<li>
-<p>Web (Hummingbird) recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations-web/flutter_widgets">here</a></p>
-</li>
+<li>Source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/animations/flutter_animations/flutter_animations/lib/colorTween/color_tween.dart">here</a></li>
 </ul>
 <h3>References:</h3>
 <ol>

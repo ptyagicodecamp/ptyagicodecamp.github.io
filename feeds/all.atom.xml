@@ -2936,6 +2936,7 @@ dispose() {
 
 
 &lt;h3&gt;What about Flutter Web ?&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;[UPDATE Sept 23rd, 2019]&lt;/strong&gt; Since release of Flutter 1.9, there's no need of maintaining separate code bases for native and web Flutter implementations. Please refer to &lt;a href="https://ptyagicodecamp.github.io/migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps.html"&gt;my article about migrating to Flutter 1.9 for details&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; As of today Aug 7th, 2019- There's &lt;a href="https://github.com/flutter/flutter/issues/37761"&gt;an issue&lt;/a&gt; in running Flutter Web App after upgrading to the latest version of Flutter SDK.&lt;/p&gt;
 &lt;p&gt;Let's achieve the same animations on Web platform. Please refer to my &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html"&gt;this article&lt;/a&gt;, if you're new to Flutter-Web / Hummingbird and need help with setting up web project.
 In short, we would need to create an another branch say &lt;code&gt;animations-web&lt;/code&gt; to host all web related code since web libraries are not pushed to same repository as of native platform. You'll need to fetch libraries directly from their Github repo.&lt;/p&gt;
@@ -2982,13 +2983,9 @@ flutter packages pub global run webdev serve
 &lt;p&gt;Here's screenshot of the web version:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Color Tween" src="https://ptyagicodecamp.github.io/color_tween_web.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Source code repo:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[UPDATE]&lt;/strong&gt; Native and Web codebases are merged into one codebase since release of Flutter 1.9.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Native (Android / iOS) recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations-native/flutter_widgets"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Web (Hummingbird) recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations-web/flutter_widgets"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/animations/flutter_animations/flutter_animations/lib/colorTween/color_tween.dart"&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
