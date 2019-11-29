@@ -48,7 +48,7 @@
 &lt;li&gt;iOS: Checkout &lt;a href="https://firebase.google.com/docs/ios/setup"&gt;this link&lt;/a&gt; to configure Firebase project for iOS app.&lt;/li&gt;
 &lt;li&gt;Web: Checkout &lt;a href="https://firebase.google.com/docs/web/setup"&gt;this link&lt;/a&gt; to configure Firebase project for Flutter Web app.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Images in Storage:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Images in Firebase Storage Console:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I've uploaded two images in Storage as shown in screenshot below.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Flutter-Console" src="https://ptyagicodecamp.github.io/image_fb_console1.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Don't forget to tune Firebase Storage files 'Rules' depending on your usage. For demonstration purposes for this code recipe, I want to let user read images regardless of their authentication status. So, I'm making images readable to all as shown in screenshot below:&lt;/p&gt;
@@ -2682,10 +2682,11 @@ Couldn't find a topic of your interest ? Please leave comments or &lt;a href="ma
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Implement animation using ColorTween for Android, iOS and WebApp.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;a href="https://api.flutter.dev/flutter/animation/ColorTween-class.html"&gt;ColorTween&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Animating from one color to another for a quiz card's background based on the correct answer. We'll implement a card with picture of an animal in it, along with two choices to select from: 'Carnivorous' or 'Herbivorous'. When correct option is picked, background color of card will transition from grey to blue color in order to indicate correct selection otherwise background stays grey or turns grey from blue.&lt;/p&gt;
-&lt;div style="width:100%;height:100%;padding-bottom:50%;position:relative;"&gt;&lt;iframe src="https://giphy.com/embed/MCitgRspdAVS9l7geK" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;
-
+&lt;p&gt;&lt;img alt="Color Tween Gif" src="https://ptyagicodecamp.github.io/color_tween.gif"&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/6O1dini5Buc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3&gt;ColorTween for Native platforms (Android &amp;amp; iOS)&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Step #1. Data (&lt;code&gt;items.dart&lt;/code&gt;)&lt;/strong&gt;
 I'll be creating a little data structure &lt;code&gt;CardItem&lt;/code&gt; to keep track of model for UI card.
