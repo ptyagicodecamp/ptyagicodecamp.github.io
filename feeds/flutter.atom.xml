@@ -101,7 +101,7 @@
 
 
 &lt;p&gt;Don't forget to stop flutter_tts plugin instance in &lt;code&gt;dispose()&lt;/code&gt; method.&lt;/p&gt;
-&lt;h3&gt;Speaking &amp;amp; Stoping&lt;/h3&gt;
+&lt;h3&gt;Speaking &amp;amp; Stopping&lt;/h3&gt;
 &lt;p&gt;Speaking and Stop speaking is pretty straight forward. All you need to call plugin's &lt;code&gt;speak(String text)&lt;/code&gt; and &lt;code&gt;stop()&lt;/code&gt; methods / apis.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Future _speak(String text) async {
   if (text != null &amp;amp;&amp;amp; text.isNotEmpty) {
