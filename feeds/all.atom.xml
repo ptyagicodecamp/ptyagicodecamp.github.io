@@ -1,5 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-11-22T00:00:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Loading image from Firebase Storage in Flutter App (Android, iOS &amp; Web)</title><link href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html" rel="alternate"></link><published>2019-11-22T00:00:00-05:00</published><updated>2019-11-22T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-11-22:/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html</id><summary type="html">&lt;p&gt;Code recipe to demonstrate image Loading from Firebase Storage on multiple platforms (Android, iOS, and Web) using Flutter and Flutter Web.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2019-12-02T00:00:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Text-to-Speech Flutter Plugin (Android &amp; iOS)</title><link href="https://ptyagicodecamp.github.io/text-to-speech-flutter-plugin-android-ios.html" rel="alternate"></link><published>2019-12-02T00:00:00-05:00</published><updated>2019-12-02T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-12-02:/text-to-speech-flutter-plugin-android-ios.html</id><summary type="html">&lt;p&gt;Code recipe to demonstrate Text-To-Speech Flutter plugin in action.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Using text-to-speech Flutter plugin to read aloud text.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Focus Plugin:&lt;/strong&gt; Text-To-Speech Flutter plugin: &lt;a href="https://pub.dev/packages/flutter_tts"&gt;flutter_tts&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; We've a card with an image and its description. Clicking on play button will start reading aloud card's description, and stops when done.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; This recipe has been added to Flutter cookbook code recipe app as shows below.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flutter-Cookbook-Widgets" src="https://ptyagicodecamp.github.io/tts_menu.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Android:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flutter-TTS-Android" src="https://ptyagicodecamp.github.io/tts_android.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flutter-TTS-Android2" src="https://ptyagicodecamp.github.io/tts_android2.png"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;iOS:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flutter-TTS-iOS" src="https://ptyagicodecamp.github.io/tts_ios.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flutter-TTS-iOS2" src="https://ptyagicodecamp.github.io/tts_ios2.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the Youtube video:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;hr&gt;
+&lt;h3&gt;Lets's go!&lt;/h3&gt;
+&lt;p&gt;This code recipe demonstrate implementation for &lt;a href="https://pub.dev/packages/flutter_tts"&gt;Text-to-speech Flutter plugin&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; dependencies&lt;/h3&gt;
+&lt;p&gt;Add dependency for flutter_tts plugin:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;flutter_tts&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;0.7&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;StatefulWidget&lt;/h3&gt;
+&lt;p&gt;We need &lt;code&gt;StatefulWidget&lt;/code&gt; as parent widget since we'll be triggering speaking on the touch of the play button.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;description&lt;/code&gt; is the text to be read on the click on play button.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;isPlaying&lt;/code&gt; is the flag to keep track whether text is being read or not. We need this flag to show appropriate &lt;code&gt;Icon&lt;/code&gt; (play or stop) in the card.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;FlutterTts _flutterTts&lt;/code&gt; is the instance of &lt;code&gt;flutter_tts&lt;/code&gt; plugin. It's a wrapper around the native implementation for Android and iOS to interact with native functionality. Under the hood, it uses &lt;code&gt;TextToSpeech&lt;/code&gt; for Android, and &lt;code&gt;AVSpeechSynthesizer&lt;/code&gt; for iOS platform.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;TTSPluginRecipe&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;_TTSPluginRecipeState&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_TTSPluginRecipeState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_TTSPluginRecipeState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;TTSPluginRecipe&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
+      &lt;span class="s2"&gt;&amp;quot;The Griffith Observatory is the most iconic building in Los Angeles, perched high in the Hollywood Hills, 1,134 feet above sea level.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nx"&gt;isPlaying&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nx"&gt;FlutterTts&lt;/span&gt; &lt;span class="nx"&gt;_flutterTts&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    
+&lt;span class="p"&gt;}&lt;/span&gt;      
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Plugin management: Initializing &amp;amp; Disposing&lt;/h3&gt;
+&lt;p&gt;Initializing plugin for Android is slightly different than for iOS. We need to detect the platform to run the specific code. Please checkout &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/plugins/platform/platform.dart"&gt;&lt;code&gt;PlatformUtil&lt;/code&gt;&lt;/a&gt; to understand how I'm detecting platforms.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;override&lt;/span&gt;
+&lt;span class="nt"&gt;void&lt;/span&gt; &lt;span class="nt"&gt;initState&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;super&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;initState&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+  &lt;span class="nt"&gt;initializeTts&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nt"&gt;initializeTts&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;_flutterTts&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;FlutterTts()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="err"&gt;if&lt;/span&gt; &lt;span class="err"&gt;(PlatformUtil.myPlatform()&lt;/span&gt; &lt;span class="err"&gt;==&lt;/span&gt; &lt;span class="err"&gt;MyPlatform.ANDROID)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;_flutterTts.ttsInitHandler(()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+      &lt;span class="err"&gt;setTtsLanguage()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;}&lt;/span&gt; &lt;span class="nt"&gt;else&lt;/span&gt; &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;PlatformUtil&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;myPlatform&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nt"&gt;MyPlatform&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;IOS&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;setTtsLanguage()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nt"&gt;else&lt;/span&gt; &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;PlatformUtil&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;myPlatform&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nt"&gt;MyPlatform&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;WEB&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;//not-supported&lt;/span&gt; &lt;span class="err"&gt;by&lt;/span&gt; &lt;span class="err"&gt;plugin&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="nt"&gt;_flutterTts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;setStartHandler&lt;/span&gt;&lt;span class="o"&gt;(()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;setState(()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+      &lt;span class="err"&gt;isPlaying&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+  &lt;span class="nt"&gt;_flutterTts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;setCompletionHandler&lt;/span&gt;&lt;span class="o"&gt;(()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;setState(()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+      &lt;span class="err"&gt;isPlaying&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+  &lt;span class="nt"&gt;_flutterTts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;setErrorHandler&lt;/span&gt;&lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="nt"&gt;err&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;setState(()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+      &lt;span class="err"&gt;print(&amp;quot;error&lt;/span&gt; &lt;span class="n"&gt;occurred&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;err&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="err"&gt;isPlaying&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+
+
+&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;override&lt;/span&gt;
+&lt;span class="nt"&gt;void&lt;/span&gt; &lt;span class="nt"&gt;dispose&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;super&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dispose&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+  &lt;span class="nt"&gt;_flutterTts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;stop&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Don't forget to stop flutter_tts plugin instance in &lt;code&gt;dispose()&lt;/code&gt; method.&lt;/p&gt;
+&lt;h3&gt;Speaking &amp;amp; Stoping&lt;/h3&gt;
+&lt;p&gt;Speaking and Stop speaking is pretty straight forward. All you need to call plugin's &lt;code&gt;speak(String text)&lt;/code&gt; and &lt;code&gt;stop()&lt;/code&gt; methods / apis.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Future _speak(String text) async {
+  if (text != null &amp;amp;&amp;amp; text.isNotEmpty) {
+    var result = await _flutterTts.speak(text);
+    if (result == 1)
+      setState(() {
+        isPlaying = true;
+      });
+  }
+}
+
+Future _stop() async {
+  var result = await _flutterTts.stop();
+  if (result == 1)
+    setState(() {
+      isPlaying = false;
+    });
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Exploring plugin's features&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Setting Language:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void setTtsLanguage() async {
+  await _flutterTts.setLanguage(&amp;quot;en-US&amp;quot;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Getting list of supported languages:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  await flutterTts.getLanguages`
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Setting Voice:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;_flutterTts.setVoice(&amp;quot;en-us-x-sfg#male_1-local&amp;quot;)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Getting list of supported voices:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  await flutterTts.getVoices
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Source code repo&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/tts"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Code recipe project's source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://pub.dev/packages/flutter_tts"&gt;flutter_tts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/plugins/platform/platform.dart"&gt;&lt;code&gt;PlatformUtil&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Text-to-Speech"></category><category term="TTS"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Loading image from Firebase Storage in Flutter App (Android, iOS &amp; Web)</title><link href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html" rel="alternate"></link><published>2019-11-22T00:00:00-05:00</published><updated>2019-11-22T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-11-22:/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html</id><summary type="html">&lt;p&gt;Code recipe to demonstrate image Loading from Firebase Storage on multiple platforms (Android, iOS, and Web) using Flutter and Flutter Web.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Implement loading image from Firebase Storage on Flutter Native and Flutter WebApp.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; In this code recipe, we'll do following:&lt;/p&gt;
 &lt;ul&gt;
@@ -2295,6 +2462,1158 @@ Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/fl
 Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Switch"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Implementing Flutter FactsBot using DialogFlow</title><link href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html" rel="alternate"></link><published>2019-08-20T00:00:00-04:00</published><updated>2019-08-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-08-20:/implementing-flutter-factsbot-using-dialogflow.html</id><summary type="html">&lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
+&lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience. I'll use the sample app that we built earlier in my previous article &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html"&gt;Designing Cross platform Flutter prototype for Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;. We'll be integrating DialogFlow conversational API in native Flutter App.&lt;/p&gt;
+&lt;p&gt;You can refer to previous articles here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"&gt;Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the companion video:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/89XIlULDQKg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;In this article, I'll show you how we can integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience. We'll keep it to a fun app for demonstration purposes. We'll add a chat icon on our landing page. Clicking on this chat icon, will take user to a chat like screen. Whenever user type sentence or word consisting "Flutter" in it, our "Flutter Facts Bot" will present user a fact about Flutter :) Simple !&lt;/p&gt;
+&lt;p&gt;To adapt our existing landing page app to this new conversational style, we'll be taking following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Setting up DialogFlow&lt;/li&gt;
+&lt;li&gt;App's Integration with DialogFlow&lt;/li&gt;
+&lt;li&gt;Adding Chat like Icon at Landing Page&lt;/li&gt;
+&lt;li&gt;Developing "FlutterFactsDialogFlow" interface&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="DialogFlow-Flutter" src="https://ptyagicodecamp.github.io/df_mainpage.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;Setting up DialogFlow&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Create an account at &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt;. It's free to create account.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #1" src="https://ptyagicodecamp.github.io/dialogflow_intro1.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create agent by clicking on "Create Agent" button as shown in image below:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #2" src="https://ptyagicodecamp.github.io/dialogflow_intro2.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assign a google cloud project. Navigate to &lt;a href="https://console.cloud.google.com"&gt;Google Cloud Console&lt;/a&gt; to create a new project, if you don't have a project yet. I'll choosing my existing google cloud project named - "flutter-to-fly".&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #3" src="https://ptyagicodecamp.github.io/dialogflow_intro3.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create/Choose Intent. I'll be using default welcome intent for this tutorial. This is the very first intent presented to user at the beginning of conversation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #4" src="https://ptyagicodecamp.github.io/dialogflow_intro4.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Train intent. Add training phrases at this step. Training phrases will include words or sentence(s) which you think user could use to invoke conversation. I'm using word "flutter" in various combinations. As far as user has "flutter" keyword in their sentence, they'll be presented a fact about flutter. Click "Save" when you're done adding all possible keywords/phrases. It'll start agent training.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Training #1" src="https://ptyagicodecamp.github.io/dialogflow_training1.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add Responses. I'll be adding simple text responses for this tutorial. Response text is the output for the phrases tried out by user. If a match is found for user input text, one of the text response will be returned to user. In our case, as far as user says "flutter" in its query, a Flutter fact will be returned.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Training #2" src="https://ptyagicodecamp.github.io/dialogflow_training3.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can try out responses at the right panel either by typing or speaking out phrases in order to test the fulfillment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Training #2" src="https://ptyagicodecamp.github.io/dialogflow_training2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;DialogFlow agent is trained and ready to return text responses for default intent !&lt;/p&gt;
+&lt;h3&gt;App's Integration with DialogFlow&lt;/h3&gt;
+&lt;p&gt;Now, we want to integrate our newly trained DialogFlow intent into "Flutter Facts" feature of our app.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Head over to &lt;a href="https://console.cloud.google.com"&gt;Google Cloud Console&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Choose Google Cloud project.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Select "API &amp;amp; Services"&lt;/li&gt;
+&lt;li&gt;Click on credentials.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #1" src="https://ptyagicodecamp.github.io/df_gc_creds1.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Click on "Create credentials" drop down menu, and choose "Service account key" option.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #2" src="https://ptyagicodecamp.github.io/df_gc_creds2.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Select "DialogFlow integrations" option in Service account drop-down. Choose recommended "JSON" format for key type.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #3" src="https://ptyagicodecamp.github.io/df_gc_creds3.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download you private key to your machine. Keep this safe somewhere private to you. DO NOT commit this key into version control system.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #4" src="https://ptyagicodecamp.github.io/df_gc_creds4.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Save your credentials file at a safe location. DO NOT check-in this file in version control system like Github, BitBucket etc.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy credentials file &lt;code&gt;flutter-to-fly-creds.json&lt;/code&gt; in to &lt;code&gt;assets&lt;/code&gt; directory. I prefer to make &lt;a href="https://www.shellhacks.com/symlink-create-symbolic-link-linux/"&gt;symlink&lt;/a&gt; for this file inside &lt;code&gt;assets&lt;/code&gt; folder to save me from accidentally checking it in Github.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #5" src="https://ptyagicodecamp.github.io/df_gc_creds5.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; dependencies for DialogFlow plug-in:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;flutter_dialogflow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At this point your Flutter app is ready to send requests to DialogFlow APIs.&lt;/p&gt;
+&lt;h3&gt;Adding Chat like Icon at Landing Page&lt;/h3&gt;
+&lt;p&gt;Let's add a chat like icon to invoke conversation with DialogFlow. Clicking on this chat icon will open a new page with an input box for user to enter their query. For every query entered by user will fetch a flutter fact from DialogFlow.&lt;/p&gt;
+&lt;p&gt;In this section, I'll be adding a chat icon in the bottomRight corner of the landing page like below:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Chat icon" src="https://ptyagicodecamp.github.io/df_chat_icon.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;I'll be creating a file say &lt;code&gt;widgets_lib.dart&lt;/code&gt; to keep track of my all reusable widgets. The widget &lt;code&gt;factBot&lt;/code&gt; is a &lt;code&gt;FloatingActionButton&lt;/code&gt; to initiate FlutterFacts user interface. You would notice that &lt;code&gt;onPressed:&lt;/code&gt; property sends a message to router to open FlutterFacts UI. &lt;code&gt;FACTS_DIALOGFLOW&lt;/code&gt; string is like a key-value mapping between page identifier and target page that should launch as result.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget factBot(BuildContext context) {
+  return Container(
+    alignment: Alignment.bottomRight,
+      child: FloatingActionButton(
+        materialTapTargetSize: MaterialTapTargetSize.padded,
+        child: Center(
+          child: Icon(Icons.chat),
+        ),
+        elevation: 4.0,
+        backgroundColor: MyColors.blue1,
+        onPressed: () =&amp;gt; Navigator.pushNamed(context, FACTS_DIALOGFLOW),
+      )
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Navigating in the app:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I'll be using page routing for navigating from one page to another in this Flutter app.
+Let's quickly review &lt;code&gt;router.dart&lt;/code&gt;. This file defines a string to represent each page, and make use of &lt;code&gt;RouteSettings&lt;/code&gt; attribute to open a qualifying target page. When &lt;code&gt;routeSettings.name&lt;/code&gt; matches &lt;code&gt;FACTS_DIALOGFLOW&lt;/code&gt; value, &lt;code&gt;FlutterFactsDialogFlow()&lt;/code&gt; page will open.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;const&lt;/span&gt; &lt;span class="nt"&gt;String&lt;/span&gt; &lt;span class="nt"&gt;FACTS_DIALOGFLOW&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;FACTS_DIALOGFLOW&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="nt"&gt;Route&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;dynamic&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;generateRoute&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;RouteSettings&lt;/span&gt; &lt;span class="nt"&gt;routeSettings&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;switch(routeSettings.name)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;case&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;/&amp;#39;:&lt;/span&gt;
+      &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;MaterialPageRoute(&lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;MyHomePage&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+      &lt;span class="err"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;case&lt;/span&gt; &lt;span class="n"&gt;FACTS_DIALOGFLOW&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="nf"&gt;MaterialPageRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's see what changes we need to make in &lt;code&gt;main.dart&lt;/code&gt; to support this routing based navigation strategy:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;router.dart&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;runApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MyApp&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyApp&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;widget&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;MaterialApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="o"&gt;...&lt;/span&gt;
+      &lt;span class="n"&gt;onGenerateRoute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generateRoute&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;initialRoute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You'll notice that I imported &lt;code&gt;router.dart&lt;/code&gt; as first thing, and then set &lt;code&gt;onGenerateRoute&lt;/code&gt; property of &lt;code&gt;MaterialApp&lt;/code&gt; to re-route to given page. Don't forget to provide &lt;code&gt;initialRoute&lt;/code&gt; attribute. This attribute dictates which page will be opened as first thing after app launch.&lt;/p&gt;
+&lt;p&gt;User and FlutterFacts bot interaction is implemented in &lt;code&gt;FlutterFactsDialogFlow()&lt;/code&gt; class. Let's checkout the details in next section.&lt;/p&gt;
+&lt;h3&gt;Developing "FlutterFactsDialogFlow" interface&lt;/h3&gt;
+&lt;p&gt;In this section, I'll be building a simple chat window looking interface to interact with 'FlutterFactsBot'. Interface will have following components in addition to &lt;code&gt;AppBar&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;User input box at the bottom&lt;/li&gt;
+&lt;li&gt;Top part to show interaction log between user and 'FlutterFactsBot'&lt;/li&gt;
+&lt;li&gt;User and 'FlutterFactsBot' icons&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;FlutterFactsBot in Action !&lt;/strong&gt;*&lt;/p&gt;
+&lt;p&gt;This is how user and FlutterFactsBot interaction log would like:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Let's dive in coding the interface now!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Show me the code:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When user clicks on the chat icon, it'll launch &lt;code&gt;FlutterFactsDialogFlow&lt;/code&gt; page, which is &lt;code&gt;StatefulWidget&lt;/code&gt;. This widget will have a list of fact messages &lt;code&gt;_messages&lt;/code&gt; to display the interaction log of conversation between user and FlutterFactsBot. This list will be displayed in reverse order, that means most recent messages will be at the bottom.&lt;/p&gt;
+&lt;p&gt;Page has two parts: &lt;code&gt;appBar&lt;/code&gt; &amp;amp; &lt;code&gt;body&lt;/code&gt;. AppBar has title for the page whereas body part has three widgets inside a &lt;code&gt;Column&lt;/code&gt; widget. &lt;code&gt;Flexible&lt;/code&gt; widget contains a &lt;code&gt;ListView&lt;/code&gt; to show &lt;code&gt;_messages&lt;/code&gt; list in reverse order. &lt;code&gt;Divider&lt;/code&gt; widget is used to give a visual separation between interaction log and text box &lt;code&gt;_queryInputWidget&lt;/code&gt; to input user's query.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="nx"&gt;Key&lt;/span&gt; &lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;: &lt;span class="kt"&gt;key&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FactsMessage&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_messages&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FactsMessage&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[];&lt;/span&gt;
+
+  &lt;span class="p"&gt;...&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;appBar&lt;/span&gt;: &lt;span class="kt"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;centerTitle&lt;/span&gt;: &lt;span class="kt"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;title&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Flutter Facts&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="nx"&gt;body&lt;/span&gt;: &lt;span class="kt"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="nx"&gt;Flexible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;ListView.builder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="nx"&gt;padding&lt;/span&gt;: &lt;span class="kt"&gt;EdgeInsets.all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="nx"&gt;reverse&lt;/span&gt;: &lt;span class="kt"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;//To keep the latest messages at the bottom&lt;/span&gt;
+              &lt;span class="nx"&gt;itemBuilder&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_messages&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+              &lt;span class="nx"&gt;itemCount&lt;/span&gt;: &lt;span class="kt"&gt;_messages.length&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="nx"&gt;Divider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;height&lt;/span&gt;: &lt;span class="kt"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="nx"&gt;decoration&lt;/span&gt;: &lt;span class="kt"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;BoxDecoration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;: &lt;span class="kt"&gt;Theme.of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;cardColor&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;_queryInputWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;]),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's explore &lt;code&gt;_queryInputWidget&lt;/code&gt; widget for entering user's query text. This is the area where user can enter their query text. It has two parts to it: &lt;code&gt;TextField&lt;/code&gt; widget to enter query text, and &lt;code&gt;IconButton&lt;/code&gt; for submitting query. &lt;code&gt;TextField&lt;/code&gt; widget needs a &lt;code&gt;controller&lt;/code&gt; and &lt;code&gt;onSubmitted&lt;/code&gt; attributes. &lt;code&gt;onSubmitted&lt;/code&gt; attribute calls the given method &lt;code&gt;_submitQuery&lt;/code&gt; in our case, once user is done entering the text and hits enter. &lt;code&gt;IconButton&lt;/code&gt; widget is another way to submit text to DialogFlow. It's &lt;code&gt;onPressed&lt;/code&gt; calls &lt;code&gt;_submitQuery&lt;/code&gt; as well.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;TextEditingController&lt;/span&gt; &lt;span class="nx"&gt;_textController&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;TextEditingController&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;_queryInputWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;margin&lt;/span&gt;: &lt;span class="kt"&gt;EdgeInsets.symmetric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;horizontal&lt;/span&gt;: &lt;span class="kt"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;vertical&lt;/span&gt;: &lt;span class="kt"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="nx"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+            &lt;span class="nx"&gt;Flexible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;TextField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="nx"&gt;controller&lt;/span&gt;: &lt;span class="kt"&gt;_textController&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="nx"&gt;onSubmitted&lt;/span&gt;: &lt;span class="kt"&gt;_submitQuery&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="nx"&gt;decoration&lt;/span&gt;: &lt;span class="kt"&gt;InputDecoration.collapsed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;hintText&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Send a message&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="nx"&gt;margin&lt;/span&gt;: &lt;span class="kt"&gt;EdgeInsets.symmetric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;horizontal&lt;/span&gt;: &lt;span class="kt"&gt;4.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;IconButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                  &lt;span class="nx"&gt;icon&lt;/span&gt;: &lt;span class="kt"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Icons&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;send&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                  &lt;span class="nx"&gt;onPressed&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_submitQuery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_textController&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+            &lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;...&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's take a look what &lt;code&gt;_submitQuery&lt;/code&gt; does when user is done entering their query about Flutter.
+As you see in code below, when &lt;code&gt;_submitQuery&lt;/code&gt; is called, first thing it does is to clear the input &lt;code&gt;TextField&lt;/code&gt; to make it ready for the next user interaction. It takes the &lt;code&gt;TextField&lt;/code&gt; text and creates a data structure &lt;code&gt;FactsMessage&lt;/code&gt; to display interaction log. You might notice few things here. &lt;code&gt;_submitQuery&lt;/code&gt; takes input as &lt;code&gt;text&lt;/code&gt;. When &lt;code&gt;_submitQuery&lt;/code&gt; is called from &lt;code&gt;TextField&lt;/code&gt; widget, &lt;code&gt;text&lt;/code&gt; is being passed to this method implicitly. Whereas when &lt;code&gt;_submitQuery&lt;/code&gt; is called from &lt;code&gt;IconButton&lt;/code&gt;'s &lt;code&gt;onPressed&lt;/code&gt; method text is retrieved from &lt;code&gt;_textController&lt;/code&gt; and passed into &lt;code&gt;_submitQuery&lt;/code&gt; method.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void _submitQuery(String text) {
+  _textController.clear();
+  FactsMessage message = new FactsMessage(
+    text: text,
+    name: &amp;quot;Priyanka&amp;quot;,
+    type: true,
+  );
+  setState(() {
+    _messages.insert(0, message);
+  });
+  _dialogFlowResponse(text);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;FactsMessage&lt;/code&gt;'s &lt;code&gt;name&lt;/code&gt; property is &lt;code&gt;Priyanka&lt;/code&gt; to represent the user (in this case, I have hard coded my name as user for demonstration purposes) who is interacting with Bot. You'll see this &lt;code&gt;name&lt;/code&gt; property will change to &lt;code&gt;Flutter Bot&lt;/code&gt; when &lt;code&gt;FlutterMessage&lt;/code&gt; is being constructed in &lt;code&gt;_dialogFlowResponse&lt;/code&gt;. &lt;code&gt;FactsMessage&lt;/code&gt;'s data structure uses &lt;code&gt;name&lt;/code&gt; property to show who owns the message. &lt;code&gt;FactsMessage&lt;/code&gt; is a &lt;code&gt;StatelessWidget&lt;/code&gt; to display interaction message between user and so called 'FlutterFactsBot'.&lt;/p&gt;
+&lt;p&gt;It takes three parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;text&lt;/code&gt;: query / response Text&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;: who the text belongs to&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;type&lt;/code&gt;: boolean. &lt;code&gt;true&lt;/code&gt; for user. &lt;code&gt;false&lt;/code&gt; means bot.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;type&lt;/code&gt; parameter decides which message format to be rendered from &lt;code&gt;userMessage&lt;/code&gt; or &lt;code&gt;botMessage&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;FactsMessage&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;FactsMessage&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="p"&gt;...&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;margin&lt;/span&gt;: &lt;span class="kt"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;EdgeInsets&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;symmetric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;vertical&lt;/span&gt;: &lt;span class="kt"&gt;10.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;crossAxisAlignment&lt;/span&gt;: &lt;span class="kt"&gt;CrossAxisAlignment.start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;children&lt;/span&gt;: &lt;span class="kt"&gt;this.type&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="nx"&gt;userMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;botMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;  
+
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;FactsMessage&lt;/code&gt; widget has two types of messages: &lt;code&gt;userMessage&lt;/code&gt; and &lt;code&gt;botMessage&lt;/code&gt;.
+They differ in alignment of the widgets within a message row.&lt;/p&gt;
+&lt;p&gt;In screenshot below, &lt;code&gt;userMessage&lt;/code&gt; is highlighted in red, and &lt;code&gt;botMessage&lt;/code&gt; is highlighted in green.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts3.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Let's checkout &lt;code&gt;userMessage&lt;/code&gt; widget's code below. It's &lt;code&gt;List&lt;/code&gt; of widgets aligned to end of the screen. All user's messages will appear towards the left side of the screen, ending into &lt;code&gt;CircleAvatar&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Widget&amp;gt; userMessage(context) {
+  return &amp;lt;Widget&amp;gt;[
+    Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: &amp;lt;Widget&amp;gt;[
+          Text(this.name, style: Theme.of(context).textTheme.subhead),
+          Container(
+            margin: const EdgeInsets.only(top: 5.0),
+            child: Text(text),
+          ),
+        ],
+      ),
+    ),
+    Container(
+      margin: const EdgeInsets.only(left: 16.0),
+      child: CircleAvatar(child: new Text(this.name[0])),
+    ),
+  ];
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;FlutterFactsBot's messages will appear towards the right side of the screen, starting with the &lt;code&gt;CircleAvatar&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Widget&amp;gt; botMessage(context) {
+  return &amp;lt;Widget&amp;gt;[
+    Container(
+      margin: const EdgeInsets.only(right: 16.0),
+      child: CircleAvatar(child: Text(&amp;#39;Bot&amp;#39;)),
+    ),
+    Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: &amp;lt;Widget&amp;gt;[
+          Text(this.name,
+              style: TextStyle(fontWeight: FontWeight.bold)),
+          Container(
+            margin: const EdgeInsets.only(top: 5.0),
+            child: Text(text),
+          ),
+        ],
+      ),
+    ),
+  ];
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's move on to the last piece of the puzzle: getting response from DialogFlow API and rendering it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DialogFlow Response:&lt;/strong&gt;
+After submitting query and rendering user's message in interactionLog, query is submitted to DialogFlow and response is rendered right below the companion &lt;code&gt;userMessage&lt;/code&gt;.
+This is how query is submitted to DialogFlow API using &lt;code&gt;flutter_dialogflow&lt;/code&gt; &lt;a href="https://pub.dev/packages/flutter_dialogflow"&gt;plug-in&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;void&lt;/span&gt; &lt;span class="nt"&gt;_dialogFlowResponse&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;query&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;_textController.clear()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;AuthGoogle&lt;/span&gt; &lt;span class="err"&gt;authGoogle&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt;
+  &lt;span class="err"&gt;await&lt;/span&gt; &lt;span class="err"&gt;AuthGoogle(&lt;/span&gt;&lt;span class="n"&gt;fileJson&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;assets/flutter-to-fly-creds.json&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;build&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="err"&gt;Dialogflow&lt;/span&gt; &lt;span class="err"&gt;dialogFlow&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt;
+  &lt;span class="err"&gt;Dialogflow(&lt;/span&gt;&lt;span class="n"&gt;authGoogle&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;authGoogle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;language&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Language&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;english&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;AIResponse&lt;/span&gt; &lt;span class="err"&gt;response&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;await&lt;/span&gt; &lt;span class="err"&gt;dialogFlow.detectIntent(query)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;FactsMessage&lt;/span&gt; &lt;span class="err"&gt;message&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;FactsMessage(&lt;/span&gt;
+    &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;getMessage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;??&lt;/span&gt;
+         &lt;span class="nf"&gt;CardDialogflow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;getListMessage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Flutter Bot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;setState(()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;_messages.insert(0,&lt;/span&gt; &lt;span class="err"&gt;message)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;FactsMessage&lt;/code&gt; is constructed and added to &lt;code&gt;_messages&lt;/code&gt; conversation log. Every time user enters a query text consisting of word 'flutter', pre-canned text responses will be returned from DialogFlow.
+In this example, I've used very simple default text responses at DialogFlow for fulfillment. However, you can serve more dynamic content using &lt;a href="https://cloud.google.com/dialogflow/docs/fulfillment-overview"&gt;Webhooks fulfillment&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You're Done :)&lt;/p&gt;
+&lt;p&gt;Keep Fluttering !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Source code is &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/flutter-facts-native"&gt;available here&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;References/Credits:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/dialogflow/docs/fulfillment-overview"&gt;Webhooks fulfillment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"&gt;Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="DialogFlow"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category></entry><entry><title>Implementing Flutter FactsBot using DialogFlow</title><link href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html" rel="alternate"></link><published>2019-08-20T00:00:00-04:00</published><updated>2019-08-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-08-20:/implementing-flutter-factsbot-using-dialogflow.html</id><summary type="html">&lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
+&lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience. I'll use the sample app that we built earlier in my previous article &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html"&gt;Designing Cross platform Flutter prototype for Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;. We'll be integrating DialogFlow conversational API in native Flutter App.&lt;/p&gt;
+&lt;p&gt;You can refer to previous articles here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"&gt;Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the companion video:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/89XIlULDQKg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;In this article, I'll show you how we can integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience. We'll keep it to a fun app for demonstration purposes. We'll add a chat icon on our landing page. Clicking on this chat icon, will take user to a chat like screen. Whenever user type sentence or word consisting "Flutter" in it, our "Flutter Facts Bot" will present user a fact about Flutter :) Simple !&lt;/p&gt;
+&lt;p&gt;To adapt our existing landing page app to this new conversational style, we'll be taking following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Setting up DialogFlow&lt;/li&gt;
+&lt;li&gt;App's Integration with DialogFlow&lt;/li&gt;
+&lt;li&gt;Adding Chat like Icon at Landing Page&lt;/li&gt;
+&lt;li&gt;Developing "FlutterFactsDialogFlow" interface&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="DialogFlow-Flutter" src="https://ptyagicodecamp.github.io/df_mainpage.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;Setting up DialogFlow&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Create an account at &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt;. It's free to create account.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #1" src="https://ptyagicodecamp.github.io/dialogflow_intro1.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create agent by clicking on "Create Agent" button as shown in image below:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #2" src="https://ptyagicodecamp.github.io/dialogflow_intro2.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assign a google cloud project. Navigate to &lt;a href="https://console.cloud.google.com"&gt;Google Cloud Console&lt;/a&gt; to create a new project, if you don't have a project yet. I'll choosing my existing google cloud project named - "flutter-to-fly".&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #3" src="https://ptyagicodecamp.github.io/dialogflow_intro3.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create/Choose Intent. I'll be using default welcome intent for this tutorial. This is the very first intent presented to user at the beginning of conversation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #4" src="https://ptyagicodecamp.github.io/dialogflow_intro4.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Train intent. Add training phrases at this step. Training phrases will include words or sentence(s) which you think user could use to invoke conversation. I'm using word "flutter" in various combinations. As far as user has "flutter" keyword in their sentence, they'll be presented a fact about flutter. Click "Save" when you're done adding all possible keywords/phrases. It'll start agent training.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Training #1" src="https://ptyagicodecamp.github.io/dialogflow_training1.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add Responses. I'll be adding simple text responses for this tutorial. Response text is the output for the phrases tried out by user. If a match is found for user input text, one of the text response will be returned to user. In our case, as far as user says "flutter" in its query, a Flutter fact will be returned.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Training #2" src="https://ptyagicodecamp.github.io/dialogflow_training3.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can try out responses at the right panel either by typing or speaking out phrases in order to test the fulfillment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Training #2" src="https://ptyagicodecamp.github.io/dialogflow_training2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;DialogFlow agent is trained and ready to return text responses for default intent !&lt;/p&gt;
+&lt;h3&gt;App's Integration with DialogFlow&lt;/h3&gt;
+&lt;p&gt;Now, we want to integrate our newly trained DialogFlow intent into "Flutter Facts" feature of our app.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Head over to &lt;a href="https://console.cloud.google.com"&gt;Google Cloud Console&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Choose Google Cloud project.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Select "API &amp;amp; Services"&lt;/li&gt;
+&lt;li&gt;Click on credentials.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #1" src="https://ptyagicodecamp.github.io/df_gc_creds1.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Click on "Create credentials" drop down menu, and choose "Service account key" option.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #2" src="https://ptyagicodecamp.github.io/df_gc_creds2.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Select "DialogFlow integrations" option in Service account drop-down. Choose recommended "JSON" format for key type.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #3" src="https://ptyagicodecamp.github.io/df_gc_creds3.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download you private key to your machine. Keep this safe somewhere private to you. DO NOT commit this key into version control system.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #4" src="https://ptyagicodecamp.github.io/df_gc_creds4.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Save your credentials file at a safe location. DO NOT check-in this file in version control system like Github, BitBucket etc.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy credentials file &lt;code&gt;flutter-to-fly-creds.json&lt;/code&gt; in to &lt;code&gt;assets&lt;/code&gt; directory. I prefer to make &lt;a href="https://www.shellhacks.com/symlink-create-symbolic-link-linux/"&gt;symlink&lt;/a&gt; for this file inside &lt;code&gt;assets&lt;/code&gt; folder to save me from accidentally checking it in Github.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #5" src="https://ptyagicodecamp.github.io/df_gc_creds5.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; dependencies for DialogFlow plug-in:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;flutter_dialogflow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At this point your Flutter app is ready to send requests to DialogFlow APIs.&lt;/p&gt;
+&lt;h3&gt;Adding Chat like Icon at Landing Page&lt;/h3&gt;
+&lt;p&gt;Let's add a chat like icon to invoke conversation with DialogFlow. Clicking on this chat icon will open a new page with an input box for user to enter their query. For every query entered by user will fetch a flutter fact from DialogFlow.&lt;/p&gt;
+&lt;p&gt;In this section, I'll be adding a chat icon in the bottomRight corner of the landing page like below:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Chat icon" src="https://ptyagicodecamp.github.io/df_chat_icon.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;I'll be creating a file say &lt;code&gt;widgets_lib.dart&lt;/code&gt; to keep track of my all reusable widgets. The widget &lt;code&gt;factBot&lt;/code&gt; is a &lt;code&gt;FloatingActionButton&lt;/code&gt; to initiate FlutterFacts user interface. You would notice that &lt;code&gt;onPressed:&lt;/code&gt; property sends a message to router to open FlutterFacts UI. &lt;code&gt;FACTS_DIALOGFLOW&lt;/code&gt; string is like a key-value mapping between page identifier and target page that should launch as result.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget factBot(BuildContext context) {
+  return Container(
+    alignment: Alignment.bottomRight,
+      child: FloatingActionButton(
+        materialTapTargetSize: MaterialTapTargetSize.padded,
+        child: Center(
+          child: Icon(Icons.chat),
+        ),
+        elevation: 4.0,
+        backgroundColor: MyColors.blue1,
+        onPressed: () =&amp;gt; Navigator.pushNamed(context, FACTS_DIALOGFLOW),
+      )
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Navigating in the app:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I'll be using page routing for navigating from one page to another in this Flutter app.
+Let's quickly review &lt;code&gt;router.dart&lt;/code&gt;. This file defines a string to represent each page, and make use of &lt;code&gt;RouteSettings&lt;/code&gt; attribute to open a qualifying target page. When &lt;code&gt;routeSettings.name&lt;/code&gt; matches &lt;code&gt;FACTS_DIALOGFLOW&lt;/code&gt; value, &lt;code&gt;FlutterFactsDialogFlow()&lt;/code&gt; page will open.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;const&lt;/span&gt; &lt;span class="nt"&gt;String&lt;/span&gt; &lt;span class="nt"&gt;FACTS_DIALOGFLOW&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;FACTS_DIALOGFLOW&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="nt"&gt;Route&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;dynamic&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;generateRoute&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;RouteSettings&lt;/span&gt; &lt;span class="nt"&gt;routeSettings&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;switch(routeSettings.name)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;case&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;/&amp;#39;:&lt;/span&gt;
+      &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;MaterialPageRoute(&lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;MyHomePage&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+      &lt;span class="err"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;case&lt;/span&gt; &lt;span class="n"&gt;FACTS_DIALOGFLOW&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="nf"&gt;MaterialPageRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's see what changes we need to make in &lt;code&gt;main.dart&lt;/code&gt; to support this routing based navigation strategy:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;router.dart&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;runApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MyApp&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyApp&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;widget&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;MaterialApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="o"&gt;...&lt;/span&gt;
+      &lt;span class="n"&gt;onGenerateRoute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generateRoute&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;initialRoute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You'll notice that I imported &lt;code&gt;router.dart&lt;/code&gt; as first thing, and then set &lt;code&gt;onGenerateRoute&lt;/code&gt; property of &lt;code&gt;MaterialApp&lt;/code&gt; to re-route to given page. Don't forget to provide &lt;code&gt;initialRoute&lt;/code&gt; attribute. This attribute dictates which page will be opened as first thing after app launch.&lt;/p&gt;
+&lt;p&gt;User and FlutterFacts bot interaction is implemented in &lt;code&gt;FlutterFactsDialogFlow()&lt;/code&gt; class. Let's checkout the details in next section.&lt;/p&gt;
+&lt;h3&gt;Developing "FlutterFactsDialogFlow" interface&lt;/h3&gt;
+&lt;p&gt;In this section, I'll be building a simple chat window looking interface to interact with 'FlutterFactsBot'. Interface will have following components in addition to &lt;code&gt;AppBar&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;User input box at the bottom&lt;/li&gt;
+&lt;li&gt;Top part to show interaction log between user and 'FlutterFactsBot'&lt;/li&gt;
+&lt;li&gt;User and 'FlutterFactsBot' icons&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;FlutterFactsBot in Action !&lt;/strong&gt;*&lt;/p&gt;
+&lt;p&gt;This is how user and FlutterFactsBot interaction log would like:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Let's dive in coding the interface now!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Show me the code:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When user clicks on the chat icon, it'll launch &lt;code&gt;FlutterFactsDialogFlow&lt;/code&gt; page, which is &lt;code&gt;StatefulWidget&lt;/code&gt;. This widget will have a list of fact messages &lt;code&gt;_messages&lt;/code&gt; to display the interaction log of conversation between user and FlutterFactsBot. This list will be displayed in reverse order, that means most recent messages will be at the bottom.&lt;/p&gt;
+&lt;p&gt;Page has two parts: &lt;code&gt;appBar&lt;/code&gt; &amp;amp; &lt;code&gt;body&lt;/code&gt;. AppBar has title for the page whereas body part has three widgets inside a &lt;code&gt;Column&lt;/code&gt; widget. &lt;code&gt;Flexible&lt;/code&gt; widget contains a &lt;code&gt;ListView&lt;/code&gt; to show &lt;code&gt;_messages&lt;/code&gt; list in reverse order. &lt;code&gt;Divider&lt;/code&gt; widget is used to give a visual separation between interaction log and text box &lt;code&gt;_queryInputWidget&lt;/code&gt; to input user's query.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="nx"&gt;Key&lt;/span&gt; &lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;: &lt;span class="kt"&gt;key&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FactsMessage&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_messages&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FactsMessage&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[];&lt;/span&gt;
+
+  &lt;span class="p"&gt;...&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;appBar&lt;/span&gt;: &lt;span class="kt"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;centerTitle&lt;/span&gt;: &lt;span class="kt"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;title&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Flutter Facts&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="nx"&gt;body&lt;/span&gt;: &lt;span class="kt"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="nx"&gt;Flexible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;ListView.builder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="nx"&gt;padding&lt;/span&gt;: &lt;span class="kt"&gt;EdgeInsets.all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="nx"&gt;reverse&lt;/span&gt;: &lt;span class="kt"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;//To keep the latest messages at the bottom&lt;/span&gt;
+              &lt;span class="nx"&gt;itemBuilder&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_messages&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+              &lt;span class="nx"&gt;itemCount&lt;/span&gt;: &lt;span class="kt"&gt;_messages.length&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="nx"&gt;Divider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;height&lt;/span&gt;: &lt;span class="kt"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="nx"&gt;decoration&lt;/span&gt;: &lt;span class="kt"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;BoxDecoration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;: &lt;span class="kt"&gt;Theme.of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;cardColor&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;_queryInputWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;]),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's explore &lt;code&gt;_queryInputWidget&lt;/code&gt; widget for entering user's query text. This is the area where user can enter their query text. It has two parts to it: &lt;code&gt;TextField&lt;/code&gt; widget to enter query text, and &lt;code&gt;IconButton&lt;/code&gt; for submitting query. &lt;code&gt;TextField&lt;/code&gt; widget needs a &lt;code&gt;controller&lt;/code&gt; and &lt;code&gt;onSubmitted&lt;/code&gt; attributes. &lt;code&gt;onSubmitted&lt;/code&gt; attribute calls the given method &lt;code&gt;_submitQuery&lt;/code&gt; in our case, once user is done entering the text and hits enter. &lt;code&gt;IconButton&lt;/code&gt; widget is another way to submit text to DialogFlow. It's &lt;code&gt;onPressed&lt;/code&gt; calls &lt;code&gt;_submitQuery&lt;/code&gt; as well.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;TextEditingController&lt;/span&gt; &lt;span class="nx"&gt;_textController&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;TextEditingController&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;_queryInputWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;margin&lt;/span&gt;: &lt;span class="kt"&gt;EdgeInsets.symmetric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;horizontal&lt;/span&gt;: &lt;span class="kt"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;vertical&lt;/span&gt;: &lt;span class="kt"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="nx"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+            &lt;span class="nx"&gt;Flexible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;TextField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="nx"&gt;controller&lt;/span&gt;: &lt;span class="kt"&gt;_textController&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="nx"&gt;onSubmitted&lt;/span&gt;: &lt;span class="kt"&gt;_submitQuery&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="nx"&gt;decoration&lt;/span&gt;: &lt;span class="kt"&gt;InputDecoration.collapsed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;hintText&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Send a message&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="nx"&gt;margin&lt;/span&gt;: &lt;span class="kt"&gt;EdgeInsets.symmetric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;horizontal&lt;/span&gt;: &lt;span class="kt"&gt;4.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;IconButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                  &lt;span class="nx"&gt;icon&lt;/span&gt;: &lt;span class="kt"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Icons&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;send&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                  &lt;span class="nx"&gt;onPressed&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_submitQuery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_textController&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+            &lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;...&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's take a look what &lt;code&gt;_submitQuery&lt;/code&gt; does when user is done entering their query about Flutter.
+As you see in code below, when &lt;code&gt;_submitQuery&lt;/code&gt; is called, first thing it does is to clear the input &lt;code&gt;TextField&lt;/code&gt; to make it ready for the next user interaction. It takes the &lt;code&gt;TextField&lt;/code&gt; text and creates a data structure &lt;code&gt;FactsMessage&lt;/code&gt; to display interaction log. You might notice few things here. &lt;code&gt;_submitQuery&lt;/code&gt; takes input as &lt;code&gt;text&lt;/code&gt;. When &lt;code&gt;_submitQuery&lt;/code&gt; is called from &lt;code&gt;TextField&lt;/code&gt; widget, &lt;code&gt;text&lt;/code&gt; is being passed to this method implicitly. Whereas when &lt;code&gt;_submitQuery&lt;/code&gt; is called from &lt;code&gt;IconButton&lt;/code&gt;'s &lt;code&gt;onPressed&lt;/code&gt; method text is retrieved from &lt;code&gt;_textController&lt;/code&gt; and passed into &lt;code&gt;_submitQuery&lt;/code&gt; method.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void _submitQuery(String text) {
+  _textController.clear();
+  FactsMessage message = new FactsMessage(
+    text: text,
+    name: &amp;quot;Priyanka&amp;quot;,
+    type: true,
+  );
+  setState(() {
+    _messages.insert(0, message);
+  });
+  _dialogFlowResponse(text);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;FactsMessage&lt;/code&gt;'s &lt;code&gt;name&lt;/code&gt; property is &lt;code&gt;Priyanka&lt;/code&gt; to represent the user (in this case, I have hard coded my name as user for demonstration purposes) who is interacting with Bot. You'll see this &lt;code&gt;name&lt;/code&gt; property will change to &lt;code&gt;Flutter Bot&lt;/code&gt; when &lt;code&gt;FlutterMessage&lt;/code&gt; is being constructed in &lt;code&gt;_dialogFlowResponse&lt;/code&gt;. &lt;code&gt;FactsMessage&lt;/code&gt;'s data structure uses &lt;code&gt;name&lt;/code&gt; property to show who owns the message. &lt;code&gt;FactsMessage&lt;/code&gt; is a &lt;code&gt;StatelessWidget&lt;/code&gt; to display interaction message between user and so called 'FlutterFactsBot'.&lt;/p&gt;
+&lt;p&gt;It takes three parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;text&lt;/code&gt;: query / response Text&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;: who the text belongs to&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;type&lt;/code&gt;: boolean. &lt;code&gt;true&lt;/code&gt; for user. &lt;code&gt;false&lt;/code&gt; means bot.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;type&lt;/code&gt; parameter decides which message format to be rendered from &lt;code&gt;userMessage&lt;/code&gt; or &lt;code&gt;botMessage&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;FactsMessage&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;FactsMessage&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="p"&gt;...&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;margin&lt;/span&gt;: &lt;span class="kt"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;EdgeInsets&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;symmetric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;vertical&lt;/span&gt;: &lt;span class="kt"&gt;10.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;crossAxisAlignment&lt;/span&gt;: &lt;span class="kt"&gt;CrossAxisAlignment.start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;children&lt;/span&gt;: &lt;span class="kt"&gt;this.type&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="nx"&gt;userMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;botMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;  
+
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;FactsMessage&lt;/code&gt; widget has two types of messages: &lt;code&gt;userMessage&lt;/code&gt; and &lt;code&gt;botMessage&lt;/code&gt;.
+They differ in alignment of the widgets within a message row.&lt;/p&gt;
+&lt;p&gt;In screenshot below, &lt;code&gt;userMessage&lt;/code&gt; is highlighted in red, and &lt;code&gt;botMessage&lt;/code&gt; is highlighted in green.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts3.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Let's checkout &lt;code&gt;userMessage&lt;/code&gt; widget's code below. It's &lt;code&gt;List&lt;/code&gt; of widgets aligned to end of the screen. All user's messages will appear towards the left side of the screen, ending into &lt;code&gt;CircleAvatar&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Widget&amp;gt; userMessage(context) {
+  return &amp;lt;Widget&amp;gt;[
+    Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: &amp;lt;Widget&amp;gt;[
+          Text(this.name, style: Theme.of(context).textTheme.subhead),
+          Container(
+            margin: const EdgeInsets.only(top: 5.0),
+            child: Text(text),
+          ),
+        ],
+      ),
+    ),
+    Container(
+      margin: const EdgeInsets.only(left: 16.0),
+      child: CircleAvatar(child: new Text(this.name[0])),
+    ),
+  ];
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;FlutterFactsBot's messages will appear towards the right side of the screen, starting with the &lt;code&gt;CircleAvatar&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Widget&amp;gt; botMessage(context) {
+  return &amp;lt;Widget&amp;gt;[
+    Container(
+      margin: const EdgeInsets.only(right: 16.0),
+      child: CircleAvatar(child: Text(&amp;#39;Bot&amp;#39;)),
+    ),
+    Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: &amp;lt;Widget&amp;gt;[
+          Text(this.name,
+              style: TextStyle(fontWeight: FontWeight.bold)),
+          Container(
+            margin: const EdgeInsets.only(top: 5.0),
+            child: Text(text),
+          ),
+        ],
+      ),
+    ),
+  ];
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's move on to the last piece of the puzzle: getting response from DialogFlow API and rendering it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DialogFlow Response:&lt;/strong&gt;
+After submitting query and rendering user's message in interactionLog, query is submitted to DialogFlow and response is rendered right below the companion &lt;code&gt;userMessage&lt;/code&gt;.
+This is how query is submitted to DialogFlow API using &lt;code&gt;flutter_dialogflow&lt;/code&gt; &lt;a href="https://pub.dev/packages/flutter_dialogflow"&gt;plug-in&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;void&lt;/span&gt; &lt;span class="nt"&gt;_dialogFlowResponse&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;query&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;_textController.clear()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;AuthGoogle&lt;/span&gt; &lt;span class="err"&gt;authGoogle&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt;
+  &lt;span class="err"&gt;await&lt;/span&gt; &lt;span class="err"&gt;AuthGoogle(&lt;/span&gt;&lt;span class="n"&gt;fileJson&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;assets/flutter-to-fly-creds.json&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;build&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="err"&gt;Dialogflow&lt;/span&gt; &lt;span class="err"&gt;dialogFlow&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt;
+  &lt;span class="err"&gt;Dialogflow(&lt;/span&gt;&lt;span class="n"&gt;authGoogle&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;authGoogle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;language&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Language&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;english&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;AIResponse&lt;/span&gt; &lt;span class="err"&gt;response&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;await&lt;/span&gt; &lt;span class="err"&gt;dialogFlow.detectIntent(query)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;FactsMessage&lt;/span&gt; &lt;span class="err"&gt;message&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;FactsMessage(&lt;/span&gt;
+    &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;getMessage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;??&lt;/span&gt;
+         &lt;span class="nf"&gt;CardDialogflow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;getListMessage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Flutter Bot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;setState(()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;_messages.insert(0,&lt;/span&gt; &lt;span class="err"&gt;message)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;FactsMessage&lt;/code&gt; is constructed and added to &lt;code&gt;_messages&lt;/code&gt; conversation log. Every time user enters a query text consisting of word 'flutter', pre-canned text responses will be returned from DialogFlow.
+In this example, I've used very simple default text responses at DialogFlow for fulfillment. However, you can serve more dynamic content using &lt;a href="https://cloud.google.com/dialogflow/docs/fulfillment-overview"&gt;Webhooks fulfillment&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You're Done :)&lt;/p&gt;
+&lt;p&gt;Keep Fluttering !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Source code is &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/flutter-facts-native"&gt;available here&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;References/Credits:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/dialogflow/docs/fulfillment-overview"&gt;Webhooks fulfillment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"&gt;Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="DialogFlow"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category></entry><entry><title>Implementing Flutter FactsBot using DialogFlow</title><link href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html" rel="alternate"></link><published>2019-08-20T00:00:00-04:00</published><updated>2019-08-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-08-20:/implementing-flutter-factsbot-using-dialogflow.html</id><summary type="html">&lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
+&lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience. I'll use the sample app that we built earlier in my previous article &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html"&gt;Designing Cross platform Flutter prototype for Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;. We'll be integrating DialogFlow conversational API in native Flutter App.&lt;/p&gt;
+&lt;p&gt;You can refer to previous articles here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"&gt;Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the companion video:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/89XIlULDQKg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;In this article, I'll show you how we can integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience. We'll keep it to a fun app for demonstration purposes. We'll add a chat icon on our landing page. Clicking on this chat icon, will take user to a chat like screen. Whenever user type sentence or word consisting "Flutter" in it, our "Flutter Facts Bot" will present user a fact about Flutter :) Simple !&lt;/p&gt;
+&lt;p&gt;To adapt our existing landing page app to this new conversational style, we'll be taking following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Setting up DialogFlow&lt;/li&gt;
+&lt;li&gt;App's Integration with DialogFlow&lt;/li&gt;
+&lt;li&gt;Adding Chat like Icon at Landing Page&lt;/li&gt;
+&lt;li&gt;Developing "FlutterFactsDialogFlow" interface&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="DialogFlow-Flutter" src="https://ptyagicodecamp.github.io/df_mainpage.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;Setting up DialogFlow&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Create an account at &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt;. It's free to create account.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #1" src="https://ptyagicodecamp.github.io/dialogflow_intro1.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create agent by clicking on "Create Agent" button as shown in image below:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #2" src="https://ptyagicodecamp.github.io/dialogflow_intro2.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assign a google cloud project. Navigate to &lt;a href="https://console.cloud.google.com"&gt;Google Cloud Console&lt;/a&gt; to create a new project, if you don't have a project yet. I'll choosing my existing google cloud project named - "flutter-to-fly".&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #3" src="https://ptyagicodecamp.github.io/dialogflow_intro3.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create/Choose Intent. I'll be using default welcome intent for this tutorial. This is the very first intent presented to user at the beginning of conversation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow #4" src="https://ptyagicodecamp.github.io/dialogflow_intro4.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Train intent. Add training phrases at this step. Training phrases will include words or sentence(s) which you think user could use to invoke conversation. I'm using word "flutter" in various combinations. As far as user has "flutter" keyword in their sentence, they'll be presented a fact about flutter. Click "Save" when you're done adding all possible keywords/phrases. It'll start agent training.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Training #1" src="https://ptyagicodecamp.github.io/dialogflow_training1.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add Responses. I'll be adding simple text responses for this tutorial. Response text is the output for the phrases tried out by user. If a match is found for user input text, one of the text response will be returned to user. In our case, as far as user says "flutter" in its query, a Flutter fact will be returned.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Training #2" src="https://ptyagicodecamp.github.io/dialogflow_training3.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can try out responses at the right panel either by typing or speaking out phrases in order to test the fulfillment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Training #2" src="https://ptyagicodecamp.github.io/dialogflow_training2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;DialogFlow agent is trained and ready to return text responses for default intent !&lt;/p&gt;
+&lt;h3&gt;App's Integration with DialogFlow&lt;/h3&gt;
+&lt;p&gt;Now, we want to integrate our newly trained DialogFlow intent into "Flutter Facts" feature of our app.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Head over to &lt;a href="https://console.cloud.google.com"&gt;Google Cloud Console&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Choose Google Cloud project.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Select "API &amp;amp; Services"&lt;/li&gt;
+&lt;li&gt;Click on credentials.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #1" src="https://ptyagicodecamp.github.io/df_gc_creds1.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Click on "Create credentials" drop down menu, and choose "Service account key" option.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #2" src="https://ptyagicodecamp.github.io/df_gc_creds2.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Select "DialogFlow integrations" option in Service account drop-down. Choose recommended "JSON" format for key type.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #3" src="https://ptyagicodecamp.github.io/df_gc_creds3.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download you private key to your machine. Keep this safe somewhere private to you. DO NOT commit this key into version control system.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #4" src="https://ptyagicodecamp.github.io/df_gc_creds4.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Save your credentials file at a safe location. DO NOT check-in this file in version control system like Github, BitBucket etc.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy credentials file &lt;code&gt;flutter-to-fly-creds.json&lt;/code&gt; in to &lt;code&gt;assets&lt;/code&gt; directory. I prefer to make &lt;a href="https://www.shellhacks.com/symlink-create-symbolic-link-linux/"&gt;symlink&lt;/a&gt; for this file inside &lt;code&gt;assets&lt;/code&gt; folder to save me from accidentally checking it in Github.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="GC Credentials #5" src="https://ptyagicodecamp.github.io/df_gc_creds5.jpg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; dependencies for DialogFlow plug-in:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;flutter_dialogflow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At this point your Flutter app is ready to send requests to DialogFlow APIs.&lt;/p&gt;
+&lt;h3&gt;Adding Chat like Icon at Landing Page&lt;/h3&gt;
+&lt;p&gt;Let's add a chat like icon to invoke conversation with DialogFlow. Clicking on this chat icon will open a new page with an input box for user to enter their query. For every query entered by user will fetch a flutter fact from DialogFlow.&lt;/p&gt;
+&lt;p&gt;In this section, I'll be adding a chat icon in the bottomRight corner of the landing page like below:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="DialogFlow Chat icon" src="https://ptyagicodecamp.github.io/df_chat_icon.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;I'll be creating a file say &lt;code&gt;widgets_lib.dart&lt;/code&gt; to keep track of my all reusable widgets. The widget &lt;code&gt;factBot&lt;/code&gt; is a &lt;code&gt;FloatingActionButton&lt;/code&gt; to initiate FlutterFacts user interface. You would notice that &lt;code&gt;onPressed:&lt;/code&gt; property sends a message to router to open FlutterFacts UI. &lt;code&gt;FACTS_DIALOGFLOW&lt;/code&gt; string is like a key-value mapping between page identifier and target page that should launch as result.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget factBot(BuildContext context) {
+  return Container(
+    alignment: Alignment.bottomRight,
+      child: FloatingActionButton(
+        materialTapTargetSize: MaterialTapTargetSize.padded,
+        child: Center(
+          child: Icon(Icons.chat),
+        ),
+        elevation: 4.0,
+        backgroundColor: MyColors.blue1,
+        onPressed: () =&amp;gt; Navigator.pushNamed(context, FACTS_DIALOGFLOW),
+      )
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Navigating in the app:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I'll be using page routing for navigating from one page to another in this Flutter app.
+Let's quickly review &lt;code&gt;router.dart&lt;/code&gt;. This file defines a string to represent each page, and make use of &lt;code&gt;RouteSettings&lt;/code&gt; attribute to open a qualifying target page. When &lt;code&gt;routeSettings.name&lt;/code&gt; matches &lt;code&gt;FACTS_DIALOGFLOW&lt;/code&gt; value, &lt;code&gt;FlutterFactsDialogFlow()&lt;/code&gt; page will open.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;const&lt;/span&gt; &lt;span class="nt"&gt;String&lt;/span&gt; &lt;span class="nt"&gt;FACTS_DIALOGFLOW&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;FACTS_DIALOGFLOW&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="nt"&gt;Route&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;dynamic&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;generateRoute&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;RouteSettings&lt;/span&gt; &lt;span class="nt"&gt;routeSettings&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;switch(routeSettings.name)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;case&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;/&amp;#39;:&lt;/span&gt;
+      &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;MaterialPageRoute(&lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;MyHomePage&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+      &lt;span class="err"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;case&lt;/span&gt; &lt;span class="n"&gt;FACTS_DIALOGFLOW&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="nf"&gt;MaterialPageRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's see what changes we need to make in &lt;code&gt;main.dart&lt;/code&gt; to support this routing based navigation strategy:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;router.dart&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;runApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MyApp&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyApp&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;widget&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="nd"&gt;@override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;MaterialApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="o"&gt;...&lt;/span&gt;
+      &lt;span class="n"&gt;onGenerateRoute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generateRoute&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;initialRoute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You'll notice that I imported &lt;code&gt;router.dart&lt;/code&gt; as first thing, and then set &lt;code&gt;onGenerateRoute&lt;/code&gt; property of &lt;code&gt;MaterialApp&lt;/code&gt; to re-route to given page. Don't forget to provide &lt;code&gt;initialRoute&lt;/code&gt; attribute. This attribute dictates which page will be opened as first thing after app launch.&lt;/p&gt;
+&lt;p&gt;User and FlutterFacts bot interaction is implemented in &lt;code&gt;FlutterFactsDialogFlow()&lt;/code&gt; class. Let's checkout the details in next section.&lt;/p&gt;
+&lt;h3&gt;Developing "FlutterFactsDialogFlow" interface&lt;/h3&gt;
+&lt;p&gt;In this section, I'll be building a simple chat window looking interface to interact with 'FlutterFactsBot'. Interface will have following components in addition to &lt;code&gt;AppBar&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;User input box at the bottom&lt;/li&gt;
+&lt;li&gt;Top part to show interaction log between user and 'FlutterFactsBot'&lt;/li&gt;
+&lt;li&gt;User and 'FlutterFactsBot' icons&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;FlutterFactsBot in Action !&lt;/strong&gt;*&lt;/p&gt;
+&lt;p&gt;This is how user and FlutterFactsBot interaction log would like:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Let's dive in coding the interface now!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Show me the code:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When user clicks on the chat icon, it'll launch &lt;code&gt;FlutterFactsDialogFlow&lt;/code&gt; page, which is &lt;code&gt;StatefulWidget&lt;/code&gt;. This widget will have a list of fact messages &lt;code&gt;_messages&lt;/code&gt; to display the interaction log of conversation between user and FlutterFactsBot. This list will be displayed in reverse order, that means most recent messages will be at the bottom.&lt;/p&gt;
+&lt;p&gt;Page has two parts: &lt;code&gt;appBar&lt;/code&gt; &amp;amp; &lt;code&gt;body&lt;/code&gt;. AppBar has title for the page whereas body part has three widgets inside a &lt;code&gt;Column&lt;/code&gt; widget. &lt;code&gt;Flexible&lt;/code&gt; widget contains a &lt;code&gt;ListView&lt;/code&gt; to show &lt;code&gt;_messages&lt;/code&gt; list in reverse order. &lt;code&gt;Divider&lt;/code&gt; widget is used to give a visual separation between interaction log and text box &lt;code&gt;_queryInputWidget&lt;/code&gt; to input user's query.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="nx"&gt;Key&lt;/span&gt; &lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;: &lt;span class="kt"&gt;key&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FactsMessage&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_messages&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FactsMessage&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[];&lt;/span&gt;
+
+  &lt;span class="p"&gt;...&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;appBar&lt;/span&gt;: &lt;span class="kt"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;centerTitle&lt;/span&gt;: &lt;span class="kt"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;title&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Flutter Facts&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="nx"&gt;body&lt;/span&gt;: &lt;span class="kt"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="nx"&gt;Flexible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;ListView.builder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="nx"&gt;padding&lt;/span&gt;: &lt;span class="kt"&gt;EdgeInsets.all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="nx"&gt;reverse&lt;/span&gt;: &lt;span class="kt"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;//To keep the latest messages at the bottom&lt;/span&gt;
+              &lt;span class="nx"&gt;itemBuilder&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_messages&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+              &lt;span class="nx"&gt;itemCount&lt;/span&gt;: &lt;span class="kt"&gt;_messages.length&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="nx"&gt;Divider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;height&lt;/span&gt;: &lt;span class="kt"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="nx"&gt;decoration&lt;/span&gt;: &lt;span class="kt"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;BoxDecoration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;: &lt;span class="kt"&gt;Theme.of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;cardColor&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;_queryInputWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;]),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's explore &lt;code&gt;_queryInputWidget&lt;/code&gt; widget for entering user's query text. This is the area where user can enter their query text. It has two parts to it: &lt;code&gt;TextField&lt;/code&gt; widget to enter query text, and &lt;code&gt;IconButton&lt;/code&gt; for submitting query. &lt;code&gt;TextField&lt;/code&gt; widget needs a &lt;code&gt;controller&lt;/code&gt; and &lt;code&gt;onSubmitted&lt;/code&gt; attributes. &lt;code&gt;onSubmitted&lt;/code&gt; attribute calls the given method &lt;code&gt;_submitQuery&lt;/code&gt; in our case, once user is done entering the text and hits enter. &lt;code&gt;IconButton&lt;/code&gt; widget is another way to submit text to DialogFlow. It's &lt;code&gt;onPressed&lt;/code&gt; calls &lt;code&gt;_submitQuery&lt;/code&gt; as well.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_FlutterFactsDialogFlowState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FlutterFactsDialogFlow&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;TextEditingController&lt;/span&gt; &lt;span class="nx"&gt;_textController&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;TextEditingController&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;_queryInputWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;margin&lt;/span&gt;: &lt;span class="kt"&gt;EdgeInsets.symmetric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;horizontal&lt;/span&gt;: &lt;span class="kt"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;vertical&lt;/span&gt;: &lt;span class="kt"&gt;8.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="nx"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+            &lt;span class="nx"&gt;Flexible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;TextField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="nx"&gt;controller&lt;/span&gt;: &lt;span class="kt"&gt;_textController&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="nx"&gt;onSubmitted&lt;/span&gt;: &lt;span class="kt"&gt;_submitQuery&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="nx"&gt;decoration&lt;/span&gt;: &lt;span class="kt"&gt;InputDecoration.collapsed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;hintText&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Send a message&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+              &lt;span class="nx"&gt;margin&lt;/span&gt;: &lt;span class="kt"&gt;EdgeInsets.symmetric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;horizontal&lt;/span&gt;: &lt;span class="kt"&gt;4.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;IconButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                  &lt;span class="nx"&gt;icon&lt;/span&gt;: &lt;span class="kt"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Icons&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;send&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                  &lt;span class="nx"&gt;onPressed&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_submitQuery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_textController&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+            &lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;...&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's take a look what &lt;code&gt;_submitQuery&lt;/code&gt; does when user is done entering their query about Flutter.
+As you see in code below, when &lt;code&gt;_submitQuery&lt;/code&gt; is called, first thing it does is to clear the input &lt;code&gt;TextField&lt;/code&gt; to make it ready for the next user interaction. It takes the &lt;code&gt;TextField&lt;/code&gt; text and creates a data structure &lt;code&gt;FactsMessage&lt;/code&gt; to display interaction log. You might notice few things here. &lt;code&gt;_submitQuery&lt;/code&gt; takes input as &lt;code&gt;text&lt;/code&gt;. When &lt;code&gt;_submitQuery&lt;/code&gt; is called from &lt;code&gt;TextField&lt;/code&gt; widget, &lt;code&gt;text&lt;/code&gt; is being passed to this method implicitly. Whereas when &lt;code&gt;_submitQuery&lt;/code&gt; is called from &lt;code&gt;IconButton&lt;/code&gt;'s &lt;code&gt;onPressed&lt;/code&gt; method text is retrieved from &lt;code&gt;_textController&lt;/code&gt; and passed into &lt;code&gt;_submitQuery&lt;/code&gt; method.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void _submitQuery(String text) {
+  _textController.clear();
+  FactsMessage message = new FactsMessage(
+    text: text,
+    name: &amp;quot;Priyanka&amp;quot;,
+    type: true,
+  );
+  setState(() {
+    _messages.insert(0, message);
+  });
+  _dialogFlowResponse(text);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;FactsMessage&lt;/code&gt;'s &lt;code&gt;name&lt;/code&gt; property is &lt;code&gt;Priyanka&lt;/code&gt; to represent the user (in this case, I have hard coded my name as user for demonstration purposes) who is interacting with Bot. You'll see this &lt;code&gt;name&lt;/code&gt; property will change to &lt;code&gt;Flutter Bot&lt;/code&gt; when &lt;code&gt;FlutterMessage&lt;/code&gt; is being constructed in &lt;code&gt;_dialogFlowResponse&lt;/code&gt;. &lt;code&gt;FactsMessage&lt;/code&gt;'s data structure uses &lt;code&gt;name&lt;/code&gt; property to show who owns the message. &lt;code&gt;FactsMessage&lt;/code&gt; is a &lt;code&gt;StatelessWidget&lt;/code&gt; to display interaction message between user and so called 'FlutterFactsBot'.&lt;/p&gt;
+&lt;p&gt;It takes three parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;text&lt;/code&gt;: query / response Text&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;: who the text belongs to&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;type&lt;/code&gt;: boolean. &lt;code&gt;true&lt;/code&gt; for user. &lt;code&gt;false&lt;/code&gt; means bot.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;type&lt;/code&gt; parameter decides which message format to be rendered from &lt;code&gt;userMessage&lt;/code&gt; or &lt;code&gt;botMessage&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;FactsMessage&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;FactsMessage&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="p"&gt;...&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;margin&lt;/span&gt;: &lt;span class="kt"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;EdgeInsets&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;symmetric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;vertical&lt;/span&gt;: &lt;span class="kt"&gt;10.0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="nx"&gt;crossAxisAlignment&lt;/span&gt;: &lt;span class="kt"&gt;CrossAxisAlignment.start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;children&lt;/span&gt;: &lt;span class="kt"&gt;this.type&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="nx"&gt;userMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;botMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;  
+
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;FactsMessage&lt;/code&gt; widget has two types of messages: &lt;code&gt;userMessage&lt;/code&gt; and &lt;code&gt;botMessage&lt;/code&gt;.
+They differ in alignment of the widgets within a message row.&lt;/p&gt;
+&lt;p&gt;In screenshot below, &lt;code&gt;userMessage&lt;/code&gt; is highlighted in red, and &lt;code&gt;botMessage&lt;/code&gt; is highlighted in green.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts3.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Let's checkout &lt;code&gt;userMessage&lt;/code&gt; widget's code below. It's &lt;code&gt;List&lt;/code&gt; of widgets aligned to end of the screen. All user's messages will appear towards the left side of the screen, ending into &lt;code&gt;CircleAvatar&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Widget&amp;gt; userMessage(context) {
+  return &amp;lt;Widget&amp;gt;[
+    Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: &amp;lt;Widget&amp;gt;[
+          Text(this.name, style: Theme.of(context).textTheme.subhead),
+          Container(
+            margin: const EdgeInsets.only(top: 5.0),
+            child: Text(text),
+          ),
+        ],
+      ),
+    ),
+    Container(
+      margin: const EdgeInsets.only(left: 16.0),
+      child: CircleAvatar(child: new Text(this.name[0])),
+    ),
+  ];
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;FlutterFactsBot's messages will appear towards the right side of the screen, starting with the &lt;code&gt;CircleAvatar&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Widget&amp;gt; botMessage(context) {
+  return &amp;lt;Widget&amp;gt;[
+    Container(
+      margin: const EdgeInsets.only(right: 16.0),
+      child: CircleAvatar(child: Text(&amp;#39;Bot&amp;#39;)),
+    ),
+    Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: &amp;lt;Widget&amp;gt;[
+          Text(this.name,
+              style: TextStyle(fontWeight: FontWeight.bold)),
+          Container(
+            margin: const EdgeInsets.only(top: 5.0),
+            child: Text(text),
+          ),
+        ],
+      ),
+    ),
+  ];
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's move on to the last piece of the puzzle: getting response from DialogFlow API and rendering it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DialogFlow Response:&lt;/strong&gt;
+After submitting query and rendering user's message in interactionLog, query is submitted to DialogFlow and response is rendered right below the companion &lt;code&gt;userMessage&lt;/code&gt;.
+This is how query is submitted to DialogFlow API using &lt;code&gt;flutter_dialogflow&lt;/code&gt; &lt;a href="https://pub.dev/packages/flutter_dialogflow"&gt;plug-in&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;void&lt;/span&gt; &lt;span class="nt"&gt;_dialogFlowResponse&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;query&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;_textController.clear()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;AuthGoogle&lt;/span&gt; &lt;span class="err"&gt;authGoogle&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt;
+  &lt;span class="err"&gt;await&lt;/span&gt; &lt;span class="err"&gt;AuthGoogle(&lt;/span&gt;&lt;span class="n"&gt;fileJson&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;assets/flutter-to-fly-creds.json&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;build&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="err"&gt;Dialogflow&lt;/span&gt; &lt;span class="err"&gt;dialogFlow&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt;
+  &lt;span class="err"&gt;Dialogflow(&lt;/span&gt;&lt;span class="n"&gt;authGoogle&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;authGoogle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;language&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Language&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;english&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;AIResponse&lt;/span&gt; &lt;span class="err"&gt;response&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;await&lt;/span&gt; &lt;span class="err"&gt;dialogFlow.detectIntent(query)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;FactsMessage&lt;/span&gt; &lt;span class="err"&gt;message&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;FactsMessage(&lt;/span&gt;
+    &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;getMessage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;??&lt;/span&gt;
+         &lt;span class="nf"&gt;CardDialogflow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;getListMessage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Flutter Bot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;setState(()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;_messages.insert(0,&lt;/span&gt; &lt;span class="err"&gt;message)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;FactsMessage&lt;/code&gt; is constructed and added to &lt;code&gt;_messages&lt;/code&gt; conversation log. Every time user enters a query text consisting of word 'flutter', pre-canned text responses will be returned from DialogFlow.
+In this example, I've used very simple default text responses at DialogFlow for fulfillment. However, you can serve more dynamic content using &lt;a href="https://cloud.google.com/dialogflow/docs/fulfillment-overview"&gt;Webhooks fulfillment&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You're Done :)&lt;/p&gt;
+&lt;p&gt;Keep Fluttering !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Source code is &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/flutter-facts-native"&gt;available here&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;References/Credits:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/dialogflow/docs/fulfillment-overview"&gt;Webhooks fulfillment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html"&gt;Designing Cross platform Flutter prototype for Landing Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html"&gt;Making Cross-platform Flutter Landing Page Responsive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html"&gt;Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="DialogFlow"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category></entry><entry><title>Implementing Flutter FactsBot using DialogFlow</title><link href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html" rel="alternate"></link><published>2019-08-20T00:00:00-04:00</published><updated>2019-08-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-08-20:/implementing-flutter-factsbot-using-dialogflow.html</id><summary type="html">&lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Background&lt;/h3&gt;
 &lt;p&gt;In this article, we'll learn to integrate &lt;a href="https://dialogflow.com/"&gt;DialogFlow&lt;/a&gt; in a Flutter app for enriched conversational experience. I'll use the sample app that we built earlier in my previous article &lt;a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html"&gt;Designing Cross platform Flutter prototype for Landing Page (Web-Hummingbird, Android, iOS)&lt;/a&gt;. We'll be integrating DialogFlow conversational API in native Flutter App.&lt;/p&gt;
 &lt;p&gt;You can refer to previous articles here:&lt;/p&gt;
 &lt;ol&gt;
