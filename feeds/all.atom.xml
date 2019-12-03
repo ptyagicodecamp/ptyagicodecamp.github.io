@@ -15,7 +15,7 @@
 &lt;p&gt;&lt;img alt="Flutter-TTS-iOS2" src="https://ptyagicodecamp.github.io/tts_ios2.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the Youtube video:&lt;/strong&gt;&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/ktsIgzhko6c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;hr&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
@@ -159,7 +159,7 @@ Future _stop() async {
 &lt;hr&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="https://pub.dev/packages/flutter_tts"&gt;flutter_tts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pub.dev/packages/flutter_tts"&gt;Plugin flutter_tts&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/plugins/platform/platform.dart"&gt;&lt;code&gt;PlatformUtil&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
@@ -379,13 +379,13 @@ Couldn't find a topic of your interest ? Please leave comments or &lt;a href="ma
 &lt;p&gt;Code recipe to demonstrate Text-To-Speech Flutter plugin in action.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Read article &lt;a href="TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/text-to-speech-flutter-plugin-android-ios.html"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/tts"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;* Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;* Youtube video is available &lt;a href="https://youtu.be/ktsIgzhko6c"&gt;here&lt;/a&gt;&lt;/h2&gt;
 &lt;h2&gt;Loading image from Firebase Storage in Flutter App (Android, iOS &amp;amp; Web)&lt;/h2&gt;
 &lt;p&gt;Code recipe to demonstrate image Loading from Firebase Storage on multiple platforms (Android, iOS, and Web) using Flutter and Flutter Web.&lt;/p&gt;
 &lt;ul&gt;
