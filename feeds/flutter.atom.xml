@@ -23,7 +23,7 @@
 &lt;p&gt;&lt;img alt="dark-theme" src="https://ptyagicodecamp.github.io/ios_themes3.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/hEZ0_jSIuUU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; In this article, I'll only focus on persisting data in database. Please refer to &lt;a href="https://ptyagicodecamp.github.io/implement-flutter-themes-using-provider.html"&gt;previous article&lt;/a&gt; for app architecture and other details.&lt;/p&gt;
 &lt;h3&gt;Step #1. &lt;code&gt;pubspec.yaml&lt;/code&gt;&lt;/h3&gt;
@@ -384,7 +384,7 @@ Couldn't find a topic of your interest ? Please leave comments or &lt;a href="ma
 &lt;p&gt;&lt;img alt="dark-theme" src="https://ptyagicodecamp.github.io/ios_themes3.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/ZHl1DVbRpBA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; In this article, I'll only focus on persisting data using SharedPreferences plugin. Please refer to &lt;a href="https://ptyagicodecamp.github.io/implement-flutter-themes-using-provider.html"&gt;previous article&lt;/a&gt; for app architecture and other details.&lt;/p&gt;
 &lt;h3&gt;Step #1. &lt;code&gt;pubspec.yaml&lt;/code&gt;&lt;/h3&gt;
