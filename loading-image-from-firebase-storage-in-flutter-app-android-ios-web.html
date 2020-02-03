@@ -155,7 +155,7 @@
 <p><strong>Goal:</strong> In this code recipe, we'll do following:</p>
 <ul>
 <li>Touch basing Firebase Project and configuration setup.</li>
-<li>Touch basing availability of two sample images in Storage using Firebase Console.</li>
+<li>Touch basing availability of the two sample images in Storage using Firebase Console.</li>
 <li>Fetching one of the image randomly from Firebase Storage.</li>
 <li>Checkout code for loading image in native and web app.</li>
 </ul>
@@ -255,7 +255,7 @@
 <p><code>_getImage(...)</code> is responsible for directing the call to appropriate library targeted to specific platform. For example, native or web. <code>FireStorageService</code> is the interface that internally fetches image using the correct platform specific library.</p>
 <div class="highlight"><pre><span></span>Future&lt;Widget&gt; _getImage(BuildContext context, String image) async {
   Image m;
-  await FireStorageService.loadImage(context, image).then((downloadUrl) {
+  await FireStorageService.loadFromStorage(context, image).then((downloadUrl) {
     m = Image.network(
       downloadUrl.toString(),
       fit: BoxFit.scaleDown,
@@ -269,7 +269,7 @@
 
 <p>Checkout <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/plugins/firetop/storage">this plugins</a> directory to familiarize yourself with the platform specific call re-direction.</p>
 <p><img alt="Flutter-Plugins" src="https://ptyagicodecamp.github.io/image_fb_plugin.jpg"></p>
-<p>File <code>file_storage_service.dart</code> uses <code>dart.library</code> to decide on redirecting calls to native vs web implementation for <code>FireStorageService</code>.</p>
+<p>File <code>fire_storage_service.dart</code> uses <code>dart.library</code> to decide on redirecting calls to native vs web implementation for <code>FireStorageService</code>.</p>
 <div class="highlight"><pre><span></span>export &#39;unsupported_storage.dart&#39;
     if (dart.library.html) &#39;web_storage.dart&#39;
     if (dart.library.io) &#39;mobile_storage.dart&#39;;
@@ -283,7 +283,7 @@
   <span class="n">FireStorageService</span><span class="o">.</span><span class="n">_</span><span class="p">();</span>
   <span class="n">FireStorageService</span><span class="p">();</span>
 
-  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadImage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">image</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadFromStorage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">image</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">throw</span> <span class="p">(</span><span class="s2">&quot;Platform not found&quot;</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -300,7 +300,7 @@
 <span class="k">class</span> <span class="nc">FireStorageService</span> <span class="n">extends</span> <span class="n">ChangeNotifier</span> <span class="p">{</span>
   <span class="n">FireStorageService</span><span class="p">();</span>
 
-  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadImage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">image</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadFromStorage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">image</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">await</span> <span class="n">FirebaseStorage</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span><span class="o">.</span><span class="n">child</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">();</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -325,7 +325,7 @@
         <span class="n">messagingSenderId</span><span class="p">:</span> <span class="s2">&quot;728428768644&quot;</span><span class="p">);</span>
   <span class="p">}</span>
 
-  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadImage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">image</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadFromStorage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">image</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
     <span class="n">var</span> <span class="n">url</span> <span class="o">=</span> <span class="n">await</span> <span class="n">storage</span><span class="p">()</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">();</span>
     <span class="k">return</span> <span class="n">url</span><span class="p">;</span>
   <span class="p">}</span>
@@ -342,7 +342,7 @@
 <p>Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/images">here</a></p>
 </li>
 <li>
-<p>Code recipe project's source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/">here</a></p>
+<p>Flutter Cookbook Project's source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/">here</a></p>
 </li>
 </ul>
 <hr>
