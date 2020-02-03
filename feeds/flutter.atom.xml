@@ -8,11 +8,12 @@
 &lt;li&gt;Fetching PDF from Firebase Storage.&lt;/li&gt;
 &lt;li&gt;Checkout code for loading pdf in native and web app environments.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Flutter Cookbook:&lt;/strong&gt;
-&lt;img alt="Flutter-Cookbook" src="https://ptyagicodecamp.github.io/cookbook_index_pdf.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Flutter Cookbook:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flutter-Cookbook" src="https://ptyagicodecamp.github.io/cookbook_index_pdf.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Android:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Flutter-Native-Android" src="https://ptyagicodecamp.github.io/pdf_fire_android_1.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Flutter-Native-Android2" src="https://ptyagicodecamp.github.io/pdf_fire_android_2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flutter-Native-Android" src="https://ptyagicodecamp.github.io/pdf_fire_android_1.jpg"&gt;
+&lt;img alt="Flutter-Native-Android2" src="https://ptyagicodecamp.github.io/pdf_fire_android_2.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;iOS:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Flutter-Native-iOS" src="https://ptyagicodecamp.github.io/pdf_fire_ios_1.jpg"&gt;
