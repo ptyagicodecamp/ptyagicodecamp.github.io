@@ -286,10 +286,10 @@ First, &lt;code&gt;LaunchFile.loadFromFirebase(context, file)&lt;/code&gt; metho
 &lt;hr&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=""&gt;Related article about loading image from FirebaseStorage&lt;/a&gt; about supporting web and native app's from single source code&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://firebase.google.com/docs/android/setup"&gt;Configure Firebase project for Flutter Native Android app&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://firebase.google.com/docs/ios/setup"&gt;Configure Firebase project for Flutter Native iOS app&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://firebase.google.com/docs/web/setup"&gt;Configuring Firebase project for Flutter Web app&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html"&gt;Related article about loading image from FirebaseStorage&lt;/a&gt; about supporting web and native app's from single source code.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://firebase.google.com/docs/android/setup"&gt;Configure Firebase project for Flutter Native Android app&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://firebase.google.com/docs/ios/setup"&gt;Configure Firebase project for Flutter Native iOS app&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://firebase.google.com/docs/web/setup"&gt;Configuring Firebase project for Flutter Web app&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Liked the article ?
