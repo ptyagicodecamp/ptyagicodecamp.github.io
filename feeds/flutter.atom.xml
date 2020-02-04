@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-02-03T00:00:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Loading PDF file from Firebase Storage in Flutter App (Android, iOS &amp; Web)</title><link href="https://ptyagicodecamp.github.io/loading-pdf-file-from-firebase-storage-in-flutter-app-android-ios-web.html" rel="alternate"></link><published>2020-02-03T00:00:00-05:00</published><updated>2020-02-03T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-02-03:/loading-pdf-file-from-firebase-storage-in-flutter-app-android-ios-web.html</id><summary type="html">&lt;p&gt;Code recipe to demonstrate loading PDF file from Firebase Storage on multiple platforms (Android, iOS, and Web) using Flutter.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Load PDF file from Firebase Storage on Flutter Native and Flutter WebApp.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Loading PDF file from Firebase Storage in Flutter Native &amp;amp; WebApp.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; In this code recipe, we'll do following:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Review Firebase Project and configuration setup.&lt;/li&gt;
@@ -8,6 +8,7 @@
 &lt;li&gt;Fetching PDF from Firebase Storage.&lt;/li&gt;
 &lt;li&gt;Checkout code for loading pdf in native and web app environments.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; Please review &lt;a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1"&gt;this article about Firebase Login&lt;/a&gt;, if you run into permissions issues accessing PDF. Android platform expects user to be logged in.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Flutter Cookbook:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Flutter-Cookbook" src="https://ptyagicodecamp.github.io/cookbook_index_pdf.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
