@@ -271,9 +271,8 @@ First, &lt;code&gt;LaunchFile.loadFromFirebase(context, file)&lt;/code&gt; metho
 &lt;p&gt;&lt;code&gt;createFileFromPdfUrl(...)&lt;/code&gt;: This method downloads the pdf file from FirebaseStorage to a local file at disk. This local pdf file is later opened in &lt;code&gt;PDFScreen&lt;/code&gt; later.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;That's all you need to load a PDF file from FirebaseStorage into your Flutter application.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;a href="https://ptyagicodecamp.github.io/migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps.html"&gt;Checkout my previous article&lt;/a&gt; about plugins directory structure in details, and supporting web and native app's from single source code.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Checkout the source code for detailed implementation. As usual, this code recipe is linked from main &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/"&gt;flutter_widgets&lt;/a&gt; code recipes sample app.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3&gt;Source code repo&lt;/h3&gt;
 &lt;ul&gt;
@@ -291,7 +290,6 @@ First, &lt;code&gt;LaunchFile.loadFromFirebase(context, file)&lt;/code&gt; metho
 &lt;li&gt;&lt;a href="https://firebase.google.com/docs/android/setup"&gt;Configure Firebase project for Flutter Native Android app&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://firebase.google.com/docs/ios/setup"&gt;Configure Firebase project for Flutter Native iOS app&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://firebase.google.com/docs/web/setup"&gt;Configuring Firebase project for Flutter Web app&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Liked the article ?
