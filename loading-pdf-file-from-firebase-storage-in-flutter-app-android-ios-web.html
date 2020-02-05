@@ -178,12 +178,27 @@
 <img alt="Flutter-Web2" src="https://ptyagicodecamp.github.io/pdf_fire_web_2.jpg"></p>
 <hr>
 <p><strong>Checkout the Youtube video:</strong></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rmyPnsf06Ng" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
 <h3>Introduction</h3>
 <p>This code recipe would demonstrate loading PDF file from Firebase Storage in Flutter Native and Web Apps. I'm using <a href="https://www.siliconvalley-codecamp.com/Presenter/2019/priyanka-tyagi-1447">my Flutter talks's</a> slides as PDF file. I've this PDF available in Firebase Storage already.</p>
-<h3>Step #1. <code>pubspec.yaml</code> dependencies</h3>
+<hr>
+<h3>Firebase Project review</h3>
+<p><strong>Project Setup:</strong></p>
+<p>Make sure that your Firebase project is configured for all three platforms.</p>
+<ul>
+<li>Android: Checkout <a href="https://firebase.google.com/docs/android/setup">this link</a> to configure Firebase project for Android app.  </li>
+<li>iOS: Checkout <a href="https://firebase.google.com/docs/ios/setup">this link</a> to configure Firebase project for iOS app.</li>
+<li>Web: Checkout <a href="https://firebase.google.com/docs/web/setup">this link</a> to configure Firebase project for Flutter Web app.</li>
+</ul>
+<p><strong>Images in Firebase Storage Console:</strong></p>
+<p>I've uploaded Flutter presentation's slides as PDF in Firebase Storage as shown in screenshot below.</p>
+<p><img alt="Flutter-Console" src="https://ptyagicodecamp.github.io/pdf_fb_console1.jpg"></p>
+<p>Don't forget to tune Firebase Storage files 'Rules' depending on your usage. For demonstration purposes for this code recipe, I want to let user read images regardless of their authentication status. So, I'm making pdf bucket readable to all as shown in screenshot below:</p>
+<p><img alt="Flutter-Console" src="https://ptyagicodecamp.github.io/pdf_fb_console2.jpg"></p>
+<hr>
+<h3><code>pubspec.yaml</code> dependencies</h3>
 <p>Flutter plugins for accessing files from FirebaseStorage for Native apps are similar to previous article about <a href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html">Loading images from Firebase Storage</a></p>
 <div class="highlight"><pre><span></span>dependencies:
 
@@ -205,20 +220,6 @@
 </pre></div>
 
 
-<hr>
-<h3>Firebase Project review</h3>
-<p><strong>Project Setup:</strong></p>
-<p>Make sure that your Firebase project is configured for all three platforms.</p>
-<ul>
-<li>Android: Checkout <a href="https://firebase.google.com/docs/android/setup">this link</a> to configure Firebase project for Android app.  </li>
-<li>iOS: Checkout <a href="https://firebase.google.com/docs/ios/setup">this link</a> to configure Firebase project for iOS app.</li>
-<li>Web: Checkout <a href="https://firebase.google.com/docs/web/setup">this link</a> to configure Firebase project for Flutter Web app.</li>
-</ul>
-<p><strong>Images in Firebase Storage Console:</strong></p>
-<p>I've uploaded Flutter presentation's slides as PDF in Firebase Storage as shown in screenshot below.</p>
-<p><img alt="Flutter-Console" src="https://ptyagicodecamp.github.io/pdf_fb_console1.jpg"></p>
-<p>Don't forget to tune Firebase Storage files 'Rules' depending on your usage. For demonstration purposes for this code recipe, I want to let user read images regardless of their authentication status. So, I'm making pdf bucket readable to all as shown in screenshot below:</p>
-<p><img alt="Flutter-Console" src="https://ptyagicodecamp.github.io/pdf_fb_console2.jpg"></p>
 <hr>
 <h3>Code Structure for loading PDF</h3>
 <p>I want to fetch PDF from firebase as the first thing. For this purpose I'll be fetching it in <code>initState()</code> method. <code>file</code> variable holds the path of the pdf file in FirebaseStorage. <code>fileName</code> variable is used to display the name for the PDF in app bar.

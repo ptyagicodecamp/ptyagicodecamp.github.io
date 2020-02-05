@@ -26,12 +26,27 @@
 &lt;img alt="Flutter-Web2" src="https://ptyagicodecamp.github.io/pdf_fire_web_2.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the Youtube video:&lt;/strong&gt;&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/rmyPnsf06Ng" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;hr&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;This code recipe would demonstrate loading PDF file from Firebase Storage in Flutter Native and Web Apps. I'm using &lt;a href="https://www.siliconvalley-codecamp.com/Presenter/2019/priyanka-tyagi-1447"&gt;my Flutter talks's&lt;/a&gt; slides as PDF file. I've this PDF available in Firebase Storage already.&lt;/p&gt;
-&lt;h3&gt;Step #1. &lt;code&gt;pubspec.yaml&lt;/code&gt; dependencies&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h3&gt;Firebase Project review&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Project Setup:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Make sure that your Firebase project is configured for all three platforms.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Android: Checkout &lt;a href="https://firebase.google.com/docs/android/setup"&gt;this link&lt;/a&gt; to configure Firebase project for Android app.  &lt;/li&gt;
+&lt;li&gt;iOS: Checkout &lt;a href="https://firebase.google.com/docs/ios/setup"&gt;this link&lt;/a&gt; to configure Firebase project for iOS app.&lt;/li&gt;
+&lt;li&gt;Web: Checkout &lt;a href="https://firebase.google.com/docs/web/setup"&gt;this link&lt;/a&gt; to configure Firebase project for Flutter Web app.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Images in Firebase Storage Console:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I've uploaded Flutter presentation's slides as PDF in Firebase Storage as shown in screenshot below.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flutter-Console" src="https://ptyagicodecamp.github.io/pdf_fb_console1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Don't forget to tune Firebase Storage files 'Rules' depending on your usage. For demonstration purposes for this code recipe, I want to let user read images regardless of their authentication status. So, I'm making pdf bucket readable to all as shown in screenshot below:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flutter-Console" src="https://ptyagicodecamp.github.io/pdf_fb_console2.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; dependencies&lt;/h3&gt;
 &lt;p&gt;Flutter plugins for accessing files from FirebaseStorage for Native apps are similar to previous article about &lt;a href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html"&gt;Loading images from Firebase Storage&lt;/a&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dependencies:
 
@@ -53,20 +68,6 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
-&lt;h3&gt;Firebase Project review&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Project Setup:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Make sure that your Firebase project is configured for all three platforms.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Android: Checkout &lt;a href="https://firebase.google.com/docs/android/setup"&gt;this link&lt;/a&gt; to configure Firebase project for Android app.  &lt;/li&gt;
-&lt;li&gt;iOS: Checkout &lt;a href="https://firebase.google.com/docs/ios/setup"&gt;this link&lt;/a&gt; to configure Firebase project for iOS app.&lt;/li&gt;
-&lt;li&gt;Web: Checkout &lt;a href="https://firebase.google.com/docs/web/setup"&gt;this link&lt;/a&gt; to configure Firebase project for Flutter Web app.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Images in Firebase Storage Console:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;I've uploaded Flutter presentation's slides as PDF in Firebase Storage as shown in screenshot below.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Flutter-Console" src="https://ptyagicodecamp.github.io/pdf_fb_console1.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;Don't forget to tune Firebase Storage files 'Rules' depending on your usage. For demonstration purposes for this code recipe, I want to let user read images regardless of their authentication status. So, I'm making pdf bucket readable to all as shown in screenshot below:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Flutter-Console" src="https://ptyagicodecamp.github.io/pdf_fb_console2.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3&gt;Code Structure for loading PDF&lt;/h3&gt;
 &lt;p&gt;I want to fetch PDF from firebase as the first thing. For this purpose I'll be fetching it in &lt;code&gt;initState()&lt;/code&gt; method. &lt;code&gt;file&lt;/code&gt; variable holds the path of the pdf file in FirebaseStorage. &lt;code&gt;fileName&lt;/code&gt; variable is used to display the name for the PDF in app bar.
