@@ -4,7 +4,7 @@
 &lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;a href="https://pub.dev/packages/syntax_highlighter"&gt;&lt;code&gt;syntax_highlighter&lt;/code&gt; plugin&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; TODO&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/4WoS_WQKKV0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;h3&gt;Lets's go!&lt;/h3&gt;
 &lt;h3&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; dependency&lt;/h3&gt;
 &lt;p&gt;Add &lt;code&gt;syntax_highlighter&lt;/code&gt; plugin dependency as below:&lt;/p&gt;
@@ -28,7 +28,7 @@
 &lt;p&gt;&lt;code&gt;animated_floatactionbuttons&lt;/code&gt; plugin: This plugin is used to provide Floating Action widget to zoom in and out code snippet text.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;&lt;strong&gt;CodeFile:&lt;/strong&gt; A &lt;code&gt;StatefulWidget&lt;/code&gt; to display Code snippet&lt;/h3&gt;
+&lt;h3&gt;CodeFileWidget: A &lt;code&gt;StatefulWidget&lt;/code&gt; to display Code snippet&lt;/h3&gt;
 &lt;p&gt;Class &lt;code&gt;CodeFileWidget&lt;/code&gt; is a &lt;code&gt;StatefulWidget&lt;/code&gt;. It's responsible to display underlying code for a Flutter code recipe.&lt;/p&gt;
 &lt;p&gt;This class takes four parameters to populate appropriate code snippet in &lt;code&gt;CodeFileWidget&lt;/code&gt;.&lt;/p&gt;
 &lt;ul&gt;
@@ -133,10 +133,10 @@ Widget build(BuildContext context) {
 &lt;p&gt;Now, add actions like zoom_in, zoom_out, and navigating to code recipe demonstration.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Zooming Out:&lt;/strong&gt;  &lt;code&gt;scaleFactorText&lt;/code&gt;'s value is decreased by &lt;code&gt;0.1&lt;/code&gt; every time 'Zoom out' widget is tapped. That means text is made bigger.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Zooming Out:&lt;/strong&gt;  &lt;code&gt;scaleFactorText&lt;/code&gt;'s value is decreased by &lt;code&gt;0.1&lt;/code&gt; every time 'Zoom out' widget is tapped. That means text is made smaller.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Zooming In:&lt;/strong&gt;  &lt;code&gt;scaleFactorText&lt;/code&gt;'s value is increased by &lt;code&gt;0.1&lt;/code&gt; every time 'Zoom out' widget is tapped. That means text is made smaller. You can see more text at a time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Zooming In:&lt;/strong&gt;  &lt;code&gt;scaleFactorText&lt;/code&gt;'s value is increased by &lt;code&gt;0.1&lt;/code&gt; every time 'Zoom out' widget is tapped. That means text is made bigger. You can see more text at a time.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Navigating to Code demo:&lt;/strong&gt; Tapping on this action opens the code recipe demonstration screen.&lt;/p&gt;
@@ -144,6 +144,7 @@ Widget build(BuildContext context) {
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Widget&amp;gt; codepreviewActions() {
   return &amp;lt;Widget&amp;gt;[
+  //making text smaller
     FloatingActionButton(
       heroTag: &amp;quot;zoom_out&amp;quot;,
       child: Icon(Icons.zoom_out),
@@ -152,6 +153,7 @@ Widget build(BuildContext context) {
         this.scaleFactorText = max(0.8, this.scaleFactorText - 0.1);
       }),
     ),
+    //making text bigger
     FloatingActionButton(
       heroTag: &amp;quot;zoom_in&amp;quot;,
       child: Icon(Icons.zoom_in),
