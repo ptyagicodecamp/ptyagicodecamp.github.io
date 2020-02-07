@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-02-05T00:00:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>How I added Syntax Highlighting in 'Flutter Cookbook' App</title><link href="https://ptyagicodecamp.github.io/how-i-added-syntax-highlighting-in-flutter-cookbook-app.html" rel="alternate"></link><published>2020-02-05T00:00:00-05:00</published><updated>2020-02-05T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-02-05:/how-i-added-syntax-highlighting-in-flutter-cookbook-app.html</id><summary type="html">&lt;p&gt;This article describes how I used &lt;code&gt;syntax_highlighter&lt;/code&gt; Flutter plugin to show underlying code for Flutter Cookbook's code recipes.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Syntax highlighting" src="https://ptyagicodecamp.github.io/syntax.jpg"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-02-06T00:00:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Adding Syntax Highlighting in Flutter Cookbook App</title><link href="https://ptyagicodecamp.github.io/adding-syntax-highlighting-in-flutter-cookbook-app.html" rel="alternate"></link><published>2020-02-06T00:00:00-05:00</published><updated>2020-02-06T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-02-06:/adding-syntax-highlighting-in-flutter-cookbook-app.html</id><summary type="html">&lt;p&gt;This article describes how I used &lt;code&gt;syntax_highlighter&lt;/code&gt; Flutter plugin to show underlying code for Flutter Cookbook's code recipes.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Syntax highlighting" src="https://ptyagicodecamp.github.io/syntax.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Displaying code snippets for Flutter Cookbook code recipes.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;a href="https://pub.dev/packages/syntax_highlighter"&gt;&lt;code&gt;syntax_highlighter&lt;/code&gt; plugin&lt;/a&gt;&lt;/p&gt;
@@ -226,7 +226,14 @@ Widget build(BuildContext context) {
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
-&lt;p&gt;1.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://pub.dev/packages/animated_floatactionbuttons"&gt;animated_floatactionbuttons plugin&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://pub.dev/packages/syntax_highlighter"&gt;syntax_highlighter plugin&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Liked the article ?
 Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !

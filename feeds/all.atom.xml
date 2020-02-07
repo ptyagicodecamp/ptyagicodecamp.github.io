@@ -1,5 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-02-05T00:00:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Flutter Live Booklet: Flutter component recipes</title><link href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html" rel="alternate"></link><published>2020-02-05T00:00:00-05:00</published><updated>2020-02-05T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-02-05:/flutter-live-booklet-flutter-component-recipes.html</id><summary type="html">&lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Flutter Live Booklet: Flutter component recipes&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-02-06T00:00:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Adding Syntax Highlighting in Flutter Cookbook App</title><link href="https://ptyagicodecamp.github.io/adding-syntax-highlighting-in-flutter-cookbook-app.html" rel="alternate"></link><published>2020-02-06T00:00:00-05:00</published><updated>2020-02-06T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-02-06:/adding-syntax-highlighting-in-flutter-cookbook-app.html</id><summary type="html">&lt;p&gt;This article describes how I used &lt;code&gt;syntax_highlighter&lt;/code&gt; Flutter plugin to show underlying code for Flutter Cookbook's code recipes.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Syntax highlighting" src="https://ptyagicodecamp.github.io/syntax.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Displaying code snippets for Flutter Cookbook code recipes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;a href="https://pub.dev/packages/syntax_highlighter"&gt;&lt;code&gt;syntax_highlighter&lt;/code&gt; plugin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/4WoS_WQKKV0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h3&gt;Lets's go!&lt;/h3&gt;
+&lt;h3&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; dependency&lt;/h3&gt;
+&lt;p&gt;Add &lt;code&gt;syntax_highlighter&lt;/code&gt; plugin dependency as below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;flutter&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;sdk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;flutter&lt;/span&gt;
+
+  &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Highlighting&lt;/span&gt; &lt;span class="n"&gt;syntax&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;snippets&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;recipes&lt;/span&gt;
+  &lt;span class="n"&gt;syntax_highlighter&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+
+  &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;To&lt;/span&gt; &lt;span class="n"&gt;provide&lt;/span&gt; &lt;span class="n"&gt;Floating&lt;/span&gt; &lt;span class="n"&gt;Action&lt;/span&gt; &lt;span class="n"&gt;widget&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;zoom&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;snippet&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;
+  &lt;span class="n"&gt;animated_floatactionbuttons&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;syntax_highlighter&lt;/code&gt; plugin: This plugin is used to highlight syntax in code snippets for code recipes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;animated_floatactionbuttons&lt;/code&gt; plugin: This plugin is used to provide Floating Action widget to zoom in and out code snippet text.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;CodeFileWidget: A &lt;code&gt;StatefulWidget&lt;/code&gt; to display Code snippet&lt;/h3&gt;
+&lt;p&gt;Class &lt;code&gt;CodeFileWidget&lt;/code&gt; is a &lt;code&gt;StatefulWidget&lt;/code&gt;. It's responsible to display underlying code for a Flutter code recipe.&lt;/p&gt;
+&lt;p&gt;This class takes four parameters to populate appropriate code snippet in &lt;code&gt;CodeFileWidget&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;recipeName&lt;/code&gt;: Code recipe's name to display in the appBar at the top.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pageName&lt;/code&gt;: This is used to routing purposes. In this particular app, this is a required parameter to navigate the recipe's code and its preview and vice versa.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;codeFilePath&lt;/code&gt;: This is the location of code file in the code. For example: &lt;code&gt;lib/pdf/&lt;/code&gt;. Don't forget to add this path in &lt;code&gt;assets&lt;/code&gt; section of &lt;code&gt;pubspec.yaml&lt;/code&gt; file like below:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;assets:
+  - lib/pdf/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;codeGithubPath&lt;/code&gt;: This is the external &lt;code&gt;https://&lt;/code&gt; link to code's file in Github repo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;CodeFileWidget&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;recipeName&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;pageName&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;codeFilePath&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;codeGithubPath&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="nx"&gt;CodeFileWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;recipeName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pageName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;codeFilePath&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;codeGithubPath&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;CodeFileWidgetState&lt;/span&gt; &lt;span class="nx"&gt;createState() {&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;CodeFileState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;CodeFileWidgetState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;CodeFileWidget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;double&lt;/span&gt; &lt;span class="nx"&gt;scaleFactorText&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;...&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;codepreviewActions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;codeContent&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;...&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;highlightCodeSyntax&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;codeContent&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;...&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next, we'll go over the each of the three methods of &lt;code&gt;CodeFileWidgetState&lt;/code&gt;. Please note that default scale factor value for text is set to 1: &lt;code&gt;double scaleFactorText = 1.0;&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Building screen&lt;/h3&gt;
+&lt;p&gt;First, we'll build the main interface to display code snippet.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AppBar:&lt;/strong&gt; The App Bar has an action to open the external link to Github repository file. Title displays the recipe name.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;FutureBuilder&lt;/code&gt;:&lt;/strong&gt; &lt;code&gt;FutureBuilder&lt;/code&gt; loads the file contents of the passed &lt;code&gt;codeFilePath&lt;/code&gt; file. It shows the &lt;code&gt;CircularProgressIndicator&lt;/code&gt; widget while file contents are loading. Once the data is available, &lt;code&gt;highlightCodeSyntax(...)&lt;/code&gt; method takes the file contents and highlights syntax.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;AnimatedFloatingActionButton&lt;/code&gt; :&lt;/strong&gt; &lt;code&gt;AnimatedFloatingActionButton&lt;/code&gt; is used to show actions to zoom_in and zoom_out code, and to navigate to the demo view.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: () =&amp;gt; Navigator.pop(context),
+      ),
+      title: Text(widget.recipeName),
+      actions: &lt;span class="nt"&gt;&amp;lt;Widget&amp;gt;&lt;/span&gt;[
+        IconButton(
+          icon: Icon(Icons.open_in_new),
+          onPressed: () =&amp;gt; UrlUtils.open(this.widget.codeGithubPath),
+        )
+      ],
+    ),
+    body: FutureBuilder(
+      future: rootBundle.loadString(widget.codeFilePath) ??
+          &amp;#39;Error loading code file &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;widget&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;codeFilePath&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;#39;,
+      builder: (BuildContext context, AsyncSnapshot&lt;span class="nt"&gt;&amp;lt;String&amp;gt;&lt;/span&gt; snapshot) {
+        if (snapshot.hasData) {
+          return Scaffold(
+            body: Padding(
+              padding: EdgeInsets.all(4.0),
+              child: highlightCodeSyntax(snapshot.data, context),
+            ),
+            floatingActionButton: AnimatedFloatingActionButton(
+              fabButtons: codepreviewActions(),
+              colorStartAnimation: Colors.blue,
+              colorEndAnimation: Colors.cyan,
+              animatedIconData: AnimatedIcons.menu_close,
+            ),
+          );
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
+    ),
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Adding actions&lt;/h3&gt;
+&lt;p&gt;Now, add actions like zoom_in, zoom_out, and navigating to code recipe demonstration.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Zooming Out:&lt;/strong&gt;  &lt;code&gt;scaleFactorText&lt;/code&gt;'s value is decreased by &lt;code&gt;0.1&lt;/code&gt; every time 'Zoom out' widget is tapped. That means text is made smaller.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Zooming In:&lt;/strong&gt;  &lt;code&gt;scaleFactorText&lt;/code&gt;'s value is increased by &lt;code&gt;0.1&lt;/code&gt; every time 'Zoom out' widget is tapped. That means text is made bigger. You can see more text at a time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Navigating to Code demo:&lt;/strong&gt; Tapping on this action opens the code recipe demonstration screen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Widget&amp;gt; codepreviewActions() {
+  return &amp;lt;Widget&amp;gt;[
+  //making text smaller
+    FloatingActionButton(
+      heroTag: &amp;quot;zoom_out&amp;quot;,
+      child: Icon(Icons.zoom_out),
+      tooltip: &amp;#39;Zoom out&amp;#39;,
+      onPressed: () =&amp;gt; setState(() {
+        this.scaleFactorText = max(0.8, this.scaleFactorText - 0.1);
+      }),
+    ),
+    //making text bigger
+    FloatingActionButton(
+      heroTag: &amp;quot;zoom_in&amp;quot;,
+      child: Icon(Icons.zoom_in),
+      tooltip: &amp;#39;Zoom in&amp;#39;,
+      onPressed: () =&amp;gt; setState(() {
+        this.scaleFactorText += 0.1;
+      }),
+    ),
+    FloatingActionButton(
+      heroTag: &amp;quot;open_page&amp;quot;,
+      child: Icon(Icons.slideshow),
+      tooltip: &amp;#39;See Demo&amp;#39;,
+      onPressed: () =&amp;gt; Navigator.popAndPushNamed(
+        context,
+        widget.pageName,
+        arguments: ScreenArguments(widget.recipeName, widget.pageName,
+            widget.codeFilePath, widget.codeGithubPath),
+      ),
+    ),
+  ];
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Highlighting code syntax&lt;/h3&gt;
+&lt;p&gt;This is the main method which is responsible to highlight syntax for the code file. Plugin provides &lt;code&gt;SyntaxHighlighterStyle&lt;/code&gt; class to help provide the correct theme for the current platform's theme (light vs dark).&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Container&lt;/code&gt; widget is used to display the code snippet using &lt;code&gt;BoxConstraints.expand()&lt;/code&gt; constraints.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Scrollbar&lt;/code&gt; widget uses two nested &lt;code&gt;SingleChildScrollView&lt;/code&gt; widgets. First one provides the vertical scrolling by default. Second &lt;code&gt;SingleChildScrollView&lt;/code&gt; sets its &lt;code&gt;scrollDirection&lt;/code&gt; property to &lt;code&gt;Axis.horizontal&lt;/code&gt; to provide horizontal scrolling.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;RichText&lt;/code&gt; widget uses &lt;code&gt;textScaleFactor&lt;/code&gt; property to adapt the variable value for &lt;code&gt;scaleFactorText&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;TextSpan&lt;/code&gt; widget uses &lt;code&gt;monospace&lt;/code&gt; fontFamily to show code in a readable view.&lt;/p&gt;
+&lt;p&gt;Plugin's &lt;code&gt;DartSyntaxHighlighter&lt;/code&gt; class uses the chosen &lt;code&gt;SyntaxHighlighterStyle&lt;/code&gt; to render file content using proper syntax highlighting.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget highlightCodeSyntax(String codeContent, BuildContext context) {
+  final SyntaxHighlighterStyle style =
+      Theme.of(context).brightness == Brightness.dark
+          ? SyntaxHighlighterStyle.darkThemeStyle()
+          : SyntaxHighlighterStyle.lightThemeStyle();
+  return Container(
+    constraints: BoxConstraints.expand(),
+    child: Scrollbar(
+      child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: RichText(
+            textScaleFactor: this.scaleFactorText,
+            text: TextSpan(
+              style: TextStyle(fontFamily: &amp;#39;monospace&amp;#39;, fontSize: 12.0),
+              children: &amp;lt;TextSpan&amp;gt;[
+                DartSyntaxHighlighter(style).format(codeContent)
+              ],
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Source code repo&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Recipe source code for &lt;code&gt;CodeFileWidget&lt;/code&gt; class is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/codefile.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Flutter Cookbook project's source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/"&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://pub.dev/packages/animated_floatactionbuttons"&gt;animated_floatactionbuttons plugin&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://pub.dev/packages/syntax_highlighter"&gt;syntax_highlighter plugin&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="SyntaxHighlighting"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Flutter Live Booklet: Flutter component recipes</title><link href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html" rel="alternate"></link><published>2020-02-05T00:00:00-05:00</published><updated>2020-02-05T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-02-05:/flutter-live-booklet-flutter-component-recipes.html</id><summary type="html">&lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Flutter Live Booklet: Flutter component recipes&lt;/h2&gt;
 &lt;p&gt;This article contains pointers to code samples for flutter components / widgets.&lt;/p&gt;
 &lt;h2&gt;Loading PDF file from Firebase Storage in Flutter App (Android, iOS &amp;amp; Web)&lt;/h2&gt;
 &lt;p&gt;Code recipe to demonstrate loading PDF file from Firebase Storage on multiple platforms (Android, iOS, and Web) using Flutter.&lt;/p&gt;
@@ -320,239 +559,7 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Follow me at twitter: @ptyagi13
-Medium: @ptyagicodecamp&lt;/p&gt;</content><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>How I added Syntax Highlighting in 'Flutter Cookbook' App</title><link href="https://ptyagicodecamp.github.io/how-i-added-syntax-highlighting-in-flutter-cookbook-app.html" rel="alternate"></link><published>2020-02-05T00:00:00-05:00</published><updated>2020-02-05T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-02-05:/how-i-added-syntax-highlighting-in-flutter-cookbook-app.html</id><summary type="html">&lt;p&gt;This article describes how I used &lt;code&gt;syntax_highlighter&lt;/code&gt; Flutter plugin to show underlying code for Flutter Cookbook's code recipes.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Syntax highlighting" src="https://ptyagicodecamp.github.io/syntax.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Displaying code snippets for Flutter Cookbook code recipes.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; &lt;a href="https://pub.dev/packages/syntax_highlighter"&gt;&lt;code&gt;syntax_highlighter&lt;/code&gt; plugin&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/4WoS_WQKKV0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
-&lt;h3&gt;Lets's go!&lt;/h3&gt;
-&lt;h3&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; dependency&lt;/h3&gt;
-&lt;p&gt;Add &lt;code&gt;syntax_highlighter&lt;/code&gt; plugin dependency as below:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="n"&gt;flutter&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;sdk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;flutter&lt;/span&gt;
-
-  &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Highlighting&lt;/span&gt; &lt;span class="n"&gt;syntax&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;snippets&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;recipes&lt;/span&gt;
-  &lt;span class="n"&gt;syntax_highlighter&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
-
-  &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;To&lt;/span&gt; &lt;span class="n"&gt;provide&lt;/span&gt; &lt;span class="n"&gt;Floating&lt;/span&gt; &lt;span class="n"&gt;Action&lt;/span&gt; &lt;span class="n"&gt;widget&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;zoom&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;snippet&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;
-  &lt;span class="n"&gt;animated_floatactionbuttons&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;  
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;syntax_highlighter&lt;/code&gt; plugin: This plugin is used to highlight syntax in code snippets for code recipes.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;animated_floatactionbuttons&lt;/code&gt; plugin: This plugin is used to provide Floating Action widget to zoom in and out code snippet text.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;CodeFileWidget: A &lt;code&gt;StatefulWidget&lt;/code&gt; to display Code snippet&lt;/h3&gt;
-&lt;p&gt;Class &lt;code&gt;CodeFileWidget&lt;/code&gt; is a &lt;code&gt;StatefulWidget&lt;/code&gt;. It's responsible to display underlying code for a Flutter code recipe.&lt;/p&gt;
-&lt;p&gt;This class takes four parameters to populate appropriate code snippet in &lt;code&gt;CodeFileWidget&lt;/code&gt;.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;recipeName&lt;/code&gt;: Code recipe's name to display in the appBar at the top.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pageName&lt;/code&gt;: This is used to routing purposes. In this particular app, this is a required parameter to navigate the recipe's code and its preview and vice versa.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;codeFilePath&lt;/code&gt;: This is the location of code file in the code. For example: &lt;code&gt;lib/pdf/&lt;/code&gt;. Don't forget to add this path in &lt;code&gt;assets&lt;/code&gt; section of &lt;code&gt;pubspec.yaml&lt;/code&gt; file like below:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;assets:
-  - lib/pdf/
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;codeGithubPath&lt;/code&gt;: This is the external &lt;code&gt;https://&lt;/code&gt; link to code's file in Github repo.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;CodeFileWidget&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;recipeName&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;pageName&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;codeFilePath&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;codeGithubPath&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="nx"&gt;CodeFileWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;recipeName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pageName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;codeFilePath&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;codeGithubPath&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
-
-  &lt;span class="kd"&gt;@override&lt;/span&gt;
-  &lt;span class="nx"&gt;CodeFileWidgetState&lt;/span&gt; &lt;span class="nx"&gt;createState() {&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;CodeFileState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-
-&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;CodeFileWidgetState&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;CodeFileWidget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kr"&gt;double&lt;/span&gt; &lt;span class="nx"&gt;scaleFactorText&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="kd"&gt;@override&lt;/span&gt;
-  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="p"&gt;...&lt;/span&gt;
-    &lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-
-  &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;codepreviewActions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;codeContent&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="p"&gt;...&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-
-  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;highlightCodeSyntax&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;codeContent&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="p"&gt;...&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Next, we'll go over the each of the three methods of &lt;code&gt;CodeFileWidgetState&lt;/code&gt;. Please note that default scale factor value for text is set to 1: &lt;code&gt;double scaleFactorText = 1.0;&lt;/code&gt;&lt;/p&gt;
-&lt;h3&gt;Building screen&lt;/h3&gt;
-&lt;p&gt;First, we'll build the main interface to display code snippet.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;AppBar:&lt;/strong&gt; The App Bar has an action to open the external link to Github repository file. Title displays the recipe name.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;FutureBuilder&lt;/code&gt;:&lt;/strong&gt; &lt;code&gt;FutureBuilder&lt;/code&gt; loads the file contents of the passed &lt;code&gt;codeFilePath&lt;/code&gt; file. It shows the &lt;code&gt;CircularProgressIndicator&lt;/code&gt; widget while file contents are loading. Once the data is available, &lt;code&gt;highlightCodeSyntax(...)&lt;/code&gt; method takes the file contents and highlights syntax.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;AnimatedFloatingActionButton&lt;/code&gt; :&lt;/strong&gt; &lt;code&gt;AnimatedFloatingActionButton&lt;/code&gt; is used to show actions to zoom_in and zoom_out code, and to navigate to the demo view.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back),
-        onPressed: () =&amp;gt; Navigator.pop(context),
-      ),
-      title: Text(widget.recipeName),
-      actions: &lt;span class="nt"&gt;&amp;lt;Widget&amp;gt;&lt;/span&gt;[
-        IconButton(
-          icon: Icon(Icons.open_in_new),
-          onPressed: () =&amp;gt; UrlUtils.open(this.widget.codeGithubPath),
-        )
-      ],
-    ),
-    body: FutureBuilder(
-      future: rootBundle.loadString(widget.codeFilePath) ??
-          &amp;#39;Error loading code file &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;widget&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;codeFilePath&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;#39;,
-      builder: (BuildContext context, AsyncSnapshot&lt;span class="nt"&gt;&amp;lt;String&amp;gt;&lt;/span&gt; snapshot) {
-        if (snapshot.hasData) {
-          return Scaffold(
-            body: Padding(
-              padding: EdgeInsets.all(4.0),
-              child: highlightCodeSyntax(snapshot.data, context),
-            ),
-            floatingActionButton: AnimatedFloatingActionButton(
-              fabButtons: codepreviewActions(),
-              colorStartAnimation: Colors.blue,
-              colorEndAnimation: Colors.cyan,
-              animatedIconData: AnimatedIcons.menu_close,
-            ),
-          );
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
-      },
-    ),
-  );
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Adding actions&lt;/h3&gt;
-&lt;p&gt;Now, add actions like zoom_in, zoom_out, and navigating to code recipe demonstration.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Zooming Out:&lt;/strong&gt;  &lt;code&gt;scaleFactorText&lt;/code&gt;'s value is decreased by &lt;code&gt;0.1&lt;/code&gt; every time 'Zoom out' widget is tapped. That means text is made smaller.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Zooming In:&lt;/strong&gt;  &lt;code&gt;scaleFactorText&lt;/code&gt;'s value is increased by &lt;code&gt;0.1&lt;/code&gt; every time 'Zoom out' widget is tapped. That means text is made bigger. You can see more text at a time.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Navigating to Code demo:&lt;/strong&gt; Tapping on this action opens the code recipe demonstration screen.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Widget&amp;gt; codepreviewActions() {
-  return &amp;lt;Widget&amp;gt;[
-  //making text smaller
-    FloatingActionButton(
-      heroTag: &amp;quot;zoom_out&amp;quot;,
-      child: Icon(Icons.zoom_out),
-      tooltip: &amp;#39;Zoom out&amp;#39;,
-      onPressed: () =&amp;gt; setState(() {
-        this.scaleFactorText = max(0.8, this.scaleFactorText - 0.1);
-      }),
-    ),
-    //making text bigger
-    FloatingActionButton(
-      heroTag: &amp;quot;zoom_in&amp;quot;,
-      child: Icon(Icons.zoom_in),
-      tooltip: &amp;#39;Zoom in&amp;#39;,
-      onPressed: () =&amp;gt; setState(() {
-        this.scaleFactorText += 0.1;
-      }),
-    ),
-    FloatingActionButton(
-      heroTag: &amp;quot;open_page&amp;quot;,
-      child: Icon(Icons.slideshow),
-      tooltip: &amp;#39;See Demo&amp;#39;,
-      onPressed: () =&amp;gt; Navigator.popAndPushNamed(
-        context,
-        widget.pageName,
-        arguments: ScreenArguments(widget.recipeName, widget.pageName,
-            widget.codeFilePath, widget.codeGithubPath),
-      ),
-    ),
-  ];
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Highlighting code syntax&lt;/h3&gt;
-&lt;p&gt;This is the main method which is responsible to highlight syntax for the code file. Plugin provides &lt;code&gt;SyntaxHighlighterStyle&lt;/code&gt; class to help provide the correct theme for the current platform's theme (light vs dark).&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Container&lt;/code&gt; widget is used to display the code snippet using &lt;code&gt;BoxConstraints.expand()&lt;/code&gt; constraints.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Scrollbar&lt;/code&gt; widget uses two nested &lt;code&gt;SingleChildScrollView&lt;/code&gt; widgets. First one provides the vertical scrolling by default. Second &lt;code&gt;SingleChildScrollView&lt;/code&gt; sets its &lt;code&gt;scrollDirection&lt;/code&gt; property to &lt;code&gt;Axis.horizontal&lt;/code&gt; to provide horizontal scrolling.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;RichText&lt;/code&gt; widget uses &lt;code&gt;textScaleFactor&lt;/code&gt; property to adapt the variable value for &lt;code&gt;scaleFactorText&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;TextSpan&lt;/code&gt; widget uses &lt;code&gt;monospace&lt;/code&gt; fontFamily to show code in a readable view.&lt;/p&gt;
-&lt;p&gt;Plugin's &lt;code&gt;DartSyntaxHighlighter&lt;/code&gt; class uses the chosen &lt;code&gt;SyntaxHighlighterStyle&lt;/code&gt; to render file content using proper syntax highlighting.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Widget highlightCodeSyntax(String codeContent, BuildContext context) {
-  final SyntaxHighlighterStyle style =
-      Theme.of(context).brightness == Brightness.dark
-          ? SyntaxHighlighterStyle.darkThemeStyle()
-          : SyntaxHighlighterStyle.lightThemeStyle();
-  return Container(
-    constraints: BoxConstraints.expand(),
-    child: Scrollbar(
-      child: SingleChildScrollView(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: RichText(
-            textScaleFactor: this.scaleFactorText,
-            text: TextSpan(
-              style: TextStyle(fontFamily: &amp;#39;monospace&amp;#39;, fontSize: 12.0),
-              children: &amp;lt;TextSpan&amp;gt;[
-                DartSyntaxHighlighter(style).format(codeContent)
-              ],
-            ),
-          ),
-        ),
-      ),
-    ),
-  );
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr&gt;
-&lt;h3&gt;Source code repo&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Recipe source code for &lt;code&gt;CodeFileWidget&lt;/code&gt; class is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/codefile.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;ul&gt;
-&lt;li&gt;Flutter Cookbook project's source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/"&gt;here&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;References:&lt;/h3&gt;
-&lt;p&gt;1.&lt;/p&gt;
-&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Liked the article ?
-Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
-&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="SyntaxHighlighting"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Loading PDF file from Firebase Storage in Flutter App (Android, iOS &amp; Web)</title><link href="https://ptyagicodecamp.github.io/loading-pdf-file-from-firebase-storage-in-flutter-app-android-ios-web.html" rel="alternate"></link><published>2020-02-03T00:00:00-05:00</published><updated>2020-02-03T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-02-03:/loading-pdf-file-from-firebase-storage-in-flutter-app-android-ios-web.html</id><summary type="html">&lt;p&gt;Code recipe to demonstrate loading PDF file from Firebase Storage on multiple platforms (Android, iOS, and Web) using Flutter.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Flutter-PDF-FirebaseStorage" src="https://ptyagicodecamp.github.io/firebase_pdf.png"&gt;&lt;/p&gt;
+Medium: @ptyagicodecamp&lt;/p&gt;</content><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Loading PDF file from Firebase Storage in Flutter App (Android, iOS &amp; Web)</title><link href="https://ptyagicodecamp.github.io/loading-pdf-file-from-firebase-storage-in-flutter-app-android-ios-web.html" rel="alternate"></link><published>2020-02-03T00:00:00-05:00</published><updated>2020-02-03T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-02-03:/loading-pdf-file-from-firebase-storage-in-flutter-app-android-ios-web.html</id><summary type="html">&lt;p&gt;Code recipe to demonstrate loading PDF file from Firebase Storage on multiple platforms (Android, iOS, and Web) using Flutter.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Flutter-PDF-FirebaseStorage" src="https://ptyagicodecamp.github.io/firebase_pdf.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Loading PDF file from Firebase Storage in Flutter Native &amp;amp; WebApp.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; In this code recipe, we'll do following:&lt;/p&gt;
