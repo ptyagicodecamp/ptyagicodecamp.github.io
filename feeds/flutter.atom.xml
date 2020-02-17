@@ -3644,6 +3644,8 @@ In this example, I've used very simple default text responses at DialogFlow for 
 &lt;h3&gt;Source code&lt;/h3&gt;
 &lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/flutter-facts-native"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;p&gt;[Update] Code has been tested on Flutter stable channel &lt;code&gt;1.12.13+hotfix.8&lt;/code&gt;, and Dart version &lt;code&gt;Dart 2.7.0&lt;/code&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3&gt;References/Credits:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://cloud.google.com/dialogflow/docs/fulfillment-overview"&gt;Webhooks fulfillment&lt;/a&gt;&lt;/li&gt;
