@@ -39,13 +39,13 @@
 
 
 &lt;h4&gt;Error Handling (try/catch block)&lt;/h4&gt;
-&lt;p&gt;When an exception is thrown in try block, catch block executes it's code. Error handling for asynchronous and synchronous code is handled similar way.
+&lt;p&gt;When an exception is thrown in the &lt;code&gt;try&lt;/code&gt; block, the &lt;code&gt;catch&lt;/code&gt; block executes its code. Error handling for asynchronous and synchronous code is handled similar way.
 Let's add the try/catch block in previous code, and see how it'll look like now. I'm throwing an &lt;code&gt;Exception&lt;/code&gt; on purpose in &lt;code&gt;try&lt;/code&gt; block to demonstrate the point here.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Asynchronous&lt;/span&gt; &lt;span class="n"&gt;funtion&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;makes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;expensive&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Asynchronous&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;makes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;expensive&lt;/span&gt;
 &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt;
 &lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;void&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -232,7 +232,8 @@ Example below transforms our earlier example code of &lt;code&gt;await&lt;/code&
 
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures Code Lab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/guides/libraries/library-tour#future"&gt;Dart Future&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/streams"&gt;Dart Streams&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy cooking with Dart and Flutter :)&lt;/p&gt;

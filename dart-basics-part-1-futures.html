@@ -183,13 +183,13 @@
 
 
 <h4>Error Handling (try/catch block)</h4>
-<p>When an exception is thrown in try block, catch block executes it's code. Error handling for asynchronous and synchronous code is handled similar way.
+<p>When an exception is thrown in the <code>try</code> block, the <code>catch</code> block executes its code. Error handling for asynchronous and synchronous code is handled similar way.
 Let's add the try/catch block in previous code, and see how it'll look like now. I'm throwing an <code>Exception</code> on purpose in <code>try</code> block to demonstrate the point here.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
 
-<span class="o">//</span><span class="n">Asynchronous</span> <span class="n">funtion</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span>
+<span class="o">//</span><span class="n">Asynchronous</span> <span class="n">function</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span>
 <span class="o">//</span><span class="n">data</span> <span class="n">call</span>
 <span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCall</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
@@ -376,7 +376,8 @@ Example below transforms our earlier example code of <code>await</code> and <cod
 
 <h3>References:</h3>
 <ol>
-<li><a href="https://dart.dev/tutorials/language/futures">Dart Futures</a></li>
+<li><a href="https://dart.dev/tutorials/language/futures">Dart Futures Code Lab</a></li>
+<li><a href="https://dart.dev/guides/libraries/library-tour#future">Dart Future</a></li>
 <li><a href="https://dart.dev/tutorials/language/streams">Dart Streams</a></li>
 </ol>
 <p>Happy cooking with Dart and Flutter :)</p>
