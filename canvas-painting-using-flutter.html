@@ -332,98 +332,83 @@ When two consecutive points are available, a line is detected otherwise a point 
 <p>A pointer that was previously in contact with the screen with a primary button and moving is no longer in contact with the screen and was moving at a specific velocity when it stopped contacting the screen.</p>
 </blockquote>
 <p>This point describes the end of the screen contact with finger. So <code>null</code> is added to <code>points</code> list because there's no <code>TouchPoints</code> to be recorded.</p>
-<p>```
- onPanEnd: (details) {
+<div class="highlight"><pre><span></span> onPanEnd: (details) {
   setState(() {
     points.add(null);
   });
-},</p>
-<div class="highlight"><pre><span></span>---
+},
+</pre></div>
 
-## Action Items ##
 
-There are following 7 action items:
+<hr>
+<h2>Action Items</h2>
+<p>There are following 7 action items:
  - Brush Stroke Picker
  - Opacity Picker
  - Resetting Screen
  - Red Color Picker
  - Green Color Picker
  - Pink Color Picker
- - Blue Color Picker
+ - Blue Color Picker</p>
+<h3>Add FAB menu</h3>
+<p>The FAB menu is implemented using <code>AnimatedFloatingActionButton</code> widget. This widget provides nice and smooth animation for menu open and close actions. It's assigned to <code>Scaffold</code> widget using <code>floatingActionButton</code> property.</p>
+<h3><code>pubspec.yaml</code> Configuration</h3>
+<p>The <code>AnimatedFloatingActionButton</code> widget is provided by a Flutter plugin. Add plugin <code>animated_floatactionbuttons: ^0.1.0</code> to <code>pubspec.yaml</code></p>
+<p><strong>Note:</strong> Don't forget to fetch the flutter packages after adding dependency.</p>
+<h3>Animation Colors</h3>
+<p>When FAB menu is clicked, it shows swift animation. We provide colors for starting and ending animation.</p>
+<p>The <code>Colors.blue</code> is used as starting animation color. This can be assigned using <code>colorStartAnimation</code> property. The property <code>colorEndAnimation</code> is used to assign ending animation color, <code>Colors.cyan</code>.</p>
+<p>When the menu opens, it changes it's icon to close icons using <code>animatedIconData</code> property.</p>
+<p>Checkout the code below:</p>
+<div class="highlight"><pre><span></span><span class="c1">//Optional app&#39;s entry point</span>
+<span class="k">void</span> <span class="nx">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">runApp</span><span class="p">(</span><span class="nx">CanvasPainting</span><span class="p">());</span>
 
-### Add FAB menu
+<span class="c1">//StatefulWidget</span>
+<span class="kr">class</span> <span class="nx">CanvasPainting</span> <span class="kr">extends</span> <span class="nx">StatefulWidget</span> <span class="p">{</span>
+  <span class="kd">@override</span>
+  <span class="nx">_CanvasPaintingState</span> <span class="nx">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">_CanvasPaintingState</span><span class="p">();</span>
+<span class="p">}</span>
 
-The FAB menu is implemented using `AnimatedFloatingActionButton` widget. This widget provides nice and smooth animation for menu open and close actions. It&#39;s assigned to `Scaffold` widget using `floatingActionButton` property.
+<span class="kr">class</span> <span class="nx">_CanvasPaintingState</span> <span class="kr">extends</span> <span class="nx">State</span><span class="o">&lt;</span><span class="nx">CanvasPainting</span><span class="o">&gt;</span> <span class="p">{</span>
+ <span class="p">...</span>
+  <span class="kd">@override</span>
+  <span class="nx">Widget</span> <span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">MaterialApp</span><span class="p">(</span>
+      <span class="nx">debugShowCheckedModeBanner</span>: <span class="kt">false</span><span class="p">,</span>
+      <span class="nx">home</span>: <span class="kt">Scaffold</span><span class="p">(</span>
+        <span class="nx">body</span><span class="o">:</span> <span class="c1">//Main canvas goes here,</span>
 
-### `pubspec.yaml` Configuration
+        <span class="c1">//FAB to implement expandable menu</span>
+        <span class="c1">//needs plugin: `animated_floatactionbuttons`</span>
+        <span class="nx">floatingActionButton</span>: <span class="kt">AnimatedFloatingActionButton</span><span class="p">(</span>
+          <span class="c1">//Creating menu items</span>
+          <span class="nx">fabButtons</span>: <span class="kt">fabOption</span><span class="p">(),</span>
 
-The `AnimatedFloatingActionButton` widget is provided by a Flutter plugin. Add plugin `animated_floatactionbuttons: ^0.1.0` to `pubspec.yaml`
+          <span class="c1">//Color shown when animation starts</span>
+          <span class="nx">colorStartAnimation</span>: <span class="kt">Colors.blue</span><span class="p">,</span>
 
-**Note:** Don&#39;t forget to fetch the flutter packages after adding dependency.
+          <span class="c1">//Color shown when animation ends</span>
+          <span class="nx">colorEndAnimation</span>: <span class="kt">Colors.cyan</span><span class="p">,</span>
 
-
-### Animation Colors
-
-When FAB menu is clicked, it shows swift animation. We provide colors for starting and ending animation.
-
-The `Colors.blue` is used as starting animation color. This can be assigned using `colorStartAnimation` property. The property `colorEndAnimation` is used to assign ending animation color, `Colors.cyan`.
-
-When the menu opens, it changes it&#39;s icon to close icons using `animatedIconData` property.
-
-Checkout the code below:
+          <span class="c1">//Icon for FAB</span>
+          <span class="nx">animatedIconData</span>: <span class="kt">AnimatedIcons.menu_close</span><span class="p">,</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+ <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 
 
-<p>//Optional app's entry point
-void main() =&gt; runApp(CanvasPainting());</p>
-<p>//StatefulWidget
-class CanvasPainting extends StatefulWidget {
-  @override
-  _CanvasPaintingState createState() =&gt; _CanvasPaintingState();
-}</p>
-<p>class _CanvasPaintingState extends State<CanvasPainting> {
- ...
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: //Main canvas goes here,</p>
-<div class="highlight"><pre><span></span>    //FAB to implement expandable menu
-    //needs plugin: `animated_floatactionbuttons`
-    floatingActionButton: AnimatedFloatingActionButton(
-      //Creating menu items
-      fabButtons: fabOption(),
-
-      //Color shown when animation starts
-      colorStartAnimation: Colors.blue,
-
-      //Color shown when animation ends
-      colorEndAnimation: Colors.cyan,
-
-      //Icon for FAB
-      animatedIconData: AnimatedIcons.menu_close,
-    ),
-  ),
-);
-</pre></div>
-
-
-<p>}
- ...
-}</p>
-<div class="highlight"><pre><span></span>### The `fabOption()` method
-
-The method `fabOption()` returns the list of all menu items in the FAB menu. Assign this method to `AnimatedFloatingActionButton` widget using `fabButtons` property.
-</pre></div>
-
-
-<p>List<Widget> fabOption() {
-  return <Widget>[
+<h3>The <code>fabOption()</code> method</h3>
+<p>The method <code>fabOption()</code> returns the list of all menu items in the FAB menu. Assign this method to <code>AnimatedFloatingActionButton</code> widget using <code>fabButtons</code> property.</p>
+<div class="highlight"><pre><span></span>List&lt;Widget&gt; fabOption() {
+  return &lt;Widget&gt;[
     FloatingActionButton(
-      heroTag: "paint_stroke",
+      heroTag: &quot;paint_stroke&quot;,
       child: Icon(Icons.brush),
-      tooltip: 'Stroke',
+      tooltip: &#39;Stroke&#39;,
       onPressed: () {
         //min: 0, max: 50
         setState(() {
@@ -432,9 +417,9 @@ The method `fabOption()` returns the list of all menu items in the FAB menu. Ass
       },
     ),
     FloatingActionButton(
-      heroTag: "paint_opacity",
+      heroTag: &quot;paint_opacity&quot;,
       child: Icon(Icons.opacity),
-      tooltip: 'Opacity',
+      tooltip: &#39;Opacity&#39;,
       onPressed: () {
         //min:0, max:1
         setState(() {
@@ -443,9 +428,9 @@ The method `fabOption()` returns the list of all menu items in the FAB menu. Ass
       },
     ),
     FloatingActionButton(
-        heroTag: "erase",
+        heroTag: &quot;erase&quot;,
         child: Icon(Icons.clear),
-        tooltip: "Erase",
+        tooltip: &quot;Erase&quot;,
         onPressed: () {
           setState(() {
             points.clear();
@@ -453,9 +438,9 @@ The method `fabOption()` returns the list of all menu items in the FAB menu. Ass
         }),
     FloatingActionButton(
       backgroundColor: Colors.white,
-      heroTag: "color_red",
+      heroTag: &quot;color_red&quot;,
       child: colorMenuItem(Colors.red),
-      tooltip: 'Color',
+      tooltip: &#39;Color&#39;,
       onPressed: () {
         setState(() {
           selectedColor = Colors.red;
@@ -464,9 +449,9 @@ The method `fabOption()` returns the list of all menu items in the FAB menu. Ass
     ),
     FloatingActionButton(
       backgroundColor: Colors.white,
-      heroTag: "color_green",
+      heroTag: &quot;color_green&quot;,
       child: colorMenuItem(Colors.green),
-      tooltip: 'Color',
+      tooltip: &#39;Color&#39;,
       onPressed: () {
         setState(() {
           selectedColor = Colors.green;
@@ -475,9 +460,9 @@ The method `fabOption()` returns the list of all menu items in the FAB menu. Ass
     ),
     FloatingActionButton(
       backgroundColor: Colors.white,
-      heroTag: "color_pink",
+      heroTag: &quot;color_pink&quot;,
       child: colorMenuItem(Colors.pink),
-      tooltip: 'Color',
+      tooltip: &#39;Color&#39;,
       onPressed: () {
         setState(() {
           selectedColor = Colors.pink;
@@ -486,9 +471,9 @@ The method `fabOption()` returns the list of all menu items in the FAB menu. Ass
     ),
     FloatingActionButton(
       backgroundColor: Colors.white,
-      heroTag: "color_blue",
+      heroTag: &quot;color_blue&quot;,
       child: colorMenuItem(Colors.blue),
-      tooltip: 'Color',
+      tooltip: &#39;Color&#39;,
       onPressed: () {
         setState(() {
           selectedColor = Colors.blue;
@@ -496,27 +481,24 @@ The method `fabOption()` returns the list of all menu items in the FAB menu. Ass
       },
     ),
   ];
-}</p>
-<div class="highlight"><pre><span></span>### Brush Stroke Picker
-
-![Canvas-Painting]({attach}../../images/flutter/paint_canvas_4.jpg)
-![Canvas-Painting]({attach}../../images/flutter/paint_canvas_6.jpg)
-
-The `_pickStroke()` method implements selection of the stroke.
-
-We&#39;re providing four different width of strokes. All options are displayed in the
-`AlertDialog` widget. Selecting one option closes the dialog.
+}
 </pre></div>
 
 
-<p>Future<void> _pickStroke() async {
-  return showDialog<void>(
+<h3>Brush Stroke Picker</h3>
+<p><img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_4.jpg">
+<img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_6.jpg"></p>
+<p>The <code>_pickStroke()</code> method implements selection of the stroke.</p>
+<p>We're providing four different width of strokes. All options are displayed in the
+<code>AlertDialog</code> widget. Selecting one option closes the dialog.</p>
+<div class="highlight"><pre><span></span>Future&lt;void&gt; _pickStroke() async {
+  return showDialog&lt;void&gt;(
     context: context,
     barrierDismissible: true, // user must tap button!
     builder: (BuildContext context) {
       return ClipOval(
         child: AlertDialog(
-          actions: <Widget>[
+          actions: &lt;Widget&gt;[
             FlatButton(
               child: Icon(
                 Icons.clear,
@@ -561,28 +543,24 @@ We&#39;re providing four different width of strokes. All options are displayed i
       );
     },
   );
-}</p>
-<div class="highlight"><pre><span></span>### Opacity Picker
-
-
-![Canvas-Painting]({attach}../../images/flutter/paint_canvas_5.jpg)
-![Canvas-Painting]({attach}../../images/flutter/paint_canvas_7.jpg)
-
-The `_opacity()` method implements selection of opacity as show in the screenshot.
-
-We&#39;re providing three different values for opacity. The `opacity = 1.0` is the maximum opacity. All options are displayed in the
-`AlertDialog` widget. Selecting one option closes the dialog.
+}
 </pre></div>
 
 
-<p>Future<void> _opacity() async {
-  return showDialog<void>(
+<h3>Opacity Picker</h3>
+<p><img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_5.jpg">
+<img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_7.jpg"></p>
+<p>The <code>_opacity()</code> method implements selection of opacity as show in the screenshot.</p>
+<p>We're providing three different values for opacity. The <code>opacity = 1.0</code> is the maximum opacity. All options are displayed in the
+<code>AlertDialog</code> widget. Selecting one option closes the dialog.</p>
+<div class="highlight"><pre><span></span>Future&lt;void&gt; _opacity() async {
+  return showDialog&lt;void&gt;(
     context: context,
     barrierDismissible: true, // user must tap button!
     builder: (BuildContext context) {
       return ClipOval(
         child: AlertDialog(
-          actions: <Widget>[
+          actions: &lt;Widget&gt;[
             FlatButton(
               child: Icon(
                 Icons.opacity,
@@ -618,38 +596,38 @@ We&#39;re providing three different values for opacity. The `opacity = 1.0` is t
       );
     },
   );
-}</p>
-<div class="highlight"><pre><span></span>### Resetting Screen
-
-Resetting screen clears all the recorded points:
-</pre></div>
-
-
-<p>points.clear();</p>
-<div class="highlight"><pre><span></span>### Red, Green, Pink &amp; Blue Color Picker(s)
-
-The `colorMenuItem(Color color)` method provides the icon for the given color. Tapping on that icon makes the color selection. `ClipOval` widget is used to give smooth round shape to colored icon.
-</pre></div>
-
-
-<p>Widget colorMenuItem(Color color) {
-  return GestureDetector(
-    onTap: () {
-      setState(() {
-        selectedColor = color;
-      });
-    },
-    child: ClipOval(
-      child: Container(
-        padding: const EdgeInsets.only(bottom: 8.0),
-        height: 36,
-        width: 36,
-        color: color,
-      ),
-    ),
-  );
 }
-```</p>
+</pre></div>
+
+
+<h3>Resetting Screen</h3>
+<p>Resetting screen clears all the recorded points:</p>
+<div class="highlight"><pre><span></span>points.clear();
+</pre></div>
+
+
+<h3>Red, Green, Pink &amp; Blue Color Picker(s)</h3>
+<p>The <code>colorMenuItem(Color color)</code> method provides the icon for the given color. Tapping on that icon makes the color selection. <code>ClipOval</code> widget is used to give smooth round shape to colored icon.</p>
+<div class="highlight"><pre><span></span><span class="nt">Widget</span> <span class="nt">colorMenuItem</span><span class="o">(</span><span class="nt">Color</span> <span class="nt">color</span><span class="o">)</span> <span class="p">{</span>
+  <span class="err">return</span> <span class="err">GestureDetector(</span>
+    <span class="n">onTap</span><span class="p">:</span> <span class="p">()</span> <span class="err">{</span>
+      <span class="nf">setState</span><span class="p">(</span><span class="err">(</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">selectedColor</span> <span class="o">=</span> <span class="kc">color</span><span class="p">;</span>
+      <span class="p">}</span><span class="o">);</span>
+    <span class="err">}</span><span class="o">,</span>
+    <span class="nt">child</span><span class="o">:</span> <span class="nt">ClipOval</span><span class="o">(</span>
+      <span class="nt">child</span><span class="o">:</span> <span class="nt">Container</span><span class="o">(</span>
+        <span class="nt">padding</span><span class="o">:</span> <span class="nt">const</span> <span class="nt">EdgeInsets</span><span class="p">.</span><span class="nc">only</span><span class="o">(</span><span class="nt">bottom</span><span class="o">:</span> <span class="nt">8</span><span class="p">.</span><span class="nc">0</span><span class="o">),</span>
+        <span class="nt">height</span><span class="o">:</span> <span class="nt">36</span><span class="o">,</span>
+        <span class="nt">width</span><span class="o">:</span> <span class="nt">36</span><span class="o">,</span>
+        <span class="nt">color</span><span class="o">:</span> <span class="nt">color</span><span class="o">,</span>
+      <span class="o">),</span>
+    <span class="o">),</span>
+  <span class="o">);</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <h3>Source code repo</h3>
 <p>Recipe source code is available <a href="">TODO</a></p>
 <h3>References:</h3>
