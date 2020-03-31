@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-03-29T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Canvas Painting Using Flutter</title><link href="https://ptyagicodecamp.github.io/canvas-painting-using-flutter.html" rel="alternate"></link><published>2020-03-29T00:00:00-04:00</published><updated>2020-03-29T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-03-29:/canvas-painting-using-flutter.html</id><summary type="html">&lt;p&gt;This code recipe focuses on building a cross-platform finger painting app using Flutter.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; In this code recipe, you'll learn to build a Finger Painting Flutter App.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-03-31T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Building Cross-Platform Finger Painting App in Flutter</title><link href="https://ptyagicodecamp.github.io/building-cross-platform-finger-painting-app-in-flutter.html" rel="alternate"></link><published>2020-03-31T00:00:00-04:00</published><updated>2020-03-31T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-03-31:/building-cross-platform-finger-painting-app-in-flutter.html</id><summary type="html">&lt;p&gt;This code recipe focuses on building a cross-platform finger painting app using Flutter.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; In this code recipe, you'll use canvas painting to build a Finger Painting App in Flutter.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Widget(s):&lt;/strong&gt; &lt;a href="https://api.flutter.dev/flutter/widgets/GestureDetector-class.html"&gt;GestureDetector&lt;/a&gt;, &lt;a href="https://api.flutter.dev/flutter/widgets/CustomPaint-class.html"&gt;CustomPaint&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; We'll implement following items in this Finger Painting Flutter App :&lt;/p&gt;
 &lt;ul&gt;
@@ -13,11 +13,11 @@
 &lt;p&gt;&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_3.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Flutter Cookbook:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This code recipe is added to &lt;a href=""&gt;Flutter Cookbook&lt;/a&gt; as well:&lt;/p&gt;
+&lt;p&gt;This code recipe is added to &lt;a href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html"&gt;Flutter Cookbook&lt;/a&gt; as well:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_1.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/bgLiVIIu3bA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3&gt;Drawing / Painting Area&lt;/h3&gt;
 &lt;p&gt;Let's go ahead with building main area of the finger painting app. In this app, a picture of hut is displayed as background to color in. User can color this page while adding more details to the picture using tools provided by the app.&lt;/p&gt;
@@ -49,6 +49,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;strong&gt;Detecting gestures:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;We need a way to capture the user's tap. The &lt;a href="https://api.flutter.dev/flutter/widgets/GestureDetector-class.html"&gt;&lt;code&gt;GestureDetector&lt;/code&gt;&lt;/a&gt; widget is used to detect gestures. This widget is assigned to &lt;code&gt;Scaffold&lt;/code&gt; widget's &lt;code&gt;body&lt;/code&gt; property.&lt;/p&gt;
 &lt;p&gt;Since we want to paint on the given hut image. Feel free to use another image if you would like. However, don't forget to add this image to &lt;code&gt;assets/images&lt;/code&gt; folder. Put this image in the center of the screen using &lt;code&gt;Center&lt;/code&gt; widget. We want to draw on top of this image, so put this widget inside a &lt;code&gt;Stack&lt;/code&gt; widget. Add &lt;code&gt;CustomPaint&lt;/code&gt; as another children to this &lt;code&gt;Stack&lt;/code&gt; widget.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;CustomPaint&lt;/code&gt; widget takes two attributes. First, size of the canvas to be considered for drawing. Assign &lt;code&gt;Size.infinite&lt;/code&gt; to &lt;code&gt;size&lt;/code&gt; property because we want flexibility to be able draw anywhere on the screen.&lt;/p&gt;
@@ -86,8 +87,7 @@ body: GestureDetector(
 
 
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;MyPainter&lt;/code&gt; class:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;MyPainter&lt;/code&gt; class extends &lt;code&gt;CustomPainter&lt;/code&gt;. It tells system how and when the screen will be painted.
-When two consecutive points are available, a line is detected otherwise a point is drawn.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;MyPainter&lt;/code&gt; class extends &lt;code&gt;CustomPainter&lt;/code&gt;. It tells system how and when the screen will be painted. When two consecutive points are available, a line is detected otherwise a point is drawn.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;MyPainter&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;CustomPainter&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nx"&gt;MyPainter&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pointsList&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
 
@@ -128,10 +128,11 @@ When two consecutive points are available, a line is detected otherwise a point 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;The &lt;code&gt;onPanStart&lt;/code&gt; property:&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;This property records the initial touched points. It requires &lt;code&gt;paint&lt;/code&gt; property to provide information how touched points would be rendered on the screen. It extracts the position of touched points using &lt;a href="https://api.flutter.dev/flutter/rendering/RenderBox-class.html"&gt;&lt;code&gt;RenderBox&lt;/code&gt;&lt;/a&gt; widget. A &lt;code&gt;RenderBox&lt;/code&gt; is a render object in a 2D Cartesian coordinate system.&lt;/p&gt;
+&lt;p&gt;Here's description of this property from its class:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;A pointer has contacted the screen with a primary button and has begun to move.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;This property records the initial touched points. It requires &lt;code&gt;paint&lt;/code&gt; property to provide information how touched points would be rendered on the screen. It extracts the position of touched points using &lt;a href="https://api.flutter.dev/flutter/rendering/RenderBox-class.html"&gt;&lt;code&gt;RenderBox&lt;/code&gt;&lt;/a&gt; widget. A &lt;code&gt;RenderBox&lt;/code&gt; is a render object in a 2D Cartesian coordinate system.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt; &lt;/span&gt;&lt;span class="nx"&gt;onPanStart&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;details&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nx"&gt;setState&lt;/span&gt;&lt;span class="p"&gt;(()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nx"&gt;RenderBox&lt;/span&gt; &lt;span class="n"&gt;renderBox&lt;/span&gt;&lt;span class="o"&gt; =&lt;/span&gt; &lt;span class="nx"&gt;context.findRenderObject&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
@@ -158,10 +159,11 @@ When two consecutive points are available, a line is detected otherwise a point 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;The &lt;code&gt;onPanUpdate&lt;/code&gt; property:&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;This property is used to update the moving coordinates. For example, user is drawing a line without lifting off their finger.&lt;/p&gt;
+&lt;p&gt;Here's description of this property from its class:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;A pointer that is in contact with the screen with a primary button and moving has moved again.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;This property is used to update the moving coordinates. For example, user is drawing a line without lifting their finger.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;onPanUpdate: (details) {
    setState(() {
      RenderBox renderBox = context.findRenderObject();
@@ -177,10 +179,11 @@ When two consecutive points are available, a line is detected otherwise a point 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;The &lt;code&gt;onPanEnd&lt;/code&gt; property:&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;This point describes the end of the screen contact with finger. So &lt;code&gt;null&lt;/code&gt; is added to &lt;code&gt;points&lt;/code&gt; list because there's no &lt;code&gt;TouchPoints&lt;/code&gt; to be recorded.&lt;/p&gt;
+&lt;p&gt;Here's description of this property from its class:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;A pointer that was previously in contact with the screen with a primary button and moving is no longer in contact with the screen and was moving at a specific velocity when it stopped contacting the screen.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;This point describes the end of the screen contact with finger. So &lt;code&gt;null&lt;/code&gt; is added to &lt;code&gt;points&lt;/code&gt; list because there's no &lt;code&gt;TouchPoints&lt;/code&gt; to be recorded.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; onPanEnd: (details) {
   setState(() {
     points.add(null);
@@ -191,24 +194,46 @@ When two consecutive points are available, a line is detected otherwise a point 
 
 &lt;hr&gt;
 &lt;h2&gt;Action Items&lt;/h2&gt;
-&lt;p&gt;There are following 7 action items:
- - Brush Stroke Picker
- - Opacity Picker
- - Resetting Screen
- - Red Color Picker
- - Green Color Picker
- - Pink Color Picker
- - Blue Color Picker&lt;/p&gt;
+&lt;p&gt;There are following 7 action items that we want to add our toolkit.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Brush Stroke Picker&lt;/li&gt;
+&lt;li&gt;Opacity Picker&lt;/li&gt;
+&lt;li&gt;Resetting Screen&lt;/li&gt;
+&lt;li&gt;Red Color Picker&lt;/li&gt;
+&lt;li&gt;Green Color Picker&lt;/li&gt;
+&lt;li&gt;Pink Color Picker&lt;/li&gt;
+&lt;li&gt;Blue Color Picker&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3&gt;Add FAB menu&lt;/h3&gt;
 &lt;p&gt;The FAB menu is implemented using &lt;code&gt;AnimatedFloatingActionButton&lt;/code&gt; widget. This widget provides nice and smooth animation for menu open and close actions. It's assigned to &lt;code&gt;Scaffold&lt;/code&gt; widget using &lt;code&gt;floatingActionButton&lt;/code&gt; property.&lt;/p&gt;
-&lt;h3&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; Configuration&lt;/h3&gt;
+&lt;h4&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; Configuration&lt;/h4&gt;
 &lt;p&gt;The &lt;code&gt;AnimatedFloatingActionButton&lt;/code&gt; widget is provided by a Flutter plugin. Add plugin &lt;code&gt;animated_floatactionbuttons: ^0.1.0&lt;/code&gt; to &lt;code&gt;pubspec.yaml&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Don't forget to fetch the flutter packages after adding dependency.&lt;/p&gt;
-&lt;h3&gt;Animation Colors&lt;/h3&gt;
+&lt;h4&gt;Animating FAB&lt;/h4&gt;
 &lt;p&gt;When FAB menu is clicked, it shows swift animation. We provide colors for starting and ending animation.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;Colors.blue&lt;/code&gt; is used as starting animation color. This can be assigned using &lt;code&gt;colorStartAnimation&lt;/code&gt; property. The property &lt;code&gt;colorEndAnimation&lt;/code&gt; is used to assign ending animation color, &lt;code&gt;Colors.cyan&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;When the menu opens, it changes it's icon to close icons using &lt;code&gt;animatedIconData&lt;/code&gt; property.&lt;/p&gt;
-&lt;p&gt;Checkout the code below:&lt;/p&gt;
+&lt;p&gt;When FAB menu open and closes, its icon(s) is changed using &lt;code&gt;animatedIconData&lt;/code&gt; property.&lt;/p&gt;
+&lt;p&gt;This is how different colors can be assigned to &lt;code&gt;AnimatedFloatingActionButton&lt;/code&gt; widget:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;floatingActionButton&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AnimatedFloatingActionButton&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+  &lt;span class="c1"&gt;//Creating menu items&lt;/span&gt;
+  &lt;span class="n"&gt;fabButtons&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fabOption&lt;/span&gt;&lt;span class="o"&gt;(),&lt;/span&gt;
+
+  &lt;span class="c1"&gt;//Color shown when animation starts&lt;/span&gt;
+  &lt;span class="n"&gt;colorStartAnimation&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Colors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;blue&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+
+  &lt;span class="c1"&gt;//Color shown when animation ends&lt;/span&gt;
+  &lt;span class="n"&gt;colorEndAnimation&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Colors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;cyan&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+
+  &lt;span class="c1"&gt;//Icon for FAB. &amp;#39;X&amp;#39; icon is shown when menu is open.&lt;/span&gt;
+  &lt;span class="n"&gt;animatedIconData&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AnimatedIcons&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;menu_close&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+&lt;span class="o"&gt;),&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Adding the buttons to FAB&lt;/h4&gt;
+&lt;p&gt;The &lt;code&gt;fabButtons&lt;/code&gt; property takes the buttons to be added to the &lt;code&gt;AnimatedFloatingActionButton&lt;/code&gt; widget.
+We'll create &lt;code&gt;fabOption()&lt;/code&gt; to return list of widgets to be shown as menu items.&lt;/p&gt;
+&lt;p&gt;Checkout the full code below:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;//Optional app&amp;#39;s entry point&lt;/span&gt;
 &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;runApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;CanvasPainting&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
 
@@ -250,6 +275,8 @@ When two consecutive points are available, a line is detected otherwise a point 
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;Let's checkout the &lt;code&gt;fabOption()&lt;/code&gt; method next.&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3&gt;The &lt;code&gt;fabOption()&lt;/code&gt; method&lt;/h3&gt;
 &lt;p&gt;The method &lt;code&gt;fabOption()&lt;/code&gt; returns the list of all menu items in the FAB menu. Assign this method to &lt;code&gt;AnimatedFloatingActionButton&lt;/code&gt; widget using &lt;code&gt;fabButtons&lt;/code&gt; property.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Widget&amp;gt; fabOption() {
@@ -334,20 +361,103 @@ When two consecutive points are available, a line is detected otherwise a point 
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;hr&gt;
+&lt;h3&gt;Opacity Picker&lt;/h3&gt;
+&lt;p&gt;The &lt;a href="https://api.flutter.dev/flutter/widgets/Opacity-class.html"&gt;Opacity&lt;/a&gt; widget makes its child partially transparent. We want to support three values in our toolkit to pick from: 0.1, 0.5, and 1.0. The &lt;code&gt;0.1&lt;/code&gt; is most transparent while &lt;code&gt;1.0&lt;/code&gt; not at all. These options are shown in a alert dialog like below:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_4.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;This is how your stroke look for opacity value of &lt;code&gt;0.1&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_6.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Implementing &lt;code&gt;_opacity()&lt;/code&gt; method:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;_opacity()&lt;/code&gt; method implements selection of opacity as show in the screenshot.&lt;/p&gt;
+&lt;p&gt;We're providing three different values for opacity. The &lt;code&gt;opacity = 1.0&lt;/code&gt; is the maximum opacity. All options are displayed in &lt;code&gt;AlertDialog&lt;/code&gt; widget. Selecting one option closes the dialog.&lt;/p&gt;
+&lt;p&gt;We'll use &lt;a href="https://api.flutter.dev/flutter/widgets/ModalRoute/barrierDismissible.html"&gt;&lt;code&gt;barrierDismissible&lt;/code&gt;&lt;/a&gt; to enable user to tap anywhere on the screen to close this dialog box.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://api.flutter.dev/flutter/widgets/ClipOval-class.html"&gt;&lt;code&gt;ClipOval&lt;/code&gt;&lt;/a&gt; widget is used to create an oval shape clip of its child. You would notice slightly rounded corners for &lt;code&gt;AlertDialog&lt;/code&gt; child.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Future&amp;lt;void&amp;gt; _opacity() async {
+  //Shows AlertDialog
+  return showDialog&amp;lt;void&amp;gt;(
+    context: context,
+
+    //Dismiss alert dialog when set true
+    barrierDismissible: true,
+
+    builder: (BuildContext context) {
+
+      //Clips its child in a oval shape
+      return ClipOval(
+        child: AlertDialog(
+
+          //Creates three buttons to pick opacity value.
+          actions: &amp;lt;Widget&amp;gt;[
+            FlatButton(
+              child: Icon(
+                Icons.opacity,
+                size: 24,
+              ),
+              onPressed: () {
+                //most transparent
+                opacity = 0.1;
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Icon(
+                Icons.opacity,
+                size: 40,
+              ),
+              onPressed: () {
+                opacity = 0.5;
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Icon(
+                Icons.opacity,
+                size: 60,
+              ),
+              onPressed: () {
+                //not transparent at all.
+                opacity = 1.0;
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
 &lt;h3&gt;Brush Stroke Picker&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_4.jpg"&gt;
-&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_6.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://api.flutter.dev/flutter/dart-ui/Paint/strokeWidth.html"&gt;&lt;code&gt;strokeWidth&lt;/code&gt;&lt;/a&gt; property sets the width of the stroke. .&lt;/p&gt;
+&lt;p&gt;These options are shown in the alert dialog like below. The 'X' is for resetting the stroke to its default value. The other three values are &lt;code&gt;10.0&lt;/code&gt;(thicker than default), &lt;code&gt;30.0&lt;/code&gt;, and &lt;code&gt;50.0&lt;/code&gt; (thickest stroke).  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_5.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;The following screenshot shows all three options marked as 1, 2, and 3, where 1 is &lt;code&gt;10.0&lt;/code&gt;, 2 is &lt;code&gt;30.0&lt;/code&gt;, and 3 is &lt;code&gt;50.0&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_7.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Implementing &lt;code&gt;_pickStroke()&lt;/code&gt; method:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;_pickStroke()&lt;/code&gt; method implements selection of the stroke.&lt;/p&gt;
 &lt;p&gt;We're providing four different width of strokes. All options are displayed in the
 &lt;code&gt;AlertDialog&lt;/code&gt; widget. Selecting one option closes the dialog.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Future&amp;lt;void&amp;gt; _pickStroke() async {
+
+  //Shows AlertDialog
   return showDialog&amp;lt;void&amp;gt;(
     context: context,
+
+    //Dismiss alert dialog when set true
     barrierDismissible: true, // user must tap button!
     builder: (BuildContext context) {
+
+      //Clips its child in a oval shape
       return ClipOval(
         child: AlertDialog(
+
+          //Creates three buttons to pick stroke value.
           actions: &amp;lt;Widget&amp;gt;[
+
+            //Resetting to default stroke value
             FlatButton(
               child: Icon(
                 Icons.clear,
@@ -396,67 +506,16 @@ When two consecutive points are available, a line is detected otherwise a point 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Opacity Picker&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_5.jpg"&gt;
-&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_7.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;_opacity()&lt;/code&gt; method implements selection of opacity as show in the screenshot.&lt;/p&gt;
-&lt;p&gt;We're providing three different values for opacity. The &lt;code&gt;opacity = 1.0&lt;/code&gt; is the maximum opacity. All options are displayed in the
-&lt;code&gt;AlertDialog&lt;/code&gt; widget. Selecting one option closes the dialog.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Future&amp;lt;void&amp;gt; _opacity() async {
-  return showDialog&amp;lt;void&amp;gt;(
-    context: context,
-    barrierDismissible: true, // user must tap button!
-    builder: (BuildContext context) {
-      return ClipOval(
-        child: AlertDialog(
-          actions: &amp;lt;Widget&amp;gt;[
-            FlatButton(
-              child: Icon(
-                Icons.opacity,
-                size: 24,
-              ),
-              onPressed: () {
-                opacity = 0.1;
-                Navigator.of(context).pop();
-              },
-            ),
-            FlatButton(
-              child: Icon(
-                Icons.opacity,
-                size: 40,
-              ),
-              onPressed: () {
-                opacity = 0.5;
-                Navigator.of(context).pop();
-              },
-            ),
-            FlatButton(
-              child: Icon(
-                Icons.opacity,
-                size: 60,
-              ),
-              onPressed: () {
-                opacity = 1.0;
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;hr&gt;
 &lt;h3&gt;Resetting Screen&lt;/h3&gt;
 &lt;p&gt;Resetting screen clears all the recorded points:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;points.clear();
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;hr&gt;
 &lt;h3&gt;Red, Green, Pink &amp;amp; Blue Color Picker(s)&lt;/h3&gt;
-&lt;p&gt;The &lt;code&gt;colorMenuItem(Color color)&lt;/code&gt; method provides the icon for the given color. Tapping on that icon makes the color selection. &lt;code&gt;ClipOval&lt;/code&gt; widget is used to give smooth round shape to colored icon.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;colorMenuItem(Color color)&lt;/code&gt; method provides the icon(s) for the given color(s). Tapping on that icon makes the color selection. &lt;code&gt;ClipOval&lt;/code&gt; widget is used to give smooth round shape to colored icon.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;Widget&lt;/span&gt; &lt;span class="nt"&gt;colorMenuItem&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;Color&lt;/span&gt; &lt;span class="nt"&gt;color&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;GestureDetector(&lt;/span&gt;
     &lt;span class="n"&gt;onTap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
@@ -477,10 +536,23 @@ When two consecutive points are available, a line is detected otherwise a point 
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;The above &lt;code&gt;colorMenuItem(...)&lt;/code&gt; method is used to create oval menu items for all the four colors.&lt;/p&gt;
+&lt;p&gt;That's all for this article. Hope you've your own finger painting app on your finger tips :)&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3&gt;Source code repo&lt;/h3&gt;
-&lt;p&gt;Recipe source code is available &lt;a href=""&gt;TODO&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/canvas/painting.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Code recipe project's source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
-&lt;p&gt;1.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/widgets/GestureDetector-class.html"&gt;GestureDetector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.flutter.dev/flutter/widgets/CustomPaint-class.html"&gt;CustomPaint&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Liked the article ?
 Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
