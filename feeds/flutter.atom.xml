@@ -3,7 +3,7 @@
 &lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; In this code recipe, you'll use canvas painting to build a Finger Painting App in Flutter.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Widget(s):&lt;/strong&gt; &lt;a href="https://api.flutter.dev/flutter/widgets/GestureDetector-class.html"&gt;GestureDetector&lt;/a&gt;, &lt;a href="https://api.flutter.dev/flutter/widgets/CustomPaint-class.html"&gt;CustomPaint&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; We'll implement following items in this Finger Painting Flutter App :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; We'll implement the following items in this Finger Painting Flutter App :&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Drawing / Painting Area:&lt;/strong&gt; This is the main area of the screen where an image can be displayed to color or draw more details to it.&lt;/li&gt;
 &lt;/ul&gt;
@@ -18,7 +18,7 @@
 &lt;p&gt;&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_1.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/44o5EShxBoM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3&gt;Drawing / Painting Area&lt;/h3&gt;
 &lt;p&gt;Let's go ahead with building main area of the finger painting app. In this app, a picture of hut is displayed as background to color in. User can color this page while adding more details to the picture using tools provided by the app.&lt;/p&gt;
@@ -53,7 +53,7 @@
 
 &lt;p&gt;&lt;strong&gt;Detecting gestures:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;We need a way to capture the user's tap. The &lt;a href="https://api.flutter.dev/flutter/widgets/GestureDetector-class.html"&gt;&lt;code&gt;GestureDetector&lt;/code&gt;&lt;/a&gt; widget is used to detect gestures. This widget is assigned to &lt;code&gt;Scaffold&lt;/code&gt; widget's &lt;code&gt;body&lt;/code&gt; property.&lt;/p&gt;
-&lt;p&gt;Since we want to paint on the given hut image. Feel free to use another image if you would like. However, don't forget to add this image to &lt;code&gt;assets/images&lt;/code&gt; folder. Put this image in the center of the screen using &lt;code&gt;Center&lt;/code&gt; widget. We want to draw on top of this image, so put this widget inside a &lt;code&gt;Stack&lt;/code&gt; widget. Add &lt;code&gt;CustomPaint&lt;/code&gt; as another children to this &lt;code&gt;Stack&lt;/code&gt; widget.&lt;/p&gt;
+&lt;p&gt;Since we want to paint on the given hut image. Feel free to use another image if you would like. However, don't forget to add this image to &lt;code&gt;assets/images&lt;/code&gt; folder. Put this image in the center of the screen using &lt;code&gt;Center&lt;/code&gt; widget. We want to draw on top of this image, so put this widget inside a &lt;code&gt;Stack&lt;/code&gt; widget. Add &lt;code&gt;CustomPaint&lt;/code&gt; as another child to this &lt;code&gt;Stack&lt;/code&gt; widget.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;CustomPaint&lt;/code&gt; widget takes two attributes. First, size of the canvas to be considered for drawing. Assign &lt;code&gt;Size.infinite&lt;/code&gt; to &lt;code&gt;size&lt;/code&gt; property because we want flexibility to be able draw anywhere on the screen.&lt;/p&gt;
 &lt;p&gt;Second, assign &lt;code&gt;painter&lt;/code&gt; property to an instance of &lt;code&gt;CustomPainter&lt;/code&gt; widget. We'll create a class &lt;code&gt;MyPainter&lt;/code&gt; which extends &lt;code&gt;CustomPainter&lt;/code&gt;. &lt;code&gt;MyPainter&lt;/code&gt; class needs &lt;code&gt;pointsList&lt;/code&gt;. This is the list of coordinates where screen is being touched. This information is required to draw either a line or a point on the screen.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//List of points touched at screen
@@ -366,7 +366,7 @@ We'll create &lt;code&gt;fabOption()&lt;/code&gt; to return list of widgets to b
       },
     ),
 
-    //FAB for picking blue color 
+    //FAB for picking blue color
     FloatingActionButton(
       backgroundColor: Colors.white,
       heroTag: &amp;quot;color_blue&amp;quot;,

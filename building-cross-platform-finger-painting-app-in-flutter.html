@@ -154,7 +154,7 @@
 <p><strong>Target Audience:</strong> Beginner</p>
 <p><strong>Recipe:</strong> In this code recipe, you'll use canvas painting to build a Finger Painting App in Flutter.</p>
 <p><strong>Focus Widget(s):</strong> <a href="https://api.flutter.dev/flutter/widgets/GestureDetector-class.html">GestureDetector</a>, <a href="https://api.flutter.dev/flutter/widgets/CustomPaint-class.html">CustomPaint</a></p>
-<p><strong>Goal:</strong> We'll implement following items in this Finger Painting Flutter App :</p>
+<p><strong>Goal:</strong> We'll implement the following items in this Finger Painting Flutter App :</p>
 <ul>
 <li><strong>Drawing / Painting Area:</strong> This is the main area of the screen where an image can be displayed to color or draw more details to it.</li>
 </ul>
@@ -169,7 +169,7 @@
 <p><img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_1.jpg"></p>
 <hr>
 <p><strong>Checkout the companion video tutorial:</strong>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/44o5EShxBoM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <hr>
 <h3>Drawing / Painting Area</h3>
 <p>Let's go ahead with building main area of the finger painting app. In this app, a picture of hut is displayed as background to color in. User can color this page while adding more details to the picture using tools provided by the app.</p>
@@ -204,7 +204,7 @@
 
 <p><strong>Detecting gestures:</strong></p>
 <p>We need a way to capture the user's tap. The <a href="https://api.flutter.dev/flutter/widgets/GestureDetector-class.html"><code>GestureDetector</code></a> widget is used to detect gestures. This widget is assigned to <code>Scaffold</code> widget's <code>body</code> property.</p>
-<p>Since we want to paint on the given hut image. Feel free to use another image if you would like. However, don't forget to add this image to <code>assets/images</code> folder. Put this image in the center of the screen using <code>Center</code> widget. We want to draw on top of this image, so put this widget inside a <code>Stack</code> widget. Add <code>CustomPaint</code> as another children to this <code>Stack</code> widget.</p>
+<p>Since we want to paint on the given hut image. Feel free to use another image if you would like. However, don't forget to add this image to <code>assets/images</code> folder. Put this image in the center of the screen using <code>Center</code> widget. We want to draw on top of this image, so put this widget inside a <code>Stack</code> widget. Add <code>CustomPaint</code> as another child to this <code>Stack</code> widget.</p>
 <p><code>CustomPaint</code> widget takes two attributes. First, size of the canvas to be considered for drawing. Assign <code>Size.infinite</code> to <code>size</code> property because we want flexibility to be able draw anywhere on the screen.</p>
 <p>Second, assign <code>painter</code> property to an instance of <code>CustomPainter</code> widget. We'll create a class <code>MyPainter</code> which extends <code>CustomPainter</code>. <code>MyPainter</code> class needs <code>pointsList</code>. This is the list of coordinates where screen is being touched. This information is required to draw either a line or a point on the screen.</p>
 <div class="highlight"><pre><span></span>//List of points touched at screen
@@ -517,7 +517,7 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
       },
     ),
 
-    //FAB for picking blue color 
+    //FAB for picking blue color
     FloatingActionButton(
       backgroundColor: Colors.white,
       heroTag: &quot;color_blue&quot;,
