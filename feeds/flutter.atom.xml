@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-03-31T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Building Cross-Platform Finger Painting App in Flutter</title><link href="https://ptyagicodecamp.github.io/building-cross-platform-finger-painting-app-in-flutter.html" rel="alternate"></link><published>2020-03-31T00:00:00-04:00</published><updated>2020-03-31T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-03-31:/building-cross-platform-finger-painting-app-in-flutter.html</id><summary type="html">&lt;p&gt;This code recipe focuses on building a cross-platform finger painting app using Flutter.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-03-31T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Building Cross-Platform Finger Painting App in Flutter</title><link href="https://ptyagicodecamp.github.io/building-cross-platform-finger-painting-app-in-flutter.html" rel="alternate"></link><published>2020-03-31T00:00:00-04:00</published><updated>2020-03-31T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-03-31:/building-cross-platform-finger-painting-app-in-flutter.html</id><summary type="html">&lt;p&gt;This code recipe focuses on building a cross-platform finger painting app using Flutter.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/canvas_header.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; In this code recipe, you'll use canvas painting to build a Finger Painting App in Flutter.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Widget(s):&lt;/strong&gt; &lt;a href="https://api.flutter.dev/flutter/widgets/GestureDetector-class.html"&gt;GestureDetector&lt;/a&gt;, &lt;a href="https://api.flutter.dev/flutter/widgets/CustomPaint-class.html"&gt;CustomPaint&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; We'll implement following items in this Finger Painting Flutter App :&lt;/p&gt;
@@ -23,7 +24,8 @@
 &lt;p&gt;Let's go ahead with building main area of the finger painting app. In this app, a picture of hut is displayed as background to color in. User can color this page while adding more details to the picture using tools provided by the app.&lt;/p&gt;
 &lt;p&gt;We'll be using &lt;a href=""&gt;'StatefulWidget'&lt;/a&gt; to implement the app. This is because we need to convert the user's tap into drawing/painting while updating the finger movement on the screen.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You can either choose to run this sample from &lt;code&gt;main()&lt;/code&gt; method or invoke it from Flutter Cookbook app as mentioned above.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;//Optional app&amp;#39;s entry point&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;//Optional app&amp;#39;s entry point. Uncomment if running only this file.&lt;/span&gt;
+&lt;span class="c1"&gt;//Note: Following line should be commented out when running Flutter Cookbook App on Web platform&lt;/span&gt;
 &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;runApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;CanvasPainting&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
 
 &lt;span class="c1"&gt;//StatefulWidget&lt;/span&gt;
@@ -539,6 +541,7 @@ We'll create &lt;code&gt;fabOption()&lt;/code&gt; to return list of widgets to b
 &lt;p&gt;The above &lt;code&gt;colorMenuItem(...)&lt;/code&gt; method is used to create oval menu items for all the four colors.&lt;/p&gt;
 &lt;p&gt;That's all for this article. Hope you've your own finger painting app on your finger tips :)&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; At the time of writing this article, Flutter's master&lt;/h2&gt;
 &lt;h3&gt;Source code repo&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
