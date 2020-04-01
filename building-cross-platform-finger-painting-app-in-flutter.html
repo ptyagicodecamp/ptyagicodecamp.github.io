@@ -317,18 +317,21 @@ body: GestureDetector(
 <blockquote>
 <p>A pointer that is in contact with the screen with a primary button and moving has moved again.</p>
 </blockquote>
-<p><code>onPanUpdate: (details) {
-   setState(() {
-     RenderBox renderBox = context.findRenderObject();
-     points.add(TouchPoints(
-         points: renderBox.globalToLocal(details.globalPosition),
-         paint: Paint()
-           ..strokeCap = strokeType
-           ..isAntiAlias = true
-           ..color = selectedColor.withOpacity(opacity)
-           ..strokeWidth = strokeWidth));
-   });
- },</code></p>
+<div class="highlight"><pre><span></span><span class="x"> </span><span class="nx">onPanUpdate</span><span class="p">:</span> <span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">setState</span><span class="p">(()</span> <span class="p">{</span>
+     <span class="nx">RenderBox</span> <span class="n">renderBox</span><span class="o"> =</span> <span class="nx">context.findRenderObject</span><span class="p">();</span>
+     <span class="nx">points.add</span><span class="p">(</span><span class="nx">TouchPoints</span><span class="p">(</span>
+         <span class="nx">points</span><span class="p">:</span> <span class="nx">renderBox.globalToLocal</span><span class="p">(</span><span class="nx">details.globalPosition</span><span class="p">),</span>
+         <span class="nx">paint</span><span class="p">:</span> <span class="nx">Paint</span><span class="p">()</span>
+           <span class="bp">..</span><span class="nx nx-Member">strokeCap</span> <span class="o">=</span> <span class="nx">strokeType</span>
+           <span class="bp">..</span><span class="nx nx-Member">isAntiAlias</span> <span class="o">=</span> <span class="kc">true</span>
+           <span class="bp">..</span><span class="nx nx-Member">color</span> <span class="o">=</span> <span class="nx">selectedColor.withOpacity</span><span class="p">(</span><span class="nx">opacity</span><span class="p">)</span>
+           <span class="bp">..</span><span class="nx nx-Member">strokeWidth</span> <span class="o">=</span> <span class="nx">strokeWidth</span><span class="p">));</span>
+   <span class="p">});</span>
+ <span class="p">},</span>
+</pre></div>
+
+
 <ul>
 <li><strong>The <code>onPanEnd</code> property:</strong></li>
 </ul>
@@ -361,6 +364,10 @@ body: GestureDetector(
 <p>The FAB menu is implemented using <code>AnimatedFloatingActionButton</code> widget. This widget provides nice and smooth animation for menu open and close actions. It's assigned to <code>Scaffold</code> widget using <code>floatingActionButton</code> property.</p>
 <h4><code>pubspec.yaml</code> Configuration</h4>
 <p>The <code>AnimatedFloatingActionButton</code> widget is provided by a Flutter plugin. Add plugin <code>animated_floatactionbuttons: ^0.1.0</code> to <code>pubspec.yaml</code></p>
+<div class="highlight"><pre><span></span>  animated_floatactionbuttons: ^0.1.0
+</pre></div>
+
+
 <p><strong>Note:</strong> Don't forget to fetch the flutter packages after adding dependency.</p>
 <h4>Animating FAB</h4>
 <p>When FAB menu is clicked, it shows swift animation. We provide colors for starting and ending animation.</p>
@@ -368,8 +375,6 @@ body: GestureDetector(
 <p>When FAB menu open and closes, its icon(s) is changed using <code>animatedIconData</code> property.</p>
 <p>This is how different colors can be assigned to <code>AnimatedFloatingActionButton</code> widget:</p>
 <div class="highlight"><pre><span></span><span class="n">floatingActionButton</span><span class="o">:</span> <span class="n">AnimatedFloatingActionButton</span><span class="o">(</span>
-  <span class="c1">//Creating menu items</span>
-  <span class="n">fabButtons</span><span class="o">:</span> <span class="n">fabOption</span><span class="o">(),</span>
 
   <span class="c1">//Color shown when animation starts</span>
   <span class="n">colorStartAnimation</span><span class="o">:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">blue</span><span class="o">,</span>
@@ -408,6 +413,7 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
         <span class="c1">//FAB to implement expandable menu</span>
         <span class="c1">//needs plugin: `animated_floatactionbuttons`</span>
         <span class="nx">floatingActionButton</span>: <span class="kt">AnimatedFloatingActionButton</span><span class="p">(</span>
+
           <span class="c1">//Creating menu items</span>
           <span class="nx">fabButtons</span>: <span class="kt">fabOption</span><span class="p">(),</span>
 
@@ -434,6 +440,8 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
 <p>The method <code>fabOption()</code> returns the list of all menu items in the FAB menu. Assign this method to <code>AnimatedFloatingActionButton</code> widget using <code>fabButtons</code> property.</p>
 <div class="highlight"><pre><span></span>List&lt;Widget&gt; fabOption() {
   return &lt;Widget&gt;[
+
+    //FAB for choosing stroke
     FloatingActionButton(
       heroTag: &quot;paint_stroke&quot;,
       child: Icon(Icons.brush),
@@ -445,6 +453,8 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
         });
       },
     ),
+
+    //FAB for choosing opacity
     FloatingActionButton(
       heroTag: &quot;paint_opacity&quot;,
       child: Icon(Icons.opacity),
@@ -456,6 +466,8 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
         });
       },
     ),
+
+    //FAB for resetting screen
     FloatingActionButton(
         heroTag: &quot;erase&quot;,
         child: Icon(Icons.clear),
@@ -465,6 +477,8 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
             points.clear();
           });
         }),
+
+    //FAB for picking red color    
     FloatingActionButton(
       backgroundColor: Colors.white,
       heroTag: &quot;color_red&quot;,
@@ -476,6 +490,8 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
         });
       },
     ),
+
+    //FAB for picking green color
     FloatingActionButton(
       backgroundColor: Colors.white,
       heroTag: &quot;color_green&quot;,
@@ -487,6 +503,8 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
         });
       },
     ),
+
+    //FAB for picking pink color
     FloatingActionButton(
       backgroundColor: Colors.white,
       heroTag: &quot;color_pink&quot;,
@@ -498,6 +516,8 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
         });
       },
     ),
+
+    //FAB for picking blue color 
     FloatingActionButton(
       backgroundColor: Colors.white,
       heroTag: &quot;color_blue&quot;,
