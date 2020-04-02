@@ -3,9 +3,9 @@
 &lt;p&gt;The &lt;code&gt;runtimeType&lt;/code&gt; property is used to find out the runtime type of the object. The keyword &lt;code&gt;var&lt;/code&gt; in Dart language lets a variable store any type of data. The &lt;code&gt;runtimeType&lt;/code&gt; property helps to find what kind of data is stored in the variable using &lt;code&gt;var&lt;/code&gt; keyword. In the next section, we'll explore usage of this property in for different type of data.&lt;/p&gt;
 &lt;h1&gt;Usage&lt;/h1&gt;
 &lt;p&gt;Let's see a few examples of using &lt;code&gt;runtimeType&lt;/code&gt; property below. You can execute code samples in &lt;a href="https://dartpad.dev/"&gt;DartPad&lt;/a&gt; online.&lt;/p&gt;
-&lt;ol&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;int&lt;/code&gt;:&lt;/strong&gt; Find the type of the variable storing an integer value. An integer in dart is represented using &lt;a href="https://api.flutter.dev/flutter/dart-core/int-class.html"&gt;&lt;code&gt;int&lt;/code&gt;&lt;/a&gt; class.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;p&gt;In this examples, variable &lt;code&gt;myNumber&lt;/code&gt; is storing an integer. The keyword &lt;code&gt;var&lt;/code&gt; in Dart lets a variable store any type of data. Calling &lt;code&gt;runtimeType&lt;/code&gt; on the variable will return the data type of the variable.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Variable myNumber is storing an integer value
 var myNumber = 1;
@@ -20,9 +20,10 @@ print(&amp;quot;Type of myNumber: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;ol&gt;
+&lt;hr&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;String&lt;/code&gt;:&lt;/strong&gt; Find the type of the variable storing a string value.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;p&gt;In this examples, variable &lt;code&gt;myString&lt;/code&gt; is storing a string. The keyword &lt;code&gt;var&lt;/code&gt; in Dart lets a variable store any type of data. Calling &lt;code&gt;runtimeType&lt;/code&gt; on the variable will return the data type of the variable.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Variable myString is storing an string value
 var myString = &amp;quot;This is String&amp;quot;;
@@ -37,9 +38,10 @@ print(&amp;quot;Type of myString: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;ol&gt;
+&lt;hr&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;double&lt;/code&gt;:&lt;/strong&gt; Find the type of the variable storing a double value.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;p&gt;In this examples, variable &lt;code&gt;myDouble&lt;/code&gt; is storing a double. The keyword &lt;code&gt;var&lt;/code&gt; in Dart lets a variable store any type of data. Calling &lt;code&gt;runtimeType&lt;/code&gt; on the variable will return the data type of the variable.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Variable myDouble is storing an string value
 var myDouble = 1.0;
@@ -54,9 +56,9 @@ print(&amp;quot;Type of myDouble: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;ol&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;List&amp;lt;int&amp;gt;&lt;/code&gt;:&lt;/strong&gt; Find the type of the variable storing a list of integers.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;p&gt;In this examples, variable &lt;code&gt;myList&lt;/code&gt; is storing a list of integers. The keyword &lt;code&gt;var&lt;/code&gt; in Dart lets a variable store any type of data. Calling &lt;code&gt;runtimeType&lt;/code&gt; on the variable will return the data type of the variable.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Variable myList is storing an string value
 var myList = [1, 2, 3];
@@ -71,11 +73,14 @@ print(&amp;quot;Type of myList: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span c
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;hr&gt;
 &lt;h1&gt;Companion Video&lt;/h1&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
+&lt;hr&gt;
 &lt;h1&gt;Source Code&lt;/h1&gt;
 &lt;p&gt;Please checkout the source code at Github &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1&gt;References:&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/Object/runtimeType.html"&gt;runtimeType&lt;/a&gt;&lt;/li&gt;
