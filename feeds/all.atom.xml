@@ -57,6 +57,7 @@ print(&amp;quot;Type of myDouble: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;List&amp;lt;int&amp;gt;&lt;/code&gt;:&lt;/strong&gt; Find the type of the variable storing a list of integers.&lt;/li&gt;
 &lt;/ul&gt;
