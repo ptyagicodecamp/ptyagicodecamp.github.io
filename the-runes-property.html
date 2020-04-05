@@ -147,18 +147,19 @@
     </script>
 
   <div>
-    <h1>What is <code>Runes</code> ?</h1>
-<p>A code unit is the number of bits an encoding uses. ... A code point is a character and this is represented by one or more code units depending on the encoding</p>
+    <p>The Unicode Standard provides three distinct encoding forms for Unicode characters: UTF-8 (using 8-bit), UTF-16 (16-bit), and UTF-32 (32-bit units). In Dart, a String is represented using sequence of UTF-16 code units. A code unit is the number of bytes used by the given encoding.</p>
+<h1>What is <code>Runes</code> ?</h1>
+<p>A code unit is the number of bits an encoding uses. A code point is a character and this is represented by one or more code units depending on the encoding</p>
 <p>In Dart, a String is sequence of UTF-16 code units. The <code>runes</code> is the integer representation for unicode code points of a String.</p>
 <p><strong>Code Point:</strong> A code point is a character in a string. One code point can be represented by one or more code units.</p>
 <p><strong>Code Unit:</strong> A code unit is the number of bits used by an encoding. For UTF-16 encoding, it uses two bytes.</p>
 <p>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String-class.html">String Class</a> has following methods to access runes for a String.</p>
 <h2>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String/codeUnitAt.html"><code>codeUnitAt</code></a> Method</h2>
-<p>This method returns the 16-bit UTF-16 code unit at the given index for the String.</p>
+<p>This method returns the UTF-16 (16-bit) <em>code unit</em> at the given index for the String.</p>
 <h2>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String/codeUnits.html"><code>codeUnits</code></a> Property</h2>
-<p>Returns an unmodifiable list of the UTF-16 code units of this string.</p>
+<p>This property provides an unmodifiable list of the UTF-16 <em>code unit(s)</em> of this string.</p>
 <h2>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String/runes.html"><code>runes</code></a> Property</h2>
-<h2>This property returns the list of Unicode UTF-16 code points for the given string.</h2>
+<h2>This property returns the list of Unicode UTF-16 <em>code point(s)</em> for the given string.</h2>
 <h1>Usage</h1>
 <hr>
 <h1>Companion Video</h1>
