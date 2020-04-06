@@ -1,5 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Dart</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/dart.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-04-02T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>The `runtimeType` Property</title><link href="https://ptyagicodecamp.github.io/the-runtimetype-property.html" rel="alternate"></link><published>2020-04-02T00:00:00-04:00</published><updated>2020-04-02T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-02:/the-runtimetype-property.html</id><summary type="html">&lt;p&gt;This article describes what &lt;code&gt;runtimeType&lt;/code&gt; property means in Dart's world.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="runtimeType" src="https://ptyagicodecamp.github.io/runtime.png"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Dart</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/dart.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-04-05T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>The `runes` Property</title><link href="https://ptyagicodecamp.github.io/the-runes-property.html" rel="alternate"></link><published>2020-04-05T00:00:00-04:00</published><updated>2020-04-05T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-05:/the-runes-property.html</id><summary type="html">&lt;p&gt;This article describes what &lt;code&gt;runes&lt;/code&gt; property means in Dart's world.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Background&lt;/h1&gt;
+&lt;p&gt;In the digital world, all characters, numbers or symbols are represented using a unique numeric value, known as Unicode. The Unicode standard provides three distinct encoding forms for Unicode characters: UTF-8 (using 8-bit), UTF-16 (16-bit), and UTF-32 (32-bit units). Data is converted in one of these encoding during data transfer.
+In this article, we'll explore Dart language's one of the String class property known as &lt;code&gt;runes&lt;/code&gt; to retrieve this encoded data.&lt;/p&gt;
+&lt;h1&gt;What is &lt;code&gt;runes&lt;/code&gt; Property?&lt;/h1&gt;
+&lt;p&gt;In Dart, a string is represented using sequence of UTF-16 known as code units. A code unit is the number of bits used by the given encoding.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Code Point:&lt;/strong&gt; A character in a string is represented by one or more code point(s). One code point is represented by one or more code units.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Code Unit:&lt;/strong&gt; A code unit is the number of bits used by an encoding. For UTF-16 encoding, it uses two bytes.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;runes&lt;/code&gt; property returns an iterable of Unicode code-points of this string of &lt;code&gt;Runes&lt;/code&gt; type. The &lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/Runes-class.html"&gt;&lt;code&gt;Runes&lt;/code&gt;&lt;/a&gt; is the integer representation for unicode code points of a String.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Usage&lt;/h1&gt;
+&lt;p&gt;The &lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/String-class.html"&gt;String Class&lt;/a&gt; has following methods to access runes for a String.&lt;/p&gt;
+&lt;h2&gt;The &lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/String/codeUnitAt.html"&gt;&lt;code&gt;codeUnitAt&lt;/code&gt;&lt;/a&gt; Method&lt;/h2&gt;
+&lt;p&gt;This method returns the UTF-16 (16-bit) &lt;em&gt;code unit&lt;/em&gt; at the given index for the String.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  String myStr = &amp;quot;Mask&amp;quot;;
+
+  ///Code unit at 0th position is M.
+  ///UTF-16 decimal representation for ASCII character &amp;#39;M&amp;#39; is 77
+  ///Reference: https://www.fileformat.info/info/unicode/char/004d/index.htm
+  print(&amp;quot;Code Unit for Letter M: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;myStr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;codeUnitAt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Code Unit for Letter R: 77
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;The &lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/String/codeUnits.html"&gt;&lt;code&gt;codeUnits&lt;/code&gt;&lt;/a&gt; Property&lt;/h2&gt;
+&lt;p&gt;This property provides an unmodifiable list of the UTF-16 &lt;em&gt;code unit(s)&lt;/em&gt; of this string.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  String myStr = &amp;quot;Mask&amp;quot;;
+  print(&amp;quot;Code Units for word Mask: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;myStr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;codeUnits&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Code Units for word Mask: [77, 97, 115, 107]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;The &lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/String/runes.html"&gt;&lt;code&gt;runes&lt;/code&gt;&lt;/a&gt; Property&lt;/h2&gt;
+&lt;p&gt;This property returns the list of Unicode UTF-16 &lt;em&gt;code point(s)&lt;/em&gt; for the given string. In this case, code points are same as of code units. The &lt;code&gt;myStr.runes&lt;/code&gt; returns the &lt;code&gt;Iterable&amp;lt;int&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  String myStr = &amp;quot;Mask&amp;quot;;
+  print(&amp;quot;Runes for word Mask: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;myStr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;runes&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Runes for word Mask: (77, 97, 115, 107)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;p&gt;Let's use hex representation for word "Mask". Hex for "M" is "004D", "A" is "0061", "S" is "0073", and "K" is "006B".&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Representing Mask in hex
+String hexStr = &amp;quot;\u004D\u0061\u0073\u006B&amp;quot;;
+print(&amp;quot;From hex to String - maskStr: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;hexStr&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+
+Runes codeUnits = Runes(hexStr);
+print(&amp;quot;Code Units: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;codeUnits&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+print(&amp;quot;Code Units To String: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromCharCodes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;codeUnits&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;From hex to String - maskStr: Mask
+Code Units: (77, 97, 115, 107)
+Code Units To String: Mask
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;p&gt;Let's try another example to get &lt;code&gt;runes&lt;/code&gt; for a symbol represented using 32-bit, using unicode character for &lt;a href="https://www.compart.com/en/unicode/U+1F637"&gt;mask emoji&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Unicode character encoding : https://www.compart.com/en/unicode/U+1F637
+//Decimal representation : 128567
+String smileyMask = &amp;quot;\u{1F637}&amp;quot;; //needs 32 bit
+print(&amp;quot;Smiley with mask: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;smileyMask&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+
+// Prints Code Points for smiley with mask
+print(&amp;quot;Code Points in smily with mask: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;smileyMask&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;runes&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+
+//Printing String for code points
+print(String.fromCharCodes(Runes(smileyMask)));
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Smiley with mask: 😷
+Code Points in smily with mask: (128567)
+😷
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Companion Video&lt;/h1&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;hr&gt;
+&lt;h1&gt;Source Code&lt;/h1&gt;
+&lt;p&gt;Please checkout the source code at Github &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/runes.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/Runes-class.html"&gt;Runes Class&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/String-class.html"&gt;String Class&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/String/runes.html"&gt;String Class &lt;code&gt;runes&lt;/code&gt; property&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.fileformat.info/info/unicode/char/1f637/index.htm"&gt;Mask Face UTF-16&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.fileformat.info/info/charset/UTF-16/list.htm"&gt;Character List for UTF-16&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy Darting :)&lt;/p&gt;
+&lt;p&gt;_Liked the article ?
+Couldn't find a topic of your interest ? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share !&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="runes"></category><category term="Runes"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>The `runtimeType` Property</title><link href="https://ptyagicodecamp.github.io/the-runtimetype-property.html" rel="alternate"></link><published>2020-04-02T00:00:00-04:00</published><updated>2020-04-02T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-02:/the-runtimetype-property.html</id><summary type="html">&lt;p&gt;This article describes what &lt;code&gt;runtimeType&lt;/code&gt; property means in Dart's world.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="runtimeType" src="https://ptyagicodecamp.github.io/runtime.png"&gt;&lt;/p&gt;
 &lt;h1&gt;What is &lt;code&gt;runtimeType&lt;/code&gt; Property ?&lt;/h1&gt;
 &lt;p&gt;The &lt;code&gt;runtimeType&lt;/code&gt; property is used to find out the runtime type of the object. The keyword &lt;code&gt;var&lt;/code&gt; in Dart language lets a variable store any type of data. The &lt;code&gt;runtimeType&lt;/code&gt; property helps to find what kind of data is stored in the variable using &lt;code&gt;var&lt;/code&gt; keyword. In the next section, we'll explore usage of this property in for different type of data.&lt;/p&gt;
 &lt;h1&gt;Usage&lt;/h1&gt;
@@ -93,39 +209,7 @@ print(&amp;quot;Type of myList: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span c
 &lt;p&gt;_Liked the article ?
 Couldn't find a topic of your interest ? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share !&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
-&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="runtimeType"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>The `runes` Property</title><link href="https://ptyagicodecamp.github.io/the-runes-property.html" rel="alternate"></link><published>2020-04-01T00:00:00-04:00</published><updated>2020-04-01T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-01:/the-runes-property.html</id><summary type="html">&lt;p&gt;TODO&lt;/p&gt;</summary><content type="html">&lt;p&gt;The Unicode Standard provides three distinct encoding forms for Unicode characters: UTF-8 (using 8-bit), UTF-16 (16-bit), and UTF-32 (32-bit units). In Dart, a String is represented using sequence of UTF-16 code units. A code unit is the number of bytes used by the given encoding.&lt;/p&gt;
-&lt;h1&gt;What is &lt;code&gt;Runes&lt;/code&gt; ?&lt;/h1&gt;
-&lt;p&gt;A code unit is the number of bits an encoding uses. A code point is a character and this is represented by one or more code units depending on the encoding&lt;/p&gt;
-&lt;p&gt;In Dart, a String is sequence of UTF-16 code units. The &lt;code&gt;runes&lt;/code&gt; is the integer representation for unicode code points of a String.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Code Point:&lt;/strong&gt; A code point is a character in a string. One code point can be represented by one or more code units.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Code Unit:&lt;/strong&gt; A code unit is the number of bits used by an encoding. For UTF-16 encoding, it uses two bytes.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/String-class.html"&gt;String Class&lt;/a&gt; has following methods to access runes for a String.&lt;/p&gt;
-&lt;h2&gt;The &lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/String/codeUnitAt.html"&gt;&lt;code&gt;codeUnitAt&lt;/code&gt;&lt;/a&gt; Method&lt;/h2&gt;
-&lt;p&gt;This method returns the UTF-16 (16-bit) &lt;em&gt;code unit&lt;/em&gt; at the given index for the String.&lt;/p&gt;
-&lt;h2&gt;The &lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/String/codeUnits.html"&gt;&lt;code&gt;codeUnits&lt;/code&gt;&lt;/a&gt; Property&lt;/h2&gt;
-&lt;p&gt;This property provides an unmodifiable list of the UTF-16 &lt;em&gt;code unit(s)&lt;/em&gt; of this string.&lt;/p&gt;
-&lt;h2&gt;The &lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/String/runes.html"&gt;&lt;code&gt;runes&lt;/code&gt;&lt;/a&gt; Property&lt;/h2&gt;
-&lt;h2&gt;This property returns the list of Unicode UTF-16 &lt;em&gt;code point(s)&lt;/em&gt; for the given string.&lt;/h2&gt;
-&lt;h1&gt;Usage&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h1&gt;Companion Video&lt;/h1&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;hr&gt;
-&lt;h1&gt;Source Code&lt;/h1&gt;
-&lt;p&gt;Please checkout the source code at Github &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;References:&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://api.dart.dev/stable/2.7.2/dart-core/Runes-class.html"&gt;Runes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.fileformat.info/info/unicode/char/263a/index.htm"&gt;Smiling Face UTF-16&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://www.fileformat.info/info/charset/UTF-16/list.htm"&gt;Character List for UTF-16&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Happy Darting :)&lt;/p&gt;
-&lt;p&gt;_Liked the article ?
-Couldn't find a topic of your interest ? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share !&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
-&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="Runes"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>Dart Basics (Part-1: Futures)</title><link href="https://ptyagicodecamp.github.io/dart-basics-part-1-futures.html" rel="alternate"></link><published>2019-06-08T00:00:00-04:00</published><updated>2019-06-08T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-08:/dart-basics-part-1-futures.html</id><summary type="html">&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="runtimeType"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>Dart Basics (Part-1: Futures)</title><link href="https://ptyagicodecamp.github.io/dart-basics-part-1-futures.html" rel="alternate"></link><published>2019-06-08T00:00:00-04:00</published><updated>2019-06-08T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2019-06-08:/dart-basics-part-1-futures.html</id><summary type="html">&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications. In this tutorial, I'll be covering two of the Dart language features below:&lt;/p&gt;
 &lt;ul&gt;

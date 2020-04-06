@@ -45,19 +45,20 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="ptyagi" />
-<meta name="description" content="TODO" />
-<meta name="keywords" content="Runes, dart, cross-platform, flutter, code-recipes, development">
+<meta name="description" content="This article describes what runes property means in Dart&#39;s world." />
+<meta name="keywords" content="runes, Runes, dart, cross-platform, flutter, code-recipes, development">
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="The `runes` Property"/>
-<meta property="og:description" content="TODO"/>
+<meta property="og:description" content="This article describes what runes property means in Dart&#39;s world."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://ptyagicodecamp.github.io/the-runes-property.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-04-01 00:00:00-04:00"/>
+<meta property="article:published_time" content="2020-04-05 00:00:00-04:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
 <meta property="article:section" content="Dart"/>
+<meta property="article:tag" content="runes"/>
 <meta property="article:tag" content="Runes"/>
 <meta property="article:tag" content="dart"/>
 <meta property="article:tag" content="cross-platform"/>
@@ -132,7 +133,7 @@
       
     <h1 id="the-runes-property">The `runes` Property</h1>
     <p>
-          Posted on April 01, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
+          Posted on April 05, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
 
 
     </p>
@@ -147,32 +148,116 @@
     </script>
 
   <div>
-    <p>The Unicode Standard provides three distinct encoding forms for Unicode characters: UTF-8 (using 8-bit), UTF-16 (16-bit), and UTF-32 (32-bit units). In Dart, a String is represented using sequence of UTF-16 code units. A code unit is the number of bytes used by the given encoding.</p>
-<h1>What is <code>Runes</code> ?</h1>
-<p>A code unit is the number of bits an encoding uses. A code point is a character and this is represented by one or more code units depending on the encoding</p>
-<p>In Dart, a String is sequence of UTF-16 code units. The <code>runes</code> is the integer representation for unicode code points of a String.</p>
-<p><strong>Code Point:</strong> A code point is a character in a string. One code point can be represented by one or more code units.</p>
+    <h1>Background</h1>
+<p>In the digital world, all characters, numbers or symbols are represented using a unique numeric value, known as Unicode. The Unicode standard provides three distinct encoding forms for Unicode characters: UTF-8 (using 8-bit), UTF-16 (16-bit), and UTF-32 (32-bit units). Data is converted in one of these encoding during data transfer.
+In this article, we'll explore Dart language's one of the String class property known as <code>runes</code> to retrieve this encoded data.</p>
+<h1>What is <code>runes</code> Property?</h1>
+<p>In Dart, a string is represented using sequence of UTF-16 known as code units. A code unit is the number of bits used by the given encoding.</p>
+<p><strong>Code Point:</strong> A character in a string is represented by one or more code point(s). One code point is represented by one or more code units.</p>
 <p><strong>Code Unit:</strong> A code unit is the number of bits used by an encoding. For UTF-16 encoding, it uses two bytes.</p>
+<p>The <code>runes</code> property returns an iterable of Unicode code-points of this string of <code>Runes</code> type. The <a href="https://api.dart.dev/stable/2.7.2/dart-core/Runes-class.html"><code>Runes</code></a> is the integer representation for unicode code points of a String.</p>
+<hr>
+<h1>Usage</h1>
 <p>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String-class.html">String Class</a> has following methods to access runes for a String.</p>
 <h2>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String/codeUnitAt.html"><code>codeUnitAt</code></a> Method</h2>
 <p>This method returns the UTF-16 (16-bit) <em>code unit</em> at the given index for the String.</p>
+<div class="highlight"><pre><span></span>  String myStr = &quot;Mask&quot;;
+
+  ///Code unit at 0th position is M.
+  ///UTF-16 decimal representation for ASCII character &#39;M&#39; is 77
+  ///Reference: https://www.fileformat.info/info/unicode/char/004d/index.htm
+  print(&quot;Code Unit for Letter M: <span class="cp">${</span><span class="n">myStr</span><span class="o">.</span><span class="n">codeUnitAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="cp">}</span>&quot;);
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Code Unit for Letter R: 77
+</pre></div>
+
+
+<hr>
 <h2>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String/codeUnits.html"><code>codeUnits</code></a> Property</h2>
 <p>This property provides an unmodifiable list of the UTF-16 <em>code unit(s)</em> of this string.</p>
+<div class="highlight"><pre><span></span>  String myStr = &quot;Mask&quot;;
+  print(&quot;Code Units for word Mask: <span class="cp">${</span><span class="n">myStr</span><span class="o">.</span><span class="n">codeUnits</span><span class="cp">}</span>&quot;);
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Code Units for word Mask: [77, 97, 115, 107]
+</pre></div>
+
+
+<hr>
 <h2>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String/runes.html"><code>runes</code></a> Property</h2>
-<h2>This property returns the list of Unicode UTF-16 <em>code point(s)</em> for the given string.</h2>
-<h1>Usage</h1>
+<p>This property returns the list of Unicode UTF-16 <em>code point(s)</em> for the given string. In this case, code points are same as of code units. The <code>myStr.runes</code> returns the <code>Iterable&lt;int&gt;</code>.</p>
+<div class="highlight"><pre><span></span>  String myStr = &quot;Mask&quot;;
+  print(&quot;Runes for word Mask: <span class="cp">${</span><span class="n">myStr</span><span class="o">.</span><span class="n">runes</span><span class="cp">}</span>&quot;);
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Runes for word Mask: (77, 97, 115, 107)
+</pre></div>
+
+
+<hr>
+<h2>Example</h2>
+<p>Let's use hex representation for word "Mask". Hex for "M" is "004D", "A" is "0061", "S" is "0073", and "K" is "006B".</p>
+<div class="highlight"><pre><span></span>//Representing Mask in hex
+String hexStr = &quot;\u004D\u0061\u0073\u006B&quot;;
+print(&quot;From hex to String - maskStr: <span class="cp">${</span><span class="n">hexStr</span><span class="cp">}</span>&quot;);
+
+Runes codeUnits = Runes(hexStr);
+print(&quot;Code Units: <span class="cp">${</span><span class="n">codeUnits</span><span class="cp">}</span>&quot;);
+print(&quot;Code Units To String: <span class="cp">${</span><span class="n">String</span><span class="o">.</span><span class="n">fromCharCodes</span><span class="p">(</span><span class="n">codeUnits</span><span class="p">)</span><span class="cp">}</span>&quot;);
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>From hex to String - maskStr: Mask
+Code Units: (77, 97, 115, 107)
+Code Units To String: Mask
+</pre></div>
+
+
+<hr>
+<h2>Example</h2>
+<p>Let's try another example to get <code>runes</code> for a symbol represented using 32-bit, using unicode character for <a href="https://www.compart.com/en/unicode/U+1F637">mask emoji</a>.</p>
+<div class="highlight"><pre><span></span>//Unicode character encoding : https://www.compart.com/en/unicode/U+1F637
+//Decimal representation : 128567
+String smileyMask = &quot;\u{1F637}&quot;; //needs 32 bit
+print(&quot;Smiley with mask: <span class="cp">${</span><span class="n">smileyMask</span><span class="cp">}</span>&quot;);
+
+// Prints Code Points for smiley with mask
+print(&quot;Code Points in smily with mask: <span class="cp">${</span><span class="n">smileyMask</span><span class="o">.</span><span class="n">runes</span><span class="cp">}</span>&quot;);
+
+//Printing String for code points
+print(String.fromCharCodes(Runes(smileyMask)));
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Smiley with mask: 😷
+Code Points in smily with mask: (128567)
+😷
+</pre></div>
+
+
 <hr>
 <h1>Companion Video</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
 <h1>Source Code</h1>
-<p>Please checkout the source code at Github <a href="">here</a></p>
+<p>Please checkout the source code at Github <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/runes.dart">here</a></p>
 <hr>
-<h1>References:</h1>
+<h1>References</h1>
 <ol>
-<li><a href="https://api.dart.dev/stable/2.7.2/dart-core/Runes-class.html">Runes</a></li>
-<li><a href="https://www.fileformat.info/info/unicode/char/263a/index.htm">Smiling Face UTF-16</a></li>
+<li><a href="https://api.dart.dev/stable/2.7.2/dart-core/Runes-class.html">Runes Class</a></li>
+<li><a href="https://api.dart.dev/stable/2.7.2/dart-core/String-class.html">String Class</a></li>
+<li><a href="https://api.dart.dev/stable/2.7.2/dart-core/String/runes.html">String Class <code>runes</code> property</a></li>
+<li><a href="https://www.fileformat.info/info/unicode/char/1f637/index.htm">Mask Face UTF-16</a></li>
 <li><a href="http://www.fileformat.info/info/charset/UTF-16/list.htm">Character List for UTF-16</a></li>
 </ol>
 <p>Happy Darting :)</p>
@@ -183,6 +268,7 @@ Couldn't find a topic of your interest ? Please leave a comment or reach out at 
   </div>
   <div class="tag-cloud">
     <p>
+      <a href="https://ptyagicodecamp.github.io/tag/runes.html">runes</a>
       <a href="https://ptyagicodecamp.github.io/tag/runes.html">Runes</a>
       <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>
       <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
