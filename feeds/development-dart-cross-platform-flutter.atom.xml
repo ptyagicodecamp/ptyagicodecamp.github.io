@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Development, Dart, Cross-platform, Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/development-dart-cross-platform-flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-04-05T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>A Dart/Flutter Vocabulary Series</title><link href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html" rel="alternate"></link><published>2020-04-05T00:00:00-04:00</published><updated>2020-04-05T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-05:/a-dartflutter-vocabulary-series.html</id><summary type="html">&lt;p&gt;This article contains the list of Dart language related articles.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Dart &amp;amp; Flutter Vocabulary Series&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Development, Dart, Cross-platform, Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/development-dart-cross-platform-flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-04-07T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>A Dart/Flutter Vocabulary Series</title><link href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html" rel="alternate"></link><published>2020-04-07T00:00:00-04:00</published><updated>2020-04-07T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-07:/a-dartflutter-vocabulary-series.html</id><summary type="html">&lt;p&gt;This article contains the list of Dart language related articles.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Dart &amp;amp; Flutter Vocabulary Series&lt;/h2&gt;
 &lt;p&gt;Code recipes explaining Dart language usage and terminologies.&lt;/p&gt;
 &lt;p&gt;Follow me at twitter: @ptyagi13
 Medium: @ptyagicodecamp&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Dart Extensions&lt;/h2&gt;
+&lt;p&gt;This article explains what extension methods, operators, and properties are, and how to use them.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/extensions.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2&gt;The &lt;code&gt;runes&lt;/code&gt; Property&lt;/h2&gt;
 &lt;p&gt;In this article, we'll explore Dart language's one of the String class property known as &lt;code&gt;runes&lt;/code&gt; to retrieve UTF-16 unicodes.&lt;/p&gt;
