@@ -45,24 +45,28 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="ptyagi" />
-<meta name="description" content="This article contains the list of Dart language related articles." />
-<meta name="keywords" content="dart, flutter">
+<meta name="description" content="This article explains Dart Enums and when and how to use them." />
+<meta name="keywords" content="enum, dart, cross-platform, flutter, code-recipes, development">
 
 <meta property="og:site_name" content="techLog"/>
-<meta property="og:title" content="A Dart/Flutter Vocabulary Series"/>
-<meta property="og:description" content="This article contains the list of Dart language related articles."/>
+<meta property="og:title" content="Dart Enums"/>
+<meta property="og:description" content="This article explains Dart Enums and when and how to use them."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/dart-enums.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-04-07 00:00:00-04:00"/>
+<meta property="article:published_time" content="2020-04-13 00:00:00-04:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
-<meta property="article:section" content="Development, Dart, Cross-platform, Flutter"/>
+<meta property="article:section" content="Dart"/>
+<meta property="article:tag" content="enum"/>
 <meta property="article:tag" content="dart"/>
+<meta property="article:tag" content="cross-platform"/>
 <meta property="article:tag" content="flutter"/>
+<meta property="article:tag" content="code-recipes"/>
+<meta property="article:tag" content="development"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash; A Dart/Flutter Vocabulary Series</title>
+  <title>techLog &ndash; Dart Enums</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -126,9 +130,9 @@
 <article class="single">
   <header>
       
-    <h1 id="a-dartflutter-vocabulary-series">A Dart/Flutter Vocabulary Series</h1>
+    <h1 id="dart-enums">Dart Enums</h1>
     <p>
-          Posted on April 07, 2020 in <a href="https://ptyagicodecamp.github.io/category/development-dart-cross-platform-flutter.html">Development, Dart, Cross-platform, Flutter</a>
+          Posted on April 13, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
 
 
     </p>
@@ -143,58 +147,190 @@
     </script>
 
   <div>
-    <h2>A Dart &amp; Flutter Vocabulary Series</h2>
-<p>Code recipes explaining Dart language usage and terminologies.</p>
-<p>Follow me at twitter: @ptyagi13
-Medium: @ptyagicodecamp</p>
+    <p><img alt="enums" src="https://ptyagicodecamp.github.io/enums.png"></p>
+<h1>Introduction</h1>
+<p>Enums (a.k.a Enumerated Types) were added as an experimental feature in <a href="https://news.dartlang.org/2014/11/dart-18-library-improvements-and.html">Dart 1.8 release</a>. Enums are like a class that represent a fixed number of constant values.</p>
+<p>Imagine that you're working on a weather application, and you need a way to represent different states for weather. For example, weather can be sunny, cloudy or rainy. Now, you have two ways to represent these states in your code.</p>
+<h2>Using Constants</h2>
+<p>You can represent each state using a <code>const</code> <a href="https://dart.dev/guides/language/language-tour#keywords">keyword</a>.</p>
+<div class="highlight"><pre><span></span>const SUNNY = &#39;Sunny&#39;;
+const CLOUDY = &#39;Cloudy&#39;;
+const RAINY = &#39;Rainy&#39;;
+</pre></div>
+
+
+<h2>Using Enumerated Types</h2>
+<p>Another way to represent the same information is to use enumerated types using the <code>enum</code> keyword.</p>
+<div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">Weather</span> {
+  <span class="n">SUNNY</span>,
+  <span class="n">CLOUDY</span>,
+  <span class="n">RAINY</span>,
+}
+</pre></div>
+
+
+<p>In the following section, let's explore the cases where using Enums make more sense.</p>
 <hr>
-<h2>Dart Extensions</h2>
-<p>This article explains what extension methods, operators, and properties are, and how to use them.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/dart-extensions.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/extensions.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/NYahXrWoepo">here</a></p>
-</li>
-</ul>
+<h1>Switch</h1>
+<p>When using <code>switch</code> block, constants behave differently than enums.</p>
+<h3>Using Constants</h3>
+<p>When different type of weather state is represented using <code>const</code>, it's okay with
+<code>switch</code> block to declare <code>case</code> block for one constant. <code>default</code> block is optional as well.
+There's no compilation error when only one case block for <code>SUNNY</code> is declared, without <code>default</code> block.</p>
+<div class="highlight"><pre><span></span>//Using constants to display weather information
+void mainSwitchConstants() {
+  const SUNNY = &#39;Sunny&#39;;
+  const CLOUDY = &#39;Cloudy&#39;;
+  const RAINY = &#39;Rainy&#39;;
+
+  //#1. Switch doesn&#39;t complain for const, but raise error for enums
+  var choice = SUNNY;
+  switch (choice) {
+    case SUNNY:
+      print(&quot;Sunny weather today&quot;);
+      break;
+  }
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Sunny weather today
+</pre></div>
+
+
+<h3>Using Enums</h3>
+<p>The <code>switch</code> block for enums requires case blocks for all of the enum class <code>Weather</code> members. The <code>default</code> block is required when case blocks for all enumerated type members are not available. Otherwise, you would see the compilation error like below:</p>
+<p><img alt="enums" src="https://ptyagicodecamp.github.io/enums_switch.jpg"></p>
+<p>Here's <code>switch</code> block with case blocks for all enum members:</p>
+<div class="highlight"><pre><span></span>//Using Enums to display weather information
+void mainSwitchEnums() {
+  var weather = Weather.SUNNY;
+
+  //Following code will complain about
+  // not including other types of weather
+  //OR use default
+  switch (weather) {
+    case Weather.SUNNY:
+      print(&quot;Sunny weather today!&quot;);
+      break;
+    case Weather.CLOUDY:
+      print(&quot;Cloudy today!&quot;);
+      break;
+    case Weather.RAINY:
+      print(&quot;Rainy and gloomy weather.&quot;);
+      break;
+  }
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Sunny weather today!
+</pre></div>
+
+
+<p>Check out the <code>switch</code> block when there's only <code>default</code> block is available. It prints the value of the current enum passed.</p>
+<div class="highlight"><pre><span></span>//Only default case. No compilation issue
+void mainSwitchEnumsDefault() {
+  var weather = Weather.SUNNY;
+
+  switch (weather) {
+    default:
+      print(&quot;Current weather:<span class="cp">${</span><span class="n">weather</span><span class="cp">}</span>&quot;);
+  }
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Current weather:Weather.SUNNY
+</pre></div>
+
+
 <hr>
-<h2>The <code>runes</code> Property</h2>
-<p>In this article, we'll explore Dart language's one of the String class property known as <code>runes</code> to retrieve UTF-16 unicodes.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/the-runes-property.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/runes.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/y9QpGpWpCbE">here</a></p>
-</li>
-</ul>
+<h1>Iterating</h1>
+<p>The another reason to use enums over constants could be to iterate over all the different types of weather. For constants, you would need a list to store all values, and then iterate over that list.
+However, for enums, all the members of enums can be listed using <code>Weather.values</code>. Let's print all the members of <code>Weather</code> enumerated type.</p>
+<div class="highlight"><pre><span></span>void mainIterating() {
+  //#2. enums can iterate on all types at once.
+  //No need to create a list of const
+  Weather.values.forEach((w) =&gt; print(w));
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Weather.SUNNY
+Weather.CLOUDY
+Weather.RAINY
+</pre></div>
+
+
 <hr>
-<h2>The <code>runtimeType</code> Property</h2>
-<p>The <code>runtimeType</code> property is used to find out the runtime type of the object.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/the-runtimetype-property.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/runtimeType.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/2Oa5mJU3KUY">here</a></p>
-</li>
-</ul>
+<h1>Enums extension</h1>
+<p>Enumerated types are support extensions. Let's add an extension method <code>console()</code> to print index of enum and a custom message <code>about</code> along with it.</p>
+<div class="highlight"><pre><span></span>extension WeatherExt on Weather {
+  //custom message for each weather type
+  static const weatherMap = {
+    Weather.SUNNY: &quot;What a lovely weather&quot;,
+    Weather.CLOUDY: &quot;Scattered showers predicted&quot;,
+    Weather.RAINY: &quot;Will be raining today&quot;,
+  };
+
+  //prints enum index and custom message
+  void console() {
+    print(&quot;<span class="cp">${</span><span class="n">this</span><span class="o">.</span><span class="n">index</span><span class="cp">}</span> <span class="cp">${</span><span class="n">this</span><span class="o">.</span><span class="n">about</span><span class="cp">}</span>&quot;);
+  }
+
+  //about property returns the custom message
+  String get about =&gt; weatherMap[this];
+}
+</pre></div>
+
+
+<p>Next, iterate over all the members, and use extension method <code>console()</code> to print the custom message for each weather type.</p>
+<div class="highlight"><pre><span></span>void mainExtension() {
+  //#3. Enum extensions. Using extension method console
+  Weather.values.forEach((w) =&gt; w.console());
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>0 What a lovely weather
+1 Scattered showers predicted
+2 Will be raining today
+</pre></div>
+
+
 <hr>
+<h1>Companion Video</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h1>Source Code</h1>
+<p>Please checkout the source code at Github <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/enums.dart">here</a></p>
+<hr>
+<h1>References</h1>
+<ol>
+<li><a href="https://dart.dev/guides/language/language-tour#enumerated-types">Enumerated Types</a></li>
+<li><a href="">Dart Extensions</a></li>
+</ol>
+<p>Happy Darting :)</p>
+<p>_Liked the article ?
+Couldn't find a topic of your interest ? Please leave a comment or reach out at <a href="https://twitter.com/ptyagi13">twitter</a> about the topics you would like me to share !</p>
+<p><a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a>_</p>
+<p>Follow me at <a href="https://medium.com/@ptyagicodecamp">Medium</a></p>
   </div>
   <div class="tag-cloud">
     <p>
+      <a href="https://ptyagicodecamp.github.io/tag/enum.html">enum</a>
       <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
       <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </div>
 
