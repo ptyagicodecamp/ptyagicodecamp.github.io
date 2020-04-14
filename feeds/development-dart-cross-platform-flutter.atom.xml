@@ -4,6 +4,20 @@
 &lt;p&gt;Follow me at twitter: @ptyagi13
 Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2&gt;Dart Enums&lt;/h2&gt;
+&lt;p&gt;This article explains Dart Enums and when and how to use them.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/enums.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;h2&gt;Dart Extensions&lt;/h2&gt;
 &lt;p&gt;This article explains what extension methods, operators, and properties are, and how to use them.&lt;/p&gt;
 &lt;ul&gt;

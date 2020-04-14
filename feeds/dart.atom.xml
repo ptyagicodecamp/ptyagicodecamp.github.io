@@ -121,7 +121,7 @@ Weather.RAINY
 
 &lt;hr&gt;
 &lt;h1&gt;Enums extension&lt;/h1&gt;
-&lt;p&gt;Enumerated types are support extensions. Let's add an extension method &lt;code&gt;console()&lt;/code&gt; to print index of enum and a custom message &lt;code&gt;about&lt;/code&gt; along with it.&lt;/p&gt;
+&lt;p&gt;Enumerated types are supported by extensions. Check out my previous article on Dart Extensions &lt;a href="https://ptyagicodecamp.github.io/dart-extensions.html#dart-extensions"&gt;here&lt;/a&gt;. Let's add an extension method &lt;code&gt;console()&lt;/code&gt; to print index of enum and a custom message &lt;code&gt;about&lt;/code&gt; along with it.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;extension WeatherExt on Weather {
   //custom message for each weather type
   static const weatherMap = {
@@ -167,7 +167,7 @@ Weather.RAINY
 &lt;h1&gt;References&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/guides/language/language-tour#enumerated-types"&gt;Enumerated Types&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=""&gt;Dart Extensions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/dart-extensions.html#dart-extensions"&gt;Dart Extensions&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy Darting :)&lt;/p&gt;
 &lt;p&gt;_Liked the article ?
