@@ -24,7 +24,7 @@ const RAINY = &amp;#39;Rainy&amp;#39;;
 &lt;p&gt;In the following section, let's explore the cases where using Enums make more sense.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Switch&lt;/h1&gt;
-&lt;p&gt;When using &lt;code&gt;switch&lt;/code&gt; block, constants behave differently than enums.&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;switch&lt;/code&gt; block, constants behave differently than enums.&lt;/p&gt;
 &lt;h3&gt;Using Constants&lt;/h3&gt;
 &lt;p&gt;When different type of weather state is represented using &lt;code&gt;const&lt;/code&gt;, it's okay with
 &lt;code&gt;switch&lt;/code&gt; block to declare &lt;code&gt;case&lt;/code&gt; block for one constant. &lt;code&gt;default&lt;/code&gt; block is optional as well.
@@ -82,7 +82,7 @@ void mainSwitchEnums() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Check out the &lt;code&gt;switch&lt;/code&gt; block when there's only &lt;code&gt;default&lt;/code&gt; block is available. It prints the value of the current enum passed.&lt;/p&gt;
+&lt;p&gt;Check out the &lt;code&gt;switch&lt;/code&gt; block when there's only &lt;code&gt;default&lt;/code&gt; block is available. It prints the value of the current enum &lt;code&gt;weather&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Only default case. No compilation issue
 void mainSwitchEnumsDefault() {
   var weather = Weather.SUNNY;
@@ -156,6 +156,7 @@ Weather.RAINY
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;That's it for this article. I'll see you in the next &lt;a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"&gt;Dart Vocabulary Series&lt;/a&gt; article.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Companion Video&lt;/h1&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;

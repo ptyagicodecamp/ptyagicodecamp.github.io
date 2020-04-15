@@ -172,7 +172,7 @@ const RAINY = &#39;Rainy&#39;;
 <p>In the following section, let's explore the cases where using Enums make more sense.</p>
 <hr>
 <h1>Switch</h1>
-<p>When using <code>switch</code> block, constants behave differently than enums.</p>
+<p>In <code>switch</code> block, constants behave differently than enums.</p>
 <h3>Using Constants</h3>
 <p>When different type of weather state is represented using <code>const</code>, it's okay with
 <code>switch</code> block to declare <code>case</code> block for one constant. <code>default</code> block is optional as well.
@@ -230,7 +230,7 @@ void mainSwitchEnums() {
 </pre></div>
 
 
-<p>Check out the <code>switch</code> block when there's only <code>default</code> block is available. It prints the value of the current enum passed.</p>
+<p>Check out the <code>switch</code> block when there's only <code>default</code> block is available. It prints the value of the current enum <code>weather</code>.</p>
 <div class="highlight"><pre><span></span>//Only default case. No compilation issue
 void mainSwitchEnumsDefault() {
   var weather = Weather.SUNNY;
@@ -304,6 +304,7 @@ Weather.RAINY
 </pre></div>
 
 
+<p>That's it for this article. I'll see you in the next <a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html">Dart Vocabulary Series</a> article.</p>
 <hr>
 <h1>Companion Video</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
