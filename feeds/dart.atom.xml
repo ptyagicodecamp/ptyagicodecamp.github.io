@@ -39,6 +39,8 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;As we see from above that artist does sketching. Engineer does sketching as well as reading. Doctor does reading and exercise. The athlete does exercise. However boxer-a type of athlete, also does boxing.&lt;/p&gt;
+&lt;p&gt;Let's see a visual representation in diagram below:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/mixins0.png"&gt;&lt;/p&gt;
 &lt;p&gt;Such overlapping common behaviors can be extracted into mixins. Let's create mixins next.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Creating Mixins&lt;/h1&gt;

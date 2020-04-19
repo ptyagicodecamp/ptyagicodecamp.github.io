@@ -39,6 +39,8 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;As we see from above that artist does sketching. Engineer does sketching as well as reading. Doctor does reading and exercise. The athlete does exercise. However boxer-a type of athlete, also does boxing.&lt;/p&gt;
+&lt;p&gt;Let's see a visual representation in diagram below:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/mixins0.png"&gt;&lt;/p&gt;
 &lt;p&gt;Such overlapping common behaviors can be extracted into mixins. Let's create mixins next.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Creating Mixins&lt;/h1&gt;
@@ -402,6 +404,20 @@ Couldn't find a topic of your interest ? Please leave a comment or reach out at 
 &lt;p&gt;Code recipes explaining Dart language usage and terminologies.&lt;/p&gt;
 &lt;p&gt;Follow me at twitter: @ptyagi13
 Medium: @ptyagicodecamp&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Dart Mixins&lt;/h2&gt;
+&lt;p&gt;This article explains Dart Mixins and when and how to use them.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-mixins.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/mixins.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2&gt;Dart Enums&lt;/h2&gt;
 &lt;p&gt;This article explains Dart Enums and when and how to use them.&lt;/p&gt;
