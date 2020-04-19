@@ -1,7 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-04-14T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Dart Enums</title><link href="https://ptyagicodecamp.github.io/dart-enums.html" rel="alternate"></link><published>2020-04-14T00:00:00-04:00</published><updated>2020-04-14T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-14:/dart-enums.html</id><summary type="html">&lt;p&gt;This article explains Dart Enums and when and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/enums.png"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-04-20T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Dart Mixins</title><link href="https://ptyagicodecamp.github.io/dart-mixins.html" rel="alternate"></link><published>2020-04-20T00:00:00-04:00</published><updated>2020-04-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-20:/dart-mixins.html</id><summary type="html">&lt;p&gt;This article explains Dart Mixins and when and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/mixins.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Enums (a.k.a Enumerated Types) were added as an experimental feature in &lt;a href="https://news.dartlang.org/2014/11/dart-18-library-improvements-and.html"&gt;Dart 1.8 release&lt;/a&gt;. Enums are like a class that represent a fixed number of constant values.&lt;/p&gt;
+&lt;p&gt;Mixins keep Dart code reusable across separate classes. It's the most efficient way to reuse common code from multiple classes that share common behaviors.&lt;/p&gt;
+&lt;p&gt;A mixin class contains methods to be used by other classes without being their parent. This is how mixins differ from interfaces and abstract classes.&lt;/p&gt;
+&lt;p&gt;Mixins are declared using keyword &lt;code&gt;mixin&lt;/code&gt; like below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mixin CommonBehavior {
+
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's understand this with help of the example of different people with different occupations: artist, engineer, doctor, and sportsman. Let's think in terms of OOP manner, represent people in their classes.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Person&lt;/code&gt; class: The most common properties could be abstracted in class &lt;code&gt;Person&lt;/code&gt; that other classes would extend from. Common properties (like age , name etc) and common behaviors (like eat and sleep) can go in here.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;abstract class Person {
+  int age;
+  int name;
+
+  eat() {}
+  sleep() {}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Artist&lt;/code&gt; class: Our artist &lt;strong&gt;&lt;em&gt;is a&lt;/em&gt;&lt;/strong&gt; Person. Makes landscapes sketches.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Engineer&lt;/code&gt; class: The engineer &lt;strong&gt;&lt;em&gt;is a&lt;/em&gt;&lt;/strong&gt; Person. Makes buildings sketches and reads research papers on construction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Doctor&lt;/code&gt; class: The doctor &lt;strong&gt;&lt;em&gt;is a&lt;/em&gt;&lt;/strong&gt; Person. Reads daily on latest health news and likes to do workout.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Boxer&lt;/code&gt; class: The boxer  &lt;strong&gt;&lt;em&gt;is a&lt;/em&gt;&lt;/strong&gt; type of Athlete. Athlete &lt;strong&gt;&lt;em&gt;is a&lt;/em&gt;&lt;/strong&gt; Person. Boxer does routine exercises as well practices punches.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As we see from above that artist does sketching. Engineer does sketching as well as reading. Doctor does reading and exercise. The athlete does exercise. However boxer-a type of athlete, also does boxing.&lt;/p&gt;
+&lt;p&gt;Such overlapping common behaviors can be extracted into mixins. Let's create mixins next.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Creating Mixins&lt;/h1&gt;
+&lt;h2&gt;Sketching&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;Sketching&lt;/code&gt; mixin defines the common &lt;code&gt;sketch()&lt;/code&gt; method. It takes a message and prints it on console to keep things simple for demonstration.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mixin Sketching {
+  sketch(String message) {
+    print(message);
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Reading&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;Reading&lt;/code&gt; mixin defines &lt;code&gt;dailyReading(String topic)&lt;/code&gt; method. A reading topic is passed as parameter.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mixin Reading {
+  dailyReading(String topic) {
+    print(&amp;quot;Daily reading on &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;topic&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Exercise&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;Exercise&lt;/code&gt; mixin defines methods for running and weight training. The &lt;code&gt;running(int mile)&lt;/code&gt; method passes &lt;code&gt;mile&lt;/code&gt; parameter to print the message. The &lt;code&gt;weightTraining(int weights)&lt;/code&gt; method prints the value for &lt;code&gt;weights&lt;/code&gt; parameter.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mixin Exercise {
+  running(int mile) {
+    print(&amp;quot;Daily run of &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;mile&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; mile(s)&amp;quot;);
+  }
+
+  weightTraining(int weights) {
+    print(&amp;quot;Lifting &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;weights&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; lbs&amp;quot;);
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Boxing&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;Boxing&lt;/code&gt; mixin defines practicing punches behavior of an athlete. As per our requirements, only athletes are allowed to practice punches. In such cases, we may want to restrict the usage of mixin only by classes of type Athlete. We can apply such restriction on &lt;code&gt;Boxing&lt;/code&gt; mixin by using &lt;code&gt;on&lt;/code&gt; keyword followed by the &lt;code&gt;Athlete&lt;/code&gt; - the class which is allowed the usage.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mixin Boxing on Athlete {
+  punch(int n) {
+    print(&amp;quot;Boxer practicing &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; punches&amp;quot;);
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Using Mixins&lt;/h1&gt;
+&lt;p&gt;In this section, you'll see examples of using mixins defined earlier.&lt;/p&gt;
+&lt;h2&gt;&lt;code&gt;Artist&lt;/code&gt; class&lt;/h2&gt;
+&lt;p&gt;The artist makes landscapes sketches. It defines &lt;code&gt;sketchLandscape()&lt;/code&gt; to do so. This method calls &lt;code&gt;sketch(...)&lt;/code&gt; method from &lt;code&gt;Sketching&lt;/code&gt; mixin.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Artist&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Person&lt;/span&gt; &lt;span class="kd"&gt;with&lt;/span&gt; &lt;span class="nx"&gt;Sketching&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;sketchLandscape() {&lt;/span&gt;
+    &lt;span class="nx"&gt;sketch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Making landscapes sketches&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;&lt;code&gt;Engineer&lt;/code&gt; class&lt;/h2&gt;
+&lt;p&gt;The engineer does make building sketches and reads research on building construction. The &lt;code&gt;sketchBuildings()&lt;/code&gt; method uses &lt;code&gt;sketch()&lt;/code&gt; method from &lt;code&gt;Sketching&lt;/code&gt; mixin. The &lt;code&gt;readResearchPaper()&lt;/code&gt; calls &lt;code&gt;dailyReading(topic)&lt;/code&gt; from &lt;code&gt;Reading&lt;/code&gt; mixin.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Engineer&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Person&lt;/span&gt; &lt;span class="kd"&gt;with&lt;/span&gt; &lt;span class="nx"&gt;Sketching&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Reading&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;sketchBuildings() {&lt;/span&gt;
+    &lt;span class="nx"&gt;sketch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Sketching engineering drawings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="nx"&gt;readResearchPaper() {&lt;/span&gt;
+    &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;topic&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Building Construction&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;dailyReading&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;topic&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;&lt;code&gt;Doctor&lt;/code&gt; class&lt;/h2&gt;
+&lt;p&gt;The doctor reads health reports and does workouts to keep it. The &lt;code&gt;readReports()&lt;/code&gt; method uses &lt;code&gt;Reading&lt;/code&gt; mixin. The &lt;code&gt;workout()&lt;/code&gt; method uses &lt;code&gt;Exercise&lt;/code&gt; mixin to carve personalized workout plan.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Doctor&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Person&lt;/span&gt; &lt;span class="kd"&gt;with&lt;/span&gt; &lt;span class="nx"&gt;Reading&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Exercise&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;readReports() {&lt;/span&gt;
+    &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;topic&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;covid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;dailyReading&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;topic&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="nx"&gt;workout() {&lt;/span&gt;
+    &lt;span class="nx"&gt;running&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;weightTraining&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;&lt;code&gt;Athlete&lt;/code&gt; class&lt;/h2&gt;
+&lt;p&gt;The athlete &lt;strong&gt;&lt;em&gt;is a&lt;/em&gt;&lt;/strong&gt; person as well like other people we discussed so far. All athletes do their exercise, and have a general workout routine. The method &lt;code&gt;generalRoutine()&lt;/code&gt; provide the general workout routine definition.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Athlete&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Person&lt;/span&gt; &lt;span class="kd"&gt;with&lt;/span&gt; &lt;span class="nx"&gt;Exercise&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;generalRoutine() {&lt;/span&gt;
+    &lt;span class="nx"&gt;running&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;weightTraining&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;&lt;code&gt;Boxer&lt;/code&gt; class&lt;/h2&gt;
+&lt;p&gt;The boxer &lt;strong&gt;&lt;em&gt;is a&lt;/em&gt;&lt;/strong&gt; Athlete who does boxing. The &lt;code&gt;Boxing&lt;/code&gt; mixin provides the &lt;code&gt;punch()&lt;/code&gt; to define &lt;code&gt;punchPractice()&lt;/code&gt; method for boxer. The &lt;code&gt;routineExercise()&lt;/code&gt; method defines exercise routine for this specific athlete with help of &lt;code&gt;Exercise&lt;/code&gt; mixin.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Boxer&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Athlete&lt;/span&gt; &lt;span class="kd"&gt;with&lt;/span&gt; &lt;span class="nx"&gt;Boxing&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;punchPractice() {&lt;/span&gt;
+    &lt;span class="nx"&gt;punch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="nx"&gt;routineExercise() {&lt;/span&gt;
+    &lt;span class="nx"&gt;running&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;weightTraining&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Running Code&lt;/h1&gt;
+&lt;p&gt;In this section, let's run all the methods for each class.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main() {
+  print(&amp;quot;Artist&amp;quot;);
+  Artist artist = Artist();
+  artist.sketchLandscape();
+
+  print(&amp;quot;\nEngineer&amp;quot;);
+  Engineer engineer = Engineer();
+  engineer.sketchBuildings();
+  engineer.readResearchPaper();
+
+  print(&amp;quot;\nDoctor&amp;quot;);
+  Doctor doctor = Doctor();
+  doctor.readReports();
+  doctor.workout();
+
+  print(&amp;quot;\nBoxer&amp;quot;);
+  Boxer boxer = Boxer();
+  boxer.punchPractice();
+  boxer.routineExercise();
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Artist
+Making landscapes sketches
+
+Engineer
+Sketching engineering drawings
+Daily reading on Building Construction
+
+Doctor
+Daily reading on covid
+Daily run of 1 mile(s)
+Lifting 10 lbs
+
+Boxer
+Boxer practicing 100 punches
+Daily run of 4 mile(s)
+Lifting 40 lbs
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;p&gt;In this article, we learned what Mixins are used for and how to use them to share common code across classes. We learned that inheritance is used when there's &lt;strong&gt;&lt;em&gt;is a&lt;/em&gt;&lt;/strong&gt; type of relationship. Mixins are used to share code for common behaviors across unrelated classes.&lt;/p&gt;
+&lt;p&gt;Check out the &lt;a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"&gt;Dart Vocabulary Series&lt;/a&gt; for other Dart stuff.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Check out YouTube Video&lt;/h1&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;hr&gt;
+&lt;h1&gt;Source Code&lt;/h1&gt;
+&lt;p&gt;Please checkout the source code at Github &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/mixins.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;p&gt;1.&lt;/p&gt;
+&lt;p&gt;Happy Darting :)&lt;/p&gt;
+&lt;p&gt;_Liked the article ?
+Couldn't find a topic of your interest ? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share !&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="mixins"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>Dart Enums</title><link href="https://ptyagicodecamp.github.io/dart-enums.html" rel="alternate"></link><published>2020-04-14T00:00:00-04:00</published><updated>2020-04-14T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-14:/dart-enums.html</id><summary type="html">&lt;p&gt;This article explains Dart Enums and when and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/enums.png"&gt;&lt;/p&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Enums (a.k.a Enumerated Types) was added as an experimental feature in &lt;a href="https://news.dartlang.org/2014/11/dart-18-library-improvements-and.html"&gt;Dart 1.8 release&lt;/a&gt;. Enums are like a class that represents a fixed number of constant values.&lt;/p&gt;
 &lt;p&gt;Imagine that you're working on a weather application, and you need a way to represent different states for weather. For example, weather can be sunny, cloudy or rainy. Now, you have two ways to represent these states in your code.&lt;/p&gt;
 &lt;h2&gt;Using Constants&lt;/h2&gt;
 &lt;p&gt;You can represent each state using a &lt;code&gt;const&lt;/code&gt; &lt;a href="https://dart.dev/guides/language/language-tour#keywords"&gt;keyword&lt;/a&gt;.&lt;/p&gt;
@@ -158,7 +379,7 @@ Weather.RAINY
 
 &lt;hr&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
-&lt;p&gt;In this article, we saw how enums can be a better choice over constants. We also learned iterating over enums and using extensions for enumerated types.&lt;/p&gt;
+&lt;p&gt;In this article, we saw how enums can be a better choice over constants. We also learned to iterate over enums and using extensions for enumerated types.&lt;/p&gt;
 &lt;p&gt;That's it for this article. Check out the &lt;a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"&gt;Dart Vocabulary Series&lt;/a&gt; for other Dart stuff.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Check out Video&lt;/h1&gt;
