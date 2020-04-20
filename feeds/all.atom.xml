@@ -78,7 +78,7 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;p&gt;Mixins keep Dart code reusable across separate classes. It's the most efficient way to reuse common code from multiple classes that share common behaviors.&lt;/p&gt;
 &lt;p&gt;A mixin class contains methods to be used by other classes without being their parent. This is how mixins differ from interfaces and abstract classes.&lt;/p&gt;
 &lt;p&gt;Mixins are declared using keyword &lt;code&gt;mixin&lt;/code&gt; like below:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mixin CommonBehavior {
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mixin SharedBehavior {
 
 }
 &lt;/pre&gt;&lt;/div&gt;
