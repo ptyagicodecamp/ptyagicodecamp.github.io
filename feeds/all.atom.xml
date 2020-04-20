@@ -14,7 +14,7 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/mixins.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/r9rIEqDAZcc"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -284,14 +284,17 @@ Lifting 40 lbs
 &lt;p&gt;Check out the &lt;a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"&gt;Dart Vocabulary Series&lt;/a&gt; for other Dart stuff.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Check out YouTube Video&lt;/h1&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/r9rIEqDAZcc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;hr&gt;
 &lt;h1&gt;Source Code&lt;/h1&gt;
 &lt;p&gt;Please checkout the source code at Github &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/mixins.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;References&lt;/h1&gt;
-&lt;p&gt;1.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://dartpad.dev/"&gt;DartPad: Online Dart Editor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins"&gt;Mixins&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;Happy Darting :)&lt;/p&gt;
 &lt;p&gt;_Liked the article ?
 Couldn't find a topic of your interest ? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share !&lt;/p&gt;
