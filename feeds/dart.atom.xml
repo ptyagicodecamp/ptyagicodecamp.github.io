@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Dart</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/dart.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-04-22T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Dart Static keyword</title><link href="https://ptyagicodecamp.github.io/dart-static-keyword.html" rel="alternate"></link><published>2020-04-22T00:00:00-04:00</published><updated>2020-04-22T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-22:/dart-static-keyword.html</id><summary type="html">&lt;p&gt;This article demonstrates using &lt;code&gt;static&lt;/code&gt; keyword in Dart.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/static.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;In Dart language, the &lt;code&gt;static&lt;/code&gt; keyword is used to declare class level variables and methods. A class level variable is useful to declare constants and hold the class state.&lt;/p&gt;
+&lt;p&gt;In Dart language, the &lt;code&gt;static&lt;/code&gt; keyword is used to declare class level variables and methods. A class level variable is useful to declare constants and implement the class-wide state.&lt;/p&gt;
 &lt;p&gt;The class methods can be called from other classes using class name they are defined in.&lt;/p&gt;
 &lt;p&gt;Usually, utility classes use static variables and methods to provide easy and quick access to methods and constants.&lt;/p&gt;
 &lt;hr&gt;
