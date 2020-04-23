@@ -4,7 +4,7 @@
 &lt;p&gt;Follow me at twitter: @ptyagi13
 Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2&gt;Dart Static keyword&lt;/h2&gt;
+&lt;h2&gt;Dart static keyword&lt;/h2&gt;
 &lt;p&gt;This article demonstrates using &lt;code&gt;static&lt;/code&gt; keyword in Dart.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -14,7 +14,7 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/static.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/Du81OvbtA3Y"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -187,11 +187,11 @@ String reverse(String str) {
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Avoid classes with only static members in it as per &lt;a href="https://dart-lang.github.io/linter/lints/avoid_classes_with_only_static_members.html"&gt;this lint rule&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
-&lt;p&gt;In this article, you learned how to use &lt;code&gt;static&lt;/code&gt; keyword in Dart language. You learned facts about class variables and methods, and alternate implementaion for utitility classes without using &lt;code&gt;static&lt;/code&gt; keywords.&lt;/p&gt;
+&lt;p&gt;In this article, you learned how to use &lt;code&gt;static&lt;/code&gt; keyword in Dart language. You learned facts about class variables and methods, and alternate implementations for utility classes without using &lt;code&gt;static&lt;/code&gt; keywords.&lt;/p&gt;
 &lt;p&gt;Check out the &lt;a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"&gt;Dart Vocabulary Series&lt;/a&gt; for other Dart stuff.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Check out YouTube Video&lt;/h1&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Du81OvbtA3Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;hr&gt;
 &lt;h1&gt;Source Code&lt;/h1&gt;
