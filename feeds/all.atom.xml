@@ -200,7 +200,7 @@ String reverse(String str) {
 &lt;h1&gt;References&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://dartpad.dev/"&gt;DartPad: Online Dart Editor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/guides/language/language-tour#class-variables-and-methods"&gt;Language Tour&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy Darting :)&lt;/p&gt;
 &lt;p&gt;_Liked the article?
