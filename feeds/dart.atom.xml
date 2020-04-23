@@ -72,7 +72,7 @@
 &lt;p&gt;Dart supports top-level variables, constants, and methods.
 Usually utility methods are put together in a class of static methods.&lt;/p&gt;
 &lt;p&gt;In Dart, if such utility methods are not logically related, then they shouldn't be put inside a class. Such Methods can be put at top-level in a dart file.&lt;/p&gt;
-&lt;p&gt;The above static utility variable / methods can be moved to top-level. You don't need a class for namespace purposes. Consider creating a library instead for grouping methods as per namespaces.&lt;/p&gt;
+&lt;p&gt;The above static utility variable / methods can be moved to top-level. You don't need a class for namespace purposes. It's recommended to create a library instead for grouping methods according to namespaces.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Utility method at top-level
 const dart = &amp;quot;oh dart&amp;quot;;
 
