@@ -220,7 +220,8 @@
 <hr>
 <h1>Tip</h1>
 <p>Dart supports top-level variables, constants, and methods.
-Usually utility methods are put together in a class of static methods. In Dart, if such utility methods are not logically related, then they shouldn't be put inside a class. Such Methods can be put at top-level in a dart file.</p>
+Usually utility methods are put together in a class of static methods.</p>
+<p>In Dart, if such utility methods are not logically related, then they shouldn't be put inside a class. Such Methods can be put at top-level in a dart file.</p>
 <p>The above static utility variable / methods can be moved to top-level. You don't need a class for namespace purposes. Consider creating a library instead for grouping methods as per namespaces.</p>
 <div class="highlight"><pre><span></span>//Utility method at top-level
 const dart = &quot;oh dart&quot;;
@@ -245,6 +246,7 @@ String reverse(String str) {
 </pre></div>
 
 
+<p><strong>Note:</strong> Avoid classes with only static members in it as per <a href="https://dart-lang.github.io/linter/lints/avoid_classes_with_only_static_members.html">this lint rule</a>.</p>
 <hr>
 <h1>Summary</h1>
 <p>In this article, you learned how to use <code>static</code> keyword in Dart language. You learned facts about class variables and methods, and alternate implementaion for utitility classes without using <code>static</code> keywords.</p>
@@ -260,7 +262,7 @@ String reverse(String str) {
 <h1>References</h1>
 <ol>
 <li><a href="https://dartpad.dev/">DartPad: Online Dart Editor</a></li>
-<li><a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins">Mixins</a></li>
+<li><a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins"></a></li>
 </ol>
 <p>Happy Darting :)</p>
 <p>_Liked the article?

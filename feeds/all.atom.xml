@@ -370,7 +370,8 @@ Couldn't find a topic of your interest ? Please leave a comment or reach out at 
 &lt;hr&gt;
 &lt;h1&gt;Tip&lt;/h1&gt;
 &lt;p&gt;Dart supports top-level variables, constants, and methods.
-Usually utility methods are put together in a class of static methods. In Dart, if such utility methods are not logically related, then they shouldn't be put inside a class. Such Methods can be put at top-level in a dart file.&lt;/p&gt;
+Usually utility methods are put together in a class of static methods.&lt;/p&gt;
+&lt;p&gt;In Dart, if such utility methods are not logically related, then they shouldn't be put inside a class. Such Methods can be put at top-level in a dart file.&lt;/p&gt;
 &lt;p&gt;The above static utility variable / methods can be moved to top-level. You don't need a class for namespace purposes. Consider creating a library instead for grouping methods as per namespaces.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Utility method at top-level
 const dart = &amp;quot;oh dart&amp;quot;;
@@ -395,6 +396,7 @@ String reverse(String str) {
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Avoid classes with only static members in it as per &lt;a href="https://dart-lang.github.io/linter/lints/avoid_classes_with_only_static_members.html"&gt;this lint rule&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
 &lt;p&gt;In this article, you learned how to use &lt;code&gt;static&lt;/code&gt; keyword in Dart language. You learned facts about class variables and methods, and alternate implementaion for utitility classes without using &lt;code&gt;static&lt;/code&gt; keywords.&lt;/p&gt;
@@ -410,7 +412,7 @@ String reverse(String str) {
 &lt;h1&gt;References&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://dartpad.dev/"&gt;DartPad: Online Dart Editor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins"&gt;Mixins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy Darting :)&lt;/p&gt;
 &lt;p&gt;_Liked the article?
