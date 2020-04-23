@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-04-20T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>A Dart/Flutter Vocabulary Series</title><link href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html" rel="alternate"></link><published>2020-04-20T00:00:00-04:00</published><updated>2020-04-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-20:/a-dartflutter-vocabulary-series.html</id><summary type="html">&lt;p&gt;This article contains the list of Dart language related articles.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Dart &amp;amp; Flutter Vocabulary Series&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-04-22T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>A Dart/Flutter Vocabulary Series</title><link href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html" rel="alternate"></link><published>2020-04-22T00:00:00-04:00</published><updated>2020-04-22T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-22:/a-dartflutter-vocabulary-series.html</id><summary type="html">&lt;p&gt;This article contains the list of Dart language related articles.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Dart &amp;amp; Flutter Vocabulary Series&lt;/h2&gt;
 &lt;p&gt;Code recipes explaining Dart language usage and terminologies.&lt;/p&gt;
 &lt;p&gt;Follow me at twitter: @ptyagi13
 Medium: @ptyagicodecamp&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Dart Static keyword&lt;/h2&gt;
+&lt;p&gt;This article demonstrates using &lt;code&gt;static&lt;/code&gt; keyword in Dart.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-static-keyword.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/static.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2&gt;Dart Mixins&lt;/h2&gt;
 &lt;p&gt;This article explains Dart Mixins and when and how to use them.&lt;/p&gt;
@@ -73,7 +87,126 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/2Oa5mJU3KUY"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;</content><category term="dart"></category><category term="flutter"></category></entry><entry><title>Dart Mixins</title><link href="https://ptyagicodecamp.github.io/dart-mixins.html" rel="alternate"></link><published>2020-04-20T00:00:00-04:00</published><updated>2020-04-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-20:/dart-mixins.html</id><summary type="html">&lt;p&gt;This article explains Dart Mixins and when and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/mixins.png"&gt;&lt;/p&gt;
+&lt;hr&gt;</content><category term="dart"></category><category term="flutter"></category></entry><entry><title>Dart Static keyword</title><link href="https://ptyagicodecamp.github.io/dart-static-keyword.html" rel="alternate"></link><published>2020-04-22T00:00:00-04:00</published><updated>2020-04-22T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-22:/dart-static-keyword.html</id><summary type="html">&lt;p&gt;This article demonstrates using &lt;code&gt;static&lt;/code&gt; keyword in Dart.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/static.png"&gt;&lt;/p&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;In Dart language, the &lt;code&gt;static&lt;/code&gt; keyword is used to declare class level variables and methods. A class level variable is useful to declare constants and hold the class state.&lt;/p&gt;
+&lt;p&gt;The class methods can be called from other classes using class name they are defined in.&lt;/p&gt;
+&lt;p&gt;Usually, utility classes use static variables and methods to provide easy and quick access to methods and constants.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Using &lt;code&gt;static&lt;/code&gt; keyword&lt;/h1&gt;
+&lt;p&gt;Let's take an example of a string utility class, say &lt;code&gt;StringUtils&lt;/code&gt;. This class contains a convenience method, say &lt;code&gt;reverse(String str)&lt;/code&gt;, to reverse the given string . This utility class has a constant &lt;code&gt;dart&lt;/code&gt; which is inferred to contain a String value of "oh dart".&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;StringUtils&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;static&lt;/span&gt; &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;dart&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;oh dart&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kr"&gt;static&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;fromCharCodes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;runes&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toList&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;reversed&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; In case you're interested in learning about &lt;code&gt;runes&lt;/code&gt; used in code above to reverse the string, then check out &lt;a href="https://ptyagicodecamp.github.io/the-runes-property.html"&gt;my article&lt;/a&gt; on Runes.&lt;/p&gt;
+&lt;h2&gt;Running Code&lt;/h2&gt;
+&lt;p&gt;The class level variable can be accessed using class name. In code below, &lt;code&gt;StringUtils&lt;/code&gt; is needed to access either constant &lt;code&gt;dart&lt;/code&gt; or static method &lt;code&gt;reverse(...)&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main() {
+  String reversedStatic = StringUtils.reverse(StringUtils.dart);
+  print(reversedStatic);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;trad ho
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Few Facts about Static Variables&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Static variables are not initialized until they're used.&lt;/li&gt;
+&lt;li&gt;Useful for representing class state and constants.&lt;/li&gt;
+&lt;li&gt;Constants names are declared using &lt;a href="https://dart.dev/guides/language/effective-dart/style#identifiers"&gt;lowerCamelCase&lt;/a&gt; convention.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;Few Facts about Static Methods&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Static / Class methods don't have access to &lt;code&gt;this&lt;/code&gt; keyword.&lt;/li&gt;
+&lt;li&gt;Static methods can be used as compile-time constants, and can be passed as parameters to constant constructor. Let's create a class &lt;code&gt;SomeObj&lt;/code&gt; with a &lt;code&gt;const&lt;/code&gt; constructor:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SomeObj&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;myStr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;SomeObj&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;myStr&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Running Code&lt;/h2&gt;
+&lt;p&gt;Now the static method &lt;code&gt;reverse(...)&lt;/code&gt; is passed as parameter to &lt;code&gt;const SomeObj(...)&lt;/code&gt; constructor.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main() {
+  SomeObj obj = SomeObj(StringUtils.reverse(StringUtils.dart));
+  print(obj.myStr);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;trad ho
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Tip&lt;/h1&gt;
+&lt;p&gt;Dart supports top-level variables, constants, and methods.
+Usually utility methods are put together in a class of static methods.&lt;/p&gt;
+&lt;p&gt;In Dart, if such utility methods are not logically related, then they shouldn't be put inside a class. Such Methods can be put at top-level in a dart file.&lt;/p&gt;
+&lt;p&gt;The above static utility variable / methods can be moved to top-level. You don't need a class for namespace purposes. Consider creating a library instead for grouping methods as per namespaces.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Utility method at top-level
+const dart = &amp;quot;oh dart&amp;quot;;
+
+String reverse(String str) {
+  return String.fromCharCodes(str.runes.toList().reversed);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Running Code&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main() {
+  //Moving utility method/variable to top-level
+  String reversedStr = reverse(dart);
+  print(reversedStr);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;trad ho
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Avoid classes with only static members in it as per &lt;a href="https://dart-lang.github.io/linter/lints/avoid_classes_with_only_static_members.html"&gt;this lint rule&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;p&gt;In this article, you learned how to use &lt;code&gt;static&lt;/code&gt; keyword in Dart language. You learned facts about class variables and methods, and alternate implementaion for utitility classes without using &lt;code&gt;static&lt;/code&gt; keywords.&lt;/p&gt;
+&lt;p&gt;Check out the &lt;a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"&gt;Dart Vocabulary Series&lt;/a&gt; for other Dart stuff.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Check out YouTube Video&lt;/h1&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;hr&gt;
+&lt;h1&gt;Source Code&lt;/h1&gt;
+&lt;p&gt;Please checkout the source code at Github &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/static.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://dartpad.dev/"&gt;DartPad: Online Dart Editor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy Darting :)&lt;/p&gt;
+&lt;p&gt;_Liked the article?
+Couldn't find a topic of your interest? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share!&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="static"></category><category term="class-variables"></category><category term="class-methods"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>Dart Mixins</title><link href="https://ptyagicodecamp.github.io/dart-mixins.html" rel="alternate"></link><published>2020-04-20T00:00:00-04:00</published><updated>2020-04-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-20:/dart-mixins.html</id><summary type="html">&lt;p&gt;This article explains Dart Mixins and when and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/mixins.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Mixins keep Dart code reusable across separate classes. It's the most efficient way to reuse common code from multiple classes that share common behaviors.&lt;/p&gt;
 &lt;p&gt;A mixin class contains methods to be used by other classes without being their parent. This is how mixins differ from interfaces and abstract classes.&lt;/p&gt;
@@ -299,126 +432,7 @@ Lifting 40 lbs
 &lt;p&gt;_Liked the article ?
 Couldn't find a topic of your interest ? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share !&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
-&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="mixins"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>Dart Static keyword</title><link href="https://ptyagicodecamp.github.io/dart-static-keyword.html" rel="alternate"></link><published>2020-04-20T00:00:00-04:00</published><updated>2020-04-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-20:/dart-static-keyword.html</id><summary type="html">&lt;p&gt;This article demonstrates using &lt;code&gt;static&lt;/code&gt; keyword in Dart.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/static.png"&gt;&lt;/p&gt;
-&lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;In Dart language, the &lt;code&gt;static&lt;/code&gt; keyword is used to declare class level variables and methods. A class level variable is useful to declare constants and hold the class state.&lt;/p&gt;
-&lt;p&gt;The class methods can be called from other classes using class name they are defined in.&lt;/p&gt;
-&lt;p&gt;Usually, utility classes use static variables and methods to provide easy and quick access to methods and constants.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Using &lt;code&gt;static&lt;/code&gt; keyword&lt;/h1&gt;
-&lt;p&gt;Let's take an example of a string utility class, say &lt;code&gt;StringUtils&lt;/code&gt;. This class contains a convenience method, say &lt;code&gt;reverse(String str)&lt;/code&gt;, to reverse the given string . This utility class has a constant &lt;code&gt;dart&lt;/code&gt; which is inferred to contain a String value of "oh dart".&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;StringUtils&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kr"&gt;static&lt;/span&gt; &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;dart&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;oh dart&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="kr"&gt;static&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;fromCharCodes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;runes&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toList&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;reversed&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; In case you're interested in learning about &lt;code&gt;runes&lt;/code&gt; used in code above to reverse the string, then check out &lt;a href="https://ptyagicodecamp.github.io/the-runes-property.html"&gt;my article&lt;/a&gt; on Runes.&lt;/p&gt;
-&lt;h2&gt;Running Code&lt;/h2&gt;
-&lt;p&gt;The class level variable can be accessed using class name. In code below, &lt;code&gt;StringUtils&lt;/code&gt; is needed to access either constant &lt;code&gt;dart&lt;/code&gt; or static method &lt;code&gt;reverse(...)&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main() {
-  String reversedStatic = StringUtils.reverse(StringUtils.dart);
-  print(reversedStatic);
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;trad ho
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr&gt;
-&lt;h1&gt;Few Facts about Static Variables&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Static variables are not initialized until they're used.&lt;/li&gt;
-&lt;li&gt;Useful for representing class state and constants.&lt;/li&gt;
-&lt;li&gt;Constants names are declared using &lt;a href="https://dart.dev/guides/language/effective-dart/style#identifiers"&gt;lowerCamelCase&lt;/a&gt; convention.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h1&gt;Few Facts about Static Methods&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Static / Class methods don't have access to &lt;code&gt;this&lt;/code&gt; keyword.&lt;/li&gt;
-&lt;li&gt;Static methods can be used as compile-time constants, and can be passed as parameters to constant constructor. Let's create a class &lt;code&gt;SomeObj&lt;/code&gt; with a &lt;code&gt;const&lt;/code&gt; constructor:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SomeObj&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;myStr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;SomeObj&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;myStr&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Running Code&lt;/h2&gt;
-&lt;p&gt;Now the static method &lt;code&gt;reverse(...)&lt;/code&gt; is passed as parameter to &lt;code&gt;const SomeObj(...)&lt;/code&gt; constructor.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main() {
-  SomeObj obj = SomeObj(StringUtils.reverse(StringUtils.dart));
-  print(obj.myStr);
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;trad ho
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr&gt;
-&lt;h1&gt;Tip&lt;/h1&gt;
-&lt;p&gt;Dart supports top-level variables, constants, and methods.
-Usually utility methods are put together in a class of static methods.&lt;/p&gt;
-&lt;p&gt;In Dart, if such utility methods are not logically related, then they shouldn't be put inside a class. Such Methods can be put at top-level in a dart file.&lt;/p&gt;
-&lt;p&gt;The above static utility variable / methods can be moved to top-level. You don't need a class for namespace purposes. Consider creating a library instead for grouping methods as per namespaces.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Utility method at top-level
-const dart = &amp;quot;oh dart&amp;quot;;
-
-String reverse(String str) {
-  return String.fromCharCodes(str.runes.toList().reversed);
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Running Code&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main() {
-  //Moving utility method/variable to top-level
-  String reversedStr = reverse(dart);
-  print(reversedStr);
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;trad ho
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Avoid classes with only static members in it as per &lt;a href="https://dart-lang.github.io/linter/lints/avoid_classes_with_only_static_members.html"&gt;this lint rule&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Summary&lt;/h1&gt;
-&lt;p&gt;In this article, you learned how to use &lt;code&gt;static&lt;/code&gt; keyword in Dart language. You learned facts about class variables and methods, and alternate implementaion for utitility classes without using &lt;code&gt;static&lt;/code&gt; keywords.&lt;/p&gt;
-&lt;p&gt;Check out the &lt;a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"&gt;Dart Vocabulary Series&lt;/a&gt; for other Dart stuff.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Check out YouTube Video&lt;/h1&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;hr&gt;
-&lt;h1&gt;Source Code&lt;/h1&gt;
-&lt;p&gt;Please checkout the source code at Github &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/static.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;References&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://dartpad.dev/"&gt;DartPad: Online Dart Editor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins"&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Happy Darting :)&lt;/p&gt;
-&lt;p&gt;_Liked the article?
-Couldn't find a topic of your interest? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share!&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
-&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="static"></category><category term="class-variables"></category><category term="class-methods"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>Dart Enums</title><link href="https://ptyagicodecamp.github.io/dart-enums.html" rel="alternate"></link><published>2020-04-14T00:00:00-04:00</published><updated>2020-04-14T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-14:/dart-enums.html</id><summary type="html">&lt;p&gt;This article explains Dart Enums and when and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/enums.png"&gt;&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="mixins"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>Dart Enums</title><link href="https://ptyagicodecamp.github.io/dart-enums.html" rel="alternate"></link><published>2020-04-14T00:00:00-04:00</published><updated>2020-04-14T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-14:/dart-enums.html</id><summary type="html">&lt;p&gt;This article explains Dart Enums and when and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/enums.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Enums (a.k.a Enumerated Types) was added as an experimental feature in &lt;a href="https://news.dartlang.org/2014/11/dart-18-library-improvements-and.html"&gt;Dart 1.8 release&lt;/a&gt;. Enums are like a class that represents a fixed number of constant values.&lt;/p&gt;
 &lt;p&gt;Imagine that you're working on a weather application, and you need a way to represent different states for weather. For example, weather can be sunny, cloudy or rainy. Now, you have two ways to represent these states in your code.&lt;/p&gt;
