@@ -4234,6 +4234,9 @@ In this example, I've used very simple default text responses at DialogFlow for 
 &lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/flutter-facts-native"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;[Update] Code has been tested on Flutter stable channel &lt;code&gt;1.12.13+hotfix.8&lt;/code&gt;, and Dart version &lt;code&gt;Dart 2.7.0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;[Update #2 - 04/20/20]&lt;/p&gt;
+&lt;p&gt;In case you're running into null response from DialogFlow, you may want to make sure that you've &lt;a href="https://dialogflow.com/docs/reference/v2-auth-setup"&gt;correct setup&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can also try to create new credentials in google cloud with role as : Dialogflow -&amp;gt;Dialogflow api admin&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3&gt;References/Credits:&lt;/h3&gt;
 &lt;ul&gt;
