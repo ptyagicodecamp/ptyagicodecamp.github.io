@@ -169,8 +169,14 @@
   <span class="kr">final</span> <span class="kr">int</span> <span class="nx">id</span><span class="p">;</span>
   <span class="kr">final</span> <span class="kr">double</span> <span class="nx">price</span><span class="p">;</span>
   <span class="kr">final</span> <span class="nb">String</span> <span class="nx">title</span><span class="p">;</span>
+  <span class="kr">final</span> <span class="nx">Inventory</span> <span class="nx">_inventory</span><span class="p">;</span>
+  <span class="nx">Product</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">price</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_inventory</span><span class="p">);</span>
 
-  <span class="nx">Product</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">price</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">);</span>
+  <span class="kd">@override</span>
+  <span class="nb">String</span> <span class="nx">toString() {</span>
+    <span class="k">return</span> <span class="s2">&quot;Price of ${this.title} is ${this.price}. &quot;</span>
+        <span class="s2">&quot;Inventory has ${_inventory.amount} items in it.&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kr">class</span> <span class="nx">Inventory</span> <span class="p">{</span>
@@ -184,8 +190,12 @@
   <span class="kr">final</span> <span class="nx">HashMap</span><span class="o">&lt;</span><span class="nx">P</span><span class="p">,</span> <span class="nx">I</span><span class="o">&gt;</span> <span class="nx">catalog</span> <span class="o">=</span> <span class="nx">HashMap</span><span class="o">&lt;</span><span class="nx">P</span><span class="p">,</span> <span class="nx">I</span><span class="o">&gt;</span><span class="p">();</span>
 
   <span class="nx">List</span><span class="o">&lt;</span><span class="nx">P</span><span class="o">&gt;</span> <span class="nx">get</span> <span class="nx">products</span> <span class="o">=&gt;</span> <span class="nx">catalog</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">toList</span><span class="p">();</span>
-  <span class="k">void</span> <span class="nx">addInventory</span><span class="p">(</span><span class="nx">P</span> <span class="nx">product</span><span class="p">,</span> <span class="nx">I</span> <span class="nx">inventory</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">void</span> <span class="nx">updateInventory</span><span class="p">(</span><span class="nx">P</span> <span class="nx">product</span><span class="p">,</span> <span class="nx">I</span> <span class="nx">inventory</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">catalog</span><span class="p">[</span><span class="nx">product</span><span class="p">]</span> <span class="o">=</span> <span class="nx">inventory</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">void</span> <span class="nx">printProducts() {</span>
+    <span class="nx">catalog</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">product</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">print</span><span class="p">(</span><span class="s2">&quot;Product: $product&quot;</span><span class="p">));</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
@@ -196,22 +206,28 @@
 
   <span class="nx">List</span><span class="o">&lt;</span><span class="nx">MyProduct</span><span class="o">&gt;</span> <span class="nx">get</span> <span class="nx">products</span> <span class="o">=&gt;</span> <span class="nx">catalog</span><span class="p">.</span><span class="nx">keys</span><span class="p">;</span>
 
-  <span class="k">void</span> <span class="nx">addInventory</span><span class="p">(</span><span class="nx">MyProduct</span> <span class="nx">product</span><span class="p">,</span> <span class="nx">MyInventory</span> <span class="nx">inventory</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">void</span> <span class="nx">updateInventory</span><span class="p">(</span><span class="nx">MyProduct</span> <span class="nx">product</span><span class="p">,</span> <span class="nx">MyInventory</span> <span class="nx">inventory</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">catalog</span><span class="p">[</span><span class="nx">product</span><span class="p">]</span> <span class="o">=</span> <span class="nx">inventory</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">void</span> <span class="nx">printProducts() {</span>
+    <span class="nx">catalog</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">product</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">print</span><span class="p">(</span><span class="s2">&quot;Product: $product&quot;</span><span class="p">));</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">void</span> <span class="nx">mainParams() {</span>
-  <span class="nx">Product</span> <span class="nx">milk</span> <span class="o">=</span> <span class="nx">Product</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">5.99</span><span class="p">,</span> <span class="s2">&quot;Milk&quot;</span><span class="p">);</span>
-  <span class="nx">Product</span> <span class="nx">bread</span> <span class="o">=</span> <span class="nx">Product</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">4.50</span><span class="p">,</span> <span class="s2">&quot;Bread&quot;</span><span class="p">);</span>
+<span class="k">void</span> <span class="nx">mainCustomParams() {</span>
+  <span class="nx">Product</span> <span class="nx">milk</span> <span class="o">=</span> <span class="nx">Product</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">5.99</span><span class="p">,</span> <span class="s2">&quot;Milk&quot;</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+  <span class="nx">Product</span> <span class="nx">bread</span> <span class="o">=</span> <span class="nx">Product</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">4.50</span><span class="p">,</span> <span class="s2">&quot;Bread&quot;</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
 
   <span class="nx">Store</span><span class="o">&lt;</span><span class="nx">Product</span><span class="p">,</span> <span class="nx">Inventory</span><span class="o">&gt;</span> <span class="nx">store1</span> <span class="o">=</span> <span class="nx">Store</span><span class="o">&lt;</span><span class="nx">Product</span><span class="p">,</span> <span class="nx">Inventory</span><span class="o">&gt;</span><span class="p">();</span>
-  <span class="nx">store1</span><span class="p">.</span><span class="nx">addInventory</span><span class="p">(</span><span class="nx">milk</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span>
-  <span class="nx">store1</span><span class="p">.</span><span class="nx">addInventory</span><span class="p">(</span><span class="nx">bread</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">15</span><span class="p">));</span>
+  <span class="nx">store1</span><span class="p">.</span><span class="nx">updateInventory</span><span class="p">(</span><span class="nx">milk</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span>
+  <span class="nx">store1</span><span class="p">.</span><span class="nx">updateInventory</span><span class="p">(</span><span class="nx">bread</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">15</span><span class="p">));</span>
+  <span class="nx">store1</span><span class="p">.</span><span class="nx">printProducts</span><span class="p">();</span>
 
-  <span class="nx">Store</span><span class="o">&lt;</span><span class="nx">Product</span><span class="p">,</span> <span class="nx">Inventory</span><span class="o">&gt;</span> <span class="nx">store2</span> <span class="o">=</span> <span class="nx">Store</span><span class="o">&lt;</span><span class="nx">Product</span><span class="p">,</span> <span class="nx">Inventory</span><span class="o">&gt;</span><span class="p">();</span>
-  <span class="nx">store2</span><span class="p">.</span><span class="nx">addInventory</span><span class="p">(</span><span class="nx">milk</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
-  <span class="nx">store2</span><span class="p">.</span><span class="nx">addInventory</span><span class="p">(</span><span class="nx">bread</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">12</span><span class="p">));</span>
+  <span class="nx">MyStore</span><span class="o">&lt;</span><span class="nx">Product</span><span class="p">,</span> <span class="nx">Inventory</span><span class="o">&gt;</span> <span class="nx">store2</span> <span class="o">=</span> <span class="nx">MyStore</span><span class="o">&lt;</span><span class="nx">Product</span><span class="p">,</span> <span class="nx">Inventory</span><span class="o">&gt;</span><span class="p">();</span>
+  <span class="nx">store2</span><span class="p">.</span><span class="nx">updateInventory</span><span class="p">(</span><span class="nx">milk</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+  <span class="nx">store2</span><span class="p">.</span><span class="nx">updateInventory</span><span class="p">(</span><span class="nx">bread</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">12</span><span class="p">));</span>
+  <span class="nx">store2</span><span class="p">.</span><span class="nx">printProducts</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
