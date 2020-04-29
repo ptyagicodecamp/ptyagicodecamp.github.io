@@ -145,7 +145,7 @@
 <p>Generics are used to enforce a collection to contain values of same type of data, and hence implement type-safety.</p>
 <p><strong>Type Safety:</strong> Programming concept that allows a memory block to contain only one type of data.</p>
 <h2>Declaring Type-safe collections</h2>
-<p>The angular brackets (<data type>) with data type enclosed, is used to declare the collection of given data type to ensure type-safety.</p>
+<p>The angular brackets <code>&lt;&gt;</code>, with data type enclosed, is used to declare the collection of given data type to ensure type-safety.</p>
 <p><strong>Syntax:</strong></p>
 <div class="highlight"><pre><span></span>CollectionType &lt;dataType&gt; identifier = CollectionType &lt;dataType&gt;();
 </pre></div>
@@ -225,12 +225,85 @@
 <li>Queue</li>
 </ul>
 <h1>List</h1>
+<div class="highlight"><pre><span></span>void mainList() {
+  List&lt;int&gt; myNumList = List&lt;int&gt;();
+  myNumList.add(1);
+  myNumList.add(2);
+
+  //This line will throw compile time error
+  //myNumList.add(3.0);
+
+  //iterate over list and print all items
+  print(&quot;Printing items in Dart List&quot;);
+  for (int item in myNumList) {
+    print(item);
+  }
+}
+</pre></div>
+
+
 <hr>
 <h1>Set</h1>
+<div class="highlight"><pre><span></span>void mainSet() {
+  Set&lt;int&gt; myNumSet = Set&lt;int&gt;();
+  myNumSet.add(1);
+  myNumSet.add(2);
+
+  //This line will throw compile time error
+  //myNumSet.add(3.0);
+
+  print(&quot;Printing items in Dart Set&quot;);
+  //iterate over set and print all items
+  for (int item in myNumSet) {
+    print(item);
+  }
+}
+</pre></div>
+
+
 <hr>
 <h1>Map</h1>
+<div class="highlight"><pre><span></span>void mainMap() {
+  Map<span class="nt">&lt;int</span><span class="err">,</span> <span class="err">String</span><span class="nt">&gt;</span> myNumMap = {1: &#39;Dart&#39;};
+  myNumMap[2] = &#39;Flutter&#39;;
+
+  //This line will throw compile time error
+  //myNumMap[3] = 3;
+
+  print(&quot;Printing values in Dart Map&quot;);
+  //iterate over map and print all values
+  for (String item in myNumMap.values) {
+    print(item);
+  }
+
+  print(&quot;Printing key:value pairs in Dart Map&quot;);
+  //iterate over map and print all values
+  for (MapEntry mapEntry in myNumMap.entries) {
+    print(&quot;<span class="cp">${</span><span class="n">mapEntry</span><span class="o">.</span><span class="n">key</span><span class="cp">}</span> : <span class="cp">${</span><span class="n">mapEntry</span><span class="o">.</span><span class="n">value</span><span class="cp">}</span>&quot;);
+  }
+}
+</pre></div>
+
+
 <hr>
 <h1>Queue</h1>
+<div class="highlight"><pre><span></span>void mainQueue() {
+  Queue&lt;int&gt; myNumQueue = Queue&lt;int&gt;();
+  myNumQueue.add(1);
+  myNumQueue.add(2);
+
+  //This line will throw compile time error
+  //myNumQueue.add(3.0);
+
+  print(&quot;Printing items in Dart Queue&quot;);
+  //iterate over queue and print all items
+  for (int item in myNumQueue) {
+    print(item);
+  }
+}
+</pre></div>
+
+
 <hr>
 <p>Another reason for using Generics is for code reuse. Generics for classes and methods help to be able to reuse same code for different implementations of data types.</p>
 <p>Let's explore the details below.</p>
