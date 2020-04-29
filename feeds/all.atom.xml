@@ -351,7 +351,8 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;References&lt;/h1&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="https://dzone.com/articles/how-do-generic-subtypes-work"&gt;How do Generics SubTypes work&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dartpad.dev/"&gt;DartPad&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/guides/language/language-tour#generics"&gt;Dart Generics&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy Darting :)&lt;/p&gt;
 &lt;p&gt;_Liked the article ?
