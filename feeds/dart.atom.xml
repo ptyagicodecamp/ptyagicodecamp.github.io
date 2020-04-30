@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Dart</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/dart.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-04-28T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Dart Generics</title><link href="https://ptyagicodecamp.github.io/dart-generics.html" rel="alternate"></link><published>2020-04-28T00:00:00-04:00</published><updated>2020-04-28T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-28:/dart-generics.html</id><summary type="html">&lt;p&gt;This article explains Dart Generics and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="generics" src="https://ptyagicodecamp.github.io/generics.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Generics are useful for stronger type checks at compile time. Also, it helps classes and functions to work on different data types without re-writing classes/functions for each.&lt;/p&gt;
-&lt;p&gt;Generics in Dart similar to &lt;a href="https://en.wikipedia.org/wiki/Generics_in_Java"&gt;Java's generics&lt;/a&gt; and [C++'s templates](https://en.wikipedia.org/wiki/Template_(C%2B%2B).&lt;/p&gt;
-&lt;p&gt;Dart's collection can hold different data types in one collection. It's optional in Dart to mention data type for a value. Usually, its data type is inferred automatically. For example, &lt;code&gt;var myVar = 5;&lt;/code&gt; will infer &lt;code&gt;myVar&lt;/code&gt;'s dataType as &lt;code&gt;int&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Generics are used to enforce a collection to contain values of same type of data, and hence to implement type-safety.&lt;/p&gt;
+&lt;p&gt;Generics are used to implement type-safety. For collections, type-safety is enforced by holding same type of data. Generics are used to apply stronger type checks at compile time. Also, it helps classes and functions to work on different data types without re-writing classes/functions for each.&lt;/p&gt;
+&lt;p&gt;Generics in Dart similar to &lt;a href="https://en.wikipedia.org/wiki/Generics_in_Java"&gt;Java's generics&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Template_C%2B%2B"&gt;C++'s templates&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Dart's collection can hold different data types in one collection. It's optional in Dart to mention data type for a value. Usually, the variable's data type is inferred automatically. For example, &lt;code&gt;var myVar = 5;&lt;/code&gt; will infer &lt;code&gt;myVar&lt;/code&gt;'s dataType as &lt;code&gt;int&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Type Safety:&lt;/strong&gt; Programming concept that allows a memory block to contain only one type of data.&lt;/p&gt;
-&lt;h2&gt;Declaring Type-safe collections&lt;/h2&gt;
+&lt;h1&gt;Declaring Type-safe Collections&lt;/h1&gt;
 &lt;p&gt;The angular brackets &lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;, with data type enclosed, is used to declare the collection of given data type to ensure type-safety.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Syntax:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;CollectionType &amp;lt;dataType&amp;gt; identifier = CollectionType &amp;lt;dataType&amp;gt;();
@@ -118,41 +117,55 @@
 
 
 &lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt;Another reason for using Generics is for code reuse. Generics for classes and methods help to be able to reuse same code for different implementations of data types.&lt;/p&gt;
-&lt;p&gt;Let's explore the details below.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Generics Methods / Functions&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Example&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Generics&lt;/span&gt; &lt;span class="nt"&gt;methods&lt;/span&gt;
+&lt;h1&gt;Code Re-use&lt;/h1&gt;
+&lt;p&gt;Generics help to write re-usable code. Generics for classes and methods enable reusing same code for different implementations of data types. Let's explore the details below.&lt;/p&gt;
+&lt;h2&gt;Generics Methods / Functions&lt;/h2&gt;
+&lt;p&gt;Let's define a method &lt;code&gt;lastItem()&lt;/code&gt; which take the list of products, and returns the last item in the list.
+In this method, parameter &lt;code&gt;T&lt;/code&gt; is returned, a list of type &lt;code&gt;T&lt;/code&gt; elements is passed to method, and &lt;code&gt;T&lt;/code&gt; type is stored in variable &lt;code&gt;last&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;mainGenericMethods()&lt;/code&gt; method, there are two different data types are using &lt;code&gt;lastItem()&lt;/code&gt; method to retrieve last item in their respective lists. First list is made up of &lt;code&gt;Product&lt;/code&gt; items. Second list is made up of &lt;code&gt;int&lt;/code&gt; data type. The &lt;code&gt;T lastItem&amp;lt;T&amp;gt;(List&amp;lt;T&amp;gt; products)&lt;/code&gt; method using generic &lt;code&gt;T&lt;/code&gt; parameter to support
+multiple data types using the same method. This is one execllent example of writing reusable functions/class methods.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example #2: Generics methods
 
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Function&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s return type (T).&lt;/span&gt;
-&lt;span class="s1"&gt;//Function&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt; &lt;span class="nt"&gt;argument&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;).&lt;/span&gt;
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Function&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt; &lt;span class="nt"&gt;local&lt;/span&gt; &lt;span class="nt"&gt;variable&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;T&lt;/span&gt; &lt;span class="nt"&gt;last&lt;/span&gt;&lt;span class="o"&gt;).&lt;/span&gt;
-&lt;span class="nt"&gt;T&lt;/span&gt; &lt;span class="nt"&gt;lastProduct&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;(&lt;/span&gt;&lt;span class="nt"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;products&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="err"&gt;T&lt;/span&gt; &lt;span class="err"&gt;last&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;products.last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="err"&gt;print(&amp;quot;Retrieving&lt;/span&gt; &lt;span class="err"&gt;last&lt;/span&gt; &lt;span class="n"&gt;product&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;);&lt;/span&gt;
-&lt;span class="s2"&gt;  return last;&lt;/span&gt;
-&lt;span class="s2"&gt;}&lt;/span&gt;
+//Function&amp;#39;s return type (T).
+//Function&amp;#39;s argument (List&lt;span class="nt"&gt;&amp;lt;T&amp;gt;&lt;/span&gt;).
+//Function&amp;#39;s local variable (T last).
+T lastItem&lt;span class="nt"&gt;&amp;lt;T&amp;gt;&lt;/span&gt;(List&lt;span class="nt"&gt;&amp;lt;T&amp;gt;&lt;/span&gt; products) {
+  T last = products.last;
+  return last;
+}
 
-&lt;span class="s2"&gt;mainGenericMethods() {&lt;/span&gt;
-&lt;span class="s2"&gt;  Store&amp;lt;Product, Inventory&amp;gt; store = Store&amp;lt;Product, Inventory&amp;gt;();&lt;/span&gt;
-&lt;span class="s2"&gt;  Product milk = Product(1, 5.99, &amp;quot;&lt;/span&gt;&lt;span class="n"&gt;Milk&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;, Inventory(20));&lt;/span&gt;
-&lt;span class="s2"&gt;  Product bread = Product(2, 4.50, &amp;quot;&lt;/span&gt;&lt;span class="n"&gt;Bread&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nf"&gt;Inventory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
-  &lt;span class="err"&gt;store.updateInventory(milk,&lt;/span&gt; &lt;span class="err"&gt;Inventory(20))&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="err"&gt;store.updateInventory(bread,&lt;/span&gt; &lt;span class="err"&gt;Inventory(15))&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+mainGenericMethods() {
+  Store&lt;span class="nt"&gt;&amp;lt;Product&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt; &lt;span class="err"&gt;Inventory&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; store = Store&lt;span class="nt"&gt;&amp;lt;Product&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt; &lt;span class="err"&gt;Inventory&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;();
+  Product milk = Product(1, 5.99, &amp;quot;Milk&amp;quot;);
+  Product bread = Product(2, 4.50, &amp;quot;Bread&amp;quot;);
+  store.updateInventory(milk, Inventory(20));
+  store.updateInventory(bread, Inventory(15));
 
-  &lt;span class="err"&gt;Product&lt;/span&gt; &lt;span class="err"&gt;product&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;lastProduct(store.products)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="err"&gt;print(product.title)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+  //Data type of `Product` is being used
+  Product product = lastItem(store.products);
+  print(&amp;quot;Last item of Product type: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;product&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+
+  //Demonstrating using another type of data on same `lastItem()` method.
+  List&lt;span class="nt"&gt;&amp;lt;int&amp;gt;&lt;/span&gt; items = List&lt;span class="nt"&gt;&amp;lt;int&amp;gt;&lt;/span&gt;.from([1, 2, 3, 4, 5]);
+  int item = lastItem(items);
+  print(&amp;quot;Last item of int type: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Last item of Product type: Price of Bread is $4.5
+Last item of int type: 5
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;hr&gt;
 &lt;h1&gt;Generics Classes&lt;/h1&gt;
-&lt;p&gt;Restricting the type of values that can be supplied to the class. These supplied values are known as generic arguments.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;//Example #3: Using Generics for classes&lt;/span&gt;
+&lt;p&gt;Generic classes help to restrict the type of values accepted by the class. These supplied values are known as generic parameter(s). In the following example, class &lt;code&gt;FreshProduce&lt;/code&gt; is restricted to accept only &lt;code&gt;Product&lt;/code&gt; dataType. It's okay to use &lt;code&gt;FreshProduce&lt;/code&gt; without &lt;code&gt;&amp;lt;Product&amp;gt;&lt;/code&gt; parameter, and it will assume it as of type &lt;code&gt;Product&lt;/code&gt;. However, if any other data type other than allowed type is passed, you'll see the compile time error.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;///Example #3: Using Generics for classes&lt;/span&gt;
 
-&lt;span class="c1"&gt;//Restricting the type of values that can be supplied to the class&lt;/span&gt;
+&lt;span class="c1"&gt;//Restricting the type of values that can be supplied to the class.&lt;/span&gt;
+&lt;span class="c1"&gt;//FreshProduce class can only accept of Product type when T extends Product&lt;/span&gt;
 &lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;FreshProduce&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;T&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Product&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nx"&gt;FreshProduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;double&lt;/span&gt; &lt;span class="nx"&gt;d&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;s&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
@@ -162,108 +175,151 @@
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="nx"&gt;mainGenericClass() {&lt;/span&gt;
+  &lt;span class="c1"&gt;//Using `Product` parameter accepted by FreshProduce class&lt;/span&gt;
   &lt;span class="nx"&gt;FreshProduce&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Product&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;spinach&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;FreshProduce&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Product&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;3.99&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Spinach&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="nx"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;spinach&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toString&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
 
-  &lt;span class="c1"&gt;//This code will give compile time error complaining that String is not of type Product&lt;/span&gt;
-&lt;span class="c1"&gt;//  FreshProduce&amp;lt;String&amp;gt; spinach2 = FreshProduce&amp;lt;String&amp;gt;(3, 3.99, &amp;quot;Spinach&amp;quot;);&lt;/span&gt;
-&lt;span class="c1"&gt;//  print(spinach.toString());&lt;/span&gt;
+  &lt;span class="c1"&gt;//Passing&lt;/span&gt;
+  &lt;span class="nx"&gt;FreshProduce&lt;/span&gt; &lt;span class="nx"&gt;spinach2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;FreshProduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;3.99&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Spinach&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;spinach2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toString&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+  &lt;span class="c1"&gt;//This code will give compile time error complaining that Object is not of type Product&lt;/span&gt;
+  &lt;span class="c1"&gt;//FreshProduce&amp;lt;Object&amp;gt; spinach3 = FreshProduce&amp;lt;Object&amp;gt;(3, 3.99, &amp;quot;Spinach&amp;quot;);&lt;/span&gt;
+  &lt;span class="c1"&gt;//print(spinach3.toString());&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Instance of Type: Product
+Instance of Type: Product
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;hr&gt;
 &lt;h1&gt;Generic collections&lt;/h1&gt;
-&lt;p&gt;In this section, let's checkout the type-safe implementations for some of the Dart's collection data structures:&lt;/p&gt;
+&lt;p&gt;In this section, let's checkout the type-safe implementations for some of the Dart's &lt;a href="https://dart.dev/guides/language/language-tour#using-collection-literals"&gt;collection literals&lt;/a&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;List&lt;/li&gt;
+&lt;li&gt;Queue&lt;/li&gt;
 &lt;li&gt;Set&lt;/li&gt;
 &lt;li&gt;Map&lt;/li&gt;
-&lt;li&gt;Queue&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1&gt;List&lt;/h1&gt;
+&lt;p&gt;In this example, a list of &lt;code&gt;int&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to list.&lt;/p&gt;
+&lt;p&gt;Now, adding a dataType other than &lt;code&gt;int&lt;/code&gt; will throw a compile time error. Copy this code in &lt;a href="https://dartpad.dev/"&gt;Dart Pad&lt;/a&gt; , and uncomment &lt;code&gt;theList.add(4.0);&lt;/code&gt; to see compile time error yourself.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void mainList() {
-  List&amp;lt;int&amp;gt; myNumList = List&amp;lt;int&amp;gt;();
-  myNumList.add(1);
-  myNumList.add(2);
+  //using parameterized types with constructors
+  List&amp;lt;int&amp;gt; theList = List&amp;lt;int&amp;gt;.from([1]);
+  theList.add(2);
+  theList.add(3);
 
-  //This line will throw compile time error
-  //myNumList.add(3.0);
+  //Adding double data type will throw compile time error
+  //theList.add(4.0);
 
   //iterate over list and print all items
   print(&amp;quot;Printing items in Dart List&amp;quot;);
-  for (int item in myNumList) {
+  for (int item in theList) {
     print(item);
   }
 }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Printing items in Dart List
+1
+2
+3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Queue&lt;/h1&gt;
+&lt;p&gt;In this example, a queue of &lt;code&gt;double&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the queue. Adding a differnt dataType &lt;code&gt;String&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void mainQueue() {
+  //using parameterized types with constructors
+  Queue&amp;lt;double&amp;gt; theQueue = Queue&amp;lt;double&amp;gt;.from([1.0]);
+  theQueue.add(2.0);
+  theQueue.add(3.0);
+
+  //Adding String data type will throw compile time error
+  //theQueue.add(&amp;quot;4.0&amp;quot;);
+
+  print(&amp;quot;Printing items in Dart Queue&amp;quot;);
+  //iterate over queue and print all items
+  for (double item in theQueue) {
+    print(item);
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Printing items in Dart Queue
+1.0
+2.0
+3.0
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;hr&gt;
 &lt;h1&gt;Set&lt;/h1&gt;
+&lt;p&gt;In this example, a set of &lt;code&gt;String&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the set. Adding a differnt dataType &lt;code&gt;int&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void mainSet() {
-  Set&amp;lt;int&amp;gt; myNumSet = Set&amp;lt;int&amp;gt;();
-  myNumSet.add(1);
-  myNumSet.add(2);
+  Set&amp;lt;String&amp;gt; theSet = Set&amp;lt;String&amp;gt;.from({&amp;quot;1&amp;quot;});
+  theSet.add(&amp;quot;2&amp;quot;);
+  theSet.add(&amp;quot;3&amp;quot;);
 
-  //This line will throw compile time error
-  //myNumSet.add(3.0);
+  //Adding int data type will throw compile time error
+  //theSet.add(3);
 
   print(&amp;quot;Printing items in Dart Set&amp;quot;);
   //iterate over set and print all items
-  for (int item in myNumSet) {
+  for (String item in theSet) {
     print(item);
   }
 }
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Printing items in Dart Set
+1
+2
+3
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;hr&gt;
 &lt;h1&gt;Map&lt;/h1&gt;
+&lt;p&gt;In this example, a set of &lt;code&gt;String&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the set. Adding a differnt dataType &lt;code&gt;int&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void mainMap() {
-  Map&lt;span class="nt"&gt;&amp;lt;int&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt; &lt;span class="err"&gt;String&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; myNumMap = {1: &amp;#39;Dart&amp;#39;};
-  myNumMap[2] = &amp;#39;Flutter&amp;#39;;
+  Map&lt;span class="nt"&gt;&amp;lt;int&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt; &lt;span class="err"&gt;String&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; theMap = {1: &amp;#39;Dart&amp;#39;};
+  theMap[2] = &amp;#39;Flutter&amp;#39;;
 
-  //This line will throw compile time error
-  //myNumMap[3] = 3;
-
-  print(&amp;quot;Printing values in Dart Map&amp;quot;);
-  //iterate over map and print all values
-  for (String item in myNumMap.values) {
-    print(item);
-  }
+  //Adding int data type for String value will throw compile time error
+  //theMap[3] = 3;
 
   print(&amp;quot;Printing key:value pairs in Dart Map&amp;quot;);
-  //iterate over map and print all values
-  for (MapEntry mapEntry in myNumMap.entries) {
+  //iterate over map and print all entries
+  for (MapEntry mapEntry in theMap.entries) {
     print(&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;mapEntry&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; : &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;mapEntry&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;);
   }
 }
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
-&lt;h1&gt;Queue&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void mainQueue() {
-  Queue&amp;lt;int&amp;gt; myNumQueue = Queue&amp;lt;int&amp;gt;();
-  myNumQueue.add(1);
-  myNumQueue.add(2);
-
-  //This line will throw compile time error
-  //myNumQueue.add(3.0);
-
-  print(&amp;quot;Printing items in Dart Queue&amp;quot;);
-  //iterate over queue and print all items
-  for (int item in myNumQueue) {
-    print(item);
-  }
-}
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Printing key:value pairs in Dart Map
+1 : Dart
+2 : Flutter
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;hr&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
-&lt;p&gt;In this article, we saw how&lt;/p&gt;
+&lt;p&gt;In this article, we learned how to use generics in Dart. We saw how generics can be useful in writing type-safe and re-usable code.&lt;/p&gt;
 &lt;p&gt;That's it for this article. Check out the &lt;a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"&gt;Dart Vocabulary Series&lt;/a&gt; for other Dart stuff.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Check out YouTube Video&lt;/h1&gt;
@@ -279,8 +335,8 @@
 &lt;li&gt;&lt;a href="https://dart.dev/guides/language/language-tour#generics"&gt;Dart Generics&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy Darting :)&lt;/p&gt;
-&lt;p&gt;_Liked the article ?
-Couldn't find a topic of your interest ? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share !&lt;/p&gt;
+&lt;p&gt;_Liked the article?
+Couldn't find a topic of your interest? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share!&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
 &lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="generics"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>Dart `static` keyword</title><link href="https://ptyagicodecamp.github.io/dart-static-keyword.html" rel="alternate"></link><published>2020-04-22T00:00:00-04:00</published><updated>2020-04-22T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-22:/dart-static-keyword.html</id><summary type="html">&lt;p&gt;This article demonstrates using &lt;code&gt;static&lt;/code&gt; keyword in Dart.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/static_keyword.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
