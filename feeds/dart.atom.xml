@@ -12,7 +12,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Ouput:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[1, Empty, 1.0]
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -135,7 +135,7 @@
 &lt;p&gt;Let's define a method &lt;code&gt;lastItem()&lt;/code&gt; which take the list of products, and returns the last item in the list.
 In this method, parameter &lt;code&gt;T&lt;/code&gt; is returned, a list of type &lt;code&gt;T&lt;/code&gt; elements is passed to method, and &lt;code&gt;T&lt;/code&gt; type is stored in variable &lt;code&gt;last&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;In &lt;code&gt;mainGenericMethods()&lt;/code&gt; method, there are two different data types are using &lt;code&gt;lastItem()&lt;/code&gt; method to retrieve last item in their respective lists. First list is made up of &lt;code&gt;Product&lt;/code&gt; items. Second list is made up of &lt;code&gt;int&lt;/code&gt; data type. The &lt;code&gt;T lastItem&amp;lt;T&amp;gt;(List&amp;lt;T&amp;gt; products)&lt;/code&gt; method using generic &lt;code&gt;T&lt;/code&gt; parameter to support
-multiple data types using the same method. This is one execllent example of writing reusable functions/class methods.&lt;/p&gt;
+multiple data types using the same method. This is one excellent example of writing reusable functions/class methods.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example #2: Generics methods
 
 //Function&amp;#39;s return type (T).
@@ -248,7 +248,7 @@ Instance of Type: Product
 
 &lt;hr&gt;
 &lt;h1&gt;Queue&lt;/h1&gt;
-&lt;p&gt;In this example, a queue of &lt;code&gt;double&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the queue. Adding a differnt dataType &lt;code&gt;String&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
+&lt;p&gt;In this example, a queue of &lt;code&gt;double&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the queue. Adding a different dataType &lt;code&gt;String&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void mainQueue() {
   //using parameterized types with constructors
   Queue&amp;lt;double&amp;gt; theQueue = Queue&amp;lt;double&amp;gt;.from([1.0]);
@@ -277,7 +277,7 @@ Instance of Type: Product
 
 &lt;hr&gt;
 &lt;h1&gt;Set&lt;/h1&gt;
-&lt;p&gt;In this example, a set of &lt;code&gt;String&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the set. Adding a differnt dataType &lt;code&gt;int&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
+&lt;p&gt;In this example, a set of &lt;code&gt;String&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the set. Adding a different dataType &lt;code&gt;int&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void mainSet() {
   Set&amp;lt;String&amp;gt; theSet = Set&amp;lt;String&amp;gt;.from({&amp;quot;1&amp;quot;});
   theSet.add(&amp;quot;2&amp;quot;);
@@ -305,7 +305,7 @@ Instance of Type: Product
 
 &lt;hr&gt;
 &lt;h1&gt;Map&lt;/h1&gt;
-&lt;p&gt;In this example, a set of &lt;code&gt;String&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the set. Adding a differnt dataType &lt;code&gt;int&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
+&lt;p&gt;In this example, a set of &lt;code&gt;String&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the set. Adding a different dataType &lt;code&gt;int&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void mainMap() {
   Map&lt;span class="nt"&gt;&amp;lt;int&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt; &lt;span class="err"&gt;String&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; theMap = {1: &amp;#39;Dart&amp;#39;};
   theMap[2] = &amp;#39;Flutter&amp;#39;;
@@ -331,7 +331,7 @@ Instance of Type: Product
 
 &lt;hr&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
-&lt;p&gt;In this article, we learned how to use generics in Dart. We saw how generics can be useful in writing type-safe and re-usable code.&lt;/p&gt;
+&lt;p&gt;In this article, we learned how to use generics in Dart. We saw how generics can be useful in writing type-safe and reusable code.&lt;/p&gt;
 &lt;p&gt;That's it for this article. Check out the &lt;a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"&gt;Dart Vocabulary Series&lt;/a&gt; for other Dart stuff.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Check out YouTube Video&lt;/h1&gt;
