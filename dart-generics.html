@@ -140,9 +140,10 @@
   <div>
     <p><img alt="generics" src="https://ptyagicodecamp.github.io/generics.png"></p>
 <h1>Introduction</h1>
-<p><strong><em>In Progress article</em></strong></p>
+<p>Generics are useful for stronger type checks at compile time. Also, it helps classes and functions to work on different data types without re-writing classes/functions for each.</p>
+<p>Generics in Dart similar to <a href="https://en.wikipedia.org/wiki/Generics_in_Java">Java's generics</a> and [C++'s templates](https://en.wikipedia.org/wiki/Template_(C%2B%2B).</p>
 <p>Dart's collection can hold different data types in one collection. It's optional in Dart to mention data type for a value. Usually, its data type is inferred automatically. For example, <code>var myVar = 5;</code> will infer <code>myVar</code>'s dataType as <code>int</code>.</p>
-<p>Generics are used to enforce a collection to contain values of same type of data, and hence implement type-safety.</p>
+<p>Generics are used to enforce a collection to contain values of same type of data, and hence to implement type-safety.</p>
 <p><strong>Type Safety:</strong> Programming concept that allows a memory block to contain only one type of data.</p>
 <h2>Declaring Type-safe collections</h2>
 <p>The angular brackets <code>&lt;&gt;</code>, with data type enclosed, is used to declare the collection of given data type to ensure type-safety.</p>
@@ -164,25 +165,31 @@
 <li><strong>R:</strong> The letter <code>R</code> is used to represent the return type of a method or function.</li>
 </ul>
 <p>You can also use a single letter of your choice or a descriptive word for parameter names / generics. Let's explore these two options in the following example.</p>
-<div class="highlight"><pre><span></span><span class="c1">//Example #1: Demonstrating use of single letter and descriptive words for generics</span>
+<div class="highlight"><pre><span></span><span class="c1">///Example #1: Demonstrating use of single letter and descriptive words for generics</span>
+
+<span class="c1">//A class for grocery product</span>
 <span class="kr">class</span> <span class="nx">Product</span> <span class="p">{</span>
   <span class="kr">final</span> <span class="kr">int</span> <span class="nx">id</span><span class="p">;</span>
   <span class="kr">final</span> <span class="kr">double</span> <span class="nx">price</span><span class="p">;</span>
   <span class="kr">final</span> <span class="nb">String</span> <span class="nx">title</span><span class="p">;</span>
-  <span class="kr">final</span> <span class="nx">Inventory</span> <span class="nx">_inventory</span><span class="p">;</span>
-  <span class="nx">Product</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">price</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_inventory</span><span class="p">);</span>
+  <span class="nx">Product</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">price</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">);</span>
 
   <span class="kd">@override</span>
   <span class="nb">String</span> <span class="nx">toString() {</span>
-    <span class="k">return</span> <span class="s2">&quot;Price of ${this.title} is ${this.price}. &quot;</span>
-        <span class="s2">&quot;Inventory has ${_inventory.amount} items in it.&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s2">&quot;Price of ${this.title} is \$${this.price}&quot;</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
+<span class="c1">//A class for product&#39;s inventory</span>
 <span class="kr">class</span> <span class="nx">Inventory</span> <span class="p">{</span>
   <span class="kr">final</span> <span class="kr">int</span> <span class="nx">amount</span><span class="p">;</span>
 
   <span class="nx">Inventory</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">amount</span><span class="p">);</span>
+
+  <span class="kd">@override</span>
+  <span class="nb">String</span> <span class="nx">toString() {</span>
+    <span class="k">return</span> <span class="s2">&quot;Inventory amount: $amount&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">//Custom type variables- Single letter</span>
@@ -190,12 +197,15 @@
   <span class="kr">final</span> <span class="nx">HashMap</span><span class="o">&lt;</span><span class="nx">P</span><span class="p">,</span> <span class="nx">I</span><span class="o">&gt;</span> <span class="nx">catalog</span> <span class="o">=</span> <span class="nx">HashMap</span><span class="o">&lt;</span><span class="nx">P</span><span class="p">,</span> <span class="nx">I</span><span class="o">&gt;</span><span class="p">();</span>
 
   <span class="nx">List</span><span class="o">&lt;</span><span class="nx">P</span><span class="o">&gt;</span> <span class="nx">get</span> <span class="nx">products</span> <span class="o">=&gt;</span> <span class="nx">catalog</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">toList</span><span class="p">();</span>
+
   <span class="k">void</span> <span class="nx">updateInventory</span><span class="p">(</span><span class="nx">P</span> <span class="nx">product</span><span class="p">,</span> <span class="nx">I</span> <span class="nx">inventory</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">catalog</span><span class="p">[</span><span class="nx">product</span><span class="p">]</span> <span class="o">=</span> <span class="nx">inventory</span><span class="p">;</span>
   <span class="p">}</span>
 
   <span class="k">void</span> <span class="nx">printProducts() {</span>
-    <span class="nx">catalog</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">product</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">print</span><span class="p">(</span><span class="s2">&quot;Product: $product&quot;</span><span class="p">));</span>
+    <span class="nx">catalog</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
+      <span class="p">(</span><span class="nx">product</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">print</span><span class="p">(</span><span class="s2">&quot;Product: $product, &quot;</span> <span class="o">+</span> <span class="nx">catalog</span><span class="p">[</span><span class="nx">product</span><span class="p">].</span><span class="nx">toString</span><span class="p">()),</span>
+    <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
@@ -211,28 +221,98 @@
   <span class="p">}</span>
 
   <span class="k">void</span> <span class="nx">printProducts() {</span>
-    <span class="nx">catalog</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">product</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">print</span><span class="p">(</span><span class="s2">&quot;Product: $product&quot;</span><span class="p">));</span>
+    <span class="nx">catalog</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
+      <span class="p">(</span><span class="nx">product</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">print</span><span class="p">(</span><span class="s2">&quot;Product: $product, &quot;</span> <span class="o">+</span> <span class="nx">catalog</span><span class="p">[</span><span class="nx">product</span><span class="p">].</span><span class="nx">toString</span><span class="p">()),</span>
+    <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
+<span class="c1">//Demonstrating single letter vs descriptive names for generics.</span>
+<span class="c1">//Both variations have the same results.</span>
 <span class="k">void</span> <span class="nx">mainCustomParams() {</span>
-  <span class="nx">Product</span> <span class="nx">milk</span> <span class="o">=</span> <span class="nx">Product</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">5.99</span><span class="p">,</span> <span class="s2">&quot;Milk&quot;</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
-  <span class="nx">Product</span> <span class="nx">bread</span> <span class="o">=</span> <span class="nx">Product</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">4.50</span><span class="p">,</span> <span class="s2">&quot;Bread&quot;</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+  <span class="nx">Product</span> <span class="nx">milk</span> <span class="o">=</span> <span class="nx">Product</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">5.99</span><span class="p">,</span> <span class="s2">&quot;Milk&quot;</span><span class="p">);</span>
+  <span class="nx">Product</span> <span class="nx">bread</span> <span class="o">=</span> <span class="nx">Product</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">4.50</span><span class="p">,</span> <span class="s2">&quot;Bread&quot;</span><span class="p">);</span>
 
+  <span class="c1">//Using single letter names for Generics</span>
   <span class="nx">Store</span><span class="o">&lt;</span><span class="nx">Product</span><span class="p">,</span> <span class="nx">Inventory</span><span class="o">&gt;</span> <span class="nx">store1</span> <span class="o">=</span> <span class="nx">Store</span><span class="o">&lt;</span><span class="nx">Product</span><span class="p">,</span> <span class="nx">Inventory</span><span class="o">&gt;</span><span class="p">();</span>
   <span class="nx">store1</span><span class="p">.</span><span class="nx">updateInventory</span><span class="p">(</span><span class="nx">milk</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span>
   <span class="nx">store1</span><span class="p">.</span><span class="nx">updateInventory</span><span class="p">(</span><span class="nx">bread</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">15</span><span class="p">));</span>
   <span class="nx">store1</span><span class="p">.</span><span class="nx">printProducts</span><span class="p">();</span>
 
+  <span class="c1">//Using descriptive names for Generics</span>
   <span class="nx">MyStore</span><span class="o">&lt;</span><span class="nx">Product</span><span class="p">,</span> <span class="nx">Inventory</span><span class="o">&gt;</span> <span class="nx">store2</span> <span class="o">=</span> <span class="nx">MyStore</span><span class="o">&lt;</span><span class="nx">Product</span><span class="p">,</span> <span class="nx">Inventory</span><span class="o">&gt;</span><span class="p">();</span>
-  <span class="nx">store2</span><span class="p">.</span><span class="nx">updateInventory</span><span class="p">(</span><span class="nx">milk</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
-  <span class="nx">store2</span><span class="p">.</span><span class="nx">updateInventory</span><span class="p">(</span><span class="nx">bread</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">12</span><span class="p">));</span>
+  <span class="nx">store2</span><span class="p">.</span><span class="nx">updateInventory</span><span class="p">(</span><span class="nx">milk</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span>
+  <span class="nx">store2</span><span class="p">.</span><span class="nx">updateInventory</span><span class="p">(</span><span class="nx">bread</span><span class="p">,</span> <span class="nx">Inventory</span><span class="p">(</span><span class="mi">15</span><span class="p">));</span>
   <span class="nx">store2</span><span class="p">.</span><span class="nx">printProducts</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
 
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><span class="n">Product</span><span class="o">:</span> <span class="n">Price</span> <span class="n">of</span> <span class="n">Bread</span> <span class="k">is</span> <span class="n">$4</span><span class="o">.</span><span class="mi">5</span><span class="o">,</span> <span class="n">Inventory</span> <span class="n">amount</span><span class="o">:</span> <span class="mi">15</span>
+<span class="n">Product</span><span class="o">:</span> <span class="n">Price</span> <span class="n">of</span> <span class="n">Milk</span> <span class="k">is</span> <span class="n">$5</span><span class="o">.</span><span class="mi">99</span><span class="o">,</span> <span class="n">Inventory</span> <span class="n">amount</span><span class="o">:</span> <span class="mi">20</span>
+<span class="n">Product</span><span class="o">:</span> <span class="n">Price</span> <span class="n">of</span> <span class="n">Bread</span> <span class="k">is</span> <span class="n">$4</span><span class="o">.</span><span class="mi">5</span><span class="o">,</span> <span class="n">Inventory</span> <span class="n">amount</span><span class="o">:</span> <span class="mi">15</span>
+<span class="n">Product</span><span class="o">:</span> <span class="n">Price</span> <span class="n">of</span> <span class="n">Milk</span> <span class="k">is</span> <span class="n">$5</span><span class="o">.</span><span class="mi">99</span><span class="o">,</span> <span class="n">Inventory</span> <span class="n">amount</span><span class="o">:</span> <span class="mi">20</span>
+</pre></div>
+
+
 <hr>
+<hr>
+<p>Another reason for using Generics is for code reuse. Generics for classes and methods help to be able to reuse same code for different implementations of data types.</p>
+<p>Let's explore the details below.</p>
+<hr>
+<h1>Generics Methods / Functions</h1>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Example</span> <span class="p">#</span><span class="nn">2</span><span class="o">:</span> <span class="nt">Generics</span> <span class="nt">methods</span>
+
+<span class="o">//</span><span class="nt">Function</span><span class="s1">&#39;s return type (T).</span>
+<span class="s1">//Function&#39;</span><span class="nt">s</span> <span class="nt">argument</span> <span class="o">(</span><span class="nt">List</span><span class="o">&lt;</span><span class="nt">T</span><span class="o">&gt;).</span>
+<span class="o">//</span><span class="nt">Function</span><span class="err">&#39;</span><span class="nt">s</span> <span class="nt">local</span> <span class="nt">variable</span> <span class="o">(</span><span class="nt">T</span> <span class="nt">last</span><span class="o">).</span>
+<span class="nt">T</span> <span class="nt">lastProduct</span><span class="o">&lt;</span><span class="nt">T</span><span class="o">&gt;(</span><span class="nt">List</span><span class="o">&lt;</span><span class="nt">T</span><span class="o">&gt;</span> <span class="nt">products</span><span class="o">)</span> <span class="p">{</span>
+  <span class="err">T</span> <span class="err">last</span> <span class="err">=</span> <span class="err">products.last</span><span class="p">;</span>
+  <span class="err">print(&quot;Retrieving</span> <span class="err">last</span> <span class="n">product</span><span class="p">:</span> <span class="s2">&quot;);</span>
+<span class="s2">  return last;</span>
+<span class="s2">}</span>
+
+<span class="s2">mainGenericMethods() {</span>
+<span class="s2">  Store&lt;Product, Inventory&gt; store = Store&lt;Product, Inventory&gt;();</span>
+<span class="s2">  Product milk = Product(1, 5.99, &quot;</span><span class="n">Milk</span><span class="s2">&quot;, Inventory(20));</span>
+<span class="s2">  Product bread = Product(2, 4.50, &quot;</span><span class="n">Bread</span><span class="err">&quot;</span><span class="p">,</span> <span class="nf">Inventory</span><span class="p">(</span><span class="mi">15</span><span class="p">));</span>
+  <span class="err">store.updateInventory(milk,</span> <span class="err">Inventory(20))</span><span class="p">;</span>
+  <span class="err">store.updateInventory(bread,</span> <span class="err">Inventory(15))</span><span class="p">;</span>
+
+  <span class="err">Product</span> <span class="err">product</span> <span class="err">=</span> <span class="err">lastProduct(store.products)</span><span class="p">;</span>
+  <span class="err">print(product.title)</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr>
+<h1>Generics Classes</h1>
+<p>Restricting the type of values that can be supplied to the class. These supplied values are known as generic arguments.</p>
+<div class="highlight"><pre><span></span><span class="c1">//Example #3: Using Generics for classes</span>
+
+<span class="c1">//Restricting the type of values that can be supplied to the class</span>
+<span class="kr">class</span> <span class="nx">FreshProduce</span><span class="o">&lt;</span><span class="nx">T</span> <span class="kr">extends</span> <span class="nx">Product</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">FreshProduce</span><span class="p">(</span><span class="kr">int</span> <span class="nx">i</span><span class="p">,</span> <span class="kr">double</span> <span class="nx">d</span><span class="p">,</span> <span class="nb">String</span> <span class="nx">s</span><span class="p">);</span>
+
+  <span class="nb">String</span> <span class="nx">toString() {</span>
+    <span class="k">return</span> <span class="s2">&quot;Instance of Type: ${T}&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">mainGenericClass() {</span>
+  <span class="nx">FreshProduce</span><span class="o">&lt;</span><span class="nx">Product</span><span class="o">&gt;</span> <span class="nx">spinach</span> <span class="o">=</span> <span class="nx">FreshProduce</span><span class="o">&lt;</span><span class="nx">Product</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Spinach&quot;</span><span class="p">);</span>
+  <span class="nx">print</span><span class="p">(</span><span class="nx">spinach</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+
+  <span class="c1">//This code will give compile time error complaining that String is not of type Product</span>
+<span class="c1">//  FreshProduce&lt;String&gt; spinach2 = FreshProduce&lt;String&gt;(3, 3.99, &quot;Spinach&quot;);</span>
+<span class="c1">//  print(spinach.toString());</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr>
+<h1>Generic collections</h1>
 <p>In this section, let's checkout the type-safe implementations for some of the Dart's collection data structures:</p>
 <ul>
 <li>List</li>
@@ -317,60 +397,6 @@
     print(item);
   }
 }
-</pre></div>
-
-
-<hr>
-<p>Another reason for using Generics is for code reuse. Generics for classes and methods help to be able to reuse same code for different implementations of data types.</p>
-<p>Let's explore the details below.</p>
-<hr>
-<h1>Generics Methods / Functions</h1>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Example</span> <span class="p">#</span><span class="nn">2</span><span class="o">:</span> <span class="nt">Generics</span> <span class="nt">methods</span>
-
-<span class="o">//</span><span class="nt">Function</span><span class="s1">&#39;s return type (T).</span>
-<span class="s1">//Function&#39;</span><span class="nt">s</span> <span class="nt">argument</span> <span class="o">(</span><span class="nt">List</span><span class="o">&lt;</span><span class="nt">T</span><span class="o">&gt;).</span>
-<span class="o">//</span><span class="nt">Function</span><span class="err">&#39;</span><span class="nt">s</span> <span class="nt">local</span> <span class="nt">variable</span> <span class="o">(</span><span class="nt">T</span> <span class="nt">last</span><span class="o">).</span>
-<span class="nt">T</span> <span class="nt">lastProduct</span><span class="o">&lt;</span><span class="nt">T</span><span class="o">&gt;(</span><span class="nt">List</span><span class="o">&lt;</span><span class="nt">T</span><span class="o">&gt;</span> <span class="nt">products</span><span class="o">)</span> <span class="p">{</span>
-  <span class="err">T</span> <span class="err">last</span> <span class="err">=</span> <span class="err">products.last</span><span class="p">;</span>
-  <span class="err">print(&quot;Retrieving</span> <span class="err">last</span> <span class="n">product</span><span class="p">:</span> <span class="s2">&quot;);</span>
-<span class="s2">  return last;</span>
-<span class="s2">}</span>
-
-<span class="s2">mainGenericMethods() {</span>
-<span class="s2">  Store&lt;Product, Inventory&gt; store = Store&lt;Product, Inventory&gt;();</span>
-<span class="s2">  Product milk = Product(1, 5.99, &quot;</span><span class="n">Milk</span><span class="s2">&quot;, Inventory(20));</span>
-<span class="s2">  Product bread = Product(2, 4.50, &quot;</span><span class="n">Bread</span><span class="err">&quot;</span><span class="p">,</span> <span class="nf">Inventory</span><span class="p">(</span><span class="mi">15</span><span class="p">));</span>
-  <span class="err">store.updateInventory(milk,</span> <span class="err">Inventory(20))</span><span class="p">;</span>
-  <span class="err">store.updateInventory(bread,</span> <span class="err">Inventory(15))</span><span class="p">;</span>
-
-  <span class="err">Product</span> <span class="err">product</span> <span class="err">=</span> <span class="err">lastProduct(store.products)</span><span class="p">;</span>
-  <span class="err">print(product.title)</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<hr>
-<h1>Generics Classes</h1>
-<p>Restricting the type of values that can be supplied to the class. These supplied values are known as generic arguments.</p>
-<div class="highlight"><pre><span></span><span class="c1">//Example #3: Using Generics for classes</span>
-
-<span class="c1">//Restricting the type of values that can be supplied to the class</span>
-<span class="kr">class</span> <span class="nx">FreshProduce</span><span class="o">&lt;</span><span class="nx">T</span> <span class="kr">extends</span> <span class="nx">Product</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="nx">FreshProduce</span><span class="p">(</span><span class="kr">int</span> <span class="nx">i</span><span class="p">,</span> <span class="kr">double</span> <span class="nx">d</span><span class="p">,</span> <span class="nb">String</span> <span class="nx">s</span><span class="p">);</span>
-
-  <span class="nb">String</span> <span class="nx">toString() {</span>
-    <span class="k">return</span> <span class="s2">&quot;Instance of Type: ${T}&quot;</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">mainGenericClass() {</span>
-  <span class="nx">FreshProduce</span><span class="o">&lt;</span><span class="nx">Product</span><span class="o">&gt;</span> <span class="nx">spinach</span> <span class="o">=</span> <span class="nx">FreshProduce</span><span class="o">&lt;</span><span class="nx">Product</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Spinach&quot;</span><span class="p">);</span>
-  <span class="nx">print</span><span class="p">(</span><span class="nx">spinach</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-
-  <span class="c1">//This code will give compile time error complaining that String is not of type Product</span>
-<span class="c1">//  FreshProduce&lt;String&gt; spinach2 = FreshProduce&lt;String&gt;(3, 3.99, &quot;Spinach&quot;);</span>
-<span class="c1">//  print(spinach.toString());</span>
-<span class="p">}</span>
 </pre></div>
 
 
