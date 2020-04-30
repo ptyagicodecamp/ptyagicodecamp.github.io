@@ -140,10 +140,22 @@
   <div>
     <p><img alt="generics" src="https://ptyagicodecamp.github.io/generics.png"></p>
 <h1>Introduction</h1>
-<p>Generics are used to implement type-safety. For collections, type-safety is enforced by holding same type of data. Generics are used to apply stronger type checks at compile time. Also, it helps classes and functions to work on different data types without re-writing classes/functions for each.</p>
-<p>Generics in Dart similar to <a href="https://en.wikipedia.org/wiki/Generics_in_Java">Java's generics</a> and <a href="https://en.wikipedia.org/wiki/Template_C%2B%2B">C++'s templates</a>.</p>
-<p>Dart's collection can hold different data types in one collection. It's optional in Dart to mention data type for a value. Usually, the variable's data type is inferred automatically. For example, <code>var myVar = 5;</code> will infer <code>myVar</code>'s dataType as <code>int</code>.</p>
+<p>Generics are used to apply stronger type checks at compile time. They enforce type-safety in code. For example, in collections the type-safety is enforced by holding same type of data. Generics help write reusable classes, methods/functions for different data types.</p>
 <p><strong>Type Safety:</strong> Programming concept that allows a memory block to contain only one type of data.</p>
+<p>The concept of Generics in Dart, is similar to <a href="https://en.wikipedia.org/wiki/Generics_in_Java">Java's generics</a> and <a href="https://en.wikipedia.org/wiki/Template_C%2B%2B">C++'s templates</a>.</p>
+<p>Dart's collection can hold different data types in one collection. It's optional in Dart to mention data type for a value. Usually, the variable's data type is inferred automatically. For example, <code>var myVar = 5;</code> will infer <code>myVar</code>'s dataType as <code>int</code>. The following code is valid in Dart:</p>
+<div class="highlight"><pre><span></span>void main() {
+  List items = [1, &quot;Empty&quot;, 1.0];
+  print(items);
+}
+</pre></div>
+
+
+<p><strong>Ouput:</strong></p>
+<div class="highlight"><pre><span></span>[1, Empty, 1.0]
+</pre></div>
+
+
 <h1>Declaring Type-safe Collections</h1>
 <p>The angular brackets <code>&lt;&gt;</code>, with data type enclosed, is used to declare the collection of given data type to ensure type-safety.</p>
 <p><strong>Syntax:</strong></p>

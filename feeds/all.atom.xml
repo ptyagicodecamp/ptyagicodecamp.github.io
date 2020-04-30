@@ -103,10 +103,22 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;/ul&gt;
 &lt;hr&gt;</content><category term="dart"></category><category term="flutter"></category></entry><entry><title>Dart Generics</title><link href="https://ptyagicodecamp.github.io/dart-generics.html" rel="alternate"></link><published>2020-04-28T00:00:00-04:00</published><updated>2020-04-28T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-28:/dart-generics.html</id><summary type="html">&lt;p&gt;This article explains Dart Generics and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="generics" src="https://ptyagicodecamp.github.io/generics.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Generics are used to implement type-safety. For collections, type-safety is enforced by holding same type of data. Generics are used to apply stronger type checks at compile time. Also, it helps classes and functions to work on different data types without re-writing classes/functions for each.&lt;/p&gt;
-&lt;p&gt;Generics in Dart similar to &lt;a href="https://en.wikipedia.org/wiki/Generics_in_Java"&gt;Java's generics&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Template_C%2B%2B"&gt;C++'s templates&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Dart's collection can hold different data types in one collection. It's optional in Dart to mention data type for a value. Usually, the variable's data type is inferred automatically. For example, &lt;code&gt;var myVar = 5;&lt;/code&gt; will infer &lt;code&gt;myVar&lt;/code&gt;'s dataType as &lt;code&gt;int&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Generics are used to apply stronger type checks at compile time. They enforce type-safety in code. For example, in collections the type-safety is enforced by holding same type of data. Generics help write reusable classes, methods/functions for different data types.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Type Safety:&lt;/strong&gt; Programming concept that allows a memory block to contain only one type of data.&lt;/p&gt;
+&lt;p&gt;The concept of Generics in Dart, is similar to &lt;a href="https://en.wikipedia.org/wiki/Generics_in_Java"&gt;Java's generics&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Template_C%2B%2B"&gt;C++'s templates&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Dart's collection can hold different data types in one collection. It's optional in Dart to mention data type for a value. Usually, the variable's data type is inferred automatically. For example, &lt;code&gt;var myVar = 5;&lt;/code&gt; will infer &lt;code&gt;myVar&lt;/code&gt;'s dataType as &lt;code&gt;int&lt;/code&gt;. The following code is valid in Dart:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main() {
+  List items = [1, &amp;quot;Empty&amp;quot;, 1.0];
+  print(items);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Ouput:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[1, Empty, 1.0]
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h1&gt;Declaring Type-safe Collections&lt;/h1&gt;
 &lt;p&gt;The angular brackets &lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;, with data type enclosed, is used to declare the collection of given data type to ensure type-safety.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Syntax:&lt;/strong&gt;&lt;/p&gt;
