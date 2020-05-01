@@ -154,18 +154,18 @@
 I need few assets to be used as FAB submenu icons.
 I used Android Studio’s built-in tool to generate Vector Assets.
 You can access this tool right clicking on <code>app</code> module → Click <code>New</code> → Click on <code>Vector Assets</code></p>
-<p><img alt="asset" src="./images/create-vector-asset-1.png">
-<img alt="asset" src="./images/create-vector-asset-2.png">
-<img alt="asset" src="./images/create-vector-asset-3.png"></p>
+<p><img alt="asset1" src="./images/create-vector-asset-1.png">
+<img alt="asset2" src="./images/create-vector-asset-2.png">
+<img alt="asset3" src="./images/create-vector-asset-3.png"></p>
 <p><strong><em>Step#2:</em></strong>  Configuration:
 I’ll be using cardView component to display description for sub menu items.
 Here’s how you can add it as a dependency in your <code>build.gradle</code>:
 <code>compile 'com.android.support:cardview-v7:25.1.0'</code></p>
-<p><img alt="" src="./images/cardview-dep-gradle.png"></p>
+<p><img alt="Cardview" src="./images/cardview-dep-gradle.png"></p>
 <h4>XML Layout</h4>
 <p><strong><em>Step#1:</em></strong> Create a new layout file to contains FAB and its sub menu items.</p>
-<p><img alt="" src="./images/create-submenu-layout-1.png"></p>
-<p><img alt="" src="./images/create-submenu-layout-2.png"></p>
+<p><img alt="Layout1" src="./images/create-submenu-layout-1.png"></p>
+<p><img alt="Layout2" src="./images/create-submenu-layout-2.png"></p>
 <p>I named it as <code>layout_fab_submenu.xml</code>. It’s a <code>FrameLayout</code>.</p>
 <p>I chose FrameLayout because I wanted a screen floating atop of existing screen and
 a holder for all FAB menu items. Don’t forget to set the top margin to <code>android:layout_marginTop="?attr/actionBarSize"</code> to avoid Actionbar overlapping.</p>

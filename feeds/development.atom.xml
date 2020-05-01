@@ -1297,18 +1297,18 @@ will have these contents in it:&lt;/p&gt;
 I need few assets to be used as FAB submenu icons.
 I used Android Studio’s built-in tool to generate Vector Assets.
 You can access this tool right clicking on &lt;code&gt;app&lt;/code&gt; module → Click &lt;code&gt;New&lt;/code&gt; → Click on &lt;code&gt;Vector Assets&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="asset" src="./images/create-vector-asset-1.png"&gt;
-&lt;img alt="asset" src="./images/create-vector-asset-2.png"&gt;
-&lt;img alt="asset" src="./images/create-vector-asset-3.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="asset1" src="./images/create-vector-asset-1.png"&gt;
+&lt;img alt="asset2" src="./images/create-vector-asset-2.png"&gt;
+&lt;img alt="asset3" src="./images/create-vector-asset-3.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Step#2:&lt;/em&gt;&lt;/strong&gt;  Configuration:
 I’ll be using cardView component to display description for sub menu items.
 Here’s how you can add it as a dependency in your &lt;code&gt;build.gradle&lt;/code&gt;:
 &lt;code&gt;compile 'com.android.support:cardview-v7:25.1.0'&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="./images/cardview-dep-gradle.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Cardview" src="./images/cardview-dep-gradle.png"&gt;&lt;/p&gt;
 &lt;h4&gt;XML Layout&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Step#1:&lt;/em&gt;&lt;/strong&gt; Create a new layout file to contains FAB and its sub menu items.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="./images/create-submenu-layout-1.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="./images/create-submenu-layout-2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Layout1" src="./images/create-submenu-layout-1.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Layout2" src="./images/create-submenu-layout-2.png"&gt;&lt;/p&gt;
 &lt;p&gt;I named it as &lt;code&gt;layout_fab_submenu.xml&lt;/code&gt;. It’s a &lt;code&gt;FrameLayout&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;I chose FrameLayout because I wanted a screen floating atop of existing screen and
 a holder for all FAB menu items. Don’t forget to set the top margin to &lt;code&gt;android:layout_marginTop="?attr/actionBarSize"&lt;/code&gt; to avoid Actionbar overlapping.&lt;/p&gt;
