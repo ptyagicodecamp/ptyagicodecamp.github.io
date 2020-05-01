@@ -861,7 +861,7 @@ Don't forget to add this activity in your &lt;code&gt;AndroidManifest.xml&lt;/co
 
 &lt;p&gt;And That's all you needed to do to setup a launcher screen for your app.&lt;/p&gt;
 &lt;p&gt;Here's how the launcher screen looks for the sample app:
-&lt;img alt="" src="../images/launcher_screen/launcher_screen.png"&gt;&lt;/p&gt;
+&lt;img alt="launcher_screen" src="../images/launcher_screen/launcher_screen.png"&gt;&lt;/p&gt;
 &lt;p&gt;Checkout the Source code for sample app available at &lt;a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/LauncherScreen"&gt;github&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;References:&lt;/em&gt;&lt;/strong&gt;
 &lt;a href="https://material.io/guidelines/patterns/launch-screens.html"&gt;Launch Screen Patterns&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="launcher screen"></category><category term="dev"></category><category term="design"></category></entry><entry><title>Adding Menu Items in Navigation Drawer Dynamically</title><link href="https://ptyagicodecamp.github.io/adding-menu-items-in-navigation-drawer-dynamically.html" rel="alternate"></link><published>2017-04-19T00:00:00-04:00</published><updated>2017-04-19T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2017-04-19:/adding-menu-items-in-navigation-drawer-dynamically.html</id><summary type="html">&lt;p&gt;Quick code recipe to demonstrate the dynamic addition of menu items in Navigation Drawer.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Adding Menu Items in Navigation Drawer Dynamically&lt;/h1&gt;
