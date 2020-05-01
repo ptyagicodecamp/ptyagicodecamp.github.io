@@ -8,11 +8,11 @@
 &lt;li&gt;&lt;strong&gt;Database&lt;/strong&gt; -&lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom_db.dart"&gt;&lt;code&gt;ecom_db.dart&lt;/code&gt;&lt;/a&gt;: This file contains all code related to sqlite database.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The user interface will load two demo products in a &lt;code&gt;ListView&lt;/code&gt; as shown in this screenshot:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Products from LocalDatabase" src="https://ptyagicodecamp.github.io/localdb_products.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ProductsFromLocalDatabase" src="https://ptyagicodecamp.github.io/localdb_products.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Flutter Cookbook&lt;/h1&gt;
 &lt;p&gt;This code recipe is added in the Flutter Cookbook app.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="LocalDB Cookbook" src="https://ptyagicodecamp.github.io/localdb_cookbook.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="LocalDBCookbook" src="https://ptyagicodecamp.github.io/localdb_cookbook.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the YouTube video:&lt;/strong&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
@@ -33,7 +33,7 @@
 &lt;h1&gt;User Interface&lt;/h1&gt;
 &lt;p&gt;In this code recipe, there're only two products are used to demonstration purposes. Each of the Product has an image, title, description, and price.&lt;/p&gt;
 &lt;p&gt;The UI is composed of widgets as shown below:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="LocalDatabase Interface" src="https://ptyagicodecamp.github.io/localdb_products_lined.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="LocalDatabaseInterface" src="https://ptyagicodecamp.github.io/localdb_products_lined.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;The custom widget composed by &lt;code&gt;positionedBlock()&lt;/code&gt; is in a Column in the &lt;code&gt;ListView&lt;/code&gt; widget.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;positionedBlock()&lt;/code&gt; widget a centered aligned &lt;code&gt;Stack&lt;/code&gt;. In this &lt;code&gt;Stack&lt;/code&gt;, two &lt;code&gt;Positioned&lt;/code&gt; widgets are added. The first &lt;code&gt;Positioned&lt;/code&gt; is added at the background to display product information in a column. The second &lt;code&gt;Positioned&lt;/code&gt; widget contains the product's image.&lt;/p&gt;
 &lt;p&gt;The main screen is a &lt;code&gt;StatefulWidget&lt;/code&gt; since we want to update data from local database. We add sample data to database as soon as the app starts. We'll go over database details in next section. The &lt;code&gt;initDB()&lt;/code&gt; method is called rom &lt;code&gt;initState()&lt;/code&gt; method. The &lt;code&gt;initState()&lt;/code&gt; method executes once during screen starup-time. We want to keep data ready in database for querying in &lt;code&gt;build()&lt;/code&gt; method.&lt;/p&gt;
