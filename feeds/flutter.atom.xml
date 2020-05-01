@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-05-01T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Persisting Data in Local Database</title><link href="https://ptyagicodecamp.github.io/persisting-data-in-local-database.html" rel="alternate"></link><published>2020-05-01T00:00:00-04:00</published><updated>2020-05-01T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-01:/persisting-data-in-local-database.html</id><summary type="html">&lt;p&gt;This article demonstrates persisting data in local database in Flutter App.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-05-02T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Persisting Data in Local Database for Flutter (Android &amp; iOS)</title><link href="https://ptyagicodecamp.github.io/persisting-data-in-local-database-for-flutter-android-ios.html" rel="alternate"></link><published>2020-05-02T00:00:00-04:00</published><updated>2020-05-02T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-02:/persisting-data-in-local-database-for-flutter-android-ios.html</id><summary type="html">&lt;p&gt;This article demonstrates persisting data in local database in Flutter App.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Persisting products data in local database using &lt;code&gt;sqflite&lt;/code&gt; Flutter plugin.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus Widget:&lt;/strong&gt; Flutter plugin &lt;a href="https://pub.dev/packages/sqflite"&gt;sqflite&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; In this recipe, we'll create, save, and retrieve two objects of custom data type, &lt;code&gt;Product&lt;/code&gt; in the local sqlite database. We'll create two files for this recipe:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;User Interface&lt;/strong&gt; -&lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom.dart"&gt;&lt;code&gt;ecom.dart&lt;/code&gt;&lt;/a&gt; : User interface to load data from local database.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Database&lt;/strong&gt; -&lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom_db.dart"&gt;&lt;code&gt;ecom_db.dart&lt;/code&gt;&lt;/a&gt;: This file contains all code related to sqlite database.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;User Interface&lt;/strong&gt; -&lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom.dart"&gt;&lt;code&gt;ecom.dart&lt;/code&gt;&lt;/a&gt; : User interface to load data from local database.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Database&lt;/strong&gt; -&lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom_db.dart"&gt;&lt;code&gt;ecom_db.dart&lt;/code&gt;&lt;/a&gt;: This file contains all code related to sqlite database.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The user interface will load two demo products in a &lt;code&gt;ListView&lt;/code&gt; as shown in this screenshot:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ProductsFromLocalDatabase" src="https://ptyagicodecamp.github.io/localdb_products.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="products_db" src="https://ptyagicodecamp.github.io/localdb_products.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Flutter Cookbook&lt;/h1&gt;
 &lt;p&gt;This code recipe is added in the Flutter Cookbook app.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="LocalDBCookbook" src="https://ptyagicodecamp.github.io/localdb_cookbook.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="localdb_cookbook" src="https://ptyagicodecamp.github.io/localdb_cookbook.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the YouTube video:&lt;/strong&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
@@ -33,7 +37,7 @@
 &lt;h1&gt;User Interface&lt;/h1&gt;
 &lt;p&gt;In this code recipe, there're only two products are used to demonstration purposes. Each of the Product has an image, title, description, and price.&lt;/p&gt;
 &lt;p&gt;The UI is composed of widgets as shown below:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="LocalDatabaseInterface" src="https://ptyagicodecamp.github.io/localdb_products_lined.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="localdb_interface" src="https://ptyagicodecamp.github.io/localdb_products_lined.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;The custom widget composed by &lt;code&gt;positionedBlock()&lt;/code&gt; is in a Column in the &lt;code&gt;ListView&lt;/code&gt; widget.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;positionedBlock()&lt;/code&gt; widget a centered aligned &lt;code&gt;Stack&lt;/code&gt;. In this &lt;code&gt;Stack&lt;/code&gt;, two &lt;code&gt;Positioned&lt;/code&gt; widgets are added. The first &lt;code&gt;Positioned&lt;/code&gt; is added at the background to display product information in a column. The second &lt;code&gt;Positioned&lt;/code&gt; widget contains the product's image.&lt;/p&gt;
 &lt;p&gt;The main screen is a &lt;code&gt;StatefulWidget&lt;/code&gt; since we want to update data from local database. We add sample data to database as soon as the app starts. We'll go over database details in next section. The &lt;code&gt;initDB()&lt;/code&gt; method is called rom &lt;code&gt;initState()&lt;/code&gt; method. The &lt;code&gt;initState()&lt;/code&gt; method executes once during screen starup-time. We want to keep data ready in database for querying in &lt;code&gt;build()&lt;/code&gt; method.&lt;/p&gt;
@@ -138,7 +142,7 @@ Refer &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widget
 
 
 &lt;h2&gt;Inserting Product&lt;/h2&gt;
-&lt;p&gt;Inserting data into a table is an anchronous operation as well. First get a reference to database and then pick a conflictAlgorithm. Its like a rule that needs to be followed when a conflict arise. We want to replace old content with new content if record is already present. Hence, it makes sense to pick &lt;code&gt;ConflictAlgorithm.replace&lt;/code&gt; conflictAlgorithm.&lt;/p&gt;
+&lt;p&gt;Inserting data into a table is an asynchronous operation as well. First get a reference to database and then pick a conflictAlgorithm. It is a rule to resolve conflicts. We want to replace old content with new content if record is already present. Hence, it makes sense to pick &lt;code&gt;ConflictAlgorithm.replace&lt;/code&gt; conflictAlgorithm.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Future&amp;lt;void&amp;gt; insertProduct(Product product) async {
   // Get a reference to the database.
   final Database db = await database;
