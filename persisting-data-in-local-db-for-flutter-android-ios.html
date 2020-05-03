@@ -165,11 +165,9 @@
 <p><img alt="products_db" src="https://ptyagicodecamp.github.io/localdb_products.jpg"></p>
 <hr>
 <h1>Flutter Cookbook</h1>
-<p>This code recipe is added in the Flutter Cookbook app.</p>
+<p>This code recipe is added in the <a href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html">Flutter Cookbook</a> app as well. Source code link is available at the end of this article.</p>
 <p><img alt="localdb_cookbook" src="https://ptyagicodecamp.github.io/localdb_cookbook.jpg"></p>
 <hr>
-<p><strong>Checkout the YouTube video:</strong>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <hr>
 <h1><code>pubspec.yaml</code> dependency</h1>
 <p>Add <code>sqflite</code> plugin dependency as below:</p>
@@ -182,15 +180,17 @@
 </pre></div>
 
 
-<p><strong>Note:</strong> The <code>sqflite</code> plugin has dependency on <a href="https://pub.dev/packages/path"><code>path</code></a> plugin. Please add this if not alreay not added to your configuration file.</p>
+<p><strong>Note:</strong> The <code>sqflite</code> plugin has dependency on <a href="https://pub.dev/packages/path"><code>path</code></a> plugin. Please add this dependency it's not already present in your configuration file.</p>
 <hr>
 <h1>User Interface</h1>
-<p>In this code recipe, there're only two products are used to demonstration purposes. Each of the Product has an image, title, description, and price.</p>
+<p>In this code recipe, there're only two product items used for demonstration purposes. Each item has an image, title, description, and price.</p>
 <p>The UI is composed of widgets as shown below:</p>
 <p><img alt="localdb_interface" src="https://ptyagicodecamp.github.io/localdb_products_lined.jpg"></p>
-<p>The custom widget composed by <code>positionedBlock()</code> is in a Column in the <code>ListView</code> widget.</p>
-<p>The <code>positionedBlock()</code> widget a centered aligned <code>Stack</code>. In this <code>Stack</code>, two <code>Positioned</code> widgets are added. The first <code>Positioned</code> is added at the background to display product information in a column. The second <code>Positioned</code> widget contains the product's image.</p>
-<p>The main screen is a <code>StatefulWidget</code> since we want to update data from local database. We add sample data to database as soon as the app starts. We'll go over database details in next section. The <code>initDB()</code> method is called rom <code>initState()</code> method. The <code>initState()</code> method executes once during screen starup-time. We want to keep data ready in database for querying in <code>build()</code> method.</p>
+<p><strong>Note:</strong> This article is not intended for learning to build user interface. Hence, I'll quickly review the UI structure. Please refer to source code to see full code.</p>
+<p>Main interface is rendered using <code>ListView</code> widget. The <code>ListView</code> widget has a <code>Column</code> widget as its child. The custom widget <code>positionedBlock()</code> is added as <code>Column</code> widget's child.</p>
+<p><strong>positionedBlock():</strong> This method returns interface for each item in the list. It's is aligned in <code>topCenter</code> using <code>Align</code> widget. A <code>Stack</code> widgets contains two <code>Positioned</code> widgets for product description and image.
+The first <code>Positioned</code> widget is added in the background to display product information (in a <code>Column</code> widget). The another <code>Positioned</code> widget contains the product's image.</p>
+<p>The main screen is a <code>StatefulWidget</code> since we want to update data retrieved from local database. Sample data in database is added as soon as the app starts. We'll go over database details in next section. The <code>initDB()</code> method is called rom <code>initState()</code> method. The <code>initState()</code> method executes once during screen startup-time. We want to keep data ready in database for querying by <code>build()</code> method.</p>
 <div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">ProductListing</span> <span class="kr">extends</span> <span class="nx">StatefulWidget</span> <span class="p">{</span>
   <span class="kd">@override</span>
   <span class="nx">_ProductListingState</span> <span class="nx">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">_ProductListingState</span><span class="p">();</span>
@@ -208,11 +208,13 @@
 
 
 <h2>Rendering Data from Database</h2>
-<p>The <code>_ProductListingState</code> widget's <code>build()</code> method is responsible for updating data at the interface. It uses <code>FutureBuilder</code> widget to render data returned from asynchronous methods like <code>Future</code>. Usually data is returned asynchronously from database or remote network operations. <code>FutureBuilder</code> makes things data rendering adaptable to asynchronous style of data rendering at user interface side.</p>
+<p>The <code>_ProductListingState</code> widget's <code>build()</code> method is responsible for updating data at the interface. It uses <code>FutureBuilder</code> widget to render data returned from asynchronous methods like <code>Future</code>. Usually data is returned asynchronously from database or remote network operations. <code>FutureBuilder</code> widget helps render data asynchronously at user interface side.</p>
 <div class="highlight"><pre><span></span><span class="n">body</span><span class="o">:</span> <span class="n">FutureBuilder</span><span class="o">(</span>
+    <span class="c1">//fetching products from db</span>
     <span class="n">future</span><span class="o">:</span> <span class="n">allProducts</span><span class="o">(),</span>
     <span class="n">builder</span><span class="o">:</span> <span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">AsyncSnapshot</span> <span class="n">snapshot</span><span class="o">)</span> <span class="o">{</span>
       <span class="k">if</span> <span class="o">(!</span><span class="n">snapshot</span><span class="o">.</span><span class="na">hasData</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//loading circular progress bar</span>
         <span class="k">return</span> <span class="n">Center</span><span class="o">(</span><span class="n">child</span><span class="o">:</span> <span class="n">CircularProgressIndicator</span><span class="o">());</span>
       <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">Container</span><span class="o">(</span>
@@ -222,6 +224,7 @@
             <span class="n">itemBuilder</span><span class="o">:</span> <span class="o">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
               <span class="k">return</span> <span class="n">Column</span><span class="o">(</span>
                 <span class="n">children</span><span class="o">:</span> <span class="o">[</span>
+                  <span class="c1">//custom widget</span>
                   <span class="n">positionedBlock</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">snapshot</span><span class="o">.</span><span class="na">data</span><span class="o">[</span><span class="n">index</span><span class="o">]),</span>
                   <span class="n">Divider</span><span class="o">(</span>
                     <span class="n">thickness</span><span class="o">:</span> <span class="mi">2</span><span class="o">,</span>
@@ -236,15 +239,15 @@
 </pre></div>
 
 
-<p>The <code>allProducts()</code> method returns a list of <code>Product</code> of <code>Future</code> type. Each product entry uses <code>positionedBlock(...)</code> method to display product details. Checkout the source code for this <a href="">here</a>.</p>
-<p>Let's explore the database side of things in next section.</p>
+<p>The <code>allProducts()</code> method returns a list of <code>Product</code> of <code>Future</code> type. Each product entry uses <code>positionedBlock(...)</code> method to display product details. Checkout the source code for this <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom.dart">here</a>.</p>
+<p>Let's explore the database side of things next.</p>
 <hr>
 <h1>Local Database</h1>
-<p>The <code>sqflite</code> plugin access to sqlite database on Android and iOS devices for Flutter. Let's check out the database operations next.
-Refer <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom_db.dart"><code>ecom_db.dart</code></a>.</p>
+<p>The <code>sqflite</code> plugin access to sqlite database on Android and iOS devices for Flutter. Let's check out the database operations next.</p>
+<p><strong>Note:</strong> Refer <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom_db.dart"><code>ecom_db.dart</code></a>.</p>
 <h2>Creating Database</h2>
 <p>The <code>openDatabase()</code> method takes database path, version of the database to support db upgrades &amp; downgrades, and a way to create table using <code>onCreate:</code> attribute.</p>
-<p>The <code>getDatabasesPath()</code> provides the physical location of database on device. The <code>join()</code> methods is a utility method to join the given paths into single path as per the current platform's file seprator. You need <code>path</code> plugin to access <code>join()</code> method.</p>
+<p>The <code>getDatabasesPath()</code> provides the physical location of database on device. The <code>join()</code> methods is a utility method to join the given paths into single path as per the current platform's file separator. You need <code>path</code> plugin to access <code>join()</code> method.</p>
 <div class="highlight"><pre><span></span>Future&lt;Database&gt; db() async {
   return openDatabase(
     join(await getDatabasesPath(), &#39;products_database.db&#39;),
@@ -260,7 +263,7 @@ Refer <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-c
 </pre></div>
 
 
-<p>The <code>db()</code> will return <code>Database</code> as <code>Future</code>. Initializing database is an asynchronous operation. The database referecence is being held in <code>database</code> variable, and product table name is <code>products</code> and stored in <code>tableProducts</code> constant. A table <code>products</code> is created if doesn't exist already.</p>
+<p>The <code>db()</code> will return <code>Database</code> as <code>Future</code>. Initializing database is an asynchronous operation. The database reference is being held in <code>database</code> variable, and product table name is <code>products</code> and stored in <code>tableProducts</code> constant. A table <code>products</code> is created if doesn't exist already.</p>
 <h2>Product class</h2>
 <p>The Product is represented with class <code>Product</code>. A product object has <code>id</code>, <code>title</code>, <code>description</code>, <code>image</code>, and <code>price</code>.</p>
 <div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Product</span> <span class="p">{</span>
@@ -292,13 +295,14 @@ Refer <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-c
 
 
 <h2>Inserting Product</h2>
-<p>Inserting data into a table is an asynchronous operation as well. First get a reference to database and then pick a conflictAlgorithm. It is a rule to resolve conflicts. We want to replace old content with new content if record is already present. Hence, it makes sense to pick <code>ConflictAlgorithm.replace</code> conflictAlgorithm.</p>
+<p>Inserting data into a table is an asynchronous operation as well. First get a reference to database and then pick a conflictAlgorithm. It is a rule to resolve conflicts. In our case, we want to replace old content with new content if record is already present. Hence, it makes sense to pick <code>ConflictAlgorithm.replace</code> conflictAlgorithm.</p>
 <div class="highlight"><pre><span></span>Future&lt;void&gt; insertProduct(Product product) async {
   // Get a reference to the database.
   final Database db = await database;
 
-  // Insert the Product into the correct table. Also specify the
-  // `conflictAlgorithm`. In this case, if the same product is inserted
+  // Insert the Product into the correct table.
+  // Specify `conflictAlgorithm`.
+  // In this case, if the same product is inserted
   // multiple times, it replaces the previous data.
   await db.insert(
     tableProducts,
@@ -310,7 +314,7 @@ Refer <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-c
 
 
 <h2>Querying All Products</h2>
-<p>We want to render all products from the table to interface. In our case, there are only two products.</p>
+<p>We want to render all products from the table into interface. In our case, there are only two products.</p>
 <div class="highlight"><pre><span></span><span class="nt">Future</span><span class="o">&lt;</span><span class="nt">List</span><span class="o">&lt;</span><span class="nt">Product</span><span class="o">&gt;&gt;</span> <span class="nt">allProducts</span><span class="o">()</span> <span class="nt">async</span> <span class="p">{</span>
   <span class="err">//</span> <span class="err">Get</span> <span class="err">a</span> <span class="err">reference</span> <span class="err">to</span> <span class="err">the</span> <span class="err">database.</span>
   <span class="err">final</span> <span class="err">Database</span> <span class="err">db</span> <span class="err">=</span> <span class="err">await</span> <span class="err">database</span><span class="p">;</span>
@@ -413,7 +417,7 @@ Refer <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-c
 <h1>References</h1>
 <ol>
 <li>The <a href="https://pub.dev/packages/path"><code>path</code></a> Plugin</li>
-<li>The <a href="https://pub.dev/packages/sqflite">sqflite</a> Plugin</li>
+<li>The <a href="https://pub.dev/packages/sqflite"><code>sqflite</code></a> Plugin</li>
 </ol>
 <p>Happy cooking with Flutter :)</p>
 <p>_Liked the article ?

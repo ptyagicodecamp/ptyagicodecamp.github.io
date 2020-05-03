@@ -15,11 +15,9 @@
 &lt;p&gt;&lt;img alt="products_db" src="https://ptyagicodecamp.github.io/localdb_products.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Flutter Cookbook&lt;/h1&gt;
-&lt;p&gt;This code recipe is added in the Flutter Cookbook app.&lt;/p&gt;
+&lt;p&gt;This code recipe is added in the &lt;a href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html"&gt;Flutter Cookbook&lt;/a&gt; app as well. Source code link is available at the end of this article.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="localdb_cookbook" src="https://ptyagicodecamp.github.io/localdb_cookbook.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Checkout the YouTube video:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; dependency&lt;/h1&gt;
 &lt;p&gt;Add &lt;code&gt;sqflite&lt;/code&gt; plugin dependency as below:&lt;/p&gt;
@@ -32,15 +30,17 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;sqflite&lt;/code&gt; plugin has dependency on &lt;a href="https://pub.dev/packages/path"&gt;&lt;code&gt;path&lt;/code&gt;&lt;/a&gt; plugin. Please add this if not alreay not added to your configuration file.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;sqflite&lt;/code&gt; plugin has dependency on &lt;a href="https://pub.dev/packages/path"&gt;&lt;code&gt;path&lt;/code&gt;&lt;/a&gt; plugin. Please add this dependency it's not already present in your configuration file.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;User Interface&lt;/h1&gt;
-&lt;p&gt;In this code recipe, there're only two products are used to demonstration purposes. Each of the Product has an image, title, description, and price.&lt;/p&gt;
+&lt;p&gt;In this code recipe, there're only two product items used for demonstration purposes. Each item has an image, title, description, and price.&lt;/p&gt;
 &lt;p&gt;The UI is composed of widgets as shown below:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="localdb_interface" src="https://ptyagicodecamp.github.io/localdb_products_lined.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;The custom widget composed by &lt;code&gt;positionedBlock()&lt;/code&gt; is in a Column in the &lt;code&gt;ListView&lt;/code&gt; widget.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;positionedBlock()&lt;/code&gt; widget a centered aligned &lt;code&gt;Stack&lt;/code&gt;. In this &lt;code&gt;Stack&lt;/code&gt;, two &lt;code&gt;Positioned&lt;/code&gt; widgets are added. The first &lt;code&gt;Positioned&lt;/code&gt; is added at the background to display product information in a column. The second &lt;code&gt;Positioned&lt;/code&gt; widget contains the product's image.&lt;/p&gt;
-&lt;p&gt;The main screen is a &lt;code&gt;StatefulWidget&lt;/code&gt; since we want to update data from local database. We add sample data to database as soon as the app starts. We'll go over database details in next section. The &lt;code&gt;initDB()&lt;/code&gt; method is called rom &lt;code&gt;initState()&lt;/code&gt; method. The &lt;code&gt;initState()&lt;/code&gt; method executes once during screen starup-time. We want to keep data ready in database for querying in &lt;code&gt;build()&lt;/code&gt; method.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This article is not intended for learning to build user interface. Hence, I'll quickly review the UI structure. Please refer to source code to see full code.&lt;/p&gt;
+&lt;p&gt;Main interface is rendered using &lt;code&gt;ListView&lt;/code&gt; widget. The &lt;code&gt;ListView&lt;/code&gt; widget has a &lt;code&gt;Column&lt;/code&gt; widget as its child. The custom widget &lt;code&gt;positionedBlock()&lt;/code&gt; is added as &lt;code&gt;Column&lt;/code&gt; widget's child.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;positionedBlock():&lt;/strong&gt; This method returns interface for each item in the list. It's is aligned in &lt;code&gt;topCenter&lt;/code&gt; using &lt;code&gt;Align&lt;/code&gt; widget. A &lt;code&gt;Stack&lt;/code&gt; widgets contains two &lt;code&gt;Positioned&lt;/code&gt; widgets for product description and image.
+The first &lt;code&gt;Positioned&lt;/code&gt; widget is added in the background to display product information (in a &lt;code&gt;Column&lt;/code&gt; widget). The another &lt;code&gt;Positioned&lt;/code&gt; widget contains the product's image.&lt;/p&gt;
+&lt;p&gt;The main screen is a &lt;code&gt;StatefulWidget&lt;/code&gt; since we want to update data retrieved from local database. Sample data in database is added as soon as the app starts. We'll go over database details in next section. The &lt;code&gt;initDB()&lt;/code&gt; method is called rom &lt;code&gt;initState()&lt;/code&gt; method. The &lt;code&gt;initState()&lt;/code&gt; method executes once during screen startup-time. We want to keep data ready in database for querying by &lt;code&gt;build()&lt;/code&gt; method.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;ProductListing&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="kd"&gt;@override&lt;/span&gt;
   &lt;span class="nx"&gt;_ProductListingState&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_ProductListingState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
@@ -58,11 +58,13 @@
 
 
 &lt;h2&gt;Rendering Data from Database&lt;/h2&gt;
-&lt;p&gt;The &lt;code&gt;_ProductListingState&lt;/code&gt; widget's &lt;code&gt;build()&lt;/code&gt; method is responsible for updating data at the interface. It uses &lt;code&gt;FutureBuilder&lt;/code&gt; widget to render data returned from asynchronous methods like &lt;code&gt;Future&lt;/code&gt;. Usually data is returned asynchronously from database or remote network operations. &lt;code&gt;FutureBuilder&lt;/code&gt; makes things data rendering adaptable to asynchronous style of data rendering at user interface side.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;_ProductListingState&lt;/code&gt; widget's &lt;code&gt;build()&lt;/code&gt; method is responsible for updating data at the interface. It uses &lt;code&gt;FutureBuilder&lt;/code&gt; widget to render data returned from asynchronous methods like &lt;code&gt;Future&lt;/code&gt;. Usually data is returned asynchronously from database or remote network operations. &lt;code&gt;FutureBuilder&lt;/code&gt; widget helps render data asynchronously at user interface side.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;FutureBuilder&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+    &lt;span class="c1"&gt;//fetching products from db&lt;/span&gt;
     &lt;span class="n"&gt;future&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;allProducts&lt;/span&gt;&lt;span class="o"&gt;(),&lt;/span&gt;
     &lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AsyncSnapshot&lt;/span&gt; &lt;span class="n"&gt;snapshot&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
       &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(!&lt;/span&gt;&lt;span class="n"&gt;snapshot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;hasData&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;//loading circular progress bar&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Center&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;CircularProgressIndicator&lt;/span&gt;&lt;span class="o"&gt;());&lt;/span&gt;
       &lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Container&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
@@ -72,6 +74,7 @@
             &lt;span class="n"&gt;itemBuilder&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
               &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
                 &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;
+                  &lt;span class="c1"&gt;//custom widget&lt;/span&gt;
                   &lt;span class="n"&gt;positionedBlock&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;snapshot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;data&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;]),&lt;/span&gt;
                   &lt;span class="n"&gt;Divider&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
                     &lt;span class="n"&gt;thickness&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
@@ -86,15 +89,15 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The &lt;code&gt;allProducts()&lt;/code&gt; method returns a list of &lt;code&gt;Product&lt;/code&gt; of &lt;code&gt;Future&lt;/code&gt; type. Each product entry uses &lt;code&gt;positionedBlock(...)&lt;/code&gt; method to display product details. Checkout the source code for this &lt;a href=""&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Let's explore the database side of things in next section.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;allProducts()&lt;/code&gt; method returns a list of &lt;code&gt;Product&lt;/code&gt; of &lt;code&gt;Future&lt;/code&gt; type. Each product entry uses &lt;code&gt;positionedBlock(...)&lt;/code&gt; method to display product details. Checkout the source code for this &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom.dart"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let's explore the database side of things next.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Local Database&lt;/h1&gt;
-&lt;p&gt;The &lt;code&gt;sqflite&lt;/code&gt; plugin access to sqlite database on Android and iOS devices for Flutter. Let's check out the database operations next.
-Refer &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom_db.dart"&gt;&lt;code&gt;ecom_db.dart&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;sqflite&lt;/code&gt; plugin access to sqlite database on Android and iOS devices for Flutter. Let's check out the database operations next.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Refer &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom_db.dart"&gt;&lt;code&gt;ecom_db.dart&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Creating Database&lt;/h2&gt;
 &lt;p&gt;The &lt;code&gt;openDatabase()&lt;/code&gt; method takes database path, version of the database to support db upgrades &amp;amp; downgrades, and a way to create table using &lt;code&gt;onCreate:&lt;/code&gt; attribute.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;getDatabasesPath()&lt;/code&gt; provides the physical location of database on device. The &lt;code&gt;join()&lt;/code&gt; methods is a utility method to join the given paths into single path as per the current platform's file seprator. You need &lt;code&gt;path&lt;/code&gt; plugin to access &lt;code&gt;join()&lt;/code&gt; method.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;getDatabasesPath()&lt;/code&gt; provides the physical location of database on device. The &lt;code&gt;join()&lt;/code&gt; methods is a utility method to join the given paths into single path as per the current platform's file separator. You need &lt;code&gt;path&lt;/code&gt; plugin to access &lt;code&gt;join()&lt;/code&gt; method.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Future&amp;lt;Database&amp;gt; db() async {
   return openDatabase(
     join(await getDatabasesPath(), &amp;#39;products_database.db&amp;#39;),
@@ -110,7 +113,7 @@ Refer &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widget
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The &lt;code&gt;db()&lt;/code&gt; will return &lt;code&gt;Database&lt;/code&gt; as &lt;code&gt;Future&lt;/code&gt;. Initializing database is an asynchronous operation. The database referecence is being held in &lt;code&gt;database&lt;/code&gt; variable, and product table name is &lt;code&gt;products&lt;/code&gt; and stored in &lt;code&gt;tableProducts&lt;/code&gt; constant. A table &lt;code&gt;products&lt;/code&gt; is created if doesn't exist already.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;db()&lt;/code&gt; will return &lt;code&gt;Database&lt;/code&gt; as &lt;code&gt;Future&lt;/code&gt;. Initializing database is an asynchronous operation. The database reference is being held in &lt;code&gt;database&lt;/code&gt; variable, and product table name is &lt;code&gt;products&lt;/code&gt; and stored in &lt;code&gt;tableProducts&lt;/code&gt; constant. A table &lt;code&gt;products&lt;/code&gt; is created if doesn't exist already.&lt;/p&gt;
 &lt;h2&gt;Product class&lt;/h2&gt;
 &lt;p&gt;The Product is represented with class &lt;code&gt;Product&lt;/code&gt;. A product object has &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;image&lt;/code&gt;, and &lt;code&gt;price&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Product&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -142,13 +145,14 @@ Refer &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widget
 
 
 &lt;h2&gt;Inserting Product&lt;/h2&gt;
-&lt;p&gt;Inserting data into a table is an asynchronous operation as well. First get a reference to database and then pick a conflictAlgorithm. It is a rule to resolve conflicts. We want to replace old content with new content if record is already present. Hence, it makes sense to pick &lt;code&gt;ConflictAlgorithm.replace&lt;/code&gt; conflictAlgorithm.&lt;/p&gt;
+&lt;p&gt;Inserting data into a table is an asynchronous operation as well. First get a reference to database and then pick a conflictAlgorithm. It is a rule to resolve conflicts. In our case, we want to replace old content with new content if record is already present. Hence, it makes sense to pick &lt;code&gt;ConflictAlgorithm.replace&lt;/code&gt; conflictAlgorithm.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Future&amp;lt;void&amp;gt; insertProduct(Product product) async {
   // Get a reference to the database.
   final Database db = await database;
 
-  // Insert the Product into the correct table. Also specify the
-  // `conflictAlgorithm`. In this case, if the same product is inserted
+  // Insert the Product into the correct table.
+  // Specify `conflictAlgorithm`.
+  // In this case, if the same product is inserted
   // multiple times, it replaces the previous data.
   await db.insert(
     tableProducts,
@@ -160,7 +164,7 @@ Refer &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widget
 
 
 &lt;h2&gt;Querying All Products&lt;/h2&gt;
-&lt;p&gt;We want to render all products from the table to interface. In our case, there are only two products.&lt;/p&gt;
+&lt;p&gt;We want to render all products from the table into interface. In our case, there are only two products.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;Product&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;allProducts&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="nt"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;Get&lt;/span&gt; &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;reference&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;database.&lt;/span&gt;
   &lt;span class="err"&gt;final&lt;/span&gt; &lt;span class="err"&gt;Database&lt;/span&gt; &lt;span class="err"&gt;db&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;await&lt;/span&gt; &lt;span class="err"&gt;database&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -263,7 +267,7 @@ Refer &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widget
 &lt;h1&gt;References&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;The &lt;a href="https://pub.dev/packages/path"&gt;&lt;code&gt;path&lt;/code&gt;&lt;/a&gt; Plugin&lt;/li&gt;
-&lt;li&gt;The &lt;a href="https://pub.dev/packages/sqflite"&gt;sqflite&lt;/a&gt; Plugin&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://pub.dev/packages/sqflite"&gt;&lt;code&gt;sqflite&lt;/code&gt;&lt;/a&gt; Plugin&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
 &lt;p&gt;_Liked the article ?
