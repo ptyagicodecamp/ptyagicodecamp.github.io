@@ -253,6 +253,8 @@ The first &lt;code&gt;Positioned&lt;/code&gt; widget is added in the background 
 
 
 &lt;p&gt;That's all ! In this code recipe, we added two products in local database, and displayed both product entries in Flutter App.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+The &lt;code&gt;sqflite&lt;/code&gt; plugin provides the lower level implementation for creating and accessing database on Android and iOS platforms. However, the &lt;code&gt;moor&lt;/code&gt; plugin provides database access across Android, iOS and Web platforms. Please check out &lt;a href="https://ptyagicodecamp.github.io/persisting-theme-in-localdatabase-moor-plugin.html"&gt;my article&lt;/a&gt; about persisting data using &lt;code&gt;moor&lt;/code&gt; plugin.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Source Code Repo&lt;/h1&gt;
 &lt;ul&gt;
