@@ -19,6 +19,8 @@
 &lt;p&gt;This code recipe is added in the &lt;a href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html"&gt;Flutter Cookbook&lt;/a&gt; app as well. Source code link is available at the end of this article.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="localdb_cookbook" src="https://ptyagicodecamp.github.io/localdb_cookbook.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the YouTube video:&lt;/strong&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/JX2BHjHKnuc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;&lt;code&gt;pubspec.yaml&lt;/code&gt; dependency&lt;/h1&gt;
 &lt;p&gt;Add &lt;code&gt;sqflite&lt;/code&gt; plugin dependency as below:&lt;/p&gt;
@@ -742,7 +744,7 @@ Couldn't find a topic of your interest? Please leave a comment or reach out at &
 &lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/JX2BHjHKnuc"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
