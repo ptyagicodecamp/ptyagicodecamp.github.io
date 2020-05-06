@@ -262,7 +262,7 @@ The &lt;code&gt;sqflite&lt;/code&gt; plugin provides the lower level implementat
 &lt;h1&gt;Source Code Repo&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/persistence"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Flutter Cookbook project's source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/"&gt;here&lt;/a&gt;&lt;/p&gt;
@@ -738,10 +738,10 @@ Couldn't find a topic of your interest? Please leave a comment or reach out at &
 &lt;p&gt;This article demonstrates persisting data in local database in Flutter App.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/persisting-data-in-local-database-for-flutter-android-ios.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/persisting-data-in-local-db-for-flutter-android-ios.html"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/persistence"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/JX2BHjHKnuc"&gt;here&lt;/a&gt;&lt;/p&gt;

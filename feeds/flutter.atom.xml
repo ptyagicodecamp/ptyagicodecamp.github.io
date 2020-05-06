@@ -262,7 +262,7 @@ The &lt;code&gt;sqflite&lt;/code&gt; plugin provides the lower level implementat
 &lt;h1&gt;Source Code Repo&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/persistence"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Flutter Cookbook project's source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/"&gt;here&lt;/a&gt;&lt;/p&gt;
