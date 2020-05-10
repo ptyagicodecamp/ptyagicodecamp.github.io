@@ -200,6 +200,9 @@
 <div class="highlight"><pre><span></span>  bool isNumberOdd(int num) =&gt; num.isOdd;
 
   bool isNumberEven(int num) =&gt; num.isEven;
+
+  //Added to demonstrate handle conflicting name in two different libraries
+  int addition(int a, int b) =&gt; a + b + 2;
 </pre></div>
 
 
@@ -227,6 +230,33 @@
 <p><strong>Output:</strong></p>
 <div class="highlight"><pre><span></span>Sum of 5 and 2 is 7
 is number even? true
+</pre></div>
+
+
+<h2>Handling Conflicts</h2>
+<p>Using prefix will only call method from respective library when more than one libraries have similar named apis.</p>
+<p>The <code>lib_conflict.dart</code>:</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_conflict.dart"><code>lib_conflict.dart</code></a></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="s1">&#39;lib2.dart&#39;</span> <span class="k">as</span> <span class="n">check</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">Calls</span> <span class="n">addition</span><span class="p">()</span> <span class="kn">from</span> <span class="nn">lib2</span>
+  <span class="nb">sum</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Sum of 5 and 2 is 7
+Sum of 5 and 2 is 9
 </pre></div>
 
 
@@ -259,8 +289,8 @@ is number even? true
 
 <p><strong><code>hide</code>:</strong></p>
 <p>The <code>hide</code> is used when everything but a specific API is made accessible/visible.</p>
-<p>The <code>lib_hide.dart</code>:
-<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_hide.dart"><code>lib_hide.dart</code></a></p>
+<p>The <code>lib_hide.dart</code>:</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_hide.dart"><code>lib_hide.dart</code></a></p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span> <span class="n">hide</span> <span class="n">subtraction</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -285,8 +315,8 @@ is number even? true
 <hr>
 <h1>Defer/delay loading library</h1>
 <p>A deferred library is loaded when it's actually used/needed. It's declared using <code>deferred as &lt;name&gt;</code> in import statement. The library uses <code>loadLibrary()</code> method to invoke itself. The <code>loadLibrary()</code> method returns a <code>Future</code>. That's why library invocation needs to be done in a <code>async</code> block.</p>
-<p>The <code>lib_deferred.dart</code>:
-<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_deferred.dart"><code>lib_deferred.dart</code></a></p>
+<p>The <code>lib_deferred.dart</code>:</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_deferred.dart"><code>lib_deferred.dart</code></a></p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span> <span class="n">deferred</span> <span class="k">as</span> <span class="n">lib1</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -298,7 +328,8 @@ is number even? true
 
 <span class="n">Future</span> <span class="n">delayedInvocation</span><span class="p">(</span><span class="nb">int</span> <span class="n">num1</span><span class="p">,</span> <span class="nb">int</span> <span class="n">num2</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
   <span class="o">//</span><span class="n">Loads</span> <span class="n">lib1</span> <span class="n">here</span>
-  <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">await</span> <span class="n">lib1</span><span class="o">.</span><span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+  <span class="n">await</span> <span class="n">lib1</span><span class="o">.</span><span class="n">loadLibrary</span><span class="p">();</span>
+  <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">lib1</span><span class="o">.</span><span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>

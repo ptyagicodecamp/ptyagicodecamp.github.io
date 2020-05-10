@@ -262,6 +262,9 @@ Couldn't find a topic of your interest ? Please leave a comment or reach out at 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  bool isNumberOdd(int num) =&amp;gt; num.isOdd;
 
   bool isNumberEven(int num) =&amp;gt; num.isEven;
+
+  //Added to demonstrate handle conflicting name in two different libraries
+  int addition(int a, int b) =&amp;gt; a + b + 2;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -289,6 +292,33 @@ Couldn't find a topic of your interest ? Please leave a comment or reach out at 
 &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Sum of 5 and 2 is 7
 is number even? true
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Handling Conflicts&lt;/h2&gt;
+&lt;p&gt;Using prefix will only call method from respective library when more than one libraries have similar named apis.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;lib_conflict.dart&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_conflict.dart"&gt;&lt;code&gt;lib_conflict.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;lib1.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;lib2.dart&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;addition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Sum of $num1 and $num2 is $sum&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Calls&lt;/span&gt; &lt;span class="n"&gt;addition&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;lib2&lt;/span&gt;
+  &lt;span class="nb"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Sum of $num1 and $num2 is $sum&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Sum of 5 and 2 is 7
+Sum of 5 and 2 is 9
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -321,8 +351,8 @@ is number even? true
 
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;hide&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;hide&lt;/code&gt; is used when everything but a specific API is made accessible/visible.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;lib_hide.dart&lt;/code&gt;:
-&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_hide.dart"&gt;&lt;code&gt;lib_hide.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;lib_hide.dart&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_hide.dart"&gt;&lt;code&gt;lib_hide.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;lib1.dart&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;hide&lt;/span&gt; &lt;span class="n"&gt;subtraction&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -347,8 +377,8 @@ is number even? true
 &lt;hr&gt;
 &lt;h1&gt;Defer/delay loading library&lt;/h1&gt;
 &lt;p&gt;A deferred library is loaded when it's actually used/needed. It's declared using &lt;code&gt;deferred as &amp;lt;name&amp;gt;&lt;/code&gt; in import statement. The library uses &lt;code&gt;loadLibrary()&lt;/code&gt; method to invoke itself. The &lt;code&gt;loadLibrary()&lt;/code&gt; method returns a &lt;code&gt;Future&lt;/code&gt;. That's why library invocation needs to be done in a &lt;code&gt;async&lt;/code&gt; block.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;lib_deferred.dart&lt;/code&gt;:
-&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_deferred.dart"&gt;&lt;code&gt;lib_deferred.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;lib_deferred.dart&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_deferred.dart"&gt;&lt;code&gt;lib_deferred.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;lib1.dart&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;deferred&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;lib1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -360,7 +390,8 @@ is number even? true
 
 &lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="n"&gt;delayedInvocation&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Loads&lt;/span&gt; &lt;span class="n"&gt;lib1&lt;/span&gt; &lt;span class="n"&gt;here&lt;/span&gt;
-  &lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;lib1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;lib1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loadLibrary&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lib1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Sum of $num1 and $num2 is $sum&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
