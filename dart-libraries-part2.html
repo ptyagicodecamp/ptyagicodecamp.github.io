@@ -150,17 +150,27 @@
     </script>
 
   <div>
-    <p><img alt="enums" src="https://ptyagicodecamp.github.io/libraries.png"></p>
+    <p><img alt="Libraries-part2" src="https://ptyagicodecamp.github.io/libraries.png"></p>
 <h1>Introduction</h1>
-<p>This article is a quick introduction for using libraries in Dart/Flutter. It covers <code>part</code>, <code>library</code>, and <code>export</code> directives. Checkout the Part-2, to learn few ways libraries are used in Dart.</p>
-<p>A library is a reusable module of frequently used programs/code. It helps to write modular code base. In Dart, each app is a library.  </p>
-<p>Purpose of a library is twofold:</p>
-<ol>
-<li>Providing APIs</li>
-<li>Restricting variable's visibility. Identifiers with underscore (_) prefix are only available inside library.</li>
-</ol>
+<p>This article covers <code>part</code>, <code>library</code>, and <code>export</code> directives. Checkout the <a href="https://ptyagicodecamp.github.io/dart-libraries-part1.html">Part-1</a> to learn few ways libraries are used in Dart.
+In addition to introducing above directives, we'll also be learning to restrict the visibility of a library's APIs.</p>
+<hr>
+<h1>Revisiting Setup</h1>
 <p>Let's create two libraries <code>lib1</code> and <code>lib2</code> for demonstration.</p>
 <h1><code>lib1</code></h1>
+<p>This library has APIs to calculate sum and difference of two integers.</p>
+<ul>
+<li>
+<p>Addition API: The <code>int addition(int a, int b)</code> calculates sum of two given integers and returns an integer.</p>
+</li>
+<li>
+<p>Subtraction API: The <code>int subtraction(int a, int b)</code> calculates difference of two given integers and returns an integer.</p>
+</li>
+<li>
+<p><code>int _add(int a, int b)</code>: It is an internal function/method that does perform the real addition. This method is used by addition api. Identifiers with underscore (_) prefix are only available inside library.</p>
+</li>
+</ul>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib1.dart"><code>lib1.dart</code></a></p>
 <div class="highlight"><pre><span></span>  int addition(int a, int b) =&gt; _add(a, b);
 
   int subtraction(int a, int b) =&gt; a - b;
@@ -170,14 +180,24 @@
 
 
 <h1><code>lib2</code></h1>
+<p>This library has APIs to check if the given number is even or odd.</p>
+<ul>
+<li>Even number API (<code>bool isNumberOdd(int num)</code>): This api take a number and returns true if its even or vice versa.</li>
+<li>Odd number API (<code>bool isNumberOdd(int num)</code>): This api take a number and returns true if its odd or vice versa.</li>
+</ul>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib2.dart"><code>lib2.dart</code></a></p>
 <div class="highlight"><pre><span></span>  bool isNumberOdd(int num) =&gt; num.isOdd;
 
   bool isNumberEven(int num) =&gt; num.isEven;
 </pre></div>
 
 
-<h1>Privacy</h1>
-<p>Let's import <code>lib1.dart</code> to use <code>addition(..)</code> method. Please note trying to <code>_add(...)</code> method will show a compile time error since it's private and available for use inside <code>lib1.dart</code> only</p>
+<hr>
+<h1>Privacy (Restricting Access)</h1>
+<p>It's possible to restrict variables'/APIs visibility in Dart libraries. Identifiers with underscore (_) prefix are only available inside library.</p>
+<p>Let's import <code>lib1.dart</code> to use <code>addition(..)</code> method. Please note that trying to call <code>_add(...)</code> method will show a compile time error since it's private and is available to <code>lib1.dart</code> only.</p>
+<p>The <code>lib_main.dart</code>:
+<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_main.dart"><code>lib_main.dart</code></a></p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -186,6 +206,9 @@
 
   <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">Compile</span><span class="o">-</span><span class="n">time</span> <span class="n">error</span> <span class="n">because</span> <span class="n">_add</span><span class="p">()</span> <span class="n">function</span> <span class="ow">is</span> <span class="n">private</span>
+  <span class="o">//</span><span class="nb">sum</span> <span class="o">=</span> <span class="n">_add</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -195,24 +218,13 @@
 </pre></div>
 
 
-<p>However, calling an api form <code>lib2.dart</code> will give compile-time error.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
-
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-  <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-
-  <span class="o">//</span><span class="n">Compile</span><span class="o">-</span><span class="n">time</span> <span class="n">error</span> <span class="n">because</span> <span class="n">api</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">available</span>
-  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;is number even? ${isNumberEven(num2)}&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
+<hr>
 <h1>Using <code>part</code> directive</h1>
 <p>The use of <code>part</code> directive is most common in auto-generated code. Traditionally, <code>part</code> directive is a glue between two tightly coupled libraries.</p>
-<p><strong>Note:</strong> Related code is available in its own folder <code>libraries/maths_part</code>.</p>
-<p>For example, assume <code>lib1.dart</code> and <code>lib2.dart</code> are two huge libraries that were spilt into two. In normal circumstances, I would add both libraries in <code>import</code> statements at the top of <code>maths_part/part_main.dart</code> in order to access APIs from both libraries. In such scenarios, <code>part</code> directive could come handy.</p>
-<p>The <code>lib1.dart</code> file:</p>
+<p><strong>Note:</strong> Related code is available in its own folder <a href="https://github.com/ptyagicodecamp/dart_vocab/tree/master/src/libraries/maths_part"><code>libraries/maths_part</code></a>.</p>
+<p>For example, lets that assume <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib1.dart"><code>lib1.dart</code></a> and <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib2.dart"><code>lib2.dart</code></a> are two huge libraries that were spilt into two. In normal circumstances, I would add both libraries in <code>import</code> statements at the top of <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/part_main.dart"><code>maths_part/part_main.dart</code></a> in order to access APIs from both libraries. In such scenarios, <code>part</code> directive could come handy to avoid multiple import statements.</p>
+<p>The <code>lib1.dart</code> file: The <code>part</code> directive at the top mentions that all <code>lib2</code> belongs to <code>lib1</code>, and bring-in all <code>lib2</code>'s apis into <code>lib1</code>. Only importing <code>lib1.dart</code> will give access to both libraries' apis.
+<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib1.dart"><code>lib1.dart</code></a></p>
 <div class="highlight"><pre><span></span>//importing lib1 brings-in all apis from lib2 as well
 part &#39;lib2.dart&#39;;
 
@@ -224,7 +236,8 @@ int _add(int a, int b) =&gt; a + b;
 </pre></div>
 
 
-<p>The <code>lib2.dart</code> file:</p>
+<p>The <code>lib2.dart</code> file: This library is marked as part of <code>lib1.dart</code> by using <code>part of</code> directive as <code>part of 'lib1.dart';</code>.
+<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib2.dart"><code>lib2.dart</code></a></p>
 <div class="highlight"><pre><span></span>part of &#39;lib1.dart&#39;;
 
 bool isNumberOdd(int num) =&gt; num.isOdd;
@@ -233,16 +246,19 @@ bool isNumberEven(int num) =&gt; num.isEven;
 </pre></div>
 
 
-<p>The <code>part_main.dart</code> file:</p>
+<p>The <code>part_main.dart</code> file: Importing <code>lib1.dart</code> gives access to all apis from both <code>lib1</code> &amp; <code>lib2</code>.
+<a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/part_main.dart"><code>part_main.dart</code></a></p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
   <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
+  <span class="o">//</span><span class="n">API</span> <span class="kn">from</span> <span class="nn">lib1.dart</span>
   <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
 
+  <span class="o">//</span><span class="n">API</span> <span class="kn">from</span> <span class="nn">lib2.dart</span>
   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;is number even? ${isNumberEven(num2)}&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -254,8 +270,10 @@ is number even? true
 </pre></div>
 
 
+<hr>
 <h1><code>library</code> directive</h1>
-<p>The <code>library</code> directive is used to [auto-generate documentation(https://dart.dev/guides/libraries/create-library-packages#documenting-a-library) for library using <a href="https://github.com/dart-lang/dartdoc#dartdoc"><code>dartdoc</code></a> tool.</p>
+<p>The <code>library</code> directive is used to <a href="https://dart.dev/guides/libraries/create-library-packages#documenting-a-library">auto-generate documentation</a> for library using <a href="https://github.com/dart-lang/dartdoc#dartdoc"><code>dartdoc</code></a> tool.</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/tree/master/src/libraries/math_lib1"><code>math_lib1</code></a> for this example.</p>
 <h1>Generating documentation</h1>
 <ol>
 <li>Add <code>library</code> directive at the top of <code>lib1.dart</code>:</li>
@@ -266,10 +284,10 @@ is number even? true
 
 <ol>
 <li>
-<p>Create a directory <code>math_lib1</code>, and move <code>lib1.dart</code> under it.  </p>
+<p>Create a directory <code>math_lib1</code>, and copy <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/math_lib1/lib1.dart"><code>lib1.dart</code></a> under it.  </p>
 </li>
 <li>
-<p>Add <code>pubspec.yaml</code> under <code>math_lib1</code> directory:</p>
+<p>Add <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/math_lib1/pubspec.yaml"><code>pubspec.yaml</code></a> under <code>math_lib1</code> directory:</p>
 </li>
 </ol>
 <div class="highlight"><pre><span></span><span class="n">name</span><span class="o">:</span> <span class="n">math_lib1</span>
@@ -291,16 +309,20 @@ is number even? true
 </pre></div>
 
 
+<hr>
 <h1>Using <code>export</code> directive</h1>
-<p>This directive is used to export only public apis.</p>
-<p><strong>Note:</strong> Related code is available in its own folder <code>libraries/maths_export</code>.</p>
+<p>This directive is used to export only public apis. In other words, it makes apis publicly accessible.</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/tree/master/src/libraries/math_export/"><code>math_export</code></a> for this example.</p>
 <p>The <code>lib1.dart</code> and <code>lib2.dart</code> files are available under <code>lib/src/</code> folder. The files under <code>lib/src/</code> directory are hidden. The <code>lib/maths_export.dart</code> file use <code>export</code> directive to make <code>lib1.dart</code> public.</p>
-<p>The <code>lib/maths_export.dart</code>:</p>
+<p>The <code>lib/maths_export.dart</code>:
+<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/math_export/lib/maths_export.dart">maths_export.dart</a></p>
 <div class="highlight"><pre><span></span>export &#39;src/lib1.dart&#39;;
 </pre></div>
 
 
 <p>An external file <code>lib_export.dart</code> imports <code>maths_export.dart</code> like below:</p>
+<p>The <code>lib_export.dart</code>:
+<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_export.dart">lib_export.dart</a></p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;math_export/lib/maths_export.dart&#39;</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -323,7 +345,7 @@ is number even? true
 
 <hr>
 <h1>Summary</h1>
-<p>In this article, we saw how</p>
+<p>In this article, we saw how can <code>export</code>, <code>library</code>, and <code>part</code> directives are used in Dart. We touched on generating documentation from Dart libraries. We also saw how to keep apis private in libraries.</p>
 <p>That's it for this article. Check out the <a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html">Dart Vocabulary Series</a> for other Dart stuff.</p>
 <hr>
 <h1>Check out YouTube Video</h1>
@@ -334,7 +356,9 @@ is number even? true
 <p>Please checkout the source code at Github <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries">here</a></p>
 <hr>
 <h1>References</h1>
-<p>1.</p>
+<ul>
+<li><a href="https://dart.dev/guides/language/language-tour">Official Dart Language Tour</a></li>
+</ul>
 <p>Happy Darting :)</p>
 <p>_Liked the article ?
 Couldn't find a topic of your interest ? Please leave a comment or reach out at <a href="https://twitter.com/ptyagi13">twitter</a> about the topics you would like me to share !</p>
