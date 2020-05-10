@@ -45,8 +45,8 @@ In addition to introducing above directives, we'll also be learning to restrict 
 &lt;h1&gt;Privacy (Restricting Access)&lt;/h1&gt;
 &lt;p&gt;It's possible to restrict variables'/APIs visibility in Dart libraries. Identifiers with underscore (_) prefix are only available inside library.&lt;/p&gt;
 &lt;p&gt;Let's import &lt;code&gt;lib1.dart&lt;/code&gt; to use &lt;code&gt;addition(..)&lt;/code&gt; method. Please note that trying to call &lt;code&gt;_add(...)&lt;/code&gt; method will show a compile time error since it's private and is available to &lt;code&gt;lib1.dart&lt;/code&gt; only.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;lib_main.dart&lt;/code&gt;:
-&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_main.dart"&gt;&lt;code&gt;lib_main.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;lib_main.dart&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_main.dart"&gt;&lt;code&gt;lib_main.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;lib1.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -72,8 +72,8 @@ In addition to introducing above directives, we'll also be learning to restrict 
 &lt;p&gt;The use of &lt;code&gt;part&lt;/code&gt; directive is most common in auto-generated code. Traditionally, &lt;code&gt;part&lt;/code&gt; directive is a glue between two tightly coupled libraries.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Related code is available in its own folder &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/tree/master/src/libraries/maths_part"&gt;&lt;code&gt;libraries/maths_part&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For example, lets that assume &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib1.dart"&gt;&lt;code&gt;lib1.dart&lt;/code&gt;&lt;/a&gt; and &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib2.dart"&gt;&lt;code&gt;lib2.dart&lt;/code&gt;&lt;/a&gt; are two huge libraries that were spilt into two. In normal circumstances, I would add both libraries in &lt;code&gt;import&lt;/code&gt; statements at the top of &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/part_main.dart"&gt;&lt;code&gt;maths_part/part_main.dart&lt;/code&gt;&lt;/a&gt; in order to access APIs from both libraries. In such scenarios, &lt;code&gt;part&lt;/code&gt; directive could come handy to avoid multiple import statements.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;lib1.dart&lt;/code&gt; file: The &lt;code&gt;part&lt;/code&gt; directive at the top mentions that all &lt;code&gt;lib2&lt;/code&gt; belongs to &lt;code&gt;lib1&lt;/code&gt;, and bring-in all &lt;code&gt;lib2&lt;/code&gt;'s apis into &lt;code&gt;lib1&lt;/code&gt;. Only importing &lt;code&gt;lib1.dart&lt;/code&gt; will give access to both libraries' apis.
-&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib1.dart"&gt;&lt;code&gt;lib1.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;lib1.dart&lt;/code&gt; file: The &lt;code&gt;part&lt;/code&gt; directive at the top mentions that all &lt;code&gt;lib2&lt;/code&gt; belongs to &lt;code&gt;lib1&lt;/code&gt;, and bring-in all &lt;code&gt;lib2&lt;/code&gt;'s apis into &lt;code&gt;lib1&lt;/code&gt;. Only importing &lt;code&gt;lib1.dart&lt;/code&gt; will give access to both libraries' apis.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib1.dart"&gt;&lt;code&gt;lib1.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//importing lib1 brings-in all apis from lib2 as well
 part &amp;#39;lib2.dart&amp;#39;;
 
@@ -85,8 +85,8 @@ int _add(int a, int b) =&amp;gt; a + b;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The &lt;code&gt;lib2.dart&lt;/code&gt; file: This library is marked as part of &lt;code&gt;lib1.dart&lt;/code&gt; by using &lt;code&gt;part of&lt;/code&gt; directive as &lt;code&gt;part of 'lib1.dart';&lt;/code&gt;.
-&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib2.dart"&gt;&lt;code&gt;lib2.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;lib2.dart&lt;/code&gt; file: This library is marked as part of &lt;code&gt;lib1.dart&lt;/code&gt; by using &lt;code&gt;part of&lt;/code&gt; directive as &lt;code&gt;part of 'lib1.dart';&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib2.dart"&gt;&lt;code&gt;lib2.dart&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;part of &amp;#39;lib1.dart&amp;#39;;
 
 bool isNumberOdd(int num) =&amp;gt; num.isOdd;
@@ -163,15 +163,15 @@ is number even? true
 &lt;p&gt;This directive is used to export only public apis. In other words, it makes apis publicly accessible.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/tree/master/src/libraries/math_export/"&gt;&lt;code&gt;math_export&lt;/code&gt;&lt;/a&gt; for this example.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;lib1.dart&lt;/code&gt; and &lt;code&gt;lib2.dart&lt;/code&gt; files are available under &lt;code&gt;lib/src/&lt;/code&gt; folder. The files under &lt;code&gt;lib/src/&lt;/code&gt; directory are hidden. The &lt;code&gt;lib/maths_export.dart&lt;/code&gt; file use &lt;code&gt;export&lt;/code&gt; directive to make &lt;code&gt;lib1.dart&lt;/code&gt; public.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;lib/maths_export.dart&lt;/code&gt;:
-&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/math_export/lib/maths_export.dart"&gt;maths_export.dart&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;lib/maths_export.dart&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/math_export/lib/maths_export.dart"&gt;maths_export.dart&lt;/a&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export &amp;#39;src/lib1.dart&amp;#39;;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;An external file &lt;code&gt;lib_export.dart&lt;/code&gt; imports &lt;code&gt;maths_export.dart&lt;/code&gt; like below:&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;lib_export.dart&lt;/code&gt;:
-&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_export.dart"&gt;lib_export.dart&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;lib_export.dart&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SourceCode:&lt;/strong&gt; Please refer to &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_export.dart"&gt;lib_export.dart&lt;/a&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;math_export/lib/maths_export.dart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;

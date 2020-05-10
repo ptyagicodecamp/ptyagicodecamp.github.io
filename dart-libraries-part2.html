@@ -196,8 +196,8 @@ In addition to introducing above directives, we'll also be learning to restrict 
 <h1>Privacy (Restricting Access)</h1>
 <p>It's possible to restrict variables'/APIs visibility in Dart libraries. Identifiers with underscore (_) prefix are only available inside library.</p>
 <p>Let's import <code>lib1.dart</code> to use <code>addition(..)</code> method. Please note that trying to call <code>_add(...)</code> method will show a compile time error since it's private and is available to <code>lib1.dart</code> only.</p>
-<p>The <code>lib_main.dart</code>:
-<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_main.dart"><code>lib_main.dart</code></a></p>
+<p>The <code>lib_main.dart</code>:</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_main.dart"><code>lib_main.dart</code></a></p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -223,8 +223,8 @@ In addition to introducing above directives, we'll also be learning to restrict 
 <p>The use of <code>part</code> directive is most common in auto-generated code. Traditionally, <code>part</code> directive is a glue between two tightly coupled libraries.</p>
 <p><strong>Note:</strong> Related code is available in its own folder <a href="https://github.com/ptyagicodecamp/dart_vocab/tree/master/src/libraries/maths_part"><code>libraries/maths_part</code></a>.</p>
 <p>For example, lets that assume <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib1.dart"><code>lib1.dart</code></a> and <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib2.dart"><code>lib2.dart</code></a> are two huge libraries that were spilt into two. In normal circumstances, I would add both libraries in <code>import</code> statements at the top of <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/part_main.dart"><code>maths_part/part_main.dart</code></a> in order to access APIs from both libraries. In such scenarios, <code>part</code> directive could come handy to avoid multiple import statements.</p>
-<p>The <code>lib1.dart</code> file: The <code>part</code> directive at the top mentions that all <code>lib2</code> belongs to <code>lib1</code>, and bring-in all <code>lib2</code>'s apis into <code>lib1</code>. Only importing <code>lib1.dart</code> will give access to both libraries' apis.
-<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib1.dart"><code>lib1.dart</code></a></p>
+<p>The <code>lib1.dart</code> file: The <code>part</code> directive at the top mentions that all <code>lib2</code> belongs to <code>lib1</code>, and bring-in all <code>lib2</code>'s apis into <code>lib1</code>. Only importing <code>lib1.dart</code> will give access to both libraries' apis.</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib1.dart"><code>lib1.dart</code></a></p>
 <div class="highlight"><pre><span></span>//importing lib1 brings-in all apis from lib2 as well
 part &#39;lib2.dart&#39;;
 
@@ -236,8 +236,8 @@ int _add(int a, int b) =&gt; a + b;
 </pre></div>
 
 
-<p>The <code>lib2.dart</code> file: This library is marked as part of <code>lib1.dart</code> by using <code>part of</code> directive as <code>part of 'lib1.dart';</code>.
-<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib2.dart"><code>lib2.dart</code></a></p>
+<p>The <code>lib2.dart</code> file: This library is marked as part of <code>lib1.dart</code> by using <code>part of</code> directive as <code>part of 'lib1.dart';</code>.</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib2.dart"><code>lib2.dart</code></a></p>
 <div class="highlight"><pre><span></span>part of &#39;lib1.dart&#39;;
 
 bool isNumberOdd(int num) =&gt; num.isOdd;
@@ -314,15 +314,15 @@ is number even? true
 <p>This directive is used to export only public apis. In other words, it makes apis publicly accessible.</p>
 <p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/tree/master/src/libraries/math_export/"><code>math_export</code></a> for this example.</p>
 <p>The <code>lib1.dart</code> and <code>lib2.dart</code> files are available under <code>lib/src/</code> folder. The files under <code>lib/src/</code> directory are hidden. The <code>lib/maths_export.dart</code> file use <code>export</code> directive to make <code>lib1.dart</code> public.</p>
-<p>The <code>lib/maths_export.dart</code>:
-<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/math_export/lib/maths_export.dart">maths_export.dart</a></p>
+<p>The <code>lib/maths_export.dart</code>:</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/math_export/lib/maths_export.dart">maths_export.dart</a></p>
 <div class="highlight"><pre><span></span>export &#39;src/lib1.dart&#39;;
 </pre></div>
 
 
 <p>An external file <code>lib_export.dart</code> imports <code>maths_export.dart</code> like below:</p>
-<p>The <code>lib_export.dart</code>:
-<strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_export.dart">lib_export.dart</a></p>
+<p>The <code>lib_export.dart</code>:</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_export.dart">lib_export.dart</a></p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;math_export/lib/maths_export.dart&#39;</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
