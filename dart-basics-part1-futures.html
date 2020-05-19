@@ -144,18 +144,20 @@
 
   <div>
     <p><strong><em>Target Audience:</em></strong> Beginner</p>
-<h3>Introduction</h3>
+<h1>Introduction</h1>
 <p>Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications. In this tutorial, I'll be covering two of the Dart language features below:</p>
 <ul>
 <li><strong>Part-1 (Current)</strong> Futures: Asynchronous Programming with Dart</li>
 <li><a href="https://ptyagicodecamp.github.io/dart-basics-part-2-streams.html">Part-2</a> Streams: Asynchronous Programming with Dart</li>
 </ul>
-<h3>Futures: Asynchronous Programming with Dart</h3>
+<h1>Futures: Asynchronous Programming with Dart</h1>
 <p>"Futures" are Future objects that represent the results of asynchronous operations. Asynchronous operations don't block the thread and their processing finishes at a later time. Asynchronous operations results are returned as <code>Futures</code>. Functions that do expensive work should use asynchronous model for executing their work. Future object is represented as <code>Future&lt;T&gt;</code>, where T is the type of results returned from the expensive operation.</p>
-<p>Asynchronous operations in Dart can be achieved in two ways:
-1. Using <code>await</code> and <code>async</code>
-2. Using <code>Future</code> API.</p>
-<h4><code>await</code> and <code>async</code></h4>
+<p>Asynchronous operations in Dart can be achieved in two ways:</p>
+<ol>
+<li>Using <code>await</code> and <code>async</code></li>
+<li>Using <code>Future</code> API.</li>
+</ol>
+<h2><code>await</code> and <code>async</code></h2>
 <p><code>await</code> and <code>async</code> keywords are used together. The function that supposed to be doing the expensive work will be marked with keyword <code>async</code>. Inside function, the expensive call is prefixed by keyword <code>await</code>. Program suspends when <code>await</code> is called or function return or reaches at the end of the function.</p>
 <p>Let's see in following code snippet how <code>async</code> and <code>await</code> keywords are used. <code>await</code> can only be called in function which is marked/declared as <code>async</code>. <code>Future</code> keyword before the function <code>makeDataCall()</code> means that this function will be executing  asynchronously and will be suspended when come across <code>await</code>.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
@@ -182,7 +184,7 @@
 </pre></div>
 
 
-<h4>Error Handling (try/catch block)</h4>
+<h2>Error Handling (try/catch block)</h2>
 <p>When an exception is thrown in the <code>try</code> block, the <code>catch</code> block executes its code. Error handling for asynchronous and synchronous code is handled similar way.
 Let's add the try/catch block in previous code, and see how it'll look like now. I'm throwing an <code>Exception</code> on purpose in <code>try</code> block to demonstrate the point here.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
@@ -214,7 +216,7 @@ Let's add the try/catch block in previous code, and see how it'll look like now.
 </pre></div>
 
 
-<h4>Sequencing function calls</h4>
+<h2>Sequencing function calls</h2>
 <p>It's possible to control the order of execution of asynchronous functions using sequencing with help of <code>await</code> and <code>async</code>. Let's see how this is done in example below.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
@@ -250,7 +252,7 @@ Let's add the try/catch block in previous code, and see how it'll look like now.
 </pre></div>
 
 
-<h4><code>Future</code> API</h4>
+<h2><code>Future</code> API</h2>
 <p>In <code>Future</code> API, <code>then()</code> method is used to register a callback, which fires up on completion of <code>Future</code>.
 Example below transforms our earlier example code of <code>await</code> and <code>async</code> into <code>Future</code> API. Lookout for the use of <code>then()</code> in <code>main()</code> function.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
@@ -307,7 +309,7 @@ Example below transforms our earlier example code of <code>await</code> and <cod
 </pre></div>
 
 
-<h4>Error Handling - <code>Future</code> API</h4>
+<h2>Error Handling - <code>Future</code> API</h2>
 <p><code>Future</code> API uses chaining to handle exceptions. Error is caught and handled in <code>catchError()</code> block. <code>catchError()</code> is chained with <code>then()</code> method.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
@@ -338,7 +340,7 @@ Example below transforms our earlier example code of <code>await</code> and <cod
 </pre></div>
 
 
-<h4>Usage of <code>Future.wait()</code></h4>
+<h2>Usage of <code>Future.wait()</code></h2>
 <p><code>Future.wait()</code> is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
@@ -374,7 +376,7 @@ Example below transforms our earlier example code of <code>await</code> and <cod
 </pre></div>
 
 
-<h3>References:</h3>
+<h1>References</h1>
 <ol>
 <li><a href="https://dart.dev/tutorials/language/futures">Dart Futures Code Lab</a></li>
 <li><a href="https://dart.dev/guides/libraries/library-tour#future">Dart Future</a></li>
@@ -382,7 +384,7 @@ Example below transforms our earlier example code of <code>await</code> and <cod
 </ol>
 <p>Happy cooking with Dart and Flutter :)</p>
 <p><em>Liked the article ?
-Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+Couldn't find a topic of your interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write!
 <a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
   </div>
   <div class="tag-cloud">
