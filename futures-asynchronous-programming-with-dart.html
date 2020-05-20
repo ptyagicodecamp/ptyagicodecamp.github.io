@@ -10,8 +10,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <link rel="stylesheet/less" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.less">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
 
   <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
   <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
@@ -24,7 +23,17 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-133714063-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333333">
     <!-- Windows Phone -->
@@ -36,22 +45,21 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="ptyagi" />
-<meta name="description" content="&#34;Futures&#34; are Future objects that represent the results of asynchronous operations. Asynchronous operations don&#39;t block the thread and their processing finishes at a later time. Asynchronous operations results are returned as Futures." />
-<meta name="keywords" content="dart2, asynchronous, dev">
+<meta name="description" content="Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications." />
+<meta name="keywords" content="Dart, Flutter">
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="Futures: Asynchronous Programming with Dart"/>
-<meta property="og:description" content="&#34;Futures&#34; are Future objects that represent the results of asynchronous operations. Asynchronous operations don&#39;t block the thread and their processing finishes at a later time. Asynchronous operations results are returned as Futures."/>
+<meta property="og:description" content="Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-03-17 15:55:00-04:00"/>
+<meta property="article:published_time" content="2020-05-20 00:00:00-04:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
-<meta property="article:section" content="Development"/>
-<meta property="article:tag" content="dart2"/>
-<meta property="article:tag" content="asynchronous"/>
-<meta property="article:tag" content="dev"/>
+<meta property="article:section" content="Dart"/>
+<meta property="article:tag" content="Dart"/>
+<meta property="article:tag" content="Flutter"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
   <title>techLog &ndash; Futures: Asynchronous Programming with Dart</title>
@@ -120,7 +128,7 @@
       
     <h1 id="futures-asynchronous-programming-with-dart">Futures: Asynchronous Programming with Dart</h1>
     <p>
-          Posted on March 17, 2018 in <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
+          Posted on May 20, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
 
 
     </p>
@@ -135,20 +143,23 @@
     </script>
 
   <div>
-    <p>"Futures" are Future objects that represent the results of asynchronous operations. Asynchronous operations don't block the thread and their processing finishes at a later time. Asynchronous operations results are returned as <code>Futures</code>. Functions that do expensive work should use asynchronous model for executing their work. Future object is represented as <code>Future&lt;T&gt;</code>, where T is the type of results returned from the expensive operation.</p>
-<p>Asynchronous operations in Dart can be achieved in two ways:
-1. Using <code>await</code> and <code>async</code>
-2. Using <code>Future</code> API.</p>
-<p>This article is covering following topics:
-<em> await and async
-</em> Error Handling (try/catch block)
-<em> Sequencing function calls
-</em> Future API
-<em> Error Handling - Future API
-</em> Usage of Future.wait()</p>
-<h3>await and async</h3>
-<p>await and async keywords are used together. The function that supposed to be doing the expensive work will be marked with keyword async. Inside function, the expensive call is prefixed by keyword await. Program suspends when await is called or function return or reaches at the end of the function.</p>
-<p>Let’s see in following code snippet how async and await keywords are used. await can only be called in function which is marked/declared as async. Future keyword before the function makeDataCall() means that this function will be executing asynchronously and will be suspended when come across await.</p>
+    <p><strong><em>Target Audience:</em></strong> Beginner</p>
+<h1>Introduction</h1>
+<p>Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications. In this article, I'll try to scratch surface of two of the Dart language features:</p>
+<ul>
+<li><strong>Part-1 (Current)</strong> Futures: Asynchronous Programming with Dart</li>
+<li><a href="https://ptyagicodecamp.github.io/dart-basics-part-2-streams.html">Part-2</a> Streams: Asynchronous Programming with Dart</li>
+</ul>
+<h1>Futures</h1>
+<p>"Futures" are Future objects that represent the results of asynchronous operations. Asynchronous operations don't block the thread and their processing finishes at a later time. Asynchronous operations results are returned as <code>Futures</code>. Functions that do expensive work should use asynchronous model for executing their work. Future object is represented as <code>Future&lt;T&gt;</code>, where T is the type of results returned from the expensive operation.</p>
+<p>Asynchronous operations in Dart can be achieved in two ways:</p>
+<ol>
+<li>Using <code>await</code> and <code>async</code></li>
+<li>Using <code>Future</code> API.</li>
+</ol>
+<h2><code>await</code> and <code>async</code></h2>
+<p><code>await</code> and <code>async</code> keywords are used together. The function that supposed to be doing the expensive work will be marked with keyword <code>async</code>. Inside function, the expensive call is prefixed by keyword <code>await</code>. Program suspends when <code>await</code> is called or function return or reaches at the end of the function.</p>
+<p>Let's see in following code snippet how <code>async</code> and <code>await</code> keywords are used. <code>await</code> can only be called in function which is marked/declared as <code>async</code>. <code>Future</code> keyword before the function <code>makeDataCall()</code> means that this function will be executing  asynchronously and will be suspended when come across <code>await</code>.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
@@ -173,13 +184,14 @@
 </pre></div>
 
 
-<h3>Error Handling (try/catch block)</h3>
-<p>When an exception is thrown in try block, catch block executes it’s code. Error handling for asynchronous and synchronous code is handled similar way. Let’s add the try/catch block in previous code, and see how it’ll look like now. I’m throwing an Exception on purpose in try block to demonstrate the point here.</p>
+<h2>Error Handling (try/catch block)</h2>
+<p>When an exception is thrown in the <code>try</code> block, the <code>catch</code> block executes its code. Error handling for asynchronous and synchronous code is handled similar way.
+Let's add the try/catch block in previous code, and see how it'll look like now. I'm throwing an <code>Exception</code> on purpose in <code>try</code> block to demonstrate the point here.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
 
-<span class="o">//</span><span class="n">Asynchronous</span> <span class="n">funtion</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span>
+<span class="o">//</span><span class="n">Asynchronous</span> <span class="n">function</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span>
 <span class="o">//</span><span class="n">data</span> <span class="n">call</span>
 <span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCall</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
@@ -204,8 +216,8 @@
 </pre></div>
 
 
-<h3>Sequencing function calls</h3>
-<p>It’s possible to control the order of execution of asynchronous functions using sequencing with help of await and async. Let’s see how this is done in example below.</p>
+<h2>Sequencing function calls</h2>
+<p>It's possible to control the order of execution of asynchronous functions using sequencing with help of <code>await</code> and <code>async</code>. Let's see how this is done in example below.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
@@ -240,8 +252,9 @@
 </pre></div>
 
 
-<h3>Future API</h3>
-<p>In Future API, then() method is used to register a callback, which fires up on completion of Future. Example below transforms our earlier example code of await and async into Future API. Lookout for the use of then() in main() function.</p>
+<h2><code>Future</code> API</h2>
+<p>In <code>Future</code> API, <code>then()</code> method is used to register a callback, which fires up on completion of <code>Future</code>.
+Example below transforms our earlier example code of <code>await</code> and <code>async</code> into <code>Future</code> API. Lookout for the use of <code>then()</code> in <code>main()</code> function.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
@@ -269,7 +282,7 @@
 </pre></div>
 
 
-<p>Let’s look at another example of Future API. In this example, Future doesn’t return anything and looks like this Future<void>. In such case, then() callback will use an unused argument, represented as _ by convention. Checkout the code snippet below to see it in action.</p>
+<p>Let's look at another example of <code>Future</code> API. In this example, <code>Future</code> doesn't return anything and looks like this <code>Future&lt;void&gt;</code>. In such case, <code>then()</code> callback will use an <code>unused argument</code>, represented as <code>_</code> by convention. Checkout the code snippet below to see it in action.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
@@ -296,8 +309,8 @@
 </pre></div>
 
 
-<h3>Error Handling - Future API</h3>
-<p>Future API uses chaining to handle exceptions. Error is caught and handled in catchError() block. catchError() is chained with then() method.</p>
+<h2>Error Handling - <code>Future</code> API</h2>
+<p><code>Future</code> API uses chaining to handle exceptions. Error is caught and handled in <code>catchError()</code> block. <code>catchError()</code> is chained with <code>then()</code> method.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
@@ -327,8 +340,8 @@
 </pre></div>
 
 
-<h3>Usage of Future.wait()</h3>
-<p>Future.wait() is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.</p>
+<h2>Usage of <code>Future.wait()</code></h2>
+<p><code>Future.wait()</code> is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="n">String</span> <span class="n">getData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
@@ -363,14 +376,21 @@
 </pre></div>
 
 
-<p><strong><em>References:</em></strong>
-<a href="https://www.dartlang.org/tutorials/language/futures">DartLang</a></p>
+<h1>References</h1>
+<ol>
+<li><a href="https://dart.dev/tutorials/language/futures">Dart Futures Code Lab</a></li>
+<li><a href="https://dart.dev/guides/libraries/library-tour#future">Dart Future</a></li>
+<li><a href="https://dart.dev/tutorials/language/streams">Dart Streams</a></li>
+</ol>
+<p>Happy cooking with Dart and Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write!
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://ptyagicodecamp.github.io/tag/dart2.html">dart2</a>
-      <a href="https://ptyagicodecamp.github.io/tag/asynchronous.html">asynchronous</a>
-      <a href="https://ptyagicodecamp.github.io/tag/dev.html">dev</a>
+      <a href="https://ptyagicodecamp.github.io/tag/dart.html">Dart</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
     </p>
   </div>
 
