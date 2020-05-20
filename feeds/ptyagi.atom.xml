@@ -1,428 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - ptyagi</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/ptyagi.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-05-20T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Futures: Asynchronous Programming with Dart</title><link href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html" rel="alternate"></link><published>2020-05-20T00:00:00-04:00</published><updated>2020-05-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-20:/futures-asynchronous-programming-with-dart.html</id><summary type="html">&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - ptyagi</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/ptyagi.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-05-21T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Types of Streams: Asynchronous Programming with Dart</title><link href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html" rel="alternate"></link><published>2020-05-21T00:00:00-04:00</published><updated>2020-05-21T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-21:/types-of-streams-asynchronous-programming-with-dart.html</id><summary type="html">&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications. In this article, I'll try to scratch surface of two of the Dart language features:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Part-1 (Current)&lt;/strong&gt; Futures: Asynchronous Programming with Dart&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html"&gt;Part-2&lt;/a&gt; Streams: Asynchronous Programming with Dart&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1&gt;Futures&lt;/h1&gt;
-&lt;p&gt;"Futures" are Future objects that represent the results of asynchronous operations. Asynchronous operations don't block the thread and their processing finishes at a later time. Asynchronous operations results are returned as &lt;code&gt;Futures&lt;/code&gt;. Functions that do expensive work should use asynchronous model for executing their work. Future object is represented as &lt;code&gt;Future&amp;lt;T&amp;gt;&lt;/code&gt;, where T is the type of results returned from the expensive operation.&lt;/p&gt;
-&lt;p&gt;Asynchronous operations in Dart can be achieved in two ways:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Using &lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Using &lt;code&gt;Future&lt;/code&gt; API.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;&lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt; keywords are used together. The function that supposed to be doing the expensive work will be marked with keyword &lt;code&gt;async&lt;/code&gt;. Inside function, the expensive call is prefixed by keyword &lt;code&gt;await&lt;/code&gt;. Program suspends when &lt;code&gt;await&lt;/code&gt; is called or function return or reaches at the end of the function.&lt;/p&gt;
-&lt;p&gt;Let's see in following code snippet how &lt;code&gt;async&lt;/code&gt; and &lt;code&gt;await&lt;/code&gt; keywords are used. &lt;code&gt;await&lt;/code&gt; can only be called in function which is marked/declared as &lt;code&gt;async&lt;/code&gt;. &lt;code&gt;Future&lt;/code&gt; keyword before the function &lt;code&gt;makeDataCall()&lt;/code&gt; means that this function will be executing  asynchronously and will be suspended when come across &lt;code&gt;await&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Asynchronous&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;makes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;expensive&lt;/span&gt;
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt;
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;void&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Expensive&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="nb"&gt;long&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt;
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;real&lt;/span&gt; &lt;span class="n"&gt;world&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Entry&lt;/span&gt; &lt;span class="n"&gt;point&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;
-&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-   &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Error Handling (try/catch block)&lt;/h2&gt;
-&lt;p&gt;When an exception is thrown in the &lt;code&gt;try&lt;/code&gt; block, the &lt;code&gt;catch&lt;/code&gt; block executes its code. Error handling for asynchronous and synchronous code is handled similar way.
-Let's add the try/catch block in previous code, and see how it'll look like now. I'm throwing an &lt;code&gt;Exception&lt;/code&gt; on purpose in &lt;code&gt;try&lt;/code&gt; block to demonstrate the point here.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Asynchronous&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;makes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;expensive&lt;/span&gt;
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt;
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;void&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-    &lt;span class="n"&gt;throw&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="s2"&gt;&amp;quot;Error occurred in fetching data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;catch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toString&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Expensive&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="nb"&gt;long&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt;
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;real&lt;/span&gt; &lt;span class="n"&gt;world&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Entry&lt;/span&gt; &lt;span class="n"&gt;point&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;
-&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-   &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Sequencing function calls&lt;/h2&gt;
-&lt;p&gt;It's possible to control the order of execution of asynchronous functions using sequencing with help of &lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt;. Let's see how this is done in example below.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;getDataA&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dataA&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;getDataB&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dataB&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getDataC&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;dataC&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;printMyData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Entry&lt;/span&gt; &lt;span class="n"&gt;point&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;
-&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;order&lt;/span&gt; &lt;span class="n"&gt;matters&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Functions&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;execute&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;order&lt;/span&gt; &lt;span class="n"&gt;they&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;called&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getDataA&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getDataB&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-
-  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;getDataC&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;execute&lt;/span&gt; &lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt;
-  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="k"&gt;pass&lt;/span&gt; &lt;span class="n"&gt;its&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;into&lt;/span&gt; &lt;span class="n"&gt;printMyData&lt;/span&gt;
-  &lt;span class="n"&gt;printMyData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getDataC&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;&lt;code&gt;Future&lt;/code&gt; API&lt;/h2&gt;
-&lt;p&gt;In &lt;code&gt;Future&lt;/code&gt; API, &lt;code&gt;then()&lt;/code&gt; method is used to register a callback, which fires up on completion of &lt;code&gt;Future&lt;/code&gt;.
-Example below transforms our earlier example code of &lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt; into &lt;code&gt;Future&lt;/code&gt; API. Lookout for the use of &lt;code&gt;then()&lt;/code&gt; in &lt;code&gt;main()&lt;/code&gt; function.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;being&lt;/span&gt; &lt;span class="n"&gt;returned&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;returns&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt;
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;actual&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-   &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;theFuture&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;called&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Future&lt;/span&gt;
-  &lt;span class="n"&gt;theFuture&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-                 &lt;span class="p"&gt;});&lt;/span&gt;
-
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Let's look at another example of &lt;code&gt;Future&lt;/code&gt; API. In this example, &lt;code&gt;Future&lt;/code&gt; doesn't return anything and looks like this &lt;code&gt;Future&amp;lt;void&amp;gt;&lt;/code&gt;. In such case, &lt;code&gt;then()&lt;/code&gt; callback will use an &lt;code&gt;unused argument&lt;/code&gt;, represented as &lt;code&gt;_&lt;/code&gt; by convention. Checkout the code snippet below to see it in action.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="n"&gt;doesn&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;t return anything&lt;/span&gt;
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;void&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-   &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;theFuture&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;uses&lt;/span&gt; &lt;span class="n"&gt;underscore&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;unused&lt;/span&gt; &lt;span class="n"&gt;argument&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-  &lt;span class="n"&gt;theFuture&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                 &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt;
-                 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;There&amp;#39;s nothing to be printed here. Work is already done.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-                 &lt;span class="p"&gt;});&lt;/span&gt;
-
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Error Handling - &lt;code&gt;Future&lt;/code&gt; API&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;Future&lt;/code&gt; API uses chaining to handle exceptions. Error is caught and handled in &lt;code&gt;catchError()&lt;/code&gt; block. &lt;code&gt;catchError()&lt;/code&gt; is chained with &lt;code&gt;then()&lt;/code&gt; method.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;being&lt;/span&gt; &lt;span class="n"&gt;returned&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;returns&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt;
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;actual&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="n"&gt;throw&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Error occurred in making data call&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-   &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;theFuture&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Error&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;caught&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;handled&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;catchError&lt;/span&gt; &lt;span class="n"&gt;block&lt;/span&gt;
-  &lt;span class="n"&gt;theFuture&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-                 &lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;catchError&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
-                               &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;);});&lt;/span&gt;
-
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Usage of &lt;code&gt;Future.wait()&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;Future.wait()&lt;/code&gt; is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;getDataA&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dataA&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;getDataB&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dataB&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;getDataC&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dataC&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;printMyData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Entry&lt;/span&gt; &lt;span class="n"&gt;point&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;
-&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;getDataA&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;getDataB&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;getDataC&lt;/span&gt;&lt;span class="p"&gt;()])&lt;/span&gt;
-    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;List&lt;/span&gt; &lt;span class="n"&gt;responses&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;printMyData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;responses&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;catchError&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;){});&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;References&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures Code Lab&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://dart.dev/guides/libraries/library-tour#future"&gt;Dart Future&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/streams"&gt;Dart Streams&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Happy cooking with Dart and Flutter :)&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Liked the article ?
-Couldn't find a topic of your interest? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write!
-&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Dart"></category><category term="Flutter"></category></entry><entry><title>Streams: Asynchronous Programming with Dart</title><link href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html" rel="alternate"></link><published>2020-05-20T00:00:00-04:00</published><updated>2020-05-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-20:/streams-asynchronous-programming-with-dart.html</id><summary type="html">&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
-&lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications. In this tutorial, I'll be covering two of the Dart language features below:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html"&gt;Part-1&lt;/a&gt; Futures: Asynchronous Programming with Dart&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Part-2 (Current)&lt;/strong&gt; Streams: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html"&gt;Part-2&lt;/a&gt; Streams: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part-3 (Current)&lt;/strong&gt; Types of Streams: Asynchronous Programming with Dart&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Streams: Asynchronous Programming with Dart&lt;/h3&gt;
-&lt;p&gt;Why Streams ? A Stream is a sequence of asynchronous events. Streams are useful in providing an asynchronous sequence of data.&lt;/p&gt;
-&lt;h4&gt;Key Terms&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Stream:&lt;/strong&gt; A Stream is a sequence of asynchronous events. It lets you know whenever next event is ready rather you asking for it.  &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Data Sequence:&lt;/strong&gt; A Data sequence is made up of either user-generated event or data read from files.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;async:&lt;/strong&gt; functions with &lt;code&gt;await&lt;/code&gt; keyword needs to be marked as &lt;code&gt;async&lt;/code&gt; keyword. Functions marked with &lt;code&gt;async&lt;/code&gt; keywords doesn't suspend immediately, but execute synchronously until first &lt;code&gt;await&lt;/code&gt; or &lt;code&gt;return&lt;/code&gt; is called.&lt;/p&gt;
-&lt;h4&gt;Creating a stream&lt;/h4&gt;
-&lt;p&gt;Let's see how to generate a stream of events consists of numbers in code below:
-&lt;em&gt; Using for-loop and &lt;code&gt;yield&lt;/code&gt; keyword
-&lt;/em&gt; Using &lt;code&gt;fromIterable()&lt;/code&gt; method&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;reference&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;
-&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;spaced&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;printStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stream&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;listen&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Using&lt;/span&gt; &lt;span class="sb"&gt;`yield`&lt;/span&gt; &lt;span class="n"&gt;keyword&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="n"&gt;printStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-
-  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Using&lt;/span&gt; &lt;span class="n"&gt;fromIterable&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;numbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-  &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromIterable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="n"&gt;printStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4&gt;Retrieving events from stream&lt;/h4&gt;
-&lt;p&gt;Streams are iterated in a &lt;code&gt;await for&lt;/code&gt; asynchronous for-loop. Streams are notified when there's last event arrives and &lt;code&gt;await for-loop&lt;/code&gt; stops.
-Let's see an example that takes the events from the stream generated above and print those numbers in events.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="n"&gt;generated&lt;/span&gt; &lt;span class="n"&gt;above&lt;/span&gt;
-&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;spaced&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Receiving&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Stream&lt;/span&gt;
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;printStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="n"&gt;printStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Now, lets modify &lt;code&gt;printStream(..)&lt;/code&gt; from printing numbers to let it add numbers and return the sum of number in events. Let's call this new function &lt;code&gt;addEvents(...)&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="n"&gt;generated&lt;/span&gt; &lt;span class="n"&gt;above&lt;/span&gt;
-&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;spaced&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Receiving&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Stream&lt;/span&gt;
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;addEvents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;addEvents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4&gt;Responding to errors using Streams&lt;/h4&gt;
-&lt;p&gt;When error(s) occurred, a Stream can notifies it as error event just like data event. Stream can notify error in one of these three ways:
-&lt;em&gt; Stream notifies first error event and stops.
-&lt;/em&gt; Stream notifies multiple errors events.
-* Stream notifies error event(s) and continue delivering events.&lt;/p&gt;
-&lt;p&gt;An error event can be responded in &lt;code&gt;try/catch&lt;/code&gt; block.
-Let's see one of the above case to handle one error event by putting &lt;code&gt;await for&lt;/code&gt; loop in previous example inside &lt;code&gt;try/catch&lt;/code&gt; block. To be able to see &lt;code&gt;catch&lt;/code&gt; block respond to error event, we need to tweak &lt;code&gt;createStream&lt;/code&gt; to throw &lt;code&gt;Exception&lt;/code&gt; at some point. Assume error event occurs when accessing 5th number.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="n"&gt;generated&lt;/span&gt; &lt;span class="n"&gt;above&lt;/span&gt;
-&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="n"&gt;throw&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;Demo exception when accessing 5th number&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;spaced&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Receiving&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Stream&lt;/span&gt;
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;addEvents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;catch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;addEvents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4&gt;Handling errors using &lt;code&gt;listen()&lt;/code&gt; method&lt;/h4&gt;
-&lt;p&gt;This is the better way to handle errors when you want to handle multiple errors without exiting code at the encounter of first error.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="n"&gt;generated&lt;/span&gt; &lt;span class="n"&gt;above&lt;/span&gt;
-&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="n"&gt;throw&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;Demo exception when accessing 5th number&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;spaced&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Receiving&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Stream&lt;/span&gt;
-&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;addEvents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;catch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-
-  &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;listen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;number: $x&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;onError&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;err&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;error: $err&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;onDone&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;finished&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4&gt;Type of Streams&lt;/h4&gt;
+&lt;h1&gt;Types of Streams: Asynchronous Programming with Dart&lt;/h1&gt;
 &lt;ol&gt;
-&lt;li&gt;Single subscription
-Single subscription streams are meant to deliver events in order. This type of stream is used when order of events received matters like reading a file. Such type of Streams can be listened only once. Attempting to listening them again will throw an exception.&lt;/li&gt;
-&lt;li&gt;Broadcast (Multiple subscribers)
-Broadcast streams are intended to deliver events to it's subscribers. Any subscriber can start listening to events as soon as they subscribe to it. A Broadcast stream can be listened multiple times.&lt;/li&gt;
+&lt;li&gt;Single subscription&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;Single subscription streams are meant to deliver events in order. This type of stream is used when order of events received matters like reading a file. Such type of Streams can be listened only once. Attempting to listening them again will throw an exception.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Broadcast (Multiple subscribers)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Broadcast streams are intended to deliver events to their subscribers. Any subscriber can start listening to events as soon as they subscribe to it. A Broadcast stream can be listened multiple times.&lt;/p&gt;
 &lt;p&gt;Note: A Single Subscription stream can be converted into broadcast streams by using &lt;code&gt;asBroadcastStream()&lt;/code&gt; method.&lt;/p&gt;
 &lt;h4&gt;Two ways to subscribe to streams&lt;/h4&gt;
 &lt;h5&gt;Using &lt;code&gt;listen()&lt;/code&gt;&lt;/h5&gt;
@@ -692,6 +285,436 @@ Broadcast streams are intended to deliver events to it's subscribers. Any subscr
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/streams"&gt;Dart Streams&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Dart and Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article?
+Couldn't find a topic of your interest? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write!
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Dart"></category><category term="Flutter"></category></entry><entry><title>Futures: Asynchronous Programming with Dart</title><link href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html" rel="alternate"></link><published>2020-05-20T00:00:00-04:00</published><updated>2020-05-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-20:/futures-asynchronous-programming-with-dart.html</id><summary type="html">&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications. In this article, I'll try to scratch surface of two of the Dart language features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Part-1 (Current)&lt;/strong&gt; Futures: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html"&gt;Part-2&lt;/a&gt; Streams: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;li&gt;&lt;a href=""&gt;Part-3&lt;/a&gt; Types of Streams: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Futures&lt;/h1&gt;
+&lt;p&gt;"Futures" are Future objects that represent the results of asynchronous operations. Asynchronous operations don't block the thread and their processing finishes at a later time. Asynchronous operations results are returned as &lt;code&gt;Futures&lt;/code&gt;. Functions that do expensive work should use asynchronous model for executing their work. Future object is represented as &lt;code&gt;Future&amp;lt;T&amp;gt;&lt;/code&gt;, where T is the type of results returned from the expensive operation.&lt;/p&gt;
+&lt;p&gt;Asynchronous operations in Dart can be achieved in two ways:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Using &lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Using &lt;code&gt;Future&lt;/code&gt; API.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;&lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt; keywords are used together. The function that supposed to be doing the expensive work will be marked with keyword &lt;code&gt;async&lt;/code&gt;. Inside function, the expensive call is prefixed by keyword &lt;code&gt;await&lt;/code&gt;. Program suspends when &lt;code&gt;await&lt;/code&gt; is called or function return or reaches at the end of the function.&lt;/p&gt;
+&lt;p&gt;Let's see in following code snippet how &lt;code&gt;async&lt;/code&gt; and &lt;code&gt;await&lt;/code&gt; keywords are used. &lt;code&gt;await&lt;/code&gt; can only be called in function which is marked/declared as &lt;code&gt;async&lt;/code&gt;. &lt;code&gt;Future&lt;/code&gt; keyword before the function &lt;code&gt;makeDataCall()&lt;/code&gt; means that this function will be executing  asynchronously and will be suspended when come across &lt;code&gt;await&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Asynchronous&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;makes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;expensive&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt;
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;void&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Expensive&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="nb"&gt;long&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;real&lt;/span&gt; &lt;span class="n"&gt;world&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Entry&lt;/span&gt; &lt;span class="n"&gt;point&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Error Handling (try/catch block)&lt;/h2&gt;
+&lt;p&gt;When an exception is thrown in the &lt;code&gt;try&lt;/code&gt; block, the &lt;code&gt;catch&lt;/code&gt; block executes its code. Error handling for asynchronous and synchronous code is handled similar way.
+Let's add the try/catch block in previous code, and see how it'll look like now. I'm throwing an &lt;code&gt;Exception&lt;/code&gt; on purpose in &lt;code&gt;try&lt;/code&gt; block to demonstrate the point here.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Asynchronous&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;makes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;expensive&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt;
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;void&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;throw&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="s2"&gt;&amp;quot;Error occurred in fetching data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;catch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toString&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Expensive&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="nb"&gt;long&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;real&lt;/span&gt; &lt;span class="n"&gt;world&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Entry&lt;/span&gt; &lt;span class="n"&gt;point&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Sequencing function calls&lt;/h2&gt;
+&lt;p&gt;It's possible to control the order of execution of asynchronous functions using sequencing with help of &lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt;. Let's see how this is done in example below.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;getDataA&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dataA&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;getDataB&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dataB&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getDataC&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;dataC&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;printMyData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Entry&lt;/span&gt; &lt;span class="n"&gt;point&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;
+&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;order&lt;/span&gt; &lt;span class="n"&gt;matters&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Functions&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;execute&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;order&lt;/span&gt; &lt;span class="n"&gt;they&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;called&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getDataA&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getDataB&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;getDataC&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;execute&lt;/span&gt; &lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="k"&gt;pass&lt;/span&gt; &lt;span class="n"&gt;its&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;into&lt;/span&gt; &lt;span class="n"&gt;printMyData&lt;/span&gt;
+  &lt;span class="n"&gt;printMyData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getDataC&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;&lt;code&gt;Future&lt;/code&gt; API&lt;/h2&gt;
+&lt;p&gt;In &lt;code&gt;Future&lt;/code&gt; API, &lt;code&gt;then()&lt;/code&gt; method is used to register a callback, which fires up on completion of &lt;code&gt;Future&lt;/code&gt;.
+Example below transforms our earlier example code of &lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt; into &lt;code&gt;Future&lt;/code&gt; API. Lookout for the use of &lt;code&gt;then()&lt;/code&gt; in &lt;code&gt;main()&lt;/code&gt; function.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;being&lt;/span&gt; &lt;span class="n"&gt;returned&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;returns&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;actual&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;theFuture&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;called&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Future&lt;/span&gt;
+  &lt;span class="n"&gt;theFuture&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+                 &lt;span class="p"&gt;});&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's look at another example of &lt;code&gt;Future&lt;/code&gt; API. In this example, &lt;code&gt;Future&lt;/code&gt; doesn't return anything and looks like this &lt;code&gt;Future&amp;lt;void&amp;gt;&lt;/code&gt;. In such case, &lt;code&gt;then()&lt;/code&gt; callback will use an &lt;code&gt;unused argument&lt;/code&gt;, represented as &lt;code&gt;_&lt;/code&gt; by convention. Checkout the code snippet below to see it in action.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="n"&gt;doesn&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;t return anything&lt;/span&gt;
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;void&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;theFuture&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;uses&lt;/span&gt; &lt;span class="n"&gt;underscore&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;unused&lt;/span&gt; &lt;span class="n"&gt;argument&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="n"&gt;theFuture&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                 &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt;
+                 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;There&amp;#39;s nothing to be printed here. Work is already done.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+                 &lt;span class="p"&gt;});&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Error Handling - &lt;code&gt;Future&lt;/code&gt; API&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Future&lt;/code&gt; API uses chaining to handle exceptions. Error is caught and handled in &lt;code&gt;catchError()&lt;/code&gt; block. &lt;code&gt;catchError()&lt;/code&gt; is chained with &lt;code&gt;then()&lt;/code&gt; method.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;const&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I&amp;#39;m expansive data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;being&lt;/span&gt; &lt;span class="n"&gt;returned&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;returns&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Future&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;actual&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;throw&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Error occurred in making data call&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;theFuture&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;makeDataCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Error&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;caught&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;handled&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;catchError&lt;/span&gt; &lt;span class="n"&gt;block&lt;/span&gt;
+  &lt;span class="n"&gt;theFuture&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+                 &lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;catchError&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+                               &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;);});&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Usage of &lt;code&gt;Future.wait()&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Future.wait()&lt;/code&gt; is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;getDataA&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dataA&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;getDataB&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dataB&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;getDataC&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dataC&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;printMyData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Entry&lt;/span&gt; &lt;span class="n"&gt;point&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;
+&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;getDataA&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;getDataB&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;getDataC&lt;/span&gt;&lt;span class="p"&gt;()])&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;List&lt;/span&gt; &lt;span class="n"&gt;responses&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;printMyData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;responses&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;catchError&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;){});&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures Code Lab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/guides/libraries/library-tour#future"&gt;Dart Future&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/streams"&gt;Dart Streams&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Dart and Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write!
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Dart"></category><category term="Flutter"></category></entry><entry><title>Streams: Asynchronous Programming with Dart</title><link href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html" rel="alternate"></link><published>2020-05-20T00:00:00-04:00</published><updated>2020-05-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-20:/streams-asynchronous-programming-with-dart.html</id><summary type="html">&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications. In this tutorial, I'll be covering two of the Dart language features below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html"&gt;Part-1&lt;/a&gt; Futures: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part-2 (Current)&lt;/strong&gt; Streams: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;li&gt;&lt;a href=""&gt;Part-3&lt;/a&gt; Types of Streams: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Streams: Asynchronous Programming with Dart&lt;/h1&gt;
+&lt;p&gt;Why Streams ? A Stream is a sequence of asynchronous events. Streams are useful in providing an asynchronous sequence of data.&lt;/p&gt;
+&lt;h1&gt;Key Terms&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Stream:&lt;/strong&gt; A Stream is a sequence of asynchronous events. It lets you know whenever next event is ready rather you asking for it.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data Sequence:&lt;/strong&gt; A Data sequence is made up of either user-generated event or data read from files.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;async:&lt;/strong&gt; functions with &lt;code&gt;await&lt;/code&gt; keyword needs to be marked as &lt;code&gt;async&lt;/code&gt; keyword. Functions marked with &lt;code&gt;async&lt;/code&gt; keywords doesn't suspend immediately, but execute synchronously until first &lt;code&gt;await&lt;/code&gt; or &lt;code&gt;return&lt;/code&gt; is called.&lt;/p&gt;
+&lt;h1&gt;Creating a stream&lt;/h1&gt;
+&lt;p&gt;Let's see how to generate a stream of events consists of numbers in code below:
+&lt;em&gt; Using for-loop and &lt;code&gt;yield&lt;/code&gt; keyword
+&lt;/em&gt; Using &lt;code&gt;fromIterable()&lt;/code&gt; method&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;reference&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;
+&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;spaced&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;printStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stream&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;listen&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Using&lt;/span&gt; &lt;span class="sb"&gt;`yield`&lt;/span&gt; &lt;span class="n"&gt;keyword&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;printStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Using&lt;/span&gt; &lt;span class="n"&gt;fromIterable&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;numbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+  &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromIterable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;printStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Retrieving events from stream&lt;/h1&gt;
+&lt;p&gt;Streams are iterated in a &lt;code&gt;await for&lt;/code&gt; asynchronous for-loop. Streams are notified when there's last event arrives and &lt;code&gt;await for-loop&lt;/code&gt; stops.
+Let's see an example that takes the events from the stream generated above and print those numbers in events.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="n"&gt;generated&lt;/span&gt; &lt;span class="n"&gt;above&lt;/span&gt;
+&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;spaced&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Receiving&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Stream&lt;/span&gt;
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;printStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;printStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, lets modify &lt;code&gt;printStream(..)&lt;/code&gt; from printing numbers to let it add numbers and return the sum of number in events. Let's call this new function &lt;code&gt;addEvents(...)&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="n"&gt;generated&lt;/span&gt; &lt;span class="n"&gt;above&lt;/span&gt;
+&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;spaced&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Receiving&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Stream&lt;/span&gt;
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;addEvents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;addEvents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Responding to errors using Streams&lt;/h1&gt;
+&lt;p&gt;When error(s) occurred, a Stream can notifies it as error event just like data event. Stream can notify error in one of these three ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Stream notifies first error event and stops.&lt;/li&gt;
+&lt;li&gt;Stream notifies multiple errors events.&lt;/li&gt;
+&lt;li&gt;Stream notifies error event(s) and continue delivering events.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;An error event can be responded in &lt;code&gt;try/catch&lt;/code&gt; block.
+Let's see one of the above case to handle one error event by putting &lt;code&gt;await for&lt;/code&gt; loop in previous example inside &lt;code&gt;try/catch&lt;/code&gt; block. To be able to see &lt;code&gt;catch&lt;/code&gt; block respond to error event, we need to tweak &lt;code&gt;createStream&lt;/code&gt; to throw &lt;code&gt;Exception&lt;/code&gt; at some point. Assume error event occurs when accessing 5th number.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="n"&gt;generated&lt;/span&gt; &lt;span class="n"&gt;above&lt;/span&gt;
+&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="n"&gt;throw&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;Demo exception when accessing 5th number&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;spaced&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Receiving&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Stream&lt;/span&gt;
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;addEvents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;catch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;addEvents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Handling errors using &lt;code&gt;listen()&lt;/code&gt; method&lt;/h1&gt;
+&lt;p&gt;This is the better way to handle errors when you want to handle multiple errors without exiting code at the encounter of first error.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dart:async&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="n"&gt;generated&lt;/span&gt; &lt;span class="n"&gt;above&lt;/span&gt;
+&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="n"&gt;throw&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;Demo exception when accessing 5th number&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;spaced&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Receiving&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Stream&lt;/span&gt;
+&lt;span class="n"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;addEvents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stream&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;catch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;createNumberStream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;listen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;number: $x&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;onError&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;err&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;error: $err&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;onDone&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;finished&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Type of Streams&lt;/h4&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures&lt;/a&gt;&lt;/li&gt;
