@@ -45,12 +45,12 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="ptyagi" />
-<meta name="description" content="Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications." />
+<meta name="description" content="This article is the third and last part of introduction to asynchronous programming with Dart, and covers types of Streams in Dart." />
 <meta name="keywords" content="Dart, Flutter">
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="Types of Streams: Asynchronous Programming with Dart"/>
-<meta property="og:description" content="Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications."/>
+<meta property="og:description" content="This article is the third and last part of introduction to asynchronous programming with Dart, and covers types of Streams in Dart."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html"/>
 <meta property="og:type" content="article"/>
@@ -145,13 +145,13 @@
   <div>
     <p><strong><em>Target Audience:</em></strong> Beginner</p>
 <h1>Introduction</h1>
-<p>Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications. In this tutorial, I'll be covering two of the Dart language features below:</p>
+<p>This article is a part of three part series focused on asynchronous Programming with Dart. This article covers types of Streams in Dart to execute program asynchronously.</p>
 <ul>
 <li><a href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html">Part-1</a> Futures: Asynchronous Programming with Dart</li>
 <li><a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html">Part-2</a> Streams: Asynchronous Programming with Dart</li>
 <li><strong>Part-3 (Current)</strong> Types of Streams: Asynchronous Programming with Dart</li>
 </ul>
-<h1>Types of Streams: Asynchronous Programming with Dart</h1>
+<h1>Types of Streams</h1>
 <ol>
 <li>Single subscription</li>
 </ol>
@@ -161,8 +161,9 @@
 </ol>
 <p>Broadcast streams are intended to deliver events to their subscribers. Any subscriber can start listening to events as soon as they subscribe to it. A Broadcast stream can be listened multiple times.</p>
 <p>Note: A Single Subscription stream can be converted into broadcast streams by using <code>asBroadcastStream()</code> method.</p>
-<h4>Two ways to subscribe to streams</h4>
-<h5>Using <code>listen()</code></h5>
+<hr>
+<h1>Subscribing To Stream</h1>
+<h2>Using <code>listen()</code></h2>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="o">//</span><span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">stream</span> <span class="n">generated</span> <span class="n">above</span>
@@ -201,7 +202,8 @@
 </pre></div>
 
 
-<h5>Using subscription's handler</h5>
+<hr>
+<h2>Using Subscription's Handler</h2>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="o">//</span><span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">stream</span> <span class="n">generated</span> <span class="n">above</span>
@@ -239,9 +241,10 @@
 </pre></div>
 
 
-<h3>Single Subscription Stream Operations</h3>
+<hr>
+<h1>Single Subscription Stream Operations</h1>
 <p>In this section, I'll be discussing usage of Stream's methods with help of examples.</p>
-<h4>Using <code>where()</code> method</h4>
+<h2>Using <code>where()</code> Method</h2>
 <p>Let's see an example to find and print a number greater than 3 in number stream in example above. In this example <code>listen()</code> method subscribes to stream and acts like a callback. Every time, a number meeting the criteria is found, its sent over to callback to take further action on it.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
@@ -261,7 +264,8 @@
 </pre></div>
 
 
-<h4>Using Stream's properties</h4>
+<hr>
+<h2>Using Stream's Properties</h2>
 <ul>
 <li><code>first</code>: Retrieves the first event of the stream.</li>
 <li><code>last</code>: Retrieves the last event of the stream.</li>
@@ -312,7 +316,8 @@
 </pre></div>
 
 
-<h4>Broadcast Streams Operations</h4>
+<hr>
+<h1>Broadcast Streams Operations</h1>
 <p>Let's convert single subscription stream in previous example to broadcast stream using <code>asBroadcastStream()</code> method and re-examine all properties again. This time we don't need to create a fresh stream for each operation. Broadcast streams can have multiple subscribers or can be listened multiple times.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
@@ -359,13 +364,13 @@
 
 
 <p>Let's see few methods that extract part of the data stream and create sub-streams of data. Listeners listen to these output sub-streams.</p>
-<h4>Using <code>take()</code> method</h4>
+<h2>Using <code>take()</code> Method</h2>
 <p>Creates the sub-stream for 'given number' of first events of original stream. Listener listens to this sub-stream and print all elements.</p>
-<h4>Using <code>skip()</code> method</h4>
+<h2>Using <code>skip()</code> Method</h2>
 <p>Creates sub-stream of original stream after skipping first 'given number' of events from original stream. Listener listens to this sub-stream and print all elements.</p>
-<h4>Using <code>takeWhile()</code> method</h4>
+<h2>Using <code>takeWhile()</code> Method</h2>
 <p><code>takeWhile()</code> method does the same thing as <code>take()</code> when a condition is full-filled. Let's add condition that pick/take first elements when number is positive but less than 3. There are two such numbers in [1, 2, 3, 4, 5], which is 1 and 2. <code>takeWhile()</code> will check the condition and will print these 2 numbers on console.</p>
-<h4>Using <code>skipWhile()</code> method</h4>
+<h2>Using <code>skipWhile()</code> method</h2>
 <p><code>skipWhile()</code> method is similar to <code>skip()</code> in addition to honoring the condition.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
@@ -400,7 +405,8 @@
 </pre></div>
 
 
-<h3>Modifying the Stream: <code>transform()</code> method</h3>
+<hr>
+<h1>Modifying Stream: <code>transform()</code> Method</h1>
 <p><code>transform()</code> method</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
@@ -429,6 +435,7 @@
 </pre></div>
 
 
+<hr>
 <h1>References</h1>
 <ol>
 <li><a href="https://dart.dev/tutorials/language/futures">Dart Futures</a></li>

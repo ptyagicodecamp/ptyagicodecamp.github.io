@@ -45,12 +45,12 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="ptyagi" />
-<meta name="description" content="Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications." />
+<meta name="description" content="This article is the second part of introduction to asynchronous programming with Dart, and covers Streams in Dart." />
 <meta name="keywords" content="Dart, Flutter">
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="Streams: Asynchronous Programming with Dart"/>
-<meta property="og:description" content="Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications."/>
+<meta property="og:description" content="This article is the second part of introduction to asynchronous programming with Dart, and covers Streams in Dart."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html"/>
 <meta property="og:type" content="article"/>
@@ -144,23 +144,30 @@
 
   <div>
     <p><strong><em>Target Audience:</em></strong> Beginner</p>
-<h3>Introduction</h3>
-<p>Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications. In this tutorial, I'll be covering two of the Dart language features below:</p>
+<h1>Introduction</h1>
+<p>This article is a part of three part series focused on asynchronous Programming with Dart. This article covers Streams in Dart to execute program asynchronously.</p>
 <ul>
 <li><a href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html">Part-1</a> Futures: Asynchronous Programming with Dart</li>
 <li><strong>Part-2 (Current)</strong> Streams: Asynchronous Programming with Dart</li>
 <li><a href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html">Part-3</a> Types of Streams: Asynchronous Programming with Dart</li>
 </ul>
-<h1>Streams: Asynchronous Programming with Dart</h1>
-<p>Why Streams? A Stream is a sequence of asynchronous events. Streams are useful in providing an asynchronous sequence of data.</p>
+<hr>
+<h1>Streams</h1>
+<p>A Stream is a sequence of asynchronous events. Streams are useful in providing an asynchronous sequence of data.</p>
 <h1>Key Terms</h1>
 <p><strong>Stream:</strong> A Stream is a sequence of asynchronous events. It lets you know whenever next event is ready rather you asking for it.  </p>
 <p><strong>Data Sequence:</strong> A Data sequence is made up of either user-generated event or data read from files.</p>
 <p><strong>async:</strong> Functions with <code>await</code> keyword needs to be marked as <code>async</code> keyword. Functions marked with <code>async</code> keywords doesn't suspend immediately, but execute synchronously until first <code>await</code> or <code>return</code> is called.</p>
-<h1>Creating a stream</h1>
-<p>Let's see how to generate a stream of events consists of numbers in code below:
-<em> Using for-loop and <code>yield</code> keyword
-</em> Using <code>fromIterable()</code> method</p>
+<h1>Creating Stream</h1>
+<p>Let's see how to generate a stream of events consists of numbers in code below:</p>
+<ul>
+<li>
+<p>Using <strong><em>for-loop</em></strong> and <code>yield</code> keyword</p>
+</li>
+<li>
+<p>Using <code>fromIterable()</code> method</p>
+</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
 
 <span class="o">//</span><span class="n">this</span> <span class="n">will</span> <span class="k">return</span> <span class="n">a</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">the</span> <span class="n">stream</span>
@@ -186,6 +193,7 @@
 </pre></div>
 
 
+<hr>
 <h1>Retrieving events from stream</h1>
 <p>Streams are iterated in a <code>await for</code> asynchronous for-loop. Streams are notified when there's last event arrives and <code>await for-loop</code> stops.
 Let's see an example that takes the events from the stream generated above and print those numbers in events.</p>
@@ -238,6 +246,7 @@ Let's see an example that takes the events from the stream generated above and p
 </pre></div>
 
 
+<hr>
 <h1>Responding to errors using Streams</h1>
 <p>When error(s) occurred, a Stream can notifies it as error event just like data event. Stream can notify error in one of these three ways:</p>
 <ul>
@@ -281,6 +290,7 @@ Let's see one of the above case to handle one error event by putting <code>await
 </pre></div>
 
 
+<hr>
 <h1>Handling errors using <code>listen()</code> method</h1>
 <p>This is the better way to handle errors when you want to handle multiple errors without exiting code at the encounter of first error.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
@@ -321,15 +331,15 @@ Let's see one of the above case to handle one error event by putting <code>await
 </pre></div>
 
 
-<h4>Type of Streams</h4>
-<h3>References:</h3>
+<hr>
+<h1>References</h1>
 <ol>
 <li><a href="https://dart.dev/tutorials/language/futures">Dart Futures</a></li>
 <li><a href="https://dart.dev/tutorials/language/streams">Dart Streams</a></li>
 </ol>
 <p>Happy cooking with Dart and Flutter :)</p>
-<p><em>Liked the article ?
-Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<p><em>Liked the article?
+Couldn't find a topic of your interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write!
 <a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
   </div>
   <div class="tag-cloud">

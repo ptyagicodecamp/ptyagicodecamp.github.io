@@ -45,12 +45,12 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="ptyagi" />
-<meta name="description" content="Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications." />
+<meta name="description" content="This article is the first part of introduction to asynchronous programming with Dart, and covers Futures in Dart." />
 <meta name="keywords" content="Dart, Flutter">
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="Futures: Asynchronous Programming with Dart"/>
-<meta property="og:description" content="Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications."/>
+<meta property="og:description" content="This article is the first part of introduction to asynchronous programming with Dart, and covers Futures in Dart."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html"/>
 <meta property="og:type" content="article"/>
@@ -145,7 +145,7 @@
   <div>
     <p><strong><em>Target Audience:</em></strong> Beginner</p>
 <h1>Introduction</h1>
-<p>This article is a part of three part series focused on asynchronous Programming with Dart. In this article, I'll discuss Dart's Futures to execute program asynchronously.</p>
+<p>This article is a part of three part series focused on asynchronous Programming with Dart. This article covers Futures in Dart to execute program asynchronously.</p>
 <ul>
 <li><strong>Part-1 (Current)</strong> Futures: Asynchronous Programming with Dart</li>
 <li><a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html">Part-2</a> Streams: Asynchronous Programming with Dart</li>
@@ -368,11 +368,11 @@ void main() {
 <hr>
 <h1>Error Handling - <code>Future</code> API</h1>
 <p><code>Future</code> API uses chaining to handle exceptions. Error is caught and handled in <code>catchError()</code> block. The <code>catchError()</code> is chained with <code>then()</code> method.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Example</span><span class="p">#</span><span class="nn">6</span><span class="o">.</span> <span class="nt">Future</span> <span class="nt">API</span> <span class="nt">-</span> <span class="nt">Error</span> <span class="nt">Handling</span>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="nt">Example</span><span class="p">#</span><span class="nn">6</span><span class="o">.</span> <span class="nt">Future</span> <span class="nt">API</span> <span class="nt">-</span> <span class="nt">Error</span> <span class="nt">Handling</span>
 
-<span class="o">//</span><span class="nt">Future</span> <span class="nt">with</span> <span class="nt">String</span> <span class="nt">data</span> <span class="nt">is</span> <span class="nt">being</span> <span class="nt">returned</span><span class="o">.</span>
-<span class="o">//</span><span class="nt">This</span> <span class="nt">function</span> <span class="nt">returns</span> <span class="nt">the</span> <span class="nt">instance</span> <span class="nt">of</span>
-<span class="o">//</span><span class="nt">Future</span> <span class="nt">and</span> <span class="nt">not</span> <span class="nt">the</span> <span class="nt">actual</span> <span class="nt">data</span><span class="o">.</span>
+<span class="o">//</span> <span class="nt">Future</span> <span class="nt">with</span> <span class="nt">String</span> <span class="nt">data</span> <span class="nt">is</span> <span class="nt">being</span> <span class="nt">returned</span><span class="o">.</span>
+<span class="o">//</span> <span class="nt">This</span> <span class="nt">function</span> <span class="nt">returns</span> <span class="nt">the</span> <span class="nt">instance</span> <span class="nt">of</span>
+<span class="o">//</span> <span class="nt">Future</span> <span class="nt">and</span> <span class="nt">not</span> <span class="nt">the</span> <span class="nt">actual</span> <span class="nt">data</span><span class="o">.</span>
 <span class="nt">Future</span><span class="o">&lt;</span><span class="nt">String</span><span class="o">&gt;</span> <span class="nt">makeDataCallFutureAPIError</span><span class="o">()</span> <span class="nt">async</span> <span class="p">{</span>
   <span class="err">var</span> <span class="err">data</span> <span class="err">=</span> <span class="err">await</span> <span class="err">getExpansiveData()</span><span class="p">;</span>
   <span class="err">throw</span> <span class="err">Exception(&quot;Error</span> <span class="err">occurred</span> <span class="err">in</span> <span class="err">making</span> <span class="err">data</span> <span class="n">call</span><span class="p">:</span> <span class="err">$</span><span class="n">data</span><span class="s2">&quot;);</span>
@@ -395,7 +395,7 @@ void main() {
 <span class="err">}</span>
 <span class="o">//</span><span class="nt">----END----</span><span class="o">//</span>
 
-<span class="o">//</span><span class="nt">Entry</span> <span class="nt">point</span> <span class="nt">function</span>
+<span class="o">//</span> <span class="nt">Entry</span> <span class="nt">point</span> <span class="nt">function</span>
 <span class="nt">void</span> <span class="nt">main</span><span class="o">()</span> <span class="p">{</span>
   <span class="err">//Run</span> <span class="err">Example#6.</span>
   <span class="err">mainWithFutureAPIError()</span><span class="p">;</span>
@@ -461,7 +461,7 @@ void main() {
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#7</a>.</p>
 <hr>
 <h1>Summary</h1>
-<p>In this article, we saw how to use Futures to perform asynchronous operations in Dart. We explored <code>await</code>/<code>async</code> and Future API approaches to do so. Futures are like promises, which return results whenever they are complete. However, there's another approach to access asynchronous events using Streams. Streams provide results as they come until processing is finished. We'll explore Streams in next article. </p>
+<p>In this article, we saw how to use Futures to perform asynchronous operations in Dart. We explored <code>await</code>/<code>async</code> and Future API approaches to do so. Futures are like promises, which return results whenever they are complete. However, there's another approach to access asynchronous events using Streams. Streams provide results as they come until processing is finished. We'll explore Streams in next article.</p>
 <h1>References</h1>
 <ol>
 <li><a href="https://dart.dev/tutorials/language/futures">Dart Futures Code Lab</a></li>
