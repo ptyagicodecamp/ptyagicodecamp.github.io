@@ -160,11 +160,11 @@
 <p><strong>async:</strong> Functions with <code>await</code> keyword needs to be marked as <code>async</code> keyword. Functions marked with <code>async</code> keywords doesn't suspend immediately, but execute synchronously until first <code>await</code> or <code>return</code> is called.</p>
 <hr>
 <h1>Creating Stream</h1>
-<p>In this section, we'll learn to generate a stream of events consists of numbers using two different methods.</p>
+<p>In this section, we'll learn to generate a stream of events consists of numbers using two different ways.</p>
 <ol>
 <li>Using <a href="https://dart.dev/guides/language/language-tour#for-loops"><code>for</code></a> loop and <code>yield</code> keyword. The <code>yield</code> keywords is helpful in delivering values. The <code>async*</code> is an asynchronous <a href="https://dart.dev/guides/language/language-tour#generators">generator</a> that returns a Stream object.</li>
 </ol>
-<p><strong>Example:</strong></p>
+<p><strong>Example#1:</strong></p>
 <div class="highlight"><pre><span></span>//Example#1. Creating Stream (of numbers) using asynchronous Generators
 //Using yield, async*
 
@@ -207,14 +207,15 @@ void main() {
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#1</a>.</p>
 <hr>
 <ol>
-<li><a href="https://api.flutter.dev/flutter/dart-async/Stream/Stream.fromIterable.html"><code>Stream.fromIterable()</code></a> method</li>
+<li>Using <code>Stream.fromIterable()</code></li>
 </ol>
-<p><strong>Example:</strong></p>
+<p>In this approach, <a href="https://api.flutter.dev/flutter/dart-async/Stream/Stream.fromIterable.html"><code>Stream.fromIterable()</code></a> takes an array of numbers as argument, and create a <code>Stream</code> of numbers delivering one event/number at a time.</p>
+<p><strong>Example#2:</strong></p>
 <div class="highlight"><pre><span></span>//Example#2. Creating Stream of numbers using  `Stream.fromIterable()` method
 
 void createStreamFromIterable() {
   var numbers = [1, 2, 3, 4, 5];
-  Stream stream = new Stream.fromIterable(numbers);
+  Stream stream = Stream.fromIterable(numbers);
   printStream(stream);
 }
 
@@ -244,142 +245,224 @@ void main() {
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#2</a>.</p>
 <hr>
 <h1>Retrieving Events From Stream</h1>
+<p>We'll see two ways to print the events/numbers for the stream(s) created above.</p>
+<h2>Using <code>listen</code></h2>
+<p>In the above two examples, we printed events of a <code>Stream</code> using <a href="https://api.dart.dev/stable/1.24.3/dart-async/Stream/listen.html"><code>listen</code></a> by adding subscription to the given stream. Let's print messages before starting and after stream is finshed.</p>
+<p><strong>Example#3.</strong></p>
+<div class="highlight"><pre><span></span>//Example#3. Accessing Stream using `listen`
+
+void printStreamEventsUsingListen() {
+  Stream stream = Stream.fromIterable([1, 2, 3, 4, 5]);
+  print(&quot;Stream Starting&quot;);
+  stream.listen(
+    (s) =&gt; print(s),
+  );
+  print(&quot;Stream Finished&quot;);
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#3.
+  printStreamEventsUsingListen();
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Stream Starting
+Stream Finished
+1
+2
+3
+4
+5
+</pre></div>
+
+
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#3</a>.</p>
+<h2>Using <code>await for</code></h2>
 <p>Streams are iterated in a <code>await for</code> asynchronous for-loop. Streams are notified when there's last event arrives and <code>await for-loop</code> stops.
 Let's see an example that takes the events from the stream generated above and print those numbers in events.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
+<p><strong>Example#4.</strong></p>
+<div class="highlight"><pre><span></span>//Example#4. Accessing Stream using `await for`
 
-<span class="o">//</span><span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">stream</span> <span class="n">generated</span> <span class="n">above</span>
-<span class="n">Stream</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="nb">int</span> <span class="n">last</span><span class="p">)</span> <span class="n">async</span><span class="o">*</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span> <span class="n">last</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">yield</span> <span class="n">i</span><span class="p">;</span> <span class="o">//</span><span class="n">to</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">send</span> <span class="n">spaced</span> <span class="n">out</span> <span class="n">events</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+void printStreamEventsUsingAwaitFor() async {
+  Stream stream = Stream.fromIterable([1, 2, 3, 4, 5]);
 
-<span class="o">//</span><span class="n">Receiving</span> <span class="n">events</span> <span class="kn">from</span> <span class="nn">Stream</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">printStream</span><span class="p">(</span><span class="n">Stream</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">stream</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">await</span> <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="n">main</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-  <span class="n">printStream</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
-<span class="p">}</span>
+  print(&quot;Stream Starting&quot;);
+  await for (var num in stream) {
+    print(num);
+  }
+  print(&quot;Stream Finished&quot;);
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#4.
+  printStreamEventsUsingAwaitFor();
+}
 </pre></div>
 
 
-<p>Now, lets modify <code>printStream(..)</code> from printing numbers to let it add numbers and return the sum of number in events. Let's call this new function <code>addEvents(...)</code></p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
-
-<span class="o">//</span><span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">stream</span> <span class="n">generated</span> <span class="n">above</span>
-<span class="n">Stream</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="nb">int</span> <span class="n">last</span><span class="p">)</span> <span class="n">async</span><span class="o">*</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span> <span class="n">last</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">yield</span> <span class="n">i</span><span class="p">;</span> <span class="o">//</span><span class="n">to</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">send</span> <span class="n">spaced</span> <span class="n">out</span> <span class="n">events</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="o">//</span><span class="n">Receiving</span> <span class="n">events</span> <span class="kn">from</span> <span class="nn">Stream</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">addEvents</span><span class="p">(</span><span class="n">Stream</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">stream</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="n">await</span> <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">total</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="n">main</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-  <span class="n">var</span> <span class="n">total</span> <span class="o">=</span> <span class="n">await</span> <span class="n">addEvents</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">);</span>
-<span class="p">}</span>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>Stream Starting
+1
+2
+3
+4
+5
+Stream Finished
 </pre></div>
 
 
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#4</a>.</p>
+<p>The difference between <code>listen</code> and <code>await for</code> is that in <code>listen</code> approach, code related with setting up stream executed first, and then events are printed. In the <code>await for</code> approach, events are printed as they come. This approach is works better when there are finite number of events in a stream, and stream does finish.</p>
+<hr>
+<h1>Processing Stream Events</h1>
+<p>In this example, let add the numbers delivered by stream and return the total. Let's call this new function <code>addEvents(...)</code>. Events from Stream is accessed using <code>await for</code>, and added one by one. The <code>addEvents(...)</code> function needs to be marked with <code>async</code> because it uses <code>await</code> inside the function. This method returns <code>Future&lt;int&gt;</code>. This future is accessed from <code>addNumbersInStream()</code> function using <code>await</code> and prints the total on console.</p>
+<p><strong>Example#5.</strong></p>
+<div class="highlight"><pre><span></span>//Example#5. Processing (Adding) Stream using `await for`
+
+void addNumbersInStream() async {
+  //Create a Stream consists of numbers
+  Stream stream = Stream&lt;int&gt;.fromIterable([1, 2, 3, 4, 5]);
+
+  var total = await addEvents(stream);
+  print(total);
+}
+
+//Receiving events from Stream, adding and returning total
+Future&lt;int&gt; addEvents(Stream&lt;int&gt; stream) async {
+  var total = 0;
+  await for (var num in stream) {
+    total += num;
+  }
+
+  return total;
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#5.
+  addNumbersInStream();
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>15
+</pre></div>
+
+
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#5</a>.</p>
 <hr>
 <h1>Handling Errors in Streams</h1>
-<p>When error(s) occurred, a Stream can notifies it as error event just like data event. Stream can notify error in one of these three ways:</p>
+<p>When error(s) occurred, a Stream can notify it as error event just like data event. Stream can notify error in one of these three ways:</p>
 <ul>
-<li>Stream notifies first error event and stops.</li>
+<li>Stream notifies first error event and stops. We'll see few examples of this case in this article.</li>
 <li>Stream notifies multiple errors events.</li>
 <li>Stream notifies error event(s) and continue delivering events.</li>
 </ul>
-<p>An error event can be responded in <code>try/catch</code> block.
-Let's see one of the above case to handle one error event by putting <code>await for</code> loop in previous example inside <code>try/catch</code> block. To be able to see <code>catch</code> block respond to error event, we need to tweak <code>createStream</code> to throw <code>Exception</code> at some point. Assume error event occurs when accessing 5th number.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
+<h2>Error Handling in <code>await for</code> block</h2>
+<p>An error event can be responded in <code>try/catch</code> block. Let's see one of the above case to handle one error event by putting <code>await for</code> loop in previous example inside <code>try/catch</code> block. To be able to see <code>catch</code> block respond to error event, we need to tweak <code>createStream</code> to throw <code>Exception</code> at some point. Assume error event occurs when accessing 5th number.</p>
+<p><strong>Example#6.</strong></p>
+<div class="highlight"><pre><span></span>///Handling Exceptions (Code shared for listen and await for implementations)
 
-<span class="o">//</span><span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">stream</span> <span class="n">generated</span> <span class="n">above</span>
-<span class="n">Stream</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="nb">int</span> <span class="n">last</span><span class="p">)</span> <span class="n">async</span><span class="o">*</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span> <span class="n">last</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">throw</span> <span class="n">new</span> <span class="ne">Exception</span><span class="p">(</span>
-        <span class="s2">&quot;Demo exception when accessing 5th number&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">yield</span> <span class="n">i</span><span class="p">;</span> <span class="o">//</span><span class="n">to</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">send</span> <span class="n">spaced</span> <span class="n">out</span> <span class="n">events</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+//Generated Stream with numbers. Added exception on purpose for demonstration
+Stream&lt;int&gt; createNumberStreamWithException(int last) async* {
+  for (int i = 1; i &lt;= last; i++) {
+    if (i == 5) {
+      throw new Exception(&quot;Demo exception when accessing 5th number&quot;);
+    }
+    yield i; //to be able to send spaced out events
+  }
+}
 
-<span class="o">//</span><span class="n">Receiving</span> <span class="n">events</span> <span class="kn">from</span> <span class="nn">Stream</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">addEvents</span><span class="p">(</span><span class="n">Stream</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">stream</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="n">await</span> <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">total</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span>
+//Example #6. Handle Error in Stream using `await for`
+void handlingExceptionUsingAwaitFor() async {
+  var stream = createNumberStreamWithException(5);
+  try {
+    await for (var num in stream) {
+      print(num);
+    }
+  } catch (e) {
+    print(e);
+  }
+  print(&quot;Finished&quot;);
+}
+//----END----//
 
-  <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="n">main</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-  <span class="n">var</span> <span class="n">total</span> <span class="o">=</span> <span class="n">await</span> <span class="n">addEvents</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">);</span>
-<span class="p">}</span>
+//Entry point function
+void main() {
+  //Run Example#6.
+  handlingExceptionUsingAwaitFor();
+}
 </pre></div>
 
 
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>1
+2
+3
+4
+Exception: Demo exception when accessing 5th number
+Finished
+</pre></div>
+
+
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#6</a>.</p>
 <hr>
 <h1>Handling Errors using <code>listen()</code> method</h1>
 <p>This is the better way to handle errors when you want to handle multiple errors without exiting code at the encounter of first error.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
+<p><strong>Example#7.</strong></p>
+<div class="highlight"><pre><span></span>///Handling Exceptions (Code shared for listen and await for implementations)
 
-<span class="o">//</span><span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">stream</span> <span class="n">generated</span> <span class="n">above</span>
-<span class="n">Stream</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="nb">int</span> <span class="n">last</span><span class="p">)</span> <span class="n">async</span><span class="o">*</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span> <span class="n">last</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">throw</span> <span class="n">new</span> <span class="ne">Exception</span><span class="p">(</span>
-        <span class="s2">&quot;Demo exception when accessing 5th number&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">yield</span> <span class="n">i</span><span class="p">;</span> <span class="o">//</span><span class="n">to</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">send</span> <span class="n">spaced</span> <span class="n">out</span> <span class="n">events</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+//Generated Stream with numbers. Added exception on purpose for demonstration
+Stream&lt;int&gt; createNumberStreamWithException(int last) async* {
+  for (int i = 1; i &lt;= last; i++) {
+    if (i == 5) {
+      throw new Exception(&quot;Demo exception when accessing 5th number&quot;);
+    }
+    yield i; //to be able to send spaced out events
+  }
+}
 
-<span class="o">//</span><span class="n">Receiving</span> <span class="n">events</span> <span class="kn">from</span> <span class="nn">Stream</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">addEvents</span><span class="p">(</span><span class="n">Stream</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">stream</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="n">await</span> <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">total</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span>
+//Example #7. Handle Error in Stream using `listen`
+void handlingExceptionUsingListen() async {
+  var stream = createNumberStreamWithException(5);
+  stream.listen(
+    (num) =&gt; print(num),
+    onError: (e) =&gt; print(e),
+    onDone: () =&gt; print(&quot;Finished&quot;),
+  );
+}
+//----END----//
 
-  <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="n">main</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-
-  <span class="n">stream</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span>
-  <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;number: $x&quot;</span><span class="p">),</span>
-    <span class="n">onError</span> <span class="p">:</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;error: $err&quot;</span><span class="p">),</span>
-    <span class="n">onDone</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;finished&quot;</span><span class="p">)</span>
-  <span class="p">);</span>
-<span class="p">}</span>
+//Entry point function
+void main() {
+  //Run Example#7.
+  handlingExceptionUsingListen();
+}
 </pre></div>
 
 
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>1
+2
+3
+4
+Exception: Demo exception when accessing 5th number
+Finished
+</pre></div>
+
+
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#7</a>.</p>
+<hr>
+<h1>Summary</h1>
+<p>In this article, we learned about the Dart Streams. Streams are useful when we want to process events as they become available rather waiting for everything to return in one batch like Futures. In next article, we'll learn about the type of streams available in Dart.</p>
 <hr>
 <h1>References</h1>
 <ol>
