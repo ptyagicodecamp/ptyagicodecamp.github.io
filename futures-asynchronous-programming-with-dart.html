@@ -145,238 +145,323 @@
   <div>
     <p><strong><em>Target Audience:</em></strong> Beginner</p>
 <h1>Introduction</h1>
-<p>Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile and web applications. In this article, I'll try to scratch surface of two of the Dart language features:</p>
+<p>This article is a part of three part series focused on asynchronous Programming with Dart. In this article, I'll discuss Dart's Futures to execute program asynchronously.</p>
 <ul>
 <li><strong>Part-1 (Current)</strong> Futures: Asynchronous Programming with Dart</li>
 <li><a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html">Part-2</a> Streams: Asynchronous Programming with Dart</li>
 <li><a href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html">Part-3</a> Types of Streams: Asynchronous Programming with Dart</li>
 </ul>
+<hr>
 <h1>Futures</h1>
-<p>"Futures" are Future objects that represent the results of asynchronous operations. Asynchronous operations don't block the thread and their processing finishes at a later time. Asynchronous operations results are returned as <code>Futures</code>. Functions that do expensive work should use asynchronous model for executing their work. Future object is represented as <code>Future&lt;T&gt;</code>, where T is the type of results returned from the expensive operation.</p>
+<p>"Futures" are Future objects that represent the results of asynchronous operations. Asynchronous operations don't block the thread and their processing finishes at a later time. Asynchronous operations results are returned as <a href="https://api.dart.dev/stable/2.8.2/dart-async/Future-class.html"><code>Futures</code></a>. Functions that do expensive work should use asynchronous model for executing their work. Future object is represented as <code>Future&lt;T&gt;</code>, where T is the type of results returned from the expensive operation.</p>
 <p>Asynchronous operations in Dart can be achieved in two ways:</p>
 <ol>
 <li>Using <code>await</code> and <code>async</code></li>
 <li>Using <code>Future</code> API.</li>
 </ol>
-<h2><code>await</code> and <code>async</code></h2>
-<p><code>await</code> and <code>async</code> keywords are used together. The function that supposed to be doing the expensive work will be marked with keyword <code>async</code>. Inside function, the expensive call is prefixed by keyword <code>await</code>. Program suspends when <code>await</code> is called or function return or reaches at the end of the function.</p>
+<h1><code>await</code> and <code>async</code></h1>
+<p>The <code>await</code> and <code>async</code> keywords are used together. The function that supposed to be doing the expensive work is marked with keyword <code>async</code>. Inside the function, the expensive call is prefixed by keyword <code>await</code>. Program suspends when <code>await</code> is called or function return or reaches at the end of the function.</p>
 <p>Let's see in following code snippet how <code>async</code> and <code>await</code> keywords are used. <code>await</code> can only be called in function which is marked/declared as <code>async</code>. <code>Future</code> keyword before the function <code>makeDataCall()</code> means that this function will be executing  asynchronously and will be suspended when come across <code>await</code>.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>// Expensive function could be a function that takes
+// long time to process data and return results.
+// Assume this function takes long time to return in real-world
+String getExpansiveData() {
+  return &quot;I&#39;m expansive data&quot;;
+}
 
-<span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
+// This is the asynchronous function that makes the expensive
+// data call and prints the results.
+Future&lt;void&gt; makeDataCall() async {
+  var data = await getExpansiveData();
+  print(data);
+}
+//----END----//
 
-<span class="o">//</span><span class="n">Asynchronous</span> <span class="n">function</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span>
-<span class="o">//</span><span class="n">data</span> <span class="n">call</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCall</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getData</span><span class="p">();</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+//Entry point function
+void main() {
+  //Run Example#1.
+  makeDataCall();
+}
+</pre></div>
+
+
+<p>The <code>makeDataCall()</code> returns a <code>Future</code> of type <code>void</code> because there's nothing returned by this function. It simply prints the results using <code>print()</code> function.</p>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>I&#39;m expansive data
+</pre></div>
+
+
+<p><strong><em>Note:</em></strong> You can run this code in <a href="https://dartpad.dev/">DartPad</a> by copy and pasting above code as is.</p>
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#1</a>.</p>
+<hr>
+<h2>Error Handling (Try/Catch Block)</h2>
+<p>In this section, we'll see how to handle exceptions thrown in the long running asynchronous operations. When <code>await</code> keyword is used, asynchronous call behaves like a synchronous one. In such cases, error handling for asynchronous and synchronous code is handled similar way.</p>
+<p>The asynchronous call prefixed with <code>await</code> keyword is wrapped in a <code>try</code>/<code>catch</code> block. When an exception is thrown in the <code>try</code> block, the <code>catch</code> block executes its code.</p>
+<p>Let's add the try/catch block in previous code, and see how it'll look like now. Let's name this function as <code>makeDataCallWithException()</code>. This function throws an <code>Exception</code> at purpose in <code>try</code> block to demonstrate the point here.</p>
+<div class="highlight"><pre><span></span>//Example#2. Demonstrating handling exception thrown in asynchronous operations
+
+//Expansive operations ended up throwing exception
+String getExpansiveDataWithException() {
+  throw Exception(&quot;Error occurred in fetching data&quot;);
+}
+
+//Asynchronous function that makes the expensive data call
+Future&lt;void&gt; makeDataCallWithException() async {
+  try {
+    await getExpansiveDataWithException();
+  } catch (e) {
+    print(e.toString());
+  }
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#2.
+  makeDataCallWithException();
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><span class="n">Exception</span><span class="o">:</span> <span class="n">Error</span> <span class="n">occurred</span> <span class="k">in</span> <span class="n">fetching</span> <span class="n">data</span>
+</pre></div>
+
+
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#2</a>.</p>
+<hr>
+<h2>Sequencing Function Calls</h2>
+<p>It's possible to control the order of execution of asynchronous functions using sequencing with help of <code>await</code> and <code>async</code>. Let's see how this is done in example below. In this example, there are three functions <code>getDataA()</code>, <code>getDataB()</code>, and <code>getDataC()</code>. We want them to execute one after another. The <code>await</code> keyword does exactly that. It executes the function synchronously until it comes across <code>await</code>, and wait there for it to finish before execute next line, in this case another <code>await</code> call.</p>
+<div class="highlight"><pre><span></span>//Example#3. Sequencing order of asynchronous calls
+
+void getDataA() {
+  print(&quot;dataA&quot;);
+}
+
+void getDataB() {
+  print(&quot;dataB&quot;);
+}
+
+String getDataC() {
+  return &quot;dataC&quot;;
+}
+
+//Entry point function
+Future&lt;void&gt; sequencingOperations() async {
+  //Order matters.
+  //Functions will execute in the order they were called.
+  await getDataA();
+  await getDataB();
+
+  //getDataC() will execute first and will
+  //pass its data into print() function
+  print(await getDataC());
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#3.
+  sequencingOperations();
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<p>Each of the above methods will execute one by one starting from <code>getDataA()</code> and finishing executing <code>getDataC()</code>.</p>
+<div class="highlight"><pre><span></span>dataA
+dataB
+dataC
+</pre></div>
+
+
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#3</a>.</p>
+<hr>
+<h1><code>Future</code> API</h1>
+<p>Another way to execute asynchronous operations is to use <code>Future</code> API. In the <code>Future</code> API, the <a href="https://api.dart.dev/stable/2.8.2/dart-async/Future/then.html"><code>then()</code></a> method is used to register a callback, which fires up on the completion of <code>Future</code>.</p>
+<p>Let's see two variant of using Future API.</p>
+<ul>
+<li><code>Future&lt;String&gt;</code>: Future returning <code>String</code> data type .</li>
+<li><code>Future&lt;void&gt;</code>: Future returning <code>void</code>.</li>
+</ul>
+<h2><code>Future&lt;String&gt;</code></h2>
+<p>Example below transforms our earlier example code of <code>await</code> and <code>async</code> into a <code>Future</code> API implementation. Lookout for the use of <code>then()</code> in <code>mainWithFutureAPI()</code> function. In this example, <code>Future</code> is returning <code>String</code>.</p>
+<div class="highlight"><pre><span></span>Using Future API (Future is returning String type)
+
+//Future with String data is being returned.
+//This function returns the instance of
+//Future and not the actual data.
+Future&lt;String&gt; makeDataCallFutureString() async {
+  return await getExpansiveData();
+}
+
+// Assume this function takes long time to return in real-world.
+String getExpansiveData() {
+  return &quot;I&#39;m expansive data&quot;;
+}
+
+
+void mainWithFutureAPI() {
+  var theFuture = makeDataCallFutureString();
+
+  //then() is called at the instance of Future
+  theFuture.then((value) {
+    print(value);
+  });
+}
+//----END----//
+
+
+//Entry point function
+void main() {
+  //Run Example#4.
+  mainWithFutureAPI();
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>I&#39;m expansive data
+</pre></div>
+
+
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#4</a>.</p>
+<hr>
+<h2><code>Future&lt;void&gt;</code></h2>
+<p>Let's look at another example of <code>Future</code> API. In this example, <code>Future</code> doesn't return anything and looks like <code>Future&lt;void&gt;</code>. In such case, <code>then()</code> callback will use an <code>unused argument</code>, represented as <code>_</code> by convention. Checkout the code snippet below to see it in action.</p>
+<div class="highlight"><pre><span></span>//Example#5. Using Future API (Future is returning void type)
+
+//Future doesn&#39;t return anything
+Future&lt;void&gt; makeDataCallFutureVoid() async {
+  await getExpansiveData();
+}
+
+// Assume this function takes long time to return in real-world.
+String getExpansiveData() {
+  return &quot;I&#39;m expansive data&quot;;
+}
+
+void mainWithFutureAPIVoid() {
+  var theFuture = makeDataCallFutureVoid();
+  //then() uses underscore as unused argument.
+  theFuture.then((_) {
+    //_ is not used
+    print(&quot;There&#39;s nothing to be printed here. Work is already done.&quot;);
+  });
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#5.
+  mainWithFutureAPIVoid();
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>There&#39;s nothing to be printed here. Work is already done.
+</pre></div>
+
+
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#5</a>.</p>
+<hr>
+<h1>Error Handling - <code>Future</code> API</h1>
+<p><code>Future</code> API uses chaining to handle exceptions. Error is caught and handled in <code>catchError()</code> block. The <code>catchError()</code> is chained with <code>then()</code> method.</p>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Example</span><span class="p">#</span><span class="nn">6</span><span class="o">.</span> <span class="nt">Future</span> <span class="nt">API</span> <span class="nt">-</span> <span class="nt">Error</span> <span class="nt">Handling</span>
+
+<span class="o">//</span><span class="nt">Future</span> <span class="nt">with</span> <span class="nt">String</span> <span class="nt">data</span> <span class="nt">is</span> <span class="nt">being</span> <span class="nt">returned</span><span class="o">.</span>
+<span class="o">//</span><span class="nt">This</span> <span class="nt">function</span> <span class="nt">returns</span> <span class="nt">the</span> <span class="nt">instance</span> <span class="nt">of</span>
+<span class="o">//</span><span class="nt">Future</span> <span class="nt">and</span> <span class="nt">not</span> <span class="nt">the</span> <span class="nt">actual</span> <span class="nt">data</span><span class="o">.</span>
+<span class="nt">Future</span><span class="o">&lt;</span><span class="nt">String</span><span class="o">&gt;</span> <span class="nt">makeDataCallFutureAPIError</span><span class="o">()</span> <span class="nt">async</span> <span class="p">{</span>
+  <span class="err">var</span> <span class="err">data</span> <span class="err">=</span> <span class="err">await</span> <span class="err">getExpansiveData()</span><span class="p">;</span>
+  <span class="err">throw</span> <span class="err">Exception(&quot;Error</span> <span class="err">occurred</span> <span class="err">in</span> <span class="err">making</span> <span class="err">data</span> <span class="n">call</span><span class="p">:</span> <span class="err">$</span><span class="n">data</span><span class="s2">&quot;);</span>
+<span class="s2">}</span>
+
+<span class="s2">// Assume this function takes long time to return in real-world.</span>
+<span class="s2">String getExpansiveData() {</span>
+<span class="s2">  return &quot;</span><span class="n">I</span><span class="err">&#39;</span><span class="n">m</span> <span class="n">expansive</span> <span class="n">data</span><span class="err">&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">//</span><span class="n">Expensive</span> <span class="n">function</span> <span class="n">that</span> <span class="n">could</span> <span class="n">be</span> <span class="nb">long</span> <span class="n">running</span>
-<span class="o">//</span><span class="ow">in</span> <span class="n">real</span> <span class="n">world</span><span class="o">.</span>
-<span class="n">String</span> <span class="n">getData</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="nt">void</span> <span class="nt">mainWithFutureAPIError</span><span class="o">()</span> <span class="p">{</span>
+  <span class="err">var</span> <span class="err">theFuture</span> <span class="err">=</span> <span class="err">makeDataCallFutureAPIError()</span><span class="p">;</span>
 
-<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="n">makeDataCall</span><span class="p">();</span>
+  <span class="err">//Error</span> <span class="err">is</span> <span class="err">caught</span> <span class="err">and</span> <span class="err">handled</span> <span class="err">in</span> <span class="err">catchError</span> <span class="err">block</span>
+  <span class="err">theFuture.then((value)</span> <span class="err">{</span>
+    <span class="err">print(value)</span><span class="p">;</span>
+  <span class="p">}</span><span class="o">)</span><span class="p">.</span><span class="nc">catchError</span><span class="o">((</span><span class="nt">error</span><span class="o">)</span> <span class="p">{</span>
+    <span class="err">print(error)</span><span class="p">;</span>
+  <span class="p">}</span><span class="o">);</span>
+<span class="err">}</span>
+<span class="o">//</span><span class="nt">----END----</span><span class="o">//</span>
+
+<span class="o">//</span><span class="nt">Entry</span> <span class="nt">point</span> <span class="nt">function</span>
+<span class="nt">void</span> <span class="nt">main</span><span class="o">()</span> <span class="p">{</span>
+  <span class="err">//Run</span> <span class="err">Example#6.</span>
+  <span class="err">mainWithFutureAPIError()</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<h2>Error Handling (try/catch block)</h2>
-<p>When an exception is thrown in the <code>try</code> block, the <code>catch</code> block executes its code. Error handling for asynchronous and synchronous code is handled similar way.
-Let's add the try/catch block in previous code, and see how it'll look like now. I'm throwing an <code>Exception</code> on purpose in <code>try</code> block to demonstrate the point here.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
-
-<span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
-
-<span class="o">//</span><span class="n">Asynchronous</span> <span class="n">function</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span>
-<span class="o">//</span><span class="n">data</span> <span class="n">call</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCall</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getData</span><span class="p">();</span>
-    <span class="n">throw</span> <span class="ne">Exception</span><span class="p">(</span>
-      <span class="s2">&quot;Error occurred in fetching data&quot;</span><span class="p">);</span>
-  <span class="p">}</span> <span class="n">catch</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="o">//</span><span class="n">Expensive</span> <span class="n">function</span> <span class="n">that</span> <span class="n">could</span> <span class="n">be</span> <span class="nb">long</span> <span class="n">running</span>
-<span class="o">//</span><span class="ow">in</span> <span class="n">real</span> <span class="n">world</span><span class="o">.</span>
-<span class="n">String</span> <span class="n">getData</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="n">makeDataCall</span><span class="p">();</span>
-<span class="p">}</span>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><span class="n">Exception</span><span class="o">:</span> <span class="n">Error</span> <span class="n">occurred</span> <span class="k">in</span> <span class="n">making</span> <span class="n">data</span> <span class="n">call</span><span class="o">:</span> <span class="n">I</span><span class="err">&#39;</span><span class="n">m</span> <span class="n">expansive</span> <span class="n">data</span>
 </pre></div>
 
 
-<h2>Sequencing function calls</h2>
-<p>It's possible to control the order of execution of asynchronous functions using sequencing with help of <code>await</code> and <code>async</code>. Let's see how this is done in example below.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#6</a>.</p>
+<hr>
+<h1>Usage of <code>Future.wait()</code></h1>
+<p>The <a href="https://api.dart.dev/stable/2.8.2/dart-async/Future/wait.html"><code>Future.wait()</code></a> is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.
+In another version, we're using Future API to accomplish what we did using <code>async</code> &amp; <code>await</code> in <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">'Example#3'</a> above.</p>
+<div class="highlight"><pre><span></span>//Example#7. Using `Future.wait()`
 
-<span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
+Future&lt;String&gt; getData(data) {
+  return data;
+}
 
-<span class="n">void</span> <span class="n">getDataA</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;dataA&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+Future&lt;String&gt; getDataAFuture() async {
+  return await getData(&quot;dataA&quot;);
+}
 
-<span class="n">void</span> <span class="n">getDataB</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;dataB&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+Future&lt;String&gt; getDataBFuture() async {
+  return await getData(&quot;dataB&quot;);
+}
 
-<span class="n">String</span> <span class="n">getDataC</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="s2">&quot;dataC&quot;</span><span class="p">;</span>
-<span class="p">}</span>
+Future&lt;String&gt; getDataCFuture() async {
+  return await getData(&quot;dataC&quot;);
+}
 
-<span class="n">void</span> <span class="n">printMyData</span><span class="p">(</span><span class="n">String</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
-<span class="p">}</span>
+mainWithFutureAPIWait() async {
+  //Chaining Futures in order
+  await Future.wait([
+    getDataAFuture(),
+    getDataBFuture(),
+    getDataCFuture(),
+  ])
+      .then(
+        (List responses) =&gt; print(responses),
+      )
+      .catchError((error) =&gt; print(error));
+}
+//----END----//
 
-<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
-<span class="n">main</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="o">//</span><span class="n">order</span> <span class="n">matters</span><span class="o">.</span>
-  <span class="o">//</span><span class="n">Functions</span> <span class="n">will</span> <span class="n">execute</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">order</span> <span class="n">they</span> <span class="n">are</span> <span class="n">called</span><span class="o">.</span>
-  <span class="n">await</span> <span class="n">getDataA</span><span class="p">();</span>
-  <span class="n">await</span> <span class="n">getDataB</span><span class="p">();</span>
-
-  <span class="o">//</span><span class="n">getDataC</span><span class="p">()</span> <span class="n">will</span> <span class="n">execute</span> <span class="n">first</span> <span class="ow">and</span> <span class="n">will</span>
-  <span class="o">//</span><span class="k">pass</span> <span class="n">its</span> <span class="n">data</span> <span class="n">into</span> <span class="n">printMyData</span>
-  <span class="n">printMyData</span><span class="p">(</span><span class="n">await</span> <span class="n">getDataC</span><span class="p">());</span>
-<span class="p">}</span>
+//Entry point function
+void main() {
+  //Run Example#7.
+  mainWithFutureAPIWait();
+}
 </pre></div>
 
 
-<h2><code>Future</code> API</h2>
-<p>In <code>Future</code> API, <code>then()</code> method is used to register a callback, which fires up on completion of <code>Future</code>.
-Example below transforms our earlier example code of <code>await</code> and <code>async</code> into <code>Future</code> API. Lookout for the use of <code>then()</code> in <code>main()</code> function.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
-
-<span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
-
-<span class="o">//</span><span class="n">Future</span> <span class="k">with</span> <span class="n">String</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">being</span> <span class="n">returned</span><span class="o">.</span>
-<span class="o">//</span><span class="n">This</span> <span class="n">function</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">instance</span> <span class="n">of</span>
-<span class="o">//</span><span class="n">Future</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">data</span><span class="o">.</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">makeDataCall</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getData</span><span class="p">();</span>
-  <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">String</span> <span class="n">getData</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="n">var</span> <span class="n">theFuture</span> <span class="o">=</span> <span class="n">makeDataCall</span><span class="p">();</span>
-  <span class="o">//</span><span class="n">then</span><span class="p">()</span> <span class="ow">is</span> <span class="n">called</span> <span class="n">at</span> <span class="n">the</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">Future</span>
-  <span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-                 <span class="p">});</span>
-
-<span class="p">}</span>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>[dataA, dataB, dataC]
 </pre></div>
 
 
-<p>Let's look at another example of <code>Future</code> API. In this example, <code>Future</code> doesn't return anything and looks like this <code>Future&lt;void&gt;</code>. In such case, <code>then()</code> callback will use an <code>unused argument</code>, represented as <code>_</code> by convention. Checkout the code snippet below to see it in action.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
-
-<span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
-
-<span class="o">//</span><span class="n">Future</span> <span class="n">doesn</span><span class="s1">&#39;t return anything</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCall</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getData</span><span class="p">();</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">String</span> <span class="n">getData</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="n">var</span> <span class="n">theFuture</span> <span class="o">=</span> <span class="n">makeDataCall</span><span class="p">();</span>
-  <span class="o">//</span><span class="n">then</span><span class="p">()</span> <span class="n">uses</span> <span class="n">underscore</span> <span class="k">as</span> <span class="n">unused</span> <span class="n">argument</span><span class="o">.</span>
-  <span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">_</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="o">//</span><span class="n">_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">used</span>
-                 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;There&#39;s nothing to be printed here. Work is already done.&quot;</span><span class="p">);</span>
-                 <span class="p">});</span>
-
-<span class="p">}</span>
-</pre></div>
-
-
-<h2>Error Handling - <code>Future</code> API</h2>
-<p><code>Future</code> API uses chaining to handle exceptions. Error is caught and handled in <code>catchError()</code> block. <code>catchError()</code> is chained with <code>then()</code> method.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
-
-<span class="n">const</span> <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
-
-<span class="o">//</span><span class="n">Future</span> <span class="k">with</span> <span class="n">String</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">being</span> <span class="n">returned</span><span class="o">.</span>
-<span class="o">//</span><span class="n">This</span> <span class="n">function</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">instance</span> <span class="n">of</span>
-<span class="o">//</span><span class="n">Future</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">data</span><span class="o">.</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">makeDataCall</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getData</span><span class="p">();</span>
-  <span class="o">//</span><span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-  <span class="n">throw</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Error occurred in making data call&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">String</span> <span class="n">getData</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="n">var</span> <span class="n">theFuture</span> <span class="o">=</span> <span class="n">makeDataCall</span><span class="p">();</span>
-  <span class="o">//</span><span class="n">Error</span> <span class="ow">is</span> <span class="n">caught</span> <span class="ow">and</span> <span class="n">handled</span> <span class="ow">in</span> <span class="n">catchError</span> <span class="n">block</span>
-  <span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-                 <span class="p">})</span><span class="o">.</span><span class="n">catchError</span><span class="p">((</span><span class="n">error</span><span class="p">){</span>
-                               <span class="k">print</span><span class="p">(</span><span class="n">error</span><span class="p">);});</span>
-
-<span class="p">}</span>
-</pre></div>
-
-
-<h2>Usage of <code>Future.wait()</code></h2>
-<p><code>Future.wait()</code> is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:async&#39;</span><span class="p">;</span>
-
-<span class="n">String</span> <span class="n">getData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataA</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="s2">&quot;dataA&quot;</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataB</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="s2">&quot;dataB&quot;</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataC</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="s2">&quot;dataC&quot;</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">void</span> <span class="n">printMyData</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
-<span class="n">main</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">await</span> <span class="n">Future</span><span class="o">.</span><span class="n">wait</span><span class="p">([</span><span class="n">getDataA</span><span class="p">(),</span> <span class="n">getDataB</span><span class="p">(),</span> <span class="n">getDataC</span><span class="p">()])</span>
-    <span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">List</span> <span class="n">responses</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">printMyData</span><span class="p">(</span><span class="n">responses</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">catchError</span><span class="p">((</span><span class="n">error</span><span class="p">){});</span>
-<span class="p">}</span>
-</pre></div>
-
-
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#7</a>.</p>
+<hr>
+<h1>Summary</h1>
+<p>In this article, we saw how to use Futures to perform asynchronous operations in Dart. We explored <code>await</code>/<code>async</code> and Future API approaches to do so. Futures are like promises, which return results whenever they are complete. However, there's another approach to access asynchronous events using Streams. Streams provide results as they come until processing is finished. We'll explore Streams in next article. </p>
 <h1>References</h1>
 <ol>
 <li><a href="https://dart.dev/tutorials/language/futures">Dart Futures Code Lab</a></li>
@@ -384,7 +469,7 @@ Example below transforms our earlier example code of <code>await</code> and <cod
 <li><a href="https://dart.dev/tutorials/language/streams">Dart Streams</a></li>
 </ol>
 <p>Happy cooking with Dart and Flutter :)</p>
-<p><em>Liked the article ?
+<p><em>Liked the article?
 Couldn't find a topic of your interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write!
 <a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
   </div>
