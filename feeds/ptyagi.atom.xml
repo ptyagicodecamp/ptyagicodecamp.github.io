@@ -520,6 +520,7 @@ Done
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/streams"&gt;Dart Streams&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=vl_AaCgudcY&amp;amp;list=PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2&amp;amp;index=14"&gt;Official Flutter Channel&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy cooking with Dart and Flutter :)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Liked the article?
@@ -848,6 +849,7 @@ void main() {
 &lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures Code Lab&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/guides/libraries/library-tour#future"&gt;Dart Future&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/streams"&gt;Dart Streams&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=vl_AaCgudcY&amp;amp;list=PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2&amp;amp;index=14"&gt;Official Flutter Channel&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy cooking with Dart and Flutter :)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Liked the article?
@@ -870,9 +872,8 @@ Couldn't find a topic of your interest? Please leave comments or &lt;a href="mai
 &lt;hr&gt;
 &lt;h1&gt;Creating Stream&lt;/h1&gt;
 &lt;p&gt;In this section, we'll learn to generate a stream of events consists of numbers using two different ways.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Using &lt;a href="https://dart.dev/guides/language/language-tour#for-loops"&gt;&lt;code&gt;for&lt;/code&gt;&lt;/a&gt; loop and &lt;code&gt;yield&lt;/code&gt; keyword. The &lt;code&gt;yield&lt;/code&gt; keywords is helpful in delivering values. The &lt;code&gt;async*&lt;/code&gt; is an asynchronous &lt;a href="https://dart.dev/guides/language/language-tour#generators"&gt;generator&lt;/a&gt; that returns a Stream object.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2&gt;Using Generator Function&lt;/h2&gt;
+&lt;p&gt;One way to create stream by using &lt;a href="https://dart.dev/guides/language/language-tour#generators"&gt;generator function&lt;/a&gt;. It helps to produce lazily a sequence of values. In this example, we'll create stream using &lt;a href="https://dart.dev/guides/language/language-tour#for-loops"&gt;&lt;code&gt;for&lt;/code&gt;&lt;/a&gt; loop and &lt;code&gt;yield&lt;/code&gt; keyword. The &lt;code&gt;yield&lt;/code&gt; keywords is helpful in delivering values. The &lt;code&gt;async*&lt;/code&gt; is an asynchronous &lt;a href="https://dart.dev/guides/language/language-tour#generators"&gt;generator&lt;/a&gt; that returns a Stream object.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Example#1:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#1. Creating Stream (of numbers) using asynchronous Generators
 //Using yield, async*
@@ -1177,6 +1178,7 @@ Finished
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/streams"&gt;Dart Streams&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=vl_AaCgudcY&amp;amp;list=PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2&amp;amp;index=14"&gt;Official Flutter Channel&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy cooking with Dart and Flutter :)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Liked the article?
