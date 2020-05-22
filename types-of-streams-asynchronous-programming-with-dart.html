@@ -154,13 +154,15 @@
 <hr>
 <h1>Types of Streams</h1>
 <ol>
-<li><strong>Single subscription</strong></li>
-</ol>
+<li>
+<p><strong>Single subscription</strong></p>
 <p>Single subscription streams are meant to deliver events in order. This type of stream is used when order of events received matters like reading a file. Such type of Streams can be listened only once. Attempting to listening them again will throw an exception.</p>
-<ol>
-<li><strong>Broadcast (Multiple subscribers)</strong></li>
-</ol>
+</li>
+<li>
+<p><strong>Broadcast (Multiple subscribers)</strong></p>
 <p>Broadcast streams are intended to deliver events to their subscribers. Any subscriber can start listening to events as soon as they subscribe to it. A Broadcast stream can be listened multiple times.</p>
+</li>
+</ol>
 <p><strong>Note:</strong> A Single Subscription stream can be converted into broadcast streams by using <code>asBroadcastStream()</code> method.</p>
 <hr>
 <h1>Subscribing To Stream</h1>
