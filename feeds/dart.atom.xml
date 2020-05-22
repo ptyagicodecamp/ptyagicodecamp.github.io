@@ -1078,7 +1078,7 @@ void main() {
 
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; You can run this code in &lt;a href="https://dartpad.dev/"&gt;DartPad&lt;/a&gt; by copy and pasting above code as is.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart"&gt;here- Example#1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart"&gt;here- Example#1&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;Error Handling (Try/Catch Block)&lt;/h2&gt;
 &lt;p&gt;In this section, we'll see how to handle exceptions thrown in the long running asynchronous operations. When &lt;code&gt;await&lt;/code&gt; keyword is used, asynchronous call behaves like a synchronous one. In such cases, error handling for asynchronous and synchronous code is handled similar way.&lt;/p&gt;
@@ -1114,7 +1114,7 @@ void main() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart"&gt;here- Example#2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart"&gt;here- Example#2&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;Sequencing Function Calls&lt;/h2&gt;
 &lt;p&gt;It's possible to control the order of execution of asynchronous functions using sequencing with help of &lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt;. Let's see how this is done in example below. In this example, there are three functions &lt;code&gt;getDataA()&lt;/code&gt;, &lt;code&gt;getDataB()&lt;/code&gt;, and &lt;code&gt;getDataC()&lt;/code&gt;. We want them to execute one after another. The &lt;code&gt;await&lt;/code&gt; keyword does exactly that. It executes the function synchronously until it comes across &lt;code&gt;await&lt;/code&gt;, and wait there for it to finish before execute next line, in this case another &lt;code&gt;await&lt;/code&gt; call.&lt;/p&gt;
@@ -1161,7 +1161,7 @@ dataC
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart"&gt;here- Example#3&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart"&gt;here- Example#3&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;&lt;code&gt;Future&lt;/code&gt; API&lt;/h1&gt;
 &lt;p&gt;Another way to execute asynchronous operations is to use &lt;code&gt;Future&lt;/code&gt; API. In the &lt;code&gt;Future&lt;/code&gt; API, the &lt;a href="https://api.dart.dev/stable/2.8.2/dart-async/Future/then.html"&gt;&lt;code&gt;then()&lt;/code&gt;&lt;/a&gt; method is used to register a callback, which fires up on the completion of &lt;code&gt;Future&lt;/code&gt;.&lt;/p&gt;
@@ -1211,7 +1211,7 @@ void main() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart"&gt;here- Example#4&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart"&gt;here- Example#4&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;&lt;code&gt;Future&amp;lt;void&amp;gt;&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;Let's look at another example of &lt;code&gt;Future&lt;/code&gt; API. In this example, &lt;code&gt;Future&lt;/code&gt; doesn't return anything and looks like &lt;code&gt;Future&amp;lt;void&amp;gt;&lt;/code&gt;. In such case, &lt;code&gt;then()&lt;/code&gt; callback will use an &lt;code&gt;unused argument&lt;/code&gt;, represented as &lt;code&gt;_&lt;/code&gt; by convention. Checkout the code snippet below to see it in action.&lt;/p&gt;
@@ -1250,7 +1250,7 @@ void main() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart"&gt;here- Example#5&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart"&gt;here- Example#5&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Error Handling - &lt;code&gt;Future&lt;/code&gt; API&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;Future&lt;/code&gt; API uses chaining to handle exceptions. Error is caught and handled in &lt;code&gt;catchError()&lt;/code&gt; block. The &lt;code&gt;catchError()&lt;/code&gt; is chained with &lt;code&gt;then()&lt;/code&gt; method.&lt;/p&gt;
@@ -1294,11 +1294,11 @@ void main() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart"&gt;here- Example#6&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart"&gt;here- Example#6&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Usage of &lt;code&gt;Future.wait()&lt;/code&gt;&lt;/h1&gt;
 &lt;p&gt;The &lt;a href="https://api.dart.dev/stable/2.8.2/dart-async/Future/wait.html"&gt;&lt;code&gt;Future.wait()&lt;/code&gt;&lt;/a&gt; is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.
-In another version, we're using Future API to accomplish what we did using &lt;code&gt;async&lt;/code&gt; &amp;amp; &lt;code&gt;await&lt;/code&gt; in &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart"&gt;'Example#3'&lt;/a&gt; above.&lt;/p&gt;
+In another version, we're using Future API to accomplish what we did using &lt;code&gt;async&lt;/code&gt; &amp;amp; &lt;code&gt;await&lt;/code&gt; in &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart"&gt;'Example#3'&lt;/a&gt; above.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#7. Using `Future.wait()`
 
 Future&amp;lt;String&amp;gt; getData(data) {
@@ -1344,7 +1344,7 @@ void main() {
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart"&gt;here- Example#7&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart"&gt;here- Example#7&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
 &lt;p&gt;In this article, we saw how to use Futures to perform asynchronous operations in Dart. We explored &lt;code&gt;await&lt;/code&gt;/&lt;code&gt;async&lt;/code&gt; and Future API approaches to do so. Futures are like promises, which return results whenever they are complete. However, there's another approach to access asynchronous events using Streams. Streams provide results as they come until processing is finished. We'll explore Streams in the next article.&lt;/p&gt;

@@ -193,7 +193,7 @@ void main() {
 
 
 <p><strong><em>Note:</em></strong> You can run this code in <a href="https://dartpad.dev/">DartPad</a> by copy and pasting above code as is.</p>
-<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#1</a>.</p>
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#1</a>.</p>
 <hr>
 <h2>Error Handling (Try/Catch Block)</h2>
 <p>In this section, we'll see how to handle exceptions thrown in the long running asynchronous operations. When <code>await</code> keyword is used, asynchronous call behaves like a synchronous one. In such cases, error handling for asynchronous and synchronous code is handled similar way.</p>
@@ -229,7 +229,7 @@ void main() {
 </pre></div>
 
 
-<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#2</a>.</p>
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#2</a>.</p>
 <hr>
 <h2>Sequencing Function Calls</h2>
 <p>It's possible to control the order of execution of asynchronous functions using sequencing with help of <code>await</code> and <code>async</code>. Let's see how this is done in example below. In this example, there are three functions <code>getDataA()</code>, <code>getDataB()</code>, and <code>getDataC()</code>. We want them to execute one after another. The <code>await</code> keyword does exactly that. It executes the function synchronously until it comes across <code>await</code>, and wait there for it to finish before execute next line, in this case another <code>await</code> call.</p>
@@ -276,7 +276,7 @@ dataC
 </pre></div>
 
 
-<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#3</a>.</p>
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#3</a>.</p>
 <hr>
 <h1><code>Future</code> API</h1>
 <p>Another way to execute asynchronous operations is to use <code>Future</code> API. In the <code>Future</code> API, the <a href="https://api.dart.dev/stable/2.8.2/dart-async/Future/then.html"><code>then()</code></a> method is used to register a callback, which fires up on the completion of <code>Future</code>.</p>
@@ -326,7 +326,7 @@ void main() {
 </pre></div>
 
 
-<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#4</a>.</p>
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#4</a>.</p>
 <hr>
 <h2><code>Future&lt;void&gt;</code></h2>
 <p>Let's look at another example of <code>Future</code> API. In this example, <code>Future</code> doesn't return anything and looks like <code>Future&lt;void&gt;</code>. In such case, <code>then()</code> callback will use an <code>unused argument</code>, represented as <code>_</code> by convention. Checkout the code snippet below to see it in action.</p>
@@ -365,7 +365,7 @@ void main() {
 </pre></div>
 
 
-<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#5</a>.</p>
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#5</a>.</p>
 <hr>
 <h1>Error Handling - <code>Future</code> API</h1>
 <p><code>Future</code> API uses chaining to handle exceptions. Error is caught and handled in <code>catchError()</code> block. The <code>catchError()</code> is chained with <code>then()</code> method.</p>
@@ -409,11 +409,11 @@ void main() {
 </pre></div>
 
 
-<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#6</a>.</p>
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#6</a>.</p>
 <hr>
 <h1>Usage of <code>Future.wait()</code></h1>
 <p>The <a href="https://api.dart.dev/stable/2.8.2/dart-async/Future/wait.html"><code>Future.wait()</code></a> is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.
-In another version, we're using Future API to accomplish what we did using <code>async</code> &amp; <code>await</code> in <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">'Example#3'</a> above.</p>
+In another version, we're using Future API to accomplish what we did using <code>async</code> &amp; <code>await</code> in <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">'Example#3'</a> above.</p>
 <div class="highlight"><pre><span></span>//Example#7. Using `Future.wait()`
 
 Future&lt;String&gt; getData(data) {
@@ -459,7 +459,7 @@ void main() {
 </pre></div>
 
 
-<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures_await.dart">here- Example#7</a>.</p>
+<p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#7</a>.</p>
 <hr>
 <h1>Summary</h1>
 <p>In this article, we saw how to use Futures to perform asynchronous operations in Dart. We explored <code>await</code>/<code>async</code> and Future API approaches to do so. Futures are like promises, which return results whenever they are complete. However, there's another approach to access asynchronous events using Streams. Streams provide results as they come until processing is finished. We'll explore Streams in the next article.</p>
