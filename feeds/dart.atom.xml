@@ -761,9 +761,7 @@ void main() {
 
 &lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#1&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;ol&gt;
-&lt;li&gt;Using &lt;code&gt;Stream.fromIterable()&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2&gt;Using &lt;code&gt;Stream.fromIterable()&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;In this approach, &lt;a href="https://api.flutter.dev/flutter/dart-async/Stream/Stream.fromIterable.html"&gt;&lt;code&gt;Stream.fromIterable()&lt;/code&gt;&lt;/a&gt; takes an array of numbers as argument, and create a &lt;code&gt;Stream&lt;/code&gt; of numbers delivering one event/number at a time.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Example#2:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#2. Creating Stream of numbers using  `Stream.fromIterable()` method
@@ -1217,14 +1215,14 @@ void main() {
 &lt;p&gt;Let's look at another example of &lt;code&gt;Future&lt;/code&gt; API. In this example, &lt;code&gt;Future&lt;/code&gt; doesn't return anything and looks like &lt;code&gt;Future&amp;lt;void&amp;gt;&lt;/code&gt;. In such case, &lt;code&gt;then()&lt;/code&gt; callback will use an &lt;code&gt;unused argument&lt;/code&gt;, represented as &lt;code&gt;_&lt;/code&gt; by convention. Checkout the code snippet below to see it in action.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#5. Using Future API (Future is returning void type)
 
-//Future doesn&amp;#39;t return anything
-Future&amp;lt;void&amp;gt; makeDataCallFutureVoid() async {
-  await getExpansiveData();
-}
-
 // Assume this function takes long time to return in real-world.
 String getExpansiveData() {
   return &amp;quot;I&amp;#39;m expansive data&amp;quot;;
+}
+
+//Future doesn&amp;#39;t return anything
+Future&amp;lt;void&amp;gt; makeDataCallFutureVoid() async {
+  await getExpansiveData();
 }
 
 void mainWithFutureAPIVoid() {
@@ -1256,17 +1254,17 @@ void main() {
 &lt;p&gt;&lt;code&gt;Future&lt;/code&gt; API uses chaining to handle exceptions. Error is caught and handled in &lt;code&gt;catchError()&lt;/code&gt; block. The &lt;code&gt;catchError()&lt;/code&gt; is chained with &lt;code&gt;then()&lt;/code&gt; method.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;Example&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;6&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nt"&gt;Future&lt;/span&gt; &lt;span class="nt"&gt;API&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;Error&lt;/span&gt; &lt;span class="nt"&gt;Handling&lt;/span&gt;
 
+&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;Assume&lt;/span&gt; &lt;span class="nt"&gt;this&lt;/span&gt; &lt;span class="nt"&gt;function&lt;/span&gt; &lt;span class="nt"&gt;takes&lt;/span&gt; &lt;span class="nt"&gt;long&lt;/span&gt; &lt;span class="nt"&gt;time&lt;/span&gt; &lt;span class="nt"&gt;to&lt;/span&gt; &lt;span class="nt"&gt;return&lt;/span&gt; &lt;span class="nt"&gt;in&lt;/span&gt; &lt;span class="nt"&gt;real-world&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="nt"&gt;String&lt;/span&gt; &lt;span class="nt"&gt;getExpansiveData&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;I&amp;#39;m&lt;/span&gt; &lt;span class="err"&gt;expansive&lt;/span&gt; &lt;span class="err"&gt;data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;Future&lt;/span&gt; &lt;span class="nt"&gt;with&lt;/span&gt; &lt;span class="nt"&gt;String&lt;/span&gt; &lt;span class="nt"&gt;data&lt;/span&gt; &lt;span class="nt"&gt;is&lt;/span&gt; &lt;span class="nt"&gt;being&lt;/span&gt; &lt;span class="nt"&gt;returned&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
 &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;This&lt;/span&gt; &lt;span class="nt"&gt;function&lt;/span&gt; &lt;span class="nt"&gt;returns&lt;/span&gt; &lt;span class="nt"&gt;the&lt;/span&gt; &lt;span class="nt"&gt;instance&lt;/span&gt; &lt;span class="nt"&gt;of&lt;/span&gt;
 &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;Future&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="nt"&gt;not&lt;/span&gt; &lt;span class="nt"&gt;the&lt;/span&gt; &lt;span class="nt"&gt;actual&lt;/span&gt; &lt;span class="nt"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
 &lt;span class="nt"&gt;Future&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;makeDataCallFutureAPIError&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="nt"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="err"&gt;var&lt;/span&gt; &lt;span class="err"&gt;data&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;await&lt;/span&gt; &lt;span class="err"&gt;getExpansiveData()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="err"&gt;throw&lt;/span&gt; &lt;span class="err"&gt;Exception(&amp;quot;Error&lt;/span&gt; &lt;span class="err"&gt;occurred&lt;/span&gt; &lt;span class="err"&gt;in&lt;/span&gt; &lt;span class="err"&gt;making&lt;/span&gt; &lt;span class="err"&gt;data&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;);&lt;/span&gt;
-&lt;span class="s2"&gt;}&lt;/span&gt;
-
-&lt;span class="s2"&gt;// Assume this function takes long time to return in real-world.&lt;/span&gt;
-&lt;span class="s2"&gt;String getExpansiveData() {&lt;/span&gt;
-&lt;span class="s2"&gt;  return &amp;quot;&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;expansive&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;throw&lt;/span&gt; &lt;span class="err"&gt;Exception(&amp;quot;Error&lt;/span&gt; &lt;span class="err"&gt;occurred&lt;/span&gt; &lt;span class="err"&gt;in&lt;/span&gt; &lt;span class="err"&gt;making&lt;/span&gt; &lt;span class="err"&gt;data&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="nt"&gt;void&lt;/span&gt; &lt;span class="nt"&gt;mainWithFutureAPIError&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
