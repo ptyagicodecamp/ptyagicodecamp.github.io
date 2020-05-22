@@ -366,7 +366,8 @@ take() : 2
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams_types.dart"&gt;here- Example#9&lt;/a&gt;.&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams_types.dart"&gt;here- Example#9&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2&gt;Using &lt;code&gt;skip()&lt;/code&gt; Method&lt;/h2&gt;
 &lt;p&gt;Creates sub-stream of original stream after skipping first 'given number' of events from original stream. Listener listens to this sub-stream and print all elements.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Example#10.&lt;/strong&gt;&lt;/p&gt;
