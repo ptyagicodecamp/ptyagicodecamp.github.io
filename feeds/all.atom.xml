@@ -11,10 +11,10 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/ZQ0bWpK7u2E"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -25,10 +25,10 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/b4c_bEguNqU"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -39,10 +39,10 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams_types.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/CuZKdr6Jark"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -180,6 +180,9 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html"&gt;Part-2&lt;/a&gt; Streams: Asynchronous Programming with Dart&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Part-3 (Current)&lt;/strong&gt; Types of Streams: Asynchronous Programming with Dart&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the YouTube video:&lt;/strong&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/CuZKdr6Jark" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Types of Streams&lt;/h1&gt;
 &lt;ol&gt;
@@ -708,6 +711,9 @@ Couldn't find a topic of your interest? Please leave comments or &lt;a href="mai
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html"&gt;Part-3&lt;/a&gt; Types of Streams: Asynchronous Programming with Dart&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the YouTube video:&lt;/strong&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/b4c_bEguNqU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1&gt;Streams&lt;/h1&gt;
 &lt;p&gt;A Stream is a sequence of asynchronous events. Streams are useful in providing an asynchronous sequence of data.&lt;/p&gt;
 &lt;h1&gt;Key Terms&lt;/h1&gt;
@@ -1036,6 +1042,9 @@ Couldn't find a topic of your interest? Please leave comments or &lt;a href="mai
 &lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html"&gt;Part-3&lt;/a&gt; Types of Streams: Asynchronous Programming with Dart&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the YouTube video:&lt;/strong&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/ZQ0bWpK7u2E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1&gt;Futures&lt;/h1&gt;
 &lt;p&gt;"Futures" are Future objects that represent the results of asynchronous operations. Asynchronous operations don't block the thread and their processing finishes at a later time. Asynchronous operations results are returned as &lt;a href="https://api.dart.dev/stable/2.8.2/dart-async/Future-class.html"&gt;&lt;code&gt;Futures&lt;/code&gt;&lt;/a&gt;. Functions that do expensive work should use asynchronous model for executing their work. Future object is represented as &lt;code&gt;Future&amp;lt;T&amp;gt;&lt;/code&gt;, where T is the type of results returned from the expensive operation.&lt;/p&gt;
 &lt;p&gt;Asynchronous operations in Dart can be achieved in two ways:&lt;/p&gt;
@@ -1170,7 +1179,7 @@ dataC
 &lt;/ul&gt;
 &lt;h2&gt;&lt;code&gt;Future&amp;lt;String&amp;gt;&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;Example below transforms our earlier example code of &lt;code&gt;await&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt; into a &lt;code&gt;Future&lt;/code&gt; API implementation. Lookout for the use of &lt;code&gt;then()&lt;/code&gt; in &lt;code&gt;mainWithFutureAPI()&lt;/code&gt; function. In this example, &lt;code&gt;Future&lt;/code&gt; is returning &lt;code&gt;String&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Using Future API (Future is returning String type)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Using Future API (Future is returning String type)
 
 //Future with String data is being returned.
 //This function returns the instance of
