@@ -1,5 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - ptyagi</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/ptyagi.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-05-21T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Types of Streams: Asynchronous Programming with Dart</title><link href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html" rel="alternate"></link><published>2020-05-21T00:00:00-04:00</published><updated>2020-05-21T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-21:/types-of-streams-asynchronous-programming-with-dart.html</id><summary type="html">&lt;p&gt;This article is the third and last part of introduction to asynchronous programming with Dart, and covers types of Streams in Dart.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="types_of_streams" src="https://ptyagicodecamp.github.io/types_of_streams.jpg"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - ptyagi</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/ptyagi.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-05-22T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>A Dart/Flutter Vocabulary Series</title><link href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html" rel="alternate"></link><published>2020-05-22T00:00:00-04:00</published><updated>2020-05-22T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-22:/a-dartflutter-vocabulary-series.html</id><summary type="html">&lt;p&gt;This article contains the list of Dart language related articles.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;The Dart &amp;amp; Flutter Vocabulary Series&lt;/h1&gt;
+&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile, web, and desktop applications. This series uses code recipes to explain Dart/Flutter usage and terminologies.&lt;/p&gt;
+&lt;p&gt;Follow me at twitter: @ptyagi13
+Medium: @ptyagicodecamp&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Futures: Asynchronous Programming with Dart (Part1)&lt;/h2&gt;
+&lt;p&gt;This article is the first part of introduction to asynchronous programming with Dart, and covers Futures in Dart.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Streams: Asynchronous Programming with Dart (Part2)&lt;/h2&gt;
+&lt;p&gt;This article is the second part of introduction to asynchronous programming with Dart, and covers Streams in Dart.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Types of Streams: Asynchronous Programming with Dart (Part3)&lt;/h2&gt;
+&lt;p&gt;This article is the third and last part of introduction to asynchronous programming with Dart, and covers types of Streams in Dart.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Dart Libraries (Part-1)&lt;/h2&gt;
+&lt;p&gt;This article is the Part-1 of introduction to using libraries in Dart/Flutter.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-libraries-part1.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/CSQnfff18X8"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Dart Libraries (Part-2)&lt;/h2&gt;
+&lt;p&gt;This article is the Part-2 of introduction to using libraries in Dart/Flutter.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-libraries-part2.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/aHf1ENZWmzY"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Dart Generics&lt;/h2&gt;
+&lt;p&gt;This article explains Dart Generics and how to use them.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-generics.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/generics.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/Qm2SkRpleO0"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Dart static keyword&lt;/h2&gt;
+&lt;p&gt;This article demonstrates using &lt;code&gt;static&lt;/code&gt; keyword in Dart.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-static-keyword.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/static.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/Du81OvbtA3Y"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Dart Mixins&lt;/h2&gt;
+&lt;p&gt;This article explains Dart Mixins and when and how to use them.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-mixins.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/mixins.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/r9rIEqDAZcc"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Dart Enums&lt;/h2&gt;
+&lt;p&gt;This article explains Dart Enums and when and how to use them.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-enums.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/enums.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/A0M3iXZQjyo"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Dart Extensions&lt;/h2&gt;
+&lt;p&gt;This article explains what extension methods, operators, and properties are, and how to use them.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-extensions.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/extensions.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/NYahXrWoepo"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;The &lt;code&gt;runes&lt;/code&gt; Property&lt;/h2&gt;
+&lt;p&gt;In this article, we'll explore Dart language's one of the String class property known as &lt;code&gt;runes&lt;/code&gt; to retrieve UTF-16 unicodes.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/the-runes-property.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/runes.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/y9QpGpWpCbE"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;The &lt;code&gt;runtimeType&lt;/code&gt; Property&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;runtimeType&lt;/code&gt; property is used to find out the runtime type of the object.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/the-runtimetype-property.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/runtimeType.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/2Oa5mJU3KUY"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;</content><category term="dart"></category><category term="flutter"></category><category term="cross-platform"></category><category term="development"></category></entry><entry><title>Types of Streams: Asynchronous Programming with Dart</title><link href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html" rel="alternate"></link><published>2020-05-22T00:00:00-04:00</published><updated>2020-05-22T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-22:/types-of-streams-asynchronous-programming-with-dart.html</id><summary type="html">&lt;p&gt;This article is the third and last part of introduction to asynchronous programming with Dart, and covers types of Streams in Dart.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="types_of_streams" src="https://ptyagicodecamp.github.io/types_of_streams.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;This article is a part of three part series focused on asynchronous Programming with Dart. This article covers types of Streams in Dart to execute program asynchronously.&lt;/p&gt;
@@ -526,6 +698,336 @@ Done
 &lt;p&gt;Happy cooking with Dart and Flutter :)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Liked the article?
 Couldn't find a topic of your interest? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write!
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Dart"></category><category term="Flutter"></category></entry><entry><title>Streams: Asynchronous Programming with Dart</title><link href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html" rel="alternate"></link><published>2020-05-21T00:00:00-04:00</published><updated>2020-05-21T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-21:/streams-asynchronous-programming-with-dart.html</id><summary type="html">&lt;p&gt;This article is the second part of introduction to asynchronous programming with Dart, and covers Streams in Dart.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="streams" src="https://ptyagicodecamp.github.io/streams.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;This article is a part of three part series focused on asynchronous Programming with Dart. This article covers Streams in Dart to execute program asynchronously.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html"&gt;Part-1&lt;/a&gt; Futures: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part-2 (Current)&lt;/strong&gt; Streams: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html"&gt;Part-3&lt;/a&gt; Types of Streams: Asynchronous Programming with Dart&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;Streams&lt;/h1&gt;
+&lt;p&gt;A Stream is a sequence of asynchronous events. Streams are useful in providing an asynchronous sequence of data.&lt;/p&gt;
+&lt;h1&gt;Key Terms&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Stream:&lt;/strong&gt; A Stream is a sequence of asynchronous events. It lets you know whenever next event is ready rather you asking for it.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data Sequence:&lt;/strong&gt; A Data sequence is made up of either user-generated event or data read from files.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;async:&lt;/strong&gt; Functions with &lt;code&gt;await&lt;/code&gt; keyword needs to be marked as &lt;code&gt;async&lt;/code&gt; keyword. Functions marked with &lt;code&gt;async&lt;/code&gt; keywords doesn't suspend immediately, but execute synchronously until first &lt;code&gt;await&lt;/code&gt; or &lt;code&gt;return&lt;/code&gt; is called.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Creating Stream&lt;/h1&gt;
+&lt;p&gt;In this section, we'll learn to generate a stream of events consists of numbers using two different ways.&lt;/p&gt;
+&lt;h2&gt;Using Generator Function&lt;/h2&gt;
+&lt;p&gt;One way to create stream by using &lt;a href="https://dart.dev/guides/language/language-tour#generators"&gt;generator function&lt;/a&gt;. It helps to produce lazily a sequence of values. In this example, we'll create stream using &lt;a href="https://dart.dev/guides/language/language-tour#for-loops"&gt;&lt;code&gt;for&lt;/code&gt;&lt;/a&gt; loop and &lt;code&gt;yield&lt;/code&gt; keyword. The &lt;code&gt;yield&lt;/code&gt; keywords is helpful in delivering values. The &lt;code&gt;async*&lt;/code&gt; is an asynchronous &lt;a href="https://dart.dev/guides/language/language-tour#generators"&gt;generator&lt;/a&gt; that returns a Stream object.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example#1:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#1. Creating Stream (of numbers) using asynchronous Generators
+//Using yield, async*
+
+//This will return a reference to the stream
+Stream&amp;lt;int&amp;gt; createNumberStream(int last) async* {
+  for (int i = 1; i &amp;lt;= last; i++) {
+    yield i; //to be able to send spaced out events
+  }
+}
+
+//Printing numbers/events of Stream (Listening to Stream)
+printStream(Stream stream) {
+  stream.listen((s) =&amp;gt; print(s));
+}
+
+void createStreamUsingGenerators() async {
+  //Using `yield`, async* keywords
+  var stream = createNumberStream(5);
+  printStream(stream);
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#1.
+  createStreamUsingGenerators();
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#1&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;Using &lt;code&gt;Stream.fromIterable()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In this approach, &lt;a href="https://api.flutter.dev/flutter/dart-async/Stream/Stream.fromIterable.html"&gt;&lt;code&gt;Stream.fromIterable()&lt;/code&gt;&lt;/a&gt; takes an array of numbers as argument, and create a &lt;code&gt;Stream&lt;/code&gt; of numbers delivering one event/number at a time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example#2:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#2. Creating Stream of numbers using  `Stream.fromIterable()` method
+
+void createStreamFromIterable() {
+  var numbers = [1, 2, 3, 4, 5];
+  Stream stream = Stream.fromIterable(numbers);
+  printStream(stream);
+}
+
+//Printing numbers/events of Stream (Listening to Stream)
+printStream(Stream stream) {
+  stream.listen((s) =&amp;gt; print(s));
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#2.
+  createStreamFromIterable();
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#2&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Retrieving Events From Stream&lt;/h1&gt;
+&lt;p&gt;We'll see two ways to print the events/numbers for the stream(s) created above.&lt;/p&gt;
+&lt;h2&gt;Using &lt;code&gt;listen&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;In the above two examples, we printed events of a &lt;code&gt;Stream&lt;/code&gt; using &lt;a href="https://api.dart.dev/stable/1.24.3/dart-async/Stream/listen.html"&gt;&lt;code&gt;listen&lt;/code&gt;&lt;/a&gt; by adding subscription to the given stream. Let's print messages before starting and after stream is finshed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example#3.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#3. Accessing Stream using `listen`
+
+void printStreamEventsUsingListen() {
+  Stream stream = Stream.fromIterable([1, 2, 3, 4, 5]);
+  print(&amp;quot;Stream Starting&amp;quot;);
+  stream.listen(
+    (s) =&amp;gt; print(s),
+  );
+  print(&amp;quot;Stream Finished&amp;quot;);
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#3.
+  printStreamEventsUsingListen();
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Stream Starting
+Stream Finished
+1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#3&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Using &lt;code&gt;await for&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Streams are iterated in a &lt;code&gt;await for&lt;/code&gt; asynchronous for-loop. Streams are notified when there's last event arrives and &lt;code&gt;await for-loop&lt;/code&gt; stops.
+Let's see an example that takes the events from the stream generated above and print those numbers in events.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example#4.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#4. Accessing Stream using `await for`
+
+void printStreamEventsUsingAwaitFor() async {
+  Stream stream = Stream.fromIterable([1, 2, 3, 4, 5]);
+
+  print(&amp;quot;Stream Starting&amp;quot;);
+  await for (var num in stream) {
+    print(num);
+  }
+  print(&amp;quot;Stream Finished&amp;quot;);
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#4.
+  printStreamEventsUsingAwaitFor();
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Stream Starting
+1
+2
+3
+4
+5
+Stream Finished
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#4&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The difference between &lt;code&gt;listen&lt;/code&gt; and &lt;code&gt;await for&lt;/code&gt; is that in &lt;code&gt;listen&lt;/code&gt; approach, code related with setting up stream executed first, and then events are printed. In the &lt;code&gt;await for&lt;/code&gt; approach, events are printed as they come. This approach is works better when there are finite number of events in a stream, and stream does finish.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Processing Stream Events&lt;/h1&gt;
+&lt;p&gt;In this example, let add the numbers delivered by stream and return the total. Let's call this new function &lt;code&gt;addEvents(...)&lt;/code&gt;. Events from Stream is accessed using &lt;code&gt;await for&lt;/code&gt;, and added one by one. The &lt;code&gt;addEvents(...)&lt;/code&gt; function needs to be marked with &lt;code&gt;async&lt;/code&gt; because it uses &lt;code&gt;await&lt;/code&gt; inside the function. This method returns &lt;code&gt;Future&amp;lt;int&amp;gt;&lt;/code&gt;. This future is accessed from &lt;code&gt;addNumbersInStream()&lt;/code&gt; function using &lt;code&gt;await&lt;/code&gt; and prints the total on console.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example#5.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#5. Processing (Adding) Stream using `await for`
+
+void addNumbersInStream() async {
+  //Create a Stream consists of numbers
+  Stream stream = Stream&amp;lt;int&amp;gt;.fromIterable([1, 2, 3, 4, 5]);
+
+  var total = await addEvents(stream);
+  print(total);
+}
+
+//Receiving events from Stream, adding and returning total
+Future&amp;lt;int&amp;gt; addEvents(Stream&amp;lt;int&amp;gt; stream) async {
+  var total = 0;
+  await for (var num in stream) {
+    total += num;
+  }
+
+  return total;
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#5.
+  addNumbersInStream();
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;15
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#5&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Handling Errors in Streams&lt;/h1&gt;
+&lt;p&gt;When error(s) occurred, a Stream can notify it as error event just like data event. Stream can notify error in one of these three ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Stream notifies first error event and stops. We'll see few examples of this case in this article.&lt;/li&gt;
+&lt;li&gt;Stream notifies multiple errors events.&lt;/li&gt;
+&lt;li&gt;Stream notifies error event(s) and continue delivering events.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Error Handling in &lt;code&gt;await for&lt;/code&gt; block&lt;/h2&gt;
+&lt;p&gt;An error event can be responded in &lt;code&gt;try/catch&lt;/code&gt; block. Let's see one of the above case to handle one error event by putting &lt;code&gt;await for&lt;/code&gt; loop in previous example inside &lt;code&gt;try/catch&lt;/code&gt; block. To be able to see &lt;code&gt;catch&lt;/code&gt; block respond to error event, we need to tweak &lt;code&gt;createStream&lt;/code&gt; to throw &lt;code&gt;Exception&lt;/code&gt; at some point. Assume error event occurs when accessing 5th number.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example#6.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;///Handling Exceptions (Code shared for listen and await for implementations)
+
+//Generated Stream with numbers. Added exception on purpose for demonstration
+Stream&amp;lt;int&amp;gt; createNumberStreamWithException(int last) async* {
+  for (int i = 1; i &amp;lt;= last; i++) {
+    if (i == 5) {
+      throw new Exception(&amp;quot;Demo exception when accessing 5th number&amp;quot;);
+    }
+    yield i; //to be able to send spaced out events
+  }
+}
+
+//Example #6. Handle Error in Stream using `await for`
+void handlingExceptionUsingAwaitFor() async {
+  var stream = createNumberStreamWithException(5);
+  try {
+    await for (var num in stream) {
+      print(num);
+    }
+  } catch (e) {
+    print(e);
+  }
+  print(&amp;quot;Finished&amp;quot;);
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#6.
+  handlingExceptionUsingAwaitFor();
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1
+2
+3
+4
+Exception: Demo exception when accessing 5th number
+Finished
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#6&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Handling Errors using &lt;code&gt;listen()&lt;/code&gt; method&lt;/h1&gt;
+&lt;p&gt;This is the better way to handle errors when you want to handle multiple errors without exiting code at the encounter of first error.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example#7.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;///Handling Exceptions (Code shared for listen and await for implementations)
+
+//Generated Stream with numbers. Added exception on purpose for demonstration
+Stream&amp;lt;int&amp;gt; createNumberStreamWithException(int last) async* {
+  for (int i = 1; i &amp;lt;= last; i++) {
+    if (i == 5) {
+      throw new Exception(&amp;quot;Demo exception when accessing 5th number&amp;quot;);
+    }
+    yield i; //to be able to send spaced out events
+  }
+}
+
+//Example #7. Handle Error in Stream using `listen`
+void handlingExceptionUsingListen() async {
+  var stream = createNumberStreamWithException(5);
+  stream.listen(
+    (num) =&amp;gt; print(num),
+    onError: (e) =&amp;gt; print(e),
+    onDone: () =&amp;gt; print(&amp;quot;Finished&amp;quot;),
+  );
+}
+//----END----//
+
+//Entry point function
+void main() {
+  //Run Example#7.
+  handlingExceptionUsingListen();
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1
+2
+3
+4
+Exception: Demo exception when accessing 5th number
+Finished
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#7&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;p&gt;In this article, we learned about the Dart Streams. Streams are useful when we want to process events as they become available rather waiting for everything to return in one batch like Futures. In next article, we'll learn about the type of streams available in Dart.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/streams"&gt;Dart Streams&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=vl_AaCgudcY&amp;amp;list=PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2&amp;amp;index=14"&gt;Official Flutter Channel&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Dart and Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article?
+Couldn't find a topic of your interest? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write!
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Dart"></category><category term="Flutter"></category></entry><entry><title>Futures: Asynchronous Programming with Dart</title><link href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html" rel="alternate"></link><published>2020-05-20T00:00:00-04:00</published><updated>2020-05-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-20:/futures-asynchronous-programming-with-dart.html</id><summary type="html">&lt;p&gt;This article is the first part of introduction to asynchronous programming with Dart, and covers Futures in Dart.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="futures" src="https://ptyagicodecamp.github.io/futures.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
@@ -850,336 +1352,6 @@ void main() {
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures Code Lab&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/guides/libraries/library-tour#future"&gt;Dart Future&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/streams"&gt;Dart Streams&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=vl_AaCgudcY&amp;amp;list=PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2&amp;amp;index=14"&gt;Official Flutter Channel&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Happy cooking with Dart and Flutter :)&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Liked the article?
-Couldn't find a topic of your interest? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write!
-&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Dart"></category><category term="Flutter"></category></entry><entry><title>Streams: Asynchronous Programming with Dart</title><link href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html" rel="alternate"></link><published>2020-05-20T00:00:00-04:00</published><updated>2020-05-20T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-05-20:/streams-asynchronous-programming-with-dart.html</id><summary type="html">&lt;p&gt;This article is the second part of introduction to asynchronous programming with Dart, and covers Streams in Dart.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="streams" src="https://ptyagicodecamp.github.io/streams.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Target Audience:&lt;/em&gt;&lt;/strong&gt; Beginner&lt;/p&gt;
-&lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;This article is a part of three part series focused on asynchronous Programming with Dart. This article covers Streams in Dart to execute program asynchronously.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html"&gt;Part-1&lt;/a&gt; Futures: Asynchronous Programming with Dart&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Part-2 (Current)&lt;/strong&gt; Streams: Asynchronous Programming with Dart&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html"&gt;Part-3&lt;/a&gt; Types of Streams: Asynchronous Programming with Dart&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h1&gt;Streams&lt;/h1&gt;
-&lt;p&gt;A Stream is a sequence of asynchronous events. Streams are useful in providing an asynchronous sequence of data.&lt;/p&gt;
-&lt;h1&gt;Key Terms&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;Stream:&lt;/strong&gt; A Stream is a sequence of asynchronous events. It lets you know whenever next event is ready rather you asking for it.  &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Data Sequence:&lt;/strong&gt; A Data sequence is made up of either user-generated event or data read from files.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;async:&lt;/strong&gt; Functions with &lt;code&gt;await&lt;/code&gt; keyword needs to be marked as &lt;code&gt;async&lt;/code&gt; keyword. Functions marked with &lt;code&gt;async&lt;/code&gt; keywords doesn't suspend immediately, but execute synchronously until first &lt;code&gt;await&lt;/code&gt; or &lt;code&gt;return&lt;/code&gt; is called.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Creating Stream&lt;/h1&gt;
-&lt;p&gt;In this section, we'll learn to generate a stream of events consists of numbers using two different ways.&lt;/p&gt;
-&lt;h2&gt;Using Generator Function&lt;/h2&gt;
-&lt;p&gt;One way to create stream by using &lt;a href="https://dart.dev/guides/language/language-tour#generators"&gt;generator function&lt;/a&gt;. It helps to produce lazily a sequence of values. In this example, we'll create stream using &lt;a href="https://dart.dev/guides/language/language-tour#for-loops"&gt;&lt;code&gt;for&lt;/code&gt;&lt;/a&gt; loop and &lt;code&gt;yield&lt;/code&gt; keyword. The &lt;code&gt;yield&lt;/code&gt; keywords is helpful in delivering values. The &lt;code&gt;async*&lt;/code&gt; is an asynchronous &lt;a href="https://dart.dev/guides/language/language-tour#generators"&gt;generator&lt;/a&gt; that returns a Stream object.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Example#1:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#1. Creating Stream (of numbers) using asynchronous Generators
-//Using yield, async*
-
-//This will return a reference to the stream
-Stream&amp;lt;int&amp;gt; createNumberStream(int last) async* {
-  for (int i = 1; i &amp;lt;= last; i++) {
-    yield i; //to be able to send spaced out events
-  }
-}
-
-//Printing numbers/events of Stream (Listening to Stream)
-printStream(Stream stream) {
-  stream.listen((s) =&amp;gt; print(s));
-}
-
-void createStreamUsingGenerators() async {
-  //Using `yield`, async* keywords
-  var stream = createNumberStream(5);
-  printStream(stream);
-}
-//----END----//
-
-//Entry point function
-void main() {
-  //Run Example#1.
-  createStreamUsingGenerators();
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#1&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li&gt;Using &lt;code&gt;Stream.fromIterable()&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;In this approach, &lt;a href="https://api.flutter.dev/flutter/dart-async/Stream/Stream.fromIterable.html"&gt;&lt;code&gt;Stream.fromIterable()&lt;/code&gt;&lt;/a&gt; takes an array of numbers as argument, and create a &lt;code&gt;Stream&lt;/code&gt; of numbers delivering one event/number at a time.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Example#2:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#2. Creating Stream of numbers using  `Stream.fromIterable()` method
-
-void createStreamFromIterable() {
-  var numbers = [1, 2, 3, 4, 5];
-  Stream stream = Stream.fromIterable(numbers);
-  printStream(stream);
-}
-
-//Printing numbers/events of Stream (Listening to Stream)
-printStream(Stream stream) {
-  stream.listen((s) =&amp;gt; print(s));
-}
-//----END----//
-
-//Entry point function
-void main() {
-  //Run Example#2.
-  createStreamFromIterable();
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#2&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Retrieving Events From Stream&lt;/h1&gt;
-&lt;p&gt;We'll see two ways to print the events/numbers for the stream(s) created above.&lt;/p&gt;
-&lt;h2&gt;Using &lt;code&gt;listen&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;In the above two examples, we printed events of a &lt;code&gt;Stream&lt;/code&gt; using &lt;a href="https://api.dart.dev/stable/1.24.3/dart-async/Stream/listen.html"&gt;&lt;code&gt;listen&lt;/code&gt;&lt;/a&gt; by adding subscription to the given stream. Let's print messages before starting and after stream is finshed.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Example#3.&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#3. Accessing Stream using `listen`
-
-void printStreamEventsUsingListen() {
-  Stream stream = Stream.fromIterable([1, 2, 3, 4, 5]);
-  print(&amp;quot;Stream Starting&amp;quot;);
-  stream.listen(
-    (s) =&amp;gt; print(s),
-  );
-  print(&amp;quot;Stream Finished&amp;quot;);
-}
-//----END----//
-
-//Entry point function
-void main() {
-  //Run Example#3.
-  printStreamEventsUsingListen();
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Stream Starting
-Stream Finished
-1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#3&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Using &lt;code&gt;await for&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;Streams are iterated in a &lt;code&gt;await for&lt;/code&gt; asynchronous for-loop. Streams are notified when there's last event arrives and &lt;code&gt;await for-loop&lt;/code&gt; stops.
-Let's see an example that takes the events from the stream generated above and print those numbers in events.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Example#4.&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#4. Accessing Stream using `await for`
-
-void printStreamEventsUsingAwaitFor() async {
-  Stream stream = Stream.fromIterable([1, 2, 3, 4, 5]);
-
-  print(&amp;quot;Stream Starting&amp;quot;);
-  await for (var num in stream) {
-    print(num);
-  }
-  print(&amp;quot;Stream Finished&amp;quot;);
-}
-//----END----//
-
-//Entry point function
-void main() {
-  //Run Example#4.
-  printStreamEventsUsingAwaitFor();
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Stream Starting
-1
-2
-3
-4
-5
-Stream Finished
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#4&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The difference between &lt;code&gt;listen&lt;/code&gt; and &lt;code&gt;await for&lt;/code&gt; is that in &lt;code&gt;listen&lt;/code&gt; approach, code related with setting up stream executed first, and then events are printed. In the &lt;code&gt;await for&lt;/code&gt; approach, events are printed as they come. This approach is works better when there are finite number of events in a stream, and stream does finish.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Processing Stream Events&lt;/h1&gt;
-&lt;p&gt;In this example, let add the numbers delivered by stream and return the total. Let's call this new function &lt;code&gt;addEvents(...)&lt;/code&gt;. Events from Stream is accessed using &lt;code&gt;await for&lt;/code&gt;, and added one by one. The &lt;code&gt;addEvents(...)&lt;/code&gt; function needs to be marked with &lt;code&gt;async&lt;/code&gt; because it uses &lt;code&gt;await&lt;/code&gt; inside the function. This method returns &lt;code&gt;Future&amp;lt;int&amp;gt;&lt;/code&gt;. This future is accessed from &lt;code&gt;addNumbersInStream()&lt;/code&gt; function using &lt;code&gt;await&lt;/code&gt; and prints the total on console.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Example#5.&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Example#5. Processing (Adding) Stream using `await for`
-
-void addNumbersInStream() async {
-  //Create a Stream consists of numbers
-  Stream stream = Stream&amp;lt;int&amp;gt;.fromIterable([1, 2, 3, 4, 5]);
-
-  var total = await addEvents(stream);
-  print(total);
-}
-
-//Receiving events from Stream, adding and returning total
-Future&amp;lt;int&amp;gt; addEvents(Stream&amp;lt;int&amp;gt; stream) async {
-  var total = 0;
-  await for (var num in stream) {
-    total += num;
-  }
-
-  return total;
-}
-//----END----//
-
-//Entry point function
-void main() {
-  //Run Example#5.
-  addNumbersInStream();
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;15
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#5&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Handling Errors in Streams&lt;/h1&gt;
-&lt;p&gt;When error(s) occurred, a Stream can notify it as error event just like data event. Stream can notify error in one of these three ways:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Stream notifies first error event and stops. We'll see few examples of this case in this article.&lt;/li&gt;
-&lt;li&gt;Stream notifies multiple errors events.&lt;/li&gt;
-&lt;li&gt;Stream notifies error event(s) and continue delivering events.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Error Handling in &lt;code&gt;await for&lt;/code&gt; block&lt;/h2&gt;
-&lt;p&gt;An error event can be responded in &lt;code&gt;try/catch&lt;/code&gt; block. Let's see one of the above case to handle one error event by putting &lt;code&gt;await for&lt;/code&gt; loop in previous example inside &lt;code&gt;try/catch&lt;/code&gt; block. To be able to see &lt;code&gt;catch&lt;/code&gt; block respond to error event, we need to tweak &lt;code&gt;createStream&lt;/code&gt; to throw &lt;code&gt;Exception&lt;/code&gt; at some point. Assume error event occurs when accessing 5th number.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Example#6.&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;///Handling Exceptions (Code shared for listen and await for implementations)
-
-//Generated Stream with numbers. Added exception on purpose for demonstration
-Stream&amp;lt;int&amp;gt; createNumberStreamWithException(int last) async* {
-  for (int i = 1; i &amp;lt;= last; i++) {
-    if (i == 5) {
-      throw new Exception(&amp;quot;Demo exception when accessing 5th number&amp;quot;);
-    }
-    yield i; //to be able to send spaced out events
-  }
-}
-
-//Example #6. Handle Error in Stream using `await for`
-void handlingExceptionUsingAwaitFor() async {
-  var stream = createNumberStreamWithException(5);
-  try {
-    await for (var num in stream) {
-      print(num);
-    }
-  } catch (e) {
-    print(e);
-  }
-  print(&amp;quot;Finished&amp;quot;);
-}
-//----END----//
-
-//Entry point function
-void main() {
-  //Run Example#6.
-  handlingExceptionUsingAwaitFor();
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1
-2
-3
-4
-Exception: Demo exception when accessing 5th number
-Finished
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#6&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Handling Errors using &lt;code&gt;listen()&lt;/code&gt; method&lt;/h1&gt;
-&lt;p&gt;This is the better way to handle errors when you want to handle multiple errors without exiting code at the encounter of first error.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Example#7.&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;///Handling Exceptions (Code shared for listen and await for implementations)
-
-//Generated Stream with numbers. Added exception on purpose for demonstration
-Stream&amp;lt;int&amp;gt; createNumberStreamWithException(int last) async* {
-  for (int i = 1; i &amp;lt;= last; i++) {
-    if (i == 5) {
-      throw new Exception(&amp;quot;Demo exception when accessing 5th number&amp;quot;);
-    }
-    yield i; //to be able to send spaced out events
-  }
-}
-
-//Example #7. Handle Error in Stream using `listen`
-void handlingExceptionUsingListen() async {
-  var stream = createNumberStreamWithException(5);
-  stream.listen(
-    (num) =&amp;gt; print(num),
-    onError: (e) =&amp;gt; print(e),
-    onDone: () =&amp;gt; print(&amp;quot;Finished&amp;quot;),
-  );
-}
-//----END----//
-
-//Entry point function
-void main() {
-  //Run Example#7.
-  handlingExceptionUsingListen();
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1
-2
-3
-4
-Exception: Demo exception when accessing 5th number
-Finished
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Source Code&lt;/strong&gt; is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart"&gt;here- Example#7&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Summary&lt;/h1&gt;
-&lt;p&gt;In this article, we learned about the Dart Streams. Streams are useful when we want to process events as they become available rather waiting for everything to return in one batch like Futures. In next article, we'll learn about the type of streams available in Dart.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;References&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/futures"&gt;Dart Futures&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://dart.dev/tutorials/language/streams"&gt;Dart Streams&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=vl_AaCgudcY&amp;amp;list=PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2&amp;amp;index=14"&gt;Official Flutter Channel&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -2266,179 +2438,7 @@ The &lt;code&gt;sqflite&lt;/code&gt; plugin provides the lower level implementat
 &lt;p&gt;_Liked the article ?
 Couldn't find a topic of your interest ? Please leave a comment or reach out at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt; about the topics you would like me to share !&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
-&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="sqflite"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>A Dart/Flutter Vocabulary Series</title><link href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html" rel="alternate"></link><published>2020-04-30T00:00:00-04:00</published><updated>2020-04-30T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-30:/a-dartflutter-vocabulary-series.html</id><summary type="html">&lt;p&gt;This article contains the list of Dart language related articles.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;The Dart &amp;amp; Flutter Vocabulary Series&lt;/h1&gt;
-&lt;p&gt;Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile, web, and desktop applications. This series uses code recipes to explain Dart/Flutter usage and terminologies.&lt;/p&gt;
-&lt;p&gt;Follow me at twitter: @ptyagi13
-Medium: @ptyagicodecamp&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2&gt;Futures: Asynchronous Programming with Dart (Part1)&lt;/h2&gt;
-&lt;p&gt;This article is the first part of introduction to asynchronous programming with Dart, and covers Futures in Dart.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;Streams: Asynchronous Programming with Dart (Part2)&lt;/h2&gt;
-&lt;p&gt;This article is the second part of introduction to asynchronous programming with Dart, and covers Streams in Dart.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;Types of Streams: Asynchronous Programming with Dart (Part3)&lt;/h2&gt;
-&lt;p&gt;This article is the third and last part of introduction to asynchronous programming with Dart, and covers types of Streams in Dart.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;Dart Libraries (Part-1)&lt;/h2&gt;
-&lt;p&gt;This article is the Part-1 of introduction to using libraries in Dart/Flutter.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-libraries-part1.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/CSQnfff18X8"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;Dart Libraries (Part-2)&lt;/h2&gt;
-&lt;p&gt;This article is the Part-2 of introduction to using libraries in Dart/Flutter.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-libraries-part2.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/aHf1ENZWmzY"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;Dart Generics&lt;/h2&gt;
-&lt;p&gt;This article explains Dart Generics and how to use them.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-generics.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/generics.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/Qm2SkRpleO0"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;Dart static keyword&lt;/h2&gt;
-&lt;p&gt;This article demonstrates using &lt;code&gt;static&lt;/code&gt; keyword in Dart.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-static-keyword.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/static.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/Du81OvbtA3Y"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;Dart Mixins&lt;/h2&gt;
-&lt;p&gt;This article explains Dart Mixins and when and how to use them.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-mixins.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/mixins.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/r9rIEqDAZcc"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;Dart Enums&lt;/h2&gt;
-&lt;p&gt;This article explains Dart Enums and when and how to use them.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-enums.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/enums.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/A0M3iXZQjyo"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;Dart Extensions&lt;/h2&gt;
-&lt;p&gt;This article explains what extension methods, operators, and properties are, and how to use them.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-extensions.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/extensions.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/NYahXrWoepo"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;The &lt;code&gt;runes&lt;/code&gt; Property&lt;/h2&gt;
-&lt;p&gt;In this article, we'll explore Dart language's one of the String class property known as &lt;code&gt;runes&lt;/code&gt; to retrieve UTF-16 unicodes.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/the-runes-property.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/runes.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/y9QpGpWpCbE"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;The &lt;code&gt;runtimeType&lt;/code&gt; Property&lt;/h2&gt;
-&lt;p&gt;The &lt;code&gt;runtimeType&lt;/code&gt; property is used to find out the runtime type of the object.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/the-runtimetype-property.html"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/runtimeType.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/2Oa5mJU3KUY"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;</content><category term="dart"></category><category term="flutter"></category><category term="cross-platform"></category><category term="development"></category></entry><entry><title>Dart Generics</title><link href="https://ptyagicodecamp.github.io/dart-generics.html" rel="alternate"></link><published>2020-04-30T00:00:00-04:00</published><updated>2020-04-30T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-30:/dart-generics.html</id><summary type="html">&lt;p&gt;This article explains Dart Generics and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="generics" src="https://ptyagicodecamp.github.io/generics.png"&gt;&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="sqflite"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Dart Generics</title><link href="https://ptyagicodecamp.github.io/dart-generics.html" rel="alternate"></link><published>2020-04-30T00:00:00-04:00</published><updated>2020-04-30T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-30:/dart-generics.html</id><summary type="html">&lt;p&gt;This article explains Dart Generics and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="generics" src="https://ptyagicodecamp.github.io/generics.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Generics are used to apply stronger type checks at compile time. They enforce type-safety in code. For example, in collections the type-safety is enforced by holding same type of data. Generics help write reusable classes, methods/functions for different data types.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Type Safety:&lt;/strong&gt; Programming concept that allows a memory block to contain only one type of data.&lt;/p&gt;
