@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - ptyagi</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/ptyagi.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-06-07T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Dart Generators</title><link href="https://ptyagicodecamp.github.io/dart-generators.html" rel="alternate"></link><published>2020-06-07T00:00:00-04:00</published><updated>2020-06-07T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-06-07:/dart-generators.html</id><summary type="html">&lt;p&gt;This article explains usage of Dart Generator functions to generate sequence of values on-demand.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/todo.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Dart generator functions are used to generate sequence of values on-demand and lazily. Such value sequence can be generated either synchronously or asynchronously.&lt;/p&gt;
-&lt;p&gt;There are two types of generator functions to support both ways:&lt;/p&gt;
+&lt;p&gt;Dart generator functions are used to generate sequence of values on-demand lazily. Such value sequence can be generated either synchronously or asynchronously. There are two types of built-in generator functions available to support both scenarios:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Synchronous Generator: Synchronous generator function returns an &lt;a href=""&gt;Iterable&lt;/a&gt; object. That means first the values are generated and then returned lazily on-demand by the function.&lt;/li&gt;
-&lt;li&gt;Asynchronous Generator: Asynchronous generator function returns a &lt;a href=""&gt;Stream&lt;/a&gt; object. The sequence values are generated on demand as they become available.&lt;/li&gt;
+&lt;li&gt;Synchronous Generator: Synchronous generator function returns an &lt;a href="https://api.dart.dev/stable/2.8.4/dart-core/Iterable-class.html"&gt;Iterable&lt;/a&gt; object. That means first the values are generated and then returned lazily on-demand by the function.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Let's use an example to generate numbers starting from a given number say 5, until 0. We'll observe both ways (asynchronous and synchronous generators) to create this number sequence.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Iterable: A collection of values, or "elements", that can be accessed sequentially.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Asynchronous Generator: Asynchronous generator function returns a &lt;a href="https://api.dart.dev/stable/2.8.4/dart-async/Stream-class.html"&gt;Stream&lt;/a&gt; object. The sequence of values are generated on demand as they become available.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Stream: A source of asynchronous data events.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;Let's understand generator functions with help of an example. We'll generate numbers starting from a given number say 5 until 0, using generator functions. We'll observe both ways (asynchronous and synchronous generators) to create this number sequence.&lt;/p&gt;
 &lt;h1&gt;Using &lt;code&gt;sync*&lt;/code&gt; - Synchronous Generator&lt;/h1&gt;
-&lt;p&gt;The synchronous generator function is marked with &lt;code&gt;sync*&lt;/code&gt;. The values are returned using &lt;code&gt;yield&lt;/code&gt; keyword.&lt;/p&gt;
+&lt;p&gt;The function &lt;code&gt;Iterable&amp;lt;int&amp;gt; countDownFromSync(int num) sync*&lt;/code&gt; takes a number as &lt;code&gt;num&lt;/code&gt;, and sends out all numbers starting from &lt;code&gt;num&lt;/code&gt; until 0. The synchronous generator function is marked with &lt;code&gt;sync*&lt;/code&gt;. The values are returned using &lt;code&gt;yield&lt;/code&gt; keyword. The iterable &lt;code&gt;sequence&lt;/code&gt; receives the number sequence and print each number using &lt;code&gt;for&lt;/code&gt; loop. This number sequence actually is not generated until it has been accessed by &lt;code&gt;for&lt;/code&gt; loop.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;main1():&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main1() {
   print(&amp;quot;Getting CountDown Iterable [sync* + yield]&amp;quot;);
   Iterable&amp;lt;int&amp;gt; sequence = countDownFromSync(5);
@@ -32,6 +41,7 @@ Iterable&amp;lt;int&amp;gt; countDownFromSync(int num) sync* {
 
 
 &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;sync*&lt;/code&gt; helps to generate values in a synchronous manner. Note that &lt;code&gt;Starting...&lt;/code&gt; message is printed before for loop's execution. The &lt;code&gt;DONE&lt;/code&gt; message is executed at last as well.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Getting CountDown Iterable [sync* + yield]
 Starting...
 5
@@ -44,7 +54,8 @@ DONE
 
 
 &lt;h1&gt;Using &lt;code&gt;async*&lt;/code&gt; - Asynchronous Generator&lt;/h1&gt;
-&lt;p&gt;The asynchronous generator function is marked with &lt;code&gt;async*&lt;/code&gt;. The values are returned using &lt;code&gt;yield&lt;/code&gt; keyword.&lt;/p&gt;
+&lt;p&gt;The function &lt;code&gt;Stream&amp;lt;int&amp;gt; countDownFromAsync(int num) async*&lt;/code&gt; takes a number as &lt;code&gt;num&lt;/code&gt;, and deliver number sequence starting from &lt;code&gt;num&lt;/code&gt; until 0. The asynchronous generator function is marked with &lt;code&gt;async*&lt;/code&gt;. The values are returned using &lt;code&gt;yield&lt;/code&gt; keyword. The stream &lt;code&gt;sequence&lt;/code&gt; receives the number sequence. Its values can be accessed as soon as it got started listening upon.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;main2()&lt;/strong&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main2() {
   print(&amp;quot;Getting CountDown Stream [async* + yield]&amp;quot;);
   Stream&amp;lt;int&amp;gt; sequence = countDownFromAsync(5);
@@ -67,6 +78,7 @@ Stream&amp;lt;int&amp;gt; countDownFromAsync(int num) async* {
 
 
 &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;async*&lt;/code&gt; helps to generate values in an asynchronous manner. Note that &lt;code&gt;Starting...&lt;/code&gt; and &lt;code&gt;DONE&lt;/code&gt; messages/setup are printed before actual stream's values are printed. The values are printed as they become available after the setup code.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Getting CountDown Stream [async* + yield]
 Starting...
 DONE
@@ -79,7 +91,7 @@ DONE
 
 
 &lt;h1&gt;Using &lt;code&gt;sync* + yield*&lt;/code&gt; - Recursive Synchronous Generator&lt;/h1&gt;
-&lt;p&gt;When generator functions are used recursively, &lt;code&gt;yield*&lt;/code&gt; is used to mark such recursive function calls.&lt;/p&gt;
+&lt;p&gt;When generator functions are used recursively, &lt;code&gt;yield*&lt;/code&gt; is used to mark such recursive function calls. This example shows how to use generator functions recursively. You'll notice the same output as for the non-recursive implementation. The keyword &lt;code&gt;yield*&lt;/code&gt; is used for the function that's called recursively.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main3() {
   print(&amp;quot;Getting CountDown Iterable [sync* + yield*]&amp;quot;);
   Iterable&amp;lt;int&amp;gt; sequence = countDownFromSyncRecursive(5);
@@ -116,6 +128,7 @@ DONE
 
 
 &lt;h1&gt;Using &lt;code&gt;async* + yield*&lt;/code&gt; - Recursive Asynchronous Generator&lt;/h1&gt;
+&lt;p&gt;This is an example of the using asynchronous generator function recursively. It also have the same output as its non-recursive counter-part.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main4() {
   print(&amp;quot;Getting CountDown Stream [async* + yield*]&amp;quot;);
   Stream&amp;lt;int&amp;gt; sequence = countDownFromAsyncRecursive(5);

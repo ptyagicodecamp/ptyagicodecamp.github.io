@@ -149,15 +149,24 @@
   <div>
     <p><img alt="enums" src="https://ptyagicodecamp.github.io/todo.png"></p>
 <h1>Introduction</h1>
-<p>Dart generator functions are used to generate sequence of values on-demand and lazily. Such value sequence can be generated either synchronously or asynchronously.</p>
-<p>There are two types of generator functions to support both ways:</p>
+<p>Dart generator functions are used to generate sequence of values on-demand lazily. Such value sequence can be generated either synchronously or asynchronously. There are two types of built-in generator functions available to support both scenarios:</p>
 <ul>
-<li>Synchronous Generator: Synchronous generator function returns an <a href="">Iterable</a> object. That means first the values are generated and then returned lazily on-demand by the function.</li>
-<li>Asynchronous Generator: Asynchronous generator function returns a <a href="">Stream</a> object. The sequence values are generated on demand as they become available.</li>
+<li>Synchronous Generator: Synchronous generator function returns an <a href="https://api.dart.dev/stable/2.8.4/dart-core/Iterable-class.html">Iterable</a> object. That means first the values are generated and then returned lazily on-demand by the function.</li>
 </ul>
-<p>Let's use an example to generate numbers starting from a given number say 5, until 0. We'll observe both ways (asynchronous and synchronous generators) to create this number sequence.</p>
+<blockquote>
+<p>Iterable: A collection of values, or "elements", that can be accessed sequentially.</p>
+</blockquote>
+<ul>
+<li>Asynchronous Generator: Asynchronous generator function returns a <a href="https://api.dart.dev/stable/2.8.4/dart-async/Stream-class.html">Stream</a> object. The sequence of values are generated on demand as they become available.</li>
+</ul>
+<blockquote>
+<p>Stream: A source of asynchronous data events.</p>
+</blockquote>
+<hr>
+<p>Let's understand generator functions with help of an example. We'll generate numbers starting from a given number say 5 until 0, using generator functions. We'll observe both ways (asynchronous and synchronous generators) to create this number sequence.</p>
 <h1>Using <code>sync*</code> - Synchronous Generator</h1>
-<p>The synchronous generator function is marked with <code>sync*</code>. The values are returned using <code>yield</code> keyword.</p>
+<p>The function <code>Iterable&lt;int&gt; countDownFromSync(int num) sync*</code> takes a number as <code>num</code>, and sends out all numbers starting from <code>num</code> until 0. The synchronous generator function is marked with <code>sync*</code>. The values are returned using <code>yield</code> keyword. The iterable <code>sequence</code> receives the number sequence and print each number using <code>for</code> loop. This number sequence actually is not generated until it has been accessed by <code>for</code> loop.</p>
+<p><strong>main1():</strong></p>
 <div class="highlight"><pre><span></span>void main1() {
   print(&quot;Getting CountDown Iterable [sync* + yield]&quot;);
   Iterable&lt;int&gt; sequence = countDownFromSync(5);
@@ -180,6 +189,7 @@ Iterable&lt;int&gt; countDownFromSync(int num) sync* {
 
 
 <p><strong>Output:</strong></p>
+<p>The <code>sync*</code> helps to generate values in a synchronous manner. Note that <code>Starting...</code> message is printed before for loop's execution. The <code>DONE</code> message is executed at last as well.</p>
 <div class="highlight"><pre><span></span>Getting CountDown Iterable [sync* + yield]
 Starting...
 5
@@ -192,7 +202,8 @@ DONE
 
 
 <h1>Using <code>async*</code> - Asynchronous Generator</h1>
-<p>The asynchronous generator function is marked with <code>async*</code>. The values are returned using <code>yield</code> keyword.</p>
+<p>The function <code>Stream&lt;int&gt; countDownFromAsync(int num) async*</code> takes a number as <code>num</code>, and deliver number sequence starting from <code>num</code> until 0. The asynchronous generator function is marked with <code>async*</code>. The values are returned using <code>yield</code> keyword. The stream <code>sequence</code> receives the number sequence. Its values can be accessed as soon as it got started listening upon.</p>
+<p><strong>main2()</strong>:</p>
 <div class="highlight"><pre><span></span>void main2() {
   print(&quot;Getting CountDown Stream [async* + yield]&quot;);
   Stream&lt;int&gt; sequence = countDownFromAsync(5);
@@ -215,6 +226,7 @@ Stream&lt;int&gt; countDownFromAsync(int num) async* {
 
 
 <p><strong>Output:</strong></p>
+<p>The <code>async*</code> helps to generate values in an asynchronous manner. Note that <code>Starting...</code> and <code>DONE</code> messages/setup are printed before actual stream's values are printed. The values are printed as they become available after the setup code.</p>
 <div class="highlight"><pre><span></span>Getting CountDown Stream [async* + yield]
 Starting...
 DONE
@@ -227,7 +239,7 @@ DONE
 
 
 <h1>Using <code>sync* + yield*</code> - Recursive Synchronous Generator</h1>
-<p>When generator functions are used recursively, <code>yield*</code> is used to mark such recursive function calls.</p>
+<p>When generator functions are used recursively, <code>yield*</code> is used to mark such recursive function calls. This example shows how to use generator functions recursively. You'll notice the same output as for the non-recursive implementation. The keyword <code>yield*</code> is used for the function that's called recursively.</p>
 <div class="highlight"><pre><span></span>void main3() {
   print(&quot;Getting CountDown Iterable [sync* + yield*]&quot;);
   Iterable&lt;int&gt; sequence = countDownFromSyncRecursive(5);
@@ -264,6 +276,7 @@ DONE
 
 
 <h1>Using <code>async* + yield*</code> - Recursive Asynchronous Generator</h1>
+<p>This is an example of the using asynchronous generator function recursively. It also have the same output as its non-recursive counter-part.</p>
 <div class="highlight"><pre><span></span>void main4() {
   print(&quot;Getting CountDown Stream [async* + yield*]&quot;);
   Stream&lt;int&gt; sequence = countDownFromAsyncRecursive(5);
