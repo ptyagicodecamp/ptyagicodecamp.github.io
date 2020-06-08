@@ -9,11 +9,15 @@
 &lt;p&gt;Iterable: A collection of values, or "elements", that can be accessed sequentially.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;Asynchronous Generator: Asynchronous generator function returns a &lt;a href="https://api.dart.dev/stable/2.8.4/dart-async/Stream-class.html"&gt;Stream&lt;/a&gt; object. The sequence of values are generated on demand as they become available.&lt;/li&gt;
+&lt;li&gt;Asynchronous Generator: Asynchronous generator function returns a &lt;a href="https://api.dart.dev/stable/2.8.4/dart-async/Stream-class.html"&gt;Stream&lt;/a&gt; object. The sequence of values is generated on demand as they become available.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Stream: A source of asynchronous data events.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1&gt;Check out YouTube Video&lt;/h1&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/hbaCIwAzooM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
 &lt;hr&gt;
 &lt;p&gt;Let's understand generator functions with help of an example. We'll generate numbers starting from a given number say 5 until 0, using generator functions. We'll observe both ways (asynchronous and synchronous generators) to create this number sequence.&lt;/p&gt;
 &lt;h1&gt;Using &lt;code&gt;sync*&lt;/code&gt; - Synchronous Generator&lt;/h1&gt;
@@ -128,7 +132,7 @@ DONE
 
 
 &lt;h1&gt;Using &lt;code&gt;async* + yield*&lt;/code&gt; - Recursive Asynchronous Generator&lt;/h1&gt;
-&lt;p&gt;This is an example of the using asynchronous generator function recursively. It also have the same output as its non-recursive counter-part.&lt;/p&gt;
+&lt;p&gt;This is an example of using an asynchronous generator function recursively. It also has the same output as its non-recursive counter-part.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void main4() {
   print(&amp;quot;Getting CountDown Stream [async* + yield*]&amp;quot;);
   Stream&amp;lt;int&amp;gt; sequence = countDownFromAsyncRecursive(5);
@@ -166,12 +170,8 @@ DONE
 
 &lt;hr&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
-&lt;p&gt;In this article, we saw how to use Dart's generator function to produce a on-demand sequence of values synchronously and asynchronously in iterative and recursive manner.&lt;/p&gt;
+&lt;p&gt;In this article, we saw how to use Dart's generator function to produce an on-demand sequence of values synchronously and asynchronously in an iterative and recursive manner.&lt;/p&gt;
 &lt;p&gt;That's it for this article. Check out the &lt;a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"&gt;Dart Vocabulary Series&lt;/a&gt; for other Dart stuff.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Check out YouTube Video&lt;/h1&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
-
 &lt;hr&gt;
 &lt;h1&gt;Source Code&lt;/h1&gt;
 &lt;p&gt;Please checkout the source code at Github &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/generators.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
@@ -201,7 +201,7 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/generators.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/hbaCIwAzooM"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
