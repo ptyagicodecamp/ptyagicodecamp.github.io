@@ -181,7 +181,7 @@ Medium: @ptyagicodecamp&lt;/p&gt;
 &lt;p&gt;This article explains usage of Dart Generator functions to generate sequence of values on-demand.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Read article &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/dart-generators.html"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/generators.dart"&gt;here&lt;/a&gt;&lt;/p&gt;
