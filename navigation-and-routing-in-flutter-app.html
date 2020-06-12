@@ -163,9 +163,7 @@
 <li>
 <p><strong>Navigation:</strong> Implement navigation from home page to detail page using three different ways:</p>
 </li>
-<li>
-<p>Un-named Routing</p>
-</li>
+<li>Un-named Routing</li>
 <li>Named routing using MaterialApp's <code>routes</code> property</li>
 <li>Named routing using MaterialApp's <code>onGenerateRoute</code> property.</li>
 </ul>
@@ -190,6 +188,8 @@
 This option is great when there is no logic around the routes. For example, authentication or verification before you show the page. Only the data available global to app can be passed on to the second page.</p>
 <h2>Named Routing Using <code>onGenerateRoute</code> Property</h2>
 <p>The MaterialApp and WidgetApp provides the <code>onGenerateRoute</code> property. It lets you specify a function returning a route. It can let the data pass using <code>settings</code>. Any verification logic can be easily be applied before showing the target page. There's always an option to default "not found" page when route or match is not found.</p>
+<h3>Passing Data to Second Screen - <code>PageDetails</code></h3>
+<h3>Receiving Data from Second Screen - <code>PageDetails</code></h3>
 <hr>
 <h1>Source Code Repo</h1>
 <ul>

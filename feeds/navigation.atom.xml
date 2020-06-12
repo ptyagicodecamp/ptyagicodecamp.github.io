@@ -12,9 +12,7 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Navigation:&lt;/strong&gt; Implement navigation from home page to detail page using three different ways:&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Un-named Routing&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Un-named Routing&lt;/li&gt;
 &lt;li&gt;Named routing using MaterialApp's &lt;code&gt;routes&lt;/code&gt; property&lt;/li&gt;
 &lt;li&gt;Named routing using MaterialApp's &lt;code&gt;onGenerateRoute&lt;/code&gt; property.&lt;/li&gt;
 &lt;/ul&gt;
@@ -39,6 +37,8 @@
 This option is great when there is no logic around the routes. For example, authentication or verification before you show the page. Only the data available global to app can be passed on to the second page.&lt;/p&gt;
 &lt;h2&gt;Named Routing Using &lt;code&gt;onGenerateRoute&lt;/code&gt; Property&lt;/h2&gt;
 &lt;p&gt;The MaterialApp and WidgetApp provides the &lt;code&gt;onGenerateRoute&lt;/code&gt; property. It lets you specify a function returning a route. It can let the data pass using &lt;code&gt;settings&lt;/code&gt;. Any verification logic can be easily be applied before showing the target page. There's always an option to default "not found" page when route or match is not found.&lt;/p&gt;
+&lt;h3&gt;Passing Data to Second Screen - &lt;code&gt;PageDetails&lt;/code&gt;&lt;/h3&gt;
+&lt;h3&gt;Receiving Data from Second Screen - &lt;code&gt;PageDetails&lt;/code&gt;&lt;/h3&gt;
 &lt;hr&gt;
 &lt;h1&gt;Source Code Repo&lt;/h1&gt;
 &lt;ul&gt;
