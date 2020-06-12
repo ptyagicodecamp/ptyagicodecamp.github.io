@@ -44,18 +44,32 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333333">
 
-    <meta name="author" content="Priyanka Tyagi" />
-    <meta name="description" content="Mobile engineering tech logger." />
+<meta name="author" content="ptyagi" />
+<meta name="description" content="In this article, we&#39;ll learn about navigation and routing in a Flutter app." />
+<meta name="keywords" content="Navigation, Routing, cross-platform, Flutter, code-recipes, Android, Android Studio, iOS, development">
+
 <meta property="og:site_name" content="techLog"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="techLog"/>
-<meta property="og:description" content="Mobile engineering tech logger."/>
+<meta property="og:title" content="Navigation &amp; Routing in Flutter App"/>
+<meta property="og:description" content="In this article, we&#39;ll learn about navigation and routing in a Flutter app."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://ptyagicodecamp.github.io"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/navigation-routing-in-flutter-app.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-06-12 00:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Navigation"/>
+<meta property="article:tag" content="Navigation"/>
+<meta property="article:tag" content="Routing"/>
+<meta property="article:tag" content="cross-platform"/>
+<meta property="article:tag" content="Flutter"/>
+<meta property="article:tag" content="code-recipes"/>
+<meta property="article:tag" content="Android"/>
+<meta property="article:tag" content="Android Studio"/>
+<meta property="article:tag" content="iOS"/>
+<meta property="article:tag" content="development"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash;     Tag Navigation
-</title>
+  <title>techLog &ndash; Navigation &amp; Routing in Flutter App</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -116,60 +130,133 @@
 
     </nav>
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="https://ptyagicodecamp.github.io/navigation-routing-in-flutter-app.html#navigation-routing-in-flutter-app">Navigation & Routing in Flutter App</a></h2>
+      
+    <h1 id="navigation-routing-in-flutter-app">Navigation & Routing in Flutter App</h1>
     <p>
           Posted on June 12, 2020 in <a href="https://ptyagicodecamp.github.io/category/navigation.html">Navigation</a>
 
 
-          &#8226;     Tagged with
-
-              <a href="https://ptyagicodecamp.github.io/tag/navigation.html">Navigation</a>,              <a href="https://ptyagicodecamp.github.io/tag/routing.html">Routing</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </header>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
   <div>
-      <p>In this article, we'll learn about navigation and routing in a Flutter app.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/navigation-routing-in-flutter-app.html#navigation-routing-in-flutter-app">    Continue reading
-</a>
+    <h1>IN PROGRESS: COMING SOON</h1>
+<p><img alt="TODO" src="https://ptyagicodecamp.github.io/TODO.jpg"></p>
+<p><strong>Target Audience:</strong> Beginner</p>
+<p><strong>Recipe:</strong> Implementing Navigation from home page to another page.</p>
+<p><strong>Focus Widget:</strong> <a href="https://api.flutter.dev/flutter/widgets/Navigator-class.html">Navigator</a> Widget</p>
+<p><strong>Goals:</strong> We'll implement navigation from homepage's list item to its detailed view. In this recipe, we'll do two things:</p>
+<ul>
+<li>
+<p><strong>Interface:</strong>: Create a listing consisting of three items. Another page to display details for each item. Clicking on each item will open the detailed view for that item.</p>
+</li>
+<li>
+<p><strong>Navigation:</strong> Implement navigation from home page to detail page using three different ways:</p>
+</li>
+<li>
+<p>Un-named Routing</p>
+</li>
+<li>Named routing using MaterialApp's <code>routes</code> property</li>
+<li>Named routing using MaterialApp's <code>onGenerateRoute</code> property.</li>
+</ul>
+<hr>
+<p><strong>Checkout the companion video tutorial:</strong>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<hr>
+<h1>Building Interface</h1>
+<h2><code>PageListing</code> Screen</h2>
+<p>A minimal home page <code>PageListing</code> consists of three list items. Each item has a picture and sample title.</p>
+<h2><code>Item</code></h2>
+<p>A data model <code>Item</code> to represent each row in homepage's list.</p>
+<h2><code>PageDetails</code> Screen</h2>
+<p>A page to show list entry <code>Item</code>'s detailed view. It's a simple page displaying item's image, details and its name in appBar.</p>
+<h2>FAB on <code>PageDetails</code> Screen</h2>
+<p>There's a <code>floatingActionButton</code> in <code>PageDetails</code> to demonstrate passing data from detailed page back to homepage.</p>
+<h1>Navigation</h1>
+<h2>Un-Named Routing</h2>
+<p>In un-name routing, the <code>MaterialPageRoutes</code> is pushed directly to the navigator. This approach contributes to boilerplate code which multiplies with growing screens/pages. It is very hard to keep track of logic around these routes since its spread out in multiple classes.</p>
+<h2>Named Routing Using <code>routes</code> Property</h2>
+<p>The MaterialApp and WidgetApp provides the <code>routes</code> property. This property allows to specify routes in <code>Map&lt;String, WidgetBuilder&gt;</code>.
+This option is great when there is no logic around the routes. For example, authentication or verification before you show the page. Only the data available global to app can be passed on to the second page.</p>
+<h2>Named Routing Using <code>onGenerateRoute</code> Property</h2>
+<p>The MaterialApp and WidgetApp provides the <code>onGenerateRoute</code> property. It lets you specify a function returning a route. It can let the data pass using <code>settings</code>. Any verification logic can be easily be applied before showing the target page. There's always an option to default "not found" page when route or match is not found.</p>
+<hr>
+<h1>Source Code Repo</h1>
+<ul>
+<li>
+<p>Recipe source code for <code>TODO</code> class is available <a href="">here</a></p>
+</li>
+<li>
+<p>Flutter Cookbook project's source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/">here</a></p>
+</li>
+</ul>
+<h1>References</h1>
+<p>1.</p>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article?
+Couldn't find a topic of your interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write!
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+<p>Follow me at <a href="https://twitter.com/ptyagi13">twitter</a></p>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/understanding-flutter-popupmenubutton-widget.html#understanding-flutter-popupmenubutton-widget">Understanding Flutter PopupMenuButton Widget</a></h2>
+  <div class="tag-cloud">
     <p>
-          Posted on July 19, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="https://ptyagicodecamp.github.io/tag/popupmenubutton.html">PopupMenuButton</a>,              <a href="https://ptyagicodecamp.github.io/tag/navigation.html">Navigation</a>,              <a href="https://ptyagicodecamp.github.io/tag/webview.html">WebView</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/hummingbird.html">Hummingbird</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+      <a href="https://ptyagicodecamp.github.io/tag/navigation.html">Navigation</a>
+      <a href="https://ptyagicodecamp.github.io/tag/routing.html">Routing</a>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
+      <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+      <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
-  </header>
-  <div>
-      <p>In this article, I'll show you implementing "Settings" menu using PopupMenuButton Widget as Stateless vs Stateful widget in Flutter for Android, iOS and Web (Hummingbird).</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/understanding-flutter-popupmenubutton-widget.html#understanding-flutter-popupmenubutton-widget">    Continue reading
-</a>
   </div>
+
+  <div class="center social-share">
+    <p>    Like this article? Share it with your friends!
+</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'https-ptyagicodecamp-github-io';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
 </article>
-
-  <div class="pagination">
-  </div>
-
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <ins class="adsbygoogle ads-responsive"
-       data-ad-client="ca-pub-6359982310050489"
-       data-ad-slot="8977779775"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-
 
     <footer>
 <p>
