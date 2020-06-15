@@ -44,18 +44,29 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333333">
 
-    <meta name="author" content="Priyanka Tyagi" />
-    <meta name="description" content="Mobile engineering tech logger." />
+<meta name="author" content="ptyagi" />
+<meta name="description" content="This article introduce the Callable Classes feature of Dart language." />
+<meta name="keywords" content="callable-classes, dart, cross-platform, flutter, code-recipes, development">
+
 <meta property="og:site_name" content="techLog"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="techLog"/>
-<meta property="og:description" content="Mobile engineering tech logger."/>
+<meta property="og:title" content="Dart Callable Classes"/>
+<meta property="og:description" content="This article introduce the Callable Classes feature of Dart language."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://ptyagicodecamp.github.io"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/dart-callable-classes.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-06-14 00:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Dart"/>
+<meta property="article:tag" content="callable-classes"/>
+<meta property="article:tag" content="dart"/>
+<meta property="article:tag" content="cross-platform"/>
+<meta property="article:tag" content="flutter"/>
+<meta property="article:tag" content="code-recipes"/>
+<meta property="article:tag" content="development"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash;     Category Dart
-</title>
+  <title>techLog &ndash; Dart Callable Classes</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -116,124 +127,124 @@
 
     </nav>
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="https://ptyagicodecamp.github.io/dart-mixins.html#dart-mixins">Dart Mixins</a></h2>
+      
+    <h1 id="dart-callable-classes">Dart Callable Classes</h1>
     <p>
-          Posted on April 20, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
+          Posted on June 14, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
 
 
-          &#8226;     Tagged with
-
-              <a href="https://ptyagicodecamp.github.io/tag/mixins.html">mixins</a>,              <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </header>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
   <div>
-      <p>This article explains Dart Mixins and when and how to use them.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/dart-mixins.html#dart-mixins">    Continue reading
-</a>
+    <p><img alt="enums" src="https://ptyagicodecamp.github.io/callable.png"></p>
+<h1>Introduction</h1>
+<p>In Dart, functions are objects too. It's an object of type <code>[Function](https://api.dart.dev/stable/2.8.4/dart-core/Function-class.html)</code>. Similar to other objects, functions can be passed as arguments to other functions, and can be assigned to variables as well.</p>
+<p>A Callable class allows its instance to be called as function. This feature of Dart language is useful in making named-functions.</p>
+<h1>Implementing Callable Class</h1>
+<p>All Dart functions have <code>call</code> method. In order to make a class <strong><em>Callable</em></strong>, the <code>call()</code> method needs to be implemented. Let's declare a callable class below:</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Addition</span> <span class="p">{</span>
+  <span class="kr">int</span> <span class="nx">call</span><span class="p">(</span><span class="kr">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kr">int</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The above class' <code>call</code> method takes two arguments and returns their sum.</p>
+<hr>
+<h1>Using Callable Class</h1>
+<p>Let's check out using the <code>Addition</code> callable class in code below. The <code>addition</code> object is of <code>Addition</code> type. Now, <code>addition(1, 2)</code> can be called to calculate the sum of given numbers.</p>
+<div class="highlight"><pre><span></span>void main() {
+  Addition addition = Addition();
+  var result = addition(1, 2);
+  print(result);
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>3
+</pre></div>
+
+
+<hr>
+<h1>Summary</h1>
+<p>In this article, we learned that Dart is a true object-oriented language. Dart's functions are also objects. We learned to implement a callable class.</p>
+<p>That's it for this article. Check out the <a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html">Dart Vocabulary Series</a> for other Dart stuff.</p>
+<hr>
+<h1>Check out YouTube Video</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h1>Source Code</h1>
+<p>Please checkout the source code at Github <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/callable_class.dart">here</a></p>
+<hr>
+<h1>References</h1>
+<ol>
+<li><a href="https://api.dart.dev/stable/2.8.4/dart-core/Function-class.html">Function type</a></li>
+<li><a href="https://dart.dev/guides/language/language-tour#callable-classes">Language Tour</a></li>
+</ol>
+<p>Happy Darting :)</p>
+<p>_Liked the article?
+Couldn't find a topic of interest? Please leave a comment or reach out at <a href="https://twitter.com/ptyagi13">twitter</a> about the topics you would like me to share!</p>
+<p><a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a>_</p>
+<p>Follow me at <a href="https://medium.com/@ptyagicodecamp">Medium</a></p>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/dart-enums.html#dart-enums">Dart Enums</a></h2>
+  <div class="tag-cloud">
     <p>
-          Posted on April 14, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="https://ptyagicodecamp.github.io/tag/enum.html">enum</a>,              <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+      <a href="https://ptyagicodecamp.github.io/tag/callable-classes.html">callable-classes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
-  </header>
-  <div>
-      <p>This article explains Dart Enums and when and how to use them.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/dart-enums.html#dart-enums">    Continue reading
-</a>
   </div>
-  <hr />
+
+  <div class="center social-share">
+    <p>    Like this article? Share it with your friends!
+</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'https-ptyagicodecamp-github-io';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
 </article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/dart-extensions.html#dart-extensions">Dart Extensions</a></h2>
-    <p>
-          Posted on April 07, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="https://ptyagicodecamp.github.io/tag/extension.html">extension</a>,              <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
-    </p>
-  </header>
-  <div>
-      <p>This article explains what extension methods, operators, and properties are, and how to use them.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/dart-extensions.html#dart-extensions">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/the-runes-property.html#the-runes-property">The `runes` Property</a></h2>
-    <p>
-          Posted on April 05, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="https://ptyagicodecamp.github.io/tag/runes.html">runes</a>,              <a href="https://ptyagicodecamp.github.io/tag/runes.html">Runes</a>,              <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
-    </p>
-  </header>
-  <div>
-      <p>This article describes what <code>runes</code> property means in Dart's language.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/the-runes-property.html#the-runes-property">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/the-runtimetype-property.html#the-runtimetype-property">The `runtimeType` Property</a></h2>
-    <p>
-          Posted on April 02, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="https://ptyagicodecamp.github.io/tag/runtimetype.html">runtimeType</a>,              <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
-    </p>
-  </header>
-  <div>
-      <p>This article describes what <code>runtimeType</code> property means in Dart's world.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/the-runtimetype-property.html#the-runtimetype-property">    Continue reading
-</a>
-  </div>
-</article>
-
-  <div class="pagination">
-    <a class="btn float-right" href="https://ptyagicodecamp.github.io/category/dart.html">
-          Newer Posts
- <i class="fa fa-angle-right"></i>
-    </a>
-  </div>
-
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <ins class="adsbygoogle ads-responsive"
-       data-ad-client="ca-pub-6359982310050489"
-       data-ad-slot="8977779775"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-
 
     <footer>
 <p>
