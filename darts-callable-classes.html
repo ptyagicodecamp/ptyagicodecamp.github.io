@@ -45,26 +45,28 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="ptyagi" />
-<meta name="description" content="This article contains the list of Dart language related articles." />
-<meta name="keywords" content="dart, flutter, cross-platform, development">
+<meta name="description" content="This article introduce the Callable Class feature of Dart language." />
+<meta name="keywords" content="callable-classes, dart, cross-platform, flutter, code-recipes, development">
 
 <meta property="og:site_name" content="techLog"/>
-<meta property="og:title" content="A Dart/Flutter Vocabulary Series"/>
-<meta property="og:description" content="This article contains the list of Dart language related articles."/>
+<meta property="og:title" content="Dart&#39;s Callable Classes"/>
+<meta property="og:description" content="This article introduce the Callable Class feature of Dart language."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/darts-callable-classes.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-05-22 00:00:00-04:00"/>
+<meta property="article:published_time" content="2020-06-14 00:00:00-04:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
 <meta property="article:section" content="Dart"/>
+<meta property="article:tag" content="callable-classes"/>
 <meta property="article:tag" content="dart"/>
-<meta property="article:tag" content="flutter"/>
 <meta property="article:tag" content="cross-platform"/>
+<meta property="article:tag" content="flutter"/>
+<meta property="article:tag" content="code-recipes"/>
 <meta property="article:tag" content="development"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash; A Dart/Flutter Vocabulary Series</title>
+  <title>techLog &ndash; Dart&#39;s Callable Classes</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -128,9 +130,9 @@
 <article class="single">
   <header>
       
-    <h1 id="a-dartflutter-vocabulary-series">A Dart/Flutter Vocabulary Series</h1>
+    <h1 id="darts-callable-classes">Dart's Callable Classes</h1>
     <p>
-          Posted on May 22, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
+          Posted on June 14, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
 
 
     </p>
@@ -145,213 +147,66 @@
     </script>
 
   <div>
-    <h1>The Dart &amp; Flutter Vocabulary Series</h1>
-<p>Learn basics of Dart programming language. Flutter uses Dart to build awesome cross-platform mobile, web, and desktop applications. This series uses code recipes to explain Dart/Flutter usage and terminologies.</p>
-<p>Follow me at twitter: @ptyagi13
-Medium: @ptyagicodecamp</p>
+    <p><img alt="enums" src="https://ptyagicodecamp.github.io/callable.jpg"></p>
+<h1>Introduction</h1>
+<p>In Dart, functions are objects too. It's an object of type <a href="https://api.dart.dev/stable/2.8.4/dart-core/Function-class.html"><code>Function</code></a>. Similar to other objects, functions can be passed as arguments to other functions, and can be assigned to variables as well.</p>
+<p>A Callable class allows its instance to be called as function. This feature of Dart language is useful in making named-functions.</p>
 <hr>
-<h2>Dart's Callable Classes</h2>
-<p>This article introduce the Callable Class feature of Dart language.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/dart-callable-classes.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/callable_class.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/Xx3AySX1R0U">here</a></p>
-</li>
-</ul>
+<h1>Check out YouTube Video</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Xx3AySX1R0U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <hr>
-<h2>Dart Generators</h2>
-<p>This article explains usage of Dart Generator functions to generate sequence of values on-demand.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/dart-generators.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/generators.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/hbaCIwAzooM">here</a></p>
-</li>
-</ul>
+<h1>Implementing Callable Class</h1>
+<p>All Dart functions have <code>call</code> method. In order to make a class <strong><em>Callable</em></strong>, the <code>call()</code> method needs to be implemented. Let's declare a callable class below:</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Addition</span> <span class="p">{</span>
+  <span class="kr">int</span> <span class="nx">call</span><span class="p">(</span><span class="kr">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kr">int</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The above class' <code>call</code> method takes two arguments and returns their sum.</p>
 <hr>
-<h2>Futures: Asynchronous Programming with Dart (Part1)</h2>
-<p>This article is the first part of introduction to asynchronous programming with Dart, and covers Futures in Dart.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/futures-asynchronous-programming-with-dart.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/ZQ0bWpK7u2E">here</a></p>
-</li>
-</ul>
+<h1>Using Callable Class</h1>
+<p>Let's check out using the <code>Addition</code> callable class in code below. The <code>addition</code> object is of <code>Addition</code> type. Now, <code>addition(1, 2)</code> can be called to calculate the sum of given numbers.</p>
+<div class="highlight"><pre><span></span>void main() {
+  Addition addition = Addition();
+  var result = addition(1, 2);
+  print(result);
+}
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span>3
+</pre></div>
+
+
 <hr>
-<h2>Streams: Asynchronous Programming with Dart (Part2)</h2>
-<p>This article is the second part of introduction to asynchronous programming with Dart, and covers Streams in Dart.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/streams-asynchronous-programming-with-dart.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/b4c_bEguNqU">here</a></p>
-</li>
-</ul>
+<h1>Summary</h1>
+<p>In this article, we learned that Dart is a true object-oriented language. Dart's functions are also objects. We learned to implement a callable class.</p>
+<p>That's it for this article. Check out the <a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html">Dart Vocabulary Series</a> for other Dart stuff.</p>
 <hr>
-<h2>Types of Streams: Asynchronous Programming with Dart (Part3)</h2>
-<p>This article is the third and last part of introduction to asynchronous programming with Dart, and covers types of Streams in Dart.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/types-of-streams-asynchronous-programming-with-dart.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams_types.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/CuZKdr6Jark">here</a></p>
-</li>
-</ul>
+<h1>Source Code</h1>
+<p>Please checkout the source code at Github <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/callable_class.dart">here</a></p>
 <hr>
-<h2>Dart Libraries (Part-1)</h2>
-<p>This article is the Part-1 of introduction to using libraries in Dart/Flutter.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/dart-libraries-part1.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/CSQnfff18X8">here</a></p>
-</li>
-</ul>
-<hr>
-<h2>Dart Libraries (Part-2)</h2>
-<p>This article is the Part-2 of introduction to using libraries in Dart/Flutter.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/dart-libraries-part2.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/aHf1ENZWmzY">here</a></p>
-</li>
-</ul>
-<hr>
-<h2>Dart Generics</h2>
-<p>This article explains Dart Generics and how to use them.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/dart-generics.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/generics.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/Qm2SkRpleO0">here</a></p>
-</li>
-</ul>
-<hr>
-<h2>Dart static keyword</h2>
-<p>This article demonstrates using <code>static</code> keyword in Dart.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/dart-static-keyword.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/static.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/Du81OvbtA3Y">here</a></p>
-</li>
-</ul>
-<hr>
-<h2>Dart Mixins</h2>
-<p>This article explains Dart Mixins and when and how to use them.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/dart-mixins.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/mixins.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/r9rIEqDAZcc">here</a></p>
-</li>
-</ul>
-<hr>
-<h2>Dart Enums</h2>
-<p>This article explains Dart Enums and when and how to use them.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/dart-enums.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/enums.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/A0M3iXZQjyo">here</a></p>
-</li>
-</ul>
-<hr>
-<h2>Dart Extensions</h2>
-<p>This article explains what extension methods, operators, and properties are, and how to use them.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/dart-extensions.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/extensions.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/NYahXrWoepo">here</a></p>
-</li>
-</ul>
-<hr>
-<h2>The <code>runes</code> Property</h2>
-<p>In this article, we'll explore Dart language's one of the String class property known as <code>runes</code> to retrieve UTF-16 unicodes.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/the-runes-property.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/runes.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/y9QpGpWpCbE">here</a></p>
-</li>
-</ul>
-<hr>
-<h2>The <code>runtimeType</code> Property</h2>
-<p>The <code>runtimeType</code> property is used to find out the runtime type of the object.</p>
-<ul>
-<li>
-<p>Read article <a href="https://ptyagicodecamp.github.io/the-runtimetype-property.html">here</a></p>
-</li>
-<li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/runtimeType.dart">here</a></p>
-</li>
-<li>
-<p>Youtube video is available <a href="https://youtu.be/2Oa5mJU3KUY">here</a></p>
-</li>
-</ul>
-<hr>
+<h1>References</h1>
+<ol>
+<li><a href="https://api.dart.dev/stable/2.8.4/dart-core/Function-class.html">Function type</a></li>
+<li><a href="https://dart.dev/guides/language/language-tour#callable-classes">Language Tour</a></li>
+</ol>
+<p>Happy Darting :)</p>
+<p>_Liked the article?
+Couldn't find a topic of interest? Please leave a comment or reach out at <a href="https://twitter.com/ptyagi13">twitter</a> about the topics you would like me to share!</p>
+<p><a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a>_</p>
+<p>Follow me at <a href="https://medium.com/@ptyagicodecamp">Medium</a></p>
   </div>
   <div class="tag-cloud">
     <p>
+      <a href="https://ptyagicodecamp.github.io/tag/callable-classes.html">callable-classes</a>
       <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>
-      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
       <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
       <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </div>
