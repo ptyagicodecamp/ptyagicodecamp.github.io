@@ -379,7 +379,7 @@ This option is great when there is no logic around the routes. For example, auth
 void main() =&gt; runApp(
       MaterialApp(
         debugShowCheckedModeBanner: false,
-//        home: PageListing(),
+        //home: PageListing(),
         //Part#2. Named route using Map
         routes: &lt;String, WidgetBuilder&gt;{
           &#39;/&#39;: (BuildContext context) =&gt; PageListing(),
@@ -413,18 +413,23 @@ void main() =&gt; runApp(
 <p>The <code>Navigator.push</code> returns a <code>Future</code> that completes after calling <code>Navigator.pop</code> on the PageDetails Screen. This is similar to what we discussed earlier.</p>
 <p><strong>_navigateToPageDetails(...):</strong></p>
 <p>This is similar to what we discussed earlier except <code>Navigator.pushNamed</code> is used for pushing the routes on the stack.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Launches</span> <span class="nt">PageDetails</span> <span class="nt">and</span> <span class="nt">awaits</span> <span class="nt">the</span> <span class="nt">results</span> <span class="nt">from</span> <span class="nt">Navigator</span><span class="p">.</span><span class="nc">pop</span><span class="o">()</span> <span class="nt">called</span> <span class="nt">from</span> <span class="nt">PageDetails</span><span class="o">.</span>
-<span class="nt">_navigateToPageDetails</span><span class="o">(</span><span class="nt">BuildContext</span> <span class="nt">context</span><span class="o">,</span> <span class="nt">Item</span> <span class="nt">item</span><span class="o">)</span> <span class="nt">async</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">PageListing</span> <span class="kr">extends</span> <span class="nx">StatelessWidget</span> <span class="p">{</span>
 
-  <span class="err">//Navigation</span> <span class="err">implementations</span> <span class="err">are</span> <span class="err">different</span> <span class="err">for</span> <span class="err">each</span> <span class="err">part.</span>
-  <span class="err">//Part#2.</span> <span class="err">Named</span> <span class="err">route</span> <span class="err">with</span> <span class="err">Maps</span>
-  <span class="err">final</span> <span class="err">result</span> <span class="err">=</span> <span class="err">await</span> <span class="err">Navigator.pushNamed(context,</span> <span class="err">&#39;/details&#39;)</span><span class="p">;</span>
+  <span class="p">...</span>
 
-  <span class="err">//snackbars</span> <span class="err">is</span> <span class="err">used</span> <span class="err">to</span> <span class="err">display</span> <span class="err">the</span> <span class="err">result</span> <span class="err">returned</span> <span class="err">from</span> <span class="err">another</span> <span class="err">page.</span>
-  <span class="err">//Hide</span> <span class="err">any</span> <span class="err">previous</span> <span class="err">snackbars</span> <span class="err">and</span> <span class="err">show</span> <span class="err">the</span> <span class="err">new</span> <span class="err">resultFromPageDetails.</span>
-  <span class="err">Scaffold.of(context)</span>
-    <span class="err">..removeCurrentSnackBar()</span>
-    <span class="err">..showSnackBar(SnackBar(</span><span class="k">content</span><span class="p">:</span> <span class="nf">Text</span><span class="p">(</span><span class="s2">&quot;$result&quot;</span><span class="p">)));</span>
+  <span class="c1">//Launches PageDetails and awaits the results from Navigator.pop() called from PageDetails.</span>
+  <span class="nx">_navigateToPageDetails</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">Item</span> <span class="nx">item</span><span class="p">)</span> <span class="nx">async</span> <span class="p">{</span>
+
+    <span class="c1">//Navigation implementations are different for each part.</span>
+    <span class="c1">//Part#2. Named route with Maps</span>
+    <span class="kr">final</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Navigator</span><span class="p">.</span><span class="nx">pushNamed</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="s1">&#39;/details&#39;</span><span class="p">);</span>
+
+    <span class="c1">//snackbars is used to display the result returned from another page.</span>
+    <span class="c1">//Hide any previous snackbars and show the new resultFromPageDetails.</span>
+    <span class="nx">Scaffold</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span>
+      <span class="p">..</span><span class="nx">removeCurrentSnackBar</span><span class="p">()</span>
+      <span class="p">..</span><span class="nx">showSnackBar</span><span class="p">(</span><span class="nx">SnackBar</span><span class="p">(</span><span class="nx">content</span>: <span class="kt">Text</span><span class="p">(</span><span class="s2">&quot;$result&quot;</span><span class="p">)));</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -497,21 +502,26 @@ void main() =&gt; runApp(
 <p>The <code>Navigator.push</code> returns a <code>Future</code> that completes after calling <code>Navigator.pop</code> on the PageDetails Screen. This is similar to what we discussed earlier.</p>
 <p><strong>_navigateToPageDetails(...):</strong></p>
 <p>This is similar to what we discussed earlier except <code>Navigator.pushNamed</code> is used to pass the data along in addition to pushing the named routes on the stack.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Launches</span> <span class="nt">PageDetails</span> <span class="nt">and</span> <span class="nt">awaits</span> <span class="nt">the</span> <span class="nt">results</span> <span class="nt">from</span> <span class="nt">Navigator</span><span class="p">.</span><span class="nc">pop</span><span class="o">()</span> <span class="nt">called</span> <span class="nt">from</span> <span class="nt">PageDetails</span><span class="o">.</span>
-<span class="nt">_navigateToPageDetails</span><span class="o">(</span><span class="nt">BuildContext</span> <span class="nt">context</span><span class="o">,</span> <span class="nt">Item</span> <span class="nt">item</span><span class="o">)</span> <span class="nt">async</span> <span class="p">{</span>
-  <span class="err">//Navigation</span> <span class="err">implementations</span> <span class="err">are</span> <span class="err">different</span> <span class="err">for</span> <span class="err">each</span> <span class="err">part.</span>
-  <span class="err">//Part#3.</span> <span class="err">Named</span> <span class="err">route</span> <span class="err">using</span> <span class="err">callback</span> <span class="err">function</span>
-  <span class="err">final</span> <span class="err">result</span> <span class="err">=</span> <span class="err">await</span> <span class="err">Navigator.pushNamed(</span>
-    <span class="err">context,</span>
-    <span class="err">&#39;/details&#39;,</span>
-    <span class="n">arguments</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
-  <span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">PageListing</span> <span class="kr">extends</span> <span class="nx">StatelessWidget</span> <span class="p">{</span>
 
-  <span class="err">//snackbars</span> <span class="err">is</span> <span class="err">used</span> <span class="err">to</span> <span class="err">display</span> <span class="err">the</span> <span class="err">result</span> <span class="err">returned</span> <span class="err">from</span> <span class="err">another</span> <span class="err">page.</span>
-  <span class="err">//Hide</span> <span class="err">any</span> <span class="err">previous</span> <span class="err">snackbars</span> <span class="err">and</span> <span class="err">show</span> <span class="err">the</span> <span class="err">new</span> <span class="err">resultFromPageDetails.</span>
-  <span class="err">Scaffold.of(context)</span>
-    <span class="err">..removeCurrentSnackBar()</span>
-    <span class="err">..showSnackBar(SnackBar(</span><span class="k">content</span><span class="p">:</span> <span class="nf">Text</span><span class="p">(</span><span class="s2">&quot;$result&quot;</span><span class="p">)));</span>
+  <span class="p">...</span>
+
+  <span class="c1">//Launches PageDetails and awaits the results from Navigator.pop() called from PageDetails.</span>
+  <span class="nx">_navigateToPageDetails</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">Item</span> <span class="nx">item</span><span class="p">)</span> <span class="nx">async</span> <span class="p">{</span>
+    <span class="c1">//Navigation implementations are different for each part.</span>
+    <span class="c1">//Part#3. Named route using callback function</span>
+    <span class="kr">final</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Navigator</span><span class="p">.</span><span class="nx">pushNamed</span><span class="p">(</span>
+      <span class="nx">context</span><span class="p">,</span>
+      <span class="s1">&#39;/details&#39;</span><span class="p">,</span>
+      <span class="nx">arguments</span>: <span class="kt">item</span><span class="p">,</span>
+    <span class="p">);</span>
+
+    <span class="c1">//snackbars is used to display the result returned from another page.</span>
+    <span class="c1">//Hide any previous snackbars and show the new resultFromPageDetails.</span>
+    <span class="nx">Scaffold</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span>
+      <span class="p">..</span><span class="nx">removeCurrentSnackBar</span><span class="p">()</span>
+      <span class="p">..</span><span class="nx">showSnackBar</span><span class="p">(</span><span class="nx">SnackBar</span><span class="p">(</span><span class="nx">content</span>: <span class="kt">Text</span><span class="p">(</span><span class="s2">&quot;$result&quot;</span><span class="p">)));</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 

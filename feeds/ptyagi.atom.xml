@@ -279,7 +279,7 @@ This option is great when there is no logic around the routes. For example, auth
 void main() =&amp;gt; runApp(
       MaterialApp(
         debugShowCheckedModeBanner: false,
-//        home: PageListing(),
+        //home: PageListing(),
         //Part#2. Named route using Map
         routes: &amp;lt;String, WidgetBuilder&amp;gt;{
           &amp;#39;/&amp;#39;: (BuildContext context) =&amp;gt; PageListing(),
@@ -313,18 +313,23 @@ void main() =&amp;gt; runApp(
 &lt;p&gt;The &lt;code&gt;Navigator.push&lt;/code&gt; returns a &lt;code&gt;Future&lt;/code&gt; that completes after calling &lt;code&gt;Navigator.pop&lt;/code&gt; on the PageDetails Screen. This is similar to what we discussed earlier.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;_navigateToPageDetails(...):&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This is similar to what we discussed earlier except &lt;code&gt;Navigator.pushNamed&lt;/code&gt; is used for pushing the routes on the stack.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Launches&lt;/span&gt; &lt;span class="nt"&gt;PageDetails&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="nt"&gt;awaits&lt;/span&gt; &lt;span class="nt"&gt;the&lt;/span&gt; &lt;span class="nt"&gt;results&lt;/span&gt; &lt;span class="nt"&gt;from&lt;/span&gt; &lt;span class="nt"&gt;Navigator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;pop&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="nt"&gt;called&lt;/span&gt; &lt;span class="nt"&gt;from&lt;/span&gt; &lt;span class="nt"&gt;PageDetails&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;span class="nt"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;BuildContext&lt;/span&gt; &lt;span class="nt"&gt;context&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;Item&lt;/span&gt; &lt;span class="nt"&gt;item&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;PageListing&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 
-  &lt;span class="err"&gt;//Navigation&lt;/span&gt; &lt;span class="err"&gt;implementations&lt;/span&gt; &lt;span class="err"&gt;are&lt;/span&gt; &lt;span class="err"&gt;different&lt;/span&gt; &lt;span class="err"&gt;for&lt;/span&gt; &lt;span class="err"&gt;each&lt;/span&gt; &lt;span class="err"&gt;part.&lt;/span&gt;
-  &lt;span class="err"&gt;//Part#2.&lt;/span&gt; &lt;span class="err"&gt;Named&lt;/span&gt; &lt;span class="err"&gt;route&lt;/span&gt; &lt;span class="err"&gt;with&lt;/span&gt; &lt;span class="err"&gt;Maps&lt;/span&gt;
-  &lt;span class="err"&gt;final&lt;/span&gt; &lt;span class="err"&gt;result&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;await&lt;/span&gt; &lt;span class="err"&gt;Navigator.pushNamed(context,&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;/details&amp;#39;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;...&lt;/span&gt;
 
-  &lt;span class="err"&gt;//snackbars&lt;/span&gt; &lt;span class="err"&gt;is&lt;/span&gt; &lt;span class="err"&gt;used&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;display&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;result&lt;/span&gt; &lt;span class="err"&gt;returned&lt;/span&gt; &lt;span class="err"&gt;from&lt;/span&gt; &lt;span class="err"&gt;another&lt;/span&gt; &lt;span class="err"&gt;page.&lt;/span&gt;
-  &lt;span class="err"&gt;//Hide&lt;/span&gt; &lt;span class="err"&gt;any&lt;/span&gt; &lt;span class="err"&gt;previous&lt;/span&gt; &lt;span class="err"&gt;snackbars&lt;/span&gt; &lt;span class="err"&gt;and&lt;/span&gt; &lt;span class="err"&gt;show&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;new&lt;/span&gt; &lt;span class="err"&gt;resultFromPageDetails.&lt;/span&gt;
-  &lt;span class="err"&gt;Scaffold.of(context)&lt;/span&gt;
-    &lt;span class="err"&gt;..removeCurrentSnackBar()&lt;/span&gt;
-    &lt;span class="err"&gt;..showSnackBar(SnackBar(&lt;/span&gt;&lt;span class="k"&gt;content&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
+  &lt;span class="c1"&gt;//Launches PageDetails and awaits the results from Navigator.pop() called from PageDetails.&lt;/span&gt;
+  &lt;span class="nx"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//Navigation implementations are different for each part.&lt;/span&gt;
+    &lt;span class="c1"&gt;//Part#2. Named route with Maps&lt;/span&gt;
+    &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="nx"&gt;Navigator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pushNamed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/details&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//snackbars is used to display the result returned from another page.&lt;/span&gt;
+    &lt;span class="c1"&gt;//Hide any previous snackbars and show the new resultFromPageDetails.&lt;/span&gt;
+    &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;removeCurrentSnackBar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;showSnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;SnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;content&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -397,21 +402,26 @@ void main() =&amp;gt; runApp(
 &lt;p&gt;The &lt;code&gt;Navigator.push&lt;/code&gt; returns a &lt;code&gt;Future&lt;/code&gt; that completes after calling &lt;code&gt;Navigator.pop&lt;/code&gt; on the PageDetails Screen. This is similar to what we discussed earlier.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;_navigateToPageDetails(...):&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This is similar to what we discussed earlier except &lt;code&gt;Navigator.pushNamed&lt;/code&gt; is used to pass the data along in addition to pushing the named routes on the stack.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;Launches&lt;/span&gt; &lt;span class="nt"&gt;PageDetails&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="nt"&gt;awaits&lt;/span&gt; &lt;span class="nt"&gt;the&lt;/span&gt; &lt;span class="nt"&gt;results&lt;/span&gt; &lt;span class="nt"&gt;from&lt;/span&gt; &lt;span class="nt"&gt;Navigator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;pop&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="nt"&gt;called&lt;/span&gt; &lt;span class="nt"&gt;from&lt;/span&gt; &lt;span class="nt"&gt;PageDetails&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;span class="nt"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;BuildContext&lt;/span&gt; &lt;span class="nt"&gt;context&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;Item&lt;/span&gt; &lt;span class="nt"&gt;item&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="err"&gt;//Navigation&lt;/span&gt; &lt;span class="err"&gt;implementations&lt;/span&gt; &lt;span class="err"&gt;are&lt;/span&gt; &lt;span class="err"&gt;different&lt;/span&gt; &lt;span class="err"&gt;for&lt;/span&gt; &lt;span class="err"&gt;each&lt;/span&gt; &lt;span class="err"&gt;part.&lt;/span&gt;
-  &lt;span class="err"&gt;//Part#3.&lt;/span&gt; &lt;span class="err"&gt;Named&lt;/span&gt; &lt;span class="err"&gt;route&lt;/span&gt; &lt;span class="err"&gt;using&lt;/span&gt; &lt;span class="err"&gt;callback&lt;/span&gt; &lt;span class="err"&gt;function&lt;/span&gt;
-  &lt;span class="err"&gt;final&lt;/span&gt; &lt;span class="err"&gt;result&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;await&lt;/span&gt; &lt;span class="err"&gt;Navigator.pushNamed(&lt;/span&gt;
-    &lt;span class="err"&gt;context,&lt;/span&gt;
-    &lt;span class="err"&gt;&amp;#39;/details&amp;#39;,&lt;/span&gt;
-    &lt;span class="n"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;PageListing&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 
-  &lt;span class="err"&gt;//snackbars&lt;/span&gt; &lt;span class="err"&gt;is&lt;/span&gt; &lt;span class="err"&gt;used&lt;/span&gt; &lt;span class="err"&gt;to&lt;/span&gt; &lt;span class="err"&gt;display&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;result&lt;/span&gt; &lt;span class="err"&gt;returned&lt;/span&gt; &lt;span class="err"&gt;from&lt;/span&gt; &lt;span class="err"&gt;another&lt;/span&gt; &lt;span class="err"&gt;page.&lt;/span&gt;
-  &lt;span class="err"&gt;//Hide&lt;/span&gt; &lt;span class="err"&gt;any&lt;/span&gt; &lt;span class="err"&gt;previous&lt;/span&gt; &lt;span class="err"&gt;snackbars&lt;/span&gt; &lt;span class="err"&gt;and&lt;/span&gt; &lt;span class="err"&gt;show&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;new&lt;/span&gt; &lt;span class="err"&gt;resultFromPageDetails.&lt;/span&gt;
-  &lt;span class="err"&gt;Scaffold.of(context)&lt;/span&gt;
-    &lt;span class="err"&gt;..removeCurrentSnackBar()&lt;/span&gt;
-    &lt;span class="err"&gt;..showSnackBar(SnackBar(&lt;/span&gt;&lt;span class="k"&gt;content&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
+  &lt;span class="p"&gt;...&lt;/span&gt;
+
+  &lt;span class="c1"&gt;//Launches PageDetails and awaits the results from Navigator.pop() called from PageDetails.&lt;/span&gt;
+  &lt;span class="nx"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;//Navigation implementations are different for each part.&lt;/span&gt;
+    &lt;span class="c1"&gt;//Part#3. Named route using callback function&lt;/span&gt;
+    &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="nx"&gt;Navigator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pushNamed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="s1"&gt;&amp;#39;/details&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="nx"&gt;arguments&lt;/span&gt;: &lt;span class="kt"&gt;item&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//snackbars is used to display the result returned from another page.&lt;/span&gt;
+    &lt;span class="c1"&gt;//Hide any previous snackbars and show the new resultFromPageDetails.&lt;/span&gt;
+    &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;removeCurrentSnackBar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;showSnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;SnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;content&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
