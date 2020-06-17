@@ -150,10 +150,9 @@
     </script>
 
   <div>
-    <h1>IN PROGRESS: COMING SOON</h1>
-<p><img alt="TODO" src="https://ptyagicodecamp.github.io/TODO.jpg"></p>
+    <p><img alt="TODO" src="https://ptyagicodecamp.github.io/TODO.jpg"></p>
 <p><strong>Target Audience:</strong> Beginner</p>
-<p><strong>Recipe:</strong> Implement Navigation from home page to another page using three different ways.</p>
+<p><strong>Recipe:</strong> Implement Navigation from one page to another page using different ways.</p>
 <p><strong>Focus Widget:</strong> <a href="https://api.flutter.dev/flutter/widgets/Navigator-class.html">Navigator</a> Widget</p>
 <p><strong>Goals:</strong> We'll implement navigation from homepage's list item to its detailed view. In this recipe, we'll do two things:</p>
 <ul>
@@ -161,57 +160,396 @@
 <p><strong>User Interface:</strong>: Create a homepage, <code>PageListing</code> - consists of three items. Another page, <code>PageDetails</code> to display details for each item. Clicking on an item in <code>PageListing</code> page, will open the detailed view - <code>PageDetails</code> for that item.</p>
 </li>
 <li>
-<p><strong>Navigation:</strong> Implement navigation from PageListing (homepage) to PageDetails (details page).</p>
+<p><strong>Navigation:</strong> Implement navigation from PageListing (homepage) to PageDetails (details page) in three different ways.</p>
 </li>
 <li>
-<p>Sending data from PageListing to PageDetails page.</p>
+<p><strong>Send data:</strong> Sending data from PageListing to PageDetails page. The <code>Item</code> object is passed along to target page.</p>
 </li>
-<li>Receiving data from PageDetails page.</li>
+<li>
+<p><strong>Receive data:</strong> Receiving data from PageDetails page. <code>Navigator.pop()</code> is used to send text from PageDetails to PageListing page.</p>
+</li>
 </ul>
 <hr>
 <p><strong>Checkout the companion video tutorial:</strong>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <hr>
 <h1>Building Interface</h1>
+<p>First, we'll build two pages to navigate from one to another. The First page is called <code>PageListing</code> page/screen. The second page is <code>PageDetails</code> page/screen.</p>
 <h2><code>PageListing</code> Screen</h2>
+<p>The <code>PageListing</code> is a <code>StatelessWidget</code>. This the homepage of this sample app. It consists of three list items. Each item has a picture and sample title and subtitle as shown in the screenshot below. The appBar shows the name of the navigation/routing used.</p>
 <p><img alt="PageListing" src="https://ptyagicodecamp.github.io/nav-pagelisting.jpg"></p>
-<p>A minimal home page <code>PageListing</code> consists of three list items. Each item has a picture and sample title.</p>
-<h2><code>Item</code></h2>
-<p>A data model <code>Item</code> to represent each row in homepage's list.</p>
+<p>The items are stored in a global <code>List&lt;Item&gt; seasideList</code>.</p>
+<div class="highlight"><pre><span></span>List&lt;Item&gt; seasideList = [
+  Item(
+      name: &#39;Sea 1&#39;,
+      image: &#39;assets/images/sea2.jpg&#39;,
+      details: &quot;Ocean view for Sea 1&quot;),
+  Item(
+      name: &#39;Sea 2&#39;,
+      image: &#39;assets/images/sea3.jpg&#39;,
+      details: &quot;Ocean view for Sea 2&quot;),
+  Item(
+      name: &#39;Sea 3&#39;,
+      image: &#39;assets/images/sea-rocks.jpg&#39;,
+      details: &quot;Ocean view for Sea 3&quot;)
+];
+</pre></div>
+
+
+<p>The <code>PageListing</code> implementation:</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">PageListing</span> <span class="kr">extends</span> <span class="nx">StatelessWidget</span> <span class="p">{</span>
+  <span class="kd">@override</span>
+  <span class="nx">Widget</span> <span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Scaffold</span><span class="p">(</span>
+      <span class="c1">//Shows the name of navigation type/routing used</span>
+      <span class="nx">appBar</span>: <span class="kt">AppBar</span><span class="p">(</span>
+        <span class="nx">title</span>: <span class="kt">Text</span><span class="p">(</span><span class="s1">&#39;Un-Named Routes&#39;</span><span class="p">),</span>
+      <span class="p">),</span>
+      <span class="nx">body</span>: <span class="kt">ListView.builder</span><span class="p">(</span>
+          <span class="nx">itemCount</span>: <span class="kt">seasideList</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="nx">seasideList.length</span> : <span class="kt">0</span><span class="p">,</span>
+          <span class="nx">itemBuilder</span><span class="o">:</span> <span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">,</span> <span class="kr">int</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">ListTile</span><span class="p">(</span>
+              <span class="nx">leading</span>: <span class="kt">CircleAvatar</span><span class="p">(</span>
+                <span class="nx">backgroundImage</span>: <span class="kt">ExactAssetImage</span><span class="p">(</span><span class="nx">seasideList</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">image</span><span class="p">),</span>
+              <span class="p">),</span>
+              <span class="nx">title</span>: <span class="kt">Text</span><span class="p">(</span><span class="s2">&quot;${seasideList[index].name}&quot;</span><span class="p">),</span>
+              <span class="nx">subtitle</span>: <span class="kt">Text</span><span class="p">(</span><span class="s2">&quot;${seasideList[index].details}&quot;</span><span class="p">),</span>
+              <span class="nx">onTap</span><span class="o">:</span> <span class="p">()</span> <span class="p">{</span>
+                 <span class="c1">//Tapping on listItem navigates to PageDetails</span>
+                <span class="nx">_navigateToPageDetails</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">seasideList</span><span class="p">[</span><span class="nx">index</span><span class="p">]);</span>
+              <span class="p">},</span>
+            <span class="p">);</span>
+          <span class="p">}),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">//Launches PageDetails and awaits the results from Navigator.pop() called from PageDetails.</span>
+  <span class="nx">_navigateToPageDetails</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">Item</span> <span class="nx">item</span><span class="p">)</span> <span class="nx">async</span> <span class="p">{</span>
+
+    <span class="c1">//Holds the results returned from PageDetails.</span>
+    <span class="kr">final</span> <span class="nx">resultFromPageDetails</span><span class="p">;</span>
+
+    <span class="c1">//TODO: Navigation implementations are discussed in upcoming Navigation section of this article</span>
+
+    <span class="c1">//snackbars is used to display the result returned from another page.</span>
+    <span class="c1">//Hide any previous snackbars and show the new resultFromPageDetails.</span>
+    <span class="nx">Scaffold</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span>
+      <span class="p">..</span><span class="nx">removeCurrentSnackBar</span><span class="p">()</span>
+      <span class="p">..</span><span class="nx">showSnackBar</span><span class="p">(</span><span class="nx">SnackBar</span><span class="p">(</span><span class="nx">content</span>: <span class="kt">Text</span><span class="p">(</span><span class="s2">&quot;$resultFromPageDetails&quot;</span><span class="p">)));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr>
 <h2><code>PageDetails</code> Screen</h2>
+<p>This page displays details for the homepage's list items. It's a simple page displaying item's image, details and its name in appBar. It has a <code>FloatingActionButton</code> or FAB in the bottom-right corner. Clicking on this navigates back to home page with a message that the item is marked as favorite. This is used to demonstrate passing data from detailed page back to homepage.</p>
 <p><img alt="PageDetails" src="https://ptyagicodecamp.github.io/nav-pagedetails.jpg"></p>
-<p>A page to show list entry <code>Item</code>'s detailed view. It's a simple page displaying item's image, details and its name in appBar.</p>
-<h2>FAB on <code>PageDetails</code> Screen</h2>
-<p>There's a <code>floatingActionButton</code> in <code>PageDetails</code> to demonstrate passing data from detailed page back to homepage.</p>
+<p>The <code>PageDetails</code> implementation:</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">PageDetails</span> <span class="kr">extends</span> <span class="nx">StatelessWidget</span> <span class="p">{</span>
+  <span class="kr">final</span> <span class="nx">Item</span> <span class="nx">item</span><span class="p">;</span>
+
+  <span class="kr">const</span> <span class="nx">PageDetails</span><span class="p">({</span><span class="nx">Key</span> <span class="nx">key</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">item</span><span class="p">})</span> <span class="o">:</span> <span class="kr">super</span><span class="p">(</span><span class="nx">key</span>: <span class="kt">key</span><span class="p">);</span>
+
+  <span class="kd">@override</span>
+  <span class="nx">Widget</span> <span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Scaffold</span><span class="p">(</span>
+      <span class="nx">appBar</span>: <span class="kt">AppBar</span><span class="p">(</span>
+        <span class="nx">title</span>: <span class="kt">Text</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">),</span>
+      <span class="p">),</span>
+      <span class="nx">body</span>: <span class="kt">Column</span><span class="p">(</span>
+        <span class="nx">children</span><span class="o">:</span> <span class="p">[</span>
+          <span class="nx">Image</span><span class="p">.</span><span class="nx">asset</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">image</span><span class="p">),</span>
+          <span class="nx">SizedBox</span><span class="p">(</span>
+            <span class="nx">height</span>: <span class="kt">10</span><span class="p">,</span>
+          <span class="p">),</span>
+          <span class="nx">Text</span><span class="p">(</span>
+            <span class="nx">item</span><span class="p">.</span><span class="nx">details</span><span class="p">,</span>
+            <span class="nx">style</span>: <span class="kt">TextStyle</span><span class="p">(</span><span class="nx">fontWeight</span>: <span class="kt">FontWeight.bold</span><span class="p">,</span> <span class="nx">fontSize</span>: <span class="kt">20</span><span class="p">),</span>
+          <span class="p">),</span>
+        <span class="p">],</span>
+      <span class="p">),</span>
+      <span class="nx">floatingActionButton</span>: <span class="kt">FloatingActionButton</span><span class="p">(</span>
+        <span class="nx">child</span>: <span class="kt">Icon</span><span class="p">(</span><span class="nx">Icons</span><span class="p">.</span><span class="nx">favorite_border</span><span class="p">),</span>
+        <span class="nx">onPressed</span><span class="o">:</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="c1">//Current item&#39;s name along with message is sent back to last screen</span>
+          <span class="nx">Navigator</span><span class="p">.</span><span class="nx">pop</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="s1">&#39;${item.name} is marked as favorite.&#39;</span><span class="p">);</span>
+        <span class="p">},</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2><code>Item</code></h2>
+<p>The <code>Item</code> is a data model to represent each row in homepage's list.</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Item</span> <span class="p">{</span>
+  <span class="kr">final</span> <span class="nb">String</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="kr">final</span> <span class="nb">String</span> <span class="nx">image</span><span class="p">;</span>
+  <span class="kr">final</span> <span class="nb">String</span> <span class="nx">details</span><span class="p">;</span>
+  <span class="nx">Item</span><span class="p">({</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">image</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">details</span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr>
 <h1>Navigation</h1>
-<p>There are three ways to create navigation in Flutter
-  - Direct Navigation: Direct navigation is implemented with <a href="https://api.flutter.dev/flutter/material/MaterialPageRoute-class.html">MaterialPageRoute</a>. This is also known as un-named routing.
-  - Static Navigation: Static navigation is implemented by assigning a map of routes to MaterialApp's <code>routes</code> property. The route name is pushed using <code>Navigator.pushNamed(...)</code>.  This is known as Named Routing.
-  - Dynamic Navigation: In this navigation, routes are generated by implementing <code>onGenerateRoute</code> callback in the <code>MaterialApp</code> class. This is a type of Named Routing as well.</p>
-<h2>Un-Named Routing</h2>
+<p>There are three ways to create navigation in Flutter:</p>
+<ul>
+<li>
+<p>Direct Navigation: Direct navigation is implemented with <a href="https://api.flutter.dev/flutter/material/MaterialPageRoute-class.html">MaterialPageRoute</a>. This is also known as un-named routing.</p>
+</li>
+<li>
+<p>Static Navigation: Static navigation is implemented by assigning a map of routes to MaterialApp's <code>routes</code> property. The route name is pushed using <code>Navigator.pushNamed(...)</code>.  This is known as Named Routing.</p>
+</li>
+<li>
+<p>Dynamic Navigation: In this navigation, routes are generated by implementing <code>onGenerateRoute</code> callback in the <code>MaterialApp</code> class. This is a type of Named Routing as well.</p>
+</li>
+</ul>
+<p>Let's go ahead and check out navigation implementations.</p>
+<h2>Direct Navigation</h2>
+<p>Direct navigation is also known as un-named routing. It is implemented with <a href="https://api.flutter.dev/flutter/material/MaterialPageRoute-class.html">MaterialPageRoute</a>. The <code>MaterialPageRoutes</code> is pushed directly to the navigator. This approach contributes to boilerplate code which multiplies with growing screens/pages. It is very hard to keep track of logic around these routes since its spread out in multiple classes.</p>
 <p><img alt="Un-Named-Navigation" src="https://ptyagicodecamp.github.io/unnamed-navigation.jpg"></p>
-<p>In un-name routing, the <code>MaterialPageRoutes</code> is pushed directly to the navigator. This approach contributes to boilerplate code which multiplies with growing screens/pages. It is very hard to keep track of logic around these routes since its spread out in multiple classes.</p>
-<h2>Named Routing Using <code>routes</code> Property</h2>
-<p><img alt="Named-Navigation-static" src="https://ptyagicodecamp.github.io/named-navigation-map.jpg"></p>
+<p><strong>Entry point:</strong></p>
+<p>The <code>MaterialApp</code> assigns <code>PageListing</code> screen as its <code>home</code> property.</p>
+<div class="highlight"><pre><span></span>//Using Direct Navigation (un-named routing)
+void main() =&gt; runApp(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: PageListing(),
+      ),
+    );
+</pre></div>
+
+
+<p><strong>Navigation Implementation:</strong></p>
+<p>The <a href="https://api.flutter.dev/flutter/widgets/Navigator/push.html"><code>Navigator.push</code></a> is used to implement this routing. The <a href="https://api.flutter.dev/flutter/material/MaterialPageRoute-class.html"><code>MaterialPageRoute</code></a> is pushed on the <a href="https://api.flutter.dev/flutter/widgets/Navigator-class.html"><code>Navigator</code></a>. The Navigator is a widget that manages a set of child widgets as a stack. These child widgets are pages/screens pushed on the Navigator. Navigator refers to these children as <a href="https://api.flutter.dev/flutter/widgets/Route-class.html"><code>Route</code></a> object.</p>
+<p><strong>Sending Data:</strong></p>
+<p>The <code>MaterialPageRoute</code> uses <code>builder</code> to build the primary contents of the route (page/screen). The <code>Item</code> object is passed as argument to <code>PageDetails</code> widget.</p>
+<div class="highlight"><pre><span></span>MaterialPageRoute(
+  builder: (context) =&gt; PageDetails(
+    item: item,
+  ),
+),
+</pre></div>
+
+
+<p><strong>Receiving Data:</strong></p>
+<p>The <code>Navigator.push</code> returns a <code>Future</code> that completes after calling <code>Navigator.pop</code> on the PageDetails Screen.</p>
+<p><strong>_navigateToPageDetails(...):</strong></p>
+<p>The <code>_navigateToPageDetails(...)</code> is called on tapping a list item. The <code>PageDetails</code> route is pushed on the <code>Navigator</code>. The <code>Navigator.push</code> returns a <code>Future</code> which contains the data sent back from <code>Navigator.pop</code> in PageDetails widget. This data is stored in <code>resultFromPageDetails</code> variable, and displayed in a <a href="https://api.flutter.dev/flutter/material/SnackBar-class.html"><code>SnackBar</code> widget</a></p>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Launches</span> <span class="nt">PageDetails</span> <span class="nt">and</span> <span class="nt">awaits</span> <span class="nt">the</span> <span class="nt">results</span> <span class="nt">from</span> <span class="nt">Navigator</span><span class="p">.</span><span class="nc">pop</span><span class="o">()</span> <span class="nt">called</span> <span class="nt">from</span> <span class="nt">PageDetails</span><span class="o">.</span>
+<span class="nt">_navigateToPageDetails</span><span class="o">(</span><span class="nt">BuildContext</span> <span class="nt">context</span><span class="o">,</span> <span class="nt">Item</span> <span class="nt">item</span><span class="o">)</span> <span class="nt">async</span> <span class="p">{</span>
+
+  <span class="err">//Navigation</span> <span class="err">implementations</span> <span class="err">are</span> <span class="err">different</span> <span class="err">for</span> <span class="err">each</span> <span class="err">part.</span>
+  <span class="err">//Part#1.</span> <span class="err">Un-named</span>
+  <span class="err">final</span> <span class="err">resultFromPageDetails</span> <span class="err">=</span> <span class="err">await</span> <span class="err">Navigator.push(</span>
+    <span class="err">context,</span>
+    <span class="err">MaterialPageRoute(</span>
+      <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nf">PageDetails</span><span class="p">(</span>
+        <span class="n">item</span><span class="err">:</span> <span class="n">item</span><span class="p">,</span>
+      <span class="p">),</span>
+    <span class="p">),</span>
+  <span class="p">);</span>
+
+  <span class="err">//snackbars</span> <span class="err">is</span> <span class="err">used</span> <span class="err">to</span> <span class="err">display</span> <span class="err">the</span> <span class="err">result</span> <span class="err">returned</span> <span class="err">from</span> <span class="err">another</span> <span class="err">page.</span>
+  <span class="err">//Hide</span> <span class="err">any</span> <span class="err">previous</span> <span class="err">snackbars</span> <span class="err">and</span> <span class="err">show</span> <span class="err">the</span> <span class="err">new</span> <span class="err">resultFromPageDetails.</span>
+  <span class="err">Scaffold.of(context)</span>
+    <span class="err">..removeCurrentSnackBar()</span>
+    <span class="err">..showSnackBar(SnackBar(</span><span class="k">content</span><span class="p">:</span> <span class="nf">Text</span><span class="p">(</span><span class="s2">&quot;$resultFromPageDetails&quot;</span><span class="p">)));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr>
+<h2>Static Navigation</h2>
+<p>The static navigation is implemented by assigning a <code>Map</code> of routes (pages/screens) to MaterialApp's <code>routes</code> property. The route name is pushed using <code>Navigator.pushNamed(...)</code>. This is known as Named Routing because each page is given a unique name, which is pushed on <code>Naviagtor</code> widget.</p>
 <p>The MaterialApp and WidgetApp provides the <code>routes</code> property. This property allows to specify routes in <code>Map&lt;String, WidgetBuilder&gt;</code>.
 This option is great when there is no logic around the routes. For example, authentication or verification before you show the page. Only the data available global to app can be passed on to the second page.</p>
-<h2>Dynamic Named Routing Using <code>onGenerateRoute</code> Property</h2>
+<p><img alt="Named-Navigation-static" src="https://ptyagicodecamp.github.io/named-navigation-map.jpg"></p>
+<p><strong>Entry point:</strong></p>
+<p>In this application, there are two ways to assign the initial page, <code>PageListing()</code>. One way is to assign <code>PageListing()</code> widget to <code>home</code> property. Another ways is to assign a <code>Map</code> containing &lt;<code>/</code>, <code>PageListing()</code>&gt; entry to <code>routes</code> property. The <code>/</code> represents the home page mapping.</p>
+<div class="highlight"><pre><span></span>//Using Static Navigation
+void main() =&gt; runApp(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+//        home: PageListing(),
+        //Part#2. Named route using Map
+        routes: &lt;String, WidgetBuilder&gt;{
+          &#39;/&#39;: (BuildContext context) =&gt; PageListing(),
+          &#39;/details&#39;: (BuildContext context) =&gt; PageDetails(
+                item: seasideList[0],
+              ),
+        },
+      ),
+    );
+</pre></div>
+
+
+<p><strong>Navigation Implementation:</strong></p>
+<p>All routes/pages have entries in routes table above. The <code>Map</code> entry '&lt;<code>/details</code>, <code>PageDetails()</code>&gt;' is added to navigate to the PageDetails page. The <code>/details</code> is the alias/name to the PageDetails page. This name is pushed on the <code>Naviagtor</code> widget using <a href="https://api.flutter.dev/flutter/widgets/Navigator/pushNamed.html"><code>Naviagtor.pushNamed</code></a>.</p>
+<div class="highlight"><pre><span></span>Navigator.pushNamed(context, &#39;/details&#39;)
+</pre></div>
+
+
+<p><strong>Sending Data:</strong></p>
+<p>The data can be passed to the PageDetails at the top-level only where the routes are assigned to <code>routes</code> property. In this case, only globally available data can be passed. In this implementation, only first item <code>seasideList[0]</code> detail page will open for any selection on the homepage.</p>
+<div class="highlight"><pre><span></span>routes: &lt;String, WidgetBuilder&gt;{
+  &#39;/&#39;: (BuildContext context) =&gt; PageListing(),
+  &#39;/details&#39;: (BuildContext context) =&gt; PageDetails(
+        item: seasideList[0],
+      ),
+},
+</pre></div>
+
+
+<p><strong>Receiving Data:</strong></p>
+<p>The <code>Navigator.push</code> returns a <code>Future</code> that completes after calling <code>Navigator.pop</code> on the PageDetails Screen. This is similar to what we discussed earlier.</p>
+<p><strong>_navigateToPageDetails(...):</strong></p>
+<p>This is similar to what we discussed earlier except <code>Navigator.pushNamed</code> is used for pushing the routes on the stack.</p>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Launches</span> <span class="nt">PageDetails</span> <span class="nt">and</span> <span class="nt">awaits</span> <span class="nt">the</span> <span class="nt">results</span> <span class="nt">from</span> <span class="nt">Navigator</span><span class="p">.</span><span class="nc">pop</span><span class="o">()</span> <span class="nt">called</span> <span class="nt">from</span> <span class="nt">PageDetails</span><span class="o">.</span>
+<span class="nt">_navigateToPageDetails</span><span class="o">(</span><span class="nt">BuildContext</span> <span class="nt">context</span><span class="o">,</span> <span class="nt">Item</span> <span class="nt">item</span><span class="o">)</span> <span class="nt">async</span> <span class="p">{</span>
+
+  <span class="err">//Navigation</span> <span class="err">implementations</span> <span class="err">are</span> <span class="err">different</span> <span class="err">for</span> <span class="err">each</span> <span class="err">part.</span>
+  <span class="err">//Part#2.</span> <span class="err">Named</span> <span class="err">route</span> <span class="err">with</span> <span class="err">Maps</span>
+  <span class="err">final</span> <span class="err">result</span> <span class="err">=</span> <span class="err">await</span> <span class="err">Navigator.pushNamed(context,</span> <span class="err">&#39;/details&#39;)</span><span class="p">;</span>
+
+  <span class="err">//snackbars</span> <span class="err">is</span> <span class="err">used</span> <span class="err">to</span> <span class="err">display</span> <span class="err">the</span> <span class="err">result</span> <span class="err">returned</span> <span class="err">from</span> <span class="err">another</span> <span class="err">page.</span>
+  <span class="err">//Hide</span> <span class="err">any</span> <span class="err">previous</span> <span class="err">snackbars</span> <span class="err">and</span> <span class="err">show</span> <span class="err">the</span> <span class="err">new</span> <span class="err">resultFromPageDetails.</span>
+  <span class="err">Scaffold.of(context)</span>
+    <span class="err">..removeCurrentSnackBar()</span>
+    <span class="err">..showSnackBar(SnackBar(</span><span class="k">content</span><span class="p">:</span> <span class="nf">Text</span><span class="p">(</span><span class="s2">&quot;$result&quot;</span><span class="p">)));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>Dynamic Navigation</h2>
+<p>Named Routing Using <code>onGenerateRoute</code> Property</p>
+<p>In dynamic navigation, routes are generated by implementing <code>onGenerateRoute</code> callback in the <code>MaterialApp</code> class. This is a type of Named Routing as well.</p>
+<p>The MaterialApp and WidgetApp provides the <code>onGenerateRoute</code> property. It lets you specify a function, say <code>generateRoute</code> returning a route. It allows the data pass using <a href="https://api.flutter.dev/flutter/widgets/RouteSettings-class.html"><code>RouteSettings</code></a>. It carries the data that might be useful in constructing a Route.</p>
+<p>Any verification logic can be easily be applied before showing the target page. There's always an option to default "not found" page when route or match is not found.</p>
 <p><img alt="Named-Navigation-dynamic" src="https://ptyagicodecamp.github.io/named-navigation-generate.jpg"></p>
-<p>The MaterialApp and WidgetApp provides the <code>onGenerateRoute</code> property. It lets you specify a function returning a route. It can let the data pass using <code>settings</code>. Any verification logic can be easily be applied before showing the target page. There's always an option to default "not found" page when route or match is not found.</p>
-<h3>Passing Data to Second Screen - <code>PageDetails</code></h3>
-<h3>Receiving Data from Second Screen - <code>PageDetails</code></h3>
+<p><strong>Entry point:</strong></p>
+<p>The entry page is <code>PageListing</code> is assigned to <code>home</code> property. The <code>initialRoute</code> property can be used to pick the beginning route/page. The <code>generateRoute</code> callback function handles the navigational logic.</p>
+<div class="highlight"><pre><span></span>//Using Dynamic Navigation
+void main() =&gt; runApp(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: PageListing(),
+        //Part#3. Named with onGenerateRoute
+        initialRoute: &#39;/&#39;,
+        onGenerateRoute: generateRoute,
+      ),
+    );
+</pre></div>
+
+
+<p><strong>Navigation Implementation:</strong></p>
+<p>The <code>Navigator</code> use <code>Route</code> object to represent the page/screen. The <code>generateRoute()</code> function returns the appropriate route based on the matching name. The <code>RouteSettings</code> is useful in passing around these route names and arguments, if any. The route name is extracted using <code>routeSettings.name</code>. The arguments can be extracted using <code>routeSettings.arguments</code>. When no match is found, a common default page is shown to user displaying the appropriate message.</p>
+<div class="highlight"><pre><span></span>Route&lt;dynamic&gt; generateRoute(RouteSettings routeSettings) {
+  final args = routeSettings.arguments;
+
+  switch (routeSettings.name) {
+    case &#39;/&#39;:
+      return MaterialPageRoute(
+        builder: (context) =&gt; PageListing(),
+      );
+
+    case &#39;/details&#39;:
+      if (args is Item) {
+        return MaterialPageRoute(
+          builder: (context) =&gt; PageDetails(
+            item: args,
+          ),
+        );
+      }
+
+      return MaterialPageRoute(
+        builder: (context) =&gt; PageNotFound(),
+      );
+
+    default:
+      return MaterialPageRoute(
+        builder: (context) =&gt; PageNotFound(),
+      );
+  }
+}
+</pre></div>
+
+
+<p><strong>Sending Data:</strong></p>
+<p>This is similar to the last Named Routing approach with one more thing extra. In this approach, we can pass <code>item</code> as <code>arguments</code>. This <code>arguments</code> is extracted and passed to the <code>PageDetails</code> widget in <code>generateRoute</code> routing function.</p>
+<div class="highlight"><pre><span></span>Navigator.pushNamed(
+      context,
+      &#39;/details&#39;,
+      arguments: item,
+    )
+</pre></div>
+
+
+<p><strong>Receiving Data:</strong></p>
+<p>The <code>Navigator.push</code> returns a <code>Future</code> that completes after calling <code>Navigator.pop</code> on the PageDetails Screen. This is similar to what we discussed earlier.</p>
+<p><strong>_navigateToPageDetails(...):</strong></p>
+<p>This is similar to what we discussed earlier except <code>Navigator.pushNamed</code> is used to pass the data along in addition to pushing the named routes on the stack.</p>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Launches</span> <span class="nt">PageDetails</span> <span class="nt">and</span> <span class="nt">awaits</span> <span class="nt">the</span> <span class="nt">results</span> <span class="nt">from</span> <span class="nt">Navigator</span><span class="p">.</span><span class="nc">pop</span><span class="o">()</span> <span class="nt">called</span> <span class="nt">from</span> <span class="nt">PageDetails</span><span class="o">.</span>
+<span class="nt">_navigateToPageDetails</span><span class="o">(</span><span class="nt">BuildContext</span> <span class="nt">context</span><span class="o">,</span> <span class="nt">Item</span> <span class="nt">item</span><span class="o">)</span> <span class="nt">async</span> <span class="p">{</span>
+  <span class="err">//Navigation</span> <span class="err">implementations</span> <span class="err">are</span> <span class="err">different</span> <span class="err">for</span> <span class="err">each</span> <span class="err">part.</span>
+  <span class="err">//Part#3.</span> <span class="err">Named</span> <span class="err">route</span> <span class="err">using</span> <span class="err">callback</span> <span class="err">function</span>
+  <span class="err">final</span> <span class="err">result</span> <span class="err">=</span> <span class="err">await</span> <span class="err">Navigator.pushNamed(</span>
+    <span class="err">context,</span>
+    <span class="err">&#39;/details&#39;,</span>
+    <span class="n">arguments</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
+  <span class="p">);</span>
+
+  <span class="err">//snackbars</span> <span class="err">is</span> <span class="err">used</span> <span class="err">to</span> <span class="err">display</span> <span class="err">the</span> <span class="err">result</span> <span class="err">returned</span> <span class="err">from</span> <span class="err">another</span> <span class="err">page.</span>
+  <span class="err">//Hide</span> <span class="err">any</span> <span class="err">previous</span> <span class="err">snackbars</span> <span class="err">and</span> <span class="err">show</span> <span class="err">the</span> <span class="err">new</span> <span class="err">resultFromPageDetails.</span>
+  <span class="err">Scaffold.of(context)</span>
+    <span class="err">..removeCurrentSnackBar()</span>
+    <span class="err">..showSnackBar(SnackBar(</span><span class="k">content</span><span class="p">:</span> <span class="nf">Text</span><span class="p">(</span><span class="s2">&quot;$result&quot;</span><span class="p">)));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>PageNotFound:</strong></p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">PageNotFound</span> <span class="kr">extends</span> <span class="nx">StatelessWidget</span> <span class="p">{</span>
+  <span class="kd">@override</span>
+  <span class="nx">Widget</span> <span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Scaffold</span><span class="p">(</span>
+      <span class="nx">appBar</span>: <span class="kt">AppBar</span><span class="p">(</span>
+        <span class="nx">title</span>: <span class="kt">Text</span><span class="p">(</span><span class="s2">&quot;Page not found&quot;</span><span class="p">),</span>
+      <span class="p">),</span>
+      <span class="nx">body</span>: <span class="kt">Center</span><span class="p">(</span>
+        <span class="nx">child</span>: <span class="kt">Text</span><span class="p">(</span><span class="s2">&quot;Page is not available.&quot;</span><span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
 <hr>
 <h1>Source Code Repo</h1>
 <ul>
 <li>
-<p>Recipe source code for <code>TODO</code> class is available <a href="">here</a></p>
+<p>Source code for Direct Navigation (Un-Named Routing) is available <a href="">here</a></p>
+</li>
+<li>
+<p>Source code for Static Navigation (Named Routing with Map) is available <a href="">here</a></p>
+</li>
+<li>
+<p>Source code for Dynamic Navigation (Named Routing with callback function) is available <a href="">here</a></p>
 </li>
 <li>
 <p>Flutter Cookbook project's source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/">here</a></p>
 </li>
 </ul>
 <h1>References</h1>
-<p>1.</p>
+<ol>
+<li><a href="https://api.flutter.dev/flutter/widgets/Navigator/push.html"><code>Navigator.push</code></a></li>
+<li><a href="https://api.flutter.dev/flutter/material/MaterialPageRoute-class.html"><code>MaterialPageRoute</code></a></li>
+<li><a href="https://api.flutter.dev/flutter/widgets/Navigator/pushNamed.html"><code>Naviagtor.pushNamed</code></a></li>
+</ol>
 <p>Happy cooking with Flutter :)</p>
 <p><em>Liked the article?
 Couldn't find a topic of your interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write!
