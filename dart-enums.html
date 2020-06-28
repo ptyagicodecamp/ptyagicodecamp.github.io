@@ -149,7 +149,7 @@
   <div>
     <p><img alt="enums" src="https://ptyagicodecamp.github.io/enums.png"></p>
 <h1>Introduction</h1>
-<p>Enums (a.k.a Enumerated Types) was added as an experimental feature in <a href="https://news.dartlang.org/2014/11/dart-18-library-improvements-and.html">Dart 1.8 release</a>. Enums are like a class that represents a fixed number of constant values.</p>
+<p>Enumerated Types (a.k.a Enums) were added as an experimental feature in <a href="https://news.dartlang.org/2014/11/dart-18-library-improvements-and.html">Dart 1.8 release</a>. Enums are like a class that represents a fixed number of constant values.</p>
 <p>Imagine that you're working on a weather application, and you need a way to represent different states for weather. For example, weather can be sunny, cloudy or rainy. Now, you have two ways to represent these states in your code.</p>
 <h2>Using Constants</h2>
 <p>You can represent each state using a <code>const</code> <a href="https://dart.dev/guides/language/language-tour#keywords">keyword</a>.</p>
@@ -162,13 +162,17 @@ const RAINY = &#39;Rainy&#39;;
 <h2>Using Enumerated Types</h2>
 <p>Another way to represent the same information is to use enumerated types using the <code>enum</code> keyword.</p>
 <div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">Weather</span> {
-  <span class="n">SUNNY</span>,
-  <span class="n">CLOUDY</span>,
-  <span class="n">RAINY</span>,
+  <span class="n">sunny</span>,
+  <span class="n">cloudy</span>,
+  <span class="n">rainy</span>,
 }
 </pre></div>
 
 
+<blockquote>
+<p>Use <a href="https://dart.dev/guides/language/effective-dart/style#do-name-types-using-uppercamelcase">UpperCamelCase</a> for enums like <code>Weather</code>.</p>
+<p>Use <a href="https://dart.dev/guides/language/effective-dart/style#prefer-using-lowercamelcase-for-constant-names">lowerCamelCase</a> for enum values. For example: <code>sunny</code>, <code>cloudy</code>, and <code>rainy</code>.</p>
+</blockquote>
 <p>In the following section, let's explore the cases where using Enums make more sense.</p>
 <hr>
 <h1>Switch</h1>
@@ -176,7 +180,7 @@ const RAINY = &#39;Rainy&#39;;
 <h3>Using Constants</h3>
 <p>When different type of weather state is represented using <code>const</code>, it's okay with
 <code>switch</code> block to declare <code>case</code> block for one constant. <code>default</code> block is optional as well.
-There's no compilation error when only one case block for <code>SUNNY</code> is declared, without <code>default</code> block.</p>
+There's no compilation error when only one case block for <code>sunny</code> is declared, without <code>default</code> block.</p>
 <div class="highlight"><pre><span></span>//Using constants to display weather information
 void mainSwitchConstants() {
   const SUNNY = &#39;Sunny&#39;;
@@ -205,19 +209,19 @@ void mainSwitchConstants() {
 <p>Here's <code>switch</code> block with case blocks for all enum members:</p>
 <div class="highlight"><pre><span></span>//Using Enums to display weather information
 void mainSwitchEnums() {
-  var weather = Weather.SUNNY;
+  var weather = Weather.sunny;
 
   //Following code will complain about
   // not including other types of weather
   //OR use default
   switch (weather) {
-    case Weather.SUNNY:
+    case Weather.sunny:
       print(&quot;Sunny weather today!&quot;);
       break;
-    case Weather.CLOUDY:
+    case Weather.cloudy:
       print(&quot;Cloudy today!&quot;);
       break;
-    case Weather.RAINY:
+    case Weather.rainy:
       print(&quot;Rainy and gloomy weather.&quot;);
       break;
   }
@@ -233,7 +237,7 @@ void mainSwitchEnums() {
 <p>Check out the <code>switch</code> block when there's only <code>default</code> block is available. It prints the value of the current enum <code>weather</code>.</p>
 <div class="highlight"><pre><span></span>//Only default case. No compilation issue
 void mainSwitchEnumsDefault() {
-  var weather = Weather.SUNNY;
+  var weather = Weather.sunny;
 
   switch (weather) {
     default:
@@ -244,7 +248,7 @@ void mainSwitchEnumsDefault() {
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>Current weather:Weather.SUNNY
+<div class="highlight"><pre><span></span>Current weather:Weather.sunny
 </pre></div>
 
 
@@ -261,9 +265,9 @@ However, for enums, all the members of enums can be listed using <code>Weather.v
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>Weather.SUNNY
-Weather.CLOUDY
-Weather.RAINY
+<div class="highlight"><pre><span></span>Weather.sunny
+Weather.cloudy
+Weather.rainy
 </pre></div>
 
 
@@ -273,9 +277,9 @@ Weather.RAINY
 <div class="highlight"><pre><span></span>extension WeatherExt on Weather {
   //custom message for each weather type
   static const weatherMap = {
-    Weather.SUNNY: &quot;What a lovely weather&quot;,
-    Weather.CLOUDY: &quot;Scattered showers predicted&quot;,
-    Weather.RAINY: &quot;Will be raining today&quot;,
+    Weather.sunny: &quot;What a lovely weather&quot;,
+    Weather.cloudy: &quot;Scattered showers predicted&quot;,
+    Weather.rainy: &quot;Will be raining today&quot;,
   };
 
   //prints enum index and custom message

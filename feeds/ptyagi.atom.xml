@@ -3854,7 +3854,7 @@ Couldn't find a topic of your interest ? Please leave a comment or reach out at 
 &lt;p&gt;&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
 &lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;&lt;/p&gt;</content><category term="mixins"></category><category term="dart"></category><category term="cross-platform"></category><category term="flutter"></category><category term="code-recipes"></category><category term="development"></category></entry><entry><title>Dart Enums</title><link href="https://ptyagicodecamp.github.io/dart-enums.html" rel="alternate"></link><published>2020-04-14T00:00:00-04:00</published><updated>2020-04-14T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-04-14:/dart-enums.html</id><summary type="html">&lt;p&gt;This article explains Dart Enums and when and how to use them.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/enums.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Enums (a.k.a Enumerated Types) was added as an experimental feature in &lt;a href="https://news.dartlang.org/2014/11/dart-18-library-improvements-and.html"&gt;Dart 1.8 release&lt;/a&gt;. Enums are like a class that represents a fixed number of constant values.&lt;/p&gt;
+&lt;p&gt;Enumerated Types (a.k.a Enums) were added as an experimental feature in &lt;a href="https://news.dartlang.org/2014/11/dart-18-library-improvements-and.html"&gt;Dart 1.8 release&lt;/a&gt;. Enums are like a class that represents a fixed number of constant values.&lt;/p&gt;
 &lt;p&gt;Imagine that you're working on a weather application, and you need a way to represent different states for weather. For example, weather can be sunny, cloudy or rainy. Now, you have two ways to represent these states in your code.&lt;/p&gt;
 &lt;h2&gt;Using Constants&lt;/h2&gt;
 &lt;p&gt;You can represent each state using a &lt;code&gt;const&lt;/code&gt; &lt;a href="https://dart.dev/guides/language/language-tour#keywords"&gt;keyword&lt;/a&gt;.&lt;/p&gt;
@@ -3867,13 +3867,17 @@ const RAINY = &amp;#39;Rainy&amp;#39;;
 &lt;h2&gt;Using Enumerated Types&lt;/h2&gt;
 &lt;p&gt;Another way to represent the same information is to use enumerated types using the &lt;code&gt;enum&lt;/code&gt; keyword.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;enum&lt;/span&gt; &lt;span class="n"&gt;Weather&lt;/span&gt; {
-  &lt;span class="n"&gt;SUNNY&lt;/span&gt;,
-  &lt;span class="n"&gt;CLOUDY&lt;/span&gt;,
-  &lt;span class="n"&gt;RAINY&lt;/span&gt;,
+  &lt;span class="n"&gt;sunny&lt;/span&gt;,
+  &lt;span class="n"&gt;cloudy&lt;/span&gt;,
+  &lt;span class="n"&gt;rainy&lt;/span&gt;,
 }
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;blockquote&gt;
+&lt;p&gt;Use &lt;a href="https://dart.dev/guides/language/effective-dart/style#do-name-types-using-uppercamelcase"&gt;UpperCamelCase&lt;/a&gt; for enums like &lt;code&gt;Weather&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Use &lt;a href="https://dart.dev/guides/language/effective-dart/style#prefer-using-lowercamelcase-for-constant-names"&gt;lowerCamelCase&lt;/a&gt; for enum values. For example: &lt;code&gt;sunny&lt;/code&gt;, &lt;code&gt;cloudy&lt;/code&gt;, and &lt;code&gt;rainy&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;In the following section, let's explore the cases where using Enums make more sense.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Switch&lt;/h1&gt;
@@ -3881,7 +3885,7 @@ const RAINY = &amp;#39;Rainy&amp;#39;;
 &lt;h3&gt;Using Constants&lt;/h3&gt;
 &lt;p&gt;When different type of weather state is represented using &lt;code&gt;const&lt;/code&gt;, it's okay with
 &lt;code&gt;switch&lt;/code&gt; block to declare &lt;code&gt;case&lt;/code&gt; block for one constant. &lt;code&gt;default&lt;/code&gt; block is optional as well.
-There's no compilation error when only one case block for &lt;code&gt;SUNNY&lt;/code&gt; is declared, without &lt;code&gt;default&lt;/code&gt; block.&lt;/p&gt;
+There's no compilation error when only one case block for &lt;code&gt;sunny&lt;/code&gt; is declared, without &lt;code&gt;default&lt;/code&gt; block.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Using constants to display weather information
 void mainSwitchConstants() {
   const SUNNY = &amp;#39;Sunny&amp;#39;;
@@ -3910,19 +3914,19 @@ void mainSwitchConstants() {
 &lt;p&gt;Here's &lt;code&gt;switch&lt;/code&gt; block with case blocks for all enum members:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Using Enums to display weather information
 void mainSwitchEnums() {
-  var weather = Weather.SUNNY;
+  var weather = Weather.sunny;
 
   //Following code will complain about
   // not including other types of weather
   //OR use default
   switch (weather) {
-    case Weather.SUNNY:
+    case Weather.sunny:
       print(&amp;quot;Sunny weather today!&amp;quot;);
       break;
-    case Weather.CLOUDY:
+    case Weather.cloudy:
       print(&amp;quot;Cloudy today!&amp;quot;);
       break;
-    case Weather.RAINY:
+    case Weather.rainy:
       print(&amp;quot;Rainy and gloomy weather.&amp;quot;);
       break;
   }
@@ -3938,7 +3942,7 @@ void mainSwitchEnums() {
 &lt;p&gt;Check out the &lt;code&gt;switch&lt;/code&gt; block when there's only &lt;code&gt;default&lt;/code&gt; block is available. It prints the value of the current enum &lt;code&gt;weather&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Only default case. No compilation issue
 void mainSwitchEnumsDefault() {
-  var weather = Weather.SUNNY;
+  var weather = Weather.sunny;
 
   switch (weather) {
     default:
@@ -3949,7 +3953,7 @@ void mainSwitchEnumsDefault() {
 
 
 &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Current weather:Weather.SUNNY
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Current weather:Weather.sunny
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3966,9 +3970,9 @@ However, for enums, all the members of enums can be listed using &lt;code&gt;Wea
 
 
 &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Weather.SUNNY
-Weather.CLOUDY
-Weather.RAINY
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Weather.sunny
+Weather.cloudy
+Weather.rainy
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3978,9 +3982,9 @@ Weather.RAINY
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;extension WeatherExt on Weather {
   //custom message for each weather type
   static const weatherMap = {
-    Weather.SUNNY: &amp;quot;What a lovely weather&amp;quot;,
-    Weather.CLOUDY: &amp;quot;Scattered showers predicted&amp;quot;,
-    Weather.RAINY: &amp;quot;Will be raining today&amp;quot;,
+    Weather.sunny: &amp;quot;What a lovely weather&amp;quot;,
+    Weather.cloudy: &amp;quot;Scattered showers predicted&amp;quot;,
+    Weather.rainy: &amp;quot;Will be raining today&amp;quot;,
   };
 
   //prints enum index and custom message
