@@ -2368,7 +2368,7 @@ Instance of Type: Product
 
 &lt;hr&gt;
 &lt;h1&gt;Map&lt;/h1&gt;
-&lt;p&gt;In this example, a set of &lt;code&gt;String&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the set. Adding a different dataType &lt;code&gt;int&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
+&lt;p&gt;In this example, a Map of &lt;code&gt;String&lt;/code&gt; datatype is constructed using parameterized constructor - another example of using generics. One more item is added to the Map. Adding a different dataType &lt;code&gt;int&lt;/code&gt; will throw a compile time error.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void mainMap() {
   Map&lt;span class="nt"&gt;&amp;lt;int&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt; &lt;span class="err"&gt;String&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; theMap = {1: &amp;#39;Dart&amp;#39;};
   theMap[2] = &amp;#39;Flutter&amp;#39;;
@@ -2539,7 +2539,7 @@ Couldn't find a topic of your interest? Please leave a comment or reach out at &
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Let's understand this with help of the example of different people with different occupations: artist, engineer, doctor, and sportsman. Let's think in terms of OOP manner, represent people in their classes.&lt;/p&gt;
+&lt;p&gt;Let's understand this with help of the example of different people with different occupations: artist, engineer, doctor, and sportsman. Let's think in terms of OOP manner, representing people in their classes.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Person&lt;/code&gt; class: The most common properties could be abstracted in class &lt;code&gt;Person&lt;/code&gt; that other classes would extend from. Common properties (like age , name etc) and common behaviors (like eat and sleep) can go in here.&lt;/li&gt;
 &lt;/ul&gt;
@@ -2567,7 +2567,7 @@ Couldn't find a topic of your interest? Please leave a comment or reach out at &
 &lt;p&gt;&lt;code&gt;Boxer&lt;/code&gt; class: The boxer  &lt;strong&gt;&lt;em&gt;is a&lt;/em&gt;&lt;/strong&gt; type of Athlete. Athlete &lt;strong&gt;&lt;em&gt;is a&lt;/em&gt;&lt;/strong&gt; Person. Boxer does routine exercises as well practices punches.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;As we see from above that artist does sketching. Engineer does sketching as well as reading. Doctor does reading and exercise. The athlete does exercise. However boxer-a type of athlete, also does boxing.&lt;/p&gt;
+&lt;p&gt;As we see from above that artist does sketching. Engineer does sketching as well as reading. Doctor does reading and exercise. The athlete does exercise. The boxer-a type of athlete, also does boxing.&lt;/p&gt;
 &lt;p&gt;Let's see a visual representation in diagram below:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="enums" src="https://ptyagicodecamp.github.io/mixins0.png"&gt;&lt;/p&gt;
 &lt;p&gt;Such overlapping common behaviors can be extracted into mixins. Let's create mixins next.&lt;/p&gt;
