@@ -320,10 +320,10 @@ Stream Finished
 
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#4</a>.</p>
-<p>The difference between <code>listen</code> and <code>await for</code> is that in <code>listen</code> approach, code related with setting up stream executed first, and then events are printed. In the <code>await for</code> approach, events are printed as they come. This approach is works better when there are finite number of events in a stream, and stream does finish.</p>
+<p>The difference between <code>listen</code> and <code>await for</code> is that in <code>listen</code> approach, code related to creating stream executed first, and then events are printed. In the <code>await for</code> approach, events are printed as they come. This approach is works better when there are finite number of events in a stream, and stream does finish.</p>
 <hr>
 <h1>Processing Stream Events</h1>
-<p>In this example, let add the numbers delivered by stream and return the total. Let's call this new function <code>addEvents(...)</code>. Events from Stream is accessed using <code>await for</code>, and added one by one. The <code>addEvents(...)</code> function needs to be marked with <code>async</code> because it uses <code>await</code> inside the function. This method returns <code>Future&lt;int&gt;</code>. This future is accessed from <code>addNumbersInStream()</code> function using <code>await</code> and prints the total on console.</p>
+<p>In this example, let's add the numbers delivered by stream and return the total. Let's call this new function <code>addEvents(...)</code>. Events from Stream is accessed using <code>await for</code>, and added one by one. The <code>addEvents(...)</code> function needs to be marked with <code>async</code> because it uses <code>await</code> inside the function. This method returns <code>Future&lt;int&gt;</code>. This future is accessed from <code>addNumbersInStream()</code> function using <code>await</code> and prints the total on console.</p>
 <p><strong>Example#5.</strong></p>
 <div class="highlight"><pre><span></span>//Example#5. Processing (Adding) Stream using `await for`
 
