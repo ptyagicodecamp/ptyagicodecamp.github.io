@@ -29,7 +29,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; This code recipe should work on Flutter Web and/or Desktop to upload image as far as it's able to get reference to the &lt;code&gt;File&lt;/code&gt; on device. The &lt;code&gt;image_picker&lt;/code&gt; plugin to select an image is only supported on Android and iOS platforms.&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; This code recipe should work on Flutter Web and/or Desktop to upload image as far as it's able to get reference to the &lt;code&gt;File&lt;/code&gt; on device. The &lt;code&gt;image_picker&lt;/code&gt; plugin to select an image is only supported on Android and iOS platforms.&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1&gt;Step #2. Firebase Project review&lt;/h1&gt;
 &lt;p&gt;Check out my previous article on &lt;a href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html"&gt;loading image from Firebase Storage&lt;/a&gt; to set up Firebase project.
 In this code recipe, you'll need to configure firebase rule to write to the FirebaseStorage.&lt;/p&gt;
