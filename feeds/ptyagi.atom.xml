@@ -413,7 +413,7 @@
 Medium: @ptyagicodecamp&lt;/p&gt;</content><category term="flutter"></category><category term="code-recipes"></category><category term="android"></category><category term="android Studio"></category><category term="iOS"></category></entry><entry><title>Uploading Image to Firebase Storage in Flutter App (Android &amp; iOS)</title><link href="https://ptyagicodecamp.github.io/uploading-image-to-firebase-storage-in-flutter-app-android-ios.html" rel="alternate"></link><published>2020-08-16T00:00:00-04:00</published><updated>2020-08-16T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-08-16:/uploading-image-to-firebase-storage-in-flutter-app-android-ios.html</id><summary type="html">&lt;p&gt;Code recipe to demonstrate image uploading from Flutter app to Firebase Storage on Android &amp;amp; iOS platforms.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="FlutterUpload-banner" src="https://ptyagicodecamp.github.io/upload_image_banner.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Implement uploading image to Firebase Storage on Flutter Native.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; In this code recipe, we'll pick an image from from device camera or gallery and upload it to the Firebase Storage.
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; In this code recipe, we'll pick an image from device camera or gallery and upload it to the Firebase Storage.
 &lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; I'll be using Android emulator to demonstrate this code recipe. The camera functionality doesn't work in iOS simulator. You need an iOS device to use camera.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pick Image&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="FlutterUpload-addphoto" src="https://ptyagicodecamp.github.io/image_upload1.jpg"&gt;&lt;/p&gt;
@@ -523,16 +523,16 @@ In this code recipe, you'll need to configure firebase rule to write to the Fire
 &lt;hr&gt;
 &lt;h3&gt;References:&lt;/h3&gt;
 &lt;ol&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html"&gt;Loading image from Firebase Storage in Flutter App (Android, iOS &amp;amp; Web)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://firebase.google.com/docs/android/setup"&gt;Configure Firebase project for Flutter Native Android app&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://firebase.google.com/docs/ios/setup"&gt;Configure Firebase project for Flutter Native iOS app&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://firebase.google.com/docs/web/setup"&gt;Configuring Firebase project for Flutter Web app&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps.html"&gt;Previous article&lt;/a&gt; about supporting web and native app's from single source code.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Liked the article ?
-Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
-&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="FirebaseStorage"></category><category term="Flutter Web"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Lottie Animation in the Flutter Application</title><link href="https://ptyagicodecamp.github.io/lottie-animation-in-the-flutter-application.html" rel="alternate"></link><published>2020-07-14T00:00:00-04:00</published><updated>2020-07-14T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-07-14:/lottie-animation-in-the-flutter-application.html</id><summary type="html">&lt;p&gt;In this code recipe, you'll learn to integrate Lottie animation(s) in Flutter application(s).&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="TODO" src="https://ptyagicodecamp.github.io/TODO.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;_Liked the article?Liked the article? Let me know with 👏👏👏&lt;/p&gt;
+&lt;p&gt;Couldn't find a topic of interest? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;
+Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="FirebaseStorage"></category><category term="Flutter Web"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Lottie Animation in the Flutter Application</title><link href="https://ptyagicodecamp.github.io/lottie-animation-in-the-flutter-application.html" rel="alternate"></link><published>2020-07-14T00:00:00-04:00</published><updated>2020-07-14T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-07-14:/lottie-animation-in-the-flutter-application.html</id><summary type="html">&lt;p&gt;In this code recipe, you'll learn to integrate Lottie animation(s) in Flutter application(s).&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="TODO" src="https://ptyagicodecamp.github.io/TODO.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Integrate Lottie Animation in the Flutter application.&lt;/p&gt;
 &lt;hr&gt;
