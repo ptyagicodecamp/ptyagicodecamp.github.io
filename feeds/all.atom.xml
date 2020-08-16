@@ -1,5 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-07-14T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Lottie Animation in the Flutter Application</title><link href="https://ptyagicodecamp.github.io/lottie-animation-in-the-flutter-application.html" rel="alternate"></link><published>2020-07-14T00:00:00-04:00</published><updated>2020-07-14T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-07-14:/lottie-animation-in-the-flutter-application.html</id><summary type="html">&lt;p&gt;In this code recipe, you'll learn to integrate Lottie animation(s) in Flutter application(s).&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="TODO" src="https://ptyagicodecamp.github.io/TODO.jpg"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-08-16T00:00:00-04:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Uploading Image to Firebase Storage in Flutter App (Android &amp; iOS)</title><link href="https://ptyagicodecamp.github.io/uploading-image-to-firebase-storage-in-flutter-app-android-ios.html" rel="alternate"></link><published>2020-08-16T00:00:00-04:00</published><updated>2020-08-16T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-08-16:/uploading-image-to-firebase-storage-in-flutter-app-android-ios.html</id><summary type="html">&lt;p&gt;Code recipe to demonstrate image uploading from Flutter app to Firebase Storage on Android &amp;amp; iOS platforms.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="FlutterUpload-banner" src="https://ptyagicodecamp.github.io/upload_image_banner.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Implement uploading image to Firebase Storage on Flutter Native.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; In this code recipe, we'll pick an image from from device camera or gallery and upload it to the Firebase Storage.
+&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; I'll be using Android emulator to demonstrate this code recipe. The camera functionality doesn't work in iOS simulator. You need an iOS device to use camera.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pick Image&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="FlutterUpload-addphoto" src="https://ptyagicodecamp.github.io/image_upload1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Upload Image&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="FlutterUpload-displayphoto" src="https://ptyagicodecamp.github.io/image_upload2.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Checkout the Youtube video:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/nfrr5zdINSQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;hr&gt;
+&lt;h1&gt;Step #1. &lt;code&gt;pubspec.yaml&lt;/code&gt; dependencies&lt;/h1&gt;
+&lt;p&gt;Flutter plugin for accessing images in FirebaseStorage for Native apps:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;firebase_storage&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;3.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;
+  &lt;span class="n"&gt;firebase_core&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;0.4&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;
+  &lt;span class="n"&gt;firebase_analytics&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Image picker plugin to select an image from device or emulator:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dependencies:
+  #Picking image from gallery
+  image_picker: ^0.6.7+4
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; This code recipe should work on Flutter Web and/or Desktop to upload image as far as it's able to get reference to the &lt;code&gt;File&lt;/code&gt; on device. The &lt;code&gt;image_picker&lt;/code&gt; plugin to select an image is only supported on Android and iOS platforms.&lt;/h2&gt;
+&lt;h1&gt;Step #2. Firebase Project review&lt;/h1&gt;
+&lt;p&gt;Check out my previous article on &lt;a href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html"&gt;loading image from Firebase Storage&lt;/a&gt; to set up Firebase project.
+In this code recipe, you'll need to configure firebase rule to write to the FirebaseStorage.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Step #3. Picking Image&lt;/h1&gt;
+&lt;p&gt;An image file &lt;code&gt;_imageFile&lt;/code&gt; is selected on device and/or emulator using &lt;code&gt;ImagePicker&lt;/code&gt; Fluter plugin.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;UploadingImageToFirebaseStorage&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatefulWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;@override&lt;/span&gt;
+  &lt;span class="nx"&gt;_UploadingImageToFirebaseStorageState&lt;/span&gt; &lt;span class="nx"&gt;createState&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+      &lt;span class="nx"&gt;_UploadingImageToFirebaseStorageState&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_UploadingImageToFirebaseStorageState&lt;/span&gt;
+    &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;UploadingImageToFirebaseStorage&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;File&lt;/span&gt; &lt;span class="nx"&gt;_imageFile&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="c1"&gt;///NOTE: Only supported on Android &amp;amp; iOS&lt;/span&gt;
+  &lt;span class="c1"&gt;///Needs image_picker plugin {https://pub.dev/packages/image_picker}&lt;/span&gt;
+  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;picker&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;ImagePicker&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+  &lt;span class="nx"&gt;Future&lt;/span&gt; &lt;span class="nx"&gt;pickImage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="nx"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;pickedFile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="nx"&gt;picker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getImage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;source&lt;/span&gt;: &lt;span class="kt"&gt;ImageSource.camera&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="nx"&gt;setState&lt;/span&gt;&lt;span class="p"&gt;(()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="nx"&gt;_imageFile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;File&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;pickedFile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;path&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Step #4 Uploading Image to FirebaseStorage&lt;/h1&gt;
+&lt;p&gt;Once an image is selected using ImagePicker, it will be displayed in the screen. Clicking on 'Upload Image' button on screen will upload the image to Firebase Storage. Make sure that FirebaseStorage &lt;code&gt;write&lt;/code&gt; rules are configured appropriately. I'm temporarily enabling write access on FirebaseStorage access using &lt;code&gt;allow write: if true;&lt;/code&gt;. Make sure to disable it once you've confirmed the functionality. It's always good idea to put write access behind the successful user login.&lt;/p&gt;
+&lt;p&gt;The following code will take the image file on device and upload it to the &lt;code&gt;uploads&lt;/code&gt; folder in the FirebaseStorage.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;_UploadingImageToFirebaseStorageState&lt;/span&gt;
+    &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;State&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;UploadingImageToFirebaseStorage&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;File&lt;/span&gt; &lt;span class="nx"&gt;_imageFile&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="p"&gt;...&lt;/span&gt;
+
+  &lt;span class="nx"&gt;Future&lt;/span&gt; &lt;span class="nx"&gt;uploadImageToFirebase&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;fileName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;basename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_imageFile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;path&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;StorageReference&lt;/span&gt; &lt;span class="nx"&gt;firebaseStorageRef&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
+        &lt;span class="nx"&gt;FirebaseStorage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ref&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;child&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;uploads/$fileName&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;StorageUploadTask&lt;/span&gt; &lt;span class="nx"&gt;uploadTask&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;firebaseStorageRef&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;putFile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_imageFile&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;StorageTaskSnapshot&lt;/span&gt; &lt;span class="nx"&gt;taskSnapshot&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="nx"&gt;uploadTask&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;onComplete&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;taskSnapshot&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ref&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getDownloadURL&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Done: $value&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;iOS Info.list&lt;/h2&gt;
+&lt;p&gt;Don't forget to add camera related permissions to &lt;code&gt;Info.plist&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;key&amp;gt;&lt;/span&gt;NSCameraUsageDescription&lt;span class="nt"&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;Need to access your camera to capture a photo add and update profile picture.&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;key&amp;gt;&lt;/span&gt;NSPhotoLibraryUsageDescription&lt;span class="nt"&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;Need to access your photo library to select a photo add and update profile picture&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Source code repo&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Recipe source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/images"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Flutter Cookbook Project's source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://firebase.google.com/docs/android/setup"&gt;Configure Firebase project for Flutter Native Android app&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://firebase.google.com/docs/ios/setup"&gt;Configure Firebase project for Flutter Native iOS app&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://firebase.google.com/docs/web/setup"&gt;Configuring Firebase project for Flutter Web app&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ptyagicodecamp.github.io/migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps.html"&gt;Previous article&lt;/a&gt; about supporting web and native app's from single source code.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write !
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="FirebaseStorage"></category><category term="Flutter Web"></category><category term="Cross-platform"></category><category term="Flutter"></category><category term="Code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry><entry><title>Lottie Animation in the Flutter Application</title><link href="https://ptyagicodecamp.github.io/lottie-animation-in-the-flutter-application.html" rel="alternate"></link><published>2020-07-14T00:00:00-04:00</published><updated>2020-07-14T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-07-14:/lottie-animation-in-the-flutter-application.html</id><summary type="html">&lt;p&gt;In this code recipe, you'll learn to integrate Lottie animation(s) in Flutter application(s).&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="TODO" src="https://ptyagicodecamp.github.io/TODO.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Beginner&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Integrate Lottie Animation in the Flutter application.&lt;/p&gt;
 &lt;hr&gt;
