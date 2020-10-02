@@ -8,12 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+    <link rel="stylesheet/less" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/solid.css">
 
     <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
 
@@ -23,17 +30,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
-<!-- Google Analytics -->
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-133714063-1', 'auto');
-  ga('send', 'pageview');
-</script>
-<!-- End Google Analytics -->
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333333">
     <!-- Windows Phone -->
@@ -47,6 +44,7 @@
 <meta name="author" content="ptyagi" />
 <meta name="description" content="Implement a basic appBar with a title, actions, and an overflow dropdown menu." />
 <meta name="keywords" content="AppBar, cross-platform, flutter, code-recipes, android, android Studio, iOS, development">
+
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="Flutter code recipe for AppBar widget"/>
@@ -78,30 +76,64 @@
     });
   </script>
 </head>
-<body>
+<body class="light-theme">
   <aside>
     <div>
       <a href="https://ptyagicodecamp.github.io">
         <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="techLog" title="techLog">
       </a>
-      <h1><a href="https://ptyagicodecamp.github.io">techLog</a></h1>
+
+      <h1>
+        <a href="https://ptyagicodecamp.github.io">techLog</a>
+      </h1>
 
 <p>Explore | Android | Flutter | Software Engineering</p>
+
       <nav>
         <ul class="list">
 
-          <li><a href="https://www.paypal.me/pritya" target="_blank">Support</a></li>
-          <li><a href="https://www.codementor.io/ptyagicodecamp" target="_blank">Codementor</a></li>
+
+
+            <li>
+              <a target="_self" href="https://www.paypal.me/pritya" >Support</a>
+            </li>
+            <li>
+              <a target="_self" href="https://www.codementor.io/ptyagicodecamp" >Codementor</a>
+            </li>
         </ul>
       </nav>
 
       <ul class="social">
-        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-        <li><a class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank"><i class="fa fa-github"></i></a></li>
-        <li><a class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank"><i class="fa fa-medium"></i></a></li>
-        <li><a class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank"><i class="fa fa-twitter"></i></a></li>
-        <li><a class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a></li>
-        <li><a class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank"><i class="fa fa-codementor"></i></a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank">
+              <i class="fab fa-medium"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank">
+              <i class="fab fa-codementor"></i>
+            </a>
+          </li>
       </ul>
     </div>
 
@@ -112,20 +144,17 @@
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-
   </aside>
   <main>
 
     <nav>
-      <a href="https://ptyagicodecamp.github.io">    Home
-</a>
+      <a href="https://ptyagicodecamp.github.io">Home</a>
 
       <a href="/archives.html">Archives</a>
       <a href="/categories.html">Categories</a>
       <a href="/tags.html">Tags</a>
 
-      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">    Atom
-</a>
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">Atom</a>
 
     </nav>
 
@@ -134,8 +163,7 @@
       
     <h1 id="flutter-code-recipe-for-appbar-widget">Flutter code recipe for AppBar widget</h1>
     <p>
-          Posted on February 02, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
-
+      Posted on February 02, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
     </p>
   </header>
@@ -162,90 +190,90 @@ Clicking on action/overflow menu items displays status message.</p>
 <p><img alt="List item icon" src="https://ptyagicodecamp.github.io/basic_appbar.png"></p>
 <h3>Lets's go!</h3>
 <p>Step #1. Create AppBar inside <code>Scaffold</code>. <code>backgroundColor</code> is used for setting background color of the AppBar</p>
-<div class="highlight"><pre><span></span>return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        ...
-      ),
-    );
+<div class="highlight"><pre><span></span><span class="err">return Scaffold(</span>
+<span class="err">      appBar: AppBar(</span>
+<span class="err">        backgroundColor: Colors.blue,</span>
+<span class="err">        ...</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
 </pre></div>
 
 
 <p>Step #2. Add image Icon using <code>leading</code> attribute</p>
-<div class="highlight"><pre><span></span>return Scaffold(
-      appBar: AppBar(
-        ...
-        leading: Icon(Icons.import_contacts),
-        ...
-      ),
-    );
+<div class="highlight"><pre><span></span><span class="err">return Scaffold(</span>
+<span class="err">      appBar: AppBar(</span>
+<span class="err">        ...</span>
+<span class="err">        leading: Icon(Icons.import_contacts),</span>
+<span class="err">        ...</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
 </pre></div>
 
 
 <p>Step #3. Add AppBar's title</p>
-<div class="highlight"><pre><span></span>return Scaffold(
-      appBar: AppBar(
-        ...
-        title: Text(&quot;Contacts&quot;),
-        ...
-      ),
-    );
+<div class="highlight"><pre><span></span><span class="err">return Scaffold(</span>
+<span class="err">      appBar: AppBar(</span>
+<span class="err">        ...</span>
+<span class="err">        title: Text(&quot;Contacts&quot;),</span>
+<span class="err">        ...</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
 </pre></div>
 
 
 <p>Step #4. Add <code>IconButton</code> action item to send message.</p>
-<div class="highlight"><pre><span></span>return Scaffold(
-      appBar: AppBar(
-        ...
-        actions: &lt;Widget&gt;[
-          IconButton(
-            icon: Icon(Icons.message),
-            onPressed: () {
-              clicked(context, &quot;Message sent&quot;);
-            },
-          ),
-        ],
-      ),
-    );
+<div class="highlight"><pre><span></span><span class="err">return Scaffold(</span>
+<span class="err">      appBar: AppBar(</span>
+<span class="err">        ...</span>
+<span class="err">        actions: &lt;Widget&gt;[</span>
+<span class="err">          IconButton(</span>
+<span class="err">            icon: Icon(Icons.message),</span>
+<span class="err">            onPressed: () {</span>
+<span class="err">              clicked(context, &quot;Message sent&quot;);</span>
+<span class="err">            },</span>
+<span class="err">          ),</span>
+<span class="err">        ],</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
 </pre></div>
 
 
 <p>Step #5. Add overflow action item using <code>PopupMenuButton</code></p>
-<div class="highlight"><pre><span></span>return Scaffold(
-      appBar: AppBar(
-        ...
-        actions: &lt;Widget&gt;[
-          ...
-          PopupMenuButton(
-            itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem(child: IconButton(
-                  icon: Icon(Icons.email),
-                  onPressed: () {
-                   clicked(context, &quot;Email sent&quot;);
-                  },
-                ),),
-              ];
-            },
-          )
-        ],
-      ),
-    );
+<div class="highlight"><pre><span></span><span class="err">return Scaffold(</span>
+<span class="err">      appBar: AppBar(</span>
+<span class="err">        ...</span>
+<span class="err">        actions: &lt;Widget&gt;[</span>
+<span class="err">          ...</span>
+<span class="err">          PopupMenuButton(</span>
+<span class="err">            itemBuilder: (BuildContext context) {</span>
+<span class="err">              return [</span>
+<span class="err">                PopupMenuItem(child: IconButton(</span>
+<span class="err">                  icon: Icon(Icons.email),</span>
+<span class="err">                  onPressed: () {</span>
+<span class="err">                   clicked(context, &quot;Email sent&quot;);</span>
+<span class="err">                  },</span>
+<span class="err">                ),),</span>
+<span class="err">              ];</span>
+<span class="err">            },</span>
+<span class="err">          )</span>
+<span class="err">        ],</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
 </pre></div>
 
 
 <p>Step #6. Handle action item clicks</p>
-<div class="highlight"><pre><span></span>void clicked(BuildContext context, menu) {
-    final scaffold = Scaffold.of(context);
-    scaffold.showSnackBar(
-      SnackBar(
-        content: Text(menu),
-        action: SnackBarAction(
-            label: &#39;UNDO&#39;,
-            onPressed: scaffold.hideCurrentSnackBar),
-      ),
-    );
-}
+<div class="highlight"><pre><span></span><span class="err">void clicked(BuildContext context, menu) {</span>
+<span class="err">    final scaffold = Scaffold.of(context);</span>
+<span class="err">    scaffold.showSnackBar(</span>
+<span class="err">      SnackBar(</span>
+<span class="err">        content: Text(menu),</span>
+<span class="err">        action: SnackBarAction(</span>
+<span class="err">            label: &#39;UNDO&#39;,</span>
+<span class="err">            onPressed: scaffold.hideCurrentSnackBar),</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -354,8 +382,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
   </div>
 
   <div class="center social-share">
-    <p>    Like this article? Share it with your friends!
-</p>
+    <p>Like this article? Share it with your friends!</p>
     <div class="addthis_native_toolbox"></div>
     <div class="addthis_sharing_toolbox"></div>
     <div class="addthis_inline_share_toolbox"></div>
@@ -383,17 +410,17 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
     })();
 </script>
 <noscript>
-        Please enable JavaScript to view comments.
-
+    Please enable JavaScript to view comments.
 </noscript>
 <!-- End Disqus -->
 </article>
 
     <footer>
 <p>
-  &copy;  2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2020  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
-<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p><p>
   <a rel="license"
      href="http://creativecommons.org/licenses/by-sa/4.0/"
@@ -422,7 +449,6 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
   "description": "Mobile engineering tech logger."
 }
 </script>
-
 <a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
     <svg width="80"
          height="80"
@@ -441,5 +467,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
         </path>
     </svg>
 </a>
-<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></body>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+</body>
 </html>

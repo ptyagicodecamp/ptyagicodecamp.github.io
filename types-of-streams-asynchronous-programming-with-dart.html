@@ -8,12 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+    <link rel="stylesheet/less" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/solid.css">
 
     <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
 
@@ -23,17 +30,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
-<!-- Google Analytics -->
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-133714063-1', 'auto');
-  ga('send', 'pageview');
-</script>
-<!-- End Google Analytics -->
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333333">
     <!-- Windows Phone -->
@@ -47,6 +44,7 @@
 <meta name="author" content="ptyagi" />
 <meta name="description" content="This article is the third and last part of introduction to asynchronous programming with Dart, and covers types of Streams in Dart." />
 <meta name="keywords" content="Dart, Flutter">
+
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="Types of Streams: Asynchronous Programming with Dart"/>
@@ -72,30 +70,64 @@
     });
   </script>
 </head>
-<body>
+<body class="light-theme">
   <aside>
     <div>
       <a href="https://ptyagicodecamp.github.io">
         <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="techLog" title="techLog">
       </a>
-      <h1><a href="https://ptyagicodecamp.github.io">techLog</a></h1>
+
+      <h1>
+        <a href="https://ptyagicodecamp.github.io">techLog</a>
+      </h1>
 
 <p>Explore | Android | Flutter | Software Engineering</p>
+
       <nav>
         <ul class="list">
 
-          <li><a href="https://www.paypal.me/pritya" target="_blank">Support</a></li>
-          <li><a href="https://www.codementor.io/ptyagicodecamp" target="_blank">Codementor</a></li>
+
+
+            <li>
+              <a target="_self" href="https://www.paypal.me/pritya" >Support</a>
+            </li>
+            <li>
+              <a target="_self" href="https://www.codementor.io/ptyagicodecamp" >Codementor</a>
+            </li>
         </ul>
       </nav>
 
       <ul class="social">
-        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-        <li><a class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank"><i class="fa fa-github"></i></a></li>
-        <li><a class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank"><i class="fa fa-medium"></i></a></li>
-        <li><a class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank"><i class="fa fa-twitter"></i></a></li>
-        <li><a class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a></li>
-        <li><a class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank"><i class="fa fa-codementor"></i></a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank">
+              <i class="fab fa-medium"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank">
+              <i class="fab fa-codementor"></i>
+            </a>
+          </li>
       </ul>
     </div>
 
@@ -106,20 +138,17 @@
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-
   </aside>
   <main>
 
     <nav>
-      <a href="https://ptyagicodecamp.github.io">    Home
-</a>
+      <a href="https://ptyagicodecamp.github.io">Home</a>
 
       <a href="/archives.html">Archives</a>
       <a href="/categories.html">Categories</a>
       <a href="/tags.html">Tags</a>
 
-      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">    Atom
-</a>
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">Atom</a>
 
     </nav>
 
@@ -128,8 +157,7 @@
       
     <h1 id="types-of-streams-asynchronous-programming-with-dart">Types of Streams: Asynchronous Programming with Dart</h1>
     <p>
-          Posted on May 22, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
-
+      Posted on May 22, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
 
     </p>
   </header>
@@ -182,33 +210,33 @@
 </ol>
 <h2>Using <code>listen()</code></h2>
 <p><strong>Example#1.</strong></p>
-<div class="highlight"><pre><span></span>//This will generate a stream and return reference to it.
-Stream&lt;int&gt; createNumberStreamWithException(int last) async* {
-  for (int i = 1; i &lt;= last; i++) {
-    if (i == 5) {
-      throw new Exception(&quot;Demo exception when accessing 5th number&quot;);
-    }
-    yield i; //to be able to send spaced out events
-  }
-}
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">This</span> <span class="n">will</span> <span class="n">generate</span> <span class="n">a</span> <span class="n">stream</span> <span class="k">and</span> <span class="k">return</span> <span class="n">reference</span> <span class="k">to</span> <span class="n">it</span><span class="p">.</span>
+<span class="n">Stream</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="nb">int</span> <span class="k">last</span><span class="p">)</span> <span class="n">async</span><span class="o">*</span> <span class="err">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="k">last</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="err">{</span>
+      <span class="n">throw</span> <span class="k">new</span> <span class="k">Exception</span><span class="p">(</span><span class="ss">&quot;Demo exception when accessing 5th number&quot;</span><span class="p">);</span>
+    <span class="err">}</span>
+    <span class="n">yield</span> <span class="n">i</span><span class="p">;</span> <span class="o">//</span><span class="k">to</span> <span class="n">be</span> <span class="n">able</span> <span class="k">to</span> <span class="n">send</span> <span class="n">spaced</span> <span class="k">out</span> <span class="n">events</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 
-//Example#1. Subscribing to Stream using `listen()` method
-void subscribeUsingListen() {
-  Stream stream = createNumberStreamWithException(5);
+<span class="o">//</span><span class="n">Example</span><span class="o">#</span><span class="mi">1</span><span class="p">.</span> <span class="n">Subscribing</span> <span class="k">to</span> <span class="n">Stream</span> <span class="k">using</span> <span class="o">`</span><span class="k">listen</span><span class="p">()</span><span class="o">`</span> <span class="k">method</span>
+<span class="n">void</span> <span class="n">subscribeUsingListen</span><span class="p">()</span> <span class="err">{</span>
+  <span class="n">Stream</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
-  stream.listen(
-    (x) =&gt; print(&quot;number: $x&quot;),
-    onError: (err) =&gt; print(&quot;error: $err&quot;),
-    onDone: () =&gt; print(&quot;Done&quot;),
-  );
-}
-//----END----//
+  <span class="n">stream</span><span class="p">.</span><span class="k">listen</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="ss">&quot;number: $x&quot;</span><span class="p">),</span>
+    <span class="n">onError</span><span class="p">:</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="ss">&quot;error: $err&quot;</span><span class="p">),</span>
+    <span class="n">onDone</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="ss">&quot;Done&quot;</span><span class="p">),</span>
+  <span class="p">);</span>
+<span class="err">}</span>
+<span class="o">//</span><span class="c1">----END----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#1.
-  subscribeUsingListen();
-}
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="o">#</span><span class="mi">1</span><span class="p">.</span>
+  <span class="n">subscribeUsingListen</span><span class="p">();</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -227,42 +255,42 @@ void main() {
 <h2>Using Subscription's Handler</h2>
 <p>A Stream subscription handler can be get using passing <code>null</code> in the <code>listen()</code> like this <code>stream.listen(null)</code>.</p>
 <p><strong>Example#2.</strong></p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">This</span> <span class="nt">will</span> <span class="nt">generate</span> <span class="nt">a</span> <span class="nt">stream</span> <span class="nt">and</span> <span class="nt">return</span> <span class="nt">reference</span> <span class="nt">to</span> <span class="nt">it</span><span class="o">.</span>
-<span class="nt">Stream</span><span class="o">&lt;</span><span class="nt">int</span><span class="o">&gt;</span> <span class="nt">createNumberStreamWithException</span><span class="o">(</span><span class="nt">int</span> <span class="nt">last</span><span class="o">)</span> <span class="nt">async</span><span class="o">*</span> <span class="p">{</span>
-  <span class="err">for</span> <span class="err">(int</span> <span class="err">i</span> <span class="err">=</span> <span class="err">1</span><span class="p">;</span> <span class="err">i</span> <span class="err">&lt;=</span> <span class="err">last</span><span class="p">;</span> <span class="err">i++)</span> <span class="err">{</span>
-    <span class="err">if</span> <span class="err">(i</span> <span class="err">==</span> <span class="err">5)</span> <span class="err">{</span>
-      <span class="err">throw</span> <span class="err">new</span> <span class="err">Exception(&quot;Demo</span> <span class="err">exception</span> <span class="err">when</span> <span class="err">accessing</span> <span class="err">5th</span> <span class="err">number&quot;)</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">This</span> <span class="n">will</span> <span class="n">generate</span> <span class="n">a</span> <span class="n">stream</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">it</span><span class="o">.</span>
+<span class="n">Stream</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;</span> <span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">last</span><span class="p">)</span> <span class="n">async</span><span class="o">*</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">last</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">throw</span> <span class="n">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s2">&quot;Demo exception when accessing 5th number&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="nt">yield</span> <span class="nt">i</span><span class="o">;</span> <span class="o">//</span><span class="nt">to</span> <span class="nt">be</span> <span class="nt">able</span> <span class="nt">to</span> <span class="nt">send</span> <span class="nt">spaced</span> <span class="nt">out</span> <span class="nt">events</span>
-  <span class="err">}</span>
-<span class="err">}</span>
-
-<span class="o">//</span><span class="nt">Example</span><span class="p">#</span><span class="nn">2</span><span class="o">.</span> <span class="nt">Subscribing</span> <span class="nt">to</span> <span class="nt">Stream</span> <span class="nt">using</span> <span class="nt">subscription</span> <span class="nt">handler</span>
-<span class="nt">void</span> <span class="nt">subscribeUsingSubscriptionHandler</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">Stream</span> <span class="err">stream</span> <span class="err">=</span> <span class="err">createNumberStreamWithException(5)</span><span class="p">;</span>
-
-  <span class="err">var</span> <span class="err">subscription</span> <span class="err">=</span> <span class="err">stream.listen(null)</span><span class="p">;</span>
-  <span class="err">subscription.onData((x)</span> <span class="err">=&gt;</span> <span class="err">print(&quot;number</span> <span class="err">$x&quot;))</span><span class="p">;</span>
-  <span class="err">subscription.onError((err)</span> <span class="err">=&gt;</span> <span class="err">print(&quot;</span><span class="n">error</span><span class="p">:</span> <span class="err">$</span><span class="n">err</span><span class="s2">&quot;));</span>
-<span class="s2">  subscription.onDone(() =&gt; print(&quot;</span><span class="n">Done</span><span class="err">&quot;</span><span class="p">));</span>
+    <span class="nb">yield</span> <span class="n">i</span><span class="p">;</span> <span class="o">//</span><span class="n">to</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">send</span> <span class="n">spaced</span> <span class="n">out</span> <span class="n">events</span>
+  <span class="p">}</span>
 <span class="p">}</span>
-<span class="o">//</span><span class="nt">----END----</span><span class="o">//</span>
 
-<span class="o">//</span><span class="nt">Entry</span> <span class="nt">point</span> <span class="nt">function</span>
-<span class="nt">void</span> <span class="nt">main</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">//Run</span> <span class="err">Example#2.</span>
-  <span class="err">subscribeUsingSubscriptionHandler()</span><span class="p">;</span>
+<span class="o">//</span><span class="n">Example</span><span class="c1">#2. Subscribing to Stream using subscription handler</span>
+<span class="n">void</span> <span class="n">subscribeUsingSubscriptionHandler</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Stream</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+
+  <span class="k">var</span> <span class="n">subscription</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="nb nb-Type">null</span><span class="p">);</span>
+  <span class="n">subscription</span><span class="o">.</span><span class="n">onData</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;number $x&quot;</span><span class="p">));</span>
+  <span class="n">subscription</span><span class="o">.</span><span class="n">onError</span><span class="p">((</span><span class="n">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error: $err&quot;</span><span class="p">));</span>
+  <span class="n">subscription</span><span class="o">.</span><span class="n">onDone</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
+
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#2.</span>
+  <span class="n">subscribeUsingSubscriptionHandler</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>number 1
-number 2
-number 3
-number 4
-error: Exception: Demo exception when accessing 5th number
-Done
+<div class="highlight"><pre><span></span><span class="err">number 1</span>
+<span class="err">number 2</span>
+<span class="err">number 3</span>
+<span class="err">number 4</span>
+<span class="c">error: Exception: Demo exception when accessing 5th number</span>
+<span class="err">Done</span>
 </pre></div>
 
 
@@ -270,12 +298,12 @@ Done
 <hr>
 <h1>Sample Stream</h1>
 <p>I'll be using following stream to demonstrate upcoming examples of Stream operations. If you're running code snippets in <a href="https://dartpad.dev/">DartPad</a>, make sure to add following code for creating a stream first.</p>
-<div class="highlight"><pre><span></span>//This will generate a stream and return reference to it.
-Stream&lt;int&gt; createNumberStream(int last) async* {
-  for (int i = 1; i &lt;= last; i++) {
-    yield i; //to be able to send spaced out events
-  }
-}
+<div class="highlight"><pre><span></span><span class="err">//This will generate a stream and return reference to it.</span>
+<span class="err">Stream&lt;int&gt; createNumberStream(int last) async* {</span>
+<span class="err">  for (int i = 1; i &lt;= last; i++) {</span>
+<span class="err">    yield i; //to be able to send spaced out events</span>
+<span class="err">  }</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -285,26 +313,26 @@ Stream&lt;int&gt; createNumberStream(int last) async* {
 <h2>Using <code>where()</code> Method</h2>
 <p>Let's see an example to find and print a number greater than 3 in number stream in example above. In this example <code>listen()</code> method subscribes to stream and acts like a callback. Every time, a number meeting the criteria is found, its sent over to callback to take further action on it.</p>
 <p><strong>Example#3.</strong></p>
-<div class="highlight"><pre><span></span>//Example#3. Demonstrating usage of `where()`
-void filterUsingWhere() {
-  var stream = createNumberStream(5);
-  stream
-      .where((x) =&gt; x &gt; 3) //Filters numbers greater than 3
-      .listen((x) =&gt; print(x)); //prints numbers filtered
-}
-//----END----//
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#3. Demonstrating usage of `where()`</span>
+<span class="n">void</span> <span class="n">filterUsingWhere</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="n">stream</span>
+      <span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">//</span><span class="n">Filters</span> <span class="n">numbers</span> <span class="n">greater</span> <span class="n">than</span> <span class="mi">3</span>
+      <span class="o">.</span><span class="n">listen</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">));</span> <span class="o">//</span><span class="nb">prints</span> <span class="n">numbers</span> <span class="n">filtered</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#3.
-  filterUsingWhere();
-}
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#3.</span>
+  <span class="n">filterUsingWhere</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>4
-5
+<div class="highlight"><pre><span></span><span class="err">4</span>
+<span class="err">5</span>
 </pre></div>
 
 
@@ -315,27 +343,27 @@ void main() {
 <h3><code>first</code></h3>
 <p>Retrieves the first event of the stream.</p>
 <p><strong>Example#4.</strong></p>
-<div class="highlight"><pre><span></span>//Example#4. Demonstrating usage of `first`
-void first() {
-  var stream = createNumberStream(5);
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#4. Demonstrating usage of `first`</span>
+<span class="n">void</span> <span class="k">first</span><span class="p">()</span> <span class="err">{</span>
+  <span class="n">var</span> <span class="k">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
-  //print the first number/event
-  stream.first.then(
-    (x) =&gt; print(&quot;First event: $x&quot;),
-  );
-}
-//----END----//
+  <span class="o">//</span><span class="n">print</span> <span class="n">the</span> <span class="k">first</span> <span class="k">number</span><span class="o">/</span><span class="k">event</span>
+  <span class="k">stream</span><span class="p">.</span><span class="k">first</span><span class="p">.</span><span class="k">then</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s2">&quot;First event: $x&quot;</span><span class="p">),</span>
+  <span class="p">);</span>
+<span class="err">}</span>
+<span class="o">//----</span><span class="k">END</span><span class="o">----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#4.
-  first();
-}
+<span class="o">//</span><span class="n">Entry</span> <span class="kt">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#4.</span>
+  <span class="k">first</span><span class="p">();</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>First event: 1
+<div class="highlight"><pre><span></span><span class="err">First event: 1</span>
 </pre></div>
 
 
@@ -344,26 +372,26 @@ void main() {
 <h3><code>last</code></h3>
 <p>Retrieves the last event of the stream.</p>
 <p><strong>Example#5.</strong></p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Example</span><span class="p">#</span><span class="nn">5</span><span class="o">.</span> <span class="nt">Demonstrating</span> <span class="nt">usage</span> <span class="nt">of</span> <span class="err">`</span><span class="nt">last</span><span class="err">`</span>
-<span class="nt">void</span> <span class="nt">last</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">//A</span> <span class="err">fresh</span> <span class="err">stream</span> <span class="err">is</span> <span class="err">needed.</span>
-  <span class="err">//Single</span> <span class="err">subscription</span> <span class="err">stream</span> <span class="err">can&#39;t</span> <span class="err">be</span> <span class="err">re-listened.</span>
-  <span class="err">var</span> <span class="err">stream</span> <span class="err">=</span> <span class="err">createNumberStream(5)</span><span class="p">;</span>
-  <span class="err">//print</span> <span class="err">the</span> <span class="err">last</span> <span class="err">number/event</span>
-  <span class="err">stream.last.then((x)</span> <span class="err">=&gt;</span> <span class="err">print(&quot;Last</span> <span class="n">event</span><span class="p">:</span> <span class="err">$</span><span class="n">x</span><span class="err">&quot;</span><span class="p">));</span>
-<span class="p">}</span>
-<span class="o">//</span><span class="nt">----END----</span><span class="o">//</span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#5. Demonstrating usage of `last`</span>
+<span class="n">void</span> <span class="k">last</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">A</span> <span class="n">fresh</span> <span class="k">stream</span> <span class="k">is</span> <span class="n">needed</span><span class="p">.</span>
+  <span class="o">//</span><span class="n">Single</span> <span class="n">subscription</span> <span class="k">stream</span> <span class="n">can</span><span class="s1">&#39;t be re-listened.</span>
+<span class="s1">  var stream = createNumberStream(5);</span>
+<span class="s1">  //print the last number/event</span>
+<span class="s1">  stream.last.then((x) =&gt; print(&quot;Last event: $x&quot;));</span>
+<span class="s1">}</span>
+<span class="s1">//----END----//</span>
 
-<span class="o">//</span><span class="nt">Entry</span> <span class="nt">point</span> <span class="nt">function</span>
-<span class="nt">void</span> <span class="nt">main</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">//Run</span> <span class="err">Example#5.</span>
-  <span class="err">last()</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="s1">//Entry point function</span>
+<span class="s1">void main() {</span>
+<span class="s1">  //Run Example#5.</span>
+<span class="s1">  last();</span>
+<span class="s1">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>Last event: 5
+<div class="highlight"><pre><span></span><span class="err">Last event: 5</span>
 </pre></div>
 
 
@@ -372,24 +400,24 @@ void main() {
 <h3><code>length</code></h3>
 <p>Retrieves length of the stream.</p>
 <p><strong>Example#6.</strong></p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Example</span><span class="p">#</span><span class="nn">6</span><span class="o">.</span> <span class="nt">Demonstrating</span> <span class="nt">usage</span> <span class="nt">of</span> <span class="err">`</span><span class="nt">length</span><span class="err">`</span>
-<span class="nt">void</span> <span class="nt">length</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">var</span> <span class="err">stream</span> <span class="err">=</span> <span class="err">createNumberStream(5)</span><span class="p">;</span>
-  <span class="err">//print</span> <span class="err">the</span> <span class="err">length</span> <span class="err">of</span> <span class="err">the</span> <span class="err">stream</span>
-  <span class="err">stream.length.then((x)</span> <span class="err">=&gt;</span> <span class="err">print(&quot;Length</span> <span class="err">of</span> <span class="n">Stream</span><span class="p">:</span> <span class="err">$</span><span class="n">x</span><span class="err">&quot;</span><span class="p">));</span>
-<span class="p">}</span>
-<span class="o">//</span><span class="nt">----END----</span><span class="o">//</span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#6. Demonstrating usage of `length`</span>
+<span class="n">void</span> <span class="nf">length</span><span class="p">()</span> <span class="err">{</span>
+  <span class="n">var</span> <span class="k">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="o">//</span><span class="n">print</span> <span class="n">the</span> <span class="n">length</span> <span class="k">of</span> <span class="n">the</span> <span class="k">stream</span>
+  <span class="k">stream</span><span class="p">.</span><span class="n">length</span><span class="p">.</span><span class="k">then</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s2">&quot;Length of Stream: $x&quot;</span><span class="p">));</span>
+<span class="err">}</span>
+<span class="o">//----</span><span class="k">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="nt">Entry</span> <span class="nt">point</span> <span class="nt">function</span>
-<span class="nt">void</span> <span class="nt">main</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">//Run</span> <span class="err">Example#6.</span>
-  <span class="err">length()</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="o">//</span><span class="n">Entry</span> <span class="kt">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#6.</span>
+  <span class="nf">length</span><span class="p">();</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>Length of Stream: 5
+<div class="highlight"><pre><span></span><span class="err">Length of Stream: 5</span>
 </pre></div>
 
 
@@ -398,30 +426,30 @@ void main() {
 <h3><code>isEmpty</code></h3>
 <p>Checks if stream is empty of not.</p>
 <p><strong>Example#7.</strong></p>
-<div class="highlight"><pre><span></span>//Example#7. Demonstrating usage of `isEmpty`
-void isEmpty() {
-  var stream = createNumberStream(5);
-  //Check if stream is empty
-  stream.isEmpty.then((x) =&gt; print(&quot;Is Empty : $x&quot;));
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#7. Demonstrating usage of `isEmpty`</span>
+<span class="n">void</span> <span class="n">isEmpty</span><span class="p">()</span> <span class="err">{</span>
+  <span class="n">var</span> <span class="k">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="o">//</span><span class="k">Check</span> <span class="k">if</span> <span class="k">stream</span> <span class="k">is</span> <span class="k">empty</span>
+  <span class="k">stream</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">.</span><span class="k">then</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s2">&quot;Is Empty : $x&quot;</span><span class="p">));</span>
 
-  //Create an empty stream
-  stream = createNumberStream(0);
-  //Verify an empty stream
-  stream.isEmpty.then((x) =&gt; print(&quot;Is Empty : $x&quot;));
-}
-//----END----//
+  <span class="o">//</span><span class="k">Create</span> <span class="n">an</span> <span class="k">empty</span> <span class="k">stream</span>
+  <span class="k">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="o">//</span><span class="n">Verify</span> <span class="n">an</span> <span class="k">empty</span> <span class="k">stream</span>
+  <span class="k">stream</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">.</span><span class="k">then</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s2">&quot;Is Empty : $x&quot;</span><span class="p">));</span>
+<span class="err">}</span>
+<span class="o">//----</span><span class="k">END</span><span class="o">----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#7.
-  isEmpty();
-}
+<span class="o">//</span><span class="n">Entry</span> <span class="kt">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#7.</span>
+  <span class="n">isEmpty</span><span class="p">();</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>Is Empty : false
-Is Empty : true
+<div class="highlight"><pre><span></span><span class="err">Is Empty : false</span>
+<span class="err">Is Empty : true</span>
 </pre></div>
 
 
@@ -430,53 +458,53 @@ Is Empty : true
 <h1>Broadcast Streams Operations</h1>
 <p>Let's convert single subscription stream in previous example to broadcast stream using <code>asBroadcastStream()</code> method and re-examine all properties again. This time we don't need to create a fresh stream for each operation. Broadcast streams can have multiple subscribers or can be listened multiple times.</p>
 <p><strong>Example#8.</strong></p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">Example</span><span class="p">#</span><span class="nn">8</span><span class="o">.</span> <span class="nt">Demonstrating</span> <span class="nt">BroadcastStream</span> <span class="nt">basic</span> <span class="nt">operations</span>
-<span class="nt">void</span> <span class="nt">broadcastStreamBasicOperations</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">var</span> <span class="err">stream</span> <span class="err">=</span> <span class="err">createNumberStream(5)</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#8. Demonstrating BroadcastStream basic operations</span>
+<span class="n">void</span> <span class="n">broadcastStreamBasicOperations</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
-  <span class="err">//Converting</span> <span class="err">to</span> <span class="err">broadcastStream</span>
-  <span class="err">var</span> <span class="err">bStream</span> <span class="err">=</span> <span class="err">stream.asBroadcastStream()</span><span class="p">;</span>
+  <span class="o">//</span><span class="n">Converting</span> <span class="n">to</span> <span class="n">broadcastStream</span>
+  <span class="k">var</span> <span class="n">bStream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">asBroadcastStream</span><span class="p">();</span>
 
-  <span class="err">//check</span> <span class="err">if</span> <span class="err">stream</span> <span class="err">is</span> <span class="err">broadcast</span> <span class="err">stream</span> <span class="err">or</span> <span class="err">single</span>
-  <span class="err">if</span> <span class="err">(bStream.isBroadcast)</span> <span class="err">{</span>
-    <span class="err">print(&quot;Broadcast</span> <span class="err">Stream&quot;)</span><span class="p">;</span>
-  <span class="p">}</span> <span class="nt">else</span> <span class="p">{</span>
-    <span class="err">print(&quot;Single</span> <span class="err">Stream&quot;)</span><span class="p">;</span>
+  <span class="o">//</span><span class="n">check</span> <span class="k">if</span> <span class="n">stream</span> <span class="k">is</span> <span class="n">broadcast</span> <span class="n">stream</span> <span class="ow">or</span> <span class="n">single</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">bStream</span><span class="o">.</span><span class="n">isBroadcast</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Broadcast Stream&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Single Stream&quot;</span><span class="p">);</span>
   <span class="p">}</span>
-  <span class="o">//</span><span class="nt">print</span> <span class="nt">the</span> <span class="nt">first</span> <span class="nt">number</span><span class="o">/</span><span class="nt">event</span>
-  <span class="nt">bStream</span><span class="p">.</span><span class="nc">first</span><span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">x</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="nt">print</span><span class="o">(</span><span class="s2">&quot;First event: $x&quot;</span><span class="o">));</span>
+  <span class="o">//</span><span class="nb">print</span> <span class="n">the</span> <span class="n">first</span> <span class="n">number</span><span class="o">/</span><span class="n">event</span>
+  <span class="n">bStream</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First event: $x&quot;</span><span class="p">));</span>
 
-  <span class="o">//</span><span class="nt">print</span> <span class="nt">the</span> <span class="nt">last</span> <span class="nt">number</span><span class="o">/</span><span class="nt">event</span>
-  <span class="nt">bStream</span><span class="p">.</span><span class="nc">last</span><span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">x</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="nt">print</span><span class="o">(</span><span class="s2">&quot;Last event: $x&quot;</span><span class="o">));</span>
+  <span class="o">//</span><span class="nb">print</span> <span class="n">the</span> <span class="n">last</span> <span class="n">number</span><span class="o">/</span><span class="n">event</span>
+  <span class="n">bStream</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Last event: $x&quot;</span><span class="p">));</span>
 
-  <span class="o">//</span><span class="nt">print</span> <span class="nt">the</span> <span class="nt">length</span> <span class="nt">of</span> <span class="nt">the</span> <span class="nt">stream</span>
-  <span class="nt">bStream</span><span class="p">.</span><span class="nc">length</span><span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">x</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="nt">print</span><span class="o">(</span><span class="s2">&quot;Length of Stream: $x&quot;</span><span class="o">));</span>
+  <span class="o">//</span><span class="nb">print</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="n">stream</span>
+  <span class="n">bStream</span><span class="o">.</span><span class="n">length</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Length of Stream: $x&quot;</span><span class="p">));</span>
 
-  <span class="o">//</span><span class="nt">Check</span> <span class="nt">if</span> <span class="nt">stream</span> <span class="nt">is</span> <span class="nt">empty</span>
-  <span class="nt">bStream</span><span class="p">.</span><span class="nc">isEmpty</span><span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">x</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="nt">print</span><span class="o">(</span><span class="s2">&quot;Is Empty : $x&quot;</span><span class="o">));</span>
+  <span class="o">//</span><span class="n">Check</span> <span class="k">if</span> <span class="n">stream</span> <span class="k">is</span> <span class="n">empty</span>
+  <span class="n">bStream</span><span class="o">.</span><span class="n">isEmpty</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is Empty : $x&quot;</span><span class="p">));</span>
 
-  <span class="o">//</span><span class="nt">empty</span> <span class="nt">stream</span> <span class="nt">on</span> <span class="nt">purpose</span>
-  <span class="nt">stream</span> <span class="o">=</span> <span class="nt">createNumberStream</span><span class="o">(</span><span class="nt">0</span><span class="o">);</span>
-  <span class="nt">bStream</span> <span class="o">=</span> <span class="nt">stream</span><span class="p">.</span><span class="nc">asBroadcastStream</span><span class="o">();</span>
-  <span class="nt">bStream</span><span class="p">.</span><span class="nc">isEmpty</span><span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">x</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="nt">print</span><span class="o">(</span><span class="s2">&quot;Is Empty : $x&quot;</span><span class="o">));</span>
-<span class="err">}</span>
-<span class="o">//</span><span class="nt">----END----</span><span class="o">//</span>
+  <span class="o">//</span><span class="n">empty</span> <span class="n">stream</span> <span class="n">on</span> <span class="n">purpose</span>
+  <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">bStream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">asBroadcastStream</span><span class="p">();</span>
+  <span class="n">bStream</span><span class="o">.</span><span class="n">isEmpty</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is Empty : $x&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="nt">Entry</span> <span class="nt">point</span> <span class="nt">function</span>
-<span class="nt">void</span> <span class="nt">main</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">//Run</span> <span class="err">Example#8.</span>
-  <span class="err">broadcastStreamBasicOperations()</span><span class="p">;</span>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#8.</span>
+  <span class="n">broadcastStreamBasicOperations</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>Broadcast Stream
-First event: 1
-Is Empty : false
-Is Empty : true
-Last event: 5
-Length of Stream: 5
+<div class="highlight"><pre><span></span><span class="err">Broadcast Stream</span>
+<span class="err">First event: 1</span>
+<span class="err">Is Empty : false</span>
+<span class="err">Is Empty : true</span>
+<span class="err">Last event: 5</span>
+<span class="err">Length of Stream: 5</span>
 </pre></div>
 
 
@@ -486,33 +514,33 @@ Length of Stream: 5
 <h2>Using <code>take()</code> Method</h2>
 <p>Creates the sub-stream for 'given number' of first events of original stream. Listener listens to this sub-stream and print all elements.</p>
 <p><strong>Example#9.</strong></p>
-<div class="highlight"><pre><span></span>//Example#9. Demonstrating BroadcastStream `take()` method
-void broadcastStreamTake() {
-  var stream = createNumberStream(5);
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#9. Demonstrating BroadcastStream `take()` method</span>
+<span class="n">void</span> <span class="n">broadcastStreamTake</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
-  //Converting to broadcastStream
-  var bStream = stream.asBroadcastStream();
+  <span class="o">//</span><span class="n">Converting</span> <span class="n">to</span> <span class="n">broadcastStream</span>
+  <span class="k">var</span> <span class="n">bStream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">asBroadcastStream</span><span class="p">();</span>
 
-  //Creates a sub stream of 2 elements and
-  //listen on it
-  bStream.take(2).listen(
-        (x) =&gt; print(&quot;take() : $x&quot;),
-      );
-}
-//----END----//
+  <span class="o">//</span><span class="n">Creates</span> <span class="n">a</span> <span class="n">sub</span> <span class="n">stream</span> <span class="n">of</span> <span class="mi">2</span> <span class="n">elements</span> <span class="ow">and</span>
+  <span class="o">//</span><span class="n">listen</span> <span class="n">on</span> <span class="n">it</span>
+  <span class="n">bStream</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;take() : $x&quot;</span><span class="p">),</span>
+      <span class="p">);</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#9.
-  broadcastStreamTake();
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#9.</span>
+  <span class="n">broadcastStreamTake</span><span class="p">();</span>
 
-}
+<span class="p">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>take() : 1
-take() : 2
+<div class="highlight"><pre><span></span><span class="err">take() : 1</span>
+<span class="err">take() : 2</span>
 </pre></div>
 
 
@@ -521,32 +549,32 @@ take() : 2
 <h2>Using <code>skip()</code> Method</h2>
 <p>Creates sub-stream of original stream after skipping first 'given number' of events from original stream. Listener listens to this sub-stream and print all elements.</p>
 <p><strong>Example#10.</strong></p>
-<div class="highlight"><pre><span></span>//Example#10. Demonstrating BroadcastStream `skip()` method
-void broadcastStreamSkip() {
-  var stream = createNumberStream(5);
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#10. Demonstrating BroadcastStream `skip()` method</span>
+<span class="n">void</span> <span class="n">broadcastStreamSkip</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
-  //Converting to broadcastStream
-  var bStream = stream.asBroadcastStream();
+  <span class="o">//</span><span class="n">Converting</span> <span class="n">to</span> <span class="n">broadcastStream</span>
+  <span class="k">var</span> <span class="n">bStream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">asBroadcastStream</span><span class="p">();</span>
 
-  //skips first two numbers from [1,2,3,4,5]
-  bStream.skip(2).listen(
-        (x) =&gt; print(&quot;skip() : $x&quot;),
-      );
-}
-//----END----//
+  <span class="o">//</span><span class="n">skips</span> <span class="n">first</span> <span class="n">two</span> <span class="n">numbers</span> <span class="n">from</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+  <span class="n">bStream</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;skip() : $x&quot;</span><span class="p">),</span>
+      <span class="p">);</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#10.
-  broadcastStreamSkip();
-}
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#10.</span>
+  <span class="n">broadcastStreamSkip</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>skip() : 3
-skip() : 4
-skip() : 5
+<div class="highlight"><pre><span></span><span class="err">skip() : 3</span>
+<span class="err">skip() : 4</span>
+<span class="err">skip() : 5</span>
 </pre></div>
 
 
@@ -555,32 +583,32 @@ skip() : 5
 <h2>Using <code>takeWhile()</code> Method</h2>
 <p>The <code>takeWhile()</code> method does the same thing as <code>take()</code> when a condition is full-filled. Let's add condition that pick/take first elements when number is positive but less than 3. There are two such numbers in [1, 2, 3, 4, 5], which is 1 and 2. <code>takeWhile()</code> will check the condition and will print these 2 numbers on console.</p>
 <p><strong>Example#11.</strong></p>
-<div class="highlight"><pre><span></span>//Example#11. Demonstrating BroadcastStream `takeWhile()` method
-void broadcastStreamTakeWhile() {
-  var stream = createNumberStream(5);
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#11. Demonstrating BroadcastStream `takeWhile()` method</span>
+<span class="n">void</span> <span class="n">broadcastStreamTakeWhile</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
-  //Converting to broadcastStream
-  var bStream = stream.asBroadcastStream();
+  <span class="o">//</span><span class="n">Converting</span> <span class="n">to</span> <span class="n">broadcastStream</span>
+  <span class="k">var</span> <span class="n">bStream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">asBroadcastStream</span><span class="p">();</span>
 
-  //Creates a sub-stream of items less than 3, and prints the sub-stream of [1,2].
-  bStream.takeWhile((x) =&gt; x &gt; 0 &amp;&amp; x &lt; 3).listen(
-        (x) =&gt; print(&quot;takeWhile() : $x&quot;),
-      );
-}
-//----END----//
+  <span class="o">//</span><span class="n">Creates</span> <span class="n">a</span> <span class="n">sub</span><span class="o">-</span><span class="n">stream</span> <span class="n">of</span> <span class="n">items</span> <span class="n">less</span> <span class="n">than</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">and</span> <span class="nb">prints</span> <span class="n">the</span> <span class="n">sub</span><span class="o">-</span><span class="n">stream</span> <span class="n">of</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span>
+  <span class="n">bStream</span><span class="o">.</span><span class="n">takeWhile</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;takeWhile() : $x&quot;</span><span class="p">),</span>
+      <span class="p">);</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#11.
-  broadcastStreamTakeWhile();
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#11.</span>
+  <span class="n">broadcastStreamTakeWhile</span><span class="p">();</span>
 
-}
+<span class="p">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>takeWhile() : 1
-takeWhile() : 2
+<div class="highlight"><pre><span></span><span class="err">takeWhile() : 1</span>
+<span class="err">takeWhile() : 2</span>
 </pre></div>
 
 
@@ -589,34 +617,34 @@ takeWhile() : 2
 <h2>Using <code>skipWhile()</code> method</h2>
 <p>The <code>skipWhile()</code> method is similar to <code>skip()</code> in addition to honoring the condition.</p>
 <p><strong>Example#12.</strong></p>
-<div class="highlight"><pre><span></span>//Example#12. Demonstrating BroadcastStream `skipWhile()` method
-void broadcastStreamSkipWhile() {
-  var stream = createNumberStream(5);
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#12. Demonstrating BroadcastStream `skipWhile()` method</span>
+<span class="n">void</span> <span class="n">broadcastStreamSkipWhile</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
-  //Converting to broadcastStream
-  var bStream = stream.asBroadcastStream();
+  <span class="o">//</span><span class="n">Converting</span> <span class="n">to</span> <span class="n">broadcastStream</span>
+  <span class="k">var</span> <span class="n">bStream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">asBroadcastStream</span><span class="p">();</span>
 
-  //skips elements which are positive and
-  //less than 3, and prints rest.
-  bStream
-      .skipWhile((x) =&gt; x &gt; 0 &amp;&amp; x &lt; 3)
-      .listen((x) =&gt; print(&quot;skipWhile() : $x&quot;));
-}
-//----END----//
+  <span class="o">//</span><span class="n">skips</span> <span class="n">elements</span> <span class="n">which</span> <span class="n">are</span> <span class="n">positive</span> <span class="ow">and</span>
+  <span class="o">//</span><span class="n">less</span> <span class="n">than</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">and</span> <span class="nb">prints</span> <span class="n">rest</span><span class="o">.</span>
+  <span class="n">bStream</span>
+      <span class="o">.</span><span class="n">skipWhile</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">listen</span><span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;skipWhile() : $x&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#12.
-  broadcastStreamSkipWhile();
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#12.</span>
+  <span class="n">broadcastStreamSkipWhile</span><span class="p">();</span>
 
-}
+<span class="p">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>skipWhile() : 3
-skipWhile() : 4
-skipWhile() : 5
+<div class="highlight"><pre><span></span><span class="err">skipWhile() : 3</span>
+<span class="err">skipWhile() : 4</span>
+<span class="err">skipWhile() : 5</span>
 </pre></div>
 
 
@@ -625,41 +653,41 @@ skipWhile() : 5
 <h1>Modifying Stream: <code>transform()</code> Method</h1>
 <p>Transform stream's events to another type. In this example, a String of integers is transformed to stream of strings.</p>
 <p><strong>Example#13.</strong></p>
-<div class="highlight"><pre><span></span>//Example#13. Demonstrating modifying a stream using `transform()` method
-void modifyStreamUsingTransform() {
-  //Stream of integer events is created.
-  var stream = createNumberStream(5);
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#13. Demonstrating modifying a stream using `transform()` method</span>
+<span class="n">void</span> <span class="n">modifyStreamUsingTransform</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Stream</span> <span class="n">of</span> <span class="n">integer</span> <span class="n">events</span> <span class="k">is</span> <span class="n">created</span><span class="o">.</span>
+  <span class="k">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
-  //StreamTransformer prints the transformed event
-  var transformer =
-      StreamTransformer&lt;int, String&gt;.fromHandlers(handleData: (value, sink) {
-    sink.add(&quot;My number is $value&quot;);
-  });
+  <span class="o">//</span><span class="n">StreamTransformer</span> <span class="nb">prints</span> <span class="n">the</span> <span class="n">transformed</span> <span class="n">event</span>
+  <span class="k">var</span> <span class="n">transformer</span> <span class="o">=</span>
+      <span class="n">StreamTransformer</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="p">,</span> <span class="nb nb-Type">String</span><span class="o">&gt;.</span><span class="n">fromHandlers</span><span class="p">(</span><span class="n">handleData</span><span class="p">:</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">sink</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sink</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;My number is $value&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
 
-  stream.transform(transformer).listen(
-        (x) =&gt; print(x),
-        onError: (err) =&gt; print(&quot;error: $err&quot;),
-        onDone: () =&gt; print(&quot;Done&quot;),
-      );
-}
-//----END----//
+  <span class="n">stream</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transformer</span><span class="p">)</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+        <span class="n">onError</span><span class="p">:</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error: $err&quot;</span><span class="p">),</span>
+        <span class="n">onDone</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done&quot;</span><span class="p">),</span>
+      <span class="p">);</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#13
-  modifyStreamUsingTransform();
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#13</span>
+  <span class="n">modifyStreamUsingTransform</span><span class="p">();</span>
 
-}
+<span class="p">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>My number is 1
-My number is 2
-My number is 3
-My number is 4
-My number is 5
-Done
+<div class="highlight"><pre><span></span><span class="err">My number is 1</span>
+<span class="err">My number is 2</span>
+<span class="err">My number is 3</span>
+<span class="err">My number is 4</span>
+<span class="err">My number is 5</span>
+<span class="err">Done</span>
 </pre></div>
 
 
@@ -684,8 +712,7 @@ Couldn't find a topic of your interest? Please leave comments or <a href="mailto
   </div>
 
   <div class="center social-share">
-    <p>    Like this article? Share it with your friends!
-</p>
+    <p>Like this article? Share it with your friends!</p>
     <div class="addthis_native_toolbox"></div>
     <div class="addthis_sharing_toolbox"></div>
     <div class="addthis_inline_share_toolbox"></div>
@@ -713,17 +740,17 @@ Couldn't find a topic of your interest? Please leave comments or <a href="mailto
     })();
 </script>
 <noscript>
-        Please enable JavaScript to view comments.
-
+    Please enable JavaScript to view comments.
 </noscript>
 <!-- End Disqus -->
 </article>
 
     <footer>
 <p>
-  &copy;  2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2020  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
-<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p><p>
   <a rel="license"
      href="http://creativecommons.org/licenses/by-sa/4.0/"
@@ -752,7 +779,6 @@ Couldn't find a topic of your interest? Please leave comments or <a href="mailto
   "description": "Mobile engineering tech logger."
 }
 </script>
-
 <a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
     <svg width="80"
          height="80"
@@ -771,5 +797,7 @@ Couldn't find a topic of your interest? Please leave comments or <a href="mailto
         </path>
     </svg>
 </a>
-<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></body>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+</body>
 </html>

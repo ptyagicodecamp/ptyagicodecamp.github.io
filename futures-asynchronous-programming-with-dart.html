@@ -8,12 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+    <link rel="stylesheet/less" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/solid.css">
 
     <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
 
@@ -23,17 +30,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
-<!-- Google Analytics -->
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-133714063-1', 'auto');
-  ga('send', 'pageview');
-</script>
-<!-- End Google Analytics -->
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333333">
     <!-- Windows Phone -->
@@ -47,6 +44,7 @@
 <meta name="author" content="ptyagi" />
 <meta name="description" content="This article is the first part of introduction to asynchronous programming with Dart, and covers Futures in Dart." />
 <meta name="keywords" content="Dart, Flutter">
+
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="Futures: Asynchronous Programming with Dart"/>
@@ -72,30 +70,64 @@
     });
   </script>
 </head>
-<body>
+<body class="light-theme">
   <aside>
     <div>
       <a href="https://ptyagicodecamp.github.io">
         <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="techLog" title="techLog">
       </a>
-      <h1><a href="https://ptyagicodecamp.github.io">techLog</a></h1>
+
+      <h1>
+        <a href="https://ptyagicodecamp.github.io">techLog</a>
+      </h1>
 
 <p>Explore | Android | Flutter | Software Engineering</p>
+
       <nav>
         <ul class="list">
 
-          <li><a href="https://www.paypal.me/pritya" target="_blank">Support</a></li>
-          <li><a href="https://www.codementor.io/ptyagicodecamp" target="_blank">Codementor</a></li>
+
+
+            <li>
+              <a target="_self" href="https://www.paypal.me/pritya" >Support</a>
+            </li>
+            <li>
+              <a target="_self" href="https://www.codementor.io/ptyagicodecamp" >Codementor</a>
+            </li>
         </ul>
       </nav>
 
       <ul class="social">
-        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-        <li><a class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank"><i class="fa fa-github"></i></a></li>
-        <li><a class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank"><i class="fa fa-medium"></i></a></li>
-        <li><a class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank"><i class="fa fa-twitter"></i></a></li>
-        <li><a class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a></li>
-        <li><a class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank"><i class="fa fa-codementor"></i></a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank">
+              <i class="fab fa-medium"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank">
+              <i class="fab fa-codementor"></i>
+            </a>
+          </li>
       </ul>
     </div>
 
@@ -106,20 +138,17 @@
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-
   </aside>
   <main>
 
     <nav>
-      <a href="https://ptyagicodecamp.github.io">    Home
-</a>
+      <a href="https://ptyagicodecamp.github.io">Home</a>
 
       <a href="/archives.html">Archives</a>
       <a href="/categories.html">Categories</a>
       <a href="/tags.html">Tags</a>
 
-      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">    Atom
-</a>
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">Atom</a>
 
     </nav>
 
@@ -128,8 +157,7 @@
       
     <h1 id="futures-asynchronous-programming-with-dart">Futures: Asynchronous Programming with Dart</h1>
     <p>
-          Posted on May 20, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
-
+      Posted on May 20, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
 
     </p>
   </header>
@@ -167,32 +195,32 @@
 <h1><code>await</code> and <code>async</code></h1>
 <p>The <code>await</code> and <code>async</code> keywords are used together. The function that supposed to be doing the expensive work is marked with keyword <code>async</code>. Inside the function, the expensive call is prefixed by keyword <code>await</code>. Program suspends when <code>await</code> is called or function return or reaches at the end of the function.</p>
 <p>Let's see in following code snippet how <code>async</code> and <code>await</code> keywords are used. <code>await</code> can only be called in function which is marked/declared as <code>async</code>. <code>Future</code> keyword before the function <code>makeDataCall()</code> means that this function will be executing  asynchronously and will be suspended when come across <code>await</code>.</p>
-<div class="highlight"><pre><span></span>// Expensive function could be a function that takes
-// long time to process data and return results.
-// Assume this function takes long time to return in real-world
-String getExpansiveData() {
-  return &quot;I&#39;m expansive data&quot;;
-}
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Expensive</span> <span class="n">function</span> <span class="n">could</span> <span class="n">be</span> <span class="n">a</span> <span class="n">function</span> <span class="n">that</span> <span class="n">takes</span>
+<span class="o">//</span> <span class="n">long</span> <span class="n">time</span> <span class="n">to</span> <span class="n">process</span> <span class="n">data</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">results</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Assume</span> <span class="n">this</span> <span class="n">function</span> <span class="n">takes</span> <span class="n">long</span> <span class="n">time</span> <span class="n">to</span> <span class="k">return</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="n">world</span>
+<span class="nb nb-Type">String</span> <span class="n">getExpansiveData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
-// This is the asynchronous function that makes the expensive
-// data call and prints the results.
-Future&lt;void&gt; makeDataCall() async {
-  var data = await getExpansiveData();
-  print(data);
-}
-//----END----//
+<span class="o">//</span> <span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">asynchronous</span> <span class="n">function</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span>
+<span class="o">//</span> <span class="n">data</span> <span class="n">call</span> <span class="ow">and</span> <span class="nb">prints</span> <span class="n">the</span> <span class="n">results</span><span class="o">.</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCall</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getExpansiveData</span><span class="p">();</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#1.
-  makeDataCall();
-}
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#1.</span>
+  <span class="n">makeDataCall</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p>The <code>makeDataCall()</code> returns a <code>Future</code> of type <code>void</code> because there's nothing returned by this function. It simply prints the results using <code>print()</code> function.</p>
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>I&#39;m expansive data
+<div class="highlight"><pre><span></span><span class="err">I&#39;m expansive data</span>
 </pre></div>
 
 
@@ -203,28 +231,28 @@ void main() {
 <p>In this section, we'll see how to handle exceptions thrown in the long running asynchronous operations. When <code>await</code> keyword is used, asynchronous call behaves like a synchronous one. In such cases, error handling for asynchronous and synchronous code is handled similar way.</p>
 <p>The asynchronous call prefixed with <code>await</code> keyword is wrapped in a <code>try</code>/<code>catch</code> block. When an exception is thrown in the <code>try</code> block, the <code>catch</code> block executes its code.</p>
 <p>Let's add the try/catch block in previous code, and see how it'll look like now. Let's name this function as <code>makeDataCallWithException()</code>. This function throws an <code>Exception</code> at purpose in <code>try</code> block to demonstrate the point here.</p>
-<div class="highlight"><pre><span></span>//Example#2. Demonstrating handling exception thrown in asynchronous operations
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="o">#</span><span class="mi">2</span><span class="p">.</span> <span class="n">Demonstrating</span> <span class="n">handling</span> <span class="k">exception</span> <span class="n">thrown</span> <span class="k">in</span> <span class="n">asynchronous</span> <span class="n">operations</span>
 
-//Expansive operations ended up throwing exception
-String getExpansiveDataWithException() {
-  throw Exception(&quot;Error occurred in fetching data&quot;);
-}
+<span class="o">//</span><span class="n">Expansive</span> <span class="n">operations</span> <span class="n">ended</span> <span class="n">up</span> <span class="n">throwing</span> <span class="k">exception</span>
+<span class="n">String</span> <span class="n">getExpansiveDataWithException</span><span class="p">()</span> <span class="err">{</span>
+  <span class="n">throw</span> <span class="k">Exception</span><span class="p">(</span><span class="ss">&quot;Error occurred in fetching data&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-//Asynchronous function that makes the expensive data call
-Future&lt;void&gt; makeDataCallWithException() async {
-  try {
-    await getExpansiveDataWithException();
-  } catch (e) {
-    print(e.toString());
-  }
-}
-//----END----//
+<span class="o">//</span><span class="n">Asynchronous</span> <span class="k">function</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span> <span class="k">data</span> <span class="k">call</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCallWithException</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="n">try</span> <span class="err">{</span>
+    <span class="n">await</span> <span class="n">getExpansiveDataWithException</span><span class="p">();</span>
+  <span class="err">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">toString</span><span class="p">());</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+<span class="o">//</span><span class="c1">----END----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#2.
-  makeDataCallWithException();
-}
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="o">#</span><span class="mi">2</span><span class="p">.</span>
+  <span class="n">makeDataCallWithException</span><span class="p">();</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -237,46 +265,46 @@ void main() {
 <hr>
 <h2>Sequencing Function Calls</h2>
 <p>It's possible to control the order of execution of asynchronous functions using sequencing with help of <code>await</code> and <code>async</code>. Let's see how this is done in example below. In this example, there are three functions <code>getDataA()</code>, <code>getDataB()</code>, and <code>getDataC()</code>. We want them to execute one after another. The <code>await</code> keyword does exactly that. It executes the function synchronously until it comes across <code>await</code>, and wait there for it to finish before execute next line, in this case another <code>await</code> call.</p>
-<div class="highlight"><pre><span></span>//Example#3. Sequencing order of asynchronous calls
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="o">#</span><span class="mi">3</span><span class="p">.</span> <span class="n">Sequencing</span> <span class="k">order</span> <span class="k">of</span> <span class="n">asynchronous</span> <span class="n">calls</span>
 
-void getDataA() {
-  print(&quot;dataA&quot;);
-}
+<span class="n">void</span> <span class="n">getDataA</span><span class="p">()</span> <span class="err">{</span>
+  <span class="n">print</span><span class="p">(</span><span class="ss">&quot;dataA&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-void getDataB() {
-  print(&quot;dataB&quot;);
-}
+<span class="n">void</span> <span class="n">getDataB</span><span class="p">()</span> <span class="err">{</span>
+  <span class="n">print</span><span class="p">(</span><span class="ss">&quot;dataB&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-String getDataC() {
-  return &quot;dataC&quot;;
-}
+<span class="n">String</span> <span class="n">getDataC</span><span class="p">()</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="ss">&quot;dataC&quot;</span><span class="p">;</span>
+<span class="err">}</span>
 
-//Entry point function
-Future&lt;void&gt; sequencingOperations() async {
-  //Order matters.
-  //Functions will execute in the order they were called.
-  await getDataA();
-  await getDataB();
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="k">function</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">sequencingOperations</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span><span class="k">Order</span> <span class="n">matters</span><span class="p">.</span>
+  <span class="o">//</span><span class="n">Functions</span> <span class="n">will</span> <span class="k">execute</span> <span class="k">in</span> <span class="n">the</span> <span class="k">order</span> <span class="n">they</span> <span class="n">were</span> <span class="k">called</span><span class="p">.</span>
+  <span class="n">await</span> <span class="n">getDataA</span><span class="p">();</span>
+  <span class="n">await</span> <span class="n">getDataB</span><span class="p">();</span>
 
-  //getDataC() will execute first and will
-  //pass its data into print() function
-  print(await getDataC());
-}
-//----END----//
+  <span class="o">//</span><span class="n">getDataC</span><span class="p">()</span> <span class="n">will</span> <span class="k">execute</span> <span class="k">first</span> <span class="k">and</span> <span class="n">will</span>
+  <span class="o">//</span><span class="n">pass</span> <span class="n">its</span> <span class="k">data</span> <span class="k">into</span> <span class="n">print</span><span class="p">()</span> <span class="k">function</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">await</span> <span class="n">getDataC</span><span class="p">());</span>
+<span class="err">}</span>
+<span class="o">//</span><span class="c1">----END----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#3.
-  sequencingOperations();
-}
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="o">#</span><span class="mi">3</span><span class="p">.</span>
+  <span class="n">sequencingOperations</span><span class="p">();</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
 <p>Each of the above methods will execute one by one starting from <code>getDataA()</code> and finishing executing <code>getDataC()</code>.</p>
-<div class="highlight"><pre><span></span>dataA
-dataB
-dataC
+<div class="highlight"><pre><span></span><span class="err">dataA</span>
+<span class="err">dataB</span>
+<span class="err">dataC</span>
 </pre></div>
 
 
@@ -291,42 +319,42 @@ dataC
 </ul>
 <h2><code>Future&lt;String&gt;</code></h2>
 <p>Example below transforms our earlier example code of <code>await</code> and <code>async</code> into a <code>Future</code> API implementation. Lookout for the use of <code>then()</code> in <code>mainWithFutureAPI()</code> function. In this example, <code>Future</code> is returning <code>String</code>.</p>
-<div class="highlight"><pre><span></span>//Using Future API (Future is returning String type)
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Using</span> <span class="n">Future</span> <span class="n">API</span> <span class="p">(</span><span class="n">Future</span> <span class="k">is</span> <span class="n">returning</span> <span class="nb nb-Type">String</span> <span class="n">type</span><span class="p">)</span>
 
-//Future with String data is being returned.
-//This function returns the instance of
-//Future and not the actual data.
-Future&lt;String&gt; makeDataCallFutureString() async {
-  return await getExpansiveData();
-}
+<span class="o">//</span><span class="n">Future</span> <span class="n">with</span> <span class="nb nb-Type">String</span> <span class="n">data</span> <span class="k">is</span> <span class="n">being</span> <span class="n">returned</span><span class="o">.</span>
+<span class="o">//</span><span class="n">This</span> <span class="n">function</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">instance</span> <span class="n">of</span>
+<span class="o">//</span><span class="n">Future</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">data</span><span class="o">.</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">makeDataCallFutureString</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">await</span> <span class="n">getExpansiveData</span><span class="p">();</span>
+<span class="p">}</span>
 
-// Assume this function takes long time to return in real-world.
-String getExpansiveData() {
-  return &quot;I&#39;m expansive data&quot;;
-}
-
-
-void mainWithFutureAPI() {
-  var theFuture = makeDataCallFutureString();
-
-  //then() is called at the instance of Future
-  theFuture.then((value) {
-    print(value);
-  });
-}
-//----END----//
+<span class="o">//</span> <span class="n">Assume</span> <span class="n">this</span> <span class="n">function</span> <span class="n">takes</span> <span class="n">long</span> <span class="n">time</span> <span class="n">to</span> <span class="k">return</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="n">world</span><span class="o">.</span>
+<span class="nb nb-Type">String</span> <span class="n">getExpansiveData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
 
-//Entry point function
-void main() {
-  //Run Example#4.
-  mainWithFutureAPI();
-}
+<span class="n">void</span> <span class="n">mainWithFutureAPI</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">theFuture</span> <span class="o">=</span> <span class="n">makeDataCallFutureString</span><span class="p">();</span>
+
+  <span class="o">//</span><span class="n">then</span><span class="p">()</span> <span class="k">is</span> <span class="n">called</span> <span class="n">at</span> <span class="n">the</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">Future</span>
+  <span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
+
+
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#4.</span>
+  <span class="n">mainWithFutureAPI</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>I&#39;m expansive data
+<div class="highlight"><pre><span></span><span class="err">I&#39;m expansive data</span>
 </pre></div>
 
 
@@ -334,38 +362,38 @@ void main() {
 <hr>
 <h2><code>Future&lt;void&gt;</code></h2>
 <p>Let's look at another example of <code>Future</code> API. In this example, <code>Future</code> doesn't return anything and looks like <code>Future&lt;void&gt;</code>. In such case, <code>then()</code> callback will use an <code>unused argument</code>, represented as <code>_</code> by convention. Checkout the code snippet below to see it in action.</p>
-<div class="highlight"><pre><span></span>//Example#5. Using Future API (Future is returning void type)
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#5. Using Future API (Future is returning void type)</span>
 
-// Assume this function takes long time to return in real-world.
-String getExpansiveData() {
-  return &quot;I&#39;m expansive data&quot;;
-}
+<span class="o">//</span> <span class="n">Assume</span> <span class="n">this</span> <span class="n">function</span> <span class="n">takes</span> <span class="n">long</span> <span class="n">time</span> <span class="n">to</span> <span class="k">return</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="n">world</span><span class="o">.</span>
+<span class="nb nb-Type">String</span> <span class="n">getExpansiveData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
-//Future doesn&#39;t return anything
-Future&lt;void&gt; makeDataCallFutureVoid() async {
-  await getExpansiveData();
-}
+<span class="o">//</span><span class="n">Future</span> <span class="n">doesn</span><span class="s1">&#39;t return anything</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCallFutureVoid</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="n">await</span> <span class="n">getExpansiveData</span><span class="p">();</span>
+<span class="p">}</span>
 
-void mainWithFutureAPIVoid() {
-  var theFuture = makeDataCallFutureVoid();
-  //then() uses underscore as unused argument.
-  theFuture.then((_) {
-    //_ is not used
-    print(&quot;There&#39;s nothing to be printed here. Work is already done.&quot;);
-  });
-}
-//----END----//
+<span class="n">void</span> <span class="n">mainWithFutureAPIVoid</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">theFuture</span> <span class="o">=</span> <span class="n">makeDataCallFutureVoid</span><span class="p">();</span>
+  <span class="o">//</span><span class="n">then</span><span class="p">()</span> <span class="n">uses</span> <span class="n">underscore</span> <span class="k">as</span> <span class="n">unused</span> <span class="n">argument</span><span class="o">.</span>
+  <span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">_</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span><span class="n">_</span> <span class="k">is</span> <span class="ow">not</span> <span class="n">used</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There&#39;s nothing to be printed here. Work is already done.&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#5.
-  mainWithFutureAPIVoid();
-}
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#5.</span>
+  <span class="n">mainWithFutureAPIVoid</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>There&#39;s nothing to be printed here. Work is already done.
+<div class="highlight"><pre><span></span><span class="err">There&#39;s nothing to be printed here. Work is already done.</span>
 </pre></div>
 
 
@@ -373,37 +401,37 @@ void main() {
 <hr>
 <h1>Error Handling - <code>Future</code> API</h1>
 <p><code>Future</code> API uses chaining to handle exceptions. Error is caught and handled in <code>catchError()</code> block. The <code>catchError()</code> is chained with <code>then()</code> method.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span> <span class="nt">Example</span><span class="p">#</span><span class="nn">6</span><span class="o">.</span> <span class="nt">Future</span> <span class="nt">API</span> <span class="nt">-</span> <span class="nt">Error</span> <span class="nt">Handling</span>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Example</span><span class="c1">#6. Future API - Error Handling</span>
 
-<span class="o">//</span> <span class="nt">Assume</span> <span class="nt">this</span> <span class="nt">function</span> <span class="nt">takes</span> <span class="nt">long</span> <span class="nt">time</span> <span class="nt">to</span> <span class="nt">return</span> <span class="nt">in</span> <span class="nt">real-world</span><span class="o">.</span>
-<span class="nt">String</span> <span class="nt">getExpansiveData</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">return</span> <span class="err">&quot;I&#39;m</span> <span class="err">expansive</span> <span class="err">data&quot;</span><span class="p">;</span>
+<span class="o">//</span> <span class="n">Assume</span> <span class="n">this</span> <span class="n">function</span> <span class="n">takes</span> <span class="n">long</span> <span class="n">time</span> <span class="n">to</span> <span class="k">return</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="n">world</span><span class="o">.</span>
+<span class="nb nb-Type">String</span> <span class="n">getExpansiveData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">//</span> <span class="nt">Future</span> <span class="nt">with</span> <span class="nt">String</span> <span class="nt">data</span> <span class="nt">is</span> <span class="nt">being</span> <span class="nt">returned</span><span class="o">.</span>
-<span class="o">//</span> <span class="nt">This</span> <span class="nt">function</span> <span class="nt">returns</span> <span class="nt">the</span> <span class="nt">instance</span> <span class="nt">of</span>
-<span class="o">//</span> <span class="nt">Future</span> <span class="nt">and</span> <span class="nt">not</span> <span class="nt">the</span> <span class="nt">actual</span> <span class="nt">data</span><span class="o">.</span>
-<span class="nt">Future</span><span class="o">&lt;</span><span class="nt">String</span><span class="o">&gt;</span> <span class="nt">makeDataCallFutureAPIError</span><span class="o">()</span> <span class="nt">async</span> <span class="p">{</span>
-  <span class="err">var</span> <span class="err">data</span> <span class="err">=</span> <span class="err">await</span> <span class="err">getExpansiveData()</span><span class="p">;</span>
-  <span class="err">throw</span> <span class="err">Exception(&quot;Error</span> <span class="err">occurred</span> <span class="err">in</span> <span class="err">making</span> <span class="err">data</span> <span class="n">call</span><span class="p">:</span> <span class="err">$</span><span class="n">data</span><span class="err">&quot;</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">Future</span> <span class="n">with</span> <span class="nb nb-Type">String</span> <span class="n">data</span> <span class="k">is</span> <span class="n">being</span> <span class="n">returned</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">This</span> <span class="n">function</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">instance</span> <span class="n">of</span>
+<span class="o">//</span> <span class="n">Future</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">data</span><span class="o">.</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">makeDataCallFutureAPIError</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getExpansiveData</span><span class="p">();</span>
+  <span class="n">throw</span> <span class="n">Exception</span><span class="p">(</span><span class="s2">&quot;Error occurred in making data call: $data&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="nt">void</span> <span class="nt">mainWithFutureAPIError</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">var</span> <span class="err">theFuture</span> <span class="err">=</span> <span class="err">makeDataCallFutureAPIError()</span><span class="p">;</span>
+<span class="n">void</span> <span class="n">mainWithFutureAPIError</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">theFuture</span> <span class="o">=</span> <span class="n">makeDataCallFutureAPIError</span><span class="p">();</span>
 
-  <span class="err">//Error</span> <span class="err">is</span> <span class="err">caught</span> <span class="err">and</span> <span class="err">handled</span> <span class="err">in</span> <span class="err">catchError</span> <span class="err">block</span>
-  <span class="err">theFuture.then((value)</span> <span class="err">{</span>
-    <span class="err">print(value)</span><span class="p">;</span>
-  <span class="p">}</span><span class="o">)</span><span class="p">.</span><span class="nc">catchError</span><span class="o">((</span><span class="nt">error</span><span class="o">)</span> <span class="p">{</span>
-    <span class="err">print(error)</span><span class="p">;</span>
-  <span class="p">}</span><span class="o">);</span>
-<span class="err">}</span>
-<span class="o">//</span><span class="nt">----END----</span><span class="o">//</span>
+  <span class="o">//</span><span class="n">Error</span> <span class="k">is</span> <span class="n">caught</span> <span class="ow">and</span> <span class="n">handled</span> <span class="ow">in</span> <span class="n">catchError</span> <span class="n">block</span>
+  <span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+  <span class="p">})</span><span class="o">.</span><span class="n">catchError</span><span class="p">((</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-<span class="o">//</span> <span class="nt">Entry</span> <span class="nt">point</span> <span class="nt">function</span>
-<span class="nt">void</span> <span class="nt">main</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">//Run</span> <span class="err">Example#6.</span>
-  <span class="err">mainWithFutureAPIError()</span><span class="p">;</span>
+<span class="o">//</span> <span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#6.</span>
+  <span class="n">mainWithFutureAPIError</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -418,48 +446,48 @@ void main() {
 <h1>Usage of <code>Future.wait()</code></h1>
 <p>The <a href="https://api.dart.dev/stable/2.8.2/dart-async/Future/wait.html"><code>Future.wait()</code></a> is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.
 In another version, we're using Future API to accomplish what we did using <code>async</code> &amp; <code>await</code> in <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">'Example#3'</a> above.</p>
-<div class="highlight"><pre><span></span>//Example#7. Using `Future.wait()`
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="o">#</span><span class="mi">7</span><span class="p">.</span> <span class="k">Using</span> <span class="o">`</span><span class="n">Future</span><span class="p">.</span><span class="n">wait</span><span class="p">()</span><span class="o">`</span>
 
-Future&lt;String&gt; getData(data) {
-  return data;
-}
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getData</span><span class="p">(</span><span class="k">data</span><span class="p">)</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="k">data</span><span class="p">;</span>
+<span class="err">}</span>
 
-Future&lt;String&gt; getDataAFuture() async {
-  return await getData(&quot;dataA&quot;);
-}
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataAFuture</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="ss">&quot;dataA&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-Future&lt;String&gt; getDataBFuture() async {
-  return await getData(&quot;dataB&quot;);
-}
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataBFuture</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="ss">&quot;dataB&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-Future&lt;String&gt; getDataCFuture() async {
-  return await getData(&quot;dataC&quot;);
-}
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataCFuture</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="ss">&quot;dataC&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-mainWithFutureAPIWait() async {
-  //Chaining Futures in order
-  await Future.wait([
-    getDataAFuture(),
-    getDataBFuture(),
-    getDataCFuture(),
-  ])
-      .then(
-        (List responses) =&gt; print(responses),
-      )
-      .catchError((error) =&gt; print(error));
-}
-//----END----//
+<span class="n">mainWithFutureAPIWait</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Chaining</span> <span class="n">Futures</span> <span class="k">in</span> <span class="k">order</span>
+  <span class="n">await</span> <span class="n">Future</span><span class="p">.</span><span class="n">wait</span><span class="p">([</span>
+    <span class="n">getDataAFuture</span><span class="p">(),</span>
+    <span class="n">getDataBFuture</span><span class="p">(),</span>
+    <span class="n">getDataCFuture</span><span class="p">(),</span>
+  <span class="p">])</span>
+      <span class="p">.</span><span class="k">then</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">List</span> <span class="n">responses</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="n">responses</span><span class="p">),</span>
+      <span class="p">)</span>
+      <span class="p">.</span><span class="n">catchError</span><span class="p">((</span><span class="n">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="n">error</span><span class="p">));</span>
+<span class="err">}</span>
+<span class="o">//</span><span class="c1">----END----//</span>
 
-//Entry point function
-void main() {
-  //Run Example#7.
-  mainWithFutureAPIWait();
-}
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="o">#</span><span class="mi">7</span><span class="p">.</span>
+  <span class="n">mainWithFutureAPIWait</span><span class="p">();</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span>[dataA, dataB, dataC]
+<div class="highlight"><pre><span></span><span class="err">[dataA, dataB, dataC]</span>
 </pre></div>
 
 
@@ -487,8 +515,7 @@ Couldn't find a topic of your interest? Please leave comments or <a href="mailto
   </div>
 
   <div class="center social-share">
-    <p>    Like this article? Share it with your friends!
-</p>
+    <p>Like this article? Share it with your friends!</p>
     <div class="addthis_native_toolbox"></div>
     <div class="addthis_sharing_toolbox"></div>
     <div class="addthis_inline_share_toolbox"></div>
@@ -516,17 +543,17 @@ Couldn't find a topic of your interest? Please leave comments or <a href="mailto
     })();
 </script>
 <noscript>
-        Please enable JavaScript to view comments.
-
+    Please enable JavaScript to view comments.
 </noscript>
 <!-- End Disqus -->
 </article>
 
     <footer>
 <p>
-  &copy;  2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2020  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
-<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p><p>
   <a rel="license"
      href="http://creativecommons.org/licenses/by-sa/4.0/"
@@ -555,7 +582,6 @@ Couldn't find a topic of your interest? Please leave comments or <a href="mailto
   "description": "Mobile engineering tech logger."
 }
 </script>
-
 <a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
     <svg width="80"
          height="80"
@@ -574,5 +600,7 @@ Couldn't find a topic of your interest? Please leave comments or <a href="mailto
         </path>
     </svg>
 </a>
-<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></body>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+</body>
 </html>

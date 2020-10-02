@@ -8,12 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+    <link rel="stylesheet/less" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/solid.css">
 
     <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
 
@@ -23,17 +30,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
-<!-- Google Analytics -->
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-133714063-1', 'auto');
-  ga('send', 'pageview');
-</script>
-<!-- End Google Analytics -->
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333333">
     <!-- Windows Phone -->
@@ -47,6 +44,7 @@
 <meta name="author" content="ptyagi" />
 <meta name="description" content="Code recipe to demonstrate Text-To-Speech Flutter plugin in action." />
 <meta name="keywords" content="Text-to-Speech, TTS, Cross-platform, Flutter, Code-recipes, Android, Android Studio, iOS, development">
+
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="Text-to-Speech Flutter Plugin (Android &amp; iOS)"/>
@@ -79,30 +77,64 @@
     });
   </script>
 </head>
-<body>
+<body class="light-theme">
   <aside>
     <div>
       <a href="https://ptyagicodecamp.github.io">
         <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="techLog" title="techLog">
       </a>
-      <h1><a href="https://ptyagicodecamp.github.io">techLog</a></h1>
+
+      <h1>
+        <a href="https://ptyagicodecamp.github.io">techLog</a>
+      </h1>
 
 <p>Explore | Android | Flutter | Software Engineering</p>
+
       <nav>
         <ul class="list">
 
-          <li><a href="https://www.paypal.me/pritya" target="_blank">Support</a></li>
-          <li><a href="https://www.codementor.io/ptyagicodecamp" target="_blank">Codementor</a></li>
+
+
+            <li>
+              <a target="_self" href="https://www.paypal.me/pritya" >Support</a>
+            </li>
+            <li>
+              <a target="_self" href="https://www.codementor.io/ptyagicodecamp" >Codementor</a>
+            </li>
         </ul>
       </nav>
 
       <ul class="social">
-        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-        <li><a class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank"><i class="fa fa-github"></i></a></li>
-        <li><a class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank"><i class="fa fa-medium"></i></a></li>
-        <li><a class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank"><i class="fa fa-twitter"></i></a></li>
-        <li><a class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a></li>
-        <li><a class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank"><i class="fa fa-codementor"></i></a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank">
+              <i class="fab fa-medium"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank">
+              <i class="fab fa-codementor"></i>
+            </a>
+          </li>
       </ul>
     </div>
 
@@ -113,20 +145,17 @@
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-
   </aside>
   <main>
 
     <nav>
-      <a href="https://ptyagicodecamp.github.io">    Home
-</a>
+      <a href="https://ptyagicodecamp.github.io">Home</a>
 
       <a href="/archives.html">Archives</a>
       <a href="/categories.html">Categories</a>
       <a href="/tags.html">Tags</a>
 
-      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">    Atom
-</a>
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">Atom</a>
 
     </nav>
 
@@ -135,8 +164,7 @@
       
     <h1 id="text-to-speech-flutter-plugin-android-ios">Text-to-Speech Flutter Plugin (Android & iOS)</h1>
     <p>
-          Posted on December 02, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
-
+      Posted on December 02, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
     </p>
   </header>
@@ -186,114 +214,114 @@
 <li><code>isPlaying</code> is the flag to keep track whether text is being read or not. We need this flag to show appropriate <code>Icon</code> (play or stop) in the card.</li>
 <li><code>FlutterTts _flutterTts</code> is the instance of <code>flutter_tts</code> plugin. It's a wrapper around the native implementation for Android and iOS to interact with native functionality. Under the hood, it uses <code>TextToSpeech</code> for Android, and <code>AVSpeechSynthesizer</code> for iOS platform.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">TTSPluginRecipe</span> <span class="kr">extends</span> <span class="nx">StatefulWidget</span> <span class="p">{</span>
-  <span class="kd">@override</span>
-  <span class="nx">_TTSPluginRecipeState</span> <span class="nx">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">_TTSPluginRecipeState</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">TTSPluginRecipe</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">_TTSPluginRecipeState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_TTSPluginRecipeState</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="kr">class</span> <span class="nx">_TTSPluginRecipeState</span> <span class="kr">extends</span> <span class="nx">State</span><span class="o">&lt;</span><span class="nx">TTSPluginRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="nb">String</span> <span class="nx">description</span> <span class="o">=</span>
+<span class="k">class</span> <span class="n">_TTSPluginRecipeState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">TTSPluginRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nb nb-Type">String</span> <span class="n">description</span> <span class="o">=</span>
       <span class="s2">&quot;The Griffith Observatory is the most iconic building in Los Angeles, perched high in the Hollywood Hills, 1,134 feet above sea level.&quot;</span><span class="p">;</span>
 
-  <span class="kt">bool</span> <span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-  <span class="nx">FlutterTts</span> <span class="nx">_flutterTts</span><span class="p">;</span>    
+  <span class="nb nb-Type">bool</span> <span class="n">isPlaying</span> <span class="o">=</span> <span class="bp">false</span><span class="p">;</span>
+  <span class="n">FlutterTts</span> <span class="n">_flutterTts</span><span class="p">;</span>    
 <span class="p">}</span>      
 </pre></div>
 
 
 <h3>Plugin management: Initializing &amp; Disposing</h3>
 <p>Initializing plugin for Android is slightly different than for iOS. We need to detect the platform to run the specific code. Please checkout <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/plugins/platform/platform.dart"><code>PlatformUtil</code></a> to understand how I'm detecting platforms.</p>
-<div class="highlight"><pre><span></span><span class="p">@</span><span class="k">override</span>
-<span class="nt">void</span> <span class="nt">initState</span><span class="o">()</span> <span class="p">{</span>
-  <span class="nt">super</span><span class="p">.</span><span class="nc">initState</span><span class="o">();</span>
-  <span class="nt">initializeTts</span><span class="o">();</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="nv">@override</span><span class="w"></span>
+<span class="n">void</span><span class="w"> </span><span class="n">initState</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">super</span><span class="p">.</span><span class="n">initState</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">initializeTts</span><span class="p">();</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 
-<span class="nt">initializeTts</span><span class="o">()</span> <span class="p">{</span>
-  <span class="err">_flutterTts</span> <span class="err">=</span> <span class="err">FlutterTts()</span><span class="p">;</span>
+<span class="n">initializeTts</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">_flutterTts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FlutterTts</span><span class="p">();</span><span class="w"></span>
 
-  <span class="err">if</span> <span class="err">(PlatformUtil.myPlatform()</span> <span class="err">==</span> <span class="err">MyPlatform.ANDROID)</span> <span class="err">{</span>
-    <span class="err">_flutterTts.ttsInitHandler(()</span> <span class="err">{</span>
-      <span class="err">setTtsLanguage()</span><span class="p">;</span>
-    <span class="p">}</span><span class="o">);</span>
-  <span class="err">}</span> <span class="nt">else</span> <span class="nt">if</span> <span class="o">(</span><span class="nt">PlatformUtil</span><span class="p">.</span><span class="nc">myPlatform</span><span class="o">()</span> <span class="o">==</span> <span class="nt">MyPlatform</span><span class="p">.</span><span class="nc">IOS</span><span class="o">)</span> <span class="p">{</span>
-    <span class="err">setTtsLanguage()</span><span class="p">;</span>
-  <span class="p">}</span> <span class="nt">else</span> <span class="nt">if</span> <span class="o">(</span><span class="nt">PlatformUtil</span><span class="p">.</span><span class="nc">myPlatform</span><span class="o">()</span> <span class="o">==</span> <span class="nt">MyPlatform</span><span class="p">.</span><span class="nc">WEB</span><span class="o">)</span> <span class="p">{</span>
-    <span class="err">//not-supported</span> <span class="err">by</span> <span class="err">plugin</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PlatformUtil</span><span class="p">.</span><span class="n">myPlatform</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MyPlatform</span><span class="p">.</span><span class="n">ANDROID</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">_flutterTts</span><span class="p">.</span><span class="n">ttsInitHandler</span><span class="p">(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">setTtsLanguage</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PlatformUtil</span><span class="p">.</span><span class="n">myPlatform</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MyPlatform</span><span class="p">.</span><span class="n">IOS</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">setTtsLanguage</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="err">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PlatformUtil</span><span class="p">.</span><span class="n">myPlatform</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MyPlatform</span><span class="p">.</span><span class="n">WEB</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="ow">not</span><span class="o">-</span><span class="n">supported</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">plugin</span><span class="w"></span>
+<span class="w">  </span><span class="err">}</span><span class="w"></span>
 
-  <span class="nt">_flutterTts</span><span class="p">.</span><span class="nc">setStartHandler</span><span class="o">(()</span> <span class="p">{</span>
-    <span class="err">setState(()</span> <span class="err">{</span>
-      <span class="err">isPlaying</span> <span class="err">=</span> <span class="err">true</span><span class="p">;</span>
-    <span class="p">}</span><span class="o">);</span>
-  <span class="err">}</span><span class="o">);</span>
+<span class="w">  </span><span class="n">_flutterTts</span><span class="p">.</span><span class="n">setStartHandler</span><span class="p">(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">isPlaying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">}</span><span class="p">);</span><span class="w"></span>
 
-  <span class="nt">_flutterTts</span><span class="p">.</span><span class="nc">setCompletionHandler</span><span class="o">(()</span> <span class="p">{</span>
-    <span class="err">setState(()</span> <span class="err">{</span>
-      <span class="err">isPlaying</span> <span class="err">=</span> <span class="err">false</span><span class="p">;</span>
-    <span class="p">}</span><span class="o">);</span>
-  <span class="err">}</span><span class="o">);</span>
+<span class="w">  </span><span class="n">_flutterTts</span><span class="p">.</span><span class="n">setCompletionHandler</span><span class="p">(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">isPlaying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">}</span><span class="p">);</span><span class="w"></span>
 
-  <span class="nt">_flutterTts</span><span class="p">.</span><span class="nc">setErrorHandler</span><span class="o">((</span><span class="nt">err</span><span class="o">)</span> <span class="p">{</span>
-    <span class="err">setState(()</span> <span class="err">{</span>
-      <span class="err">print(&quot;error</span> <span class="n">occurred</span><span class="p">:</span> <span class="err">&quot;</span> <span class="o">+</span> <span class="n">err</span><span class="p">);</span>
-      <span class="err">isPlaying</span> <span class="err">=</span> <span class="err">false</span><span class="p">;</span>
-    <span class="p">}</span><span class="o">);</span>
-  <span class="err">}</span><span class="o">);</span>
-<span class="err">}</span>
+<span class="w">  </span><span class="n">_flutterTts</span><span class="p">.</span><span class="n">setErrorHandler</span><span class="p">((</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">print</span><span class="p">(</span><span class="ss">&quot;error occurred: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">err</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">isPlaying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">}</span><span class="p">);</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 
 
-<span class="p">@</span><span class="k">override</span>
-<span class="nt">void</span> <span class="nt">dispose</span><span class="o">()</span> <span class="p">{</span>
-  <span class="nt">super</span><span class="p">.</span><span class="nc">dispose</span><span class="o">();</span>
-  <span class="nt">_flutterTts</span><span class="p">.</span><span class="nc">stop</span><span class="o">();</span>
-<span class="p">}</span>
+<span class="nv">@override</span><span class="w"></span>
+<span class="n">void</span><span class="w"> </span><span class="n">dispose</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">super</span><span class="p">.</span><span class="n">dispose</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">_flutterTts</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 </pre></div>
 
 
 <p>Don't forget to stop flutter_tts plugin instance in <code>dispose()</code> method.</p>
 <h3>Speaking &amp; Stopping</h3>
 <p>Speaking and Stop speaking is pretty straight forward. All you need to call plugin's <code>speak(String text)</code> and <code>stop()</code> methods / apis.</p>
-<div class="highlight"><pre><span></span>Future _speak(String text) async {
-  if (text != null &amp;&amp; text.isNotEmpty) {
-    var result = await _flutterTts.speak(text);
-    if (result == 1)
-      setState(() {
-        isPlaying = true;
-      });
-  }
-}
+<div class="highlight"><pre><span></span><span class="n">Future</span> <span class="n">_speak</span><span class="p">(</span><span class="nb nb-Type">String</span> <span class="n">text</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">text</span> <span class="o">!=</span> <span class="nb nb-Type">null</span> <span class="o">&amp;&amp;</span> <span class="n">text</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">_flutterTts</span><span class="o">.</span><span class="n">speak</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
+        <span class="n">isPlaying</span> <span class="o">=</span> <span class="bp">true</span><span class="p">;</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-Future _stop() async {
-  var result = await _flutterTts.stop();
-  if (result == 1)
-    setState(() {
-      isPlaying = false;
-    });
-}
+<span class="n">Future</span> <span class="n">_stop</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">_flutterTts</span><span class="o">.</span><span class="n">stop</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
+      <span class="n">isPlaying</span> <span class="o">=</span> <span class="bp">false</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <h3>Exploring plugin's features</h3>
 <p><strong>Setting Language:</strong></p>
-<div class="highlight"><pre><span></span>void setTtsLanguage() async {
-  await _flutterTts.setLanguage(&quot;en-US&quot;);
-}
+<div class="highlight"><pre><span></span><span class="err">void setTtsLanguage() async {</span>
+<span class="err">  await _flutterTts.setLanguage(&quot;en-US&quot;);</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p><strong>Getting list of supported languages:</strong></p>
-<div class="highlight"><pre><span></span>  await flutterTts.getLanguages`
+<div class="highlight"><pre><span></span><span class="err">  await flutterTts.getLanguages`</span>
 </pre></div>
 
 
 <p><strong>Setting Voice:</strong></p>
-<div class="highlight"><pre><span></span>_flutterTts.setVoice(&quot;en-us-x-sfg#male_1-local&quot;)
+<div class="highlight"><pre><span></span><span class="err">_flutterTts.setVoice(&quot;en-us-x-sfg#male_1-local&quot;)</span>
 </pre></div>
 
 
 <p><strong>Getting list of supported voices:</strong></p>
-<div class="highlight"><pre><span></span>  await flutterTts.getVoices
+<div class="highlight"><pre><span></span><span class="err">  await flutterTts.getVoices</span>
 </pre></div>
 
 
@@ -334,8 +362,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
   </div>
 
   <div class="center social-share">
-    <p>    Like this article? Share it with your friends!
-</p>
+    <p>Like this article? Share it with your friends!</p>
     <div class="addthis_native_toolbox"></div>
     <div class="addthis_sharing_toolbox"></div>
     <div class="addthis_inline_share_toolbox"></div>
@@ -363,17 +390,17 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
     })();
 </script>
 <noscript>
-        Please enable JavaScript to view comments.
-
+    Please enable JavaScript to view comments.
 </noscript>
 <!-- End Disqus -->
 </article>
 
     <footer>
 <p>
-  &copy;  2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2020  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
-<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p><p>
   <a rel="license"
      href="http://creativecommons.org/licenses/by-sa/4.0/"
@@ -402,7 +429,6 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
   "description": "Mobile engineering tech logger."
 }
 </script>
-
 <a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
     <svg width="80"
          height="80"
@@ -421,5 +447,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
         </path>
     </svg>
 </a>
-<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></body>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+</body>
 </html>

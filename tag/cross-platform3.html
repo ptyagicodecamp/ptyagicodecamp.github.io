@@ -8,12 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+    <link rel="stylesheet/less" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/solid.css">
 
     <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
 
@@ -23,17 +30,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
-<!-- Google Analytics -->
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-133714063-1', 'auto');
-  ga('send', 'pageview');
-</script>
-<!-- End Google Analytics -->
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333333">
     <!-- Windows Phone -->
@@ -54,8 +51,7 @@
 <meta property="og:url" content="https://ptyagicodecamp.github.io"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash;     Tag Cross-platform
-</title>
+  <title>techLog &ndash; Tag cross-platform</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -65,30 +61,64 @@
     });
   </script>
 </head>
-<body>
+<body class="light-theme">
   <aside>
     <div>
       <a href="https://ptyagicodecamp.github.io">
         <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="techLog" title="techLog">
       </a>
-      <h1><a href="https://ptyagicodecamp.github.io">techLog</a></h1>
+
+      <h1>
+        <a href="https://ptyagicodecamp.github.io">techLog</a>
+      </h1>
 
 <p>Explore | Android | Flutter | Software Engineering</p>
+
       <nav>
         <ul class="list">
 
-          <li><a href="https://www.paypal.me/pritya" target="_blank">Support</a></li>
-          <li><a href="https://www.codementor.io/ptyagicodecamp" target="_blank">Codementor</a></li>
+
+
+            <li>
+              <a target="_self" href="https://www.paypal.me/pritya" >Support</a>
+            </li>
+            <li>
+              <a target="_self" href="https://www.codementor.io/ptyagicodecamp" >Codementor</a>
+            </li>
         </ul>
       </nav>
 
       <ul class="social">
-        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-        <li><a class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank"><i class="fa fa-github"></i></a></li>
-        <li><a class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank"><i class="fa fa-medium"></i></a></li>
-        <li><a class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank"><i class="fa fa-twitter"></i></a></li>
-        <li><a class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a></li>
-        <li><a class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank"><i class="fa fa-codementor"></i></a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank">
+              <i class="fab fa-medium"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank">
+              <i class="fab fa-codementor"></i>
+            </a>
+          </li>
       </ul>
     </div>
 
@@ -99,20 +129,17 @@
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-
   </aside>
   <main>
 
     <nav>
-      <a href="https://ptyagicodecamp.github.io">    Home
-</a>
+      <a href="https://ptyagicodecamp.github.io">Home</a>
 
       <a href="/archives.html">Archives</a>
       <a href="/categories.html">Categories</a>
       <a href="/tags.html">Tags</a>
 
-      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">    Atom
-</a>
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">Atom</a>
 
     </nav>
 
@@ -120,21 +147,41 @@
 
 <article>
   <header>
+    <h2><a href="https://ptyagicodecamp.github.io/loading-pdf-file-from-firebase-storage-in-flutter-app-android-ios-web.html#loading-pdf-file-from-firebase-storage-in-flutter-app-android-ios-web">Loading PDF file from Firebase Storage in Flutter App (Android, iOS & Web)</a></h2>
+    <p>
+      Posted on February 03, 2020 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+
+          &#8226; Tagged with
+              <a href="https://ptyagicodecamp.github.io/tag/firebasestorage.html">FirebaseStorage</a>,              <a href="https://ptyagicodecamp.github.io/tag/pdf.html">PDF</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter-web.html">Flutter Web</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+    </p>
+  </header>
+  <div>
+      <p>Code recipe to demonstrate loading PDF file from Firebase Storage on multiple platforms (Android, iOS, and Web) using Flutter.</p>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/loading-pdf-file-from-firebase-storage-in-flutter-app-android-ios-web.html#loading-pdf-file-from-firebase-storage-in-flutter-app-android-ios-web">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="https://ptyagicodecamp.github.io/persisting-theme-in-localdatabase-moor-plugin.html#persisting-theme-in-localdatabase-moor-plugin">Persisting theme in LocalDatabase (Moor plugin)</a></h2>
     <p>
-          Posted on December 31, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+      Posted on December 31, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
-
-          &#8226;     Tagged with
-
+          &#8226; Tagged with
               <a href="https://ptyagicodecamp.github.io/tag/caching.html">Caching</a>,              <a href="https://ptyagicodecamp.github.io/tag/localdatabase.html">LocalDatabase</a>,              <a href="https://ptyagicodecamp.github.io/tag/moor.html">Moor</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </header>
   <div>
       <p>Persisting theme setting in LocalDatabase using <a href="https://pub.dev/packages/moor">Moor plugin</a></p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/persisting-theme-in-localdatabase-moor-plugin.html#persisting-theme-in-localdatabase-moor-plugin">    Continue reading
-</a>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/persisting-theme-in-localdatabase-moor-plugin.html#persisting-theme-in-localdatabase-moor-plugin">
+          Continue reading
+        </a>
   </div>
   <hr />
 </article>
@@ -142,19 +189,19 @@
   <header>
     <h2><a href="https://ptyagicodecamp.github.io/persisting-theme-using-sharedpreferences-android-ios-and-web.html#persisting-theme-using-sharedpreferences-android-ios-and-web">Persisting theme using SharedPreferences (Android, iOS, and Web)</a></h2>
     <p>
-          Posted on December 30, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+      Posted on December 30, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
-
-          &#8226;     Tagged with
-
+          &#8226; Tagged with
               <a href="https://ptyagicodecamp.github.io/tag/caching.html">Caching</a>,              <a href="https://ptyagicodecamp.github.io/tag/sharedpreferences.html">SharedPreferences</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </header>
   <div>
       <p>Persisting theme setting using <a href="https://pub.dev/packages/shared_preferences">SharedPreferences plugin</a></p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/persisting-theme-using-sharedpreferences-android-ios-and-web.html#persisting-theme-using-sharedpreferences-android-ios-and-web">    Continue reading
-</a>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/persisting-theme-using-sharedpreferences-android-ios-and-web.html#persisting-theme-using-sharedpreferences-android-ios-and-web">
+          Continue reading
+        </a>
   </div>
   <hr />
 </article>
@@ -162,19 +209,19 @@
   <header>
     <h2><a href="https://ptyagicodecamp.github.io/text-to-speech-flutter-plugin-android-ios.html#text-to-speech-flutter-plugin-android-ios">Text-to-Speech Flutter Plugin (Android & iOS)</a></h2>
     <p>
-          Posted on December 02, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+      Posted on December 02, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
-
-          &#8226;     Tagged with
-
+          &#8226; Tagged with
               <a href="https://ptyagicodecamp.github.io/tag/text-to-speech.html">Text-to-Speech</a>,              <a href="https://ptyagicodecamp.github.io/tag/tts.html">TTS</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </header>
   <div>
       <p>Code recipe to demonstrate Text-To-Speech Flutter plugin in action.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/text-to-speech-flutter-plugin-android-ios.html#text-to-speech-flutter-plugin-android-ios">    Continue reading
-</a>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/text-to-speech-flutter-plugin-android-ios.html#text-to-speech-flutter-plugin-android-ios">
+          Continue reading
+        </a>
   </div>
   <hr />
 </article>
@@ -182,19 +229,19 @@
   <header>
     <h2><a href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html#loading-image-from-firebase-storage-in-flutter-app-android-ios-web">Loading image from Firebase Storage in Flutter App (Android, iOS & Web)</a></h2>
     <p>
-          Posted on November 22, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+      Posted on November 22, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
-
-          &#8226;     Tagged with
-
+          &#8226; Tagged with
               <a href="https://ptyagicodecamp.github.io/tag/firebasestorage.html">FirebaseStorage</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter-web.html">Flutter Web</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </header>
   <div>
       <p>Code recipe to demonstrate image Loading from Firebase Storage on multiple platforms (Android, iOS, and Web) using Flutter and Flutter Web.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html#loading-image-from-firebase-storage-in-flutter-app-android-ios-web">    Continue reading
-</a>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html#loading-image-from-firebase-storage-in-flutter-app-android-ios-web">
+          Continue reading
+        </a>
   </div>
   <hr />
 </article>
@@ -202,19 +249,19 @@
   <header>
     <h2><a href="https://ptyagicodecamp.github.io/animating-using-animatedpadding-flutter-widget.html#animating-using-animatedpadding-flutter-widget">Animating using AnimatedPadding Flutter widget</a></h2>
     <p>
-          Posted on November 15, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+      Posted on November 15, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
-
-          &#8226;     Tagged with
-
+          &#8226; Tagged with
               <a href="https://ptyagicodecamp.github.io/tag/animatedpadding.html">AnimatedPadding</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </header>
   <div>
       <p>Code recipe for implementing AnimatedPadding Flutter widget.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/animating-using-animatedpadding-flutter-widget.html#animating-using-animatedpadding-flutter-widget">    Continue reading
-</a>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/animating-using-animatedpadding-flutter-widget.html#animating-using-animatedpadding-flutter-widget">
+          Continue reading
+        </a>
   </div>
   <hr />
 </article>
@@ -222,19 +269,19 @@
   <header>
     <h2><a href="https://ptyagicodecamp.github.io/animating-using-animatedpositioned-flutter-widget.html#animating-using-animatedpositioned-flutter-widget">Animating using AnimatedPositioned Flutter widget</a></h2>
     <p>
-          Posted on November 14, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+      Posted on November 14, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
-
-          &#8226;     Tagged with
-
+          &#8226; Tagged with
               <a href="https://ptyagicodecamp.github.io/tag/animatedpositioned.html">AnimatedPositioned</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </header>
   <div>
       <p>Code recipe for implementing AnimatedPositioned Flutter widget.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/animating-using-animatedpositioned-flutter-widget.html#animating-using-animatedpositioned-flutter-widget">    Continue reading
-</a>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/animating-using-animatedpositioned-flutter-widget.html#animating-using-animatedpositioned-flutter-widget">
+          Continue reading
+        </a>
   </div>
   <hr />
 </article>
@@ -242,19 +289,19 @@
   <header>
     <h2><a href="https://ptyagicodecamp.github.io/animating-using-animatedcontainer-flutter-widget.html#animating-using-animatedcontainer-flutter-widget">Animating using AnimatedContainer Flutter widget</a></h2>
     <p>
-          Posted on November 13, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+      Posted on November 13, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
-
-          &#8226;     Tagged with
-
+          &#8226; Tagged with
               <a href="https://ptyagicodecamp.github.io/tag/animatedcontainer.html">AnimatedContainer</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </header>
   <div>
       <p>Code recipe for implementing AnimatedContainer Flutter widget.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/animating-using-animatedcontainer-flutter-widget.html#animating-using-animatedcontainer-flutter-widget">    Continue reading
-</a>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/animating-using-animatedcontainer-flutter-widget.html#animating-using-animatedcontainer-flutter-widget">
+          Continue reading
+        </a>
   </div>
   <hr />
 </article>
@@ -262,19 +309,19 @@
   <header>
     <h2><a href="https://ptyagicodecamp.github.io/implementing-slider-rangeslider-flutter-widgets.html#implementing-slider-rangeslider-flutter-widgets">Implementing Slider & RangeSlider Flutter Widgets</a></h2>
     <p>
-          Posted on November 09, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+      Posted on November 09, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
-
-          &#8226;     Tagged with
-
+          &#8226; Tagged with
               <a href="https://ptyagicodecamp.github.io/tag/slider.html">Slider</a>,              <a href="https://ptyagicodecamp.github.io/tag/rangeslider.html">RangeSlider</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
     </p>
   </header>
   <div>
       <p>Code recipe to implement Slider and RangeSlider Flutter widgets.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/implementing-slider-rangeslider-flutter-widgets.html#implementing-slider-rangeslider-flutter-widgets">    Continue reading
-</a>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/implementing-slider-rangeslider-flutter-widgets.html#implementing-slider-rangeslider-flutter-widgets">
+          Continue reading
+        </a>
   </div>
   <hr />
 </article>
@@ -282,50 +329,28 @@
   <header>
     <h2><a href="https://ptyagicodecamp.github.io/implementing-voice-input-for-search-action-in-appbar.html#implementing-voice-input-for-search-action-in-appbar">Implementing Voice input for Search action in AppBar</a></h2>
     <p>
-          Posted on October 10, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+      Posted on October 10, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
-
-          &#8226;     Tagged with
-
+          &#8226; Tagged with
               <a href="https://ptyagicodecamp.github.io/tag/searchdelegate.html">SearchDelegate</a>,              <a href="https://ptyagicodecamp.github.io/tag/searchappbar.html">SearchAppBar</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>,              <a href="https://ptyagicodecamp.github.io/tag/speech_recognition.html">speech_recognition</a>,              <a href="https://ptyagicodecamp.github.io/tag/permission_handler.html">permission_handler</a>
     </p>
   </header>
   <div>
       <p>Implementing Voice input for Search action in AppBar using Flutter for Android and iOS mobile apps.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/implementing-voice-input-for-search-action-in-appbar.html#implementing-voice-input-for-search-action-in-appbar">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://ptyagicodecamp.github.io/migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps.html#migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps">Migrating to Flutter 1.9: Implementing Cross-platform Firebase Login in Flutter Apps</a></h2>
-    <p>
-          Posted on September 23, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="https://ptyagicodecamp.github.io/tag/flutter19.html">Flutter1.9</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/web.html">Web</a>,              <a href="https://ptyagicodecamp.github.io/tag/mobile.html">Mobile</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>
-    </p>
-  </header>
-  <div>
-      <p>In this article, I'll show you how <a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1">Flutter 1.9 release</a> make developing cross-platform Flutter applications simple while maximizing code reuse.</p>
-      <br>
-      <a class="btn" href="https://ptyagicodecamp.github.io/migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps.html#migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps">    Continue reading
-</a>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/implementing-voice-input-for-search-action-in-appbar.html#implementing-voice-input-for-search-action-in-appbar">
+          Continue reading
+        </a>
   </div>
 </article>
 
   <div class="pagination">
     <a class="btn float-left" href="https://ptyagicodecamp.github.io/tag/cross-platform4.html">
-      <i class="fa fa-angle-left"></i>     Older Posts
-
+      <i class="fa fa-angle-left"></i> Older Posts
     </a>
     <a class="btn float-right" href="https://ptyagicodecamp.github.io/tag/cross-platform2.html">
-          Newer Posts
- <i class="fa fa-angle-right"></i>
+      Newer Posts <i class="fa fa-angle-right"></i>
     </a>
   </div>
 
@@ -338,12 +363,12 @@
   </script>
 
 
-
     <footer>
 <p>
-  &copy;  2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2020  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
-<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p><p>
   <a rel="license"
      href="http://creativecommons.org/licenses/by-sa/4.0/"
@@ -372,7 +397,6 @@
   "description": "Mobile engineering tech logger."
 }
 </script>
-
 <a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
     <svg width="80"
          height="80"
@@ -391,5 +415,7 @@
         </path>
     </svg>
 </a>
-<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></body>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+</body>
 </html>

@@ -8,12 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+    <link rel="stylesheet/less" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
-  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/solid.css">
 
     <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
 
@@ -23,17 +30,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
-<!-- Google Analytics -->
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-133714063-1', 'auto');
-  ga('send', 'pageview');
-</script>
-<!-- End Google Analytics -->
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333333">
     <!-- Windows Phone -->
@@ -47,6 +44,7 @@
 <meta name="author" content="ptyagi" />
 <meta name="description" content="In this article, we&#39;ll learn to integrate DialogFlow in a Flutter app for enriched conversational experience." />
 <meta name="keywords" content="DialogFlow, Flutter, Code-recipes, Android, Android Studio, iOS">
+
 
 <meta property="og:site_name" content="techLog"/>
 <meta property="og:title" content="Implementing Flutter FactsBot using DialogFlow"/>
@@ -76,30 +74,64 @@
     });
   </script>
 </head>
-<body>
+<body class="light-theme">
   <aside>
     <div>
       <a href="https://ptyagicodecamp.github.io">
         <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="techLog" title="techLog">
       </a>
-      <h1><a href="https://ptyagicodecamp.github.io">techLog</a></h1>
+
+      <h1>
+        <a href="https://ptyagicodecamp.github.io">techLog</a>
+      </h1>
 
 <p>Explore | Android | Flutter | Software Engineering</p>
+
       <nav>
         <ul class="list">
 
-          <li><a href="https://www.paypal.me/pritya" target="_blank">Support</a></li>
-          <li><a href="https://www.codementor.io/ptyagicodecamp" target="_blank">Codementor</a></li>
+
+
+            <li>
+              <a target="_self" href="https://www.paypal.me/pritya" >Support</a>
+            </li>
+            <li>
+              <a target="_self" href="https://www.codementor.io/ptyagicodecamp" >Codementor</a>
+            </li>
         </ul>
       </nav>
 
       <ul class="social">
-        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-        <li><a class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank"><i class="fa fa-github"></i></a></li>
-        <li><a class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank"><i class="fa fa-medium"></i></a></li>
-        <li><a class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank"><i class="fa fa-twitter"></i></a></li>
-        <li><a class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a></li>
-        <li><a class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank"><i class="fa fa-codementor"></i></a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank">
+              <i class="fab fa-medium"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank">
+              <i class="fab fa-codementor"></i>
+            </a>
+          </li>
       </ul>
     </div>
 
@@ -110,20 +142,17 @@
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-
   </aside>
   <main>
 
     <nav>
-      <a href="https://ptyagicodecamp.github.io">    Home
-</a>
+      <a href="https://ptyagicodecamp.github.io">Home</a>
 
       <a href="/archives.html">Archives</a>
       <a href="/categories.html">Categories</a>
       <a href="/tags.html">Tags</a>
 
-      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">    Atom
-</a>
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">Atom</a>
 
     </nav>
 
@@ -132,8 +161,7 @@
       
     <h1 id="implementing-flutter-factsbot-using-dialogflow">Implementing Flutter FactsBot using DialogFlow</h1>
     <p>
-          Posted on August 20, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
-
+      Posted on August 20, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
 
     </p>
   </header>
@@ -242,38 +270,38 @@
 <p>In this section, I'll be adding a chat icon in the bottomRight corner of the landing page like below:</p>
 <p><img alt="DialogFlow Chat icon" src="https://ptyagicodecamp.github.io/df_chat_icon.jpg"></p>
 <p>I'll be creating a file say <code>widgets_lib.dart</code> to keep track of my all reusable widgets. The widget <code>factBot</code> is a <code>FloatingActionButton</code> to initiate FlutterFacts user interface. You would notice that <code>onPressed:</code> property sends a message to router to open FlutterFacts UI. <code>FACTS_DIALOGFLOW</code> string is like a key-value mapping between page identifier and target page that should launch as result.</p>
-<div class="highlight"><pre><span></span>Widget factBot(BuildContext context) {
-  return Container(
-    alignment: Alignment.bottomRight,
-      child: FloatingActionButton(
-        materialTapTargetSize: MaterialTapTargetSize.padded,
-        child: Center(
-          child: Icon(Icons.chat),
-        ),
-        elevation: 4.0,
-        backgroundColor: MyColors.blue1,
-        onPressed: () =&gt; Navigator.pushNamed(context, FACTS_DIALOGFLOW),
-      )
-  );
-}
+<div class="highlight"><pre><span></span><span class="err">Widget factBot(BuildContext context) {</span>
+<span class="err">  return Container(</span>
+<span class="err">    alignment: Alignment.bottomRight,</span>
+<span class="err">      child: FloatingActionButton(</span>
+<span class="err">        materialTapTargetSize: MaterialTapTargetSize.padded,</span>
+<span class="err">        child: Center(</span>
+<span class="err">          child: Icon(Icons.chat),</span>
+<span class="err">        ),</span>
+<span class="err">        elevation: 4.0,</span>
+<span class="err">        backgroundColor: MyColors.blue1,</span>
+<span class="err">        onPressed: () =&gt; Navigator.pushNamed(context, FACTS_DIALOGFLOW),</span>
+<span class="err">      )</span>
+<span class="err">  );</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p><strong>Navigating in the app:</strong></p>
 <p>I'll be using page routing for navigating from one page to another in this Flutter app.
 Let's quickly review <code>router.dart</code>. This file defines a string to represent each page, and make use of <code>RouteSettings</code> attribute to open a qualifying target page. When <code>routeSettings.name</code> matches <code>FACTS_DIALOGFLOW</code> value, <code>FlutterFactsDialogFlow()</code> page will open.</p>
-<div class="highlight"><pre><span></span><span class="nt">const</span> <span class="nt">String</span> <span class="nt">FACTS_DIALOGFLOW</span> <span class="o">=</span> <span class="s2">&quot;FACTS_DIALOGFLOW&quot;</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="k">const</span> <span class="nb nb-Type">String</span> <span class="n">FACTS_DIALOGFLOW</span> <span class="o">=</span> <span class="s2">&quot;FACTS_DIALOGFLOW&quot;</span><span class="p">;</span>
 
-<span class="nt">Route</span><span class="o">&lt;</span><span class="nt">dynamic</span><span class="o">&gt;</span> <span class="nt">generateRoute</span><span class="o">(</span><span class="nt">RouteSettings</span> <span class="nt">routeSettings</span><span class="o">)</span> <span class="p">{</span>
-  <span class="err">switch(routeSettings.name)</span> <span class="err">{</span>
-    <span class="err">case</span> <span class="err">&#39;/&#39;:</span>
-      <span class="err">return</span> <span class="err">MaterialPageRoute(</span><span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nf">MyHomePage</span><span class="p">());</span>
-      <span class="err">break</span><span class="p">;</span>
-    <span class="err">case</span> <span class="n">FACTS_DIALOGFLOW</span><span class="p">:</span>
-      <span class="n">return</span> <span class="nf">MaterialPageRoute</span><span class="p">(</span><span class="n">builder</span><span class="err">:</span> <span class="err">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nf">FlutterFactsDialogFlow</span><span class="p">());</span>
+<span class="n">Route</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">generateRoute</span><span class="p">(</span><span class="n">RouteSettings</span> <span class="n">routeSettings</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">switch</span><span class="p">(</span><span class="n">routeSettings</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">case</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">MaterialPageRoute</span><span class="p">(</span><span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">MyHomePage</span><span class="p">());</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="n">case</span> <span class="n">FACTS_DIALOGFLOW</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">MaterialPageRoute</span><span class="p">(</span><span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">FlutterFactsDialogFlow</span><span class="p">());</span>
 
   <span class="p">}</span>
-<span class="err">}</span>
+<span class="p">}</span>
 </pre></div>
 
 
@@ -313,69 +341,69 @@ Let's quickly review <code>router.dart</code>. This file defines a string to rep
 <p><strong>Show me the code:</strong></p>
 <p>When user clicks on the chat icon, it'll launch <code>FlutterFactsDialogFlow</code> page, which is <code>StatefulWidget</code>. This widget will have a list of fact messages <code>_messages</code> to display the interaction log of conversation between user and FlutterFactsBot. This list will be displayed in reverse order, that means most recent messages will be at the bottom.</p>
 <p>Page has two parts: <code>appBar</code> &amp; <code>body</code>. AppBar has title for the page whereas body part has three widgets inside a <code>Column</code> widget. <code>Flexible</code> widget contains a <code>ListView</code> to show <code>_messages</code> list in reverse order. <code>Divider</code> widget is used to give a visual separation between interaction log and text box <code>_queryInputWidget</code> to input user's query.</p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">FlutterFactsDialogFlow</span> <span class="kr">extends</span> <span class="nx">StatefulWidget</span> <span class="p">{</span>
-  <span class="nx">FlutterFactsDialogFlow</span><span class="p">({</span><span class="nx">Key</span> <span class="nx">key</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">})</span> <span class="o">:</span> <span class="kr">super</span><span class="p">(</span><span class="nx">key</span>: <span class="kt">key</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">FlutterFactsDialogFlow</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">FlutterFactsDialogFlow</span><span class="p">(</span><span class="err">{</span><span class="k">Key</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">.</span><span class="n">title</span><span class="err">}</span><span class="p">)</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="n">super</span><span class="p">(</span><span class="k">key</span><span class="err">:</span><span class="w"> </span><span class="k">key</span><span class="p">);</span><span class="w"></span>
 
-  <span class="kr">final</span> <span class="nb">String</span> <span class="nx">title</span><span class="p">;</span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kd">@override</span>
-  <span class="nx">_FlutterFactsDialogFlowState</span> <span class="nx">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">_FlutterFactsDialogFlowState</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="nv">@override</span><span class="w"></span>
+<span class="w">  </span><span class="n">_FlutterFactsDialogFlowState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">_FlutterFactsDialogFlowState</span><span class="p">();</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 
-<span class="kr">class</span> <span class="nx">_FlutterFactsDialogFlowState</span> <span class="kr">extends</span> <span class="nx">State</span><span class="o">&lt;</span><span class="nx">FlutterFactsDialogFlow</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="kr">final</span> <span class="nx">List</span><span class="o">&lt;</span><span class="nx">FactsMessage</span><span class="o">&gt;</span> <span class="nx">_messages</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">FactsMessage</span><span class="o">&gt;</span><span class="p">[];</span>
+<span class="k">class</span><span class="w"> </span><span class="n">_FlutterFactsDialogFlowState</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="k">State</span><span class="o">&lt;</span><span class="n">FlutterFactsDialogFlow</span><span class="o">&gt;</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FactsMessage</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="n">FactsMessage</span><span class="o">&gt;</span><span class="err">[]</span><span class="p">;</span><span class="w"></span>
 
-  <span class="p">...</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
 
-  <span class="kd">@override</span>
-  <span class="nx">Widget</span> <span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">Scaffold</span><span class="p">(</span>
-      <span class="nx">appBar</span>: <span class="kt">AppBar</span><span class="p">(</span>
-        <span class="nx">centerTitle</span>: <span class="kt">true</span><span class="p">,</span>
-        <span class="nx">title</span>: <span class="kt">Text</span><span class="p">(</span><span class="s2">&quot;Flutter Facts&quot;</span><span class="p">),</span>
-      <span class="p">),</span>
-      <span class="nx">body</span>: <span class="kt">Column</span><span class="p">(</span><span class="nx">children</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-        <span class="nx">Flexible</span><span class="p">(</span>
-            <span class="nx">child</span>: <span class="kt">ListView.builder</span><span class="p">(</span>
-              <span class="nx">padding</span>: <span class="kt">EdgeInsets.all</span><span class="p">(</span><span class="mf">8.0</span><span class="p">),</span>
-              <span class="nx">reverse</span>: <span class="kt">true</span><span class="p">,</span> <span class="c1">//To keep the latest messages at the bottom</span>
-              <span class="nx">itemBuilder</span><span class="o">:</span> <span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="kr">int</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">_messages</span><span class="p">[</span><span class="nx">index</span><span class="p">],</span>
-              <span class="nx">itemCount</span>: <span class="kt">_messages.length</span><span class="p">,</span>
-            <span class="p">)),</span>
-        <span class="nx">Divider</span><span class="p">(</span><span class="nx">height</span>: <span class="kt">1.0</span><span class="p">),</span>
-        <span class="nx">Container</span><span class="p">(</span>
-          <span class="nx">decoration</span>: <span class="kt">new</span> <span class="nx">BoxDecoration</span><span class="p">(</span><span class="nx">color</span>: <span class="kt">Theme.of</span><span class="p">(</span><span class="nx">context</span><span class="p">).</span><span class="nx">cardColor</span><span class="p">),</span>
-          <span class="nx">child</span>: <span class="kt">_queryInputWidget</span><span class="p">(</span><span class="nx">context</span><span class="p">),</span>
-        <span class="p">),</span>
-      <span class="p">]),</span>
-    <span class="p">);</span>
-  <span class="p">}</span>  
-<span class="p">}</span>  
+<span class="w">  </span><span class="nv">@override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="nl">appBar</span><span class="p">:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="nl">centerTitle</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nl">title</span><span class="p">:</span><span class="w"> </span><span class="nc">Text</span><span class="p">(</span><span class="ss">&quot;Flutter Facts&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="nl">body</span><span class="p">:</span><span class="w"> </span><span class="k">Column</span><span class="p">(</span><span class="nl">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;[</span><span class="n"></span>
+<span class="n">        Flexible(</span>
+<span class="n">            child: ListView.builder(</span>
+<span class="n">              padding: EdgeInsets.all(8.0),</span>
+<span class="n">              reverse: true, //To keep the latest messages at the bottom</span>
+<span class="n">              itemBuilder: (_, int index) =&gt; _messages[index</span><span class="o">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nl">itemCount</span><span class="p">:</span><span class="w"> </span><span class="n">_messages</span><span class="p">.</span><span class="n">length</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">)),</span><span class="w"></span>
+<span class="w">        </span><span class="n">Divider</span><span class="p">(</span><span class="nl">height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="nl">decoration</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span><span class="nl">color</span><span class="p">:</span><span class="w"> </span><span class="n">Theme</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">cardColor</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="nl">child</span><span class="p">:</span><span class="w"> </span><span class="n">_queryInputWidget</span><span class="p">(</span><span class="n">context</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="err">]</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">}</span><span class="w">  </span>
+<span class="err">}</span><span class="w">  </span>
 </pre></div>
 
 
 <p>Let's explore <code>_queryInputWidget</code> widget for entering user's query text. This is the area where user can enter their query text. It has two parts to it: <code>TextField</code> widget to enter query text, and <code>IconButton</code> for submitting query. <code>TextField</code> widget needs a <code>controller</code> and <code>onSubmitted</code> attributes. <code>onSubmitted</code> attribute calls the given method <code>_submitQuery</code> in our case, once user is done entering the text and hits enter. <code>IconButton</code> widget is another way to submit text to DialogFlow. It's <code>onPressed</code> calls <code>_submitQuery</code> as well.</p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">_FlutterFactsDialogFlowState</span> <span class="kr">extends</span> <span class="nx">State</span><span class="o">&lt;</span><span class="nx">FlutterFactsDialogFlow</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="kr">final</span> <span class="nx">TextEditingController</span> <span class="nx">_textController</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TextEditingController</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_FlutterFactsDialogFlowState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">FlutterFactsDialogFlow</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="n">final</span> <span class="n">TextEditingController</span> <span class="n">_textController</span> <span class="o">=</span> <span class="n">new</span> <span class="n">TextEditingController</span><span class="p">();</span>
 
-  <span class="nx">Widget</span> <span class="nx">_queryInputWidget</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">Container</span><span class="p">(</span>
-      <span class="nx">child</span>: <span class="kt">Container</span><span class="p">(</span>
-        <span class="nx">margin</span>: <span class="kt">EdgeInsets.symmetric</span><span class="p">(</span><span class="nx">horizontal</span>: <span class="kt">8.0</span><span class="p">,</span> <span class="nx">vertical</span>: <span class="kt">8.0</span><span class="p">),</span>
-        <span class="nx">child</span>: <span class="kt">Row</span><span class="p">(</span>
-          <span class="nx">children</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-            <span class="nx">Flexible</span><span class="p">(</span>
-              <span class="nx">child</span>: <span class="kt">TextField</span><span class="p">(</span>
-                <span class="nx">controller</span>: <span class="kt">_textController</span><span class="p">,</span>
-                <span class="nx">onSubmitted</span>: <span class="kt">_submitQuery</span><span class="p">,</span>
-                <span class="nx">decoration</span>: <span class="kt">InputDecoration.collapsed</span><span class="p">(</span><span class="nx">hintText</span><span class="o">:</span> <span class="s2">&quot;Send a message&quot;</span><span class="p">),</span>
+  <span class="n">Widget</span> <span class="n">_queryInputWidget</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Container</span><span class="p">(</span>
+      <span class="n">child</span><span class="p">:</span> <span class="n">Container</span><span class="p">(</span>
+        <span class="n">margin</span><span class="p">:</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">symmetric</span><span class="p">(</span><span class="n">horizontal</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span> <span class="n">vertical</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">),</span>
+        <span class="n">child</span><span class="p">:</span> <span class="n">Row</span><span class="p">(</span>
+          <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+            <span class="n">Flexible</span><span class="p">(</span>
+              <span class="n">child</span><span class="p">:</span> <span class="n">TextField</span><span class="p">(</span>
+                <span class="n">controller</span><span class="p">:</span> <span class="n">_textController</span><span class="p">,</span>
+                <span class="n">onSubmitted</span><span class="p">:</span> <span class="n">_submitQuery</span><span class="p">,</span>
+                <span class="n">decoration</span><span class="p">:</span> <span class="n">InputDecoration</span><span class="o">.</span><span class="n">collapsed</span><span class="p">(</span><span class="n">hintText</span><span class="p">:</span> <span class="s2">&quot;Send a message&quot;</span><span class="p">),</span>
               <span class="p">),</span>
             <span class="p">),</span>
-            <span class="nx">Container</span><span class="p">(</span>
-              <span class="nx">margin</span>: <span class="kt">EdgeInsets.symmetric</span><span class="p">(</span><span class="nx">horizontal</span>: <span class="kt">4.0</span><span class="p">),</span>
-              <span class="nx">child</span>: <span class="kt">IconButton</span><span class="p">(</span>
-                  <span class="nx">icon</span>: <span class="kt">Icon</span><span class="p">(</span><span class="nx">Icons</span><span class="p">.</span><span class="nx">send</span><span class="p">),</span>
-                  <span class="nx">onPressed</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">_submitQuery</span><span class="p">(</span><span class="nx">_textController</span><span class="p">.</span><span class="nx">text</span><span class="p">)),</span>
+            <span class="n">Container</span><span class="p">(</span>
+              <span class="n">margin</span><span class="p">:</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">symmetric</span><span class="p">(</span><span class="n">horizontal</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">),</span>
+              <span class="n">child</span><span class="p">:</span> <span class="n">IconButton</span><span class="p">(</span>
+                  <span class="n">icon</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">send</span><span class="p">),</span>
+                  <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_submitQuery</span><span class="p">(</span><span class="n">_textController</span><span class="o">.</span><span class="n">text</span><span class="p">)),</span>
             <span class="p">),</span>
           <span class="p">],</span>
         <span class="p">),</span>
@@ -383,7 +411,7 @@ Let's quickly review <code>router.dart</code>. This file defines a string to rep
     <span class="p">);</span>
   <span class="p">}</span>
 
-<span class="p">...</span>
+<span class="o">...</span>
 
 <span class="p">}</span>  
 </pre></div>
@@ -391,18 +419,18 @@ Let's quickly review <code>router.dart</code>. This file defines a string to rep
 
 <p>Let's take a look what <code>_submitQuery</code> does when user is done entering their query about Flutter.
 As you see in code below, when <code>_submitQuery</code> is called, first thing it does is to clear the input <code>TextField</code> to make it ready for the next user interaction. It takes the <code>TextField</code> text and creates a data structure <code>FactsMessage</code> to display interaction log. You might notice few things here. <code>_submitQuery</code> takes input as <code>text</code>. When <code>_submitQuery</code> is called from <code>TextField</code> widget, <code>text</code> is being passed to this method implicitly. Whereas when <code>_submitQuery</code> is called from <code>IconButton</code>'s <code>onPressed</code> method text is retrieved from <code>_textController</code> and passed into <code>_submitQuery</code> method.</p>
-<div class="highlight"><pre><span></span>void _submitQuery(String text) {
-  _textController.clear();
-  FactsMessage message = new FactsMessage(
-    text: text,
-    name: &quot;Priyanka&quot;,
-    type: true,
-  );
-  setState(() {
-    _messages.insert(0, message);
-  });
-  _dialogFlowResponse(text);
-}
+<div class="highlight"><pre><span></span><span class="err">void _submitQuery(String text) {</span>
+<span class="err">  _textController.clear();</span>
+<span class="err">  FactsMessage message = new FactsMessage(</span>
+<span class="err">    text: text,</span>
+<span class="err">    name: &quot;Priyanka&quot;,</span>
+<span class="err">    type: true,</span>
+<span class="err">  );</span>
+<span class="err">  setState(() {</span>
+<span class="err">    _messages.insert(0, message);</span>
+<span class="err">  });</span>
+<span class="err">  _dialogFlowResponse(text);</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -414,22 +442,22 @@ As you see in code below, when <code>_submitQuery</code> is called, first thing 
 <li><code>type</code>: boolean. <code>true</code> for user. <code>false</code> means bot.</li>
 </ul>
 <p><code>type</code> parameter decides which message format to be rendered from <code>userMessage</code> or <code>botMessage</code>.</p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">FactsMessage</span> <span class="kr">extends</span> <span class="nx">StatelessWidget</span> <span class="p">{</span>
-  <span class="nx">FactsMessage</span><span class="p">({</span><span class="k">this</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="p">});</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">FactsMessage</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="n">FactsMessage</span><span class="p">({</span><span class="n">this</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">type</span><span class="p">});</span>
 
-  <span class="kr">final</span> <span class="nb">String</span> <span class="nx">text</span><span class="p">;</span>
-  <span class="kr">final</span> <span class="nb">String</span> <span class="nx">name</span><span class="p">;</span>
-  <span class="kr">final</span> <span class="kt">bool</span> <span class="nx">type</span><span class="p">;</span>
+  <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">text</span><span class="p">;</span>
+  <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">name</span><span class="p">;</span>
+  <span class="n">final</span> <span class="nb nb-Type">bool</span> <span class="n">type</span><span class="p">;</span>
 
-  <span class="p">...</span>
+  <span class="o">...</span>
 
-  <span class="kd">@override</span>
-  <span class="nx">Widget</span> <span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">(</span>
-      <span class="nx">margin</span>: <span class="kt">const</span> <span class="nx">EdgeInsets</span><span class="p">.</span><span class="nx">symmetric</span><span class="p">(</span><span class="nx">vertical</span>: <span class="kt">10.0</span><span class="p">),</span>
-      <span class="nx">child</span>: <span class="kt">new</span> <span class="nx">Row</span><span class="p">(</span>
-        <span class="nx">crossAxisAlignment</span>: <span class="kt">CrossAxisAlignment.start</span><span class="p">,</span>
-        <span class="nx">children</span>: <span class="kt">this.type</span> <span class="o">?</span> <span class="nx">userMessage</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="o">:</span> <span class="nx">botMessage</span><span class="p">(</span><span class="nx">context</span><span class="p">),</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">new</span> <span class="n">Container</span><span class="p">(</span>
+      <span class="n">margin</span><span class="p">:</span> <span class="k">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">symmetric</span><span class="p">(</span><span class="n">vertical</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">),</span>
+      <span class="n">child</span><span class="p">:</span> <span class="n">new</span> <span class="n">Row</span><span class="p">(</span>
+        <span class="n">crossAxisAlignment</span><span class="p">:</span> <span class="n">CrossAxisAlignment</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+        <span class="n">children</span><span class="p">:</span> <span class="n">this</span><span class="o">.</span><span class="n">type</span> <span class="err">?</span> <span class="n">userMessage</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">:</span> <span class="n">botMessage</span><span class="p">(</span><span class="n">context</span><span class="p">),</span>
       <span class="p">),</span>
     <span class="p">);</span>
   <span class="p">}</span>  
@@ -443,51 +471,51 @@ They differ in alignment of the widgets within a message row.</p>
 <p>In screenshot below, <code>userMessage</code> is highlighted in red, and <code>botMessage</code> is highlighted in green.</p>
 <p><img alt="FlutterFactsDialogFlow" src="https://ptyagicodecamp.github.io/df_flutter_facts3.jpg"></p>
 <p>Let's checkout <code>userMessage</code> widget's code below. It's <code>List</code> of widgets aligned to end of the screen. All user's messages will appear towards the left side of the screen, ending into <code>CircleAvatar</code>.</p>
-<div class="highlight"><pre><span></span>List&lt;Widget&gt; userMessage(context) {
-  return &lt;Widget&gt;[
-    Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: &lt;Widget&gt;[
-          Text(this.name, style: Theme.of(context).textTheme.subhead),
-          Container(
-            margin: const EdgeInsets.only(top: 5.0),
-            child: Text(text),
-          ),
-        ],
-      ),
-    ),
-    Container(
-      margin: const EdgeInsets.only(left: 16.0),
-      child: CircleAvatar(child: new Text(this.name[0])),
-    ),
-  ];
-}
+<div class="highlight"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span> <span class="n">userMessage</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+    <span class="n">Expanded</span><span class="p">(</span>
+      <span class="n">child</span><span class="p">:</span> <span class="n">Column</span><span class="p">(</span>
+        <span class="n">crossAxisAlignment</span><span class="p">:</span> <span class="n">CrossAxisAlignment</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+        <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+          <span class="n">Text</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="n">Theme</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">textTheme</span><span class="o">.</span><span class="n">subhead</span><span class="p">),</span>
+          <span class="n">Container</span><span class="p">(</span>
+            <span class="n">margin</span><span class="p">:</span> <span class="k">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">),</span>
+            <span class="n">child</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="p">),</span>
+          <span class="p">),</span>
+        <span class="p">],</span>
+      <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="n">Container</span><span class="p">(</span>
+      <span class="n">margin</span><span class="p">:</span> <span class="k">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="mf">16.0</span><span class="p">),</span>
+      <span class="n">child</span><span class="p">:</span> <span class="n">CircleAvatar</span><span class="p">(</span><span class="n">child</span><span class="p">:</span> <span class="n">new</span> <span class="n">Text</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span>
+    <span class="p">),</span>
+  <span class="p">];</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p>FlutterFactsBot's messages will appear towards the right side of the screen, starting with the <code>CircleAvatar</code></p>
-<div class="highlight"><pre><span></span>List&lt;Widget&gt; botMessage(context) {
-  return &lt;Widget&gt;[
-    Container(
-      margin: const EdgeInsets.only(right: 16.0),
-      child: CircleAvatar(child: Text(&#39;Bot&#39;)),
-    ),
-    Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: &lt;Widget&gt;[
-          Text(this.name,
-              style: TextStyle(fontWeight: FontWeight.bold)),
-          Container(
-            margin: const EdgeInsets.only(top: 5.0),
-            child: Text(text),
-          ),
-        ],
-      ),
-    ),
-  ];
-}
+<div class="highlight"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span> <span class="n">botMessage</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+    <span class="n">Container</span><span class="p">(</span>
+      <span class="n">margin</span><span class="p">:</span> <span class="k">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">right</span><span class="p">:</span> <span class="mf">16.0</span><span class="p">),</span>
+      <span class="n">child</span><span class="p">:</span> <span class="n">CircleAvatar</span><span class="p">(</span><span class="n">child</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Bot&#39;</span><span class="p">)),</span>
+    <span class="p">),</span>
+    <span class="n">Expanded</span><span class="p">(</span>
+      <span class="n">child</span><span class="p">:</span> <span class="n">Column</span><span class="p">(</span>
+        <span class="n">crossAxisAlignment</span><span class="p">:</span> <span class="n">CrossAxisAlignment</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+        <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+          <span class="n">Text</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+              <span class="n">style</span><span class="p">:</span> <span class="n">TextStyle</span><span class="p">(</span><span class="n">fontWeight</span><span class="p">:</span> <span class="n">FontWeight</span><span class="o">.</span><span class="n">bold</span><span class="p">)),</span>
+          <span class="n">Container</span><span class="p">(</span>
+            <span class="n">margin</span><span class="p">:</span> <span class="k">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">),</span>
+            <span class="n">child</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="p">),</span>
+          <span class="p">),</span>
+        <span class="p">],</span>
+      <span class="p">),</span>
+    <span class="p">),</span>
+  <span class="p">];</span>
+<span class="p">}</span>
 </pre></div>
 
 
@@ -495,22 +523,22 @@ They differ in alignment of the widgets within a message row.</p>
 <p><strong>DialogFlow Response:</strong>
 After submitting query and rendering user's message in interactionLog, query is submitted to DialogFlow and response is rendered right below the companion <code>userMessage</code>.
 This is how query is submitted to DialogFlow API using <code>flutter_dialogflow</code> <a href="https://pub.dev/packages/flutter_dialogflow">plug-in</a>:</p>
-<div class="highlight"><pre><span></span><span class="nt">void</span> <span class="nt">_dialogFlowResponse</span><span class="o">(</span><span class="nt">query</span><span class="o">)</span> <span class="nt">async</span> <span class="p">{</span>
-  <span class="err">_textController.clear()</span><span class="p">;</span>
-  <span class="err">AuthGoogle</span> <span class="err">authGoogle</span> <span class="err">=</span>
-  <span class="err">await</span> <span class="err">AuthGoogle(</span><span class="n">fileJson</span><span class="p">:</span> <span class="s2">&quot;assets/flutter-to-fly-creds.json&quot;</span><span class="p">)</span><span class="o">.</span><span class="nf">build</span><span class="p">();</span>
-  <span class="err">Dialogflow</span> <span class="err">dialogFlow</span> <span class="err">=</span>
-  <span class="err">Dialogflow(</span><span class="n">authGoogle</span><span class="p">:</span> <span class="n">authGoogle</span><span class="p">,</span> <span class="n">language</span><span class="o">:</span> <span class="n">Language</span><span class="o">.</span><span class="n">english</span><span class="p">);</span>
-  <span class="err">AIResponse</span> <span class="err">response</span> <span class="err">=</span> <span class="err">await</span> <span class="err">dialogFlow.detectIntent(query)</span><span class="p">;</span>
-  <span class="err">FactsMessage</span> <span class="err">message</span> <span class="err">=</span> <span class="err">FactsMessage(</span>
-    <span class="n">text</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="nf">getMessage</span><span class="p">()</span> <span class="o">??</span>
-         <span class="nf">CardDialogflow</span><span class="p">(</span><span class="n">response</span><span class="err">.</span><span class="nf">getListMessage</span><span class="p">()</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">:</span> <span class="s2">&quot;Flutter Bot&quot;</span><span class="p">,</span>
-    <span class="n">type</span><span class="o">:</span> <span class="n">false</span><span class="p">,</span>
-  <span class="p">);</span>
-  <span class="err">setState(()</span> <span class="err">{</span>
-    <span class="err">_messages.insert(0,</span> <span class="err">message)</span><span class="p">;</span>
-  <span class="p">}</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><span class="err">void _dialogFlowResponse(query) async {</span>
+<span class="err">  _textController.clear();</span>
+<span class="err">  AuthGoogle authGoogle =</span>
+<span class="err">  await AuthGoogle(fileJson: &quot;assets/flutter-to-fly-creds.json&quot;).build();</span>
+<span class="err">  Dialogflow dialogFlow =</span>
+<span class="err">  Dialogflow(authGoogle: authGoogle, language: Language.english);</span>
+<span class="err">  AIResponse response = await dialogFlow.detectIntent(query);</span>
+<span class="err">  FactsMessage message = FactsMessage(</span>
+<span class="err">    text: response.getMessage() ??</span>
+<span class="err">         CardDialogflow(response.getListMessage()[0]).title,</span>
+<span class="err">    name: &quot;Flutter Bot&quot;,</span>
+<span class="err">    type: false,</span>
+<span class="err">  );</span>
+<span class="err">  setState(() {</span>
+<span class="err">    _messages.insert(0, message);</span>
+<span class="err">  });</span>
 <span class="err">}</span>
 </pre></div>
 
@@ -545,8 +573,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
   </div>
 
   <div class="center social-share">
-    <p>    Like this article? Share it with your friends!
-</p>
+    <p>Like this article? Share it with your friends!</p>
     <div class="addthis_native_toolbox"></div>
     <div class="addthis_sharing_toolbox"></div>
     <div class="addthis_inline_share_toolbox"></div>
@@ -574,17 +601,17 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
     })();
 </script>
 <noscript>
-        Please enable JavaScript to view comments.
-
+    Please enable JavaScript to view comments.
 </noscript>
 <!-- End Disqus -->
 </article>
 
     <footer>
 <p>
-  &copy;  2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2020  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
-<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p><p>
   <a rel="license"
      href="http://creativecommons.org/licenses/by-sa/4.0/"
@@ -613,7 +640,6 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
   "description": "Mobile engineering tech logger."
 }
 </script>
-
 <a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
     <svg width="80"
          height="80"
@@ -632,5 +658,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
         </path>
     </svg>
 </a>
-<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></body>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+</body>
 </html>

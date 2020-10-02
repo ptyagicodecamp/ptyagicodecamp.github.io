@@ -28,65 +28,65 @@
 &lt;p&gt;The &lt;code&gt;PageListing&lt;/code&gt; is a &lt;code&gt;StatelessWidget&lt;/code&gt;. This the homepage of this sample app. It consists of three list items. Each item has a picture and sample title and subtitle as shown in the screenshot below. The appBar shows the name of the navigation/routing used.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="PageListing" src="https://ptyagicodecamp.github.io/nav-pagelisting.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;The items are stored in a global &lt;code&gt;List&amp;lt;Item&amp;gt; seasideList&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;List&amp;lt;Item&amp;gt; seasideList = [
-  Item(
-      name: &amp;#39;Sea 1&amp;#39;,
-      image: &amp;#39;assets/images/sea2.jpg&amp;#39;,
-      details: &amp;quot;Ocean view for Sea 1&amp;quot;),
-  Item(
-      name: &amp;#39;Sea 2&amp;#39;,
-      image: &amp;#39;assets/images/sea3.jpg&amp;#39;,
-      details: &amp;quot;Ocean view for Sea 2&amp;quot;),
-  Item(
-      name: &amp;#39;Sea 3&amp;#39;,
-      image: &amp;#39;assets/images/sea-rocks.jpg&amp;#39;,
-      details: &amp;quot;Ocean view for Sea 3&amp;quot;)
-];
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;List&amp;lt;Item&amp;gt; seasideList = [&lt;/span&gt;
+&lt;span class="err"&gt;  Item(&lt;/span&gt;
+&lt;span class="err"&gt;      name: &amp;#39;Sea 1&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;      image: &amp;#39;assets/images/sea2.jpg&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;      details: &amp;quot;Ocean view for Sea 1&amp;quot;),&lt;/span&gt;
+&lt;span class="err"&gt;  Item(&lt;/span&gt;
+&lt;span class="err"&gt;      name: &amp;#39;Sea 2&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;      image: &amp;#39;assets/images/sea3.jpg&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;      details: &amp;quot;Ocean view for Sea 2&amp;quot;),&lt;/span&gt;
+&lt;span class="err"&gt;  Item(&lt;/span&gt;
+&lt;span class="err"&gt;      name: &amp;#39;Sea 3&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;      image: &amp;#39;assets/images/sea-rocks.jpg&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;      details: &amp;quot;Ocean view for Sea 3&amp;quot;)&lt;/span&gt;
+&lt;span class="err"&gt;];&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The &lt;code&gt;PageListing&lt;/code&gt; implementation:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;PageListing&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kd"&gt;@override&lt;/span&gt;
-  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="c1"&gt;//Shows the name of navigation type/routing used&lt;/span&gt;
-      &lt;span class="nx"&gt;appBar&lt;/span&gt;: &lt;span class="kt"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="nx"&gt;title&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Un-Named Routes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-      &lt;span class="p"&gt;),&lt;/span&gt;
-      &lt;span class="nx"&gt;body&lt;/span&gt;: &lt;span class="kt"&gt;ListView.builder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-          &lt;span class="nx"&gt;itemCount&lt;/span&gt;: &lt;span class="kt"&gt;seasideList&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="nx"&gt;seasideList.length&lt;/span&gt; : &lt;span class="kt"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-          &lt;span class="nx"&gt;itemBuilder&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;ListTile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-              &lt;span class="nx"&gt;leading&lt;/span&gt;: &lt;span class="kt"&gt;CircleAvatar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-                &lt;span class="nx"&gt;backgroundImage&lt;/span&gt;: &lt;span class="kt"&gt;ExactAssetImage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;seasideList&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;image&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-              &lt;span class="p"&gt;),&lt;/span&gt;
-              &lt;span class="nx"&gt;title&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${seasideList[index].name}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-              &lt;span class="nx"&gt;subtitle&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${seasideList[index].details}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-              &lt;span class="nx"&gt;onTap&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                 &lt;span class="c1"&gt;//Tapping on listItem navigates to PageDetails&lt;/span&gt;
-                &lt;span class="nx"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;seasideList&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
-              &lt;span class="p"&gt;},&lt;/span&gt;
-            &lt;span class="p"&gt;);&lt;/span&gt;
-          &lt;span class="p"&gt;}),&lt;/span&gt;
-    &lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PageListing&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;extends&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;StatelessWidget&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;@override&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Shows&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;navigation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;routing&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;used&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nl"&gt;appBar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nl"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Un-Named Routes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nl"&gt;body&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ListView&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nl"&gt;itemCount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;seasideList&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;null&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;seasideList&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nl"&gt;itemBuilder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ListTile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="k"&gt;leading&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;CircleAvatar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="nl"&gt;backgroundImage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ExactAssetImage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;seasideList&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;image&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nl"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;${seasideList[index].name}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nl"&gt;subtitle&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;${seasideList[index].details}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nl"&gt;onTap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                 &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Tapping&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;listItem&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;navigates&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PageDetails&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="n"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;seasideList&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-  &lt;span class="c1"&gt;//Launches PageDetails and awaits the results from Navigator.pop() called from PageDetails.&lt;/span&gt;
-  &lt;span class="nx"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Launches&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PageDetails&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;awaits&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Navigator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;called&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PageDetails&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Item&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;async&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-    &lt;span class="c1"&gt;//Holds the results returned from PageDetails.&lt;/span&gt;
-    &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;resultFromPageDetails&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Holds&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;returned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PageDetails&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;final&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;resultFromPageDetails&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-    &lt;span class="c1"&gt;//TODO: Navigation implementations are discussed in upcoming Navigation section of this article&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nl"&gt;TODO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Navigation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;implementations&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;are&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;discussed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;upcoming&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Navigation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;section&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;article&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-    &lt;span class="c1"&gt;//snackbars is used to display the result returned from another page.&lt;/span&gt;
-    &lt;span class="c1"&gt;//Hide any previous snackbars and show the new resultFromPageDetails.&lt;/span&gt;
-    &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;removeCurrentSnackBar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;showSnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;SnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;content&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$resultFromPageDetails&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;snackbars&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;used&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;result&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;returned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Hide&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;any&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;previous&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;snackbars&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;resultFromPageDetails&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="n"&gt;removeCurrentSnackBar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="n"&gt;showSnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;content&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;$resultFromPageDetails&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -95,34 +95,34 @@
 &lt;p&gt;This page displays details for the homepage's list items. It's a simple page displaying item's image, details and its name in appBar. It has a &lt;code&gt;FloatingActionButton&lt;/code&gt; or FAB in the bottom-right corner. Clicking on this navigates back to home page with a message that the item is marked as favorite. This is used to demonstrate passing data from detailed page back to homepage.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="PageDetails" src="https://ptyagicodecamp.github.io/nav-pagedetails.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;PageDetails&lt;/code&gt; implementation:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;PageDetails&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;PageDetails&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;Item&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-  &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;PageDetails&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="nx"&gt;Key&lt;/span&gt; &lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;: &lt;span class="kt"&gt;key&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;PageDetails&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
-  &lt;span class="kd"&gt;@override&lt;/span&gt;
-  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="nx"&gt;appBar&lt;/span&gt;: &lt;span class="kt"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="nx"&gt;title&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+  &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;appBar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
       &lt;span class="p"&gt;),&lt;/span&gt;
-      &lt;span class="nx"&gt;body&lt;/span&gt;: &lt;span class="kt"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="nx"&gt;children&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-          &lt;span class="nx"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;asset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;image&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-          &lt;span class="nx"&gt;SizedBox&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-            &lt;span class="nx"&gt;height&lt;/span&gt;: &lt;span class="kt"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+          &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;asset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="n"&gt;SizedBox&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
           &lt;span class="p"&gt;),&lt;/span&gt;
-          &lt;span class="nx"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-            &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;details&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-            &lt;span class="nx"&gt;style&lt;/span&gt;: &lt;span class="kt"&gt;TextStyle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;fontWeight&lt;/span&gt;: &lt;span class="kt"&gt;FontWeight.bold&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;fontSize&lt;/span&gt;: &lt;span class="kt"&gt;20&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;details&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;TextStyle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fontWeight&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;FontWeight&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bold&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontSize&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
           &lt;span class="p"&gt;),&lt;/span&gt;
         &lt;span class="p"&gt;],&lt;/span&gt;
       &lt;span class="p"&gt;),&lt;/span&gt;
-      &lt;span class="nx"&gt;floatingActionButton&lt;/span&gt;: &lt;span class="kt"&gt;FloatingActionButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Icons&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;favorite_border&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-        &lt;span class="nx"&gt;onPressed&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-          &lt;span class="c1"&gt;//Current item&amp;#39;s name along with message is sent back to last screen&lt;/span&gt;
-          &lt;span class="nx"&gt;Navigator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;${item.name} is marked as favorite.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="n"&gt;floatingActionButton&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;FloatingActionButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Icons&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;favorite_border&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;onPressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+          &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Current&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s name along with message is sent back to last screen&lt;/span&gt;
+          &lt;span class="n"&gt;Navigator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;${item.name} is marked as favorite.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
         &lt;span class="p"&gt;},&lt;/span&gt;
       &lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="p"&gt;);&lt;/span&gt;
@@ -134,12 +134,12 @@
 &lt;hr&gt;
 &lt;h2&gt;&lt;code&gt;Item&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;The &lt;code&gt;Item&lt;/code&gt; is a data model to represent each row in homepage's list.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;image&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;details&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="nx"&gt;Item&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;image&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;details&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;class Item {&lt;/span&gt;
+&lt;span class="err"&gt;  final String name;&lt;/span&gt;
+&lt;span class="err"&gt;  final String image;&lt;/span&gt;
+&lt;span class="err"&gt;  final String details;&lt;/span&gt;
+&lt;span class="err"&gt;  Item({this.name, this.image, this.details});&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -164,13 +164,13 @@
 &lt;p&gt;&lt;img alt="Un-Named-Navigation" src="https://ptyagicodecamp.github.io/unnamed-navigation.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Entry point:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;MaterialApp&lt;/code&gt; assigns &lt;code&gt;PageListing&lt;/code&gt; screen as its &lt;code&gt;home&lt;/code&gt; property.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Using Direct Navigation (un-named routing)
-void main() =&amp;gt; runApp(
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: PageListing(),
-      ),
-    );
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;//Using Direct Navigation (un-named routing)&lt;/span&gt;
+&lt;span class="err"&gt;void main() =&amp;gt; runApp(&lt;/span&gt;
+&lt;span class="err"&gt;      MaterialApp(&lt;/span&gt;
+&lt;span class="err"&gt;        debugShowCheckedModeBanner: false,&lt;/span&gt;
+&lt;span class="err"&gt;        home: PageListing(),&lt;/span&gt;
+&lt;span class="err"&gt;      ),&lt;/span&gt;
+&lt;span class="err"&gt;    );&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -178,11 +178,11 @@ void main() =&amp;gt; runApp(
 &lt;p&gt;The &lt;a href="https://api.flutter.dev/flutter/widgets/Navigator/push.html"&gt;&lt;code&gt;Navigator.push&lt;/code&gt;&lt;/a&gt; is used to implement this routing. The &lt;a href="https://api.flutter.dev/flutter/material/MaterialPageRoute-class.html"&gt;&lt;code&gt;MaterialPageRoute&lt;/code&gt;&lt;/a&gt; is pushed on the &lt;a href="https://api.flutter.dev/flutter/widgets/Navigator-class.html"&gt;&lt;code&gt;Navigator&lt;/code&gt;&lt;/a&gt;. The Navigator is a widget that manages a set of child widgets as a stack. These child widgets are pages/screens pushed on the Navigator. Navigator refers to these children as &lt;a href="https://api.flutter.dev/flutter/widgets/Route-class.html"&gt;&lt;code&gt;Route&lt;/code&gt;&lt;/a&gt; object.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Sending Data:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;MaterialPageRoute&lt;/code&gt; uses &lt;code&gt;builder&lt;/code&gt; to build the primary contents of the route (page/screen). The &lt;code&gt;Item&lt;/code&gt; object is passed as argument to &lt;code&gt;PageDetails&lt;/code&gt; widget.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MaterialPageRoute(
-  builder: (context) =&amp;gt; PageDetails(
-    item: item,
-  ),
-),
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;MaterialPageRoute(&lt;/span&gt;
+&lt;span class="err"&gt;  builder: (context) =&amp;gt; PageDetails(&lt;/span&gt;
+&lt;span class="err"&gt;    item: item,&lt;/span&gt;
+&lt;span class="err"&gt;  ),&lt;/span&gt;
+&lt;span class="err"&gt;),&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -190,29 +190,29 @@ void main() =&amp;gt; runApp(
 &lt;p&gt;The &lt;code&gt;Navigator.push&lt;/code&gt; returns a &lt;code&gt;Future&lt;/code&gt; that completes after calling &lt;code&gt;Navigator.pop&lt;/code&gt; on the PageDetails Screen.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;_navigateToPageDetails(...):&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;_navigateToPageDetails(...)&lt;/code&gt; is called on tapping a list item. The &lt;code&gt;PageDetails&lt;/code&gt; route is pushed on the &lt;code&gt;Navigator&lt;/code&gt;. The &lt;code&gt;Navigator.push&lt;/code&gt; returns a &lt;code&gt;Future&lt;/code&gt; which contains the data sent back from &lt;code&gt;Navigator.pop&lt;/code&gt; in PageDetails widget. This data is stored in &lt;code&gt;resultFromPageDetails&lt;/code&gt; variable, and displayed in a &lt;a href="https://api.flutter.dev/flutter/material/SnackBar-class.html"&gt;&lt;code&gt;SnackBar&lt;/code&gt; widget&lt;/a&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;PageListing&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;PageListing&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 
-  &lt;span class="p"&gt;...&lt;/span&gt;
+  &lt;span class="o"&gt;...&lt;/span&gt;
 
-  &lt;span class="c1"&gt;//Launches PageDetails and awaits the results from Navigator.pop() called from PageDetails.&lt;/span&gt;
-  &lt;span class="nx"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Launches&lt;/span&gt; &lt;span class="n"&gt;PageDetails&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;awaits&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;Navigator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;called&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;PageDetails&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="n"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Item&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 
-    &lt;span class="c1"&gt;//Navigation implementations are different for each part.&lt;/span&gt;
-    &lt;span class="c1"&gt;//Part#1. Un-named&lt;/span&gt;
-    &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;resultFromPageDetails&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="nx"&gt;Navigator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-      &lt;span class="nx"&gt;MaterialPageRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="nx"&gt;builder&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;PageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-          &lt;span class="nx"&gt;item&lt;/span&gt;: &lt;span class="kt"&gt;item&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Navigation&lt;/span&gt; &lt;span class="n"&gt;implementations&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;different&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="n"&gt;part&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Part&lt;/span&gt;&lt;span class="c1"&gt;#1. Un-named&lt;/span&gt;
+    &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;resultFromPageDetails&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;Navigator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;MaterialPageRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;PageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="p"&gt;),&lt;/span&gt;
       &lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="p"&gt;);&lt;/span&gt;
 
-    &lt;span class="c1"&gt;//snackbars is used to display the result returned from another page.&lt;/span&gt;
-    &lt;span class="c1"&gt;//Hide any previous snackbars and show the new resultFromPageDetails.&lt;/span&gt;
-    &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;removeCurrentSnackBar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;showSnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;SnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;content&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$resultFromPageDetails&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;snackbars&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;display&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="n"&gt;returned&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Hide&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;previous&lt;/span&gt; &lt;span class="n"&gt;snackbars&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;resultFromPageDetails&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+    &lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="n"&gt;removeCurrentSnackBar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+      &lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="n"&gt;showSnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$resultFromPageDetails&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -226,37 +226,37 @@ This option is great when there is no logic around the routes. For example, auth
 &lt;p&gt;&lt;img alt="Named-Navigation-static" src="https://ptyagicodecamp.github.io/named-navigation-map.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Entry point:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In this application, there are two ways to assign the initial page, &lt;code&gt;PageListing()&lt;/code&gt;. One way is to assign &lt;code&gt;PageListing()&lt;/code&gt; widget to &lt;code&gt;home&lt;/code&gt; property. Another ways is to assign a &lt;code&gt;Map&lt;/code&gt; containing &amp;lt;&lt;code&gt;/&lt;/code&gt;, &lt;code&gt;PageListing()&lt;/code&gt;&amp;gt; entry to &lt;code&gt;routes&lt;/code&gt; property. The &lt;code&gt;/&lt;/code&gt; represents the home page mapping.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Using Static Navigation
-void main() =&amp;gt; runApp(
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-        //home: PageListing(),
-        //Part#2. Named route using Map
-        routes: &amp;lt;String, WidgetBuilder&amp;gt;{
-          &amp;#39;/&amp;#39;: (BuildContext context) =&amp;gt; PageListing(),
-          &amp;#39;/details&amp;#39;: (BuildContext context) =&amp;gt; PageDetails(
-                item: seasideList[0],
-              ),
-        },
-      ),
-    );
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;//Using Static Navigation&lt;/span&gt;
+&lt;span class="err"&gt;void main() =&amp;gt; runApp(&lt;/span&gt;
+&lt;span class="err"&gt;      MaterialApp(&lt;/span&gt;
+&lt;span class="err"&gt;        debugShowCheckedModeBanner: false,&lt;/span&gt;
+&lt;span class="err"&gt;        //home: PageListing(),&lt;/span&gt;
+&lt;span class="err"&gt;        //Part#2. Named route using Map&lt;/span&gt;
+&lt;span class="err"&gt;        routes: &amp;lt;String, WidgetBuilder&amp;gt;{&lt;/span&gt;
+&lt;span class="err"&gt;          &amp;#39;/&amp;#39;: (BuildContext context) =&amp;gt; PageListing(),&lt;/span&gt;
+&lt;span class="err"&gt;          &amp;#39;/details&amp;#39;: (BuildContext context) =&amp;gt; PageDetails(&lt;/span&gt;
+&lt;span class="err"&gt;                item: seasideList[0],&lt;/span&gt;
+&lt;span class="err"&gt;              ),&lt;/span&gt;
+&lt;span class="err"&gt;        },&lt;/span&gt;
+&lt;span class="err"&gt;      ),&lt;/span&gt;
+&lt;span class="err"&gt;    );&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Navigation Implementation:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;All routes/pages have entries in routes table above. The &lt;code&gt;Map&lt;/code&gt; entry '&amp;lt;&lt;code&gt;/details&lt;/code&gt;, &lt;code&gt;PageDetails()&lt;/code&gt;&amp;gt;' is added to navigate to the PageDetails page. The &lt;code&gt;/details&lt;/code&gt; is the alias/name to the PageDetails page. This name is pushed on the &lt;code&gt;Naviagtor&lt;/code&gt; widget using &lt;a href="https://api.flutter.dev/flutter/widgets/Navigator/pushNamed.html"&gt;&lt;code&gt;Naviagtor.pushNamed&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Navigator.pushNamed(context, &amp;#39;/details&amp;#39;)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Navigator.pushNamed(context, &amp;#39;/details&amp;#39;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Sending Data:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The data can be passed to the PageDetails at the top-level only where the routes are assigned to &lt;code&gt;routes&lt;/code&gt; property. In this case, only globally available data can be passed. In this implementation, only first item &lt;code&gt;seasideList[0]&lt;/code&gt; detail page will open for any selection on the homepage.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;routes: &amp;lt;String, WidgetBuilder&amp;gt;{
-  &amp;#39;/&amp;#39;: (BuildContext context) =&amp;gt; PageListing(),
-  &amp;#39;/details&amp;#39;: (BuildContext context) =&amp;gt; PageDetails(
-        item: seasideList[0],
-      ),
-},
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;routes: &amp;lt;String, WidgetBuilder&amp;gt;{&lt;/span&gt;
+&lt;span class="c"&gt;  &amp;#39;/&amp;#39;: (BuildContext context) =&amp;gt; PageListing(),&lt;/span&gt;
+&lt;span class="c"&gt;  &amp;#39;/details&amp;#39;: (BuildContext context) =&amp;gt; PageDetails(&lt;/span&gt;
+&lt;span class="c"&gt;        item: seasideList[0],&lt;/span&gt;
+&lt;span class="c"&gt;      ),&lt;/span&gt;
+&lt;span class="err"&gt;},&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -264,22 +264,22 @@ void main() =&amp;gt; runApp(
 &lt;p&gt;The &lt;code&gt;Navigator.push&lt;/code&gt; returns a &lt;code&gt;Future&lt;/code&gt; that completes after calling &lt;code&gt;Navigator.pop&lt;/code&gt; on the PageDetails Screen. This is similar to what we discussed earlier.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;_navigateToPageDetails(...):&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This is similar to what we discussed earlier except &lt;code&gt;Navigator.pushNamed&lt;/code&gt; is used for pushing the routes on the stack.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;PageListing&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;PageListing&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 
-  &lt;span class="p"&gt;...&lt;/span&gt;
+  &lt;span class="o"&gt;...&lt;/span&gt;
 
-  &lt;span class="c1"&gt;//Launches PageDetails and awaits the results from Navigator.pop() called from PageDetails.&lt;/span&gt;
-  &lt;span class="nx"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Launches&lt;/span&gt; &lt;span class="n"&gt;PageDetails&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;awaits&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;Navigator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;called&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;PageDetails&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="n"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Item&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 
-    &lt;span class="c1"&gt;//Navigation implementations are different for each part.&lt;/span&gt;
-    &lt;span class="c1"&gt;//Part#2. Named route with Maps&lt;/span&gt;
-    &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="nx"&gt;Navigator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pushNamed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/details&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Navigation&lt;/span&gt; &lt;span class="n"&gt;implementations&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;different&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="n"&gt;part&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Part&lt;/span&gt;&lt;span class="c1"&gt;#2. Named route with Maps&lt;/span&gt;
+    &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;Navigator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pushNamed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/details&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
-    &lt;span class="c1"&gt;//snackbars is used to display the result returned from another page.&lt;/span&gt;
-    &lt;span class="c1"&gt;//Hide any previous snackbars and show the new resultFromPageDetails.&lt;/span&gt;
-    &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;removeCurrentSnackBar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;showSnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;SnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;content&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;snackbars&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;display&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="n"&gt;returned&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Hide&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;previous&lt;/span&gt; &lt;span class="n"&gt;snackbars&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;resultFromPageDetails&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+    &lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="n"&gt;removeCurrentSnackBar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+      &lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="n"&gt;showSnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -293,59 +293,59 @@ void main() =&amp;gt; runApp(
 &lt;p&gt;&lt;img alt="Named-Navigation-dynamic" src="https://ptyagicodecamp.github.io/named-navigation-generate.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Entry point:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The entry page &lt;code&gt;PageListing&lt;/code&gt; is assigned to &lt;code&gt;home&lt;/code&gt; property. The &lt;code&gt;initialRoute&lt;/code&gt; property can be used to assign the beginning route/page. The &lt;code&gt;generateRoute&lt;/code&gt; callback function handles the navigational logic.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Using Dynamic Navigation
-void main() =&amp;gt; runApp(
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: PageListing(),
-        //Part#3. Named with onGenerateRoute
-        initialRoute: &amp;#39;/&amp;#39;,
-        onGenerateRoute: generateRoute,
-      ),
-    );
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;//Using Dynamic Navigation&lt;/span&gt;
+&lt;span class="err"&gt;void main() =&amp;gt; runApp(&lt;/span&gt;
+&lt;span class="err"&gt;      MaterialApp(&lt;/span&gt;
+&lt;span class="err"&gt;        debugShowCheckedModeBanner: false,&lt;/span&gt;
+&lt;span class="err"&gt;        home: PageListing(),&lt;/span&gt;
+&lt;span class="err"&gt;        //Part#3. Named with onGenerateRoute&lt;/span&gt;
+&lt;span class="err"&gt;        initialRoute: &amp;#39;/&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;        onGenerateRoute: generateRoute,&lt;/span&gt;
+&lt;span class="err"&gt;      ),&lt;/span&gt;
+&lt;span class="err"&gt;    );&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Navigation Implementation:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;Navigator&lt;/code&gt; use &lt;code&gt;Route&lt;/code&gt; object to represent the page/screen. The &lt;code&gt;generateRoute()&lt;/code&gt; function returns the appropriate route based on the matching name. The &lt;code&gt;RouteSettings&lt;/code&gt; is useful in passing around these route names and arguments, if any. The route name is extracted using &lt;code&gt;routeSettings.name&lt;/code&gt;. The arguments can be extracted using &lt;code&gt;routeSettings.arguments&lt;/code&gt;. When no match is found, a common default page is shown to user displaying the appropriate message.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Route&amp;lt;dynamic&amp;gt; generateRoute(RouteSettings routeSettings) {
-  final args = routeSettings.arguments;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Route&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;dynamic&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;generateRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RouteSettings&lt;/span&gt; &lt;span class="n"&gt;routeSettings&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;final&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;routeSettings&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-  switch (routeSettings.name) {
-    case &amp;#39;/&amp;#39;:
-      return MaterialPageRoute(
-        builder: (context) =&amp;gt; PageListing(),
-      );
+  &lt;span class="n"&gt;switch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;routeSettings&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;MaterialPageRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;PageListing&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+      &lt;span class="p"&gt;);&lt;/span&gt;
 
-    case &amp;#39;/details&amp;#39;:
-      if (args is Item) {
-        return MaterialPageRoute(
-          builder: (context) =&amp;gt; PageDetails(
-            item: args,
-          ),
-        );
-      }
+    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/details&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;Item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;MaterialPageRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;PageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="err"&gt;}&lt;/span&gt;
 
-      return MaterialPageRoute(
-        builder: (context) =&amp;gt; PageNotFound(),
-      );
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;MaterialPageRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;PageNotFound&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+      &lt;span class="p"&gt;);&lt;/span&gt;
 
-    default:
-      return MaterialPageRoute(
-        builder: (context) =&amp;gt; PageNotFound(),
-      );
-  }
-}
+    &lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;MaterialPageRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;PageNotFound&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+      &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Sending Data:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This is similar to the last Named Routing approach. In this approach, we can pass &lt;code&gt;item&lt;/code&gt; as &lt;code&gt;arguments&lt;/code&gt;. This &lt;code&gt;arguments&lt;/code&gt; is extracted and passed to the &lt;code&gt;PageDetails&lt;/code&gt; widget in &lt;code&gt;generateRoute&lt;/code&gt; routing function.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Navigator.pushNamed(
-      context,
-      &amp;#39;/details&amp;#39;,
-      arguments: item,
-    )
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Navigator.pushNamed(&lt;/span&gt;
+&lt;span class="err"&gt;      context,&lt;/span&gt;
+&lt;span class="err"&gt;      &amp;#39;/details&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;      arguments: item,&lt;/span&gt;
+&lt;span class="err"&gt;    )&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -353,40 +353,40 @@ void main() =&amp;gt; runApp(
 &lt;p&gt;The &lt;code&gt;Navigator.push&lt;/code&gt; returns a &lt;code&gt;Future&lt;/code&gt; that completes after calling &lt;code&gt;Navigator.pop&lt;/code&gt; on the PageDetails Screen. This is similar to what we discussed earlier.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;_navigateToPageDetails(...):&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This is similar to what we discussed earlier except &lt;code&gt;Navigator.pushNamed&lt;/code&gt; is used to pass the data along in addition to pushing the named routes on the stack.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;PageListing&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;PageListing&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 
-  &lt;span class="p"&gt;...&lt;/span&gt;
+  &lt;span class="o"&gt;...&lt;/span&gt;
 
-  &lt;span class="c1"&gt;//Launches PageDetails and awaits the results from Navigator.pop() called from PageDetails.&lt;/span&gt;
-  &lt;span class="nx"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="c1"&gt;//Navigation implementations are different for each part.&lt;/span&gt;
-    &lt;span class="c1"&gt;//Part#3. Named route using callback function&lt;/span&gt;
-    &lt;span class="kr"&gt;final&lt;/span&gt; &lt;span class="nx"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="nx"&gt;Navigator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pushNamed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Launches&lt;/span&gt; &lt;span class="n"&gt;PageDetails&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;awaits&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;Navigator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;called&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;PageDetails&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+  &lt;span class="n"&gt;_navigateToPageDetails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Item&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Navigation&lt;/span&gt; &lt;span class="n"&gt;implementations&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;different&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="n"&gt;part&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Part&lt;/span&gt;&lt;span class="c1"&gt;#3. Named route using callback function&lt;/span&gt;
+    &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;Navigator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pushNamed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
       &lt;span class="s1"&gt;&amp;#39;/details&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-      &lt;span class="nx"&gt;arguments&lt;/span&gt;: &lt;span class="kt"&gt;item&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="p"&gt;);&lt;/span&gt;
 
-    &lt;span class="c1"&gt;//snackbars is used to display the result returned from another page.&lt;/span&gt;
-    &lt;span class="c1"&gt;//Hide any previous snackbars and show the new resultFromPageDetails.&lt;/span&gt;
-    &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;removeCurrentSnackBar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-      &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="nx"&gt;showSnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;SnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;content&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;snackbars&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;display&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="n"&gt;returned&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;Hide&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;previous&lt;/span&gt; &lt;span class="n"&gt;snackbars&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;resultFromPageDetails&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+    &lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="n"&gt;removeCurrentSnackBar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+      &lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="n"&gt;showSnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SnackBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;PageNotFound:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;PageNotFound&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kd"&gt;@override&lt;/span&gt;
-  &lt;span class="nx"&gt;Widget&lt;/span&gt; &lt;span class="nx"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;BuildContext&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="nx"&gt;appBar&lt;/span&gt;: &lt;span class="kt"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="nx"&gt;title&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Page not found&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;PageNotFound&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;StatelessWidget&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;override&lt;/span&gt;
+  &lt;span class="n"&gt;Widget&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BuildContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Scaffold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;appBar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AppBar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Page not found&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
       &lt;span class="p"&gt;),&lt;/span&gt;
-      &lt;span class="nx"&gt;body&lt;/span&gt;: &lt;span class="kt"&gt;Center&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="nx"&gt;child&lt;/span&gt;: &lt;span class="kt"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Page is not available.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Center&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Page is not available.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
       &lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
@@ -420,4 +420,4 @@ void main() =&amp;gt; runApp(
 &lt;p&gt;&lt;em&gt;Liked the article?
 Couldn't find a topic of your interest? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write!
 &lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Navigation"></category><category term="Routing"></category><category term="cross-platform"></category><category term="Flutter"></category><category term="code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry></feed>
+&lt;p&gt;Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Navigation"></category><category term="Navigation"></category><category term="Routing"></category><category term="cross-platform"></category><category term="Flutter"></category><category term="code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category></entry></feed>
