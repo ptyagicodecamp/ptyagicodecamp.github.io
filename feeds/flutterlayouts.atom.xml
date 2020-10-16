@@ -27,7 +27,7 @@
 
 
 &lt;hr&gt;
-&lt;h1&gt;Using ExpanDed widget (flex Property)&lt;/h1&gt;
+&lt;h1&gt;Using &lt;code&gt;Expanded&lt;/code&gt; widget (flex Property)&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
    &lt;span class="nl"&gt;children:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
      &lt;span class="n"&gt;Expanded&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
