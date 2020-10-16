@@ -42,17 +42,17 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="ptyagi" />
-<meta name="description" content="This article shows how to use FittedBox widget to create responsive layout." />
+<meta name="description" content="This article shows how to use Expanded widget to create responsive layout." />
 <meta name="keywords" content="FlutterLayouts, cross-platform, Flutter, code-recipes, Android, Android Studio, iOS, development, responsive">
 
 
 <meta property="og:site_name" content="techLog"/>
-<meta property="og:title" content="Responsive Flutter layout with FittedBox widget"/>
-<meta property="og:description" content="This article shows how to use FittedBox widget to create responsive layout."/>
+<meta property="og:title" content="Responsive Flutter layout with Expanded widget"/>
+<meta property="og:description" content="This article shows how to use Expanded widget to create responsive layout."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://ptyagicodecamp.github.io/responsive-flutter-layout-with-fittedbox-widget.html"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/responsive-flutter-layout-with-expanded-widget.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-10-01 00:00:00-04:00"/>
+<meta property="article:published_time" content="2020-10-15 00:00:00-04:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
 <meta property="article:section" content="FlutterLayouts"/>
@@ -67,7 +67,7 @@
 <meta property="article:tag" content="responsive"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash; Responsive Flutter layout with FittedBox widget</title>
+  <title>techLog &ndash; Responsive Flutter layout with Expanded widget</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -162,9 +162,9 @@
 <article class="single">
   <header>
       
-    <h1 id="responsive-flutter-layout-with-fittedbox-widget">Responsive Flutter layout with FittedBox widget</h1>
+    <h1 id="responsive-flutter-layout-with-expanded-widget">Responsive Flutter layout with Expanded widget</h1>
     <p>
-      Posted on October 01, 2020 in <a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html">FlutterLayouts</a>
+      Posted on October 15, 2020 in <a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html">FlutterLayouts</a>
 
     </p>
   </header>
@@ -178,43 +178,68 @@
     </script>
 
   <div>
-    <p><img alt="FittedBox" src="https://ptyagicodecamp.github.io/fitted_box.jpg"></p>
+    <p><img alt="Expanded" src="https://ptyagicodecamp.github.io/expanded.jpg"></p>
 <p><strong>Target Audience:</strong> Beginner</p>
-<p><strong>Recipe:</strong> Learn to use FittedBox layout widget to create responsive layouts for Flutter applications.</p>
-<p><strong>Focus Widget:</strong> <a href="https://api.flutter.dev/flutter/widgets/FittedBox-class.html">FittedBox</a></p>
+<p><strong>Recipe:</strong> Learn to use Expanded layout widget to create responsive layouts for Flutter applications.</p>
+<p><strong>Focus Widget:</strong> <a href="https://api.flutter.dev/flutter/widgets/Expanded-class.html">Expanded</a></p>
 <hr>
-<p>The <code>FittedBox</code> widget is a single child layout widget which means it can have only one child assigned to it. In this example, the <code>Row</code> widget is added as child to <code>FittedBox</code> widget. The <code>Row</code> widget has two <code>Image</code> widgets as its children. Normally, the second child of <code>Row</code> widget will overflow to right when it renders its children on a screen size which is not sufficient to accommodate all of its children. However, with <code>FittedBox</code> this problem of widget overflowing is solved. It scales and position its child within the parent widget.</p>
+<p>The <code>Expanded</code> widget is a single child layout widget which means it can have only one child assigned to it. In this example, the <code>Row</code> widget has three children built using <code>childWidget()</code>. Each of the child is wrapped in the <code>Expanded</code> widget. All children expands themselves in the direction of main-axis, which is horizontal in this case. However, when a value for <code>flex</code> property can be provided to resolve any competition for the space. In the second example below, each <code>Expanded</code> widget is provided the <code>flex</code> value.</p>
 <p><strong>Checkout the companion video tutorial:</strong></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xU5ZGOoBI08" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_iaFCRLBhzc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
-<h1>Using <code>FittedBox</code> Widget</h1>
-<div class="highlight"><pre><span></span><span class="n">FittedBox</span><span class="p">(</span>
- <span class="nl">child:</span> <span class="n">Row</span><span class="p">(</span>
+<h1>Using <code>Expanded</code> Widget</h1>
+<div class="highlight"><pre><span></span><span class="n">Row</span><span class="p">(</span>
    <span class="nl">children:</span> <span class="p">[</span>
-     <span class="n">Image</span><span class="p">.</span><span class="n">asset</span><span class="p">(</span><span class="s1">&#39;assets/flutter_icon.png&#39;</span><span class="p">),</span>
-     <span class="n">Image</span><span class="p">.</span><span class="n">asset</span><span class="p">(</span><span class="s1">&#39;assets/flutter_icon.png&#39;</span><span class="p">),</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
    <span class="p">],</span>
- <span class="p">),</span>
-<span class="p">)</span>
+ <span class="p">)</span>
 </pre></div>
 
 
 <hr>
+<h1>Using ExpanDed widget (flex Property)</h1>
+<div class="highlight"><pre><span></span><span class="n">Row</span><span class="p">(</span>
+   <span class="nl">children:</span> <span class="p">[</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">flex:</span> <span class="m">4</span><span class="p">,</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;4/8&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">flex:</span> <span class="m">3</span><span class="p">,</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;3/8&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">flex:</span> <span class="m">1</span><span class="p">,</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;1/8&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+   <span class="p">],</span>
+ <span class="p">)</span>
+</pre></div>
+
+
 <h1>Source Code Repo</h1>
 <ul>
 <li>
-<p>Source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook2/blob/master/lib/responsive_widgets/fitted_box.dart#L80:L84">here</a></p>
+<p>Please checkout the full source code for this example <a href="https://github.com/ptyagicodecamp/flutter_cookbook2/blob/master/lib/responsive_widgets/expanded.dart">here</a></p>
 </li>
 <li>
 <p>Flutter Cookbook2 project's source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook2">here</a></p>
 </li>
 </ul>
 <h1>References</h1>
-<p>1.<a href="https://api.flutter.dev/flutter/widgets/FittedBox-class.html">FittedBox</a></p>
+<p>1.<a href="https://api.flutter.dev/flutter/widgets/Expanded-class.html">Expanded</a></p>
 <p>Happy cooking with Flutter :)</p>
-<p>_Liked the article?Liked the article? Let me know with 👏👏👏</p>
-<p>Couldn't find a topic of interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<p>_Liked the article? Let me know with 👏👏👏</p>
+<p>Couldn't find a topic of interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write!
 <a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a>_</p>
 <p>Follow me at <a href="https://medium.com/@ptyagicodecamp">Medium</a>
 Follow me at <a href="https://twitter.com/ptyagi13">twitter</a></p>
