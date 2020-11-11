@@ -50,33 +50,17 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333333">
 
-<meta name="author" content="ptyagi" />
-<meta name="description" content="This micro article gives pointers to disable buttons in Flutter applications." />
-<meta name="keywords" content="Widgets, cross-platform, Flutter, code-recipes, Android, Android Studio, iOS, development, responsive">
-
-
+    <meta name="author" content="Priyanka Tyagi" />
+    <meta name="description" content="Mobile engineering tech logger." />
 <meta property="og:site_name" content="techLog"/>
-<meta property="og:title" content="Disabled Buttons in Flutter"/>
-<meta property="og:description" content="This micro article gives pointers to disable buttons in Flutter applications."/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="techLog"/>
+<meta property="og:description" content="Mobile engineering tech logger."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://ptyagicodecamp.github.io/disabled-buttons-in-flutter.html"/>
-<meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-11-11 00:00:00-05:00"/>
-<meta property="article:modified_time" content=""/>
-<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
-<meta property="article:section" content="Widgets"/>
-<meta property="article:tag" content="Widgets"/>
-<meta property="article:tag" content="cross-platform"/>
-<meta property="article:tag" content="Flutter"/>
-<meta property="article:tag" content="code-recipes"/>
-<meta property="article:tag" content="Android"/>
-<meta property="article:tag" content="Android Studio"/>
-<meta property="article:tag" content="iOS"/>
-<meta property="article:tag" content="development"/>
-<meta property="article:tag" content="responsive"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash; Disabled Buttons in Flutter</title>
+  <title>techLog &ndash; Category Widgets</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -168,124 +152,39 @@
 
     </nav>
 
-<article class="single">
+
+
+<article>
   <header>
-      
-    <h1 id="disabled-buttons-in-flutter">Disabled Buttons in Flutter</h1>
+    <h2><a href="https://ptyagicodecamp.github.io/disabled-buttons-in-flutter.html#disabled-buttons-in-flutter">Disabled Buttons in Flutter</a></h2>
     <p>
       Posted on November 11, 2020 in <a href="https://ptyagicodecamp.github.io/category/widgets.html">Widgets</a>
 
+          &#8226; Tagged with
+              <a href="https://ptyagicodecamp.github.io/tag/widgets.html">Widgets</a>,              <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>,              <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>,              <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>,              <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>,              <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>,              <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>,              <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>,              <a href="https://ptyagicodecamp.github.io/tag/responsive.html">responsive</a>
     </p>
   </header>
-
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle ads-responsive"
-         data-ad-client="ca-pub-6359982310050489"
-         data-ad-slot="6546879945"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
   <div>
-    <p><img alt="DisabledButtons" src="https://ptyagicodecamp.github.io/disabled_buttons.jpg"></p>
-<p>This micro article shows how to disable the RaisedButton and FlatButton widgets in Flutter applications.</p>
-<p>The <code>RaisedButton</code> and/or <code>FlatButton</code> widget(s) can be disabled by assigning <code>onPressed</code> property to <code>null</code>. They can be disabled when <code>onPressed</code> property is not used at all. In order to make these widgets clickable, a function needs to be assigned to the <code>onPressed</code> property.</p>
-<p><strong>Checkout the companion video tutorial:</strong></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<h1>Disabling <code>RaisedButton</code> Widget</h1>
-<div class="highlight"><pre><span></span><span class="n">RaisedButton</span><span class="p">(</span>
-  <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Disabled Button&quot;</span><span class="p">),</span>
-  <span class="nl">onPressed:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nl">disabledColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">black12</span><span class="p">,</span>
-  <span class="nl">disabledElevation:</span> <span class="m">1</span><span class="p">,</span>
-  <span class="nl">disabledTextColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blueGrey</span><span class="p">,</span>
-<span class="p">),</span>
-</pre></div>
-
-
-<hr>
-<h1>Disabling <code>FlatButton</code> Widget</h1>
-<div class="highlight"><pre><span></span><span class="n">FlatButton</span><span class="p">(</span>
-  <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Disabled Button&quot;</span><span class="p">),</span>
-  <span class="nl">onPressed:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nl">disabledColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">black12</span><span class="p">,</span>
-  <span class="nl">disabledTextColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blueGrey</span><span class="p">,</span>
-<span class="p">),</span>
-</pre></div>
-
-
-<hr>
-<h1>Source Code Repo</h1>
-<ul>
-<li>
-<p>Please checkout the full source code for this example <a href="https://github.com/ptyagicodecamp/flutter_cookbook2/blob/master/lib/buttons/disabled_buttons.dart">here</a></p>
-</li>
-<li>
-<p>Flutter Cookbook2 project's source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook2">here</a></p>
-</li>
-</ul>
-<h1>References</h1>
-<ol>
-<li><a href="https://api.flutter.dev/flutter/material/RaisedButton-class.html">RaisedButton</a></li>
-<li><a href="https://api.flutter.dev/flutter/material/FlatButton-class.html">FlatButton</a></li>
-<li><a href="https://api.flutter.dev/flutter/material/TextButton-class.html">TextButton</a></li>
-</ol>
-<p>Happy cooking with Flutter :)</p>
-<p>_Liked the article? Let me know with 👏👏👏</p>
-<p>Couldn't find a topic of interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write!
-<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a>_</p>
-<p>Follow me at <a href="https://medium.com/@ptyagicodecamp">Medium</a>
-Follow me at <a href="https://twitter.com/ptyagi13">twitter</a></p>
+      <p>This micro article gives pointers to disable buttons in Flutter applications.</p>
+        <br>
+        <a class="btn"
+           href="https://ptyagicodecamp.github.io/disabled-buttons-in-flutter.html#disabled-buttons-in-flutter">
+          Continue reading
+        </a>
   </div>
-  <div class="tag-cloud">
-    <p>
-      <a href="https://ptyagicodecamp.github.io/tag/widgets.html">Widgets</a>
-      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
-      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
-      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
-      <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
-      <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
-      <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
-      <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
-      <a href="https://ptyagicodecamp.github.io/tag/responsive.html">responsive</a>
-    </p>
-  </div>
-
-  <div class="center social-share">
-    <p>Like this article? Share it with your friends!</p>
-    <div class="addthis_native_toolbox"></div>
-    <div class="addthis_sharing_toolbox"></div>
-    <div class="addthis_inline_share_toolbox"></div>
-  </div>
-
-
-    <div class="addthis_relatedposts_inline"></div>
-
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle ads-responsive"
-         data-ad-client="ca-pub-6359982310050489"
-         data-ad-slot="6546879945"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
-<!-- Disqus -->
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'https-ptyagicodecamp-github-io';
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>
-    Please enable JavaScript to view comments.
-</noscript>
-<!-- End Disqus -->
 </article>
+
+  <div class="pagination">
+  </div>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <ins class="adsbygoogle ads-responsive"
+       data-ad-client="ca-pub-6359982310050489"
+       data-ad-slot="8977779775"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 
     <footer>
 <p>
