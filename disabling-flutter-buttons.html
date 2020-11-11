@@ -42,23 +42,21 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="ptyagi" />
-<meta name="description" content="This article shows how to use Expanded widget to create responsive layout." />
-<meta name="keywords" content="FlutterLayouts, cross-platform, Flutter, code-recipes, Android, Android Studio, iOS, development, responsive">
+<meta name="description" content="This micro article gives pointers to disable buttons in Flutter applications." />
+<meta name="keywords" content="Widgets, cross-platform, Flutter, code-recipes, Android, Android Studio, iOS, development, responsive">
 
-<link rel="alternate" href="https://ptyagicodecamp.github.io/responsive-flutter-layout-with-expanded-widget.html" hreflang="en" />
-<link rel="alternate" href="https://ptyagicodecamp.github.io/responsive-flutter-layout-with-expanded-widget.html" hreflang="en" />
 
 <meta property="og:site_name" content="techLog"/>
-<meta property="og:title" content="Responsive Flutter layout with Expanded widget"/>
-<meta property="og:description" content="This article shows how to use Expanded widget to create responsive layout."/>
+<meta property="og:title" content="Disabling Flutter Buttons"/>
+<meta property="og:description" content="This micro article gives pointers to disable buttons in Flutter applications."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://ptyagicodecamp.github.io/responsive-flutter-layout-with-expanded-widget.html"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/disabling-flutter-buttons.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-10-15 00:00:00-04:00"/>
+<meta property="article:published_time" content="2020-11-11 00:00:00-05:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
-<meta property="article:section" content="FlutterLayouts"/>
-<meta property="article:tag" content="FlutterLayouts"/>
+<meta property="article:section" content="Widgets"/>
+<meta property="article:tag" content="Widgets"/>
 <meta property="article:tag" content="cross-platform"/>
 <meta property="article:tag" content="Flutter"/>
 <meta property="article:tag" content="code-recipes"/>
@@ -69,7 +67,7 @@
 <meta property="article:tag" content="responsive"/>
 <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
 
-  <title>techLog &ndash; Responsive Flutter layout with Expanded widget</title>
+  <title>techLog &ndash; Disabling Flutter Buttons</title>
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -163,14 +161,10 @@
 
 <article class="single">
   <header>
-          <div class="translations">
-    <a class="active" href="https://ptyagicodecamp.github.io/responsive-flutter-layout-with-expanded-widget.html">en</a>
-        <a href="https://ptyagicodecamp.github.io/responsive-flutter-layout-with-expanded-widget.html">en</a>
-    </div>
-
-    <h1 id="responsive-flutter-layout-with-expanded-widget">Responsive Flutter layout with Expanded widget</h1>
+      
+    <h1 id="disabling-flutter-buttons">Disabling Flutter Buttons</h1>
     <p>
-      Posted on October 15, 2020 in <a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html">FlutterLayouts</a>
+      Posted on November 11, 2020 in <a href="https://ptyagicodecamp.github.io/category/widgets.html">Widgets</a>
 
     </p>
   </header>
@@ -184,65 +178,51 @@
     </script>
 
   <div>
-    <p><img alt="Expanded" src="https://ptyagicodecamp.github.io/expanded.jpg"></p>
-<p><strong>Target Audience:</strong> Beginner</p>
-<p><strong>Recipe:</strong> Learn to use Expanded layout widget to create responsive layouts for Flutter applications.</p>
-<p><strong>Focus Widget:</strong> <a href="https://api.flutter.dev/flutter/widgets/Expanded-class.html">Expanded</a></p>
-<hr>
-<p>The <code>Expanded</code> widget is a single child layout widget which means it can have only one child assigned to it. In this example, the <code>Row</code> widget has three children built using <code>childWidget()</code>. Each of the child is wrapped in the <code>Expanded</code> widget. All children expands themselves in the direction of main-axis, which is horizontal in this case. However, when a value for <code>flex</code> property can be provided to resolve any competition for the space. In the second example below, each <code>Expanded</code> widget is provided the <code>flex</code> value.</p>
+    <p><img alt="DisabledButtons" src="https://ptyagicodecamp.github.io/disabled_buttons.jpg"></p>
+<p>This micro article shows how to disable the RaisedButton and FlatButton widgets in Flutter applications.</p>
+<p>The <code>RaisedButton</code> and/or <code>FlatButton</code> widget(s) can be disabled by assigning <code>onPressed</code> property to <code>null</code>. They can be disabled when <code>onPressed</code> property is not used at all. In order to make these widgets clickable, a function needs to be assigned to the <code>onPressed</code> property.</p>
 <p><strong>Checkout the companion video tutorial:</strong></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_iaFCRLBhzc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
-<h1>Using <code>Expanded</code> Widget</h1>
-<div class="highlight"><pre><span></span><span class="n">Row</span><span class="p">(</span>
-   <span class="nl">children:</span> <span class="p">[</span>
-     <span class="n">Expanded</span><span class="p">(</span>
-       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
-     <span class="p">),</span>
-     <span class="n">Expanded</span><span class="p">(</span>
-       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
-     <span class="p">),</span>
-     <span class="n">Expanded</span><span class="p">(</span>
-       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
-     <span class="p">),</span>
-   <span class="p">],</span>
- <span class="p">)</span>
+<h1>Disabling <code>RaisedButton</code> Widget</h1>
+<div class="highlight"><pre><span></span><span class="n">RaisedButton</span><span class="p">(</span>
+  <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Disabled Button&quot;</span><span class="p">),</span>
+  <span class="nl">onPressed:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nl">disabledColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">black12</span><span class="p">,</span>
+  <span class="nl">disabledElevation:</span> <span class="m">1</span><span class="p">,</span>
+  <span class="nl">disabledTextColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blueGrey</span><span class="p">,</span>
+<span class="p">),</span>
 </pre></div>
 
 
 <hr>
-<h1>Using <code>Expanded</code> widget (flex Property)</h1>
-<div class="highlight"><pre><span></span><span class="n">Row</span><span class="p">(</span>
-   <span class="nl">children:</span> <span class="p">[</span>
-     <span class="n">Expanded</span><span class="p">(</span>
-       <span class="nl">flex:</span> <span class="m">4</span><span class="p">,</span>
-       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;4/8&quot;</span><span class="p">),</span>
-     <span class="p">),</span>
-     <span class="n">Expanded</span><span class="p">(</span>
-       <span class="nl">flex:</span> <span class="m">3</span><span class="p">,</span>
-       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;3/8&quot;</span><span class="p">),</span>
-     <span class="p">),</span>
-     <span class="n">Expanded</span><span class="p">(</span>
-       <span class="nl">flex:</span> <span class="m">1</span><span class="p">,</span>
-       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;1/8&quot;</span><span class="p">),</span>
-     <span class="p">),</span>
-   <span class="p">],</span>
- <span class="p">)</span>
+<h1>Disabling <code>FlatButton</code> Widget</h1>
+<div class="highlight"><pre><span></span><span class="n">FlatButton</span><span class="p">(</span>
+  <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Disabled Button&quot;</span><span class="p">),</span>
+  <span class="nl">onPressed:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nl">disabledColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">black12</span><span class="p">,</span>
+  <span class="nl">disabledTextColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blueGrey</span><span class="p">,</span>
+<span class="p">),</span>
 </pre></div>
 
 
+<hr>
 <h1>Source Code Repo</h1>
 <ul>
 <li>
-<p>Please checkout the full source code for this example <a href="https://github.com/ptyagicodecamp/flutter_cookbook2/blob/master/lib/responsive_widgets/expanded.dart">here</a></p>
+<p>Please checkout the full source code for this example <a href="https://github.com/ptyagicodecamp/flutter_cookbook2/blob/master/lib/buttons/disabled_buttons.dart">here</a></p>
 </li>
 <li>
 <p>Flutter Cookbook2 project's source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook2">here</a></p>
 </li>
 </ul>
 <h1>References</h1>
-<p>1.<a href="https://api.flutter.dev/flutter/widgets/Expanded-class.html">Expanded</a></p>
+<ol>
+<li><a href="https://api.flutter.dev/flutter/material/RaisedButton-class.html">RaisedButton</a></li>
+<li><a href="https://api.flutter.dev/flutter/material/FlatButton-class.html">FlatButton</a></li>
+<li><a href="https://api.flutter.dev/flutter/material/TextButton-class.html">TextButton</a></li>
+</ol>
 <p>Happy cooking with Flutter :)</p>
 <p>_Liked the article? Let me know with 👏👏👏</p>
 <p>Couldn't find a topic of interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write!
@@ -252,7 +232,7 @@ Follow me at <a href="https://twitter.com/ptyagi13">twitter</a></p>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://ptyagicodecamp.github.io/tag/flutterlayouts.html">FlutterLayouts</a>
+      <a href="https://ptyagicodecamp.github.io/tag/widgets.html">Widgets</a>
       <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
       <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
       <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
