@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>techLog - Beginning Flutter</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/beginning-flutter.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2020-11-13T00:00:00-05:00</updated><subtitle>Explore | Android | Flutter | Software Engineering</subtitle><entry><title>Beginning Flutter</title><link href="https://ptyagicodecamp.github.io/beginning-flutter.html" rel="alternate"></link><published>2020-11-13T00:00:00-05:00</published><updated>2020-11-13T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-11-13:/beginning-flutter.html</id><summary type="html">&lt;p&gt;This article contains the pointers to resources to learners beginning developing applications in Flutter.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="beginning_flutter" src="https://ptyagicodecamp.github.io/todo.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;This article contains the pointers to resources for learners beginning developing applications in Flutter.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Checkout Youtube Video:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=""&gt;Dart Ramp-up Notes&lt;/a&gt;: Learn the basics of Dart language syntaxes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=""&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1&gt;Source Code Repo&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Please checkout the full source code for this example &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook2/blob/master/lib/beginning_flutter/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Flutter Cookbook2 project's source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook2"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;_Liked the article? Let me know with 👏👏👏&lt;/p&gt;
+&lt;p&gt;Couldn't find a topic of interest? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write!
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;
+Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Beginning Flutter"></category><category term="beginning-flutter"></category><category term="cross-platform"></category><category term="Flutter"></category><category term="code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category><category term="responsive"></category></entry><entry><title>Dart2 Ramp-up Notes</title><link href="https://ptyagicodecamp.github.io/dart2-ramp-up-notes.html" rel="alternate"></link><published>2020-11-13T00:00:00-05:00</published><updated>2020-11-13T00:00:00-05:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2020-11-13:/dart2-ramp-up-notes.html</id><summary type="html">&lt;p&gt;This article contains quick reference to Dart language's basic syntaxes required to start developing applications in Flutter.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article contains my notes for Dart2 language's basic syntaxes needed to start developing applications in Flutter.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Checkout Youtube Video:&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h1&gt;Source Code Repo&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Please checkout the full source code for this example &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook2/blob/master/lib/beginning_flutter/dart_rampup/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Flutter Cookbook2 project's source code is available &lt;a href="https://github.com/ptyagicodecamp/flutter_cookbook2"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Reference&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=""&gt;Beginning Flutter&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy cooking with Flutter :)&lt;/p&gt;
+&lt;p&gt;_Liked the article? Let me know with 👏👏👏&lt;/p&gt;
+&lt;p&gt;Couldn't find a topic of interest? Please leave comments or &lt;a href="mailto:ptyagicodecamp@gmail.com"&gt;email me&lt;/a&gt; about topics you would like me to write!
+&lt;a href="https://www.paypal.me/pritya"&gt;BTW I love cupcakes and coffee both :)&lt;/a&gt;_&lt;/p&gt;
+&lt;p&gt;Follow me at &lt;a href="https://medium.com/@ptyagicodecamp"&gt;Medium&lt;/a&gt;
+Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><category term="Beginning Flutter"></category><category term="beginning-flutter"></category><category term="dart-syntaxes"></category><category term="cross-platform"></category><category term="Flutter"></category><category term="code-recipes"></category><category term="Android"></category><category term="Android Studio"></category><category term="iOS"></category><category term="development"></category><category term="responsive"></category></entry></feed>
