@@ -193,12 +193,12 @@
 <hr>
 <p><strong>Checkout the companion video tutorial:</strong>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
-<p>--
-In this article, I will give overview of the process of publishing Flutter applications on Android and iOS platforms in multiple environments. In real-world applications development process, there are multiple environments and/or stages an applications is released in. During development stage, you may want to share your app to internal testers with a backend configured for development but not ready for production purpose. If you want to distribute your app to internal testers, you need a <code>dev</code> variant for the application.</p>
+<hr>
+<p>In this article, I will give overview of the process of publishing Flutter applications on Android and iOS platforms in multiple environments. In real-world applications development process, there are multiple environments and/or stages an applications is released in. During development stage, you may want to share your app to internal testers with a backend configured for development but not ready for production purpose. If you want to distribute your app to internal testers, you need a <code>dev</code> variant for the application.</p>
 <p>When you are ready to roll-out the application for public release and have production backend ready, you need a variant of same app which is connected to the production backend. Let's call this variant of app as <code>prod</code> flavor.</p>
 <h1>Pre-requisites</h1>
 <p>In this article, I will use default <code>CounterApp</code> in two variants or flavors: <code>dev</code> for development, and <code>prod</code> for production. Let's assume this app uses Firebase for backend. The <code>dev</code> flavor/variant of app uses one instance of Firebase project, and <code>prod</code> flavor uses different instance of Firebase project.</p>
-<p>--</p>
+<hr>
 <h1>Flutter App Setup</h1>
 <h2>AppConfig</h2>
 <p>Create a class <code>AppConfig</code> to encapsulate the app's environment/flavor type and specific name for that flavor.</p>
@@ -232,7 +232,7 @@ In this article, I will give overview of the process of publishing Flutter appli
 </pre></div>
 
 
-<p>--</p>
+<hr>
 <p><img alt="flutter-flavors" src="https://ptyagicodecamp.github.io/flutter_flavors.jpg"></p>
 <h1>Android</h1>
 <p>Let's configure environment variants (a.k.a Flavors) at Android platform. At this point you should have two Firebase projects setup dedicated for <code>dev</code> and <code>prod</code> environment/flavor each.</p>
@@ -277,7 +277,7 @@ In this article, I will give overview of the process of publishing Flutter appli
 
 <p>That is all you need to enable flavors at Android side.</p>
 <hr>
-<p># iOS</p>
+<h1>iOS</h1>
 <p>Let's create <code>dev</code> and <code>prod</code> environments(a.k.a Schemes) at iOS platform. We need to setup custom schemes at iOS  side to support multiple variants.</p>
 <h1>Firebase Config files</h1>
 <ul>
@@ -379,11 +379,13 @@ Assign the correct bundle identifier for each item as shown in screenshot below.
 </pre></div>
 
 
-<h2>Replace <code>dev</code> with <code>prod</code> to run and build app for production environment.</h2>
+<p>Replace <code>dev</code> with <code>prod</code> to run and build app for production environment.</p>
+<hr>
 <h1>Source Code Repo</h1>
 <ul>
 <li>Recipe source code for this example is available <a href="https://github.com/ptyagicodecamp/counterapp_flavors">here</a></li>
 </ul>
+<hr>
 <h1>References</h1>
 <ol>
 <li><a href="https://medium.com/@salvatoregiordanoo/flavoring-flutter-392aaa875f36">Flavoring Flutter</a></li>

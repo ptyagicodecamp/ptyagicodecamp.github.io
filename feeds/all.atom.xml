@@ -5,12 +5,12 @@
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
-&lt;p&gt;--
-In this article, I will give overview of the process of publishing Flutter applications on Android and iOS platforms in multiple environments. In real-world applications development process, there are multiple environments and/or stages an applications is released in. During development stage, you may want to share your app to internal testers with a backend configured for development but not ready for production purpose. If you want to distribute your app to internal testers, you need a &lt;code&gt;dev&lt;/code&gt; variant for the application.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;In this article, I will give overview of the process of publishing Flutter applications on Android and iOS platforms in multiple environments. In real-world applications development process, there are multiple environments and/or stages an applications is released in. During development stage, you may want to share your app to internal testers with a backend configured for development but not ready for production purpose. If you want to distribute your app to internal testers, you need a &lt;code&gt;dev&lt;/code&gt; variant for the application.&lt;/p&gt;
 &lt;p&gt;When you are ready to roll-out the application for public release and have production backend ready, you need a variant of same app which is connected to the production backend. Let's call this variant of app as &lt;code&gt;prod&lt;/code&gt; flavor.&lt;/p&gt;
 &lt;h1&gt;Pre-requisites&lt;/h1&gt;
 &lt;p&gt;In this article, I will use default &lt;code&gt;CounterApp&lt;/code&gt; in two variants or flavors: &lt;code&gt;dev&lt;/code&gt; for development, and &lt;code&gt;prod&lt;/code&gt; for production. Let's assume this app uses Firebase for backend. The &lt;code&gt;dev&lt;/code&gt; flavor/variant of app uses one instance of Firebase project, and &lt;code&gt;prod&lt;/code&gt; flavor uses different instance of Firebase project.&lt;/p&gt;
-&lt;p&gt;--&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1&gt;Flutter App Setup&lt;/h1&gt;
 &lt;h2&gt;AppConfig&lt;/h2&gt;
 &lt;p&gt;Create a class &lt;code&gt;AppConfig&lt;/code&gt; to encapsulate the app's environment/flavor type and specific name for that flavor.&lt;/p&gt;
@@ -44,7 +44,7 @@ In this article, I will give overview of the process of publishing Flutter appli
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;--&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;img alt="flutter-flavors" src="https://ptyagicodecamp.github.io/flutter_flavors.jpg"&gt;&lt;/p&gt;
 &lt;h1&gt;Android&lt;/h1&gt;
 &lt;p&gt;Let's configure environment variants (a.k.a Flavors) at Android platform. At this point you should have two Firebase projects setup dedicated for &lt;code&gt;dev&lt;/code&gt; and &lt;code&gt;prod&lt;/code&gt; environment/flavor each.&lt;/p&gt;
@@ -89,7 +89,7 @@ In this article, I will give overview of the process of publishing Flutter appli
 
 &lt;p&gt;That is all you need to enable flavors at Android side.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;# iOS&lt;/p&gt;
+&lt;h1&gt;iOS&lt;/h1&gt;
 &lt;p&gt;Let's create &lt;code&gt;dev&lt;/code&gt; and &lt;code&gt;prod&lt;/code&gt; environments(a.k.a Schemes) at iOS platform. We need to setup custom schemes at iOS  side to support multiple variants.&lt;/p&gt;
 &lt;h1&gt;Firebase Config files&lt;/h1&gt;
 &lt;ul&gt;
@@ -191,11 +191,13 @@ Assign the correct bundle identifier for each item as shown in screenshot below.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Replace &lt;code&gt;dev&lt;/code&gt; with &lt;code&gt;prod&lt;/code&gt; to run and build app for production environment.&lt;/h2&gt;
+&lt;p&gt;Replace &lt;code&gt;dev&lt;/code&gt; with &lt;code&gt;prod&lt;/code&gt; to run and build app for production environment.&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1&gt;Source Code Repo&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Recipe source code for this example is available &lt;a href="https://github.com/ptyagicodecamp/counterapp_flavors"&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
 &lt;h1&gt;References&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://medium.com/@salvatoregiordanoo/flavoring-flutter-392aaa875f36"&gt;Flavoring Flutter&lt;/a&gt;&lt;/li&gt;
