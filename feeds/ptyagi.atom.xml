@@ -142,13 +142,6 @@ Move the script right after&lt;/li&gt;
 &lt;li&gt;Rename existing Runner default scheme to prod.&lt;/li&gt;
 &lt;li&gt;Manage scheme -&amp;gt; Assign correct configuration to its corresponding scheme.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1&gt;Scheme specific Product bundle identifier&lt;/h1&gt;
-&lt;p&gt;Remember to assign correct bundle identifier for each scheme as described below.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Targets -&amp;gt; Runner -&amp;gt; Build Settings -&amp;gt; Product Bundle Identifier
-Assign the correct bundle identifier for each item as shown in screenshot below.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt="iOS-Product-bundle-indentifier" src="https://ptyagicodecamp.github.io/product_bundle_identifiers.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;At this point, if you run &lt;code&gt;flutter run -t lib/main_dev.dart --flavor dev&lt;/code&gt; in CLI, you will see information to complete the custom scheme. Finish the custom scheme setup as directed.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;Xcode&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="n"&gt;defines&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;configurations&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Debug&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Release&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Profile&lt;/span&gt;
 &lt;span class="n"&gt;Flutter&lt;/span&gt; &lt;span class="n"&gt;expects&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;configuration&lt;/span&gt; &lt;span class="n"&gt;named&lt;/span&gt; &lt;span class="n"&gt;Debug&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;similar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
@@ -171,6 +164,14 @@ Assign the correct bundle identifier for each item as shown in screenshot below.
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;hr&gt;
+&lt;h1&gt;Scheme specific Product bundle identifier&lt;/h1&gt;
+&lt;p&gt;Remember to assign correct bundle identifier for each scheme as described below.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Targets -&amp;gt; Runner -&amp;gt; Build Settings -&amp;gt; Product Bundle Identifier
+Assign the correct bundle identifier for each item as shown in screenshot below.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="iOS-Product-bundle-indentifier" src="https://ptyagicodecamp.github.io/product_bundle_identifiers.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;Running App&lt;/h1&gt;
 &lt;p&gt;I find following commands handy on CLI to run app for specific flavors:&lt;/p&gt;

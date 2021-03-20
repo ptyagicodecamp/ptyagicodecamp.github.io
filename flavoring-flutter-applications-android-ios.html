@@ -330,13 +330,6 @@ Move the script right after</li>
 <li>Rename existing Runner default scheme to prod.</li>
 <li>Manage scheme -&gt; Assign correct configuration to its corresponding scheme.</li>
 </ul>
-<h1>Scheme specific Product bundle identifier</h1>
-<p>Remember to assign correct bundle identifier for each scheme as described below.</p>
-<ul>
-<li>Targets -&gt; Runner -&gt; Build Settings -&gt; Product Bundle Identifier
-Assign the correct bundle identifier for each item as shown in screenshot below.</li>
-</ul>
-<p><img alt="iOS-Product-bundle-indentifier" src="https://ptyagicodecamp.github.io/product_bundle_identifiers.jpg"></p>
 <p>At this point, if you run <code>flutter run -t lib/main_dev.dart --flavor dev</code> in CLI, you will see information to complete the custom scheme. Finish the custom scheme setup as directed.</p>
 <div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">Xcode</span> <span class="n">project</span> <span class="n">defines</span> <span class="n">build</span> <span class="n">configurations</span><span class="p">:</span> <span class="n">Debug</span><span class="p">,</span> <span class="n">Release</span><span class="p">,</span> <span class="n">Profile</span>
 <span class="n">Flutter</span> <span class="n">expects</span> <span class="n">a</span> <span class="n">build</span> <span class="n">configuration</span> <span class="n">named</span> <span class="n">Debug</span><span class="o">-</span><span class="n">dev</span> <span class="k">or</span> <span class="k">similar</span><span class="p">.</span>
@@ -359,6 +352,14 @@ Assign the correct bundle identifier for each item as shown in screenshot below.
 </pre></div>
 
 
+<hr>
+<h1>Scheme specific Product bundle identifier</h1>
+<p>Remember to assign correct bundle identifier for each scheme as described below.</p>
+<ul>
+<li>Targets -&gt; Runner -&gt; Build Settings -&gt; Product Bundle Identifier
+Assign the correct bundle identifier for each item as shown in screenshot below.</li>
+</ul>
+<p><img alt="iOS-Product-bundle-indentifier" src="https://ptyagicodecamp.github.io/product_bundle_identifiers.jpg"></p>
 <hr>
 <h1>Running App</h1>
 <p>I find following commands handy on CLI to run app for specific flavors:</p>
