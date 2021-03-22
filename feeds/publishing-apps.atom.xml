@@ -24,7 +24,7 @@
 
 
 &lt;h2&gt;Entry point for &lt;code&gt;dev&lt;/code&gt; flavor&lt;/h2&gt;
-&lt;p&gt;Create a file &lt;code&gt;lib/main_dev.dart&lt;/code&gt; to run app in &lt;code&gt;dev&lt;/code&gt; flavor. This is where you assing the flavor type and specific name for App based on that flavor.&lt;/p&gt;
+&lt;p&gt;Create a file &lt;code&gt;lib/main_dev.dart&lt;/code&gt; to run app in &lt;code&gt;dev&lt;/code&gt; flavor. This is where you assign the flavor type and specific name for App based on that flavor.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;void main() async {&lt;/span&gt;
 &lt;span class="err"&gt;  AppConfig devAppConfig = AppConfig(appName: &amp;#39;CounterApp Dev&amp;#39;, flavor: &amp;#39;dev&amp;#39;);&lt;/span&gt;
 &lt;span class="err"&gt;  Widget app = await initializeApp(devAppConfig);&lt;/span&gt;
