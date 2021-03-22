@@ -4,7 +4,7 @@
 &lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; Publish Flutter application on Android and iOS platforms for development(dev) and production (prod) environments.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Checkout the companion video tutorial:&lt;/strong&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Suv8-w-SiXw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;In this article, I will give overview of the process of publishing Flutter applications on Android and iOS platforms in multiple environments. In real-world applications development process, there are multiple environments and/or stages an applications is released in. During development stage, you may want to share your app to internal testers with a backend configured for development but not ready for production purpose. If you want to distribute your app to internal testers, you need a &lt;code&gt;dev&lt;/code&gt; variant for the application.&lt;/p&gt;
 &lt;p&gt;When you are ready to roll-out the application for public release and have production backend ready, you need a variant of same app which is connected to the production backend. Let's call this variant of app as &lt;code&gt;prod&lt;/code&gt; flavor.&lt;/p&gt;
@@ -280,10 +280,10 @@ Follow me at &lt;a href="https://twitter.com/ptyagi13"&gt;twitter&lt;/a&gt;&lt;/
 &lt;p&gt;Read article &lt;a href="https://ptyagicodecamp.github.io/flavoring-flutter-applications-android-ios.html"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Source code is available &lt;a href=""&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source code is available &lt;a href="https://github.com/ptyagicodecamp/counterapp_flavors"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/TODO"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Youtube video is available &lt;a href="https://youtu.be/Suv8-w-SiXw"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
