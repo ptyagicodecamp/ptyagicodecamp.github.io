@@ -237,7 +237,7 @@
 <h1>Android</h1>
 <p>Let's configure environment variants (a.k.a Flavors) at Android platform. At this point you should have two Firebase projects setup dedicated for <code>dev</code> and <code>prod</code> environment/flavor each.</p>
 <h1>Firebase Configuration Files</h1>
-<p>First step is to download <code>google-services.json</code> file(s) from each Firebase project to a temporary location at your machine. Next, create two folders <code>android/app/src/dev</code> and <code>android/app/src/prod</code> for each flavor. The Firebase configuration files go under in their flavor folders under <code>android/app/src/</code> folder..Copy the respective <code>google-services.json</code> files into their flavor folders respectively.
+<p>First step is to download <code>google-services.json</code> file(s) from each Firebase project to a temporary location at your machine. Next, create two folders <code>android/app/src/dev</code> and <code>android/app/src/prod</code> for each flavor. The Firebase configuration files go under their flavor folders under <code>android/app/src/</code> folder..Copy the respective <code>google-services.json</code> files into their flavor folders respectively.
 * dev flavor: <code>android/app/src/dev/google-services.json</code>
 * prod flavor: <code>android/app/src/prod/google-services.json</code></p>
 <h1>Setup Flavors</h1>
@@ -275,16 +275,16 @@
 </pre></div>
 
 
-<p>That is all you need to enable flavors at Android side.</p>
+<p>That is all you need to enable flavors on Android side.</p>
 <hr>
 <h1>iOS</h1>
 <p>Let's create <code>dev</code> and <code>prod</code> environments(a.k.a Schemes) at iOS platform. We need to setup custom schemes at iOS  side to support multiple variants.</p>
-<h1>Firebase Config files</h1>
+<h1>Firebase Configuration files</h1>
 <ul>
 <li>Copy GooglePlayServices files under <code>config/dev</code> and <code>config/prod</code>.</li>
 <li>Copy the <code>config</code> folder into the Xcode (drag and drop under Runner project)</li>
 <li>Targets -&gt; Runner -&gt; Build Phase: Add script to copy correct GooglePlaySerivce file for the correct scheme.
-Move the script right after</li>
+Move the script right after <code>Link Binary with Libraries</code> item.</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">environment</span><span class="o">=</span><span class="s2">&quot;default&quot;</span>
 

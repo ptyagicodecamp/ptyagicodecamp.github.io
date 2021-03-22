@@ -533,7 +533,7 @@ Medium: @ptyagicodecamp&lt;/p&gt;</content><category term="Development, Flutter,
 &lt;h1&gt;Android&lt;/h1&gt;
 &lt;p&gt;Let's configure environment variants (a.k.a Flavors) at Android platform. At this point you should have two Firebase projects setup dedicated for &lt;code&gt;dev&lt;/code&gt; and &lt;code&gt;prod&lt;/code&gt; environment/flavor each.&lt;/p&gt;
 &lt;h1&gt;Firebase Configuration Files&lt;/h1&gt;
-&lt;p&gt;First step is to download &lt;code&gt;google-services.json&lt;/code&gt; file(s) from each Firebase project to a temporary location at your machine. Next, create two folders &lt;code&gt;android/app/src/dev&lt;/code&gt; and &lt;code&gt;android/app/src/prod&lt;/code&gt; for each flavor. The Firebase configuration files go under in their flavor folders under &lt;code&gt;android/app/src/&lt;/code&gt; folder..Copy the respective &lt;code&gt;google-services.json&lt;/code&gt; files into their flavor folders respectively.
+&lt;p&gt;First step is to download &lt;code&gt;google-services.json&lt;/code&gt; file(s) from each Firebase project to a temporary location at your machine. Next, create two folders &lt;code&gt;android/app/src/dev&lt;/code&gt; and &lt;code&gt;android/app/src/prod&lt;/code&gt; for each flavor. The Firebase configuration files go under their flavor folders under &lt;code&gt;android/app/src/&lt;/code&gt; folder..Copy the respective &lt;code&gt;google-services.json&lt;/code&gt; files into their flavor folders respectively.
 * dev flavor: &lt;code&gt;android/app/src/dev/google-services.json&lt;/code&gt;
 * prod flavor: &lt;code&gt;android/app/src/prod/google-services.json&lt;/code&gt;&lt;/p&gt;
 &lt;h1&gt;Setup Flavors&lt;/h1&gt;
@@ -571,16 +571,16 @@ Medium: @ptyagicodecamp&lt;/p&gt;</content><category term="Development, Flutter,
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;That is all you need to enable flavors at Android side.&lt;/p&gt;
+&lt;p&gt;That is all you need to enable flavors on Android side.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;iOS&lt;/h1&gt;
 &lt;p&gt;Let's create &lt;code&gt;dev&lt;/code&gt; and &lt;code&gt;prod&lt;/code&gt; environments(a.k.a Schemes) at iOS platform. We need to setup custom schemes at iOS  side to support multiple variants.&lt;/p&gt;
-&lt;h1&gt;Firebase Config files&lt;/h1&gt;
+&lt;h1&gt;Firebase Configuration files&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Copy GooglePlayServices files under &lt;code&gt;config/dev&lt;/code&gt; and &lt;code&gt;config/prod&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Copy the &lt;code&gt;config&lt;/code&gt; folder into the Xcode (drag and drop under Runner project)&lt;/li&gt;
 &lt;li&gt;Targets -&amp;gt; Runner -&amp;gt; Build Phase: Add script to copy correct GooglePlaySerivce file for the correct scheme.
-Move the script right after&lt;/li&gt;
+Move the script right after &lt;code&gt;Link Binary with Libraries&lt;/code&gt; item.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;environment&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;default&amp;quot;&lt;/span&gt;
 
