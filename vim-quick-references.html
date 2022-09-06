@@ -203,6 +203,22 @@
 </code></pre></div>
 
 <p>The above command will open the <code>test_file</code> in vim editor. Press <code>i</code> to change to insert mode to start writing into file.</p>
+<h2>Modes of Vim</h2>
+<p>There are mainly three modes in Vim editor:
+1. <strong><em>Normal mode:</em></strong> This is the mode <code>Vim</code> editor opens in. If you try to type in this mode, you would not be able to. That may leave you in bit confusion on how to edit this file. You would need to change into <code>Insert</code> mode discussed next.</p>
+<ol>
+<li>
+<p><strong><em>Insert Mode:</em></strong> In order to write/edit the file, you will need to press <code>i</code>. This enables the editing mode for Vim. You will need to hit <code>escape</code> key to return back to Normal mode.</p>
+</li>
+<li>
+<p><strong>Line Mode:</strong> This mode is activated by hitting <code>escape</code> key when in Insert mode followed by colon <code>:</code>. This is used to perform operation on the file like saving and closing the file or just discarding the edits. </p>
+<ul>
+<li><code>:w!</code>: This command is used to save the contents without closing the file.</li>
+<li><code>:wq!</code>: This command is for saving + closing the file.</li>
+<li><code>:q!</code>: This command is used for quiting out of file without saving any changes. Be careful using this command, since it will discard any changes to file that you might have made.</li>
+</ul>
+</li>
+</ol>
 <h1>References</h1>
 <ol>
 <li><a href="https://formulae.brew.sh/formula/vim">Installing Homebrew</a></li>
