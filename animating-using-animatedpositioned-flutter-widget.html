@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -203,61 +203,57 @@
 <hr>
 <h3>Structure of <code>AnimatedPositioned</code> widget</h3>
 <p><code>AnimatedPositioned</code> uses <code>duration</code> and <code>curve</code> properties to animate from previous position to a new position. The <code>duration</code> value controls how long animation would take whereas <code>curve</code> property's value provides the type of animation <a href="https://api.flutter.dev/flutter/animation/Curves-class.html">Curve</a></p>
-<div class="highlight"><pre><span></span><span class="err">AnimatedPositioned(</span>
-<span class="err">      width: selected ? 400.0 : 200.0,</span>
-<span class="err">      height: selected ? 200.0 : 400.0,</span>
-<span class="err">      duration: Duration(seconds: 2),</span>
-<span class="err">      curve: dropDownValue != null ? dropDownValue.curveCubic : Curves.linear,</span>
-<span class="err">      child: Image.asset(&#39;assets/images/sea.jpg&#39;),</span>
-<span class="err">    ),</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>AnimatedPositioned(
+      width: selected ? 400.0 : 200.0,
+      height: selected ? 200.0 : 400.0,
+      duration: Duration(seconds: 2),
+      curve: dropDownValue != null ? dropDownValue.curveCubic : Curves.linear,
+      child: Image.asset(&#39;assets/images/sea.jpg&#39;),
+    ),
+</code></pre></div>
 
 <h3>Recipe's Code Structure</h3>
 <p>I'm using a drop down to choose the different type of <code>curve</code>. Animation curves used in this code recipe are available in the source code as well as <a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262">here</a>.</p>
 <p><code>AnimatedPositioned</code> needs to be implemented inside a <code>StatefulWidget</code> since it can only animate when position is changed.</p>
 <p><code>AnimationCurve dropDownValue</code> holds the current selection from the <a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262">AnimationCurves</a> drop down widget.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">AnimatedPositionedDemo</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">_AnimatedPositionedDemoState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_AnimatedPositionedDemoState</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">AnimatedPositionedDemo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">_AnimatedPositionedDemoState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_AnimatedPositionedDemoState</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">class</span> <span class="n">_AnimatedPositionedDemoState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">AnimatedPositionedDemo</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="n">AnimationCurve</span> <span class="n">dropDownValue</span><span class="p">;</span>
-  <span class="nb nb-Type">bool</span> <span class="n">selected</span> <span class="o">=</span> <span class="bp">false</span><span class="p">;</span>
+<span class="k">class</span><span class="w"> </span><span class="n">_AnimatedPositionedDemoState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">AnimatedPositionedDemo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">AnimationCurve</span><span class="w"> </span><span class="n">dropDownValue</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span><span class="w"></span>
 
-  <span class="o">...</span>
-<span class="p">}</span>  
-</pre></div>
-
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
 
 <p>Boolean <code>selected</code> keeps track of when 'Animate' button is pressed or image is touched.</p>
 <p>'Animate' button next to dropDown widget. It updates the value of <code>selected</code> as below:</p>
-<div class="highlight"><pre><span></span><span class="err">Widget playAnimation(BuildContext context) {</span>
-<span class="err">  return RaisedButton(</span>
-<span class="err">    color: Colors.blueAccent,</span>
-<span class="err">    child: Text(&quot;Animate&quot;),</span>
-<span class="err">    onPressed: () =&gt; setState(() {</span>
-<span class="err">      selected = !selected;</span>
-<span class="err">    }),</span>
-<span class="err">  );</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">playAnimation</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">RaisedButton(</span><span class="w"></span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">blueAccent</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="nf">Text</span><span class="p">(</span><span class="s2">&quot;Animate&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">onPressed</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">setState</span><span class="p">(</span><span class="err">(</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">selected</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="o">),</span><span class="w"></span>
+<span class="w">  </span><span class="o">);</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Implementing <code>AnimatedPositioned</code> widget</h3>
 <p><code>AnimatedPositioned</code> widget's default <code>position</code> or <code>width</code> / <code>height</code> are  200.0 and 400.0 respectively. When user presses 'Animate' button for a selected Curve type in dropDown widget, position or <code>width</code> and <code>height</code> are updated to 400.0 and 200.0 respectively. <code>AnimatedPositioned</code> updates its position to a new value with in <code>2</code> seconds as provided in <code>duration</code> attribute using current selection for <code>curve</code> property.</p>
-<div class="highlight"><pre><span></span><span class="err">Widget animatedPositionedWidget(BuildContext context) {</span>
-<span class="err">  return AnimatedPositioned(</span>
-<span class="err">    width: selected ? 400.0 : 200.0,</span>
-<span class="err">    height: selected ? 200.0 : 400.0,</span>
-<span class="err">    duration: Duration(seconds: 2),</span>
-<span class="err">    curve: dropDownValue != null ? dropDownValue.curveCubic : Curves.linear,</span>
-<span class="err">    child: Image.asset(&#39;assets/images/sea.jpg&#39;),</span>
-<span class="err">  );</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">animatedPositionedWidget</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">AnimatedPositioned(</span><span class="w"></span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">400.0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">200.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">height</span><span class="o">:</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">200.0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">400.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">duration</span><span class="o">:</span><span class="w"> </span><span class="nf">Duration</span><span class="p">(</span><span class="n">seconds</span><span class="err">:</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">curve</span><span class="o">:</span><span class="w"> </span><span class="n">dropDownValue</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">dropDownValue</span><span class="o">.</span><span class="n">curveCubic</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Curves</span><span class="o">.</span><span class="kc">linear</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="n">Image</span><span class="o">.</span><span class="nf">asset</span><span class="p">(</span><span class="s1">&#39;assets/images/sea.jpg&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>I encourage you to Checkout the code below, and play around with different types of Curve animations to pick an animation that would work best for you.</p>
 <h3>Source code repo</h3>

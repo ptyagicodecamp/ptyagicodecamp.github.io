@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -203,73 +203,69 @@
 <hr>
 <h3>Structure of <code>AnimatedContainer</code> widget</h3>
 <p><code>AnimatedContainer</code> uses <code>duration</code> and <code>curve</code> properties to animate from previous values to new values of <code>width</code>, <code>height</code>, <code>color</code>, and <code>alignment</code>. <code>duration</code> value controls how long animation would take whereas <code>curve</code> property's value provides the type of animation <a href="https://api.flutter.dev/flutter/animation/Curves-class.html">Curve</a></p>
-<div class="highlight"><pre><span></span><span class="err">AnimatedContainer(</span>
-<span class="err">        width: 100.0, //width of the container</span>
-<span class="err">        height: 100.0,</span>
-<span class="err">        color: Colors.blue,</span>
-<span class="err">        alignment: Alignment.center,</span>
-<span class="err">        duration: Duration(seconds: 2),</span>
-<span class="err">        curve: Curves.fastOutSlowIn,</span>
-<span class="err">        child: FlutterLogo(size: 75),</span>
-<span class="err">      ),</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>AnimatedContainer(
+        width: 100.0, //width of the container
+        height: 100.0,
+        color: Colors.blue,
+        alignment: Alignment.center,
+        duration: Duration(seconds: 2),
+        curve: Curves.fastOutSlowIn,
+        child: FlutterLogo(size: 75),
+      ),
+</code></pre></div>
 
 <hr>
 <h3>Recipe's Code Structure</h3>
 <p>I'm using a drop down to choose the different type of <code>curve</code>. Animation curves used in this code recipe are available in the source code as well as <a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262">here</a>.</p>
 <p><code>AnimatedContainer</code> needs to be implemented inside a <code>StatefulWidget</code> since its values are changed, and it provides animation while switching from old values to newer values.</p>
 <p><code>AnimationCurve dropDownValue</code> holds the current selection from the <a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262">AnimationCurves</a> drop down widget.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">AnimatedContainerDemo</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">_AnimatedContainerDemoState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_AnimatedContainerDemoState</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">AnimatedContainerDemo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">_AnimatedContainerDemoState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_AnimatedContainerDemoState</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">class</span> <span class="n">_AnimatedContainerDemoState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">AnimatedContainerDemo</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="n">AnimationCurve</span> <span class="n">dropDownValue</span><span class="p">;</span>
-  <span class="nb nb-Type">bool</span> <span class="n">selected</span> <span class="o">=</span> <span class="bp">false</span><span class="p">;</span>
-  <span class="o">...</span>
-<span class="p">}</span>  
-</pre></div>
-
+<span class="k">class</span><span class="w"> </span><span class="n">_AnimatedContainerDemoState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">AnimatedContainerDemo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">AnimationCurve</span><span class="w"> </span><span class="n">dropDownValue</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
 
 <p>Boolean <code>selected</code> keeps track of when <code>Animate</code> button is pressed or image is touched.</p>
 <p>'Animate' button next to dropDown widget. It updates the value of <code>selected</code> as below:</p>
-<div class="highlight"><pre><span></span><span class="err">Widget playAnimation(BuildContext context) {</span>
-<span class="err">  return RaisedButton(</span>
-<span class="err">    color: Colors.blueAccent,</span>
-<span class="err">    child: Text(&quot;Animate&quot;),</span>
-<span class="err">    onPressed: () =&gt; setState(() {</span>
-<span class="err">      selected = !selected;</span>
-<span class="err">    }),</span>
-<span class="err">  );</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">playAnimation</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">RaisedButton(</span><span class="w"></span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">blueAccent</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="nf">Text</span><span class="p">(</span><span class="s2">&quot;Animate&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">onPressed</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">setState</span><span class="p">(</span><span class="err">(</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">selected</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="o">),</span><span class="w"></span>
+<span class="w">  </span><span class="o">);</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h3>Implementing <code>AnimatedContainer</code> widget</h3>
 <p><code>AnimatedContainer</code> is wrapped around <code>GestureDetector</code> to let user start animation by touch in addition to pressing 'Animate' button exclusively. User can choose one over another to start animation.</p>
 <p><code>AnimatedContainer</code> widget's default <code>width</code> is  200 and default <code>height</code> is 400, and its alignment is <code>topCenter</code>. When user presses 'Animate' button for a selected Curve type in dropDown widget, <code>width</code> updates to 400, <code>height</code> updated to 200, and its alignment changes to <code>center</code>. <code>AnimatedContainer</code> updates to new values with in <code>2</code> seconds as provided in <code>duration</code> attribute using current selection for <code>curve</code> property.</p>
-<div class="highlight"><pre><span></span><span class="err">Widget animatedContainer(BuildContext context) {</span>
-<span class="err">  return GestureDetector(</span>
-<span class="err">    onTap: () {</span>
-<span class="err">      setState(() {</span>
-<span class="err">        selected = !selected;</span>
-<span class="err">      });</span>
-<span class="err">    },</span>
-<span class="err">    child: AnimatedContainer(</span>
-<span class="err">      width: selected ? 400.0 : 200.0,</span>
-<span class="err">      height: selected ? 200.0 : 400.0,</span>
-<span class="err">      alignment: selected ? Alignment.center : AlignmentDirectional.topCenter,</span>
-<span class="err">      duration: Duration(seconds: 2),</span>
-<span class="err">      curve: dropDownValue != null ? dropDownValue.curveCubic : Curves.linear,</span>
-<span class="err">      child: Image.asset(&#39;assets/images/sea.jpg&#39;),</span>
-<span class="err">    ),</span>
-<span class="err">  );</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">animatedContainer</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">GestureDetector(</span><span class="w"></span>
+<span class="w">    </span><span class="n">onTap</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">      </span><span class="nf">setState</span><span class="p">(</span><span class="err">(</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">selected</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="o">);</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="o">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">AnimatedContainer</span><span class="o">(</span><span class="w"></span>
+<span class="w">      </span><span class="nt">width</span><span class="o">:</span><span class="w"> </span><span class="nt">selected</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nt">400</span><span class="p">.</span><span class="nc">0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nt">200</span><span class="p">.</span><span class="nc">0</span><span class="o">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">height</span><span class="o">:</span><span class="w"> </span><span class="nt">selected</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nt">200</span><span class="p">.</span><span class="nc">0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nt">400</span><span class="p">.</span><span class="nc">0</span><span class="o">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">alignment</span><span class="o">:</span><span class="w"> </span><span class="nt">selected</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nt">Alignment</span><span class="p">.</span><span class="nc">center</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nt">AlignmentDirectional</span><span class="p">.</span><span class="nc">topCenter</span><span class="o">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">duration</span><span class="o">:</span><span class="w"> </span><span class="nt">Duration</span><span class="o">(</span><span class="nt">seconds</span><span class="o">:</span><span class="w"> </span><span class="nt">2</span><span class="o">),</span><span class="w"></span>
+<span class="w">      </span><span class="nt">curve</span><span class="o">:</span><span class="w"> </span><span class="nt">dropDownValue</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nt">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nt">dropDownValue</span><span class="p">.</span><span class="nc">curveCubic</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nt">Curves</span><span class="p">.</span><span class="nc">linear</span><span class="o">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Image</span><span class="p">.</span><span class="nc">asset</span><span class="o">(</span><span class="s1">&#39;assets/images/sea.jpg&#39;</span><span class="o">),</span><span class="w"></span>
+<span class="w">    </span><span class="o">),</span><span class="w"></span>
+<span class="w">  </span><span class="o">);</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>I encourage you to Checkout the code below, and play around with different types of Curve animations to pick an animation that would work best for you.</p>
 <hr>

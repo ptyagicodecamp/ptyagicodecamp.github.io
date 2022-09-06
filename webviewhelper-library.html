@@ -93,7 +93,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -196,14 +196,13 @@
 </ol>
 <h3>Using from Android Studio:</h3>
 <p>Add following in your project's <code>build.gradle</code> under <code>dependencies</code> block.</p>
-<div class="highlight"><pre><span></span><span class="err">compile &#39;org.ptyagicodecamp:webview-android:0.0.2&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>compile &#39;org.ptyagicodecamp:webview-android:0.0.2&#39;
+</code></pre></div>
 
 <h3>How to use <code>WebViewHelper</code> class ?</h3>
 <h5>Initializing</h5>
 <p>You would need to pass reference to <code>WebView</code> widget into <code>WebViewHelper</code> like this:</p>
-<div class="highlight"><pre><span></span><span class="n">WebViewHelper</span><span class="w"> </span><span class="n">webViewHelper</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">WebViewHelper</span><span class="w"> </span><span class="n">webViewHelper</span><span class="p">;</span><span class="w"></span>
 <span class="p">....</span><span class="w"></span>
 
 <span class="nv">@Override</span><span class="w"></span>
@@ -215,11 +214,10 @@
 <span class="w">        </span><span class="o">//</span><span class="k">initialize</span><span class="w"> </span><span class="n">WebViewHelper</span><span class="w"></span>
 <span class="w">        </span><span class="n">webViewHelper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WebViewHelper</span><span class="p">(</span><span class="n">webView</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <h5>Using library</h5>
-<div class="highlight"><pre><span></span>public void loadUrl(View view) {
+<div class="highlight"><pre><span></span><code>public void loadUrl(View view) {
         webViewHelper.loadUrl(&quot;https://ptyagicodecamp.github.io/&quot;);
     }
 
@@ -237,8 +235,7 @@
             Toast.makeText(this, &quot;Javascript is disabled&quot;, Toast.LENGTH_LONG).show();
         }
     }
-</pre></div>
-
+</code></pre></div>
 
 <p>Source code is available <a href="https://github.com/ptyagicodecamp/webview-android">here</a>
 </p>

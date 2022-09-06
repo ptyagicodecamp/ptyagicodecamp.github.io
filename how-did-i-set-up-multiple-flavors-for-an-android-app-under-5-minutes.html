@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -201,22 +201,21 @@ assets or functionality. For example, in free version of the app, you may want t
 paid version, you may decide not to show ads and integrate in-app purchase or upfront price rather.
 That's where <strong><em>Android Flavors</em></strong> help us to achieve this flexibility.</p>
 <h2>Setting up Flavors in <code>build.gradle</code></h2>
-<div class="highlight"><pre><span></span><span class="n">android</span> <span class="err">{</span>
-    <span class="n">flavorDimensions</span> <span class="ss">&quot;version&quot;</span>
+<div class="highlight"><pre><span></span><code>android {
+    flavorDimensions &quot;version&quot;
 
-    <span class="n">productFlavors</span> <span class="err">{</span>
-        <span class="n">freeVersion</span> <span class="err">{</span>
-            <span class="n">dimension</span> <span class="ss">&quot;version&quot;</span>
+    productFlavors {
+        freeVersion {
+            dimension &quot;version&quot;
 
-        <span class="err">}</span>
+        }
 
-        <span class="n">paidVersion</span> <span class="err">{</span>
-            <span class="n">dimension</span> <span class="ss">&quot;version&quot;</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-<span class="err">}</span>
-</pre></div>
-
+        paidVersion {
+            dimension &quot;version&quot;
+        }
+    }
+}
+</code></pre></div>
 
 <p>These newly created flavors appears in "Build Variants" tab of Android Studio:</p>
 <p><img alt="Alt Build Variants" src="https://ptyagicodecamp.github.io/build_varaints_1.png"></p>
@@ -228,60 +227,58 @@ That's where <strong><em>Android Flavors</em></strong> help us to achieve this f
 In this example, the free version will be published on Play Store with packageId/applicationId as <code>com.pcc.flavors.free</code>
 and paid one will have <code>com.pcc.flavors.paid</code>.</p>
 <p>Note: I'll be showing <code>build.gradle</code> with all the configuration until this point.</p>
-<div class="highlight"><pre><span></span><span class="n">android</span> <span class="err">{</span>
-    <span class="n">flavorDimensions</span> <span class="ss">&quot;version&quot;</span>
+<div class="highlight"><pre><span></span><code>android {
+    flavorDimensions &quot;version&quot;
 
-    <span class="n">productFlavors</span> <span class="err">{</span>
-        <span class="n">freeVersion</span> <span class="err">{</span>
-            <span class="n">dimension</span> <span class="ss">&quot;version&quot;</span>
+    productFlavors {
+        freeVersion {
+            dimension &quot;version&quot;
 
-            <span class="n">applicationId</span> <span class="ss">&quot;com.pcc.flavors.free&quot;</span>
+            applicationId &quot;com.pcc.flavors.free&quot;
 
-        <span class="err">}</span>
+        }
 
-        <span class="n">paidVersion</span> <span class="err">{</span>
-            <span class="n">dimension</span> <span class="ss">&quot;version&quot;</span>
+        paidVersion {
+            dimension &quot;version&quot;
 
-            <span class="n">applicationId</span> <span class="ss">&quot;com.pcc.flavors.paid&quot;</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-<span class="err">}</span>
-</pre></div>
-
+            applicationId &quot;com.pcc.flavors.paid&quot;
+        }
+    }
+}
+</code></pre></div>
 
 <h2>Configuring App's name</h2>
 <p>Each flavor can have its own name as well. For example, free version has app name shown to users
 in Play Store as "Free Great App" and paid version has its name displayed in Play Store as "Paid Great App".
 Let's see how this can be configured in <code>build.gradle</code>.</p>
-<div class="highlight"><pre><span></span><span class="n">android</span> <span class="err">{</span>
-    <span class="n">flavorDimensions</span> <span class="ss">&quot;version&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">android</span> {
+    <span class="nv">flavorDimensions</span> <span class="s2">&quot;</span><span class="s">version</span><span class="s2">&quot;</span>
 
-    <span class="n">productFlavors</span> <span class="err">{</span>
-        <span class="n">freeVersion</span> <span class="err">{</span>
-            <span class="o">//</span><span class="k">select</span> <span class="n">the</span> <span class="n">dimension</span> <span class="k">of</span> <span class="n">flavor</span>
-            <span class="n">dimension</span> <span class="ss">&quot;version&quot;</span>
+    <span class="nv">productFlavors</span> {
+        <span class="nv">freeVersion</span> {
+            <span class="o">//</span><span class="nv">select</span> <span class="nv">the</span> <span class="nv">dimension</span> <span class="nv">of</span> <span class="nv">flavor</span>
+            <span class="nv">dimension</span> <span class="s2">&quot;</span><span class="s">version</span><span class="s2">&quot;</span>
 
-            <span class="o">//</span><span class="n">configure</span> <span class="n">applicationId</span> <span class="k">for</span> <span class="n">app</span> <span class="n">published</span> <span class="k">to</span> <span class="n">Play</span> <span class="n">store</span>
-            <span class="n">applicationId</span> <span class="ss">&quot;com.pcc.flavors.free&quot;</span>
+            <span class="o">//</span><span class="nv">configure</span> <span class="nv">applicationId</span> <span class="k">for</span> <span class="nv">app</span> <span class="nv">published</span> <span class="nv">to</span> <span class="nv">Play</span> <span class="nv">store</span>
+            <span class="nv">applicationId</span> <span class="s2">&quot;</span><span class="s">com.pcc.flavors.free</span><span class="s2">&quot;</span>
 
-            <span class="o">//</span><span class="n">Configure</span> <span class="n">this</span> <span class="n">flavor</span> <span class="k">specific</span> <span class="n">app</span> <span class="n">name</span> <span class="n">published</span> <span class="k">in</span> <span class="n">Play</span> <span class="n">Store</span>
-            <span class="n">resValue</span> <span class="ss">&quot;string&quot;</span><span class="p">,</span> <span class="ss">&quot;flavored_app_name&quot;</span><span class="p">,</span> <span class="ss">&quot;Free Great App&quot;</span>
+            <span class="o">//</span><span class="nv">Configure</span> <span class="nv">this</span> <span class="nv">flavor</span> <span class="nv">specific</span> <span class="nv">app</span> <span class="nv">name</span> <span class="nv">published</span> <span class="nv">in</span> <span class="nv">Play</span> <span class="nv">Store</span>
+            <span class="nv">resValue</span> <span class="s2">&quot;</span><span class="s">string</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">flavored_app_name</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">Free Great App</span><span class="s2">&quot;</span>
 
-        <span class="err">}</span>
+        }
 
-        <span class="n">paidVersion</span> <span class="err">{</span>
-            <span class="n">dimension</span> <span class="ss">&quot;version&quot;</span>
+        <span class="nv">paidVersion</span> {
+            <span class="nv">dimension</span> <span class="s2">&quot;</span><span class="s">version</span><span class="s2">&quot;</span>
 
-            <span class="n">applicationId</span> <span class="ss">&quot;com.pcc.flavors.paid&quot;</span>
-            <span class="n">resValue</span> <span class="ss">&quot;string&quot;</span><span class="p">,</span> <span class="ss">&quot;flavored_app_name&quot;</span><span class="p">,</span> <span class="ss">&quot;Paid Great App&quot;</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-<span class="err">}</span>
-</pre></div>
-
+            <span class="nv">applicationId</span> <span class="s2">&quot;</span><span class="s">com.pcc.flavors.paid</span><span class="s2">&quot;</span>
+            <span class="nv">resValue</span> <span class="s2">&quot;</span><span class="s">string</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">flavored_app_name</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">Paid Great App</span><span class="s2">&quot;</span>
+        }
+    }
+}
+</code></pre></div>
 
 <p>Don't forget to use <code>flavored_app_name</code> string resource from <code>AndroidManifest.xml</code> to defined app's name:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;manifest</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;manifest</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">package=</span><span class="s">&quot;org.pcc.flavors&quot;</span><span class="nt">&gt;</span>
 
     <span class="nt">&lt;application</span>
@@ -289,8 +286,7 @@ Let's see how this can be configured in <code>build.gradle</code>.</p>
     <span class="err">&lt;/application</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;/manifest&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Flavor specific Icons for apps</h2>
 <p>Each differently named/flavored app may want to have its own icon. Lets see how would we achieve this.
@@ -300,7 +296,7 @@ These directories must be named same as its flavor definition names. In our exam
 directories are : <code>freeVersion</code> and <code>paidVersion</code>.</p>
 <p><img alt="Alt Flavored Icons" src="https://ptyagicodecamp.github.io/flavored_icons.png"></p>
 <p>Make sure that you've the icon's name same as referenced from <code>AndroidManifest.xml</code></p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;manifest</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">package=</span><span class="s">&quot;org.pcc.flavors&quot;</span><span class="nt">&gt;</span>
 
@@ -311,8 +307,7 @@ directories are : <code>freeVersion</code> and <code>paidVersion</code>.</p>
     <span class="err">&lt;/application</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;/manifest&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Finally, flavor some code !</h2>
 <p>It's very similar to flavoring icons for specific app. Remember that you've the same directory/package

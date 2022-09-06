@@ -90,7 +90,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -199,20 +199,19 @@ will be something like this: <code>/storage/emulated/0/Android/data/org.pcc.file
 <p>This file is queried using <a href="https://developer.android.com/reference/android/support/v4/content/FileProvider.html">FileProvider</a>
 and passed to the camera intent.</p>
 <p>Code to query recently created image file in internal picture directory for app:</p>
-<div class="highlight"><pre><span></span><span class="err">Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);</span>
-<span class="err">Uri imgUri = FileProvider.getUriForFile(this,</span>
-<span class="err">                    &quot;org.pcc.fileprovider&quot;, imageFile.getFile());</span>
-<span class="err">takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imgUri);</span>
-<span class="err">startActivityForResult(takePictureIntent, REQUEST_CODE_IMAGE_CAPTURE);</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+Uri imgUri = FileProvider.getUriForFile(this,
+                    &quot;org.pcc.fileprovider&quot;, imageFile.getFile());
+takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imgUri);
+startActivityForResult(takePictureIntent, REQUEST_CODE_IMAGE_CAPTURE);
+</code></pre></div>
 
 <h4>Configuring FileProvider in Android Studio Project</h4>
 <p>It's a two step process. First you've to declare <code>&lt;provider&gt;</code> tag in your app's
 <code>AndroidManifest.xml</code>. Second, you will need to create <code>file_paths.xml</code> inside <code>res/xml</code> folder.</p>
 <h5>AndroidManifest.xml</h5>
 <p><code>&lt;provider&gt;</code> tag has to be declared inside <code>&lt;application&gt;</code> tag.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;application</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;application</span>
         <span class="err">...</span><span class="nt">&gt;</span>
         <span class="nt">&lt;provider</span>
             <span class="na">android:name=</span><span class="s">&quot;android.support.v4.content.FileProvider&quot;</span>
@@ -225,18 +224,16 @@ and passed to the camera intent.</p>
         <span class="nt">&lt;/provider&gt;</span>
        ....
 <span class="nt">&lt;/application&gt;</span>        
-</pre></div>
-
+</code></pre></div>
 
 <h5>file_paths.xml</h5>
 <p>Create a file <code>file_paths.xml</code> inside <code>res/xml</code> folder of your app. This file
 will have these contents in it:</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;paths</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;external-path</span> <span class="na">name=</span><span class="s">&quot;my_images&quot;</span> <span class="na">path=</span><span class="s">&quot;Android/data/org.pcc.fileprovider/files/Pictures&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/paths&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>That's it !</p>
 <p>Checkout <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/FileProvider">source code</a> in github to see <code>FileProviderDemo</code> in action.</p>

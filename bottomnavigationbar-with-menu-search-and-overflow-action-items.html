@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -199,36 +199,35 @@ an overflow menu action item. </p>
 a dummy search action icon and overflow action items menu. Clicking on each menu action 
 will display a message using <a href="https://pub.dartlang.org/packages/fluttertoast">Fluttertoast</a></p>
 <p><img alt="List item icon" src="https://ptyagicodecamp.github.io/bottom_appbar.png"></p>
-<p>Checkout in action:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qID2Wut7rEM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p>Checkout in action:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qID2Wut7rEM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <h3>Lets's go!</h3>
 <p>Step #1. Since we'll be using <code>fluttertoast</code> for showing status messages, first we'll be adding 
 <code>fluttertoast</code> library dependency in <code>pubspec.yaml</code> like below:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">flutter</span><span class="o">:</span>
-    <span class="n">sdk</span><span class="o">:</span> <span class="n">flutter</span>
-  <span class="err">#</span><span class="n">added</span> <span class="n">fluttertoast</span> <span class="n">library</span> <span class="n">to</span> <span class="n">show</span> <span class="n">status</span> <span class="n">messages</span>
-  <span class="n">fluttertoast</span><span class="o">:</span> <span class="o">^</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">sdk</span><span class="o">:</span><span class="w"> </span><span class="n">flutter</span><span class="w"></span>
+<span class="w">  </span><span class="err">#</span><span class="n">added</span><span class="w"> </span><span class="n">fluttertoast</span><span class="w"> </span><span class="n">library</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="n">messages</span><span class="w"></span>
+<span class="w">  </span><span class="n">fluttertoast</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
 
 <p>Click on get/upgrade dependencies when prompt is shown. You may want to make sure that all dependencies are refreshed.</p>
 <p>Step #2. Add a placeholder top part for the app using <code>Center</code> widget. 
 I'll be using <code>Text</code> widget to show demo message.</p>
-<div class="highlight"><pre><span></span><span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="err">{</span>
-    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
-      <span class="n">body</span><span class="p">:</span> <span class="n">Center</span><span class="p">(</span>
-        <span class="n">child</span><span class="p">:</span> <span class="nb">Text</span><span class="p">(</span><span class="s1">&#39;Checkout BottomNavigationBar in action below&#39;</span><span class="p">),</span>
-      <span class="p">),</span>
-    <span class="p">...</span>
+<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">build</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">return</span><span class="w"> </span><span class="err">Scaffold(</span><span class="w"></span>
+<span class="w">      </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="nf">Center</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">Text</span><span class="p">(</span><span class="s1">&#39;Checkout BottomNavigationBar in action below&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="o">...</span><span class="w"></span>
 
-    <span class="p">);</span>
-  <span class="err">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Step #3. Add <code>BottomAppBar</code> widget using <code>bottomNavigationBar</code> attribute.</p>
-<div class="highlight"><pre><span></span><span class="w">  </span><span class="nv">@override</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nv">@override</span><span class="w"></span>
 <span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
 <span class="w">      </span><span class="p">...</span><span class="w"></span>
@@ -237,11 +236,10 @@ I'll be using <code>Text</code> widget to show demo message.</p>
 <span class="w">          </span><span class="p">...</span><span class="w"></span>
 <span class="w">    </span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Step #4. Add child component <code>Row</code> to <code>BottomAppBar</code>.</p>
-<div class="highlight"><pre><span></span><span class="w">  </span><span class="nv">@override</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nv">@override</span><span class="w"></span>
 <span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
 <span class="w">      </span><span class="p">...</span><span class="w"></span>
@@ -253,11 +251,10 @@ I'll be using <code>Text</code> widget to show demo message.</p>
 <span class="w">          </span><span class="p">...</span><span class="w"></span>
 <span class="w">    </span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Step #5. Now, its time to add menu action widgets. Widgets are added as <code>children</code> to <code>Row</code> component.</p>
-<div class="highlight"><pre><span></span><span class="w">  </span><span class="nv">@override</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nv">@override</span><span class="w"></span>
 <span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
 <span class="w">      </span><span class="p">...</span><span class="w"></span>
@@ -271,12 +268,11 @@ I'll be using <code>Text</code> widget to show demo message.</p>
 <span class="w">          </span><span class="p">...</span><span class="w"></span>
 <span class="w">    </span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Step #6. Next, I'll add our very first menu action item as first child menu action widget.
 I'll be using <code>IconButton</code> widget. When this action menu is clicked, it'll open <a href="https://flutterdoc.com/bottom-sheets-in-flutter-ec05c90453e7">ModalBottomSheet</a>.</p>
-<div class="highlight"><pre><span></span><span class="w">  </span><span class="nv">@override</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nv">@override</span><span class="w"></span>
 <span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
 <span class="w">      </span><span class="p">...</span><span class="w"></span>
@@ -299,77 +295,74 @@ I'll be using <code>IconButton</code> widget. When this action menu is clicked, 
 <span class="w">          </span><span class="p">...</span><span class="w"></span>
 <span class="w">    </span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Drawer opened in modal bottom sheet has two menu actions for "Edit" and "Add". 
 It looks like this:</p>
-<div class="highlight"><pre><span></span><span class="n">Widget</span> <span class="n">openBottomDrawer</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">Drawer</span><span class="p">(</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Column</span><span class="p">(</span>
-        <span class="n">children</span><span class="p">:</span> <span class="k">const</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-          <span class="o">//</span><span class="n">Add</span> <span class="n">menu</span> <span class="n">item</span> <span class="n">to</span> <span class="n">edit</span>
-          <span class="k">const</span> <span class="n">ListTile</span><span class="p">(</span>
-            <span class="n">leading</span><span class="p">:</span> <span class="k">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">mode_edit</span><span class="p">),</span>
-            <span class="n">title</span><span class="p">:</span> <span class="k">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Edit&#39;</span><span class="p">),</span>
-          <span class="p">),</span>
-          <span class="k">const</span> <span class="n">ListTile</span><span class="p">(</span>
-            <span class="o">//</span><span class="n">Add</span> <span class="n">menu</span> <span class="n">item</span> <span class="n">to</span> <span class="n">add</span> <span class="n">a</span> <span class="n">new</span> <span class="n">item</span>
-            <span class="n">leading</span><span class="p">:</span> <span class="k">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">add</span><span class="p">),</span>
-            <span class="n">title</span><span class="p">:</span> <span class="k">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Add&#39;</span><span class="p">),</span>
-          <span class="p">),</span>
-        <span class="p">],</span>
-      <span class="p">),</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">Widget</span><span class="w"> </span><span class="n">openBottomDrawer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Drawer</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Column</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="o">//</span><span class="n">Add</span><span class="w"> </span><span class="n">menu</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">edit</span><span class="w"></span>
+<span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="n">ListTile</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">leading</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">mode_edit</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Edit&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="n">ListTile</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="o">//</span><span class="n">Add</span><span class="w"> </span><span class="n">menu</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">item</span><span class="w"></span>
+<span class="w">            </span><span class="n">leading</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">add</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Add&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Step #7. Two more <code>IconButton</code> widgets are added for "Search" and overflow menu action items as <code>children</code> widgets.</p>
-<div class="highlight"><pre><span></span>  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
-      <span class="o">...</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="o">...</span><span class="w"></span>
 
-      <span class="n">bottomNavigationBar</span><span class="p">:</span> <span class="n">BottomAppBar</span><span class="p">(</span>
-        <span class="n">child</span><span class="p">:</span> <span class="n">Row</span><span class="p">(</span>
-            <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-                <span class="o">//</span><span class="n">First</span> <span class="n">action</span> <span class="n">menu</span> <span class="n">widget</span>
-                <span class="o">//</span> <span class="n">Bottom</span> <span class="n">that</span> <span class="n">pops</span> <span class="n">up</span> <span class="n">from</span> <span class="n">the</span> <span class="n">bottom</span> <span class="n">of</span> <span class="n">the</span> <span class="n">screen</span><span class="o">.</span>
-                <span class="n">IconButton</span><span class="p">(</span>
-                    <span class="n">icon</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">menu</span><span class="p">),</span>
-                    <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-                      <span class="n">showModalBottomSheet</span><span class="o">&lt;</span><span class="n">Null</span><span class="o">&gt;</span><span class="p">(</span>
-                        <span class="n">context</span><span class="p">:</span> <span class="n">context</span><span class="p">,</span>
-                        <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">openBottomDrawer</span><span class="p">(),</span>
-                      <span class="p">);</span>
-                    <span class="p">},</span>
-                <span class="p">),</span>
+<span class="w">      </span><span class="n">bottomNavigationBar</span><span class="p">:</span><span class="w"> </span><span class="n">BottomAppBar</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Row</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="o">//</span><span class="n">First</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="n">menu</span><span class="w"> </span><span class="n">widget</span><span class="w"></span>
+<span class="w">                </span><span class="o">//</span><span class="w"> </span><span class="n">Bottom</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">pops</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">bottom</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">screen</span><span class="o">.</span><span class="w"></span>
+<span class="w">                </span><span class="n">IconButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">                    </span><span class="n">icon</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">menu</span><span class="p">),</span><span class="w"></span>
+<span class="w">                    </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                      </span><span class="n">showModalBottomSheet</span><span class="o">&lt;</span><span class="n">Null</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">                        </span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="n">builder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">openBottomDrawer</span><span class="p">(),</span><span class="w"></span>
+<span class="w">                      </span><span class="p">);</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="p">),</span><span class="w"></span>
 
-                <span class="o">//</span><span class="n">Second</span> <span class="n">action</span> <span class="n">menu</span> <span class="n">widget</span> <span class="k">for</span> <span class="n">Search</span>
-                <span class="n">IconButton</span><span class="p">(</span>
-                    <span class="n">icon</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">search</span><span class="p">),</span>
-                    <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-                      <span class="n">Fluttertoast</span><span class="o">.</span><span class="n">showToast</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="s1">&#39;Clicked on Search menu action.&#39;</span><span class="p">);</span>
-                    <span class="p">},</span>
-                <span class="p">),</span>   
+<span class="w">                </span><span class="o">//</span><span class="n">Second</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="n">menu</span><span class="w"> </span><span class="n">widget</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Search</span><span class="w"></span>
+<span class="w">                </span><span class="n">IconButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">                    </span><span class="n">icon</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">search</span><span class="p">),</span><span class="w"></span>
+<span class="w">                    </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                      </span><span class="n">Fluttertoast</span><span class="o">.</span><span class="n">showToast</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Clicked on Search menu action.&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="p">),</span><span class="w">   </span>
 
-                <span class="o">//</span><span class="n">Third</span> <span class="n">action</span> <span class="n">menu</span> <span class="n">widget</span> <span class="k">for</span> <span class="n">overflow</span> <span class="n">action</span>
-                <span class="n">IconButton</span><span class="p">(</span>
-                    <span class="n">icon</span><span class="p">:</span> <span class="k">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">more_vert</span><span class="p">),</span>
-                    <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-                      <span class="n">Fluttertoast</span><span class="o">.</span><span class="n">showToast</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="s1">&#39;This is where overflow menu actions will go&#39;</span><span class="p">);</span>
-                    <span class="p">},</span>
-                <span class="p">),</span>
-            <span class="p">],</span>
-        <span class="p">),</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
-</pre></div>
-
+<span class="w">                </span><span class="o">//</span><span class="n">Third</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="n">menu</span><span class="w"> </span><span class="n">widget</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="n">action</span><span class="w"></span>
+<span class="w">                </span><span class="n">IconButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">                    </span><span class="n">icon</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">more_vert</span><span class="p">),</span><span class="w"></span>
+<span class="w">                    </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                      </span><span class="n">Fluttertoast</span><span class="o">.</span><span class="n">showToast</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;This is where overflow menu actions will go&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h4>Complete example code</h4>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:fluttertoast/fluttertoast.dart&#39;</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span>
@@ -408,7 +401,7 @@ It looks like this:</p>
       <span class="n">bottomNavigationBar</span><span class="p">:</span> <span class="n">BottomAppBar</span><span class="p">(</span>
           <span class="n">child</span><span class="p">:</span> <span class="n">Row</span><span class="p">(</span>
             <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-              <span class="o">//</span> <span class="n">Bottom</span> <span class="n">that</span> <span class="n">pops</span> <span class="n">up</span> <span class="kn">from</span> <span class="nn">the</span> <span class="nn">bottom</span> <span class="nn">of</span> <span class="nn">the</span> <span class="nn">screen.</span>
+              <span class="o">//</span> <span class="n">Bottom</span> <span class="n">that</span> <span class="n">pops</span> <span class="n">up</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">bottom</span> <span class="n">of</span> <span class="n">the</span> <span class="n">screen</span><span class="o">.</span>
               <span class="n">IconButton</span><span class="p">(</span>
                 <span class="n">icon</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">menu</span><span class="p">),</span>
                 <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
@@ -455,8 +448,7 @@ It looks like this:</p>
     <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong><em>Source code repo:</em></strong>
 Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/bottom_navigation_bar">here</a></p>

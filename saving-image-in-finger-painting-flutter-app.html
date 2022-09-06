@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -192,104 +192,99 @@
 <p><strong>Recipe:</strong> This code recipe covers saving canvas painting created in previous article <a href="https://ptyagicodecamp.github.io/building-cross-platform-finger-painting-app-in-flutter.html">Building Cross-Platform Finger Painting App in Flutter</a>, to device's image gallery.</p>
 <p><strong>Focus Plug-in:</strong> <a href="https://pub.dev/packages/image_gallery_saver">image_gallery_saver</a></p>
 <hr>
-<p><strong>Checkout the companion video tutorial:</strong>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GFS-6XhX-oc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p><strong>Checkout the companion video tutorial:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GFS-6XhX-oc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <hr>
 <h1><code>pubspec.yaml</code> dependencies</h1>
 <p>Add <code>image_gallery_saver</code> plugin in the <code>pubspec.yaml</code>:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">image_gallery_saver</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">0</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">image_gallery_saver</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
 
 <p>Add following dependencies in <code>pubspec.yaml</code> to handle permissions on Android platform:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">permission_handler</span><span class="o">:</span> <span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">permission_handler</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h1>iOS Info.plist</h1>
 <p>You need to add following entry in the <code>Info.plist</code>:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;key&gt;</span>NSPhotoLibraryAddUsageDescription<span class="nt">&lt;/key&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;key&gt;</span>NSPhotoLibraryAddUsageDescription<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;string&gt;</span>Need to access photo library to save your creation<span class="nt">&lt;/string&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h1>GlobalKey &amp; RepaintBoundary Widget</h1>
 <p>We'll use global key to keep track of the widget to be saved. The <code>Stack</code> widget is wrapped in <a href="https://api.flutter.dev/flutter/widgets/RepaintBoundary-class.html"><code>RepaintBoundary</code></a> widget to create separate display list of its child.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_CanvasPaintingState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">CanvasPainting</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="n">GlobalKey</span> <span class="n">globalKey</span> <span class="o">=</span> <span class="n">GlobalKey</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">_CanvasPaintingState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">CanvasPainting</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">GlobalKey</span><span class="w"> </span><span class="n">globalKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GlobalKey</span><span class="p">();</span><span class="w"></span>
 
-  <span class="err">@</span><span class="n">override</span>
-<span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">MaterialApp</span><span class="p">(</span>
-    <span class="n">debugShowCheckedModeBanner</span><span class="p">:</span> <span class="bp">false</span><span class="p">,</span>
-    <span class="n">home</span><span class="p">:</span> <span class="n">Scaffold</span><span class="p">(</span>
-      <span class="n">body</span><span class="p">:</span> <span class="n">GestureDetector</span><span class="p">(</span>
-        <span class="o">...</span>
-        <span class="n">child</span><span class="p">:</span> <span class="n">RepaintBoundary</span><span class="p">(</span>
-          <span class="n">key</span><span class="p">:</span> <span class="n">globalKey</span><span class="p">,</span>
-          <span class="n">child</span><span class="p">:</span> <span class="n">Stack</span><span class="p">(</span>
-            <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-              <span class="n">Center</span><span class="p">(</span>
-                <span class="n">child</span><span class="p">:</span> <span class="n">Image</span><span class="o">.</span><span class="n">asset</span><span class="p">(</span><span class="s2">&quot;assets/images/hut.png&quot;</span><span class="p">),</span>
-              <span class="p">),</span>
-              <span class="n">CustomPaint</span><span class="p">(</span>
-                <span class="n">size</span><span class="p">:</span> <span class="n">Size</span><span class="o">.</span><span class="n">infinite</span><span class="p">,</span>
-                <span class="n">painter</span><span class="p">:</span> <span class="n">MyPainter</span><span class="p">(</span>
-                  <span class="n">pointsList</span><span class="p">:</span> <span class="n">points</span><span class="p">,</span>
-                <span class="p">),</span>
-              <span class="p">),</span>
-            <span class="p">],</span>
-          <span class="p">),</span>
-        <span class="p">),</span>
-      <span class="p">),</span>
-      <span class="o">...</span>
-    <span class="p">),</span>
-  <span class="p">);</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">debugShowCheckedModeBanner</span><span class="p">:</span><span class="w"> </span><span class="bp">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">home</span><span class="p">:</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">GestureDetector</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="o">...</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">RepaintBoundary</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="n">globalKey</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Stack</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
+<span class="w">              </span><span class="n">Center</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Image</span><span class="o">.</span><span class="n">asset</span><span class="p">(</span><span class="s2">&quot;assets/images/hut.png&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="n">CustomPaint</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="n">Size</span><span class="o">.</span><span class="n">infinite</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="n">painter</span><span class="p">:</span><span class="w"> </span><span class="n">MyPainter</span><span class="p">(</span><span class="w"></span>
+<span class="w">                  </span><span class="n">pointsList</span><span class="p">:</span><span class="w"> </span><span class="n">points</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="o">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="p">}</span>  
-</pre></div>
-
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
 
 <h1>Adding Save FAB</h1>
-<div class="highlight"><pre><span></span><span class="n">FloatingActionButton</span><span class="p">(</span>
-  <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;paint_save&quot;</span><span class="p">,</span>
-  <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">save</span><span class="p">),</span>
-  <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Save&#39;</span><span class="p">,</span>
-  <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="o">//</span><span class="nb">min</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">:</span> <span class="mi">50</span>
-    <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-      <span class="n">_save</span><span class="p">();</span>
-    <span class="p">});</span>
-  <span class="p">},</span>
-<span class="p">)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;paint_save&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">save</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Save&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="nb">min</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">max</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"></span>
+<span class="w">    </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">_save</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 
 <h1>Saving Image to Gallery</h1>
 <p>The FAB's <code>onPressed()</code> method calls the asynchronous <code>_save()</code> method to save the current state of canvas as image to gallery.</p>
-<div class="highlight"><pre><span></span><span class="nt">Future</span><span class="o">&lt;</span><span class="nt">void</span><span class="o">&gt;</span> <span class="nt">_save</span><span class="o">()</span> <span class="nt">async</span> <span class="p">{</span>
-  <span class="err">RenderRepaintBoundary</span> <span class="err">boundary</span> <span class="err">=</span>
-      <span class="err">globalKey.currentContext.findRenderObject()</span><span class="p">;</span>
-  <span class="err">ui.Image</span> <span class="err">image</span> <span class="err">=</span> <span class="err">await</span> <span class="err">boundary.toImage()</span><span class="p">;</span>
-  <span class="err">ByteData</span> <span class="err">byteData</span> <span class="err">=</span> <span class="err">await</span> <span class="err">image.toByteData(</span><span class="n">format</span><span class="p">:</span> <span class="n">ui</span><span class="o">.</span><span class="n">ImageByteFormat</span><span class="o">.</span><span class="n">png</span><span class="p">);</span>
-  <span class="err">Uint8List</span> <span class="err">pngBytes</span> <span class="err">=</span> <span class="err">byteData.buffer.asUint8List()</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">Future</span><span class="o">&lt;</span><span class="nt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">_save</span><span class="o">()</span><span class="w"> </span><span class="nt">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">RenderRepaintBoundary</span><span class="w"> </span><span class="err">boundary</span><span class="w"> </span><span class="err">=</span><span class="w"></span>
+<span class="w">      </span><span class="err">globalKey.currentContext.findRenderObject()</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="err">ui.Image</span><span class="w"> </span><span class="err">image</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">await</span><span class="w"> </span><span class="err">boundary.toImage()</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="err">ByteData</span><span class="w"> </span><span class="err">byteData</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">await</span><span class="w"> </span><span class="err">image.toByteData(</span><span class="n">format</span><span class="p">:</span><span class="w"> </span><span class="n">ui</span><span class="o">.</span><span class="n">ImageByteFormat</span><span class="o">.</span><span class="n">png</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">Uint8List</span><span class="w"> </span><span class="err">pngBytes</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">byteData.buffer.asUint8List()</span><span class="p">;</span><span class="w"></span>
 
-  <span class="err">//Request</span> <span class="err">permissions</span> <span class="err">if</span> <span class="err">not</span> <span class="err">already</span> <span class="err">granted</span>
-  <span class="err">if</span> <span class="err">(!(await</span> <span class="err">Permission.storage.status.isGranted))</span>
-    <span class="err">await</span> <span class="err">Permission.storage.request()</span><span class="p">;</span>
+<span class="w">  </span><span class="err">//Request</span><span class="w"> </span><span class="err">permissions</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">already</span><span class="w"> </span><span class="err">granted</span><span class="w"></span>
+<span class="w">  </span><span class="err">if</span><span class="w"> </span><span class="err">(!(await</span><span class="w"> </span><span class="err">Permission.storage.status.isGranted))</span><span class="w"></span>
+<span class="w">    </span><span class="err">await</span><span class="w"> </span><span class="err">Permission.storage.request()</span><span class="p">;</span><span class="w"></span>
 
-  <span class="err">final</span> <span class="err">result</span> <span class="err">=</span> <span class="err">await</span> <span class="err">ImageGallerySaver.saveImage(</span>
-      <span class="err">Uint8List.fromList(pngBytes),</span>
-      <span class="n">quality</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-      <span class="n">name</span><span class="o">:</span> <span class="s2">&quot;canvas_image&quot;</span><span class="p">);</span>
-  <span class="err">print(result)</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="err">final</span><span class="w"> </span><span class="err">result</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">await</span><span class="w"> </span><span class="err">ImageGallerySaver.saveImage(</span><span class="w"></span>
+<span class="w">      </span><span class="err">Uint8List.fromList(pngBytes),</span><span class="w"></span>
+<span class="w">      </span><span class="n">quality</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;canvas_image&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">print(result)</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h1>Source code repo</h1>
 <ul>

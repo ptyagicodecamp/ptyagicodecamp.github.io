@@ -93,7 +93,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -209,7 +209,7 @@ picture in ImageView widget, it also shows FilePath below the ImageView.</p>
 <h3>Show me code</h3>
 <p>There're two Interfaces dedicated to View and Presenter related contracts:
 * <a href="https://github.com/ptyagicodecamp/android-recipes/blob/develop/CopyGalleryPic/app/src/main/java/org/pcc/copygallerypic/view/ContractView.java#L12:L22">ContractView</a> Interface.</p>
-<div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">ContractView</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">ContractView</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">    </span><span class="o">//</span><span class="n">displays</span><span class="w"> </span><span class="nc">image</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">Imageview</span><span class="w"> </span><span class="n">widget</span><span class="w"></span>
 <span class="w">    </span><span class="n">void</span><span class="w"> </span><span class="n">showImagePreview</span><span class="p">(</span><span class="nv">@NonNull</span><span class="w"> </span><span class="n">Uri</span><span class="w"> </span><span class="n">uri</span><span class="p">);</span><span class="w"></span>
 
@@ -220,44 +220,40 @@ picture in ImageView widget, it also shows FilePath below the ImageView.</p>
 <span class="w">    </span><span class="n">void</span><span class="w"> </span><span class="n">setUserActionListener</span><span class="p">(</span><span class="n">ContractUserActionListener</span><span class="w"> </span><span class="n">userActionListener</span><span class="p">);</span><span class="w"></span>
 
 <span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li><a href="https://github.com/ptyagicodecamp/android-recipes/blob/develop/CopyGalleryPic/app/src/main/java/org/pcc/copygallerypic/presenter/ContractUserActionListener.java#L12:L25">ContractUserActionListener</a> Interface</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">interface</span> <span class="n">ContractUserActionListener</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">ContractUserActionListener</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">An</span> <span class="n">action</span> <span class="n">taken</span> <span class="n">by</span> <span class="n">user</span> <span class="n">to</span> <span class="nb">load</span> <span class="n">a</span> <span class="n">image</span> <span class="n">from</span> <span class="n">gallery</span> <span class="n">into</span> <span class="n">ImageView</span> <span class="n">widget</span>
-    <span class="n">void</span> <span class="n">loadImage</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">,</span> <span class="n">Uri</span> <span class="n">uri</span><span class="p">)</span> <span class="n">throws</span> <span class="n">IOException</span><span class="p">;</span>
+<span class="w">    </span><span class="o">//</span><span class="n">An</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="n">taken</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">gallery</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">ImageView</span><span class="w"> </span><span class="n">widget</span><span class="w"></span>
+<span class="w">    </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">loadImage</span><span class="p">(</span><span class="n">Context</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">Uri</span><span class="w"> </span><span class="n">uri</span><span class="p">)</span><span class="w"> </span><span class="n">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">;</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">User</span> <span class="n">initiates</span> <span class="n">action</span> <span class="n">to</span> <span class="n">display</span> <span class="n">image</span> <span class="n">file</span> <span class="n">information</span> <span class="ow">in</span> <span class="n">textView</span> <span class="n">UI</span>
-    <span class="n">void</span> <span class="n">loadImageInfo</span><span class="p">();</span>
+<span class="w">    </span><span class="o">//</span><span class="n">User</span><span class="w"> </span><span class="n">initiates</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">textView</span><span class="w"> </span><span class="n">UI</span><span class="w"></span>
+<span class="w">    </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">loadImageInfo</span><span class="p">();</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">User</span> <span class="n">action</span> <span class="n">to</span> <span class="n">copy</span> <span class="n">an</span> <span class="n">image</span> <span class="n">from</span> <span class="n">gallery</span> <span class="ow">in</span> <span class="n">to</span> <span class="n">app</span><span class="s1">&#39;s picture directory (app&#39;</span><span class="n">s</span> <span class="n">data</span> <span class="n">directory</span><span class="p">)</span>
-    <span class="n">void</span> <span class="n">copyImageIntoAppDir</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="n">throws</span> <span class="n">IOException</span><span class="p">;</span>
+<span class="w">    </span><span class="o">//</span><span class="n">User</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">copy</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">gallery</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">app</span><span class="s1">&#39;s picture directory (app&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">directory</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">copyImageIntoAppDir</span><span class="p">(</span><span class="n">Context</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="n">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">;</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">User</span> <span class="n">can</span> <span class="n">rename</span> <span class="n">a</span> <span class="n">image</span> <span class="n">file</span> <span class="p">(</span><span class="ow">in</span> <span class="n">app</span><span class="s1">&#39;s data directory)</span>
-    <span class="n">void</span> <span class="n">renameImage</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">,</span> <span class="nb nb-Type">String</span> <span class="n">newName</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="o">//</span><span class="n">User</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">rename</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="p">(</span><span class="ow">in</span><span class="w"> </span><span class="n">app</span><span class="s1">&#39;s data directory)</span>
+<span class="w">    </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">renameImage</span><span class="p">(</span><span class="n">Context</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">newName</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Activity or Fragment class implements <code>ContractView</code> while Presenter would implements
 <code>ContractUserActionListener</code>.</p>
 <p>In this sample, UI class <code>ImageViewerFragment</code> is implementing <code>ContractView</code>.</p>
-<div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="n">ImageViewerFragment</span> <span class="k">extends</span> <span class="n">Fragment</span> <span class="n">implements</span> <span class="n">ContractView</span> <span class="p">{</span>
-  <span class="o">...</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">ImageViewerFragment</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Fragment</span><span class="w"> </span><span class="n">implements</span><span class="w"> </span><span class="n">ContractView</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>And, Presenter class <code>ImagePresenter</code> implements <code>ContractUserActionListener</code>:</p>
-<div class="highlight"><pre><span></span><span class="err">public class ImagePresenter implements ContractUserActionListener {</span>
-<span class="err">  ...</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>public class ImagePresenter implements ContractUserActionListener {
+  ...
+}
+</code></pre></div>
 
 <p><code>ImageViewerFragment</code> holds a reference to <code>ImagePresenter</code>, so that it can pass
 requests to query data from models. At the same time, <code>ImagePresenter</code> holds a reference

@@ -92,7 +92,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -194,14 +194,13 @@ recording/mic feature for first time (in addition to declaring this permission i
 * Play: You can listen to recorded audio by clicking on this button.</p>
 <p><img alt="Sample App" src="images/audio/sample_app.png"></p>
 <h3>AndroidManifest.xml</h3>
-<div class="highlight"><pre><span></span><span class="err">&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot; /&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot; /&gt;
+</code></pre></div>
 
 <h3>Requesting Permissions in Run time</h3>
 <p>Here's the code that's responsible for handling runtime permissions. I've added the inline comments
 to explain what's going on with code.</p>
-<div class="highlight"><pre><span></span><span class="w">    </span><span class="o">//</span><span class="n">Requesting</span><span class="w"> </span><span class="n">run</span><span class="o">-</span><span class="nc">time</span><span class="w"> </span><span class="nf">permissions</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="o">//</span><span class="n">Requesting</span><span class="w"> </span><span class="n">run</span><span class="o">-</span><span class="nc">time</span><span class="w"> </span><span class="nf">permissions</span><span class="w"></span>
 
 <span class="w">    </span><span class="o">//</span><span class="k">Create</span><span class="w"> </span><span class="n">placeholder</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">consent</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">record_audio</span><span class="w"> </span><span class="n">permission</span><span class="p">.</span><span class="w"></span>
 <span class="w">    </span><span class="o">//</span><span class="n">This</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">handling</span><span class="w"> </span><span class="n">callback</span><span class="w"></span>
@@ -258,15 +257,14 @@ to explain what's going on with code.</p>
 <span class="w">            </span><span class="err">}</span><span class="w"></span>
 <span class="w">        </span><span class="err">}</span><span class="w"></span>
 <span class="w">    </span><span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p>App shows user a permission dialog box to either allow or not the given permission.</p>
 <p><img alt="Runtime Audio Permission" src="../images/audio/audio_permissions_req.png"></p>
 <h3>Recording Audio</h3>
 <p>First, a file needs to be created to store audio data in it. Here's how I'm creating a file when 
 app launches.</p>
-<div class="highlight"><pre><span></span><span class="w">    </span><span class="nv">@Override</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nv">@Override</span><span class="w"></span>
 <span class="w">    </span><span class="n">protected</span><span class="w"> </span><span class="n">void</span><span class="w"> </span><span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span><span class="w"></span>
 <span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">);</span><span class="w"></span>
@@ -288,34 +286,32 @@ app launches.</p>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">audio</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Once file is created, it can be used to store audio data in it:</p>
-<div class="highlight"><pre><span></span>    <span class="n">private</span> <span class="n">void</span> <span class="n">recordAudio</span><span class="p">()</span> <span class="err">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">mRecorder</span> <span class="o">==</span> <span class="k">null</span><span class="p">)</span> <span class="err">{</span>
-            <span class="n">mRecorder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MediaRecorder</span><span class="p">();</span>
-            <span class="n">mRecorder</span><span class="p">.</span><span class="n">setAudioSource</span><span class="p">(</span><span class="n">MediaRecorder</span><span class="p">.</span><span class="n">AudioSource</span><span class="p">.</span><span class="n">MIC</span><span class="p">);</span>
-            <span class="n">mRecorder</span><span class="p">.</span><span class="n">setOutputFormat</span><span class="p">(</span><span class="n">MediaRecorder</span><span class="p">.</span><span class="n">OutputFormat</span><span class="p">.</span><span class="n">THREE_GPP</span><span class="p">);</span>
-            <span class="n">mRecorder</span><span class="p">.</span><span class="n">setOutputFile</span><span class="p">(</span><span class="n">mAudioFile</span><span class="p">.</span><span class="n">getAbsolutePath</span><span class="p">());</span>
-            <span class="n">mRecorder</span><span class="p">.</span><span class="n">setAudioEncoder</span><span class="p">(</span><span class="n">MediaRecorder</span><span class="p">.</span><span class="n">AudioEncoder</span><span class="p">.</span><span class="n">AMR_NB</span><span class="p">);</span>
-        <span class="err">}</span>
+<div class="highlight"><pre><span></span><code>    <span class="nv">private</span> <span class="nv">void</span> <span class="nv">recordAudio</span><span class="ss">()</span> {
+        <span class="k">if</span> <span class="ss">(</span><span class="nv">mRecorder</span> <span class="o">==</span> <span class="nv">null</span><span class="ss">)</span> {
+            <span class="nv">mRecorder</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">MediaRecorder</span><span class="ss">()</span><span class="c1">;</span>
+            <span class="nv">mRecorder</span>.<span class="nv">setAudioSource</span><span class="ss">(</span><span class="nv">MediaRecorder</span>.<span class="nv">AudioSource</span>.<span class="nv">MIC</span><span class="ss">)</span><span class="c1">;</span>
+            <span class="nv">mRecorder</span>.<span class="nv">setOutputFormat</span><span class="ss">(</span><span class="nv">MediaRecorder</span>.<span class="nv">OutputFormat</span>.<span class="nv">THREE_GPP</span><span class="ss">)</span><span class="c1">;</span>
+            <span class="nv">mRecorder</span>.<span class="nv">setOutputFile</span><span class="ss">(</span><span class="nv">mAudioFile</span>.<span class="nv">getAbsolutePath</span><span class="ss">())</span><span class="c1">;</span>
+            <span class="nv">mRecorder</span>.<span class="nv">setAudioEncoder</span><span class="ss">(</span><span class="nv">MediaRecorder</span>.<span class="nv">AudioEncoder</span>.<span class="nv">AMR_NB</span><span class="ss">)</span><span class="c1">;</span>
+        }
 
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isRecording</span><span class="p">)</span> <span class="err">{</span>
-            <span class="n">try</span> <span class="err">{</span>
-                <span class="n">mRecorder</span><span class="p">.</span><span class="k">prepare</span><span class="p">();</span>
-                <span class="n">mRecorder</span><span class="p">.</span><span class="k">start</span><span class="p">();</span>
-                <span class="n">isRecording</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-            <span class="err">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="err">{</span>
-                <span class="n">Log</span><span class="p">.</span><span class="n">e</span><span class="p">(</span><span class="ss">&quot;Audio&quot;</span><span class="p">,</span> <span class="ss">&quot;prepare() failed&quot;</span><span class="p">);</span>
-            <span class="err">}</span>
-        <span class="err">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">isRecording</span><span class="p">)</span> <span class="err">{</span>
-            <span class="n">isRecording</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-            <span class="n">stopRecording</span><span class="p">();</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-</pre></div>
-
+        <span class="k">if</span> <span class="ss">(</span><span class="o">!</span><span class="nv">isRecording</span><span class="ss">)</span> {
+            <span class="nv">try</span> {
+                <span class="nv">mRecorder</span>.<span class="nv">prepare</span><span class="ss">()</span><span class="c1">;</span>
+                <span class="nv">mRecorder</span>.<span class="nv">start</span><span class="ss">()</span><span class="c1">;</span>
+                <span class="nv">isRecording</span> <span class="o">=</span> <span class="nv">true</span><span class="c1">;</span>
+            } <span class="nv">catch</span> <span class="ss">(</span><span class="nv">IOException</span> <span class="nv">e</span><span class="ss">)</span> {
+                <span class="nv">Log</span>.<span class="nv">e</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">Audio</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">prepare() failed</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+            }
+        } <span class="k">else</span> <span class="k">if</span> <span class="ss">(</span><span class="nv">isRecording</span><span class="ss">)</span> {
+            <span class="nv">isRecording</span> <span class="o">=</span> <span class="nv">false</span><span class="c1">;</span>
+            <span class="nv">stopRecording</span><span class="ss">()</span><span class="c1">;</span>
+        }
+    }
+</code></pre></div>
 
 <p>At this point, you've a working Audio recorder app, that can record audio and replay it.</p>
 <p>Checkout the source code at <a href="https://github.com/ptyagicodecamp/android-recipes/tree/develop/AudioRuntimePermissions">Github</a></p>

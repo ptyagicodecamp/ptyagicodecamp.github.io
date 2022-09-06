@@ -98,7 +98,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -237,95 +237,90 @@
 <hr>
 <h3><code>pubspec.yaml</code> dependencies</h3>
 <p>Flutter plugins for accessing files from FirebaseStorage for Native apps are similar to previous article about <a href="https://ptyagicodecamp.github.io/loading-image-from-firebase-storage-in-flutter-app-android-ios-web.html">Loading images from Firebase Storage</a></p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="p">:</span><span class="w"></span>
 
-  <span class="c1">#http to download PDF</span>
-  <span class="n">http</span><span class="p">:</span> <span class="o">^</span><span class="mf">0.12</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">4</span>
-  <span class="c1">#Open PDF in a viewer</span>
-  <span class="n">flutter_full_pdf_viewer</span><span class="p">:</span> <span class="o">^</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">6</span>
+<span class="w">  </span><span class="c1">#http to download PDF</span><span class="w"></span>
+<span class="w">  </span><span class="n">http</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.12</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">4</span><span class="w"></span>
+<span class="w">  </span><span class="c1">#Open PDF in a viewer</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter_full_pdf_viewer</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">6</span><span class="w"></span>
 
-  <span class="c1">#Firebase related</span>
-  <span class="n">firebase_storage</span><span class="p">:</span> <span class="o">^</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">8</span>
-  <span class="n">firebase_core</span><span class="p">:</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">9</span>
-  <span class="n">firebase_analytics</span><span class="p">:</span> <span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">6</span>
-</pre></div>
-
+<span class="w">  </span><span class="c1">#Firebase related</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase_storage</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">8</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase_core</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">9</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase_analytics</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">6</span><span class="w"></span>
+</code></pre></div>
 
 <p>Flutter plugin for accessing files in Firebase Storage for Web apps:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">firebase</span><span class="o">:</span> <span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">4</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">4</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h3>Code Structure for loading PDF</h3>
 <p>I want to fetch PDF from firebase as the first thing. For this purpose I'll be fetching it in <code>initState()</code> method. <code>file</code> variable holds the path of the pdf file in FirebaseStorage. <code>fileName</code> variable is used to display the name for the PDF in app bar.
 First, <code>LaunchFile.loadFromFirebase(context, file)</code> method fetches the PDF file from FirebaseStorage, and then it is passed to <code>LaunchFile.createFileFromPdfUrl(url)</code> to take appropriate action on the targeted platform. For Native platform, remote pdf is downloaded on the disk and named as <code>flutterSlides.pdf</code>. On Web platform, PDF file's url is opened in another tab.</p>
-<div class="highlight"><pre><span></span><span class="nb nb-Type">String</span> <span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;pdfs/slides.pdf&quot;</span><span class="p">;</span>
-<span class="nb nb-Type">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="s2">&quot;Flutter Slides&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pdfs/slides.pdf&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="nb nb-Type">String</span><span class="w"> </span><span class="n">fileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Flutter Slides&quot;</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">class</span> <span class="n">LoadFirbaseStoragePdf</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">_LoadFirbaseStoragePdfState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_LoadFirbaseStoragePdfState</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="k">class</span><span class="w"> </span><span class="n">LoadFirbaseStoragePdf</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">_LoadFirbaseStoragePdfState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_LoadFirbaseStoragePdfState</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">class</span> <span class="n">_LoadFirbaseStoragePdfState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">LoadFirbaseStoragePdf</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="k">static</span> <span class="nb nb-Type">String</span> <span class="n">pathPDF</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-  <span class="k">static</span> <span class="nb nb-Type">String</span> <span class="n">pdfUrl</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="k">class</span><span class="w"> </span><span class="n">_LoadFirbaseStoragePdfState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">LoadFirbaseStoragePdf</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">pathPDF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">pdfUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
 
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">void</span> <span class="n">initState</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">super</span><span class="o">.</span><span class="n">initState</span><span class="p">();</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">initState</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">super</span><span class="o">.</span><span class="n">initState</span><span class="p">();</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">Fetch</span> <span class="n">file</span> <span class="n">from</span> <span class="n">FirebaseStorage</span> <span class="n">first</span>
-    <span class="n">LaunchFile</span><span class="o">.</span><span class="n">loadFromFirebase</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
-        <span class="o">//</span><span class="n">Creating</span> <span class="n">PDF</span> <span class="n">file</span> <span class="n">at</span> <span class="n">disk</span> <span class="k">for</span> <span class="n">ios</span> <span class="ow">and</span> <span class="n">android</span> <span class="o">&amp;</span> <span class="n">assigning</span> <span class="n">pdfUrl</span> <span class="k">for</span> <span class="n">web</span>
-        <span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">url</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">LaunchFile</span><span class="o">.</span><span class="n">createFileFromPdfUrl</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span>
-              <span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">setState</span><span class="p">(</span>
-                <span class="p">()</span> <span class="p">{</span>
-                  <span class="k">if</span> <span class="p">(</span><span class="n">f</span> <span class="k">is</span> <span class="n">File</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">pathPDF</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">path</span><span class="p">;</span>
-                  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">url</span> <span class="k">is</span> <span class="n">Uri</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="o">//</span><span class="n">Open</span> <span class="n">PDF</span> <span class="ow">in</span> <span class="n">tab</span> <span class="p">(</span><span class="n">Web</span><span class="p">)</span>
-                    <span class="n">pdfUrl</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">toString</span><span class="p">();</span>
-                  <span class="p">}</span>
-                <span class="p">},</span>
-              <span class="p">),</span>
-            <span class="p">));</span>
-  <span class="p">}</span>
-  <span class="o">...</span>
-<span class="p">}</span>  
-</pre></div>
-
+<span class="w">    </span><span class="o">//</span><span class="n">Fetch</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">FirebaseStorage</span><span class="w"> </span><span class="n">first</span><span class="w"></span>
+<span class="w">    </span><span class="n">LaunchFile</span><span class="o">.</span><span class="n">loadFromFirebase</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="o">//</span><span class="n">Creating</span><span class="w"> </span><span class="n">PDF</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">disk</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ios</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">android</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">assigning</span><span class="w"> </span><span class="n">pdfUrl</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">web</span><span class="w"></span>
+<span class="w">        </span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">url</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">LaunchFile</span><span class="o">.</span><span class="n">createFileFromPdfUrl</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">setState</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">File</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="n">pathPDF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">path</span><span class="p">;</span><span class="w"></span>
+<span class="w">                  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">url</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">Uri</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="o">//</span><span class="n">Open</span><span class="w"> </span><span class="n">PDF</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">tab</span><span class="w"> </span><span class="p">(</span><span class="n">Web</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="n">pdfUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">.</span><span class="n">toString</span><span class="p">();</span><span class="w"></span>
+<span class="w">                  </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
 
 <p>Once the app has information about the PDF file, 'Open PDF' button will open it another screen:</p>
-<div class="highlight"><pre><span></span><span class="err">FlatButton(</span>
-<span class="err">          onPressed: () {</span>
-<span class="err">            setState(() {</span>
-<span class="err">              LaunchFile.launchPDF(</span>
-<span class="err">                  context, &quot;Flutter Slides&quot;, pathPDF, pdfUrl);</span>
-<span class="err">            });</span>
-<span class="err">          },</span>
-<span class="err">          child: Text(</span>
-<span class="err">            &quot;Open PDF&quot;,</span>
-<span class="err">            style: TextStyle(fontSize: 20),</span>
-<span class="err">          ),</span>
-<span class="err">        )</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">FlatButton</span><span class="o">(</span><span class="w"></span>
+<span class="w">          </span><span class="nt">onPressed</span><span class="o">:</span><span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="err">setState(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">              </span><span class="err">LaunchFile.launchPDF(</span><span class="w"></span>
+<span class="w">                  </span><span class="err">context,</span><span class="w"> </span><span class="err">&quot;Flutter</span><span class="w"> </span><span class="err">Slides&quot;,</span><span class="w"> </span><span class="err">pathPDF,</span><span class="w"> </span><span class="err">pdfUrl)</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="o">);</span><span class="w"></span>
+<span class="w">          </span><span class="err">}</span><span class="o">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Text</span><span class="o">(</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Open PDF&quot;</span><span class="o">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">style</span><span class="o">:</span><span class="w"> </span><span class="nt">TextStyle</span><span class="o">(</span><span class="nt">fontSize</span><span class="o">:</span><span class="w"> </span><span class="nt">20</span><span class="o">),</span><span class="w"></span>
+<span class="w">          </span><span class="o">),</span><span class="w"></span>
+<span class="w">        </span><span class="o">)</span><span class="w"></span>
+</code></pre></div>
 
 <p>File <code>launch_pdf.dart</code> uses <code>dart.library</code> to decide on redirecting calls to native vs web implementation for <code>LaunchFile</code>.</p>
-<div class="highlight"><pre><span></span><span class="k">export</span> <span class="s1">&#39;unsupported_pdf.dart&#39;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="s1">&#39;web_pdf.dart&#39;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">io</span><span class="p">)</span> <span class="s1">&#39;mobile_pdf.dart&#39;</span><span class="p">;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="s1">&#39;unsupported_pdf.dart&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">html</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;web_pdf.dart&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">io</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;mobile_pdf.dart&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 
 <p><code>web_pdf.dart</code> has web related implementations while <code>mobile_pdf.dart</code> file addresses native platforms (Android &amp; iOS). Anything else goes to <code>unsupported_pdf.dart</code>.</p>
 <p>Let's checkout each of these files below:</p>
 <h3><code>unsupported_pdf.dart</code></h3>
 <p>For every platform that's not supported by our application will throw appropriate exceptions.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">LaunchFile</span> <span class="p">{</span>
   <span class="n">static</span> <span class="n">void</span> <span class="n">launchPDF</span><span class="p">(</span>
@@ -337,37 +332,35 @@ First, <code>LaunchFile.loadFromFirebase(context, file)</code> method fetches th
     <span class="n">throw</span> <span class="p">(</span><span class="s2">&quot;Platform not found&quot;</span><span class="p">);</span>
   <span class="p">}</span>
 
-  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">createFileFromPdfUrl</span><span class="p">(</span><span class="n">dynamic</span> <span class="n">url</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">createFileFromPdfUrl</span><span class="p">(</span><span class="n">dynamic</span> <span class="n">url</span><span class="p">)</span> <span class="k">async</span> <span class="p">{</span>
     <span class="n">throw</span> <span class="p">(</span><span class="s2">&quot;Platform not found&quot;</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h3>Loading Image in Flutter Web App (<code>web_pdf.dart</code>)</h3>
 <p>Web platform uses following implementation for the <code>LaunchFile</code> class:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:flutter_widgets/plugins/firetop/storage/fire_storage_service.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:flutter_widgets/plugins/url_launcher/url_launcher.dart&#39;</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">LaunchFile</span> <span class="p">{</span>
   <span class="n">static</span> <span class="n">void</span> <span class="n">launchPDF</span><span class="p">(</span>
-      <span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">title</span><span class="p">,</span> <span class="n">String</span> <span class="n">pdfPath</span><span class="p">,</span> <span class="n">String</span> <span class="n">pdfUrl</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+      <span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">title</span><span class="p">,</span> <span class="n">String</span> <span class="n">pdfPath</span><span class="p">,</span> <span class="n">String</span> <span class="n">pdfUrl</span><span class="p">)</span> <span class="k">async</span> <span class="p">{</span>
     <span class="n">UrlUtils</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">pdfUrl</span><span class="p">);</span>
   <span class="p">}</span>
 
   <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadFromFirebase</span><span class="p">(</span>
-      <span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">url</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+      <span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">url</span><span class="p">)</span> <span class="k">async</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">FireStorageService</span><span class="o">.</span><span class="n">loadFromStorage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">url</span><span class="p">);</span>
   <span class="p">}</span>
 
-  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">createFileFromPdfUrl</span><span class="p">(</span><span class="n">dynamic</span> <span class="n">url</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">createFileFromPdfUrl</span><span class="p">(</span><span class="n">dynamic</span> <span class="n">url</span><span class="p">)</span> <span class="k">async</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">url</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>
@@ -382,7 +375,7 @@ First, <code>LaunchFile.loadFromFirebase(context, file)</code> method fetches th
 </ul>
 <hr>
 <h3>Loading PDF file in Flutter Native App (<code>mobile_pdf.dart</code>)</h3>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;dart:io&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;dart:io&#39;</span><span class="p">;</span>
 
 <span class="kn">import</span> <span class="s1">&#39;package:flutter/foundation.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
@@ -403,30 +396,29 @@ First, <code>LaunchFile.loadFromFirebase(context, file)</code> method fetches th
   <span class="p">}</span>
 
   <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadFromFirebase</span><span class="p">(</span>
-      <span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">url</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">FireStorageService</span><span class="o">.</span><span class="n">loadFromStorage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nb">file</span><span class="p">);</span>
+      <span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">url</span><span class="p">)</span> <span class="k">async</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">FireStorageService</span><span class="o">.</span><span class="n">loadFromStorage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">file</span><span class="p">);</span>
   <span class="p">}</span>
 
-  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">createFileFromPdfUrl</span><span class="p">(</span><span class="n">dynamic</span> <span class="n">url</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">createFileFromPdfUrl</span><span class="p">(</span><span class="n">dynamic</span> <span class="n">url</span><span class="p">)</span> <span class="k">async</span> <span class="p">{</span>
     <span class="n">final</span> <span class="n">filename</span> <span class="o">=</span>
         <span class="s1">&#39;flutterSlides.pdf&#39;</span><span class="p">;</span> <span class="o">//</span><span class="n">I</span> <span class="n">did</span> <span class="n">it</span> <span class="n">on</span> <span class="n">purpose</span> <span class="n">to</span> <span class="n">avoid</span> <span class="n">strange</span> <span class="n">naming</span> <span class="n">conflicts</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
-    <span class="n">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">await</span> <span class="n">HttpClient</span><span class="p">()</span><span class="o">.</span><span class="n">getUrl</span><span class="p">(</span><span class="n">Uri</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">url</span><span class="p">));</span>
-    <span class="n">var</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
-    <span class="n">var</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">await</span> <span class="n">consolidateHttpClientResponseBytes</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
-    <span class="n">String</span> <span class="nb">dir</span> <span class="o">=</span> <span class="p">(</span><span class="n">await</span> <span class="n">getApplicationDocumentsDirectory</span><span class="p">())</span><span class="o">.</span><span class="n">path</span><span class="p">;</span>
-    <span class="n">File</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s1">&#39;$dir/$filename&#39;</span><span class="p">);</span>
-    <span class="n">await</span> <span class="nb">file</span><span class="o">.</span><span class="n">writeAsBytes</span><span class="p">(</span><span class="nb">bytes</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nb">file</span><span class="p">;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+    <span class="n">var</span> <span class="n">request</span> <span class="o">=</span> <span class="k">await</span> <span class="n">HttpClient</span><span class="p">()</span><span class="o">.</span><span class="n">getUrl</span><span class="p">(</span><span class="n">Uri</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">url</span><span class="p">));</span>
+    <span class="n">var</span> <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">request</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+    <span class="n">var</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="k">await</span> <span class="n">consolidateHttpClientResponseBytes</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+    <span class="n">String</span> <span class="nb">dir</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="n">getApplicationDocumentsDirectory</span><span class="p">())</span><span class="o">.</span><span class="n">path</span><span class="p">;</span>
+    <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s1">&#39;$dir/$filename&#39;</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">file</span><span class="o">.</span><span class="n">writeAsBytes</span><span class="p">(</span><span class="nb">bytes</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">file</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li><code>launchPDF(...)</code>: On native platform, this method opens the PDF file in a Flutter screen as below:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart&#39;</span><span class="p">;</span>
 
@@ -452,8 +444,7 @@ First, <code>LaunchFile.loadFromFirebase(context, file)</code> method fetches th
         <span class="n">path</span><span class="p">:</span> <span class="n">pdfPath</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>

@@ -91,7 +91,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -193,12 +193,10 @@ are known as lifecycle aware components.</p>
 * Survive configuration changes.
 * Avoid memory leaks.
 * Easy data loading into app's UI.</p>
-<p>Above is achieved using these libraries:</p>
-<ul>
-<li>
-<p><strong><a href="https://developer.android.com/topic/libraries/architecture/livedata.html">LiveData</a></strong>:
+<p>Above is achieved using these libraries:
+* <strong><a href="https://developer.android.com/topic/libraries/architecture/livedata.html">LiveData</a></strong>:
  LiveData is a data holder that keeps a value and allows it to be observed with in a specified lifecycle.</p>
-</li>
+<ul>
 <li>
 <p><strong><a href="https://developer.android.com/topic/libraries/architecture/viewmodel.html">ViewModel</a></strong>:
 ViewModel class helps to store and manage data related to UI. Keeping UI related data in a separate
@@ -220,13 +218,12 @@ Marks a class as a LifecycleObserver.</p>
 <h3>Set up</h3>
 <p>I'm using Android Studio 3.0 Beta1.</p>
 <p><code>build.gradle</code> dependencies for ViewModel, Lifecycle and LiveData:</p>
-<div class="highlight"><pre><span></span><span class="err">dependencies {</span>
-<span class="err">    compile &quot;android.arch.lifecycle:runtime:1.0.0-alpha5&quot;</span>
-<span class="err">    compile &quot;android.arch.lifecycle:extensions:1.0.0-alpha5&quot;</span>
-<span class="err">    annotationProcessor &quot;android.arch.lifecycle:compiler:1.0.0-alpha5&quot;</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>dependencies {
+    compile &quot;android.arch.lifecycle:runtime:1.0.0-alpha5&quot;
+    compile &quot;android.arch.lifecycle:extensions:1.0.0-alpha5&quot;
+    annotationProcessor &quot;android.arch.lifecycle:compiler:1.0.0-alpha5&quot;
+}
+</code></pre></div>
 
 <h3>Using ViewModel to retain data across lifecylce of Activity/Fragment</h3>
 <p>I've a sample app with a simple <code>TextView</code>. This textView displays a text
@@ -235,21 +232,20 @@ Marks a class as a LifecycleObserver.</p>
 <h3>Before (Regular implementation)</h3>
 <p>Every time screen is rotated, <code>onCreate()</code> method is called and generates
 a new random number.  This is how <code>HelloRandomNumberActivity</code> looks like:</p>
-<div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="n">HelloRandomNumberActivity</span> <span class="k">extends</span> <span class="n">AppCompatActivity</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">HelloRandomNumberActivity</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-    <span class="err">@</span><span class="n">Override</span>
-    <span class="n">protected</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
-        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">activity_hello_random_number</span><span class="p">);</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Override</span><span class="w"></span>
+<span class="w">    </span><span class="n">protected</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">activity_hello_random_number</span><span class="p">);</span><span class="w"></span>
 
-        <span class="n">TextView</span> <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">helloRandomNumber</span><span class="p">);</span>
-        <span class="n">double</span> <span class="n">randomNumber</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<span class="w">        </span><span class="n">TextView</span><span class="w"> </span><span class="n">textView</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">helloRandomNumber</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">double</span><span class="w"> </span><span class="n">randomNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span><span class="w"></span>
 
-        <span class="n">textView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Hello Random Number: &quot;</span> <span class="o">+</span> <span class="n">randomNumber</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">        </span><span class="n">textView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Hello Random Number: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">randomNumber</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Feel free to try and run this code in action. You'll see every time you rotate your device's screen,
 a new random number is generated and displayed.</p>
@@ -258,51 +254,49 @@ a new random number is generated and displayed.</p>
 <p>I'll be using <a href="https://developer.android.com/topic/libraries/architecture/viewmodel.html">ViewModel</a>
 component to achieve the data persistence across screen rotations.</p>
 <p>Here's is ViewModel to keep track of random number generated:</p>
-<div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="n">RandomNumberViewModel</span> <span class="k">extends</span> <span class="n">ViewModel</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">RandomNumberViewModel</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">ViewModel</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-    <span class="err">@</span><span class="n">Nullable</span>
-    <span class="n">private</span> <span class="n">Double</span> <span class="n">randomNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Nullable</span><span class="w"></span>
+<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">randomNumber</span><span class="p">;</span><span class="w"></span>
 
-    <span class="err">@</span><span class="n">Nullable</span>
-    <span class="n">public</span> <span class="n">Double</span> <span class="n">getRandomNumber</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">randomNumber</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Nullable</span><span class="w"></span>
+<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">getRandomNumber</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">randomNumber</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="n">public</span> <span class="n">void</span> <span class="n">setRandomNumber</span><span class="p">(</span><span class="n">Double</span> <span class="n">randomNumber</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">this</span><span class="o">.</span><span class="n">randomNumber</span> <span class="o">=</span> <span class="n">randomNumber</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">setRandomNumber</span><span class="p">(</span><span class="n">Double</span><span class="w"> </span><span class="n">randomNumber</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">this</span><span class="o">.</span><span class="n">randomNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">randomNumber</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>This is how <code>HelloRandomNumberActivity</code> looks like now:</p>
-<div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="n">HelloRandomNumberActivity</span> <span class="k">extends</span> <span class="n">LifecycleActivity</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">HelloRandomNumberActivity</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">LifecycleActivity</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-    <span class="err">@</span><span class="n">Override</span>
-    <span class="n">protected</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
-        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">activity_hello_random_number</span><span class="p">);</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Override</span><span class="w"></span>
+<span class="w">    </span><span class="n">protected</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">activity_hello_random_number</span><span class="p">);</span><span class="w"></span>
 
-        <span class="o">//</span><span class="n">ViewModelStore</span> <span class="n">provides</span> <span class="n">a</span> <span class="n">new</span> <span class="n">ViewModel</span> <span class="ow">or</span> <span class="n">one</span> <span class="n">previously</span> <span class="n">created</span><span class="o">.</span>
-        <span class="n">RandomNumberViewModel</span> <span class="n">randomNumberViewModel</span> <span class="o">=</span>
-                <span class="n">ViewModelProviders</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">RandomNumberViewModel</span><span class="o">.</span><span class="k">class</span><span class="p">);</span>
+<span class="w">        </span><span class="o">//</span><span class="n">ViewModelStore</span><span class="w"> </span><span class="n">provides</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">ViewModel</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">previously</span><span class="w"> </span><span class="n">created</span><span class="o">.</span><span class="w"></span>
+<span class="w">        </span><span class="n">RandomNumberViewModel</span><span class="w"> </span><span class="n">randomNumberViewModel</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">                </span><span class="n">ViewModelProviders</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">RandomNumberViewModel</span><span class="o">.</span><span class="k">class</span><span class="p">);</span><span class="w"></span>
 
-        <span class="n">TextView</span> <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">helloRandomNumber</span><span class="p">);</span>
-        <span class="nb nb-Type">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello Random Number: &quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">TextView</span><span class="w"> </span><span class="n">textView</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">helloRandomNumber</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello Random Number: &quot;</span><span class="p">;</span><span class="w"></span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">randomNumberViewModel</span><span class="o">.</span><span class="n">getRandomNumber</span><span class="p">()</span> <span class="o">==</span> <span class="nb nb-Type">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">double</span> <span class="n">randomNumber</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
-            <span class="o">//</span><span class="n">assigning</span> <span class="n">value</span> <span class="n">to</span> <span class="n">ViewModel</span>
-            <span class="n">randomNumberViewModel</span><span class="o">.</span><span class="n">setRandomNumber</span><span class="p">(</span><span class="n">randomNumber</span><span class="p">);</span>
-            <span class="n">textView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="n">randomNumber</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="o">//</span><span class="n">display</span> <span class="n">data</span> <span class="n">from</span> <span class="n">previous</span> <span class="n">retained</span> <span class="n">ViewModel</span>
-            <span class="n">textView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="n">randomNumberViewModel</span><span class="o">.</span><span class="n">getRandomNumber</span><span class="p">());</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">randomNumberViewModel</span><span class="o">.</span><span class="n">getRandomNumber</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">double</span><span class="w"> </span><span class="n">randomNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="o">//</span><span class="n">assigning</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">ViewModel</span><span class="w"></span>
+<span class="w">            </span><span class="n">randomNumberViewModel</span><span class="o">.</span><span class="n">setRandomNumber</span><span class="p">(</span><span class="n">randomNumber</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">textView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">randomNumber</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">//</span><span class="n">display</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">retained</span><span class="w"> </span><span class="n">ViewModel</span><span class="w"></span>
+<span class="w">            </span><span class="n">textView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">randomNumberViewModel</span><span class="o">.</span><span class="n">getRandomNumber</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong><em>Note</em></strong>: You may noticed that 'AppCompatActivity' is replaced with 'LifecycleActivity'.
 This is because lifecycle classes are not not supported in support libraries. Once Lifecycle classes

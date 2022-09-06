@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -195,28 +195,25 @@
 <hr>
 <h1>Implementing Callable Class</h1>
 <p>All Dart functions have <code>call</code> method. In order to make a class <strong><em>Callable</em></strong>, the <code>call()</code> method needs to be implemented. Let's declare a callable class below:</p>
-<div class="highlight"><pre><span></span><span class="err">class Addition {</span>
-<span class="err">  int call(int a, int b) =&gt; a + b;</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="n">Addition</span> {
+  <span class="n">int</span> <span class="n">call</span>(<span class="n">int</span> <span class="n">a</span>, <span class="n">int</span> <span class="n">b</span>) =&gt; <span class="n">a</span> + <span class="n">b</span>;
+}
+</code></pre></div>
 
 <p>The above class' <code>call</code> method takes two arguments and returns their sum.</p>
 <hr>
 <h1>Using Callable Class</h1>
 <p>Let's check out using the <code>Addition</code> callable class in code below. The <code>addition</code> object is of <code>Addition</code> type. Now, <code>addition(1, 2)</code> can be called to calculate the sum of given numbers.</p>
-<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">Addition</span> <span class="n">addition</span> <span class="o">=</span> <span class="n">Addition</span><span class="p">();</span>
-  <span class="k">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Addition</span><span class="w"> </span><span class="n">addition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Addition</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addition</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">3</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="mf">3</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h1>Summary</h1>

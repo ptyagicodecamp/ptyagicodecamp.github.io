@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -189,25 +189,23 @@
 <p>Mixins keep Dart code reusable across separate classes. It's the most efficient way to reuse common code from multiple classes that share common behaviors.</p>
 <p>A mixin class contains methods to be used by other classes without being their parent. This is how mixins differ from interfaces and abstract classes.</p>
 <p>Mixins are declared using keyword <code>mixin</code> like below:</p>
-<div class="highlight"><pre><span></span><span class="n">mixin</span> <span class="n">SharedBehavior</span> <span class="err">{</span>
+<div class="highlight"><pre><span></span><code>mixin SharedBehavior {
 
-<span class="err">}</span>
-</pre></div>
-
+}
+</code></pre></div>
 
 <p>Let's understand this with help of the example of different people with different occupations: artist, engineer, doctor, and sportsman. Let's think in terms of OOP manner, representing people in their classes.</p>
 <ul>
 <li><code>Person</code> class: The most common properties could be abstracted in class <code>Person</code> that other classes would extend from. Common properties (like age , name etc) and common behaviors (like eat and sleep) can go in here.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">abstract</span> <span class="k">class</span> <span class="n">Person</span> <span class="err">{</span>
-  <span class="nb">int</span> <span class="n">age</span><span class="p">;</span>
-  <span class="nb">int</span> <span class="n">name</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code>abstract class Person {
+  int age;
+  int name;
 
-  <span class="n">eat</span><span class="p">()</span> <span class="err">{}</span>
-  <span class="n">sleep</span><span class="p">()</span> <span class="err">{}</span>
-<span class="err">}</span>
-</pre></div>
-
+  eat() {}
+  sleep() {}
+}
+</code></pre></div>
 
 <ul>
 <li>
@@ -231,27 +229,25 @@
 <h1>Creating Mixins</h1>
 <h2>Sketching</h2>
 <p>The <code>Sketching</code> mixin defines the common <code>sketch()</code> method. It takes a message and prints it on console to keep things simple for demonstration.</p>
-<div class="highlight"><pre><span></span><span class="err">mixin Sketching {</span>
-<span class="err">  sketch(String message) {</span>
-<span class="err">    print(message);</span>
-<span class="err">  }</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>mixin Sketching {
+  sketch(String message) {
+    print(message);
+  }
+}
+</code></pre></div>
 
 <h2>Reading</h2>
 <p>The <code>Reading</code> mixin defines <code>dailyReading(String topic)</code> method. A reading topic is passed as parameter.</p>
-<div class="highlight"><pre><span></span>mixin Reading {
+<div class="highlight"><pre><span></span><code>mixin Reading {
   dailyReading(String topic) {
     print(&quot;Daily reading on <span class="cp">${</span><span class="n">topic</span><span class="cp">}</span>&quot;);
   }
 }
-</pre></div>
-
+</code></pre></div>
 
 <h2>Exercise</h2>
 <p>The <code>Exercise</code> mixin defines methods for running and weight training. The <code>running(int mile)</code> method passes <code>mile</code> parameter to print the message. The <code>weightTraining(int weights)</code> method prints the value for <code>weights</code> parameter.</p>
-<div class="highlight"><pre><span></span>mixin Exercise {
+<div class="highlight"><pre><span></span><code>mixin Exercise {
   running(int mile) {
     print(&quot;Daily run of <span class="cp">${</span><span class="n">mile</span><span class="cp">}</span> mile(s)&quot;);
   }
@@ -260,134 +256,125 @@
     print(&quot;Lifting <span class="cp">${</span><span class="n">weights</span><span class="cp">}</span> lbs&quot;);
   }
 }
-</pre></div>
-
+</code></pre></div>
 
 <h2>Boxing</h2>
 <p>The <code>Boxing</code> mixin defines practicing punches behavior of an athlete. As per our requirements, only athletes are allowed to practice punches. In such cases, we may want to restrict the usage of mixin only by classes of type Athlete. We can apply such restriction on <code>Boxing</code> mixin by using <code>on</code> keyword followed by the <code>Athlete</code> - the class which is allowed the usage.</p>
-<div class="highlight"><pre><span></span>mixin Boxing on Athlete {
+<div class="highlight"><pre><span></span><code>mixin Boxing on Athlete {
   punch(int n) {
     print(&quot;Boxer practicing <span class="cp">${</span><span class="n">n</span><span class="cp">}</span> punches&quot;);
   }
 }
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h1>Using Mixins</h1>
 <p>In this section, you'll see examples of using mixins defined earlier.</p>
 <h2><code>Artist</code> class</h2>
 <p>The artist makes landscapes sketches. It defines <code>sketchLandscape()</code> to do so. This method calls <code>sketch(...)</code> method from <code>Sketching</code> mixin.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Artist</span> <span class="k">extends</span> <span class="n">Person</span> <span class="n">with</span> <span class="n">Sketching</span> <span class="p">{</span>
-  <span class="n">sketchLandscape</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">sketch</span><span class="p">(</span><span class="s2">&quot;Making landscapes sketches&quot;</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Artist</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">Sketching</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">sketchLandscape</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">sketch</span><span class="p">(</span><span class="s2">&quot;Making landscapes sketches&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h2><code>Engineer</code> class</h2>
 <p>The engineer does make building sketches and reads research on building construction. The <code>sketchBuildings()</code> method uses <code>sketch()</code> method from <code>Sketching</code> mixin. The <code>readResearchPaper()</code> calls <code>dailyReading(topic)</code> from <code>Reading</code> mixin.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Engineer</span> <span class="k">extends</span> <span class="n">Person</span> <span class="n">with</span> <span class="n">Sketching</span><span class="p">,</span> <span class="n">Reading</span> <span class="p">{</span>
-  <span class="n">sketchBuildings</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">sketch</span><span class="p">(</span><span class="s2">&quot;Sketching engineering drawings&quot;</span><span class="p">);</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Engineer</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">Sketching</span><span class="p">,</span><span class="w"> </span><span class="n">Reading</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">sketchBuildings</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">sketch</span><span class="p">(</span><span class="s2">&quot;Sketching engineering drawings&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">readResearchPaper</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nb nb-Type">String</span> <span class="n">topic</span> <span class="o">=</span> <span class="s2">&quot;Building Construction&quot;</span><span class="p">;</span>
-    <span class="n">dailyReading</span><span class="p">(</span><span class="n">topic</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="n">readResearchPaper</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Building Construction&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">dailyReading</span><span class="p">(</span><span class="n">topic</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h2><code>Doctor</code> class</h2>
 <p>The doctor reads health reports and does workouts to keep it. The <code>readReports()</code> method uses <code>Reading</code> mixin. The <code>workout()</code> method uses <code>Exercise</code> mixin to carve personalized workout plan.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Doctor</span> <span class="k">extends</span> <span class="n">Person</span> <span class="n">with</span> <span class="n">Reading</span><span class="p">,</span> <span class="n">Exercise</span> <span class="p">{</span>
-  <span class="n">readReports</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nb nb-Type">String</span> <span class="n">topic</span> <span class="o">=</span> <span class="s2">&quot;covid&quot;</span><span class="p">;</span>
-    <span class="n">dailyReading</span><span class="p">(</span><span class="n">topic</span><span class="p">);</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Doctor</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">Reading</span><span class="p">,</span><span class="w"> </span><span class="n">Exercise</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">readReports</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;covid&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">dailyReading</span><span class="p">(</span><span class="n">topic</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">workout</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">running</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-    <span class="n">weightTraining</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="n">workout</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">running</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">weightTraining</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h2><code>Athlete</code> class</h2>
 <p>The athlete <strong><em>is a</em></strong> person as well like other people we discussed so far. All athletes do their exercise, and have a general workout routine. The method <code>generalRoutine()</code> provide the general workout routine definition.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Athlete</span> <span class="k">extends</span> <span class="n">Person</span> <span class="n">with</span> <span class="n">Exercise</span> <span class="p">{</span>
-  <span class="n">generalRoutine</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">running</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-    <span class="n">weightTraining</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Athlete</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">Exercise</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">generalRoutine</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">running</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">weightTraining</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h2><code>Boxer</code> class</h2>
 <p>The boxer <strong><em>is a</em></strong> Athlete who does boxing. The <code>Boxing</code> mixin provides the <code>punch()</code> to define <code>punchPractice()</code> method for boxer. The <code>routineExercise()</code> method defines exercise routine for this specific athlete with help of <code>Exercise</code> mixin.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Boxer</span> <span class="k">extends</span> <span class="n">Athlete</span> <span class="n">with</span> <span class="n">Boxing</span> <span class="p">{</span>
-  <span class="n">punchPractice</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">punch</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Boxer</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Athlete</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">Boxing</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">punchPractice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">punch</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">routineExercise</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">running</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-    <span class="n">weightTraining</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="n">routineExercise</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">running</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">weightTraining</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h1>Running Code</h1>
 <p>In this section, let's run all the methods for each class.</p>
-<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
-  <span class="n">print</span><span class="p">(</span><span class="ss">&quot;Artist&quot;</span><span class="p">);</span>
-  <span class="n">Artist</span> <span class="n">artist</span> <span class="o">=</span> <span class="n">Artist</span><span class="p">();</span>
-  <span class="n">artist</span><span class="p">.</span><span class="n">sketchLandscape</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code>void main() {
+  print(&quot;Artist&quot;);
+  Artist artist = Artist();
+  artist.sketchLandscape();
 
-  <span class="n">print</span><span class="p">(</span><span class="ss">&quot;\nEngineer&quot;</span><span class="p">);</span>
-  <span class="n">Engineer</span> <span class="n">engineer</span> <span class="o">=</span> <span class="n">Engineer</span><span class="p">();</span>
-  <span class="n">engineer</span><span class="p">.</span><span class="n">sketchBuildings</span><span class="p">();</span>
-  <span class="n">engineer</span><span class="p">.</span><span class="n">readResearchPaper</span><span class="p">();</span>
+  print(&quot;\nEngineer&quot;);
+  Engineer engineer = Engineer();
+  engineer.sketchBuildings();
+  engineer.readResearchPaper();
 
-  <span class="n">print</span><span class="p">(</span><span class="ss">&quot;\nDoctor&quot;</span><span class="p">);</span>
-  <span class="n">Doctor</span> <span class="n">doctor</span> <span class="o">=</span> <span class="n">Doctor</span><span class="p">();</span>
-  <span class="n">doctor</span><span class="p">.</span><span class="n">readReports</span><span class="p">();</span>
-  <span class="n">doctor</span><span class="p">.</span><span class="n">workout</span><span class="p">();</span>
+  print(&quot;\nDoctor&quot;);
+  Doctor doctor = Doctor();
+  doctor.readReports();
+  doctor.workout();
 
-  <span class="n">print</span><span class="p">(</span><span class="ss">&quot;\nBoxer&quot;</span><span class="p">);</span>
-  <span class="n">Boxer</span> <span class="n">boxer</span> <span class="o">=</span> <span class="n">Boxer</span><span class="p">();</span>
-  <span class="n">boxer</span><span class="p">.</span><span class="n">punchPractice</span><span class="p">();</span>
-  <span class="n">boxer</span><span class="p">.</span><span class="n">routineExercise</span><span class="p">();</span>
-<span class="err">}</span>
-</pre></div>
-
+  print(&quot;\nBoxer&quot;);
+  Boxer boxer = Boxer();
+  boxer.punchPractice();
+  boxer.routineExercise();
+}
+</code></pre></div>
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><span class="n">Artist</span>
-<span class="n">Making</span> <span class="n">landscapes</span> <span class="n">sketches</span>
+<div class="highlight"><pre><span></span><code>Artist
+Making landscapes sketches
 
-<span class="n">Engineer</span>
-<span class="n">Sketching</span> <span class="n">engineering</span> <span class="n">drawings</span>
-<span class="n">Daily</span> <span class="n">reading</span> <span class="k">on</span> <span class="n">Building</span> <span class="n">Construction</span>
+Engineer
+Sketching engineering drawings
+Daily reading on Building Construction
 
-<span class="n">Doctor</span>
-<span class="n">Daily</span> <span class="n">reading</span> <span class="k">on</span> <span class="n">covid</span>
-<span class="n">Daily</span> <span class="n">run</span> <span class="k">of</span> <span class="mi">1</span> <span class="n">mile</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="n">Lifting</span> <span class="mi">10</span> <span class="n">lbs</span>
+Doctor
+Daily reading on covid
+Daily run of 1 mile(s)
+Lifting 10 lbs
 
-<span class="n">Boxer</span>
-<span class="n">Boxer</span> <span class="n">practicing</span> <span class="mi">100</span> <span class="n">punches</span>
-<span class="n">Daily</span> <span class="n">run</span> <span class="k">of</span> <span class="mi">4</span> <span class="n">mile</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="n">Lifting</span> <span class="mi">40</span> <span class="n">lbs</span>
-</pre></div>
-
+Boxer
+Boxer practicing 100 punches
+Daily run of 4 mile(s)
+Lifting 40 lbs
+</code></pre></div>
 
 <hr>
 <h1>Summary</h1>

@@ -92,7 +92,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -189,7 +189,7 @@ So, to make the waiting process bit less boring, the launcher screen (aka splash
 <p>Actually, its pretty straight-forward to implement a luncher screen. It's as simple as setting theme for the launcher activity in AndroidManifest.xml.
 Let's see the steps:</p>
 <p><strong><em>Step #1:</em></strong> Create the first activity that will launch your app. I'm using <code>LauncherActivity</code> as my launcher activity. This activity doesn't need a layout file of its own since it redirect flow to <code>MainActivity</code> (See Step #5 to know how its being done). It is declared with intent-filter category <code>android.intent.category.LAUNCHER</code> in <code>AndroidManifest.xml</code>.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;activity</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;activity</span>
   <span class="na">android:name=</span><span class="s">&quot;.LauncherActivity&quot;</span>
   <span class="na">android:theme=</span><span class="s">&quot;@style/LauncherScreenTheme&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;intent-filter&gt;</span>
@@ -198,17 +198,15 @@ Let's see the steps:</p>
           <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.category.LAUNCHER&quot;</span> <span class="nt">/&gt;</span>
       <span class="nt">&lt;/intent-filter&gt;</span>
 <span class="nt">&lt;/activity&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong><em>Step #2:</em></strong> Create main activity for your app. I'm calling it <code>MainActivity</code>. This is the activity which presents the real app contents of the app. It could be data loaded in background when app is launching.
 Don't forget to add this activity in your <code>AndroidManifest.xml</code>.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;.MainActivity&quot;</span><span class="nt">&gt;&lt;/activity&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;.MainActivity&quot;</span><span class="nt">&gt;&lt;/activity&gt;</span>
+</code></pre></div>
 
 <p><strong><em>Step #3:</em></strong> Now, we need to create a drawable for the launcher screen. A logo or any graphic that you want to show user in splash screen, needs to be set as background in this res file. Create the launcher screen xml resource file: <code>launch_screen.xml</code> under <code>res/drawable</code> folder. Basically, background set in here will be displayed as splash/launcher screen. I'm just using default android launcher logo for demonstration purpose. It could be your brand logo or any other graphic of your choice.</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 
 <span class="nt">&lt;layer-list</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;item&gt;</span>
@@ -221,29 +219,26 @@ Don't forget to add this activity in your <code>AndroidManifest.xml</code>.</p>
             <span class="na">android:gravity=</span><span class="s">&quot;center&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/item&gt;</span>
 <span class="nt">&lt;/layer-list&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong><em>Step #4:</em></strong> Create a theme <code>LauncherScreenTheme</code> for <code>LauncherActivity</code>. Set <code>LauncherActivity</code> theme to <code>LauncherScreenTheme</code> in <code>AndroidManifest.xml</code> as shown in Step #1. <code>LauncherScreenTheme</code> theme is defined in <code>styles.xml</code>:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&quot;LauncherScreenTheme&quot;</span> <span class="na">parent=</span><span class="s">&quot;Theme.AppCompat.Light.NoActionBar&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&quot;LauncherScreenTheme&quot;</span> <span class="na">parent=</span><span class="s">&quot;Theme.AppCompat.Light.NoActionBar&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:windowBackground&quot;</span><span class="nt">&gt;</span>@drawable/launch_screen<span class="nt">&lt;/item&gt;</span>
 <span class="nt">&lt;/style&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong><em>Step #5:</em></strong> Redirect to <code>MainActivity</code> from <code>LauncherActivity</code>:</p>
-<div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="n">LauncherActivity</span> <span class="k">extends</span> <span class="n">AppCompatActivity</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">LauncherActivity</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-    <span class="err">@</span><span class="n">Override</span>
-    <span class="n">protected</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Override</span><span class="w"></span>
+<span class="w">    </span><span class="n">protected</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span><span class="w"></span>
 
-        <span class="o">//</span><span class="n">Present</span> <span class="n">user</span> <span class="n">UI</span> <span class="n">which</span> <span class="n">uses</span> <span class="n">data</span> <span class="n">loaded</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">background</span><span class="o">.</span>
-        <span class="n">startActivity</span><span class="p">(</span><span class="n">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">MainActivity</span><span class="o">.</span><span class="k">class</span><span class="p">));</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">        </span><span class="o">//</span><span class="n">Present</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">UI</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">loaded</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">background</span><span class="o">.</span><span class="w"></span>
+<span class="w">        </span><span class="n">startActivity</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="n">MainActivity</span><span class="o">.</span><span class="k">class</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>And That's all you needed to do to setup a launcher screen for your app.</p>
 <p>Here's how the launcher screen looks for the sample app:

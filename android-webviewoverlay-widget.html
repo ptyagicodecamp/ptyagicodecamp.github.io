@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -196,9 +196,8 @@ will be helpful for you.</p>
 <p>This article describes how WebViewOverlay Widget can be integrated to your Android App in few minutes.
 Integrating WebViewOverlay widget in your app is as simple as adding following line in your project's
 <code>build.gradle</code>:</p>
-<div class="highlight"><pre><span></span><span class="err">compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.2&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.2&#39;
+</code></pre></div>
 
 <h2>WebViewOverlay Widget</h2>
 <p>WebViewOverlay widget loads a WebView widget in a full screen pop-up or modal. It has option to close it by
@@ -206,26 +205,23 @@ clicking on top-right corner 'x'</p>
 <h2>API</h2>
 <p>There're two APIs to load WebView either in full-screen mode or in a dialog with a custom title.</p>
 <p><strong><em>Full Screen Overlay</em></strong></p>
-<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">loadWebViewOverlay</span><span class="p">(</span><span class="nb nb-Type">String</span> <span class="n">urlToBeLoaded</span><span class="p">,</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="p">,</span> <span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="p">);</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">loadWebViewOverlay</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">urlToBeLoaded</span><span class="p">,</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">params</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 
 <p><img alt="Overlay FullScreen" src="https://ptyagicodecamp.github.io/OverlayFullScreen.png"></p>
 <p><strong><em>Full Screen Overlay With Custom Title</em></strong></p>
-<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">loadWebViewOverlay</span><span class="p">(</span><span class="nb nb-Type">String</span> <span class="n">urlToBeLoaded</span><span class="p">,</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="p">,</span> <span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="p">,</span> <span class="nb nb-Type">String</span> <span class="n">popupTitle</span><span class="p">);</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">loadWebViewOverlay</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">urlToBeLoaded</span><span class="p">,</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">popupTitle</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 
 <p><img alt="OverlayWithTitle" src="https://ptyagicodecamp.github.io/OverlayWithTitle.png"></p>
 <h2>Integration</h2>
 <p>In Android Studio, it can be added to your project by adding following in <code>build.gradle</code></p>
-<div class="highlight"><pre><span></span><span class="err">compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.2&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.2&#39;
+</code></pre></div>
 
 <h2>Initialization</h2>
 <p>WebViewOverlay widget can be initialized in Activity or BaseActivity's <code>onCreate()</code> method.</p>
-<div class="highlight"><pre><span></span><span class="n">WebViewOverlay</span><span class="w"> </span><span class="n">webViewOverlay</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">WebViewOverlay</span><span class="w"> </span><span class="n">webViewOverlay</span><span class="p">;</span><span class="w"></span>
 
 <span class="nv">@Override</span><span class="w"></span>
 <span class="n">protected</span><span class="w"> </span><span class="n">void</span><span class="w"> </span><span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
@@ -234,23 +230,21 @@ clicking on top-right corner 'x'</p>
 
 <span class="w">    </span><span class="n">webViewOverlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WebViewOverlay</span><span class="p">(</span><span class="n">this</span><span class="p">);</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Usage</h2>
 <p>After initializing widget, it can simply be used by calling either of the API.
 Here's examples to demonstrate both APIs:</p>
-<div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">void</span> <span class="n">openWebViewOverlay</span><span class="p">(</span><span class="n">View</span> <span class="n">view</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nb nb-Type">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://ptyagicodecamp.github.io&quot;</span><span class="p">;</span>
-    <span class="n">webViewOverlay</span><span class="o">.</span><span class="n">loadWebViewOverlay</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb nb-Type">null</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">openWebViewOverlay</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://ptyagicodecamp.github.io&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">webViewOverlay</span><span class="o">.</span><span class="n">loadWebViewOverlay</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">public</span> <span class="n">void</span> <span class="n">openWebViewOverlayWithTitle</span><span class="p">(</span><span class="n">View</span> <span class="n">view</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nb nb-Type">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://ptyagicodecamp.github.io&quot;</span><span class="p">;</span>
-    <span class="n">webViewOverlay</span><span class="o">.</span><span class="n">loadWebViewOverlay</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb nb-Type">null</span><span class="p">,</span> <span class="s2">&quot;WebViewOverlay Demo&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="n">public</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">openWebViewOverlayWithTitle</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://ptyagicodecamp.github.io&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">webViewOverlay</span><span class="o">.</span><span class="n">loadWebViewOverlay</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;WebViewOverlay Demo&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>If you're interested in checking out source code, then its available <a href="https://github.com/ptyagicodecamp/webview-overlay">here at Github</a></p>
   </div>

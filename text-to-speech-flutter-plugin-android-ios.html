@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -210,10 +210,9 @@
 <p>This code recipe demonstrate implementation for <a href="https://pub.dev/packages/flutter_tts">Text-to-speech Flutter plugin</a></p>
 <h3><code>pubspec.yaml</code> dependencies</h3>
 <p>Add dependency for flutter_tts plugin:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">flutter_tts</span><span class="o">:</span> <span class="o">^</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">0</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter_tts</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h3>StatefulWidget</h3>
@@ -223,24 +222,23 @@
 <li><code>isPlaying</code> is the flag to keep track whether text is being read or not. We need this flag to show appropriate <code>Icon</code> (play or stop) in the card.</li>
 <li><code>FlutterTts _flutterTts</code> is the instance of <code>flutter_tts</code> plugin. It's a wrapper around the native implementation for Android and iOS to interact with native functionality. Under the hood, it uses <code>TextToSpeech</code> for Android, and <code>AVSpeechSynthesizer</code> for iOS platform.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">TTSPluginRecipe</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">_TTSPluginRecipeState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_TTSPluginRecipeState</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">TTSPluginRecipe</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">_TTSPluginRecipeState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_TTSPluginRecipeState</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">class</span> <span class="n">_TTSPluginRecipeState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">TTSPluginRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="nb nb-Type">String</span> <span class="n">description</span> <span class="o">=</span>
-      <span class="s2">&quot;The Griffith Observatory is the most iconic building in Los Angeles, perched high in the Hollywood Hills, 1,134 feet above sea level.&quot;</span><span class="p">;</span>
+<span class="k">class</span><span class="w"> </span><span class="n">_TTSPluginRecipeState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">TTSPluginRecipe</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;The Griffith Observatory is the most iconic building in Los Angeles, perched high in the Hollywood Hills, 1,134 feet above sea level.&quot;</span><span class="p">;</span><span class="w"></span>
 
-  <span class="nb nb-Type">bool</span> <span class="n">isPlaying</span> <span class="o">=</span> <span class="bp">false</span><span class="p">;</span>
-  <span class="n">FlutterTts</span> <span class="n">_flutterTts</span><span class="p">;</span>    
-<span class="p">}</span>      
-</pre></div>
-
+<span class="w">  </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="n">isPlaying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">FlutterTts</span><span class="w"> </span><span class="n">_flutterTts</span><span class="p">;</span><span class="w">    </span>
+<span class="p">}</span><span class="w">      </span>
+</code></pre></div>
 
 <h3>Plugin management: Initializing &amp; Disposing</h3>
 <p>Initializing plugin for Android is slightly different than for iOS. We need to detect the platform to run the specific code. Please checkout <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/plugins/platform/platform.dart"><code>PlatformUtil</code></a> to understand how I'm detecting platforms.</p>
-<div class="highlight"><pre><span></span><span class="nv">@override</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nv">@override</span><span class="w"></span>
 <span class="n">void</span><span class="w"> </span><span class="n">initState</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">super</span><span class="p">.</span><span class="n">initState</span><span class="p">();</span><span class="w"></span>
 <span class="w">  </span><span class="n">initializeTts</span><span class="p">();</span><span class="w"></span>
@@ -285,54 +283,48 @@
 <span class="w">  </span><span class="n">super</span><span class="p">.</span><span class="n">dispose</span><span class="p">();</span><span class="w"></span>
 <span class="w">  </span><span class="n">_flutterTts</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Don't forget to stop flutter_tts plugin instance in <code>dispose()</code> method.</p>
 <h3>Speaking &amp; Stopping</h3>
 <p>Speaking and Stop speaking is pretty straight forward. All you need to call plugin's <code>speak(String text)</code> and <code>stop()</code> methods / apis.</p>
-<div class="highlight"><pre><span></span><span class="n">Future</span> <span class="n">_speak</span><span class="p">(</span><span class="nb nb-Type">String</span> <span class="n">text</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">text</span> <span class="o">!=</span> <span class="nb nb-Type">null</span> <span class="o">&amp;&amp;</span> <span class="n">text</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">_flutterTts</span><span class="o">.</span><span class="n">speak</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-        <span class="n">isPlaying</span> <span class="o">=</span> <span class="bp">true</span><span class="p">;</span>
-      <span class="p">});</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="n">Future</span><span class="w"> </span><span class="n">_speak</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">text</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">_flutterTts</span><span class="o">.</span><span class="n">speak</span><span class="p">(</span><span class="n">text</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">isPlaying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">});</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">Future</span> <span class="n">_stop</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="k">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">_flutterTts</span><span class="o">.</span><span class="n">stop</span><span class="p">();</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-      <span class="n">isPlaying</span> <span class="o">=</span> <span class="bp">false</span><span class="p">;</span>
-    <span class="p">});</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="n">Future</span><span class="w"> </span><span class="n">_stop</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">_flutterTts</span><span class="o">.</span><span class="n">stop</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">isPlaying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Exploring plugin's features</h3>
 <p><strong>Setting Language:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">void setTtsLanguage() async {</span>
-<span class="err">  await _flutterTts.setLanguage(&quot;en-US&quot;);</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>void setTtsLanguage() async {
+  await _flutterTts.setLanguage(&quot;en-US&quot;);
+}
+</code></pre></div>
 
 <p><strong>Getting list of supported languages:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">  await flutterTts.getLanguages`</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>  await flutterTts.getLanguages`
+</code></pre></div>
 
 <p><strong>Setting Voice:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">_flutterTts.setVoice(&quot;en-us-x-sfg#male_1-local&quot;)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>_flutterTts.setVoice(&quot;en-us-x-sfg#male_1-local&quot;)
+</code></pre></div>
 
 <p><strong>Getting list of supported voices:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">  await flutterTts.getVoices</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>  await flutterTts.getVoices
+</code></pre></div>
 
 <hr>
 <h3>Source code repo</h3>

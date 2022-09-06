@@ -91,7 +91,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -202,7 +202,7 @@ can be configured or just be default. I'll be using a default of 8am in this dem
 Read more about them <a href="https://developer.android.com/training/scheduling/alarms.html#set">here</a>
 I'll be scheduling notifications using both kind of alarms.</p>
 <p><strong><em>Scheduling RTC</em></strong></p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * This is the real time /wall clock time</span>
 <span class="cm"> * @param context</span>
 <span class="cm"> */</span><span class="w"></span>
@@ -231,11 +231,10 @@ I'll be scheduling notifications using both kind of alarms.</p>
 <span class="w">    </span><span class="n">alarmManagerRTC</span><span class="p">.</span><span class="n">setInexactRepeating</span><span class="p">(</span><span class="n">AlarmManager</span><span class="p">.</span><span class="n">RTC_WAKEUP</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="n">calendar</span><span class="p">.</span><span class="n">getTimeInMillis</span><span class="p">(),</span><span class="w"> </span><span class="n">AlarmManager</span><span class="p">.</span><span class="n">INTERVAL_DAY</span><span class="p">,</span><span class="w"> </span><span class="n">alarmIntentRTC</span><span class="p">);</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong><em>Scheduling Elapsed</em></strong></p>
-<div class="highlight"><pre><span></span><span class="cm">/***</span>
+<div class="highlight"><pre><span></span><code><span class="cm">/***</span>
 <span class="cm"> * This is another way to schedule notifications using the elapsed time.</span>
 <span class="cm"> * Its based on the relative time since device was booted up.</span>
 <span class="cm"> * @param context</span>
@@ -257,50 +256,47 @@ I'll be scheduling notifications using both kind of alarms.</p>
 <span class="w">            </span><span class="n">SystemClock</span><span class="p">.</span><span class="n">elapsedRealtime</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">AlarmManager</span><span class="p">.</span><span class="n">INTERVAL_FIFTEEN_MINUTES</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="n">AlarmManager</span><span class="p">.</span><span class="n">INTERVAL_FIFTEEN_MINUTES</span><span class="p">,</span><span class="w"> </span><span class="n">alarmIntentElapsed</span><span class="p">);</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <h4>AlarmReceiver (BroadcastReceiver)</h4>
 <p><code>AlarmReceiver</code> class extends <code>BroadcastReceiver</code>. This handles the AlarmManager's broadcast
  about sending local notifications at a given time.</p>
-<div class="highlight"><pre><span></span> <span class="n">public</span> <span class="k">class</span> <span class="n">AlarmReceiver</span> <span class="k">extends</span> <span class="n">BroadcastReceiver</span> <span class="p">{</span>
-     <span class="err">@</span><span class="n">Override</span>
-     <span class="n">public</span> <span class="n">void</span> <span class="n">onReceive</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="p">)</span> <span class="p">{</span>
-         <span class="o">//</span><span class="n">Intent</span> <span class="n">to</span> <span class="n">invoke</span> <span class="n">app</span> <span class="n">when</span> <span class="n">click</span> <span class="n">on</span> <span class="n">notification</span><span class="o">.</span>
-         <span class="o">//</span><span class="n">In</span> <span class="n">this</span> <span class="n">sample</span><span class="p">,</span> <span class="n">we</span> <span class="n">want</span> <span class="n">to</span> <span class="n">start</span><span class="o">/</span><span class="n">launch</span> <span class="n">this</span> <span class="n">sample</span> <span class="n">app</span> <span class="n">when</span> <span class="n">user</span> <span class="n">clicks</span> <span class="n">on</span> <span class="n">notification</span>
-         <span class="n">Intent</span> <span class="n">intentToRepeat</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">MainActivity</span><span class="o">.</span><span class="k">class</span><span class="p">);</span>
-         <span class="o">//</span><span class="n">set</span> <span class="n">flag</span> <span class="n">to</span> <span class="n">restart</span><span class="o">/</span><span class="n">relaunch</span> <span class="n">the</span> <span class="n">app</span>
-         <span class="n">intentToRepeat</span><span class="o">.</span><span class="n">setFlags</span><span class="p">(</span><span class="n">Intent</span><span class="o">.</span><span class="n">FLAG_ACTIVITY_CLEAR_TOP</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">AlarmReceiver</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">BroadcastReceiver</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="err">@</span><span class="n">Override</span><span class="w"></span>
+<span class="w">     </span><span class="n">public</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">onReceive</span><span class="p">(</span><span class="n">Context</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="o">//</span><span class="n">Intent</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">invoke</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">click</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">notification</span><span class="o">.</span><span class="w"></span>
+<span class="w">         </span><span class="o">//</span><span class="n">In</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">sample</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">start</span><span class="o">/</span><span class="n">launch</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">clicks</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">notification</span><span class="w"></span>
+<span class="w">         </span><span class="n">Intent</span><span class="w"> </span><span class="n">intentToRepeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">MainActivity</span><span class="o">.</span><span class="k">class</span><span class="p">);</span><span class="w"></span>
+<span class="w">         </span><span class="o">//</span><span class="n">set</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">restart</span><span class="o">/</span><span class="n">relaunch</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">app</span><span class="w"></span>
+<span class="w">         </span><span class="n">intentToRepeat</span><span class="o">.</span><span class="n">setFlags</span><span class="p">(</span><span class="n">Intent</span><span class="o">.</span><span class="n">FLAG_ACTIVITY_CLEAR_TOP</span><span class="p">);</span><span class="w"></span>
 
-         <span class="o">//</span><span class="n">Pending</span> <span class="n">intent</span> <span class="n">to</span> <span class="n">handle</span> <span class="n">launch</span> <span class="n">of</span> <span class="n">Activity</span> <span class="ow">in</span> <span class="n">intent</span> <span class="n">above</span>
-         <span class="n">PendingIntent</span> <span class="n">pendingIntent</span> <span class="o">=</span>
-                 <span class="n">PendingIntent</span><span class="o">.</span><span class="n">getActivity</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">NotificationHelper</span><span class="o">.</span><span class="n">ALARM_TYPE_RTC</span><span class="p">,</span> <span class="n">intentToRepeat</span><span class="p">,</span> <span class="n">PendingIntent</span><span class="o">.</span><span class="n">FLAG_UPDATE_CURRENT</span><span class="p">);</span>
+<span class="w">         </span><span class="o">//</span><span class="n">Pending</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">handle</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Activity</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="n">above</span><span class="w"></span>
+<span class="w">         </span><span class="n">PendingIntent</span><span class="w"> </span><span class="n">pendingIntent</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">                 </span><span class="n">PendingIntent</span><span class="o">.</span><span class="n">getActivity</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">NotificationHelper</span><span class="o">.</span><span class="n">ALARM_TYPE_RTC</span><span class="p">,</span><span class="w"> </span><span class="n">intentToRepeat</span><span class="p">,</span><span class="w"> </span><span class="n">PendingIntent</span><span class="o">.</span><span class="n">FLAG_UPDATE_CURRENT</span><span class="p">);</span><span class="w"></span>
 
-         <span class="o">//</span><span class="n">Build</span> <span class="n">notification</span>
-         <span class="n">Notification</span> <span class="n">repeatedNotification</span> <span class="o">=</span> <span class="n">buildLocalNotification</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">pendingIntent</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">();</span>
+<span class="w">         </span><span class="o">//</span><span class="n">Build</span><span class="w"> </span><span class="n">notification</span><span class="w"></span>
+<span class="w">         </span><span class="n">Notification</span><span class="w"> </span><span class="n">repeatedNotification</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buildLocalNotification</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">pendingIntent</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">();</span><span class="w"></span>
 
-         <span class="o">//</span><span class="n">Send</span> <span class="n">local</span> <span class="n">notification</span>
-         <span class="n">NotificationHelper</span><span class="o">.</span><span class="n">getNotificationManager</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="n">NotificationHelper</span><span class="o">.</span><span class="n">ALARM_TYPE_RTC</span><span class="p">,</span> <span class="n">repeatedNotification</span><span class="p">);</span>
-     <span class="p">}</span>
+<span class="w">         </span><span class="o">//</span><span class="n">Send</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">notification</span><span class="w"></span>
+<span class="w">         </span><span class="n">NotificationHelper</span><span class="o">.</span><span class="n">getNotificationManager</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="n">NotificationHelper</span><span class="o">.</span><span class="n">ALARM_TYPE_RTC</span><span class="p">,</span><span class="w"> </span><span class="n">repeatedNotification</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
 
-     <span class="n">public</span> <span class="n">NotificationCompat</span><span class="o">.</span><span class="n">Builder</span> <span class="n">buildLocalNotification</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">,</span> <span class="n">PendingIntent</span> <span class="n">pendingIntent</span><span class="p">)</span> <span class="p">{</span>
-         <span class="n">NotificationCompat</span><span class="o">.</span><span class="n">Builder</span> <span class="n">builder</span> <span class="o">=</span>
-                 <span class="p">(</span><span class="n">NotificationCompat</span><span class="o">.</span><span class="n">Builder</span><span class="p">)</span> <span class="n">new</span> <span class="n">NotificationCompat</span><span class="o">.</span><span class="n">Builder</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-                 <span class="o">.</span><span class="n">setContentIntent</span><span class="p">(</span><span class="n">pendingIntent</span><span class="p">)</span>
-                 <span class="o">.</span><span class="n">setSmallIcon</span><span class="p">(</span><span class="n">android</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">drawable</span><span class="o">.</span><span class="n">arrow_up_float</span><span class="p">)</span>
-                 <span class="o">.</span><span class="n">setContentTitle</span><span class="p">(</span><span class="s2">&quot;Morning Notification&quot;</span><span class="p">)</span>
-                 <span class="o">.</span><span class="n">setAutoCancel</span><span class="p">(</span><span class="bp">true</span><span class="p">);</span>
+<span class="w">     </span><span class="n">public</span><span class="w"> </span><span class="n">NotificationCompat</span><span class="o">.</span><span class="n">Builder</span><span class="w"> </span><span class="n">buildLocalNotification</span><span class="p">(</span><span class="n">Context</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">PendingIntent</span><span class="w"> </span><span class="n">pendingIntent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">NotificationCompat</span><span class="o">.</span><span class="n">Builder</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">                 </span><span class="p">(</span><span class="n">NotificationCompat</span><span class="o">.</span><span class="n">Builder</span><span class="p">)</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">NotificationCompat</span><span class="o">.</span><span class="n">Builder</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"></span>
+<span class="w">                 </span><span class="o">.</span><span class="n">setContentIntent</span><span class="p">(</span><span class="n">pendingIntent</span><span class="p">)</span><span class="w"></span>
+<span class="w">                 </span><span class="o">.</span><span class="n">setSmallIcon</span><span class="p">(</span><span class="n">android</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">drawable</span><span class="o">.</span><span class="n">arrow_up_float</span><span class="p">)</span><span class="w"></span>
+<span class="w">                 </span><span class="o">.</span><span class="n">setContentTitle</span><span class="p">(</span><span class="s2">&quot;Morning Notification&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                 </span><span class="o">.</span><span class="n">setAutoCancel</span><span class="p">(</span><span class="bp">true</span><span class="p">);</span><span class="w"></span>
 
-         <span class="k">return</span> <span class="n">builder</span><span class="p">;</span>
-     <span class="p">}</span>
- <span class="p">}</span>
-</pre></div>
-
+<span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="n">builder</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong><em>Note:</em></strong> Don't forget to add <code>&lt;receiver&gt;</code> tag in <code>AndroidManifest.xml</code></p>
-<div class="highlight"><pre><span></span><span class="err">&lt;receiver android:name=&quot;.notification.AlarmReceiver&quot;/&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>&lt;receiver android:name=&quot;.notification.AlarmReceiver&quot;/&gt;
+</code></pre></div>
 
 <h4>NotificationHelper</h4>
 <p><a href="https://github.com/ptyagicodecamp/RepeatingLocalNotifications/blob/master/app/src/main/java/org/pcc/repeatinglocalnotifications/notification/NotificationHelper.java">Convenience helper class</a> to generate notification</p>
@@ -310,7 +306,7 @@ In order to persist your notifications setting or alarms across device reboots,
 you would need to reset alarm when a device boots up.</p>
 <h5>AndroidManifest.xml configuration</h5>
 <p>Add this permission in <code>AndroidManifest.xml</code></p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;application</span>
 <span class="err">...</span><span class="nt">&gt;</span>
 
@@ -322,43 +318,39 @@ you would need to reset alarm when a device boots up.</p>
     <span class="nt">&lt;/receiver&gt;</span>
 
 <span class="nt">&lt;/application&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5>Implementing Boot Receiver</h5>
 <p><code>AlarmBootReceiver</code> will look like this:</p>
-<div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="n">AlarmBootReceiver</span> <span class="k">extends</span> <span class="n">BroadcastReceiver</span> <span class="p">{</span>
-    <span class="err">@</span><span class="n">Override</span>
-    <span class="n">public</span> <span class="n">void</span> <span class="n">onReceive</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">intent</span><span class="o">.</span><span class="n">getAction</span><span class="p">()</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="s2">&quot;android.intent.action.BOOT_COMPLETED&quot;</span><span class="p">))</span> <span class="p">{</span>
-            <span class="o">//</span><span class="n">only</span> <span class="n">enabling</span> <span class="n">one</span> <span class="n">type</span> <span class="n">of</span> <span class="n">notifications</span> <span class="k">for</span> <span class="n">demo</span> <span class="n">purposes</span>
-            <span class="n">NotificationHelper</span><span class="o">.</span><span class="n">scheduleRepeatingElapsedNotification</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">AlarmBootReceiver</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">BroadcastReceiver</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">@</span><span class="n">Override</span><span class="w"></span>
+<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">onReceive</span><span class="p">(</span><span class="n">Context</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">intent</span><span class="o">.</span><span class="n">getAction</span><span class="p">()</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="s2">&quot;android.intent.action.BOOT_COMPLETED&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">//</span><span class="n">only</span><span class="w"> </span><span class="n">enabling</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">notifications</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">demo</span><span class="w"> </span><span class="n">purposes</span><span class="w"></span>
+<span class="w">            </span><span class="n">NotificationHelper</span><span class="o">.</span><span class="n">scheduleRepeatingElapsedNotification</span><span class="p">(</span><span class="n">context</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Enable boot receiver when Alarm is set. It means if user opts-into notifications, then
 enable boot receiver as part of enabling notification code.</p>
-<div class="highlight"><pre><span></span><span class="n">ComponentName</span> <span class="n">receiver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ComponentName</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">AlarmBootReceiver</span><span class="p">.</span><span class="k">class</span><span class="p">);</span>
-<span class="n">PackageManager</span> <span class="n">pm</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">getPackageManager</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code>ComponentName receiver = new ComponentName(context, AlarmBootReceiver.class);
+PackageManager pm = context.getPackageManager();
 
-<span class="n">pm</span><span class="p">.</span><span class="n">setComponentEnabledSetting</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span>
-        <span class="n">PackageManager</span><span class="p">.</span><span class="n">COMPONENT_ENABLED_STATE_ENABLED</span><span class="p">,</span>
-        <span class="n">PackageManager</span><span class="p">.</span><span class="n">DONT_KILL_APP</span><span class="p">);</span>
-</pre></div>
-
+pm.setComponentEnabledSetting(receiver,
+        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+        PackageManager.DONT_KILL_APP);
+</code></pre></div>
 
 <p>When user opts-out from notifications, you can cancel alarm and also disable boot receiver like this:</p>
-<div class="highlight"><pre><span></span><span class="n">ComponentName</span> <span class="n">receiver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ComponentName</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">AlarmBootReceiver</span><span class="p">.</span><span class="k">class</span><span class="p">);</span>
-<span class="n">PackageManager</span> <span class="n">pm</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">getPackageManager</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code>ComponentName receiver = new ComponentName(context, AlarmBootReceiver.class);
+PackageManager pm = context.getPackageManager();
 
-<span class="n">pm</span><span class="p">.</span><span class="n">setComponentEnabledSetting</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span>
-        <span class="n">PackageManager</span><span class="p">.</span><span class="n">COMPONENT_ENABLED_STATE_DISABLED</span><span class="p">,</span>
-        <span class="n">PackageManager</span><span class="p">.</span><span class="n">DONT_KILL_APP</span><span class="p">);</span>
-</pre></div>
-
+pm.setComponentEnabledSetting(receiver,
+        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+        PackageManager.DONT_KILL_APP);
+</code></pre></div>
 
 <p>That's it !</p>
 <p><strong><em>References:</em></strong></p>

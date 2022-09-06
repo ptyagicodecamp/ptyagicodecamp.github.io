@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -218,40 +218,38 @@
 <h3>1. Displaying word for rating</h3>
 <p>Display a random English word from the given sample word list. I'm using a simple list of English words. In production application, this list either be stored in cache locally or streaming from backend depending your use case.</p>
 <p>This is how it looks like in code recipe:</p>
-<div class="highlight"><pre><span></span>  <span class="k">var</span> <span class="n">listOfWords</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;Them&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Up&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Web&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Come&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Play&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;They&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;So&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Construct&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Tournament&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Glide&#39;</span>
-  <span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">listOfWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;Them&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;Up&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;Web&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;Come&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;Play&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;They&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;So&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;Construct&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;Tournament&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;Glide&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="p">];</span><span class="w"></span>
 
-  <span class="k">var</span> <span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;Their&#39;</span><span class="p">;</span>
-</pre></div>
-
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Their&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 
 <p><code>word</code> variable keeps the currently displayed word ready for rating.</p>
 <p>Showing current <code>word</code> inside <code>Card</code> widget:</p>
-<div class="highlight"><pre><span></span><span class="n">Center</span><span class="p">(</span>
-  <span class="n">child</span><span class="p">:</span> <span class="n">Card</span><span class="p">(</span>
-    <span class="n">elevation</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
-    <span class="n">child</span><span class="p">:</span> <span class="n">Padding</span><span class="p">(</span>
-      <span class="n">padding</span><span class="p">:</span> <span class="k">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mf">16.0</span><span class="p">),</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span>
-        <span class="n">word</span><span class="p">,</span>
-        <span class="n">style</span><span class="p">:</span> <span class="n">TextStyle</span><span class="p">(</span>
-            <span class="n">fontSize</span><span class="p">:</span> <span class="mf">34.0</span><span class="p">,</span> <span class="n">fontWeight</span><span class="p">:</span> <span class="n">FontWeight</span><span class="o">.</span><span class="n">normal</span><span class="p">),</span>
-      <span class="p">),</span>
-    <span class="p">),</span>
-  <span class="p">),</span>
-<span class="p">),</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">Center</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Card</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">elevation</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Padding</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">padding</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mf">16.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">word</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">style</span><span class="p">:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">fontSize</span><span class="p">:</span><span class="w"> </span><span class="mf">34.0</span><span class="p">,</span><span class="w"> </span><span class="n">fontWeight</span><span class="p">:</span><span class="w"> </span><span class="n">FontWeight</span><span class="o">.</span><span class="n">normal</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">),</span><span class="w"></span>
+<span class="p">),</span><span class="w"></span>
+</code></pre></div>
 
 <p>Once Submit button is called, it'll be randomly picked from <code>listOfWords</code> and updated.</p>
 <h3>2. Implementing RangeSlider widget</h3>
@@ -261,92 +259,90 @@
 For example word 'Their' can be appropriate for grade 2nd thru 5th. However, difficulty level for 2nd grade can be 'Advanced', and 'Easy' for 5th grade. That's the reason range selection makes sense for grades whereas difficulty can be represented with one of the number from three possibilities: 1 (Easy), 2 (Moderate), or 3 (Advanced).</p>
 <p>Since we're representing grades K thru 5 in numbers : 0, 1, 2, 3, 4, and 5, <code>min</code> for <code>RangeSlider</code> is <code>0</code> and <code>max</code> is <code>5</code>. We want discrete selection of grades, so we'll use <code>divisions</code> attribute. That means there <code>2.5</code> can not be selected for a grade.</p>
 <p><code>labels</code> property displays the range of selection. <code>RangeLabels</code> is required to display labels for <code>RangeSlider</code>. It requires the start and end values of the range: <code>RangeLabels('${gradesRange.start}', '${gradesRange.end}')</code>.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">SliderDemo</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">_SliderDemoState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_SliderDemoState</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">SliderDemo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">_SliderDemoState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_SliderDemoState</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">class</span> <span class="n">_SliderDemoState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">SliderDemo</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="k">var</span> <span class="n">gradesRange</span> <span class="o">=</span> <span class="n">RangeValues</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="k">class</span><span class="w"> </span><span class="n">_SliderDemoState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">SliderDemo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">gradesRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RangeValues</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
 
-  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
-      <span class="n">appBar</span><span class="p">:</span> <span class="n">AppBar</span><span class="p">(</span>
-        <span class="n">title</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Sliders (Guess the Word&#39;s level)&quot;</span><span class="p">),</span>
-      <span class="p">),</span>
-      <span class="n">body</span><span class="p">:</span> <span class="n">Stack</span><span class="p">(</span>
-        <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-        <span class="o">...</span><span class="p">,</span>
-        <span class="n">RangeSlider</span><span class="p">(</span>
-          <span class="nb">min</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-          <span class="nb">max</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-          <span class="n">divisions</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-          <span class="n">labels</span><span class="p">:</span> <span class="n">RangeLabels</span><span class="p">(</span>
-              <span class="s1">&#39;${gradesRange.start}&#39;</span><span class="p">,</span> <span class="s1">&#39;${gradesRange.end}&#39;</span><span class="p">),</span>
-          <span class="n">values</span><span class="p">:</span> <span class="n">gradesRange</span><span class="p">,</span>
-          <span class="n">onChanged</span><span class="p">:</span> <span class="p">(</span><span class="n">RangeValues</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-              <span class="n">gradesRange</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
-            <span class="p">});</span>
-          <span class="p">},</span>
-        <span class="p">),</span>
-        <span class="o">...</span><span class="p">,</span>
-        <span class="p">],</span>
-        <span class="p">),</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">appBar</span><span class="p">:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Sliders (Guess the Word&#39;s level)&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">Stack</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="o">...</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">RangeSlider</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="nb">min</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nb">max</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="n">divisions</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="n">labels</span><span class="p">:</span><span class="w"> </span><span class="n">RangeLabels</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="s1">&#39;${gradesRange.start}&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;${gradesRange.end}&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="n">values</span><span class="p">:</span><span class="w"> </span><span class="n">gradesRange</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="n">onChanged</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">RangeValues</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="n">gradesRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">});</span><span class="w"></span>
+<span class="w">          </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="o">...</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="p">}</span>        
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">}</span><span class="w">        </span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><img alt="Range Slider" src="https://ptyagicodecamp.github.io/slider_3.jpg"></p>
 <h3>3. Implementing Slider widget</h3>
 <p><code>Slider</code> widget to represent three difficulty levels: Easy (1), Moderate (2), and Advanced (3).</p>
 <p><code>Slider</code> widget expects values in <code>double</code>. I'm using <code>2</code> (Moderate) as default difficulty level for a chosen word. Since there are only three possible values for difficulty, <code>min</code> is set to <code>1</code>, and <code>max</code> is <code>3</code>. Similar to grades range, we want difficulty levels discrete as well. A word can fall in one of the 3 categories. We get two divisions by setting <code>divisions</code> property to <code>2</code>. Setting <code>label</code> property to current selected value makes it informative for the user to make their selection.</p>
 <p>Please note that I'm using <code>Slider.adaptive</code> widget. This widget adapts to the target platform.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">SliderDemo</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">_SliderDemoState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_SliderDemoState</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">SliderDemo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">_SliderDemoState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_SliderDemoState</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">class</span> <span class="n">_SliderDemoState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">SliderDemo</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="n">double</span> <span class="n">_diffLevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">class</span><span class="w"> </span><span class="n">_SliderDemoState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">SliderDemo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">double</span><span class="w"> </span><span class="n">_diffLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
-      <span class="n">appBar</span><span class="p">:</span> <span class="n">AppBar</span><span class="p">(</span>
-        <span class="n">title</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Sliders (Guess the Word&#39;s level)&quot;</span><span class="p">),</span>
-      <span class="p">),</span>
-      <span class="n">body</span><span class="p">:</span> <span class="n">Stack</span><span class="p">(</span>
-        <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-        <span class="o">...</span><span class="p">,</span>
-        <span class="n">Slider</span><span class="o">.</span><span class="n">adaptive</span><span class="p">(</span>
-          <span class="n">value</span><span class="p">:</span> <span class="n">_diffLevel</span><span class="o">.</span><span class="n">toDouble</span><span class="p">(),</span>
-          <span class="n">onChanged</span><span class="p">:</span> <span class="p">(</span><span class="n">double</span> <span class="n">newValue</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-              <span class="n">_diffLevel</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">;</span>
-            <span class="p">});</span>
-          <span class="p">},</span>
-          <span class="nb">min</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-          <span class="nb">max</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-          <span class="n">divisions</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-          <span class="n">label</span><span class="p">:</span> <span class="n">_diffLevel</span><span class="o">.</span><span class="n">toString</span><span class="p">(),</span>
-        <span class="p">),</span>
-        <span class="o">...</span><span class="p">,</span>
-        <span class="p">],</span>
-        <span class="p">),</span>
-  <span class="p">}</span>
-<span class="p">}</span>        
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">appBar</span><span class="p">:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Sliders (Guess the Word&#39;s level)&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">Stack</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="o">...</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">Slider</span><span class="o">.</span><span class="n">adaptive</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="n">_diffLevel</span><span class="o">.</span><span class="n">toDouble</span><span class="p">(),</span><span class="w"></span>
+<span class="w">          </span><span class="n">onChanged</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">double</span><span class="w"> </span><span class="n">newValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="n">_diffLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newValue</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">});</span><span class="w"></span>
+<span class="w">          </span><span class="p">},</span><span class="w"></span>
+<span class="w">          </span><span class="nb">min</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nb">max</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="n">divisions</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="n">label</span><span class="p">:</span><span class="w"> </span><span class="n">_diffLevel</span><span class="o">.</span><span class="n">toString</span><span class="p">(),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="o">...</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">        </span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><img alt="Slider" src="https://ptyagicodecamp.github.io/slider_4.jpg"></p>
 <h3>4. Submit button (Resetting interface)</h3>
 <p>I added Submit button for completeness of workflow of page. Clicking on Submit button will rest the interface, and a word will be picked randomly from the sample wordlist.</p>
 <p>Here's what happens when user clicks Submit button:</p>
-<div class="highlight"><pre><span></span><span class="nl">child</span><span class="p">:</span><span class="w"> </span><span class="n">RaisedButton</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nl">child</span><span class="p">:</span><span class="w"> </span><span class="n">RaisedButton</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
 <span class="w">  </span><span class="nl">child</span><span class="p">:</span><span class="w"> </span><span class="nc">Text</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="ss">&quot;Submit&quot;</span><span class="p">,</span><span class="w"></span>
@@ -361,8 +357,7 @@ For example word 'Their' can be appropriate for grade 2nd thru 5th. However, dif
 <span class="w">    </span><span class="err">}</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
 <span class="p">),</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong><em>Note:</em></strong> Interface's values are being reset inside <code>setState(..)</code> function.</p>
 <p><img alt="starting slider state" src="https://ptyagicodecamp.github.io/slider_5.jpg"></p>

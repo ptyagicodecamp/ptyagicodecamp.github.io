@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -216,52 +216,49 @@
 </ol>
 <p><strong>Configuring <code>pubspec.yaml</code>:</strong>
 Adapt <code>pubspec.yaml</code> for Web as described in <a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md">this link</a>. This is how <code>pubspec.yaml</code> for web app will look like:</p>
-<div class="highlight"><pre><span></span><span class="n">name</span><span class="o">:</span> <span class="n">landingpage</span>
-<span class="n">description</span><span class="o">:</span> <span class="n">Cross</span> <span class="n">platform</span> <span class="n">sample</span> <span class="n">landing</span> <span class="n">page</span> <span class="n">implemented</span> <span class="k">in</span> <span class="n">Flutter</span>
+<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">landingpage</span><span class="w"></span>
+<span class="n">description</span><span class="o">:</span><span class="w"> </span><span class="n">Cross</span><span class="w"> </span><span class="n">platform</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="n">landing</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">implemented</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">Flutter</span><span class="w"></span>
 
-<span class="n">version</span><span class="o">:</span> <span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
 
-<span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">flutter_web</span><span class="o">:</span> <span class="n">any</span>
+<span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter_web</span><span class="o">:</span><span class="w"> </span><span class="n">any</span><span class="w"></span>
 
-<span class="n">dev_dependencies</span><span class="o">:</span>
-  <span class="n">flutter_web_test</span><span class="o">:</span> <span class="n">any</span>
-  <span class="err">#</span><span class="n">dependencies</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">the</span> <span class="n">Dart</span> <span class="n">web</span> <span class="n">build</span> <span class="n">system</span>
-  <span class="n">build_runner</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">2</span>
-  <span class="n">build_web_compilers</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span>
-  <span class="n">test</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.3</span><span class="o">.</span><span class="mi">4</span>
+<span class="n">dev_dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter_web_test</span><span class="o">:</span><span class="w"> </span><span class="n">any</span><span class="w"></span>
+<span class="w">  </span><span class="err">#</span><span class="n">dependencies</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Dart</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">system</span><span class="w"></span>
+<span class="w">  </span><span class="n">build_runner</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">2</span><span class="w"></span>
+<span class="w">  </span><span class="n">build_web_compilers</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
+<span class="w">  </span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">1.3</span><span class="o">.</span><span class="mi">4</span><span class="w"></span>
 
-  <span class="err">##</span> <span class="n">These</span> <span class="n">overrides</span> <span class="n">tell</span> <span class="n">the</span> <span class="k">package</span> <span class="nn">tools</span> <span class="n">to</span> <span class="kd">get</span> <span class="n">them</span> <span class="n">from</span> <span class="n">GitHub</span>
-<span class="n">dependency_overrides</span><span class="o">:</span>
-  <span class="n">flutter_web</span><span class="o">:</span>
-    <span class="n">git</span><span class="o">:</span>
-      <span class="n">url</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/flutter/</span><span class="n">flutter_web</span>
-      <span class="n">path</span><span class="o">:</span> <span class="n">packages</span><span class="o">/</span><span class="n">flutter_web</span>
-  <span class="n">flutter_web_ui</span><span class="o">:</span>
-    <span class="n">git</span><span class="o">:</span>
-      <span class="n">url</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/flutter/</span><span class="n">flutter_web</span>
-      <span class="n">path</span><span class="o">:</span> <span class="n">packages</span><span class="o">/</span><span class="n">flutter_web_ui</span>
-  <span class="n">flutter_web_test</span><span class="o">:</span>
-    <span class="n">git</span><span class="o">:</span>
-      <span class="n">url</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/flutter/</span><span class="n">flutter_web</span>
-      <span class="n">path</span><span class="o">:</span> <span class="n">packages</span><span class="o">/</span><span class="n">flutter_web_test</span>
-</pre></div>
-
+<span class="w">  </span><span class="err">##</span><span class="w"> </span><span class="n">These</span><span class="w"> </span><span class="n">overrides</span><span class="w"> </span><span class="n">tell</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">package</span><span class="w"> </span><span class="nn">tools</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kd">get</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">GitHub</span><span class="w"></span>
+<span class="n">dependency_overrides</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter_web</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">git</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">url</span><span class="o">:</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/flutter/</span><span class="n">flutter_web</span><span class="w"></span>
+<span class="w">      </span><span class="n">path</span><span class="o">:</span><span class="w"> </span><span class="n">packages</span><span class="o">/</span><span class="n">flutter_web</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter_web_ui</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">git</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">url</span><span class="o">:</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/flutter/</span><span class="n">flutter_web</span><span class="w"></span>
+<span class="w">      </span><span class="n">path</span><span class="o">:</span><span class="w"> </span><span class="n">packages</span><span class="o">/</span><span class="n">flutter_web_ui</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter_web_test</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">git</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">url</span><span class="o">:</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/flutter/</span><span class="n">flutter_web</span><span class="w"></span>
+<span class="w">      </span><span class="n">path</span><span class="o">:</span><span class="w"> </span><span class="n">packages</span><span class="o">/</span><span class="n">flutter_web_test</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Create <code>web</code> directory:</strong>
 Create a <code>web</code> directory to host the entry point for the web app at root level (same level as <code>lib</code> directory). <code>web/index.html</code> and <code>web/main.dart</code> needs to be added as mentioned <a href="https://github.com/flutter/flutter_web/blob/master/docs/migration_guide.md#webindexhtml-and-webmaindart">here</a></p>
 <p><strong>Building web app:</strong>
 Navigate to current working directory and get all dependencies.</p>
-<div class="highlight"><pre><span></span><span class="err">cd landingpage</span>
-<span class="err">pub get</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cd landingpage
+pub get
+</code></pre></div>
 
 <p>Dart uses <code>webdev</code> to build and run project. Make sure to activate <code>webdev</code> before building project like below. Don't forget to include it in system PATH using <code>export PATH="$PATH":"$HOME/.pub-cache/bin"</code> after activation.</p>
-<div class="highlight"><pre><span></span><span class="err">pub global activate webdev</span>
-<span class="err">webdev serve</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pub global activate webdev
+webdev serve
+</code></pre></div>
 
 <p>Web app will start running at localhost port 8080</p>
 <p>Note: Make sure that you've replaced all <code>package:flutter</code> packages with <code>package:flutter_web</code> variant.</p>
@@ -270,7 +267,7 @@ Navigate to current working directory and get all dependencies.</p>
 <h4>Step1: Getting ready &amp; Page Header</h4>
 <p>Clean up the pre-generated code by Flutter. Make <code>MyHomePage</code> <code>Stateless</code> widget. Remove the title passed into <code>MyHomePage</code>. Update the title of the app to <code>Flutter to fly !</code>.
 This is how your <code>main.dart</code> should look like:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter_web/material.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter_web/material.dart&#39;</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span>
 
@@ -296,45 +293,42 @@ This is how your <code>main.dart</code> should look like:</p>
   <span class="p">}</span>
 
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Now, lets add header and body for the landing page. Header will have site's logo and navigation links. Body will have background image, text box to submit emails to subscribe to mailing list for any content updates.</p>
 <p>First, add a linear gradient on the whole page using two different shades of white (I created a class <code>MyColors.dart</code> to hold all my custom colors).</p>
-<div class="highlight"><pre><span></span><span class="err">@override</span>
-<span class="err">  Widget build(BuildContext context) {</span>
-<span class="err">    //Add a container and provide a linear gradient.</span>
-<span class="err">    //basically use different shades of same color.</span>
-<span class="err">    return Container(</span>
-<span class="err">      decoration: BoxDecoration(</span>
-<span class="err">          gradient: LinearGradient(colors: [MyColors.white1, MyColors.white2])),</span>
-<span class="err">    );</span>
-<span class="err">  }</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">@override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="k">Add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">provide</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">linear</span><span class="w"> </span><span class="n">gradient</span><span class="p">.</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">basically</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="n">shades</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">color</span><span class="p">.</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="nl">decoration</span><span class="p">:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="nl">gradient</span><span class="p">:</span><span class="w"> </span><span class="n">LinearGradient</span><span class="p">(</span><span class="nl">colors</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="n">MyColors.white1, MyColors.white2</span><span class="o">]</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Add a <code>Scaffold</code> as child to <code>Container</code> above to hold the whole page like below:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">MyHomePage</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="o">//</span><span class="n">Add</span> <span class="n">a</span> <span class="n">container</span> <span class="ow">and</span> <span class="n">provide</span> <span class="n">a</span> <span class="n">linear</span> <span class="n">gradient</span><span class="o">.</span>
-    <span class="o">//</span><span class="n">basically</span> <span class="n">use</span> <span class="n">different</span> <span class="n">shades</span> <span class="n">of</span> <span class="n">same</span> <span class="n">color</span><span class="o">.</span>
-    <span class="k">return</span> <span class="n">Container</span><span class="p">(</span>
-      <span class="n">decoration</span><span class="p">:</span> <span class="n">BoxDecoration</span><span class="p">(</span>
-          <span class="n">gradient</span><span class="p">:</span> <span class="n">LinearGradient</span><span class="p">(</span><span class="n">colors</span><span class="p">:</span> <span class="p">[</span><span class="n">MyColors</span><span class="o">.</span><span class="n">white1</span><span class="p">,</span> <span class="n">MyColors</span><span class="o">.</span><span class="n">white2</span><span class="p">])),</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Scaffold</span><span class="p">(</span>
-        <span class="n">backgroundColor</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">transparent</span><span class="p">,</span>
-        <span class="n">body</span><span class="p">:</span> <span class="n">SingleChildScrollView</span><span class="p">(</span>
-          <span class="n">child</span><span class="p">:</span> <span class="n">Column</span><span class="p">(</span>
-            <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="n">Header</span><span class="p">(),</span> <span class="n">Body</span><span class="p">()],</span>
-          <span class="p">),</span>
-        <span class="p">),</span>
-      <span class="p">),</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">MyHomePage</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">Add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">provide</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">linear</span><span class="w"> </span><span class="n">gradient</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">basically</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="n">shades</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">color</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">decoration</span><span class="p">:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">gradient</span><span class="p">:</span><span class="w"> </span><span class="n">LinearGradient</span><span class="p">(</span><span class="n">colors</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">MyColors</span><span class="o">.</span><span class="n">white1</span><span class="p">,</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">white2</span><span class="p">])),</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">backgroundColor</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">transparent</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">SingleChildScrollView</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Column</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="n">Header</span><span class="p">(),</span><span class="w"> </span><span class="n">Body</span><span class="p">()],</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><code>SingleChildScrollView</code> will contain header and body of the page. I've created two classes: <code>Header</code> and <code>Body</code> to help us with header and body section/widgets.</p>
 <p><strong>Header Widget</strong>
@@ -342,125 +336,120 @@ Header section/widget contains logo and site's title at left side, and navigatio
 I'll use <code>Padding</code> widget to contain header section's logo and links.
 <img alt="Header logo" src="https://ptyagicodecamp.github.io/ftf_logo.jpg"></p>
 <p>Below is the code snippet that's responsible for generating logo above:</p>
-<div class="highlight"><pre><span></span><span class="err">//Builds rectangle with circular corners and Text on it and next to it as title</span>
-<span class="err">Widget buildLogo() {</span>
-<span class="err">  return Row(</span>
-<span class="err">    children: &lt;Widget&gt;[</span>
-<span class="err">      Container(</span>
-<span class="err">        width: 60,</span>
-<span class="err">        height: 60,</span>
-<span class="err">        decoration: BoxDecoration(</span>
-<span class="err">          borderRadius: BorderRadius.circular(18),</span>
-<span class="err">          gradient: LinearGradient(colors: [MyColors.blue1, MyColors.blue2],</span>
-<span class="err">          begin: Alignment.bottomRight, end: Alignment.topLeft),</span>
-<span class="err">        ),</span>
-<span class="err">        child: Center(</span>
-<span class="err">          child: Text(Strings.logoTitle,</span>
-<span class="err">          style: TextStyle(fontSize: 30, color: MyColors.white1),),</span>
-<span class="err">        ),</span>
-<span class="err">      ),</span>
-<span class="err">      //give some space between logo box and title</span>
-<span class="err">      SizedBox(</span>
-<span class="err">        width: 16,</span>
-<span class="err">      ),</span>
-<span class="err">      Text(Strings.appTitle, style: TextStyle(fontSize: 26),)</span>
-<span class="err">    ],</span>
-<span class="err">  );</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="nt">Builds</span><span class="w"> </span><span class="nt">rectangle</span><span class="w"> </span><span class="nt">with</span><span class="w"> </span><span class="nt">circular</span><span class="w"> </span><span class="nt">corners</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="nt">Text</span><span class="w"> </span><span class="nt">on</span><span class="w"> </span><span class="nt">it</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="nt">next</span><span class="w"> </span><span class="nt">to</span><span class="w"> </span><span class="nt">it</span><span class="w"> </span><span class="nt">as</span><span class="w"> </span><span class="nt">title</span><span class="w"></span>
+<span class="nt">Widget</span><span class="w"> </span><span class="nt">buildLogo</span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">Row(</span><span class="w"></span>
+<span class="w">    </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="cp">[</span><span class="w"></span>
+<span class="w">      </span><span class="nx">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="nx">width</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">height</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">decoration</span><span class="p">:</span><span class="w"> </span><span class="nx">BoxDecoration</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="nx">borderRadius</span><span class="p">:</span><span class="w"> </span><span class="nx">BorderRadius.circular</span><span class="p">(</span><span class="mi">18</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="nx">gradient</span><span class="p">:</span><span class="w"> </span><span class="nx">LinearGradient</span><span class="p">(</span><span class="nx">colors</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="nx">MyColors.blue1</span><span class="p">,</span><span class="w"> </span><span class="nx">MyColors.blue2</span><span class="cp">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="n">begin</span><span class="o">:</span><span class="w"> </span><span class="n">Alignment</span><span class="o">.</span><span class="n">bottomRight</span><span class="p">,</span><span class="w"> </span><span class="kc">end</span><span class="o">:</span><span class="w"> </span><span class="n">Alignment</span><span class="o">.</span><span class="n">topLeft</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="nf">Center</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">Text</span><span class="p">(</span><span class="n">Strings</span><span class="err">.</span><span class="n">logoTitle</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="kc">style</span><span class="err">:</span><span class="w"> </span><span class="nf">TextStyle</span><span class="p">(</span><span class="n">fontSize</span><span class="err">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="kc">color</span><span class="err">:</span><span class="w"> </span><span class="n">MyColors</span><span class="err">.</span><span class="n">white1</span><span class="p">),),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="o">//</span><span class="n">give</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="kc">space</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="n">logo</span><span class="w"> </span><span class="n">box</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">title</span><span class="w"></span>
+<span class="w">      </span><span class="nf">SizedBox</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">width</span><span class="err">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="nf">Text</span><span class="p">(</span><span class="n">Strings</span><span class="err">.</span><span class="n">appTitle</span><span class="p">,</span><span class="w"> </span><span class="kc">style</span><span class="err">:</span><span class="w"> </span><span class="nf">TextStyle</span><span class="p">(</span><span class="n">fontSize</span><span class="err">:</span><span class="w"> </span><span class="mi">26</span><span class="p">),)</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>LogIn Button:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">//Builds and decorates login button</span>
-<span class="err">Widget buildLoginButton() {</span>
-<span class="err">  return Padding(</span>
-<span class="err">    padding: EdgeInsets.all(8.0),</span>
-<span class="err">    child: InkWell(</span>
-<span class="err">      child: Container(</span>
-<span class="err">        margin: EdgeInsets.only(left: 20),</span>
-<span class="err">        width: 120,</span>
-<span class="err">        height: 40,</span>
-<span class="err">        decoration: BoxDecoration(</span>
-<span class="err">          gradient: LinearGradient(colors: [</span>
-<span class="err">            MyColors.blue1, MyColors.blue2</span>
-<span class="err">          ],</span>
-<span class="err">          begin: Alignment.bottomRight,</span>
-<span class="err">          end: Alignment.topLeft),</span>
-<span class="err">          borderRadius: BorderRadius.circular(20),</span>
-<span class="err">          boxShadow: [</span>
-<span class="err">            BoxShadow(</span>
-<span class="err">              color: MyColors.blue3.withOpacity(0.3),</span>
-<span class="err">              offset: Offset(0, 8), //Shadow starts at x=0, y=8</span>
-<span class="err">              blurRadius: 8</span>
-<span class="err">            )</span>
-<span class="err">          ]</span>
-<span class="err">        ),</span>
-<span class="err">        child: Material(</span>
-<span class="err">          color: Colors.transparent,</span>
-<span class="err">          child: Center(</span>
-<span class="err">            child: Text(Strings.loginButton,</span>
-<span class="err">            style: TextStyle(</span>
-<span class="err">              color: MyColors.white1,</span>
-<span class="err">              fontSize: 18,</span>
-<span class="err">              letterSpacing: 1</span>
-<span class="err">            ),),</span>
-<span class="err">          ),</span>
-<span class="err">        ),</span>
-<span class="err">      ),</span>
-<span class="err">    ),</span>
-<span class="err">  );</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="nt">Builds</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="nt">decorates</span><span class="w"> </span><span class="nt">login</span><span class="w"> </span><span class="nt">button</span><span class="w"></span>
+<span class="nt">Widget</span><span class="w"> </span><span class="nt">buildLoginButton</span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">Padding(</span><span class="w"></span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="nf">all</span><span class="p">(</span><span class="mf">8.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="nf">InkWell</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">margin</span><span class="err">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="err">.</span><span class="nf">only</span><span class="p">(</span><span class="kc">left</span><span class="err">:</span><span class="w"> </span><span class="mi">20</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">width</span><span class="err">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">height</span><span class="err">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">decoration</span><span class="err">:</span><span class="w"> </span><span class="nf">BoxDecoration</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">gradient</span><span class="err">:</span><span class="w"> </span><span class="nf">LinearGradient</span><span class="p">(</span><span class="n">colors</span><span class="err">:</span><span class="w"> </span><span class="cp">[</span><span class="w"></span>
+<span class="w">            </span><span class="nx">MyColors.blue1</span><span class="p">,</span><span class="w"> </span><span class="nx">MyColors.blue2</span><span class="w"></span>
+<span class="w">          </span><span class="cp">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="n">begin</span><span class="err">:</span><span class="w"> </span><span class="n">Alignment</span><span class="err">.</span><span class="n">bottomRight</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="kc">end</span><span class="err">:</span><span class="w"> </span><span class="n">Alignment</span><span class="err">.</span><span class="n">topLeft</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="n">borderRadius</span><span class="err">:</span><span class="w"> </span><span class="n">BorderRadius</span><span class="err">.</span><span class="nf">circular</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="n">boxShadow</span><span class="err">:</span><span class="w"> </span><span class="cp">[</span><span class="w"></span>
+<span class="w">            </span><span class="nx">BoxShadow</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="nx">color</span><span class="p">:</span><span class="w"> </span><span class="nx">MyColors.blue3.withOpacity</span><span class="p">(</span><span class="mf">0.3</span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="nx">offset</span><span class="p">:</span><span class="w"> </span><span class="nx">Offset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="c1">//Shadow starts at x=0, y=8</span><span class="w"></span>
+<span class="w">              </span><span class="nx">blurRadius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">            </span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="cp">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">Material</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="kc">color</span><span class="err">:</span><span class="w"> </span><span class="n">Colors</span><span class="err">.</span><span class="kc">transparent</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">Center</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">Text</span><span class="p">(</span><span class="n">Strings</span><span class="err">.</span><span class="n">loginButton</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="kc">style</span><span class="err">:</span><span class="w"> </span><span class="nf">TextStyle</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="kc">color</span><span class="err">:</span><span class="w"> </span><span class="n">MyColors</span><span class="err">.</span><span class="n">white1</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="n">fontSize</span><span class="err">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="n">letterSpacing</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="p">),),</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><img alt="Header logo" src="https://ptyagicodecamp.github.io/ftf_login.jpg"></p>
 <p><strong>Header Navigation Links:</strong>
 Now add header navigation links just before the login button created above to finish header section.</p>
 <p>Get the list of links to be shown in the header:</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Builds</span> <span class="n">navigation</span> <span class="n">list</span> <span class="k">for</span> <span class="n">header</span>
-<span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span> <span class="n">getLinksListing</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">var</span> <span class="n">links</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="s2">&quot;Samples&quot;</span><span class="p">,</span> <span class="s2">&quot;Videos&quot;</span><span class="p">,</span> <span class="s2">&quot;Plugins&quot;</span><span class="p">];</span>
-  <span class="k">return</span> <span class="n">links</span><span class="o">.</span><span class="n">map</span><span class="p">((</span><span class="n">link</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">Padding</span><span class="p">(</span>
-      <span class="n">padding</span><span class="p">:</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="mi">18</span><span class="p">),</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span>
-        <span class="n">link</span><span class="p">,</span>
-        <span class="n">style</span><span class="p">:</span> <span class="n">TextStyle</span><span class="p">(</span><span class="n">fontSize</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="n">fontWeight</span><span class="p">:</span> <span class="n">FontWeight</span><span class="o">.</span><span class="n">bold</span><span class="p">),</span>
-      <span class="p">),</span>
-    <span class="p">);</span>
-  <span class="p">})</span><span class="o">.</span><span class="n">toList</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Builds</span><span class="w"> </span><span class="n">navigation</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">header</span><span class="w"></span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getLinksListing</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">links</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Samples&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Videos&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Plugins&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">links</span><span class="o">.</span><span class="n">map</span><span class="p">((</span><span class="n">link</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Padding</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">padding</span><span class="p">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">left</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">link</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">style</span><span class="p">:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="n">fontSize</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">fontWeight</span><span class="p">:</span><span class="w"> </span><span class="n">FontWeight</span><span class="o">.</span><span class="n">bold</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="o">.</span><span class="n">toList</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Add links listing to Header:</p>
-<div class="highlight"><pre><span></span><span class="err">//Builds navigation links at the right top of landing page</span>
-<span class="err">Widget buildHeaderLinks() {</span>
-<span class="err">  return Row(</span>
-<span class="err">    mainAxisAlignment: MainAxisAlignment.spaceAround,</span>
-<span class="err">    children: getLinksListing()..add(buildLoginButton()),</span>
-<span class="err">  );</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="nt">Builds</span><span class="w"> </span><span class="nt">navigation</span><span class="w"> </span><span class="nt">links</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">right</span><span class="w"> </span><span class="nt">top</span><span class="w"> </span><span class="nt">of</span><span class="w"> </span><span class="nt">landing</span><span class="w"> </span><span class="nt">page</span><span class="w"></span>
+<span class="nt">Widget</span><span class="w"> </span><span class="nt">buildHeaderLinks</span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">Row(</span><span class="w"></span>
+<span class="w">    </span><span class="n">mainAxisAlignment</span><span class="p">:</span><span class="w"> </span><span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">spaceAround</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">children</span><span class="o">:</span><span class="w"> </span><span class="nf">getLinksListing</span><span class="p">()</span><span class="o">..</span><span class="nf">add</span><span class="p">(</span><span class="nf">buildLoginButton</span><span class="p">()),</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Finally, build header widget:</p>
-<div class="highlight"><pre><span></span><span class="nv">@override</span><span class="w"></span>
-<span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Padding</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nl">padding</span><span class="p">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="p">.</span><span class="k">symmetric</span><span class="p">(</span><span class="nl">horizontal</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="nl">vertical</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="nl">child</span><span class="p">:</span><span class="w"> </span><span class="n">buildHeader</span><span class="p">(),</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">override</span><span class="w"></span>
+<span class="nt">Widget</span><span class="w"> </span><span class="nt">build</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">return</span><span class="w"> </span><span class="nt">Padding</span><span class="o">(</span><span class="w"></span>
+<span class="w">    </span><span class="nt">padding</span><span class="o">:</span><span class="w"> </span><span class="nt">EdgeInsets</span><span class="p">.</span><span class="nc">symmetric</span><span class="o">(</span><span class="nt">horizontal</span><span class="o">:</span><span class="w"> </span><span class="nt">45</span><span class="o">,</span><span class="w"> </span><span class="nt">vertical</span><span class="o">:</span><span class="w"> </span><span class="nt">38</span><span class="o">),</span><span class="w"></span>
+<span class="w">    </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">buildHeader</span><span class="o">(),</span><span class="w"></span>
+<span class="w">  </span><span class="o">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">Widget</span><span class="w"> </span><span class="n">buildHeader</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">Row</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nl">mainAxisAlignment</span><span class="p">:</span><span class="w"> </span><span class="n">MainAxisAlignment</span><span class="p">.</span><span class="n">spaceBetween</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nl">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;[</span><span class="n">buildLogo(), buildHeaderLinks()</span><span class="o">]</span><span class="p">,</span><span class="w"></span>
+<span class="nt">Widget</span><span class="w"> </span><span class="nt">buildHeader</span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">Row(</span><span class="w"></span>
+<span class="w">    </span><span class="n">mainAxisAlignment</span><span class="p">:</span><span class="w"> </span><span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">spaceBetween</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">children</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="cp">[</span><span class="nx">buildLogo</span><span class="p">(),</span><span class="w"> </span><span class="nx">buildHeaderLinks</span><span class="p">()</span><span class="cp">]</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</pre></div>
-
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>This is how header looks at this point:
 <img alt="Flutter Web Setup" src="https://ptyagicodecamp.github.io/ftf_header.jpg"></p>
@@ -472,119 +461,116 @@ Now add header navigation links just before the login button created above to fi
 * Mailing list subscription: Text box to let user enter their email addresses to subscribe to the newsletter.</p>
 <p><strong>Adding Background image:</strong>
 All images goes inside <code>web/assets</code> directory. Background image is added aligned to right side of the page.</p>
-<div class="highlight"><pre><span></span><span class="err">//Adds background Image</span>
-<span class="err">Widget addBackground() {</span>
-<span class="err">  return FractionallySizedBox(</span>
-<span class="err">    alignment: Alignment.centerRight, //to keep images aligned to right</span>
-<span class="err">    widthFactor: .6, //covers about 60% of the screen width</span>
-<span class="err">    child: Image.network(backgroundImage, scale: .85,),</span>
-<span class="err">  );</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="nt">Adds</span><span class="w"> </span><span class="nt">background</span><span class="w"> </span><span class="nt">Image</span><span class="w"></span>
+<span class="nt">Widget</span><span class="w"> </span><span class="nt">addBackground</span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">FractionallySizedBox(</span><span class="w"></span>
+<span class="w">    </span><span class="n">alignment</span><span class="p">:</span><span class="w"> </span><span class="n">Alignment</span><span class="o">.</span><span class="n">centerRight</span><span class="p">,</span><span class="w"> </span><span class="o">//</span><span class="kc">to</span><span class="w"> </span><span class="n">keep</span><span class="w"> </span><span class="n">images</span><span class="w"> </span><span class="n">aligned</span><span class="w"> </span><span class="kc">to</span><span class="w"> </span><span class="kc">right</span><span class="w"></span>
+<span class="w">    </span><span class="n">widthFactor</span><span class="o">:</span><span class="w"> </span><span class="mf">.6</span><span class="p">,</span><span class="w"> </span><span class="o">//</span><span class="n">covers</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="mi">60</span><span class="kt">%</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="kc">screen</span><span class="w"> </span><span class="k">width</span><span class="w"></span>
+<span class="w">    </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="n">Image</span><span class="o">.</span><span class="nf">network</span><span class="p">(</span><span class="n">backgroundImage</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="err">:</span><span class="w"> </span><span class="mf">.85</span><span class="p">,),</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Let's work on welcome text title.</p>
 <p><strong>Adding Welcome Text:</strong>
 I've added welcome text at this point, and it looks like below:
 <img alt="Flutter Web Setup" src="https://ptyagicodecamp.github.io/ftf_body1.jpg"></p>
-<div class="highlight"><pre><span></span><span class="err">//Adds welcome text</span>
-<span class="err">Widget addWelcomeText() {</span>
-<span class="err">  return FractionallySizedBox(</span>
-<span class="err">    alignment: Alignment.centerLeft, //text aligned to left side</span>
-<span class="err">    widthFactor: .6, //covers about half of the screen</span>
-<span class="err">    child: Padding(</span>
-<span class="err">      padding: EdgeInsets.only(left: 48),</span>
-<span class="err">      child: Column(</span>
-<span class="err">        crossAxisAlignment: CrossAxisAlignment.start,</span>
-<span class="err">        mainAxisAlignment: MainAxisAlignment.center,</span>
-<span class="err">        children: &lt;Widget&gt;[</span>
-<span class="err">          Text(</span>
-<span class="err">            Strings.hello,</span>
-<span class="err">            style: TextStyle(</span>
-<span class="err">              fontWeight: FontWeight.bold,</span>
-<span class="err">              fontSize: 60,</span>
-<span class="err">              color: MyColors.blue4,</span>
-<span class="err">            ),</span>
-<span class="err">          ),</span>
-<span class="err">          RichText(</span>
-<span class="err">            text: TextSpan(</span>
-<span class="err">              text: Strings.welcomeTo,</span>
-<span class="err">              style: TextStyle(</span>
-<span class="err">                fontSize: 60,</span>
-<span class="err">                color: MyColors.blue4</span>
-<span class="err">              ),</span>
-<span class="err">              children: [</span>
-<span class="err">                TextSpan(</span>
-<span class="err">                  text: Strings.ftf,</span>
-<span class="err">                  style: TextStyle(</span>
-<span class="err">                    fontSize: 60,</span>
-<span class="err">                    fontWeight: FontWeight.bold,</span>
-<span class="err">                    color: Colors.black54</span>
-<span class="err">                  )</span>
-<span class="err">                )</span>
-<span class="err">              ]</span>
-<span class="err">            ),</span>
-<span class="err">          ),</span>
-<span class="err">          Padding(</span>
-<span class="err">            padding: EdgeInsets.only(left: 12.0, top: 20),</span>
-<span class="err">            child: Text(Strings.subscribeText),</span>
-<span class="err">          ),</span>
-<span class="err">          SizedBox(height: 40,), //Give some spacing</span>
-<span class="err">          EmailBox() //Alert : this will be added after next step</span>
-<span class="err">        ],</span>
-<span class="err">      ),</span>
-<span class="err">    ),</span>
-<span class="err">  );</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="nt">Adds</span><span class="w"> </span><span class="nt">welcome</span><span class="w"> </span><span class="nt">text</span><span class="w"></span>
+<span class="nt">Widget</span><span class="w"> </span><span class="nt">addWelcomeText</span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">FractionallySizedBox(</span><span class="w"></span>
+<span class="w">    </span><span class="n">alignment</span><span class="p">:</span><span class="w"> </span><span class="n">Alignment</span><span class="o">.</span><span class="n">centerLeft</span><span class="p">,</span><span class="w"> </span><span class="o">//</span><span class="kc">text</span><span class="w"> </span><span class="n">aligned</span><span class="w"> </span><span class="kc">to</span><span class="w"> </span><span class="kc">left</span><span class="w"> </span><span class="n">side</span><span class="w"></span>
+<span class="w">    </span><span class="n">widthFactor</span><span class="o">:</span><span class="w"> </span><span class="mf">.6</span><span class="p">,</span><span class="w"> </span><span class="o">//</span><span class="n">covers</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">half</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="kc">screen</span><span class="w"></span>
+<span class="w">    </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="nf">Padding</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">padding</span><span class="err">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="err">.</span><span class="nf">only</span><span class="p">(</span><span class="kc">left</span><span class="err">:</span><span class="w"> </span><span class="mi">48</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">Column</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">crossAxisAlignment</span><span class="err">:</span><span class="w"> </span><span class="n">CrossAxisAlignment</span><span class="err">.</span><span class="kc">start</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">mainAxisAlignment</span><span class="err">:</span><span class="w"> </span><span class="n">MainAxisAlignment</span><span class="err">.</span><span class="kc">center</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">children</span><span class="err">:</span><span class="w"> </span><span class="err">&lt;</span><span class="n">Widget</span><span class="err">&gt;</span><span class="cp">[</span><span class="w"></span>
+<span class="w">          </span><span class="nx">Text</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="nx">Strings.hello</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">style</span><span class="p">:</span><span class="w"> </span><span class="nx">TextStyle</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="nx">fontWeight</span><span class="p">:</span><span class="w"> </span><span class="nx">FontWeight.bold</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nx">fontSize</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nx">color</span><span class="p">:</span><span class="w"> </span><span class="nx">MyColors.blue4</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="nx">RichText</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="nx">text</span><span class="p">:</span><span class="w"> </span><span class="nx">TextSpan</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="nx">text</span><span class="p">:</span><span class="w"> </span><span class="nx">Strings.welcomeTo</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nx">style</span><span class="p">:</span><span class="w"> </span><span class="nx">TextStyle</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="nx">fontSize</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">color</span><span class="p">:</span><span class="w"> </span><span class="nx">MyColors.blue4</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="nx">children</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w"></span>
+<span class="w">                </span><span class="nx">TextSpan</span><span class="p">(</span><span class="w"></span>
+<span class="w">                  </span><span class="nx">text</span><span class="p">:</span><span class="w"> </span><span class="nx">Strings.ftf</span><span class="p">,</span><span class="w"></span>
+<span class="w">                  </span><span class="nx">style</span><span class="p">:</span><span class="w"> </span><span class="nx">TextStyle</span><span class="p">(</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">fontSize</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">fontWeight</span><span class="p">:</span><span class="w"> </span><span class="nx">FontWeight.bold</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">color</span><span class="p">:</span><span class="w"> </span><span class="nx">Colors.black54</span><span class="w"></span>
+<span class="w">                  </span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">)</span><span class="w"></span>
+<span class="w">              </span><span class="cp">]</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="nf">Padding</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">padding</span><span class="err">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="err">.</span><span class="nf">only</span><span class="p">(</span><span class="kc">left</span><span class="err">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="kc">top</span><span class="err">:</span><span class="w"> </span><span class="mi">20</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">Text</span><span class="p">(</span><span class="n">Strings</span><span class="err">.</span><span class="n">subscribeText</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="nf">SizedBox</span><span class="p">(</span><span class="n">height</span><span class="err">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,),</span><span class="w"> </span><span class="o">//</span><span class="n">Give</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">spacing</span><span class="w"></span>
+<span class="w">          </span><span class="nf">EmailBox</span><span class="p">()</span><span class="w"> </span><span class="o">//</span><span class="n">Alert</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">added</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="n">step</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Let's work on the third part of the body section: users inputting their email addresses in text box to subscribe to site.</p>
 <p><strong>Mailing list subscription:</strong>
 There're two parts to this component. One is text box for user to enter email addresses. Let's call this widget <code>EmailBox</code>. Another is button to click on to subscribe. I'm naming this widget as <code>SubscribeButton</code></p>
 <p>Here's how EmailBox code looks like:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">EmailBox</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">Padding</span><span class="p">(</span>
-      <span class="n">padding</span><span class="p">:</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="mi">74</span><span class="p">,</span> <span class="n">top</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="mi">40</span><span class="p">),</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Container</span><span class="p">(</span>
-        <span class="n">height</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-        <span class="n">decoration</span><span class="p">:</span> <span class="n">BoxDecoration</span><span class="p">(</span>
-            <span class="n">color</span><span class="p">:</span> <span class="n">MyColors</span><span class="o">.</span><span class="n">white1</span><span class="p">,</span>
-            <span class="n">borderRadius</span><span class="p">:</span> <span class="n">BorderRadius</span><span class="o">.</span><span class="n">circular</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
-            <span class="n">boxShadow</span><span class="p">:</span> <span class="p">[</span>
-              <span class="n">BoxShadow</span><span class="p">(</span>
-                  <span class="n">color</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">black12</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="n">Offset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">blurRadius</span><span class="p">:</span> <span class="mi">8</span><span class="p">)</span>
-            <span class="p">]),</span>
-        <span class="n">child</span><span class="p">:</span> <span class="n">Padding</span><span class="p">(</span>
-          <span class="n">padding</span><span class="p">:</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">symmetric</span><span class="p">(</span><span class="n">horizontal</span><span class="p">:</span> <span class="mi">20</span><span class="p">),</span>
-          <span class="n">child</span><span class="p">:</span> <span class="n">Row</span><span class="p">(</span>
-            <span class="n">mainAxisAlignment</span><span class="p">:</span> <span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">spaceBetween</span><span class="p">,</span>
-            <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-              <span class="n">Expanded</span><span class="p">(</span>
-                <span class="n">flex</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-                <span class="n">child</span><span class="p">:</span> <span class="n">TextField</span><span class="p">(</span>
-                  <span class="n">decoration</span><span class="p">:</span> <span class="n">InputDecoration</span><span class="p">(</span>
-                      <span class="n">border</span><span class="p">:</span> <span class="n">InputBorder</span><span class="o">.</span><span class="n">none</span><span class="p">,</span> <span class="n">hintText</span><span class="p">:</span> <span class="n">Strings</span><span class="o">.</span><span class="n">email_hint</span><span class="p">),</span>
-                <span class="p">),</span>
-              <span class="p">),</span>
-              <span class="n">Expanded</span><span class="p">(</span>
-                <span class="n">flex</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-                <span class="n">child</span><span class="p">:</span> <span class="n">SubscribeButton</span><span class="p">(),</span>
-              <span class="p">)</span>
-            <span class="p">],</span>
-          <span class="p">),</span>
-        <span class="p">),</span>
-      <span class="p">),</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">EmailBox</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Padding</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">padding</span><span class="p">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">left</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">:</span><span class="w"> </span><span class="mi">74</span><span class="p">,</span><span class="w"> </span><span class="n">top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">decoration</span><span class="p">:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">color</span><span class="p">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">white1</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">borderRadius</span><span class="p">:</span><span class="w"> </span><span class="n">BorderRadius</span><span class="o">.</span><span class="n">circular</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">boxShadow</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">              </span><span class="n">BoxShadow</span><span class="p">(</span><span class="w"></span>
+<span class="w">                  </span><span class="n">color</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">black12</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">:</span><span class="w"> </span><span class="n">Offset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="n">blurRadius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="p">]),</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Padding</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">padding</span><span class="p">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="n">symmetric</span><span class="p">(</span><span class="n">horizontal</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Row</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">mainAxisAlignment</span><span class="p">:</span><span class="w"> </span><span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">spaceBetween</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
+<span class="w">              </span><span class="n">Expanded</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="n">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">TextField</span><span class="p">(</span><span class="w"></span>
+<span class="w">                  </span><span class="n">decoration</span><span class="p">:</span><span class="w"> </span><span class="n">InputDecoration</span><span class="p">(</span><span class="w"></span>
+<span class="w">                      </span><span class="n">border</span><span class="p">:</span><span class="w"> </span><span class="n">InputBorder</span><span class="o">.</span><span class="n">none</span><span class="p">,</span><span class="w"> </span><span class="n">hintText</span><span class="p">:</span><span class="w"> </span><span class="n">Strings</span><span class="o">.</span><span class="n">email_hint</span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="n">Expanded</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="n">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">SubscribeButton</span><span class="p">(),</span><span class="w"></span>
+<span class="w">              </span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>SubscribeButton is called from <code>EmailBox</code>. SubscribeButton widget looks like below:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter_web/material.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter_web/material.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:landingpage/utils/myColors.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:landingpage/utils/strings.dart&#39;</span><span class="p">;</span>
 
@@ -604,7 +590,7 @@ There're two parts to this component. One is text box for user to enter email ad
             <span class="n">borderRadius</span><span class="p">:</span> <span class="n">BorderRadius</span><span class="o">.</span><span class="n">circular</span><span class="p">(</span><span class="mf">20.0</span><span class="p">),</span>
             <span class="n">boxShadow</span><span class="p">:</span> <span class="p">[</span>
               <span class="n">BoxShadow</span><span class="p">(</span>
-                  <span class="n">color</span><span class="p">:</span> <span class="n">MyColors</span><span class="o">.</span><span class="n">blue3</span><span class="o">.</span><span class="n">withOpacity</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">),</span>
+                  <span class="n">color</span><span class="p">:</span> <span class="n">MyColors</span><span class="o">.</span><span class="n">blue3</span><span class="o">.</span><span class="n">withOpacity</span><span class="p">(</span><span class="mf">.3</span><span class="p">),</span>
                   <span class="n">offset</span><span class="p">:</span> <span class="n">Offset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
                   <span class="n">blurRadius</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">)</span>
             <span class="p">]),</span>
@@ -639,8 +625,7 @@ There're two parts to this component. One is text box for user to enter email ad
     <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>The final landing page looks like this:
 <img alt="Flutter to fly landing page" src="https://ptyagicodecamp.github.io/ftf_final.jpg"></p>

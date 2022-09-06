@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -211,20 +211,20 @@
 <p><strong>Dark Theme:</strong></p>
 <p><img alt="dark-theme" src="https://ptyagicodecamp.github.io/ios_themes3.jpg"></p>
 <hr>
-<p><strong>Checkout the companion video tutorial:</strong>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZHl1DVbRpBA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p><strong>Checkout the companion video tutorial:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZHl1DVbRpBA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <hr>
 <p><strong>Note:</strong> In this article, I'll only focus on persisting data using SharedPreferences plugin. Please refer to <a href="https://ptyagicodecamp.github.io/implement-flutter-themes-using-provider.html">previous article</a> for app architecture and other details.</p>
 <h3>Step #1. <code>pubspec.yaml</code></h3>
 <p>Add package dependencies in <code>pubspec.yaml</code>:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">flutter</span><span class="o">:</span>
-    <span class="n">sdk</span><span class="o">:</span> <span class="n">flutter</span>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">sdk</span><span class="o">:</span><span class="w"> </span><span class="n">flutter</span><span class="w"></span>
 
-  <span class="err">#</span><span class="n">SharedPreferences</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">Android</span><span class="o">,</span> <span class="n">iOS</span> <span class="n">and</span> <span class="n">Web</span>
-  <span class="n">shared_preferences</span><span class="o">:</span> <span class="o">^</span><span class="mf">0.5</span><span class="o">.</span><span class="mi">6</span>
-</pre></div>
-
+<span class="w">  </span><span class="err">#</span><span class="n">SharedPreferences</span><span class="w"> </span><span class="n">plugin</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Android</span><span class="o">,</span><span class="w"> </span><span class="n">iOS</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">Web</span><span class="w"></span>
+<span class="w">  </span><span class="n">shared_preferences</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.5</span><span class="o">.</span><span class="mi">6</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Step #2. App's entry point</h3>
 <p>This code recipe is a part of the <a href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html#flutter-live-booklet-flutter-component-recipes">code recipes</a> app as shown below:</p>
@@ -234,85 +234,81 @@
 <ol>
 <li>StandAlone: Use following code snippet at the top of the <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/themes/sharedPrefs/themes_sharedPrefs.dart">themes_db.dart</a> to run it independently.</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="err">void main() =&gt; runApp(ChangeNotifierProvider&lt;ThemesNotifierSharedPrefs&gt;(</span>
-<span class="err">    child: ThemesSharedPrefsCaching(),</span>
-<span class="err">    builder: (BuildContext context) {</span>
-<span class="err">      return ThemesNotifierSharedPrefs();</span>
-<span class="err">    }));</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">void</span><span class="w"> </span><span class="nt">main</span><span class="o">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">runApp</span><span class="o">(</span><span class="nt">ChangeNotifierProvider</span><span class="o">&lt;</span><span class="nt">ThemesNotifierSharedPrefs</span><span class="o">&gt;(</span><span class="w"></span>
+<span class="w">    </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">ThemesSharedPrefsCaching</span><span class="o">(),</span><span class="w"></span>
+<span class="w">    </span><span class="nt">builder</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="err">return</span><span class="w"> </span><span class="err">ThemesNotifierSharedPrefs()</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="o">));</span><span class="w"></span>
+</code></pre></div>
 
 <ol>
 <li>Code Recipe App: Use following code in <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/router.dart"><code>router.dart</code></a> to run this code recipe as part of the code recipe app.</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="err">case THEMES_DEMO_SHAREDPREFS:</span>
-<span class="err">  return MaterialPageRoute(builder: (context) {</span>
-<span class="err">    return ChangeNotifierProvider&lt;ThemesNotifierSharedPrefs&gt;(</span>
-<span class="err">      child: ThemesSharedPrefsCaching(),</span>
-<span class="err">      builder: (BuildContext context) {</span>
-<span class="err">        return ThemesNotifierSharedPrefs();</span>
-<span class="err">      },</span>
-<span class="err">    );</span>
-<span class="err">  });</span>
-<span class="err">  break;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">case</span><span class="w"> </span><span class="nt">THEMES_DEMO_SHAREDPREFS</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">return</span><span class="w"> </span><span class="nt">MaterialPageRoute</span><span class="o">(</span><span class="nt">builder</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">return</span><span class="w"> </span><span class="err">ChangeNotifierProvider&lt;ThemesNotifierSharedPrefs&gt;(</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="nf">ThemesSharedPrefsCaching</span><span class="p">(),</span><span class="w"></span>
+<span class="w">      </span><span class="n">builder</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">return</span><span class="w"> </span><span class="nf">ThemesNotifierSharedPrefs</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="o">,</span><span class="w"></span>
+<span class="w">    </span><span class="o">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">}</span><span class="o">);</span><span class="w"></span>
+<span class="w">  </span><span class="nt">break</span><span class="o">;</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Step #3. Loading theme from SharedPreferences</h3>
 <p>Stateful widget <code>ThemesSharedPrefsCaching</code> loads active theme using <code>Provider.of&lt;ThemesNotifierSharedPrefs&gt;(context)
         .loadActiveThemeData(context);</code></p>
 <p><strong>themes_sharedPrefs.dart:</strong></p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_ThemesSharedPrefsCachingState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">ThemesSharedPrefsCaching</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">Provider</span><span class="o">.</span><span class="n">of</span><span class="o">&lt;</span><span class="n">ThemesNotifierSharedPrefs</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">loadActiveThemeData</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">MaterialApp</span><span class="p">(</span>
-        <span class="n">theme</span><span class="p">:</span> <span class="n">Provider</span><span class="o">.</span><span class="n">of</span><span class="o">&lt;</span><span class="n">ThemesNotifierSharedPrefs</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">currentThemeData</span><span class="p">,</span>
-        <span class="n">home</span><span class="p">:</span> <span class="n">Scaffold</span><span class="p">(</span>
-          <span class="n">appBar</span><span class="p">:</span> <span class="n">AppBar</span><span class="p">(</span>
-            <span class="n">title</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Theme Caching (SharedPreference)&quot;</span><span class="p">),</span>
-          <span class="p">),</span>
-          <span class="n">body</span><span class="p">:</span> <span class="n">body</span><span class="p">(),</span>
-        <span class="p">));</span>
-  <span class="p">}</span>
-  <span class="o">...</span>
-<span class="p">}</span>  
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">_ThemesSharedPrefsCachingState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">ThemesSharedPrefsCaching</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Provider</span><span class="o">.</span><span class="n">of</span><span class="o">&lt;</span><span class="n">ThemesNotifierSharedPrefs</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="o">.</span><span class="n">loadActiveThemeData</span><span class="p">(</span><span class="n">context</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">theme</span><span class="p">:</span><span class="w"> </span><span class="n">Provider</span><span class="o">.</span><span class="n">of</span><span class="o">&lt;</span><span class="n">ThemesNotifierSharedPrefs</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">currentThemeData</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">home</span><span class="p">:</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">appBar</span><span class="p">:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Theme Caching (SharedPreference)&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">body</span><span class="p">(),</span><span class="w"></span>
+<span class="w">        </span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
 
 <p><strong>themes_notifier_sp.dart:</strong></p>
 <p>Fetching <code>theme_id</code> from database, loading and notifying currentTheme:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">ThemesNotifierSharedPrefs</span> <span class="n">with</span> <span class="n">ChangeNotifier</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">ThemesNotifierSharedPrefs</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-  <span class="o">...</span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
 
-  <span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">activateTheme</span><span class="p">(</span><span class="n">MyThemes</span> <span class="n">theme</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="n">sharedPrefs</span> <span class="o">=</span> <span class="n">await</span> <span class="n">SharedPreferences</span><span class="o">.</span><span class="n">getInstance</span><span class="p">();</span>
-    <span class="n">await</span> <span class="n">sharedPrefs</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="s1">&#39;theme_id&#39;</span><span class="p">,</span> <span class="n">theme</span><span class="o">.</span><span class="n">index</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activateTheme</span><span class="p">(</span><span class="n">MyThemes</span><span class="w"> </span><span class="n">theme</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">sharedPrefs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">SharedPreferences</span><span class="o">.</span><span class="n">getInstance</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">sharedPrefs</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="s1">&#39;theme_id&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">theme</span><span class="o">.</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">void</span> <span class="n">loadActiveThemeData</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="n">sharedPrefs</span> <span class="o">=</span> <span class="n">await</span> <span class="n">SharedPreferences</span><span class="o">.</span><span class="n">getInstance</span><span class="p">();</span>
-    <span class="nb nb-Type">int</span> <span class="n">themeId</span> <span class="o">=</span> <span class="n">sharedPrefs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s1">&#39;theme_id&#39;</span><span class="p">)</span> <span class="err">??</span> <span class="n">MyThemes</span><span class="o">.</span><span class="n">light</span><span class="o">.</span><span class="n">index</span><span class="p">;</span>
-    <span class="n">currentTheme</span> <span class="o">=</span> <span class="n">MyThemes</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">themeId</span><span class="p">];</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">loadActiveThemeData</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">sharedPrefs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">SharedPreferences</span><span class="o">.</span><span class="n">getInstance</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="nb nb-Type">int</span><span class="w"> </span><span class="n">themeId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sharedPrefs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s1">&#39;theme_id&#39;</span><span class="p">)</span><span class="w"> </span><span class="err">??</span><span class="w"> </span><span class="n">MyThemes</span><span class="o">.</span><span class="n">light</span><span class="o">.</span><span class="n">index</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">currentTheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyThemes</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">themeId</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">set</span> <span class="n">currentTheme</span><span class="p">(</span><span class="n">MyThemes</span> <span class="n">theme</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">theme</span> <span class="o">!=</span> <span class="nb nb-Type">null</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">_currentTheme</span> <span class="o">=</span> <span class="n">theme</span><span class="p">;</span>
-      <span class="n">_currentThemeData</span> <span class="o">=</span> <span class="n">themeData</span><span class="p">[</span><span class="n">_currentTheme</span><span class="o">.</span><span class="n">index</span><span class="p">];</span>
-      <span class="n">notifyListeners</span><span class="p">();</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="n">set</span><span class="w"> </span><span class="n">currentTheme</span><span class="p">(</span><span class="n">MyThemes</span><span class="w"> </span><span class="n">theme</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">theme</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">_currentTheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">theme</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">_currentThemeData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">themeData</span><span class="p">[</span><span class="n">_currentTheme</span><span class="o">.</span><span class="n">index</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="n">notifyListeners</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Step #4. Switching and Saving theme to database</h3>
 <p>Switching theme toggles previously selected theme. We don't need to explicitly remove old theme since sharedPrefs key <code>theme_id</code> is updated to new value. Newly updated <code>currentTheme</code> overwrites the <code>theme_id</code> using api <code>activateTheme(...)</code>.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">ThemesNotifierSharedPrefs</span> <span class="k">with</span> <span class="n">ChangeNotifier</span> {
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="n">ThemesNotifierSharedPrefs</span> <span class="k">with</span> <span class="n">ChangeNotifier</span> {
 
   ...
 
@@ -326,8 +322,7 @@
 
   ...
 }
-</pre></div>
-
+</code></pre></div>
 
 <p>All Done !</p>
 <h3>Source Code</h3>

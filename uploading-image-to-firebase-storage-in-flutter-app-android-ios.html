@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -203,19 +203,17 @@
 <hr>
 <h1>Step #1. <code>pubspec.yaml</code> dependencies</h1>
 <p>Flutter plugin for accessing images in FirebaseStorage for Native apps:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">firebase_storage</span><span class="o">:</span> <span class="o">^</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">8</span>
-  <span class="n">firebase_core</span><span class="o">:</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">9</span>
-  <span class="n">firebase_analytics</span><span class="o">:</span> <span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">6</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase_storage</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">8</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase_core</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">9</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase_analytics</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">6</span><span class="w"></span>
+</code></pre></div>
 
 <p>Image picker plugin to select an image from device or emulator:</p>
-<div class="highlight"><pre><span></span><span class="c">dependencies:</span>
-<span class="c">  #Picking image from gallery</span>
-<span class="c">  image_picker: ^0.6.7+4</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>dependencies:
+  #Picking image from gallery
+  image_picker: ^0.6.7+4
+</code></pre></div>
 
 <p><strong><em>Note:</em></strong> This code recipe should work on Flutter Web and/or Desktop to upload image as far as it's able to get reference to the <code>File</code> on device. The <code>image_picker</code> plugin to select an image is only supported on Android and iOS platforms.</p>
 <hr>
@@ -225,67 +223,64 @@ In this code recipe, you'll need to configure firebase rule to write to the Fire
 <hr>
 <h1>Step #3. Picking Image</h1>
 <p>An image file <code>_imageFile</code> is selected on device and/or emulator using <code>ImagePicker</code> Fluter plugin.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">UploadingImageToFirebaseStorage</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">_UploadingImageToFirebaseStorageState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span>
-      <span class="n">_UploadingImageToFirebaseStorageState</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">UploadingImageToFirebaseStorage</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">_UploadingImageToFirebaseStorageState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="n">_UploadingImageToFirebaseStorageState</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">class</span> <span class="n">_UploadingImageToFirebaseStorageState</span>
-    <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">UploadingImageToFirebaseStorage</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="n">File</span> <span class="n">_imageFile</span><span class="p">;</span>
+<span class="k">class</span><span class="w"> </span><span class="n">_UploadingImageToFirebaseStorageState</span><span class="w"></span>
+<span class="w">    </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">UploadingImageToFirebaseStorage</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">File</span><span class="w"> </span><span class="n">_imageFile</span><span class="p">;</span><span class="w"></span>
 
-  <span class="o">///</span><span class="n">NOTE</span><span class="p">:</span> <span class="n">Only</span> <span class="n">supported</span> <span class="n">on</span> <span class="n">Android</span> <span class="o">&amp;</span> <span class="n">iOS</span>
-  <span class="o">///</span><span class="n">Needs</span> <span class="n">image_picker</span> <span class="n">plugin</span> <span class="p">{</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pub</span><span class="o">.</span><span class="n">dev</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">image_picker</span><span class="p">}</span>
-  <span class="n">final</span> <span class="n">picker</span> <span class="o">=</span> <span class="n">ImagePicker</span><span class="p">();</span>
+<span class="w">  </span><span class="o">///</span><span class="n">NOTE</span><span class="p">:</span><span class="w"> </span><span class="n">Only</span><span class="w"> </span><span class="n">supported</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Android</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">iOS</span><span class="w"></span>
+<span class="w">  </span><span class="o">///</span><span class="n">Needs</span><span class="w"> </span><span class="n">image_picker</span><span class="w"> </span><span class="n">plugin</span><span class="w"> </span><span class="p">{</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pub</span><span class="o">.</span><span class="n">dev</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">image_picker</span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">picker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImagePicker</span><span class="p">();</span><span class="w"></span>
 
-  <span class="n">Future</span> <span class="n">pickImage</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="n">final</span> <span class="n">pickedFile</span> <span class="o">=</span> <span class="n">await</span> <span class="n">picker</span><span class="o">.</span><span class="n">getImage</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="n">ImageSource</span><span class="o">.</span><span class="n">camera</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Future</span><span class="w"> </span><span class="n">pickImage</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">final</span><span class="w"> </span><span class="n">pickedFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">picker</span><span class="o">.</span><span class="n">getImage</span><span class="p">(</span><span class="n">source</span><span class="p">:</span><span class="w"> </span><span class="n">ImageSource</span><span class="o">.</span><span class="n">camera</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-      <span class="n">_imageFile</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">pickedFile</span><span class="o">.</span><span class="n">path</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
-  <span class="o">...</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">_imageFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">pickedFile</span><span class="o">.</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h1>Step #4 Uploading Image to FirebaseStorage</h1>
 <p>Once an image is selected using ImagePicker, it will be displayed in the screen. Clicking on 'Upload Image' button on screen will upload the image to Firebase Storage. Make sure that FirebaseStorage <code>write</code> rules are configured appropriately. I'm temporarily enabling write access on FirebaseStorage access using <code>allow write: if true;</code>. Make sure to disable it once you've confirmed the functionality. It's always good idea to put write access behind the successful user login.</p>
 <p>The following code will take the image file on device and upload it to the <code>uploads</code> folder in the FirebaseStorage.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_UploadingImageToFirebaseStorageState</span>
-    <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">UploadingImageToFirebaseStorage</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="n">File</span> <span class="n">_imageFile</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">_UploadingImageToFirebaseStorageState</span><span class="w"></span>
+<span class="w">    </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">UploadingImageToFirebaseStorage</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">File</span><span class="w"> </span><span class="n">_imageFile</span><span class="p">;</span><span class="w"></span>
 
-  <span class="o">...</span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
 
-  <span class="n">Future</span> <span class="n">uploadImageToFirebase</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="nb nb-Type">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">_imageFile</span><span class="o">.</span><span class="n">path</span><span class="p">);</span>
-    <span class="n">StorageReference</span> <span class="n">firebaseStorageRef</span> <span class="o">=</span>
-        <span class="n">FirebaseStorage</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span><span class="o">.</span><span class="n">child</span><span class="p">(</span><span class="s1">&#39;uploads/$fileName&#39;</span><span class="p">);</span>
-    <span class="n">StorageUploadTask</span> <span class="n">uploadTask</span> <span class="o">=</span> <span class="n">firebaseStorageRef</span><span class="o">.</span><span class="n">putFile</span><span class="p">(</span><span class="n">_imageFile</span><span class="p">);</span>
-    <span class="n">StorageTaskSnapshot</span> <span class="n">taskSnapshot</span> <span class="o">=</span> <span class="n">await</span> <span class="n">uploadTask</span><span class="o">.</span><span class="n">onComplete</span><span class="p">;</span>
-    <span class="n">taskSnapshot</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(</span>
-          <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done: $value&quot;</span><span class="p">),</span>
-        <span class="p">);</span>
-  <span class="p">}</span>
-  <span class="o">...</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="n">Future</span><span class="w"> </span><span class="n">uploadImageToFirebase</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">fileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">basename</span><span class="p">(</span><span class="n">_imageFile</span><span class="o">.</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">StorageReference</span><span class="w"> </span><span class="n">firebaseStorageRef</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">        </span><span class="n">FirebaseStorage</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span><span class="o">.</span><span class="n">child</span><span class="p">(</span><span class="s1">&#39;uploads/$fileName&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">StorageUploadTask</span><span class="w"> </span><span class="n">uploadTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firebaseStorageRef</span><span class="o">.</span><span class="n">putFile</span><span class="p">(</span><span class="n">_imageFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">StorageTaskSnapshot</span><span class="w"> </span><span class="n">taskSnapshot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">uploadTask</span><span class="o">.</span><span class="n">onComplete</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">taskSnapshot</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done: $value&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h2>iOS Info.list</h2>
 <p>Don't forget to add camera related permissions to <code>Info.plist</code>.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;key&gt;</span>NSCameraUsageDescription<span class="nt">&lt;/key&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;key&gt;</span>NSCameraUsageDescription<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;string&gt;</span>Need to access your camera to capture a photo add and update profile picture.<span class="nt">&lt;/string&gt;</span>
 
 <span class="nt">&lt;key&gt;</span>NSPhotoLibraryUsageDescription<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;string&gt;</span>Need to access your photo library to select a photo add and update profile picture<span class="nt">&lt;/string&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h3>Source code repo</h3>

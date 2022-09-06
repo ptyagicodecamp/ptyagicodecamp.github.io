@@ -93,7 +93,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -186,104 +186,100 @@
     <h3>Declaring Signing credentials</h3>
 <p>Never put your signing apk credentials in github or any public sharable place. Always put them in a non-committable file. I'll be using local gradle installations's <code>gradle.properties</code> to store signing creds. It sits at root level of your project. Alternately, you can also use <path-to-.gradle-dir>/.gradle/.gradle.properties.</p>
 <h4>Declaring release apk credentials</h4>
-<div class="highlight"><pre><span></span><span class="err">RELEASE_KEYSTORE_FILE={path to your release keystore}</span>
-<span class="err">RELEASE_KEYSTORE_PASSWORD=*****</span>
-<span class="err">RELEASE_KEYSTORE_ALIAS=*****</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>RELEASE_KEYSTORE_FILE={path to your release keystore}
+RELEASE_KEYSTORE_PASSWORD=*****
+RELEASE_KEYSTORE_ALIAS=*****
+</code></pre></div>
 
 <h4>Declaring debug apk credentials</h4>
-<div class="highlight"><pre><span></span><span class="err">DEBUG_KEYSTORE_FILE={path to your debug keystore}</span>
-<span class="err">DEBUG_KEYSTORE_PASSWORD=*****</span>
-<span class="err">DEBUG_KEYSTORE_ALIAS=*****</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>DEBUG_KEYSTORE_FILE={path to your debug keystore}
+DEBUG_KEYSTORE_PASSWORD=*****
+DEBUG_KEYSTORE_ALIAS=*****
+</code></pre></div>
 
 <p>Note: There is no quotes around file path, passwords and alias.</p>
 <h3>Loading variables from gradle.properties into build.gradle</h3>
-<div class="highlight"><pre><span></span><span class="n">Properties</span> <span class="n">properties</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Properties</span><span class="p">()</span>
-<span class="n">properties</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">rootProject</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="s1">&#39;gradle.properties&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">newDataInputStream</span><span class="p">())</span>
-<span class="n">def</span> <span class="n">RELEASE_KEYSTORE_FILE</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;RELEASE_KEYSTORE_FILE&#39;</span><span class="p">)</span>
-<span class="n">def</span> <span class="n">RELEASE_KEYSTORE_PASSWORD</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;RELEASE_KEYSTORE_PASSWORD&#39;</span><span class="p">)</span>
-<span class="n">def</span> <span class="n">RELEASE_KEYSTORE_ALIAS</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;RELEASE_KEYSTORE_ALIAS&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Properties</span><span class="w"> </span><span class="n">properties</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">Properties</span><span class="p">()</span><span class="w"></span>
+<span class="n">properties</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">rootProject</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="s1">&#39;gradle.properties&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">newDataInputStream</span><span class="p">())</span><span class="w"></span>
+<span class="n">def</span><span class="w"> </span><span class="n">RELEASE_KEYSTORE_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;RELEASE_KEYSTORE_FILE&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="n">def</span><span class="w"> </span><span class="n">RELEASE_KEYSTORE_PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;RELEASE_KEYSTORE_PASSWORD&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="n">def</span><span class="w"> </span><span class="n">RELEASE_KEYSTORE_ALIAS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;RELEASE_KEYSTORE_ALIAS&#39;</span><span class="p">)</span><span class="w"></span>
 
-<span class="n">def</span> <span class="n">DEBUG_KEYSTORE_FILE</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;DEBUG_KEYSTORE_FILE&#39;</span><span class="p">)</span>
-<span class="n">def</span> <span class="n">DEBUG_KEYSTORE_PASSWORD</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;DEBUG_KEYSTORE_PASSWORD&#39;</span><span class="p">)</span>
-<span class="n">def</span> <span class="n">DEBUG_KEYSTORE_ALIAS</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;DEBUG_KEYSTORE_ALIAS&#39;</span><span class="p">)</span>
-</pre></div>
-
+<span class="n">def</span><span class="w"> </span><span class="n">DEBUG_KEYSTORE_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;DEBUG_KEYSTORE_FILE&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="n">def</span><span class="w"> </span><span class="n">DEBUG_KEYSTORE_PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;DEBUG_KEYSTORE_PASSWORD&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="n">def</span><span class="w"> </span><span class="n">DEBUG_KEYSTORE_ALIAS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">properties</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s1">&#39;DEBUG_KEYSTORE_ALIAS&#39;</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Defining Signing config in <code>build.gradle</code></h3>
-<div class="highlight"><pre><span></span><span class="n">signingConfigs</span> <span class="err">{</span>
-        <span class="n">debug</span> <span class="err">{</span>
-            <span class="n">storeFile</span> <span class="n">file</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">DEBUG_KEYSTORE_FILE</span><span class="p">))</span>
-            <span class="n">storePassword</span> <span class="n">DEBUG_KEYSTORE_PASSWORD</span>
-            <span class="n">keyAlias</span> <span class="n">DEBUG_KEY_ALIAS</span>
-            <span class="n">keyPassword</span> <span class="n">DEBUG_KEY_PASSWORD</span>
-        <span class="err">}</span>
+<div class="highlight"><pre><span></span><code>signingConfigs {
+        debug {
+            storeFile file(new File(DEBUG_KEYSTORE_FILE))
+            storePassword DEBUG_KEYSTORE_PASSWORD
+            keyAlias DEBUG_KEY_ALIAS
+            keyPassword DEBUG_KEY_PASSWORD
+        }
 
-        <span class="n">release</span> <span class="err">{</span>
-            <span class="n">storeFile</span> <span class="n">file</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">RELEASE_KEYSTORE_FILE</span><span class="p">))</span>
-            <span class="n">storePassword</span> <span class="n">RELEASE_KEYSTORE_PASSWORD</span>
-            <span class="n">keyAlias</span> <span class="n">RELEASE_KEY_ALIAS</span>
-            <span class="n">keyPassword</span> <span class="n">RELEASE_KEY_PASSWORD</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-</pre></div>
-
+        release {
+            storeFile file(new File(RELEASE_KEYSTORE_FILE))
+            storePassword RELEASE_KEYSTORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+    }
+</code></pre></div>
 
 <p>Note: Order of defining <code>buildTypes</code> block and <code>signingConfigs</code> block is very important. <code>signingConfigs</code> comes before <code>buildTypes</code> block.</p>
 <h3>Putting All together</h3>
 <p>Full signing configuration in <code>build.gradle</code> will look like this:</p>
-<div class="highlight"><pre><span></span><span class="n">apply</span> <span class="n">plugin</span><span class="p">:</span> <span class="s1">&#39;com.android.application&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">apply</span> <span class="nv">plugin</span>: <span class="s1">&#39;</span><span class="s">com.android.application</span><span class="s1">&#39;</span>
 
-<span class="n">android</span> <span class="err">{</span>
-    <span class="n">compileSdkVersion</span> <span class="mi">22</span>
-    <span class="n">buildToolsVersion</span> <span class="ss">&quot;22.0.1&quot;</span>
+<span class="nv">android</span> {
+    <span class="nv">compileSdkVersion</span> <span class="mi">22</span>
+    <span class="nv">buildToolsVersion</span> <span class="s2">&quot;</span><span class="s">22.0.1</span><span class="s2">&quot;</span>
 
-    <span class="n">defaultConfig</span> <span class="err">{</span>
-        <span class="n">applicationId</span> <span class="ss">&quot;com.myawesomeproject.id&quot;</span>
-        <span class="n">minSdkVersion</span> <span class="mi">14</span>
-        <span class="n">targetSdkVersion</span> <span class="mi">24</span>
-        <span class="n">versionCode</span> <span class="mi">1</span>
-        <span class="n">versionName</span> <span class="ss">&quot;1.1&quot;</span>
-    <span class="err">}</span>
+    <span class="nv">defaultConfig</span> {
+        <span class="nv">applicationId</span> <span class="s2">&quot;</span><span class="s">com.myawesomeproject.id</span><span class="s2">&quot;</span>
+        <span class="nv">minSdkVersion</span> <span class="mi">14</span>
+        <span class="nv">targetSdkVersion</span> <span class="mi">24</span>
+        <span class="nv">versionCode</span> <span class="mi">1</span>
+        <span class="nv">versionName</span> <span class="s2">&quot;</span><span class="s">1.1</span><span class="s2">&quot;</span>
+    }
 
-    <span class="n">signingConfigs</span> <span class="err">{</span>
-        <span class="n">debug</span> <span class="err">{</span>
-            <span class="n">storeFile</span> <span class="n">file</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">DEBUG_KEYSTORE_FILE</span><span class="p">))</span>
-            <span class="n">storePassword</span> <span class="n">DEBUG_KEYSTORE_PASSWORD</span>
-            <span class="n">keyAlias</span> <span class="n">DEBUG_KEY_ALIAS</span>
-            <span class="n">keyPassword</span> <span class="n">DEBUG_KEY_PASSWORD</span>
-        <span class="err">}</span>
+    <span class="nv">signingConfigs</span> {
+        <span class="nv">debug</span> {
+            <span class="nv">storeFile</span> <span class="nv">file</span><span class="ss">(</span><span class="nv">new</span> <span class="nv">File</span><span class="ss">(</span><span class="nv">DEBUG_KEYSTORE_FILE</span><span class="ss">))</span>
+            <span class="nv">storePassword</span> <span class="nv">DEBUG_KEYSTORE_PASSWORD</span>
+            <span class="nv">keyAlias</span> <span class="nv">DEBUG_KEY_ALIAS</span>
+            <span class="nv">keyPassword</span> <span class="nv">DEBUG_KEY_PASSWORD</span>
+        }
 
-        <span class="n">release</span> <span class="err">{</span>
-            <span class="n">storeFile</span> <span class="n">file</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">RELEASE_KEYSTORE_FILE</span><span class="p">))</span>
-            <span class="n">storePassword</span> <span class="n">RELEASE_KEYSTORE_PASSWORD</span>
-            <span class="n">keyAlias</span> <span class="n">RELEASE_KEY_ALIAS</span>
-            <span class="n">keyPassword</span> <span class="n">RELEASE_KEY_PASSWORD</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
+        <span class="nv">release</span> {
+            <span class="nv">storeFile</span> <span class="nv">file</span><span class="ss">(</span><span class="nv">new</span> <span class="nv">File</span><span class="ss">(</span><span class="nv">RELEASE_KEYSTORE_FILE</span><span class="ss">))</span>
+            <span class="nv">storePassword</span> <span class="nv">RELEASE_KEYSTORE_PASSWORD</span>
+            <span class="nv">keyAlias</span> <span class="nv">RELEASE_KEY_ALIAS</span>
+            <span class="nv">keyPassword</span> <span class="nv">RELEASE_KEY_PASSWORD</span>
+        }
+    }
 
-    <span class="n">buildTypes</span> <span class="err">{</span>
-        <span class="n">debug</span> <span class="err">{</span>
-            <span class="n">signingConfig</span> <span class="n">signingConfigs</span><span class="p">.</span><span class="n">debug</span>
-            <span class="n">minifyEnabled</span> <span class="k">false</span>
-        <span class="err">}</span>
+    <span class="nv">buildTypes</span> {
+        <span class="nv">debug</span> {
+            <span class="nv">signingConfig</span> <span class="nv">signingConfigs</span>.<span class="nv">debug</span>
+            <span class="nv">minifyEnabled</span> <span class="nv">false</span>
+        }
 
-        <span class="n">release</span> <span class="err">{</span>
-            <span class="n">signingConfig</span> <span class="n">signingConfigs</span><span class="p">.</span><span class="n">release</span>
-            <span class="n">minifyEnabled</span> <span class="k">true</span>
-            <span class="n">proguardFiles</span> <span class="n">getDefaultProguardFile</span><span class="p">(</span><span class="s1">&#39;proguard-android.txt&#39;</span><span class="p">),</span> <span class="s1">&#39;proguard-rules.pro&#39;</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-<span class="err">}</span> <span class="o">//</span><span class="n">closing</span> <span class="n">android</span> <span class="n">block</span>
+        <span class="nv">release</span> {
+            <span class="nv">signingConfig</span> <span class="nv">signingConfigs</span>.<span class="nv">release</span>
+            <span class="nv">minifyEnabled</span> <span class="nv">true</span>
+            <span class="nv">proguardFiles</span> <span class="nv">getDefaultProguardFile</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">proguard-android.txt</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;</span><span class="s">proguard-rules.pro</span><span class="s1">&#39;</span>
+        }
+    }
+} <span class="o">//</span><span class="nv">closing</span> <span class="nv">android</span> <span class="nv">block</span>
 
 
-<span class="n">dependencies</span> <span class="err">{</span>
-    <span class="n">compile</span> <span class="n">fileTree</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span> <span class="s1">&#39;libs&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;*.jar&#39;</span><span class="p">])</span>
-<span class="err">}</span>
-</pre></div>
+<span class="nv">dependencies</span> {
+    <span class="nv">compile</span> <span class="nv">fileTree</span><span class="ss">(</span><span class="nv">dir</span>: <span class="s1">&#39;</span><span class="s">libs</span><span class="s1">&#39;</span>, <span class="k">include</span>: [<span class="s1">&#39;</span><span class="s">*.jar</span><span class="s1">&#39;</span>]<span class="ss">)</span>
+}
+</code></pre></div>
   </div>
   <div class="tag-cloud">
     <p>

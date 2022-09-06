@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -214,18 +214,16 @@
 <p>This code recipe would demonstrate image Loading from Firebase Storage in Flutter Native and Web Apps.</p>
 <h3>Step #1. <code>pubspec.yaml</code> dependencies</h3>
 <p>Flutter plugin for accessing images in FirebaseStorage for Native apps:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">firebase_storage</span><span class="o">:</span> <span class="o">^</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">8</span>
-  <span class="n">firebase_core</span><span class="o">:</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">9</span>
-  <span class="n">firebase_analytics</span><span class="o">:</span> <span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">6</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase_storage</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">8</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase_core</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">9</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase_analytics</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">6</span><span class="w"></span>
+</code></pre></div>
 
 <p>Flutter plugin for accessing files in Firebase Storage for Web apps:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">firebase</span><span class="o">:</span> <span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">4</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">4</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h3>Step #2. Firebase Project review</h3>
@@ -244,77 +242,74 @@
 <hr>
 <h3>Step #3. Code Structure for loading image</h3>
 <p>I'll be using <code>StatefulWidget</code> to load image since I'll be toggling between two images available in my FirebaseStorage bucket. <code>FutureBuilder</code> widget is used to fetch the image from the Storage, and display the image depending on the connectionState and successful image retrieval.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">LoadFirbaseStorageImage</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">_LoadFirbaseStorageImageState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span>
-      <span class="n">_LoadFirbaseStorageImageState</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">LoadFirbaseStorageImage</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">_LoadFirbaseStorageImageState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="n">_LoadFirbaseStorageImageState</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">class</span> <span class="n">_LoadFirbaseStorageImageState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">LoadFirbaseStorageImage</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="o">...</span>
+<span class="k">class</span><span class="w"> </span><span class="n">_LoadFirbaseStorageImageState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">LoadFirbaseStorageImage</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
 
-  <span class="n">Expanded</span><span class="p">(</span>
-    <span class="o">...</span>
-    <span class="o">//</span><span class="n">Image</span> <span class="n">Loading</span> <span class="n">code</span> <span class="n">goes</span> <span class="n">here</span>
-    <span class="n">child</span><span class="p">:</span> <span class="n">FutureBuilder</span><span class="p">(</span>
-            <span class="n">future</span><span class="p">:</span> <span class="n">_getImage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">image</span><span class="p">),</span>
-            <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">snapshot</span><span class="p">)</span> <span class="p">{</span>
-              <span class="k">if</span> <span class="p">(</span><span class="n">snapshot</span><span class="o">.</span><span class="n">connectionState</span> <span class="o">==</span>
-                  <span class="n">ConnectionState</span><span class="o">.</span><span class="n">done</span><span class="p">)</span>
-                <span class="k">return</span> <span class="n">Container</span><span class="p">(</span>
-                  <span class="n">height</span><span class="p">:</span>
-                      <span class="n">MediaQuery</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">1.25</span><span class="p">,</span>
-                  <span class="n">width</span><span class="p">:</span>
-                      <span class="n">MediaQuery</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">1.25</span><span class="p">,</span>
-                  <span class="n">child</span><span class="p">:</span> <span class="n">snapshot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                <span class="p">);</span>
+<span class="w">  </span><span class="n">Expanded</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="o">...</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">Image</span><span class="w"> </span><span class="n">Loading</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">goes</span><span class="w"> </span><span class="n">here</span><span class="w"></span>
+<span class="w">    </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">FutureBuilder</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">future</span><span class="p">:</span><span class="w"> </span><span class="n">_getImage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">image</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">builder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">snapshot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snapshot</span><span class="o">.</span><span class="n">connectionState</span><span class="w"> </span><span class="o">==</span><span class="w"></span>
+<span class="w">                  </span><span class="n">ConnectionState</span><span class="o">.</span><span class="n">done</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">                  </span><span class="n">height</span><span class="p">:</span><span class="w"></span>
+<span class="w">                      </span><span class="n">MediaQuery</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1.25</span><span class="p">,</span><span class="w"></span>
+<span class="w">                  </span><span class="n">width</span><span class="p">:</span><span class="w"></span>
+<span class="w">                      </span><span class="n">MediaQuery</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1.25</span><span class="p">,</span><span class="w"></span>
+<span class="w">                  </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">snapshot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="p">);</span><span class="w"></span>
 
-              <span class="k">if</span> <span class="p">(</span><span class="n">snapshot</span><span class="o">.</span><span class="n">connectionState</span> <span class="o">==</span>
-                  <span class="n">ConnectionState</span><span class="o">.</span><span class="n">waiting</span><span class="p">)</span>
-                <span class="k">return</span> <span class="n">Container</span><span class="p">(</span>
-                    <span class="n">height</span><span class="p">:</span> <span class="n">MediaQuery</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span>
-                        <span class="mf">1.25</span><span class="p">,</span>
-                    <span class="n">width</span><span class="p">:</span> <span class="n">MediaQuery</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span>
-                        <span class="mf">1.25</span><span class="p">,</span>
-                    <span class="n">child</span><span class="p">:</span> <span class="n">CircularProgressIndicator</span><span class="p">());</span>
+<span class="w">              </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snapshot</span><span class="o">.</span><span class="n">connectionState</span><span class="w"> </span><span class="o">==</span><span class="w"></span>
+<span class="w">                  </span><span class="n">ConnectionState</span><span class="o">.</span><span class="n">waiting</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">                    </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="n">MediaQuery</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span><span class="w"> </span><span class="o">/</span><span class="w"></span>
+<span class="w">                        </span><span class="mf">1.25</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="n">width</span><span class="p">:</span><span class="w"> </span><span class="n">MediaQuery</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="w"> </span><span class="o">/</span><span class="w"></span>
+<span class="w">                        </span><span class="mf">1.25</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">CircularProgressIndicator</span><span class="p">());</span><span class="w"></span>
 
-              <span class="k">return</span> <span class="n">Container</span><span class="p">();</span>
-            <span class="p">},</span>
-          <span class="p">),</span>
-        <span class="p">),</span>
-        <span class="o">...</span>
-        <span class="o">//</span><span class="n">This</span> <span class="k">is</span> <span class="n">button</span> <span class="n">to</span> <span class="n">toggle</span> <span class="n">image</span><span class="o">.</span>
-        <span class="n">loadButton</span><span class="p">(</span><span class="n">context</span><span class="p">),</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="n">Container</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="o">...</span><span class="w"></span>
+<span class="w">        </span><span class="o">//</span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">button</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">toggle</span><span class="w"> </span><span class="n">image</span><span class="o">.</span><span class="w"></span>
+<span class="w">        </span><span class="n">loadButton</span><span class="p">(</span><span class="n">context</span><span class="p">),</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><code>_getImage(...)</code> is responsible for directing the call to appropriate library targeted to specific platform. For example, native or web. <code>FireStorageService</code> is the interface that internally fetches image using the correct platform specific library.</p>
-<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span> <span class="n">_getImage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="nb nb-Type">String</span> <span class="n">image</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">Image</span> <span class="n">m</span><span class="p">;</span>
-  <span class="n">await</span> <span class="n">FireStorageService</span><span class="o">.</span><span class="n">loadFromStorage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">downloadUrl</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">network</span><span class="p">(</span>
-      <span class="n">downloadUrl</span><span class="o">.</span><span class="n">toString</span><span class="p">(),</span>
-      <span class="n">fit</span><span class="p">:</span> <span class="n">BoxFit</span><span class="o">.</span><span class="n">scaleDown</span><span class="p">,</span>
-    <span class="p">);</span>
-  <span class="p">});</span>
+<div class="highlight"><pre><span></span><code><span class="n">Future</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_getImage</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">image</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Image</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">FireStorageService</span><span class="o">.</span><span class="n">loadFromStorage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">image</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">downloadUrl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Image</span><span class="o">.</span><span class="n">network</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">downloadUrl</span><span class="o">.</span><span class="n">toString</span><span class="p">(),</span><span class="w"></span>
+<span class="w">      </span><span class="n">fit</span><span class="p">:</span><span class="w"> </span><span class="n">BoxFit</span><span class="o">.</span><span class="n">scaleDown</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">});</span><span class="w"></span>
 
-  <span class="k">return</span> <span class="n">m</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Checkout <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/plugins/firetop/storage">this plugins</a> directory to familiarize yourself with the platform specific call re-direction.</p>
 <p><img alt="Flutter-Plugins" src="https://ptyagicodecamp.github.io/image_fb_plugin.jpg"></p>
 <p>File <code>fire_storage_service.dart</code> uses <code>dart.library</code> to decide on redirecting calls to native vs web implementation for <code>FireStorageService</code>.</p>
-<div class="highlight"><pre><span></span><span class="k">export</span> <span class="s1">&#39;unsupported_storage.dart&#39;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="s1">&#39;web_storage.dart&#39;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">io</span><span class="p">)</span> <span class="s1">&#39;mobile_storage.dart&#39;</span><span class="p">;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="s1">&#39;unsupported_storage.dart&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">html</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;web_storage.dart&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">io</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;mobile_storage.dart&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 
 <p>Any platform which is not web or native falls back to <code>unsupported_storage.dart</code> file:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">FireStorageService</span> <span class="n">extends</span> <span class="n">ChangeNotifier</span> <span class="p">{</span>
   <span class="n">FireStorageService</span><span class="o">.</span><span class="n">_</span><span class="p">();</span>
@@ -324,30 +319,28 @@
     <span class="n">throw</span> <span class="p">(</span><span class="s2">&quot;Platform not found&quot;</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong><em>Note:</em></strong> <a href="https://ptyagicodecamp.github.io/migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps.html">Checkout my previous article</a> about plugins directory structure in details, and supporting web and native app's from single source code.</p>
 <hr>
 <h3>Step #4. Loading Image in Flutter Native App</h3>
 <p>Let's take a look at Native variant of <code>FireStorageService</code> in <code>mobile_storage.dart</code> file below:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:firebase_storage/firebase_storage.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:firebase_storage/firebase_storage.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">FireStorageService</span> <span class="n">extends</span> <span class="n">ChangeNotifier</span> <span class="p">{</span>
   <span class="n">FireStorageService</span><span class="p">();</span>
 
-  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadFromStorage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">image</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">await</span> <span class="n">FirebaseStorage</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span><span class="o">.</span><span class="n">child</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">();</span>
+  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadFromStorage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">image</span><span class="p">)</span> <span class="k">async</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">FirebaseStorage</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span><span class="o">.</span><span class="n">child</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">();</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h3>Step #5. Loading Image in Flutter Web App</h3>
 <p>Let's move on to Web variant of <code>FireStorageService</code> in <code>web_storage.dart</code> file below:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:firebase/firebase.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:firebase/firebase.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">FireStorageService</span> <span class="n">extends</span> <span class="n">ChangeNotifier</span> <span class="p">{</span>
@@ -362,13 +355,12 @@
         <span class="n">messagingSenderId</span><span class="p">:</span> <span class="s2">&quot;728428768644&quot;</span><span class="p">);</span>
   <span class="p">}</span>
 
-  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadFromStorage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">image</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="n">var</span> <span class="n">url</span> <span class="o">=</span> <span class="n">await</span> <span class="n">storage</span><span class="p">()</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">();</span>
+  <span class="n">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">dynamic</span><span class="o">&gt;</span> <span class="n">loadFromStorage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">image</span><span class="p">)</span> <span class="k">async</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">url</span> <span class="o">=</span> <span class="k">await</span> <span class="n">storage</span><span class="p">()</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">();</span>
     <span class="k">return</span> <span class="n">url</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Please note that you would need to provide Firebase web project configuration to access <code>storage()</code> instance for web.</p>
 <p>Checkout the source code for detailed implementation. As usual, this code recipe is linked from main <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/">flutter_widgets</a> code recipes sample app.</p>

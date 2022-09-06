@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -190,9 +190,8 @@ Android libraries. It’s a default repository for Android Studio. To demonstrat
 publishing an OpenSource Android library, I'm using <a href="https://ptyagicodecamp.github.io/webviewoverlay-widget-library.html">WebViewOverlay widget library</a>
 for example. After uploading to JCenter artifact repo, <code>WebViewOverlay</code> widget can be dropped-in to your
 project like this:</p>
-<div class="highlight"><pre><span></span><span class="err">compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.2&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.2&#39;
+</code></pre></div>
 
 <h2>Uploading Android library (in aar format) to Bintray</h2>
 <ul>
@@ -229,83 +228,78 @@ Refer to <code>WebViewOverlay</code> at <a href="https://github.com/ptyagicodeca
 <li>Setup Android Studio project to be able to publish library to <code>jcenter()</code> Maven repo, and
 add Bintray plugin to project’s <code>build.gradle</code>. Root level <code>build.gradle</code> will look like this:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">buildscript</span> <span class="p">{</span>
-    <span class="n">repositories</span> <span class="p">{</span>
-        <span class="n">jcenter</span><span class="p">()</span>
-    <span class="p">}</span>
-    <span class="n">dependencies</span> <span class="p">{</span>
-        <span class="n">classpath</span> <span class="s1">&#39;com.android.tools.build:gradle:2.2.3&#39;</span>
-        <span class="n">classpath</span> <span class="s1">&#39;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4&#39;</span>
-        <span class="n">classpath</span> <span class="s1">&#39;com.github.dcendents:android-maven-gradle-plugin:1.4.1&#39;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="n">buildscript</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">repositories</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">jcenter</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">classpath</span><span class="w"> </span><span class="s1">&#39;com.android.tools.build:gradle:2.2.3&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="n">classpath</span><span class="w"> </span><span class="s1">&#39;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="n">classpath</span><span class="w"> </span><span class="s1">&#39;com.github.dcendents:android-maven-gradle-plugin:1.4.1&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">allprojects</span> <span class="p">{</span>
-    <span class="n">repositories</span> <span class="p">{</span>
-        <span class="n">jcenter</span><span class="p">()</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="n">allprojects</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">repositories</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">jcenter</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <ul>
 <li>Update Bintray related credentials in <code>local.properties</code> like this:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">bintray.user=YOUR_BINTRAY_USERNAME</span>
-<span class="err">bintray.apikey=YOUR_BINTRAY_API_KEY</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>bintray.user=YOUR_BINTRAY_USERNAME
+bintray.apikey=YOUR_BINTRAY_API_KEY
+</code></pre></div>
 
 <p>Note: Look for <strong>API KEY</strong> in your Profile section on Bintray.</p>
 <ul>
 <li>Add following in library module’s <code>build.gradle</code>. In this case <code>build.gradle</code> of <code>WebOverlay</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">apply</span> <span class="n">plugin</span><span class="p">:</span> <span class="s1">&#39;com.android.library&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">apply</span><span class="w"> </span><span class="n">plugin</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;com.android.library&#39;</span><span class="w"></span>
 
-<span class="n">ext</span> <span class="p">{</span>
-    <span class="n">bintrayRepo</span> <span class="o">=</span> <span class="s1">&#39;WebViewOverlay&#39;</span>
-    <span class="n">bintrayName</span> <span class="o">=</span> <span class="s1">&#39;WebViewOverlay&#39;</span>
+<span class="n">ext</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">bintrayRepo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;WebViewOverlay&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="n">bintrayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;WebViewOverlay&#39;</span><span class="w"></span>
 
-    <span class="n">publishedGroupId</span> <span class="o">=</span> <span class="s1">&#39;org.ptyagicodecamp&#39;</span>
-    <span class="n">libraryName</span> <span class="o">=</span> <span class="s1">&#39;WebViewOverlay&#39;</span>
-    <span class="n">artifact</span> <span class="o">=</span> <span class="s1">&#39;WebViewOverlay&#39;</span>
+<span class="w">    </span><span class="n">publishedGroupId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;org.ptyagicodecamp&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="n">libraryName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;WebViewOverlay&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="n">artifact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;WebViewOverlay&#39;</span><span class="w"></span>
 
-    <span class="n">libraryDescription</span> <span class="o">=</span> <span class="s1">&#39;A widget to load WebView as an Overlay.&#39;</span>
+<span class="w">    </span><span class="n">libraryDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;A widget to load WebView as an Overlay.&#39;</span><span class="w"></span>
 
-    <span class="n">siteUrl</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/ptyagicodecamp/webview-overlay&#39;</span>
-    <span class="n">gitUrl</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/ptyagicodecamp/webview-overlay.git&#39;</span>
+<span class="w">    </span><span class="n">siteUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://github.com/ptyagicodecamp/webview-overlay&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="n">gitUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://github.com/ptyagicodecamp/webview-overlay.git&#39;</span><span class="w"></span>
 
-    <span class="n">libraryVersion</span> <span class="o">=</span> <span class="s1">&#39;1.0.0&#39;</span>
+<span class="w">    </span><span class="n">libraryVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1.0.0&#39;</span><span class="w"></span>
 
-    <span class="n">developerId</span> <span class="o">=</span> <span class="s1">&#39;developerId&#39;</span>
-    <span class="n">developerName</span> <span class="o">=</span> <span class="s1">&#39;Developer Name&#39;</span>
-    <span class="n">developerEmail</span> <span class="o">=</span> <span class="s1">&#39;developer@email.com&#39;</span>
+<span class="w">    </span><span class="n">developerId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;developerId&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="n">developerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Developer Name&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="n">developerEmail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;developer@email.com&#39;</span><span class="w"></span>
 
-    <span class="n">licenseName</span> <span class="o">=</span> <span class="s1">&#39;The Apache Software License, Version 2.0&#39;</span>
-    <span class="n">licenseUrl</span> <span class="o">=</span> <span class="s1">&#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;</span>
-    <span class="n">allLicenses</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apache-2.0&quot;</span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="n">licenseName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;The Apache Software License, Version 2.0&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="n">licenseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="n">allLicenses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Apache-2.0&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Refer to <a href="https://github.com/ptyagicodecamp/webview-overlay/blob/master/WebViewOverlay/build.gradle">this <code>build.gradle</code></a></p>
 <ul>
 <li>You would need to add these scripts in order to publish libraries to Bintray:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Add</span> <span class="n">these</span> <span class="n">lines</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">library</span> <span class="n">to</span> <span class="n">bintray</span><span class="o">.</span> <span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">readymade</span> <span class="n">scripts</span> <span class="n">made</span> <span class="n">by</span> <span class="n">github</span> <span class="n">user</span> <span class="n">nuuneoi</span> <span class="n">to</span> <span class="n">make</span> <span class="n">uploading</span> <span class="n">to</span> <span class="n">bintray</span> <span class="n">easy</span><span class="o">.</span>
-<span class="o">//</span><span class="n">Place</span> <span class="n">it</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">file</span>
-<span class="n">apply</span> <span class="n">from</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle&#39;</span>
-<span class="n">apply</span> <span class="n">from</span><span class="p">:</span> <span class="s1">&#39;https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Add</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">publish</span><span class="w"> </span><span class="n">library</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">bintray</span><span class="o">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">readymade</span><span class="w"> </span><span class="n">scripts</span><span class="w"> </span><span class="n">made</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">github</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">nuuneoi</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">uploading</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">bintray</span><span class="w"> </span><span class="n">easy</span><span class="o">.</span><span class="w"></span>
+<span class="o">//</span><span class="n">Place</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">file</span><span class="w"></span>
+<span class="n">apply</span><span class="w"> </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle&#39;</span><span class="w"></span>
+<span class="n">apply</span><span class="w"> </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle&#39;</span><span class="w"></span>
+</code></pre></div>
 
 <p>That's all you ve to do in order to configure you Android Studio project.</p>
 <h3>Uploading to Bintray:</h3>
 <p>CD to Root of Android Studio Project, and run these commands:</p>
-<div class="highlight"><pre><span></span><span class="n">gradlew</span> <span class="n">install</span>
-<span class="n">gradlew</span> <span class="n">bintrayUpload</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">gradlew</span><span class="w"> </span><span class="n">install</span><span class="w"></span>
+<span class="n">gradlew</span><span class="w"> </span><span class="n">bintrayUpload</span><span class="w"></span>
+</code></pre></div>
 
 <p>That’s it ! your artifact will be uploaded to Bintray.</p>
 <h3>Link to JCenter</h3>
@@ -323,9 +317,8 @@ add Bintray plugin to project’s <code>build.gradle</code>. Root level <code>bu
 You can check if its available by going to "http://jcenter.bintray.com/<path/to/package>"</p>
 <h3>Start using your hosted library:</h3>
 <p>Now you can reference <code>WebViewOverlay</code> library from your project's <code>build.gradle</code> like this:</p>
-<div class="highlight"><pre><span></span><span class="err">compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.0&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>compile &#39;org.ptyagicodecamp:WebViewOverlay:1.0.0&#39;
+</code></pre></div>
 
 <h3>References:</h3>
 <p>I followed <a href="https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en">this tutorial</a> to get me setup at Bintray.</p>

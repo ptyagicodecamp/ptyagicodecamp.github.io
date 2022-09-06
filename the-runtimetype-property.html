@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -194,72 +194,64 @@
 <li><strong><code>int</code>:</strong> Find the type of the variable storing an integer value. An integer in dart is represented using <a href="https://api.flutter.dev/flutter/dart-core/int-class.html"><code>int</code></a> class.</li>
 </ul>
 <p>In this examples, variable <code>myNumber</code> is storing an integer. Calling <code>runtimeType</code> on this variable will return the data type of the variable as <code>int</code>.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Variable</span> <span class="n">myNumber</span> <span class="k">is</span> <span class="n">storing</span> <span class="n">an</span> <span class="n">integer</span> <span class="n">value</span>
-<span class="k">var</span> <span class="n">myNumber</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Variable</span><span class="w"> </span><span class="n">myNumber</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">storing</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">value</span><span class="w"></span>
+<span class="k">var</span><span class="w"> </span><span class="n">myNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 
-<span class="o">//</span><span class="n">myNumber</span><span class="o">.</span><span class="n">runtimeType</span> <span class="n">will</span> <span class="nb">print</span> <span class="n">the</span> <span class="n">data</span> <span class="n">type</span> <span class="k">for</span> <span class="n">the</span> <span class="n">variable</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Type of myNumber: ${myNumber.runtimeType}&quot;</span><span class="p">);</span>
-</pre></div>
-
+<span class="o">//</span><span class="n">myNumber</span><span class="o">.</span><span class="n">runtimeType</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">variable</span><span class="w"></span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Type of myNumber: ${myNumber.runtimeType}&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">Type of myNumber: int</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Type of myNumber: int
+</code></pre></div>
 
 <hr>
 <ul>
 <li><strong><code>String</code>:</strong> Find the type of the variable storing a string value.</li>
 </ul>
 <p>In this examples, variable <code>myString</code> is storing a string. Calling <code>runtimeType</code> on this variable will return the data type of the variable as <code>String</code>.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Variable</span> <span class="n">myString</span> <span class="k">is</span> <span class="n">storing</span> <span class="n">an</span> <span class="n">string</span> <span class="n">value</span>
-<span class="k">var</span> <span class="n">myString</span> <span class="o">=</span> <span class="s2">&quot;This is String&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Variable</span><span class="w"> </span><span class="n">myString</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">storing</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">value</span><span class="w"></span>
+<span class="k">var</span><span class="w"> </span><span class="n">myString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;This is String&quot;</span><span class="p">;</span><span class="w"></span>
 
-<span class="o">//</span><span class="n">myString</span><span class="o">.</span><span class="n">runtimeType</span> <span class="n">will</span> <span class="nb">print</span> <span class="n">the</span> <span class="n">data</span> <span class="n">type</span> <span class="k">for</span> <span class="n">the</span> <span class="n">variable</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Type of myString: ${myString.runtimeType}&quot;</span><span class="p">);</span>
-</pre></div>
-
+<span class="o">//</span><span class="n">myString</span><span class="o">.</span><span class="n">runtimeType</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">variable</span><span class="w"></span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Type of myString: ${myString.runtimeType}&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">Type of myString: String</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Type of myString: String
+</code></pre></div>
 
 <hr>
 <ul>
 <li><strong><code>double</code>:</strong> Find the type of the variable storing a double value.</li>
 </ul>
 <p>In this examples, variable <code>myDouble</code> is storing a double. Calling <code>runtimeType</code> on this variable will return the data type of the variable as <code>double</code>.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Variable</span> <span class="n">myDouble</span> <span class="k">is</span> <span class="n">storing</span> <span class="n">an</span> <span class="n">string</span> <span class="n">value</span>
-<span class="k">var</span> <span class="n">myDouble</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Variable</span><span class="w"> </span><span class="n">myDouble</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">storing</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">value</span><span class="w"></span>
+<span class="k">var</span><span class="w"> </span><span class="n">myDouble</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
 
-<span class="o">//</span><span class="n">myDouble</span><span class="o">.</span><span class="n">runtimeType</span> <span class="n">will</span> <span class="nb">print</span> <span class="n">the</span> <span class="n">data</span> <span class="n">type</span> <span class="k">for</span> <span class="n">the</span> <span class="n">variable</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Type of myDouble: ${myDouble.runtimeType}&quot;</span><span class="p">);</span>
-</pre></div>
-
+<span class="o">//</span><span class="n">myDouble</span><span class="o">.</span><span class="n">runtimeType</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">variable</span><span class="w"></span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Type of myDouble: ${myDouble.runtimeType}&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">Type of myDouble: double</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Type of myDouble: double
+</code></pre></div>
 
 <hr>
 <ul>
 <li><strong><code>List&lt;int&gt;</code>:</strong> Find the type of the variable storing a list of integers.</li>
 </ul>
 <p>In this examples, variable <code>myList</code> is storing a list of integers. Calling <code>runtimeType</code> on this variable will return the data type of the variable as <code>List&lt;int&gt;</code>.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Variable</span> <span class="n">myList</span> <span class="k">is</span> <span class="n">storing</span> <span class="n">an</span> <span class="n">string</span> <span class="n">value</span>
-<span class="k">var</span> <span class="n">myList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Variable</span><span class="w"> </span><span class="n">myList</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">storing</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">value</span><span class="w"></span>
+<span class="k">var</span><span class="w"> </span><span class="n">myList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
 
-<span class="o">//</span><span class="n">myList</span><span class="o">.</span><span class="n">runtimeType</span> <span class="n">will</span> <span class="nb">print</span> <span class="n">the</span> <span class="n">data</span> <span class="n">type</span> <span class="k">for</span> <span class="n">the</span> <span class="n">variable</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Type of myList: ${myList.runtimeType}&quot;</span><span class="p">);</span>
-</pre></div>
-
+<span class="o">//</span><span class="n">myList</span><span class="o">.</span><span class="n">runtimeType</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">variable</span><span class="w"></span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Type of myList: ${myList.runtimeType}&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">Type of myList: List&lt;int&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Type of myList: List&lt;int&gt;
+</code></pre></div>
 
 <hr>
 <h1>Companion Video</h1>

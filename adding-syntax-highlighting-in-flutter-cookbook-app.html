@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -190,22 +190,22 @@
 <p><strong>Target Audience:</strong> Beginner</p>
 <p><strong>Recipe:</strong> Displaying code snippets for Flutter Cookbook code recipes.</p>
 <p><strong>Focus Widget:</strong> <a href="https://pub.dev/packages/syntax_highlighter"><code>syntax_highlighter</code> plugin</a></p>
-<p><strong>Checkout the companion video tutorial:</strong>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4WoS_WQKKV0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p><strong>Checkout the companion video tutorial:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4WoS_WQKKV0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <h3>Lets's go!</h3>
 <h3><code>pubspec.yaml</code> dependency</h3>
 <p>Add <code>syntax_highlighter</code> plugin dependency as below:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">flutter</span><span class="o">:</span>
-    <span class="n">sdk</span><span class="o">:</span> <span class="n">flutter</span>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">sdk</span><span class="o">:</span><span class="w"> </span><span class="n">flutter</span><span class="w"></span>
 
-  <span class="err">#</span><span class="n">Highlighting</span> <span class="n">syntax</span> <span class="k">in</span> <span class="n">code</span> <span class="n">snippets</span> <span class="k">for</span> <span class="n">code</span> <span class="n">recipes</span>
-  <span class="n">syntax_highlighter</span><span class="o">:</span> <span class="o">^</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span>
+<span class="w">  </span><span class="err">#</span><span class="n">Highlighting</span><span class="w"> </span><span class="n">syntax</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">snippets</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">recipes</span><span class="w"></span>
+<span class="w">  </span><span class="n">syntax_highlighter</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
 
-  <span class="err">#</span><span class="n">To</span> <span class="n">provide</span> <span class="n">Floating</span> <span class="n">Action</span> <span class="n">widget</span> <span class="n">to</span> <span class="n">zoom</span> <span class="k">in</span> <span class="n">and</span> <span class="n">out</span> <span class="n">code</span> <span class="n">snippet</span> <span class="n">text</span>
-  <span class="n">animated_floatactionbuttons</span><span class="o">:</span> <span class="o">^</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span>  
-</pre></div>
-
+<span class="w">  </span><span class="err">#</span><span class="n">To</span><span class="w"> </span><span class="n">provide</span><span class="w"> </span><span class="n">Floating</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">widget</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">zoom</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">snippet</span><span class="w"> </span><span class="n">text</span><span class="w"></span>
+<span class="w">  </span><span class="n">animated_floatactionbuttons</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span><span class="w">  </span>
+</code></pre></div>
 
 <ul>
 <li>
@@ -223,49 +223,47 @@
 <li><code>pageName</code>: This is used to routing purposes. In this particular app, this is a required parameter to navigate the recipe's code and its preview and vice versa.</li>
 <li><code>codeFilePath</code>: This is the location of code file in the code. For example: <code>lib/pdf/</code>. Don't forget to add this path in <code>assets</code> section of <code>pubspec.yaml</code> file like below:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c">assets:</span>
-<span class="c">  - lib/pdf/</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>assets:
+  - lib/pdf/
+</code></pre></div>
 
 <ul>
 <li><code>codeGithubPath</code>: This is the external <code>https://</code> link to code's file in Github repo.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">CodeFileWidget</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">recipeName</span><span class="p">;</span>
-  <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">pageName</span><span class="p">;</span>
-  <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">codeFilePath</span><span class="p">;</span>
-  <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">codeGithubPath</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">CodeFileWidget</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">recipeName</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">pageName</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">codeFilePath</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">codeGithubPath</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">CodeFileWidget</span><span class="p">(</span>
-      <span class="p">{</span><span class="n">this</span><span class="o">.</span><span class="n">recipeName</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">pageName</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">codeFilePath</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">codeGithubPath</span><span class="p">});</span>
+<span class="w">  </span><span class="n">CodeFileWidget</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="n">this</span><span class="o">.</span><span class="n">recipeName</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">pageName</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">codeFilePath</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">codeGithubPath</span><span class="p">});</span><span class="w"></span>
 
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">CodeFileWidgetState</span> <span class="n">createState</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">CodeFileState</span><span class="p">();</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">CodeFileWidgetState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CodeFileState</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 
-<span class="k">class</span> <span class="n">CodeFileWidgetState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">CodeFileWidget</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="n">double</span> <span class="n">scaleFactorText</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+<span class="k">class</span><span class="w"> </span><span class="n">CodeFileWidgetState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">CodeFileWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">double</span><span class="w"> </span><span class="n">scaleFactorText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
 
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="o">...</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span> <span class="n">codepreviewActions</span><span class="p">(</span><span class="nb nb-Type">String</span> <span class="n">codeContent</span><span class="p">)</span> <span class="p">{</span>
-    <span class="o">...</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">codepreviewActions</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">codeContent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">Widget</span> <span class="n">highlightCodeSyntax</span><span class="p">(</span><span class="nb nb-Type">String</span> <span class="n">codeContent</span><span class="p">,</span> <span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="o">...</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">highlightCodeSyntax</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">codeContent</span><span class="p">,</span><span class="w"> </span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Next, we'll go over the each of the three methods of <code>CodeFileWidgetState</code>. Please note that default scale factor value for text is set to 1: <code>double scaleFactorText = 1.0;</code></p>
 <h3>Building screen</h3>
@@ -273,48 +271,47 @@
 <p><strong>AppBar:</strong> The App Bar has an action to open the external link to Github repository file. Title displays the recipe name.</p>
 <p><strong><code>FutureBuilder</code>:</strong> <code>FutureBuilder</code> loads the file contents of the passed <code>codeFilePath</code> file. It shows the <code>CircularProgressIndicator</code> widget while file contents are loading. Once the data is available, <code>highlightCodeSyntax(...)</code> method takes the file contents and highlights syntax.</p>
 <p><strong><code>AnimatedFloatingActionButton</code> :</strong> <code>AnimatedFloatingActionButton</code> is used to show actions to zoom_in and zoom_out code, and to navigate to the demo view.</p>
-<div class="highlight"><pre><span></span><span class="err">@</span><span class="n">override</span>
-<span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
-    <span class="n">appBar</span><span class="p">:</span> <span class="n">AppBar</span><span class="p">(</span>
-      <span class="n">leading</span><span class="p">:</span> <span class="n">IconButton</span><span class="p">(</span>
-        <span class="n">icon</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">arrow_back</span><span class="p">),</span>
-        <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">Navigator</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">context</span><span class="p">),</span>
-      <span class="p">),</span>
-      <span class="n">title</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">recipeName</span><span class="p">),</span>
-      <span class="n">actions</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-        <span class="n">IconButton</span><span class="p">(</span>
-          <span class="n">icon</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">open_in_new</span><span class="p">),</span>
-          <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">UrlUtils</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">codeGithubPath</span><span class="p">),</span>
-        <span class="p">)</span>
-      <span class="p">],</span>
-    <span class="p">),</span>
-    <span class="n">body</span><span class="p">:</span> <span class="n">FutureBuilder</span><span class="p">(</span>
-      <span class="n">future</span><span class="p">:</span> <span class="n">rootBundle</span><span class="o">.</span><span class="n">loadString</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">codeFilePath</span><span class="p">)</span> <span class="err">??</span>
-          <span class="s1">&#39;Error loading code file ${this.widget.codeFilePath}&#39;</span><span class="p">,</span>
-      <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">AsyncSnapshot</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">snapshot</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">snapshot</span><span class="o">.</span><span class="n">hasData</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
-            <span class="n">body</span><span class="p">:</span> <span class="n">Padding</span><span class="p">(</span>
-              <span class="n">padding</span><span class="p">:</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mf">4.0</span><span class="p">),</span>
-              <span class="n">child</span><span class="p">:</span> <span class="n">highlightCodeSyntax</span><span class="p">(</span><span class="n">snapshot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">context</span><span class="p">),</span>
-            <span class="p">),</span>
-            <span class="n">floatingActionButton</span><span class="p">:</span> <span class="n">AnimatedFloatingActionButton</span><span class="p">(</span>
-              <span class="n">fabButtons</span><span class="p">:</span> <span class="n">codepreviewActions</span><span class="p">(),</span>
-              <span class="n">colorStartAnimation</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span>
-              <span class="n">colorEndAnimation</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span>
-              <span class="n">animatedIconData</span><span class="p">:</span> <span class="n">AnimatedIcons</span><span class="o">.</span><span class="n">menu_close</span><span class="p">,</span>
-            <span class="p">),</span>
-          <span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-          <span class="k">return</span> <span class="n">Center</span><span class="p">(</span><span class="n">child</span><span class="p">:</span> <span class="n">CircularProgressIndicator</span><span class="p">());</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-    <span class="p">),</span>
-  <span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">appBar</span><span class="p">:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">leading</span><span class="p">:</span><span class="w"> </span><span class="n">IconButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">icon</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">arrow_back</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Navigator</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">context</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">recipeName</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">actions</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="n">IconButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">icon</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">open_in_new</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">UrlUtils</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">codeGithubPath</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">FutureBuilder</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">future</span><span class="p">:</span><span class="w"> </span><span class="n">rootBundle</span><span class="o">.</span><span class="n">loadString</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">codeFilePath</span><span class="p">)</span><span class="w"> </span><span class="err">??</span><span class="w"></span>
+<span class="w">          </span><span class="s1">&#39;Error loading code file ${this.widget.codeFilePath}&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">builder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">AsyncSnapshot</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">snapshot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snapshot</span><span class="o">.</span><span class="n">hasData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">Padding</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="n">padding</span><span class="p">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mf">4.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">highlightCodeSyntax</span><span class="p">(</span><span class="n">snapshot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">floatingActionButton</span><span class="p">:</span><span class="w"> </span><span class="n">AnimatedFloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="n">fabButtons</span><span class="p">:</span><span class="w"> </span><span class="n">codepreviewActions</span><span class="p">(),</span><span class="w"></span>
+<span class="w">              </span><span class="n">colorStartAnimation</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="n">colorEndAnimation</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="n">animatedIconData</span><span class="p">:</span><span class="w"> </span><span class="n">AnimatedIcons</span><span class="o">.</span><span class="n">menu_close</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">CircularProgressIndicator</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Adding actions</h3>
 <p>Now, add actions like zoom_in, zoom_out, and navigating to code recipe demonstration.</p>
@@ -329,41 +326,40 @@
 <p><strong>Navigating to Code demo:</strong> Tapping on this action opens the code recipe demonstration screen.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span> <span class="n">codepreviewActions</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-  <span class="o">//</span><span class="n">making</span> <span class="n">text</span> <span class="n">smaller</span>
-    <span class="n">FloatingActionButton</span><span class="p">(</span>
-      <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;zoom_out&quot;</span><span class="p">,</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">zoom_out</span><span class="p">),</span>
-      <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Zoom out&#39;</span><span class="p">,</span>
-      <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-        <span class="n">this</span><span class="o">.</span><span class="n">scaleFactorText</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">scaleFactorText</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">);</span>
-      <span class="p">}),</span>
-    <span class="p">),</span>
-    <span class="o">//</span><span class="n">making</span> <span class="n">text</span> <span class="n">bigger</span>
-    <span class="n">FloatingActionButton</span><span class="p">(</span>
-      <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;zoom_in&quot;</span><span class="p">,</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">zoom_in</span><span class="p">),</span>
-      <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Zoom in&#39;</span><span class="p">,</span>
-      <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-        <span class="n">this</span><span class="o">.</span><span class="n">scaleFactorText</span> <span class="o">+=</span> <span class="mf">0.1</span><span class="p">;</span>
-      <span class="p">}),</span>
-    <span class="p">),</span>
-    <span class="n">FloatingActionButton</span><span class="p">(</span>
-      <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;open_page&quot;</span><span class="p">,</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">slideshow</span><span class="p">),</span>
-      <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;See Demo&#39;</span><span class="p">,</span>
-      <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">Navigator</span><span class="o">.</span><span class="n">popAndPushNamed</span><span class="p">(</span>
-        <span class="n">context</span><span class="p">,</span>
-        <span class="n">widget</span><span class="o">.</span><span class="n">pageName</span><span class="p">,</span>
-        <span class="n">arguments</span><span class="p">:</span> <span class="n">ScreenArguments</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">recipeName</span><span class="p">,</span> <span class="n">widget</span><span class="o">.</span><span class="n">pageName</span><span class="p">,</span>
-            <span class="n">widget</span><span class="o">.</span><span class="n">codeFilePath</span><span class="p">,</span> <span class="n">widget</span><span class="o">.</span><span class="n">codeGithubPath</span><span class="p">),</span>
-      <span class="p">),</span>
-    <span class="p">),</span>
-  <span class="p">];</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">codepreviewActions</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="o">//</span><span class="n">making</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="n">smaller</span><span class="w"></span>
+<span class="w">    </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zoom_out&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">zoom_out</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Zoom out&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">this</span><span class="o">.</span><span class="n">scaleFactorText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">scaleFactorText</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}),</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">making</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="n">bigger</span><span class="w"></span>
+<span class="w">    </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zoom_in&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">zoom_in</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Zoom in&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">this</span><span class="o">.</span><span class="n">scaleFactorText</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}),</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open_page&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">slideshow</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;See Demo&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Navigator</span><span class="o">.</span><span class="n">popAndPushNamed</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">context</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">widget</span><span class="o">.</span><span class="n">pageName</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">arguments</span><span class="p">:</span><span class="w"> </span><span class="n">ScreenArguments</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">recipeName</span><span class="p">,</span><span class="w"> </span><span class="n">widget</span><span class="o">.</span><span class="n">pageName</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">widget</span><span class="o">.</span><span class="n">codeFilePath</span><span class="p">,</span><span class="w"> </span><span class="n">widget</span><span class="o">.</span><span class="n">codeGithubPath</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Highlighting code syntax</h3>
 <p>This is the main method which is responsible to highlight syntax for the code file. Plugin provides <code>SyntaxHighlighterStyle</code> class to help provide the correct theme for the current platform's theme (light vs dark).</p>
@@ -372,33 +368,32 @@
 <p><code>RichText</code> widget uses <code>textScaleFactor</code> property to adapt the variable value for <code>scaleFactorText</code>.</p>
 <p><code>TextSpan</code> widget uses <code>monospace</code> fontFamily to show code in a readable view.</p>
 <p>Plugin's <code>DartSyntaxHighlighter</code> class uses the chosen <code>SyntaxHighlighterStyle</code> to render file content using proper syntax highlighting.</p>
-<div class="highlight"><pre><span></span><span class="n">Widget</span> <span class="n">highlightCodeSyntax</span><span class="p">(</span><span class="nb nb-Type">String</span> <span class="n">codeContent</span><span class="p">,</span> <span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">final</span> <span class="n">SyntaxHighlighterStyle</span> <span class="n">style</span> <span class="o">=</span>
-      <span class="n">Theme</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">brightness</span> <span class="o">==</span> <span class="n">Brightness</span><span class="o">.</span><span class="n">dark</span>
-          <span class="err">?</span> <span class="n">SyntaxHighlighterStyle</span><span class="o">.</span><span class="n">darkThemeStyle</span><span class="p">()</span>
-          <span class="p">:</span> <span class="n">SyntaxHighlighterStyle</span><span class="o">.</span><span class="n">lightThemeStyle</span><span class="p">();</span>
-  <span class="k">return</span> <span class="n">Container</span><span class="p">(</span>
-    <span class="n">constraints</span><span class="p">:</span> <span class="n">BoxConstraints</span><span class="o">.</span><span class="n">expand</span><span class="p">(),</span>
-    <span class="n">child</span><span class="p">:</span> <span class="n">Scrollbar</span><span class="p">(</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">SingleChildScrollView</span><span class="p">(</span>
-        <span class="n">child</span><span class="p">:</span> <span class="n">SingleChildScrollView</span><span class="p">(</span>
-          <span class="n">scrollDirection</span><span class="p">:</span> <span class="n">Axis</span><span class="o">.</span><span class="n">horizontal</span><span class="p">,</span>
-          <span class="n">child</span><span class="p">:</span> <span class="n">RichText</span><span class="p">(</span>
-            <span class="n">textScaleFactor</span><span class="p">:</span> <span class="n">this</span><span class="o">.</span><span class="n">scaleFactorText</span><span class="p">,</span>
-            <span class="n">text</span><span class="p">:</span> <span class="n">TextSpan</span><span class="p">(</span>
-              <span class="n">style</span><span class="p">:</span> <span class="n">TextStyle</span><span class="p">(</span><span class="n">fontFamily</span><span class="p">:</span> <span class="s1">&#39;monospace&#39;</span><span class="p">,</span> <span class="n">fontSize</span><span class="p">:</span> <span class="mf">12.0</span><span class="p">),</span>
-              <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">TextSpan</span><span class="o">&gt;</span><span class="p">[</span>
-                <span class="n">DartSyntaxHighlighter</span><span class="p">(</span><span class="n">style</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">codeContent</span><span class="p">)</span>
-              <span class="p">],</span>
-            <span class="p">),</span>
-          <span class="p">),</span>
-        <span class="p">),</span>
-      <span class="p">),</span>
-    <span class="p">),</span>
-  <span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">Widget</span><span class="w"> </span><span class="n">highlightCodeSyntax</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">codeContent</span><span class="p">,</span><span class="w"> </span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">SyntaxHighlighterStyle</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">      </span><span class="n">Theme</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">brightness</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Brightness</span><span class="o">.</span><span class="n">dark</span><span class="w"></span>
+<span class="w">          </span><span class="err">?</span><span class="w"> </span><span class="n">SyntaxHighlighterStyle</span><span class="o">.</span><span class="n">darkThemeStyle</span><span class="p">()</span><span class="w"></span>
+<span class="w">          </span><span class="p">:</span><span class="w"> </span><span class="n">SyntaxHighlighterStyle</span><span class="o">.</span><span class="n">lightThemeStyle</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">constraints</span><span class="p">:</span><span class="w"> </span><span class="n">BoxConstraints</span><span class="o">.</span><span class="n">expand</span><span class="p">(),</span><span class="w"></span>
+<span class="w">    </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Scrollbar</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">SingleChildScrollView</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">SingleChildScrollView</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">scrollDirection</span><span class="p">:</span><span class="w"> </span><span class="n">Axis</span><span class="o">.</span><span class="n">horizontal</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">RichText</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">textScaleFactor</span><span class="p">:</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">scaleFactorText</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="n">TextSpan</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="n">style</span><span class="p">:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="n">fontFamily</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;monospace&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">TextSpan</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="n">DartSyntaxHighlighter</span><span class="p">(</span><span class="n">style</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">codeContent</span><span class="p">)</span><span class="w"></span>
+<span class="w">              </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h3>Source code repo</h3>

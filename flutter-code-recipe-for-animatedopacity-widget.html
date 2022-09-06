@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -195,53 +195,50 @@
 Interface is super simple and will look like this:</p>
 <p>Blue Rectangle animates when button is pressed:
 <img alt="Alt Blue Rectangle animates when button is pressed" src="https://ptyagicodecamp.github.io/animated_opacity.png"></p>
-<p>Checkout AnimatedOpacity animation:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lKO8YTq_QcU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p>Checkout AnimatedOpacity animation:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lKO8YTq_QcU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <h3>Lets's go!</h3>
 <p>We need three things to accomplish our goal of animating a blue rectangle.
 1. Widget to animate: A blue rectangle</p>
-<div class="highlight"><pre><span></span><span class="err">    Container(</span>
-<span class="err">        width: 100,</span>
-<span class="err">        height: 150,</span>
-<span class="err">        color: Colors.blue,</span>
-<span class="err">    );</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">Container</span><span class="o">(</span><span class="w"></span>
+<span class="w">        </span><span class="nt">width</span><span class="o">:</span><span class="w"> </span><span class="nt">100</span><span class="o">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">height</span><span class="o">:</span><span class="w"> </span><span class="nt">150</span><span class="o">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">color</span><span class="o">:</span><span class="w"> </span><span class="nt">Colors</span><span class="p">.</span><span class="nc">blue</span><span class="o">,</span><span class="w"></span>
+<span class="w">    </span><span class="o">);</span><span class="w"></span>
+</code></pre></div>
 
 <ol>
 <li>StatefulWidget: A way to hold visibility state of rectangle.
 <code>StatefulWidget</code> has <code>State</code> object that can hold and update some data for app.
 <code>State</code> object's <a href="https://docs.flutter.io/flutter/widgets/State/setState.html"><code>setState</code></a> method helps to rebuild widget reflecting the updated state of the app data.</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">AnimatedOpacityRecipe</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">State</span><span class="o">&lt;</span><span class="n">StatefulWidget</span><span class="o">&gt;</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_AnimatedOpacityRecipeState</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">AnimatedOpacityRecipe</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">State</span><span class="o">&lt;</span><span class="n">StatefulWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_AnimatedOpacityRecipeState</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>The State object will have the flag about the rectangle widget's visibility state say <code>_visible</code>.
 <code>_visible</code> to <code>true</code> means that rectangle is visible or vice versa.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_AnimatedOpacityRecipeState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">AnimatedOpacityRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="nb nb-Type">bool</span> <span class="n">_visible</span> <span class="o">=</span> <span class="bp">true</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">_AnimatedOpacityRecipeState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">AnimatedOpacityRecipe</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="n">_visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">;</span><span class="w"></span>
 
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Method <code>animatedOpacityWidget</code> returns the AnimatedOpacity widget.
 <code>duration</code> property is to control the speed of animation.
 In this example, it takes 900 milliseconds to fade out the rectangle.
 This is important to show a smooth transition.</p>
-<div class="highlight"><pre><span></span><span class="err">Widget animatedOpacityWidget() {</span>
-<span class="err">    return AnimatedOpacity(</span>
-<span class="err">      duration: Duration(milliseconds: 900),</span>
-<span class="err">      opacity: _visible ? 1 : 0,</span>
-<span class="err">      child: _blueRectangle(),</span>
-<span class="err">    );</span>
-<span class="err">  }</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">animatedOpacityWidget</span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">return</span><span class="w"> </span><span class="err">AnimatedOpacity(</span><span class="w"></span>
+<span class="w">      </span><span class="n">duration</span><span class="p">:</span><span class="w"> </span><span class="nf">Duration</span><span class="p">(</span><span class="n">milliseconds</span><span class="err">:</span><span class="w"> </span><span class="mi">900</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="k">opacity</span><span class="o">:</span><span class="w"> </span><span class="n">_visible</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="nf">_blueRectangle</span><span class="p">(),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <ol>
 <li>OutlineButton widget: A button to toggle fade in/out rectangle
@@ -249,22 +246,21 @@ Button labeled 'Animate' to fade in/out rectangle.
 <code>setState()</code> method toggles the visibility flag for the rectangle widget.
 It forces Flutter to rebuilt <code>AnimatedOpacity</code> widget in accordance with new value of <code>_visible</code> flag.</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="err">...</span>
-<span class="err">OutlineButton(</span>
-<span class="err">  shape: new RoundedRectangleBorder(</span>
-<span class="err">    borderRadius: new BorderRadius.circular(8.0),</span>
-<span class="err">  ),</span>
-<span class="err">  child: Text(&quot;Press to Animate&quot;),</span>
-<span class="err">  onPressed: () {</span>
-<span class="err">    setState(() =&gt; _visible = !_visible);</span>
-<span class="err">  },</span>
-<span class="err">)</span>
-<span class="err">...</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">...</span><span class="w"></span>
+<span class="nt">OutlineButton</span><span class="o">(</span><span class="w"></span>
+<span class="w">  </span><span class="nt">shape</span><span class="o">:</span><span class="w"> </span><span class="nt">new</span><span class="w"> </span><span class="nt">RoundedRectangleBorder</span><span class="o">(</span><span class="w"></span>
+<span class="w">    </span><span class="nt">borderRadius</span><span class="o">:</span><span class="w"> </span><span class="nt">new</span><span class="w"> </span><span class="nt">BorderRadius</span><span class="p">.</span><span class="nc">circular</span><span class="o">(</span><span class="nt">8</span><span class="p">.</span><span class="nc">0</span><span class="o">),</span><span class="w"></span>
+<span class="w">  </span><span class="o">),</span><span class="w"></span>
+<span class="w">  </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Text</span><span class="o">(</span><span class="s2">&quot;Press to Animate&quot;</span><span class="o">),</span><span class="w"></span>
+<span class="w">  </span><span class="nt">onPressed</span><span class="o">:</span><span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">setState(()</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">_visible</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">!_visible)</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="o">,</span><span class="w"></span>
+<span class="o">)</span><span class="w"></span>
+<span class="o">...</span><span class="w"></span>
+</code></pre></div>
 
 <h4>Complete example code</h4>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 
 <span class="o">//</span><span class="n">starting</span> <span class="n">the</span> <span class="n">app</span>
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span>
@@ -350,8 +346,7 @@ It forces Flutter to rebuilt <code>AnimatedOpacity</code> widget in accordance w
     <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong>Source code repo:</strong> 
 Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/flutter_animated_opacity">here</a></p>

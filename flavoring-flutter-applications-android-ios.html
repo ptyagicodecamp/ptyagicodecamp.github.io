@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -191,8 +191,9 @@
 <p><strong>Target Audience:</strong> Beginner</p>
 <p><strong>Recipe:</strong> Publish Flutter application on Android and iOS platforms for development(dev) and production (prod) environments.</p>
 <hr>
-<p><strong>Checkout the companion video tutorial:</strong>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Suv8-w-SiXw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p><strong>Checkout the companion video tutorial:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Suv8-w-SiXw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <hr>
 <p>In this article, I will give overview of the process of publishing Flutter applications on Android and iOS platforms in multiple environments. In real-world applications development process, there are multiple environments and/or stages an applications is released in. During development stage, you may want to share your app to internal testers with a backend configured for development but not ready for production purpose. If you want to distribute your app to internal testers, you need a <code>dev</code> variant for the application.</p>
 <p>When you are ready to roll-out the application for public release and have production backend ready, you need a variant of same app which is connected to the production backend. Let's call this variant of app as <code>prod</code> flavor.</p>
@@ -202,35 +203,32 @@
 <h1>Flutter App Setup</h1>
 <h2>AppConfig</h2>
 <p>Create a class <code>AppConfig</code> to encapsulate the app's environment/flavor type and specific name for that flavor.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">AppConfig</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">AppConfig</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">appName</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">flavor</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">AppConfig</span><span class="p">(</span><span class="err">{</span><span class="nv">@required</span><span class="w"> </span><span class="n">this</span><span class="p">.</span><span class="n">appName</span><span class="p">,</span><span class="w"> </span><span class="nv">@required</span><span class="w"> </span><span class="n">this</span><span class="p">.</span><span class="n">flavor</span><span class="err">}</span><span class="p">);</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Entry point for <code>dev</code> flavor</h2>
 <p>Create a file <code>lib/main_dev.dart</code> to run app in <code>dev</code> flavor. This is where you assign the flavor type and specific name for App based on that flavor.</p>
-<div class="highlight"><pre><span></span><span class="err">void main() async {</span>
-<span class="err">  AppConfig devAppConfig = AppConfig(appName: &#39;CounterApp Dev&#39;, flavor: &#39;dev&#39;);</span>
-<span class="err">  Widget app = await initializeApp(devAppConfig);</span>
-<span class="err">  runApp(app);</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">void</span><span class="w"> </span><span class="nt">main</span><span class="o">()</span><span class="w"> </span><span class="nt">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">AppConfig</span><span class="w"> </span><span class="err">devAppConfig</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">AppConfig(</span><span class="n">appName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;CounterApp Dev&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">flavor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;dev&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">Widget</span><span class="w"> </span><span class="err">app</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">await</span><span class="w"> </span><span class="err">initializeApp(devAppConfig)</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="err">runApp(app)</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h2>Entry point for <code>prod</code> flavor</h2>
 <p>Create a file <code>lib/main_prod.dart</code> to run app in <code>prod</code> flavor. This is where you assign the flavor type and specific name for App based on that flavor.</p>
-<div class="highlight"><pre><span></span><span class="err">void main() async {</span>
-<span class="err">  AppConfig devAppConfig =</span>
-<span class="err">      AppConfig(appName: &#39;CounterApp Prod&#39;, flavor: &#39;prod&#39;);</span>
-<span class="err">  Widget app = await initializeApp(devAppConfig);</span>
-<span class="err">  runApp(app);</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">void</span><span class="w"> </span><span class="nt">main</span><span class="o">()</span><span class="w"> </span><span class="nt">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">AppConfig</span><span class="w"> </span><span class="err">devAppConfig</span><span class="w"> </span><span class="err">=</span><span class="w"></span>
+<span class="w">      </span><span class="err">AppConfig(</span><span class="n">appName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;CounterApp Prod&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">flavor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;prod&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">Widget</span><span class="w"> </span><span class="err">app</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">await</span><span class="w"> </span><span class="err">initializeApp(devAppConfig)</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="err">runApp(app)</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <p><img alt="flutter-flavors" src="https://ptyagicodecamp.github.io/flutter_flavors.jpg"></p>
@@ -242,38 +240,37 @@
 * prod flavor: <code>android/app/src/prod/google-services.json</code></p>
 <h1>Setup Flavors</h1>
 <p>Next step is to define flavors in <code>app/build.gradle</code> file as shown below.</p>
-<div class="highlight"><pre><span></span><span class="n">android</span> <span class="err">{</span>
+<div class="highlight"><pre><span></span><code>android {
 
 
-    <span class="n">defaultConfig</span> <span class="err">{</span>
-        <span class="n">applicationId</span> <span class="ss">&quot;com.pcc.counterapp&quot;</span>
-        <span class="n">minSdkVersion</span> <span class="mi">16</span>
-        <span class="n">targetSdkVersion</span> <span class="mi">30</span>
-        <span class="n">versionCode</span> <span class="n">flutterVersionCode</span><span class="p">.</span><span class="n">toInteger</span><span class="p">()</span>
-        <span class="n">versionName</span> <span class="n">flutterVersionName</span>
-    <span class="err">}</span>
+    defaultConfig {
+        applicationId &quot;com.pcc.counterapp&quot;
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
 
-    <span class="p">...</span>
+    ...
 
-    <span class="n">flavorDimensions</span> <span class="ss">&quot;counterapp&quot;</span>
+    flavorDimensions &quot;counterapp&quot;
 
-    <span class="n">productFlavors</span> <span class="err">{</span>
-        <span class="n">dev</span> <span class="err">{</span>
-            <span class="n">dimension</span> <span class="ss">&quot;counterapp&quot;</span>
-            <span class="n">applicationIdSuffix</span> <span class="ss">&quot;.dev&quot;</span>
-            <span class="n">resValue</span> <span class="ss">&quot;string&quot;</span><span class="p">,</span> <span class="ss">&quot;app_name&quot;</span><span class="p">,</span> <span class="ss">&quot;Counter App Dev&quot;</span>
-            <span class="n">versionNameSuffix</span> <span class="ss">&quot;.dev&quot;</span>
-        <span class="err">}</span>
-        <span class="n">prod</span> <span class="err">{</span>
-            <span class="n">dimension</span> <span class="ss">&quot;counterapp&quot;</span>
-            <span class="n">applicationIdSuffix</span> <span class="ss">&quot;.prod&quot;</span>
-            <span class="n">resValue</span> <span class="ss">&quot;string&quot;</span><span class="p">,</span> <span class="ss">&quot;app_name&quot;</span><span class="p">,</span> <span class="ss">&quot;Counter App Prod&quot;</span>
-            <span class="n">versionNameSuffix</span> <span class="ss">&quot;.prod&quot;</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-<span class="err">}</span>
-</pre></div>
-
+    productFlavors {
+        dev {
+            dimension &quot;counterapp&quot;
+            applicationIdSuffix &quot;.dev&quot;
+            resValue &quot;string&quot;, &quot;app_name&quot;, &quot;Counter App Dev&quot;
+            versionNameSuffix &quot;.dev&quot;
+        }
+        prod {
+            dimension &quot;counterapp&quot;
+            applicationIdSuffix &quot;.prod&quot;
+            resValue &quot;string&quot;, &quot;app_name&quot;, &quot;Counter App Prod&quot;
+            versionNameSuffix &quot;.prod&quot;
+        }
+    }
+}
+</code></pre></div>
 
 <p>That is all you need to enable flavors on Android side.</p>
 <hr>
@@ -286,42 +283,41 @@
 <li>Targets -&gt; Runner -&gt; Build Phase: Add script to copy correct GooglePlaySerivce file for the correct scheme.
 Move the script right after <code>Link Binary with Libraries</code> item.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">environment</span><span class="o">=</span><span class="s2">&quot;default&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">environment</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="w"></span>
 
-<span class="c1"># Regex to extract the scheme name from the Build Configuration</span>
-<span class="c1"># We have named our Build Configurations as Debug-dev, Debug-prod etc.</span>
-<span class="c1"># Here, dev and prod are the scheme names. This kind of naming is required by Flutter for flavors to work.</span>
-<span class="c1"># We are using the $CONFIGURATION variable available in the XCode build environment to extract</span>
-<span class="c1"># the environment (or flavor)</span>
-<span class="c1"># For eg.</span>
-<span class="c1"># If CONFIGURATION=&quot;Debug-prod&quot;, then environment will get set to &quot;prod&quot;.</span>
-<span class="k">if</span> <span class="p">[[</span> <span class="o">$</span><span class="n">CONFIGURATION</span> <span class="o">=~</span> <span class="o">-</span><span class="p">([</span><span class="o">^-</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="o">$</span> <span class="p">]];</span> <span class="n">then</span>
-<span class="n">environment</span><span class="o">=$</span><span class="p">{</span><span class="n">BASH_REMATCH</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
-<span class="n">fi</span>
+<span class="c1"># Regex to extract the scheme name from the Build Configuration</span><span class="w"></span>
+<span class="c1"># We have named our Build Configurations as Debug-dev, Debug-prod etc.</span><span class="w"></span>
+<span class="c1"># Here, dev and prod are the scheme names. This kind of naming is required by Flutter for flavors to work.</span><span class="w"></span>
+<span class="c1"># We are using the $CONFIGURATION variable available in the XCode build environment to extract</span><span class="w"></span>
+<span class="c1"># the environment (or flavor)</span><span class="w"></span>
+<span class="c1"># For eg.</span><span class="w"></span>
+<span class="c1"># If CONFIGURATION=&quot;Debug-prod&quot;, then environment will get set to &quot;prod&quot;.</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">[[</span><span class="w"> </span><span class="o">$</span><span class="n">CONFIGURATION</span><span class="w"> </span><span class="o">=~</span><span class="w"> </span><span class="o">-</span><span class="p">([</span><span class="o">^-</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="o">$</span><span class="w"> </span><span class="p">]];</span><span class="w"> </span><span class="n">then</span><span class="w"></span>
+<span class="n">environment</span><span class="o">=$</span><span class="p">{</span><span class="n">BASH_REMATCH</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="w"></span>
+<span class="n">fi</span><span class="w"></span>
 
-<span class="n">echo</span> <span class="o">$</span><span class="n">environment</span>
+<span class="n">echo</span><span class="w"> </span><span class="o">$</span><span class="n">environment</span><span class="w"></span>
 
-<span class="c1"># Name and path of the resource we&#39;re copying</span>
-<span class="n">GOOGLESERVICE_INFO_PLIST</span><span class="o">=</span><span class="n">GoogleService</span><span class="o">-</span><span class="n">Info</span><span class="o">.</span><span class="n">plist</span>
-<span class="n">GOOGLESERVICE_INFO_FILE</span><span class="o">=$</span><span class="p">{</span><span class="n">PROJECT_DIR</span><span class="p">}</span><span class="o">/</span><span class="n">config</span><span class="o">/$</span><span class="p">{</span><span class="n">environment</span><span class="p">}</span><span class="o">/$</span><span class="p">{</span><span class="n">GOOGLESERVICE_INFO_PLIST</span><span class="p">}</span>
+<span class="c1"># Name and path of the resource we&#39;re copying</span><span class="w"></span>
+<span class="n">GOOGLESERVICE_INFO_PLIST</span><span class="o">=</span><span class="n">GoogleService</span><span class="o">-</span><span class="n">Info</span><span class="o">.</span><span class="n">plist</span><span class="w"></span>
+<span class="n">GOOGLESERVICE_INFO_FILE</span><span class="o">=$</span><span class="p">{</span><span class="n">PROJECT_DIR</span><span class="p">}</span><span class="o">/</span><span class="n">config</span><span class="o">/$</span><span class="p">{</span><span class="n">environment</span><span class="p">}</span><span class="o">/$</span><span class="p">{</span><span class="n">GOOGLESERVICE_INFO_PLIST</span><span class="p">}</span><span class="w"></span>
 
-<span class="c1"># Make sure GoogleService-Info.plist exists</span>
-<span class="n">echo</span> <span class="s2">&quot;Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_FILE}&quot;</span>
-<span class="k">if</span> <span class="p">[</span> <span class="o">!</span> <span class="o">-</span><span class="n">f</span> <span class="o">$</span><span class="n">GOOGLESERVICE_INFO_FILE</span> <span class="p">]</span>
-<span class="n">then</span>
-<span class="n">echo</span> <span class="s2">&quot;No GoogleService-Info.plist found. Please ensure it&#39;s in the proper directory.&quot;</span>
-<span class="n">exit</span> <span class="mi">1</span>
-<span class="n">fi</span>
+<span class="c1"># Make sure GoogleService-Info.plist exists</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_FILE}&quot;</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="o">$</span><span class="n">GOOGLESERVICE_INFO_FILE</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="n">then</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;No GoogleService-Info.plist found. Please ensure it&#39;s in the proper directory.&quot;</span><span class="w"></span>
+<span class="n">exit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="n">fi</span><span class="w"></span>
 
-<span class="c1"># Get a reference to the destination location for the GoogleService-Info.plist</span>
-<span class="c1"># This is the default location where Firebase init code expects to find GoogleServices-Info.plist file</span>
-<span class="n">PLIST_DESTINATION</span><span class="o">=$</span><span class="p">{</span><span class="n">BUILT_PRODUCTS_DIR</span><span class="p">}</span><span class="o">/$</span><span class="p">{</span><span class="n">PRODUCT_NAME</span><span class="p">}</span><span class="o">.</span><span class="n">app</span>
-<span class="n">echo</span> <span class="s2">&quot;Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}&quot;</span>
+<span class="c1"># Get a reference to the destination location for the GoogleService-Info.plist</span><span class="w"></span>
+<span class="c1"># This is the default location where Firebase init code expects to find GoogleServices-Info.plist file</span><span class="w"></span>
+<span class="n">PLIST_DESTINATION</span><span class="o">=$</span><span class="p">{</span><span class="n">BUILT_PRODUCTS_DIR</span><span class="p">}</span><span class="o">/$</span><span class="p">{</span><span class="n">PRODUCT_NAME</span><span class="p">}</span><span class="o">.</span><span class="n">app</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}&quot;</span><span class="w"></span>
 
-<span class="c1"># Copy over the prod GoogleService-Info.plist for Release builds</span>
-<span class="n">cp</span> <span class="s2">&quot;${GOOGLESERVICE_INFO_FILE}&quot;</span> <span class="s2">&quot;${PLIST_DESTINATION}&quot;</span>
-</pre></div>
-
+<span class="c1"># Copy over the prod GoogleService-Info.plist for Release builds</span><span class="w"></span>
+<span class="n">cp</span><span class="w"> </span><span class="s2">&quot;${GOOGLESERVICE_INFO_FILE}&quot;</span><span class="w"> </span><span class="s2">&quot;${PLIST_DESTINATION}&quot;</span><span class="w"></span>
+</code></pre></div>
 
 <p><em>Note: I borrowed this script from <a href="https://medium.com/@animeshjain/build-flavors-in-flutter-android-and-ios-with-different-firebase-projects-per-flavor-27c5c5dac10b">this great article</a>.</em></p>
 <h1>Custom Schemes</h1>
@@ -332,26 +328,25 @@ Move the script right after <code>Link Binary with Libraries</code> item.</li>
 <li>Manage scheme -&gt; Assign correct configuration to its corresponding scheme.</li>
 </ul>
 <p>At this point, if you run <code>flutter run -t lib/main_dev.dart --flavor dev</code> in CLI, you will see information to complete the custom scheme. Finish the custom scheme setup as directed.</p>
-<div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">Xcode</span> <span class="n">project</span> <span class="n">defines</span> <span class="n">build</span> <span class="n">configurations</span><span class="p">:</span> <span class="n">Debug</span><span class="p">,</span> <span class="n">Release</span><span class="p">,</span> <span class="n">Profile</span>
-<span class="n">Flutter</span> <span class="n">expects</span> <span class="n">a</span> <span class="n">build</span> <span class="n">configuration</span> <span class="n">named</span> <span class="n">Debug</span><span class="o">-</span><span class="n">dev</span> <span class="k">or</span> <span class="k">similar</span><span class="p">.</span>
-<span class="k">Open</span> <span class="n">Xcode</span> <span class="k">to</span> <span class="n">fix</span> <span class="n">the</span> <span class="n">problem</span><span class="p">:</span>
-  <span class="k">open</span> <span class="n">ios</span><span class="o">/</span><span class="n">Runner</span><span class="p">.</span><span class="n">xcworkspace</span>
-<span class="mi">1</span><span class="p">.</span> <span class="n">Click</span> <span class="k">on</span> <span class="ss">&quot;Runner&quot;</span> <span class="k">in</span> <span class="n">the</span> <span class="n">project</span> <span class="n">navigator</span><span class="p">.</span>
-<span class="mi">2</span><span class="p">.</span> <span class="n">Ensure</span> <span class="n">the</span> <span class="n">Runner</span> <span class="n">PROJECT</span> <span class="k">is</span> <span class="n">selected</span><span class="p">,</span> <span class="k">not</span> <span class="n">the</span> <span class="n">Runner</span> <span class="n">TARGET</span><span class="p">.</span>
-<span class="mi">3</span><span class="p">.</span> <span class="n">Click</span> <span class="n">the</span> <span class="n">Editor</span><span class="o">-&gt;</span><span class="k">Add</span> <span class="n">Configuration</span><span class="o">-&gt;</span><span class="n">Duplicate</span> <span class="ss">&quot;Debug&quot;</span> <span class="n">Configuration</span><span class="p">.</span>
+<div class="highlight"><pre><span></span><code><span class="nt">The</span><span class="w"> </span><span class="nt">Xcode</span><span class="w"> </span><span class="nt">project</span><span class="w"> </span><span class="nt">defines</span><span class="w"> </span><span class="nt">build</span><span class="w"> </span><span class="nt">configurations</span><span class="o">:</span><span class="w"> </span><span class="nt">Debug</span><span class="o">,</span><span class="w"> </span><span class="nt">Release</span><span class="o">,</span><span class="w"> </span><span class="nt">Profile</span><span class="w"></span>
+<span class="nt">Flutter</span><span class="w"> </span><span class="nt">expects</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="nt">build</span><span class="w"> </span><span class="nt">configuration</span><span class="w"> </span><span class="nt">named</span><span class="w"> </span><span class="nt">Debug-dev</span><span class="w"> </span><span class="nt">or</span><span class="w"> </span><span class="nt">similar</span><span class="o">.</span><span class="w"></span>
+<span class="nt">Open</span><span class="w"> </span><span class="nt">Xcode</span><span class="w"> </span><span class="nt">to</span><span class="w"> </span><span class="nt">fix</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">problem</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">open</span><span class="w"> </span><span class="nt">ios</span><span class="o">/</span><span class="nt">Runner</span><span class="p">.</span><span class="nc">xcworkspace</span><span class="w"></span>
+<span class="nt">1</span><span class="o">.</span><span class="w"> </span><span class="nt">Click</span><span class="w"> </span><span class="nt">on</span><span class="w"> </span><span class="s2">&quot;Runner&quot;</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">project</span><span class="w"> </span><span class="nt">navigator</span><span class="o">.</span><span class="w"></span>
+<span class="nt">2</span><span class="o">.</span><span class="w"> </span><span class="nt">Ensure</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">Runner</span><span class="w"> </span><span class="nt">PROJECT</span><span class="w"> </span><span class="nt">is</span><span class="w"> </span><span class="nt">selected</span><span class="o">,</span><span class="w"> </span><span class="nt">not</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">Runner</span><span class="w"> </span><span class="nt">TARGET</span><span class="o">.</span><span class="w"></span>
+<span class="nt">3</span><span class="o">.</span><span class="w"> </span><span class="nt">Click</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">Editor-</span><span class="o">&gt;</span><span class="nt">Add</span><span class="w"> </span><span class="nt">Configuration-</span><span class="o">&gt;</span><span class="nt">Duplicate</span><span class="w"> </span><span class="s2">&quot;Debug&quot;</span><span class="w"> </span><span class="nt">Configuration</span><span class="o">.</span><span class="w"></span>
 
-   <span class="k">If</span> <span class="n">this</span> <span class="k">option</span> <span class="k">is</span> <span class="n">disabled</span><span class="p">,</span> <span class="n">it</span> <span class="k">is</span> <span class="n">likely</span> <span class="n">you</span> <span class="n">have</span> <span class="n">the</span> <span class="n">target</span> <span class="n">selected</span> <span class="k">instead</span>
-   <span class="k">of</span> <span class="n">the</span> <span class="n">project</span><span class="p">;</span> <span class="n">see</span><span class="p">:</span>
-   <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">stackoverflow</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">questions</span><span class="o">/</span><span class="mi">19842746</span><span class="o">/</span><span class="n">adding</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">configuration</span><span class="o">-</span><span class="k">in</span><span class="o">-</span><span class="n">xcode</span>
+<span class="w">   </span><span class="nt">If</span><span class="w"> </span><span class="nt">this</span><span class="w"> </span><span class="nt">option</span><span class="w"> </span><span class="nt">is</span><span class="w"> </span><span class="nt">disabled</span><span class="o">,</span><span class="w"> </span><span class="nt">it</span><span class="w"> </span><span class="nt">is</span><span class="w"> </span><span class="nt">likely</span><span class="w"> </span><span class="nt">you</span><span class="w"> </span><span class="nt">have</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">target</span><span class="w"> </span><span class="nt">selected</span><span class="w"> </span><span class="nt">instead</span><span class="w"></span>
+<span class="w">   </span><span class="nt">of</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">project</span><span class="o">;</span><span class="w"> </span><span class="nt">see</span><span class="o">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">https</span><span class="o">://</span><span class="nt">stackoverflow</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">questions</span><span class="o">/</span><span class="nt">19842746</span><span class="o">/</span><span class="nt">adding-a-build-configuration-in-xcode</span><span class="w"></span>
 
-   <span class="k">If</span> <span class="n">you</span> <span class="n">have</span> <span class="n">created</span> <span class="n">a</span> <span class="n">completely</span> <span class="n">custom</span> <span class="k">set</span> <span class="k">of</span> <span class="n">build</span> <span class="n">configurations</span><span class="p">,</span>
-   <span class="n">you</span> <span class="n">can</span> <span class="k">set</span> <span class="n">the</span> <span class="n">FLUTTER_BUILD_MODE</span><span class="o">=</span><span class="n">debug</span>
-   <span class="k">in</span> <span class="n">the</span> <span class="p">.</span><span class="n">xcconfig</span> <span class="n">file</span> <span class="k">for</span> <span class="n">that</span> <span class="n">configuration</span> <span class="k">and</span> <span class="n">run</span> <span class="k">from</span> <span class="n">Xcode</span><span class="p">.</span>
+<span class="w">   </span><span class="nt">If</span><span class="w"> </span><span class="nt">you</span><span class="w"> </span><span class="nt">have</span><span class="w"> </span><span class="nt">created</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="nt">completely</span><span class="w"> </span><span class="nt">custom</span><span class="w"> </span><span class="nt">set</span><span class="w"> </span><span class="nt">of</span><span class="w"> </span><span class="nt">build</span><span class="w"> </span><span class="nt">configurations</span><span class="o">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">you</span><span class="w"> </span><span class="nt">can</span><span class="w"> </span><span class="nt">set</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">FLUTTER_BUILD_MODE</span><span class="o">=</span><span class="nt">debug</span><span class="w"></span>
+<span class="w">   </span><span class="nt">in</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="p">.</span><span class="nc">xcconfig</span><span class="w"> </span><span class="nt">file</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nt">that</span><span class="w"> </span><span class="nt">configuration</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="nt">run</span><span class="w"> </span><span class="nt">from</span><span class="w"> </span><span class="nt">Xcode</span><span class="o">.</span><span class="w"></span>
 
-<span class="mi">4</span><span class="p">.</span> <span class="k">If</span> <span class="n">you</span> <span class="k">are</span> <span class="k">not</span> <span class="k">using</span> <span class="n">completely</span> <span class="n">custom</span> <span class="n">build</span> <span class="n">configurations</span><span class="p">,</span> <span class="n">name</span> <span class="n">the</span> <span class="n">newly</span> <span class="n">created</span> <span class="n">configuration</span> <span class="n">debug</span><span class="p">.</span>
-<span class="n">Could</span> <span class="k">not</span> <span class="n">build</span> <span class="n">the</span> <span class="n">precompiled</span> <span class="n">application</span> <span class="k">for</span> <span class="n">the</span> <span class="n">device</span><span class="p">.</span>
-</pre></div>
-
+<span class="nt">4</span><span class="o">.</span><span class="w"> </span><span class="nt">If</span><span class="w"> </span><span class="nt">you</span><span class="w"> </span><span class="nt">are</span><span class="w"> </span><span class="nt">not</span><span class="w"> </span><span class="nt">using</span><span class="w"> </span><span class="nt">completely</span><span class="w"> </span><span class="nt">custom</span><span class="w"> </span><span class="nt">build</span><span class="w"> </span><span class="nt">configurations</span><span class="o">,</span><span class="w"> </span><span class="nt">name</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">newly</span><span class="w"> </span><span class="nt">created</span><span class="w"> </span><span class="nt">configuration</span><span class="w"> </span><span class="nt">debug</span><span class="o">.</span><span class="w"></span>
+<span class="nt">Could</span><span class="w"> </span><span class="nt">not</span><span class="w"> </span><span class="nt">build</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">precompiled</span><span class="w"> </span><span class="nt">application</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">device</span><span class="o">.</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h1>Scheme specific Product bundle identifier</h1>
@@ -364,22 +359,21 @@ Assign the correct bundle identifier for each item as shown in screenshot below.
 <hr>
 <h1>Running App</h1>
 <p>I find following commands handy on CLI to run app for specific flavors:</p>
-<div class="highlight"><pre><span></span><span class="c1">#Run app in `dev` environment</span>
-<span class="n">flutter</span> <span class="n">run</span> <span class="o">-</span><span class="n">t</span> <span class="n">lib</span><span class="o">/</span><span class="n">main_dev</span><span class="p">.</span><span class="n">dart</span>  <span class="o">--</span><span class="n">flavor</span><span class="o">=</span><span class="n">dev</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#Run app in `dev` environment</span><span class="w"></span>
+<span class="n">flutter</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">lib</span><span class="o">/</span><span class="n">main_dev</span><span class="p">.</span><span class="n">dart</span><span class="w">  </span><span class="o">--</span><span class="n">flavor</span><span class="o">=</span><span class="n">dev</span><span class="w"></span>
 
-<span class="c1"># Run app in debug mode (Picks up debug signing config)</span>
-<span class="n">flutter</span> <span class="n">run</span> <span class="o">-</span><span class="n">t</span> <span class="n">lib</span><span class="o">/</span><span class="n">main_dev</span><span class="p">.</span><span class="n">dart</span>  <span class="o">--</span><span class="n">debug</span> <span class="o">--</span><span class="n">flavor</span><span class="o">=</span><span class="n">dev</span>
+<span class="c1"># Run app in debug mode (Picks up debug signing config)</span><span class="w"></span>
+<span class="n">flutter</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">lib</span><span class="o">/</span><span class="n">main_dev</span><span class="p">.</span><span class="n">dart</span><span class="w">  </span><span class="o">--</span><span class="n">debug</span><span class="w"> </span><span class="o">--</span><span class="n">flavor</span><span class="o">=</span><span class="n">dev</span><span class="w"></span>
 
-<span class="c1"># Run app in release mode (Picks up release signing config)</span>
-<span class="n">flutter</span> <span class="n">run</span> <span class="o">-</span><span class="n">t</span> <span class="n">lib</span><span class="o">/</span><span class="n">main_dev</span><span class="p">.</span><span class="n">dart</span>  <span class="o">--</span><span class="k">release</span> <span class="o">--</span><span class="n">flavor</span><span class="o">=</span><span class="n">dev</span>
+<span class="c1"># Run app in release mode (Picks up release signing config)</span><span class="w"></span>
+<span class="n">flutter</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">lib</span><span class="o">/</span><span class="n">main_dev</span><span class="p">.</span><span class="n">dart</span><span class="w">  </span><span class="o">--</span><span class="k">release</span><span class="w"> </span><span class="o">--</span><span class="n">flavor</span><span class="o">=</span><span class="n">dev</span><span class="w"></span>
 
-<span class="c1"># Create appBundle for Android platform. Runs in release mode by default.</span>
-<span class="n">flutter</span> <span class="n">build</span> <span class="n">appbundle</span> <span class="o">-</span><span class="n">t</span> <span class="n">lib</span><span class="o">/</span><span class="n">main_dev</span><span class="p">.</span><span class="n">dart</span>  <span class="o">--</span><span class="n">flavor</span><span class="o">=</span><span class="n">dev</span>
+<span class="c1"># Create appBundle for Android platform. Runs in release mode by default.</span><span class="w"></span>
+<span class="n">flutter</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">appbundle</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">lib</span><span class="o">/</span><span class="n">main_dev</span><span class="p">.</span><span class="n">dart</span><span class="w">  </span><span class="o">--</span><span class="n">flavor</span><span class="o">=</span><span class="n">dev</span><span class="w"></span>
 
-<span class="c1"># Create APK for dev flavor. Runs in release mode by default.</span>
-<span class="n">flutter</span> <span class="n">build</span> <span class="n">apk</span> <span class="o">-</span><span class="n">t</span> <span class="n">lib</span><span class="o">/</span><span class="n">main_dev</span><span class="p">.</span><span class="n">dart</span>  <span class="o">--</span><span class="n">flavor</span><span class="o">=</span><span class="n">dev</span>
-</pre></div>
-
+<span class="c1"># Create APK for dev flavor. Runs in release mode by default.</span><span class="w"></span>
+<span class="n">flutter</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">apk</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">lib</span><span class="o">/</span><span class="n">main_dev</span><span class="p">.</span><span class="n">dart</span><span class="w">  </span><span class="o">--</span><span class="n">flavor</span><span class="o">=</span><span class="n">dev</span><span class="w"></span>
+</code></pre></div>
 
 <p>Replace <code>dev</code> with <code>prod</code> to run and build app for production environment.</p>
 <hr>

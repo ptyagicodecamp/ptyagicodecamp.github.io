@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -205,80 +205,78 @@
 <p>This code recipe is added to <a href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html">Flutter Cookbook</a> as well:</p>
 <p><img alt="Canvas-Painting" src="https://ptyagicodecamp.github.io/paint_canvas_1.jpg"></p>
 <hr>
-<p><strong>Checkout the companion video tutorial:</strong>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/44o5EShxBoM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p><strong>Checkout the companion video tutorial:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/44o5EShxBoM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <hr>
 <h3>Drawing / Painting Area</h3>
 <p>Let's go ahead with building main area of the finger painting app. In this app, a picture of hut is displayed as background to color in. User can color this page while adding more details to the picture using tools provided by the app.</p>
 <p>We'll be using <a href="">'StatefulWidget'</a> to implement the app. This is because we need to convert the user's tap into drawing/painting while updating the finger movement on the screen.</p>
 <p><strong>Note:</strong> You can either choose to run this sample from <code>main()</code> method or invoke it from Flutter Cookbook app as mentioned above.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Optional</span> <span class="n">app</span><span class="s1">&#39;s entry point. Uncomment if running only this file.</span>
-<span class="o">//</span><span class="n">Note</span><span class="p">:</span> <span class="n">Following</span> <span class="n">line</span> <span class="n">should</span> <span class="n">be</span> <span class="n">commented</span> <span class="n">out</span> <span class="n">when</span> <span class="n">running</span> <span class="n">Flutter</span> <span class="n">Cookbook</span> <span class="n">App</span> <span class="n">on</span> <span class="n">Web</span> <span class="n">platform</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">runApp</span><span class="p">(</span><span class="n">CanvasPainting</span><span class="p">());</span>
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Optional</span><span class="w"> </span><span class="n">app</span><span class="s1">&#39;s entry point. Uncomment if running only this file.</span>
+<span class="o">//</span><span class="n">Note</span><span class="p">:</span><span class="w"> </span><span class="n">Following</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">commented</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">Flutter</span><span class="w"> </span><span class="n">Cookbook</span><span class="w"> </span><span class="n">App</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Web</span><span class="w"> </span><span class="n">platform</span><span class="w"></span>
+<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">runApp</span><span class="p">(</span><span class="n">CanvasPainting</span><span class="p">());</span><span class="w"></span>
 
-<span class="o">//</span><span class="n">StatefulWidget</span>
-<span class="k">class</span> <span class="n">CanvasPainting</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">_CanvasPaintingState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_CanvasPaintingState</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="o">//</span><span class="n">StatefulWidget</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="n">CanvasPainting</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">_CanvasPaintingState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_CanvasPaintingState</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">class</span> <span class="n">_CanvasPaintingState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">CanvasPainting</span><span class="o">&gt;</span> <span class="p">{</span>
- <span class="o">...</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">MaterialApp</span><span class="p">(</span>
-      <span class="n">debugShowCheckedModeBanner</span><span class="p">:</span> <span class="bp">false</span><span class="p">,</span>
-      <span class="n">home</span><span class="p">:</span> <span class="n">Scaffold</span><span class="p">(</span>
-        <span class="n">body</span><span class="p">:</span> <span class="o">//</span><span class="n">Main</span> <span class="n">canvas</span> <span class="n">goes</span> <span class="n">here</span><span class="p">,</span>
-        <span class="n">floatingActionButton</span><span class="p">:</span> <span class="o">//</span><span class="n">FAB</span> <span class="k">for</span> <span class="n">the</span> <span class="n">menu</span> <span class="n">items</span> <span class="n">goes</span> <span class="n">here</span><span class="p">,</span>
-      <span class="p">),</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
- <span class="o">...</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="k">class</span><span class="w"> </span><span class="n">_CanvasPaintingState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">CanvasPainting</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="o">...</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">debugShowCheckedModeBanner</span><span class="p">:</span><span class="w"> </span><span class="bp">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">home</span><span class="p">:</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="o">//</span><span class="n">Main</span><span class="w"> </span><span class="n">canvas</span><span class="w"> </span><span class="n">goes</span><span class="w"> </span><span class="n">here</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">floatingActionButton</span><span class="p">:</span><span class="w"> </span><span class="o">//</span><span class="n">FAB</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">menu</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="n">goes</span><span class="w"> </span><span class="n">here</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w"> </span><span class="o">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Detecting gestures:</strong></p>
 <p>We need a way to capture the user's tap. The <a href="https://api.flutter.dev/flutter/widgets/GestureDetector-class.html"><code>GestureDetector</code></a> widget is used to detect gestures. This widget is assigned to <code>Scaffold</code> widget's <code>body</code> property.</p>
 <p>Since we want to paint on the given hut image. Feel free to use another image if you would like. However, don't forget to add this image to <code>assets/images</code> folder. Put this image in the center of the screen using <code>Center</code> widget. We want to draw on top of this image, so put this widget inside a <code>Stack</code> widget. Add <code>CustomPaint</code> as another child to this <code>Stack</code> widget.</p>
 <p><code>CustomPaint</code> widget takes two attributes. First, size of the canvas to be considered for drawing. Assign <code>Size.infinite</code> to <code>size</code> property because we want flexibility to be able draw anywhere on the screen.</p>
 <p>Second, assign <code>painter</code> property to an instance of <code>CustomPainter</code> widget. We'll create a class <code>MyPainter</code> which extends <code>CustomPainter</code>. <code>MyPainter</code> class needs <code>pointsList</code>. This is the list of coordinates where screen is being touched. This information is required to draw either a line or a point on the screen.</p>
-<div class="highlight"><pre><span></span><span class="err">//List of points touched at screen</span>
-<span class="err">List&lt;TouchPoints&gt; points = List();</span>
-<span class="err">  ...</span>
-<span class="c">body: GestureDetector(</span>
-<span class="c">  child: Stack(</span>
-<span class="c">    children: &lt;Widget&gt;[</span>
-<span class="c">      Center(</span>
-<span class="c">        child: Image.asset(&quot;assets/images/hut.png&quot;),</span>
-<span class="c">      ),</span>
-<span class="c">      CustomPaint(</span>
-<span class="c">        size: Size.infinite,</span>
-<span class="c">        painter: MyPainter(</span>
-<span class="c">          pointsList: points,</span>
-<span class="c">        ),</span>
-<span class="c">      ),</span>
-<span class="c">    ],</span>
-<span class="c">  ),</span>
-<span class="err">),</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>//List of points touched at screen
+List&lt;TouchPoints&gt; points = List();
+  ...
+body: GestureDetector(
+  child: Stack(
+    children: &lt;Widget&gt;[
+      Center(
+        child: Image.asset(&quot;assets/images/hut.png&quot;),
+      ),
+      CustomPaint(
+        size: Size.infinite,
+        painter: MyPainter(
+          pointsList: points,
+        ),
+      ),
+    ],
+  ),
+),
+</code></pre></div>
 
 <p><strong>The <code>TouchPoints</code> class:</strong></p>
 <p>This class holds the point information where screen is being touched.</p>
-<div class="highlight"><pre><span></span><span class="err">//Class to define a point touched at canvas</span>
-<span class="err">class TouchPoints {</span>
-<span class="err">  Paint paint;</span>
-<span class="err">  Offset points;</span>
-<span class="err">  TouchPoints({this.points, this.paint});</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>//Class to define a point touched at canvas
+class TouchPoints {
+  Paint paint;
+  Offset points;
+  TouchPoints({this.points, this.paint});
+}
+</code></pre></div>
 
 <p><strong><code>MyPainter</code> class:</strong></p>
 <p>The <code>MyPainter</code> class extends <code>CustomPainter</code>. It tells system how and when the screen will be painted. When two consecutive points are available, a line is detected otherwise a point is drawn.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">MyPainter</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">CustomPainter</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">MyPainter</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">CustomPainter</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">MyPainter</span><span class="p">(</span><span class="err">{</span><span class="n">this</span><span class="p">.</span><span class="n">pointsList</span><span class="err">}</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">  </span><span class="o">//</span><span class="n">Keep</span><span class="w"> </span><span class="n">track</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">points</span><span class="w"> </span><span class="n">tapped</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">screen</span><span class="w"></span>
@@ -311,8 +309,7 @@
 <span class="w">  </span><span class="nv">@override</span><span class="w"></span>
 <span class="w">  </span><span class="n">bool</span><span class="w"> </span><span class="n">shouldRepaint</span><span class="p">(</span><span class="n">MyPainter</span><span class="w"> </span><span class="n">oldDelegate</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p>At this point, our canvas is ready to process the touched points on the screen. However, we need to add detect and register this touched down points. For this purpose, we'll use <code>GestureDetector</code> widget's following properties:</p>
 <ul>
@@ -323,28 +320,26 @@
 <blockquote>
 <p>A pointer has contacted the screen with a primary button and has begun to move.</p>
 </blockquote>
-<div class="highlight"><pre><span></span><span class="x"> </span><span class="nx">onPanStart</span><span class="p">:</span> <span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">setState</span><span class="p">(()</span> <span class="p">{</span>
-    <span class="nx">RenderBox</span> <span class="n">renderBox</span><span class="o"> =</span> <span class="nx">context.findRenderObject</span><span class="p">();</span>
-    <span class="nx">points.add</span><span class="p">(</span><span class="nx">TouchPoints</span><span class="p">(</span>
-        <span class="nx">points</span><span class="p">:</span> <span class="nx">renderBox.globalToLocal</span><span class="p">(</span><span class="nx">details.globalPosition</span><span class="p">),</span>
-        <span class="nx">paint</span><span class="p">:</span> <span class="nx">Paint</span><span class="p">()</span>
-          <span class="bp">..</span><span class="nx nx-Member">strokeCap</span> <span class="o">=</span> <span class="nx">strokeType</span>
-          <span class="bp">..</span><span class="nx nx-Member">isAntiAlias</span> <span class="o">=</span> <span class="kc">true</span>
-          <span class="bp">..</span><span class="nx nx-Member">color</span> <span class="o">=</span> <span class="nx">selectedColor.withOpacity</span><span class="p">(</span><span class="nx">opacity</span><span class="p">)</span>
-          <span class="bp">..</span><span class="nx nx-Member">strokeWidth</span> <span class="o">=</span> <span class="nx">strokeWidth</span><span class="p">));</span>
-  <span class="p">});</span>
-<span class="p">},</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">onPanStart</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">details</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">setState(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">RenderBox</span><span class="w"> </span><span class="err">renderBox</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">context.findRenderObject()</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="err">points.add(TouchPoints(</span><span class="w"></span>
+<span class="w">        </span><span class="n">points</span><span class="p">:</span><span class="w"> </span><span class="n">renderBox</span><span class="o">.</span><span class="nf">globalToLocal</span><span class="p">(</span><span class="n">details</span><span class="err">.</span><span class="n">globalPosition</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">paint</span><span class="o">:</span><span class="w"> </span><span class="nf">Paint</span><span class="p">()</span><span class="w"></span>
+<span class="w">          </span><span class="o">..</span><span class="n">strokeCap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strokeType</span><span class="w"></span>
+<span class="w">          </span><span class="o">..</span><span class="n">isAntiAlias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">true</span><span class="w"></span>
+<span class="w">          </span><span class="o">..</span><span class="kc">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">selectedColor</span><span class="o">.</span><span class="nf">withOpacity</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="o">..</span><span class="n">strokeWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strokeWidth</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="o">);</span><span class="w"></span>
+<span class="err">}</span><span class="o">,</span><span class="w"></span>
+</code></pre></div>
 
 <p>Let's define default properties for <code>Paint()</code> object as below:</p>
-<div class="highlight"><pre><span></span><span class="err"> double opacity = 1.0;</span>
-<span class="err"> StrokeCap strokeType = StrokeCap.round;</span>
-<span class="err"> double strokeWidth = 3.0;</span>
-<span class="err"> Color selectedColor = Colors.black;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code> double opacity = 1.0;
+ StrokeCap strokeType = StrokeCap.round;
+ double strokeWidth = 3.0;
+ Color selectedColor = Colors.black;
+</code></pre></div>
 
 <ul>
 <li><strong>The <code>onPanUpdate</code> property:</strong></li>
@@ -354,20 +349,19 @@
 <blockquote>
 <p>A pointer that is in contact with the screen with a primary button and moving has moved again.</p>
 </blockquote>
-<div class="highlight"><pre><span></span><span class="x"> </span><span class="nx">onPanUpdate</span><span class="p">:</span> <span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
-   <span class="nx">setState</span><span class="p">(()</span> <span class="p">{</span>
-     <span class="nx">RenderBox</span> <span class="n">renderBox</span><span class="o"> =</span> <span class="nx">context.findRenderObject</span><span class="p">();</span>
-     <span class="nx">points.add</span><span class="p">(</span><span class="nx">TouchPoints</span><span class="p">(</span>
-         <span class="nx">points</span><span class="p">:</span> <span class="nx">renderBox.globalToLocal</span><span class="p">(</span><span class="nx">details.globalPosition</span><span class="p">),</span>
-         <span class="nx">paint</span><span class="p">:</span> <span class="nx">Paint</span><span class="p">()</span>
-           <span class="bp">..</span><span class="nx nx-Member">strokeCap</span> <span class="o">=</span> <span class="nx">strokeType</span>
-           <span class="bp">..</span><span class="nx nx-Member">isAntiAlias</span> <span class="o">=</span> <span class="kc">true</span>
-           <span class="bp">..</span><span class="nx nx-Member">color</span> <span class="o">=</span> <span class="nx">selectedColor.withOpacity</span><span class="p">(</span><span class="nx">opacity</span><span class="p">)</span>
-           <span class="bp">..</span><span class="nx nx-Member">strokeWidth</span> <span class="o">=</span> <span class="nx">strokeWidth</span><span class="p">));</span>
-   <span class="p">});</span>
- <span class="p">},</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">onPanUpdate</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">details</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="err">setState(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">     </span><span class="err">RenderBox</span><span class="w"> </span><span class="err">renderBox</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">context.findRenderObject()</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="err">points.add(TouchPoints(</span><span class="w"></span>
+<span class="w">         </span><span class="n">points</span><span class="p">:</span><span class="w"> </span><span class="n">renderBox</span><span class="o">.</span><span class="nf">globalToLocal</span><span class="p">(</span><span class="n">details</span><span class="err">.</span><span class="n">globalPosition</span><span class="p">),</span><span class="w"></span>
+<span class="w">         </span><span class="n">paint</span><span class="o">:</span><span class="w"> </span><span class="nf">Paint</span><span class="p">()</span><span class="w"></span>
+<span class="w">           </span><span class="o">..</span><span class="n">strokeCap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strokeType</span><span class="w"></span>
+<span class="w">           </span><span class="o">..</span><span class="n">isAntiAlias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">true</span><span class="w"></span>
+<span class="w">           </span><span class="o">..</span><span class="kc">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">selectedColor</span><span class="o">.</span><span class="nf">withOpacity</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span><span class="w"></span>
+<span class="w">           </span><span class="o">..</span><span class="n">strokeWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strokeWidth</span><span class="p">));</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="o">);</span><span class="w"></span>
+<span class="w"> </span><span class="err">}</span><span class="o">,</span><span class="w"></span>
+</code></pre></div>
 
 <ul>
 <li><strong>The <code>onPanEnd</code> property:</strong></li>
@@ -377,13 +371,12 @@
 <blockquote>
 <p>A pointer that was previously in contact with the screen with a primary button and moving is no longer in contact with the screen and was moving at a specific velocity when it stopped contacting the screen.</p>
 </blockquote>
-<div class="highlight"><pre><span></span><span class="err"> onPanEnd: (details) {</span>
-<span class="err">  setState(() {</span>
-<span class="err">    points.add(null);</span>
-<span class="err">  });</span>
-<span class="err">},</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">onPanEnd</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">details</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">setState(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">points.add(null)</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="o">);</span><span class="w"></span>
+<span class="err">}</span><span class="o">,</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h2>Action Items</h2>
@@ -401,9 +394,8 @@
 <p>The FAB menu is implemented using <code>AnimatedFloatingActionButton</code> widget. This widget provides nice and smooth animation for menu open and close actions. It's assigned to <code>Scaffold</code> widget using <code>floatingActionButton</code> property.</p>
 <h4><code>pubspec.yaml</code> Configuration</h4>
 <p>The <code>AnimatedFloatingActionButton</code> widget is provided by a Flutter plugin. Add plugin <code>animated_floatactionbuttons: ^0.1.0</code> to <code>pubspec.yaml</code></p>
-<div class="highlight"><pre><span></span><span class="err">  animated_floatactionbuttons: ^0.1.0</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>  animated_floatactionbuttons: ^0.1.0
+</code></pre></div>
 
 <p><strong>Note:</strong> Don't forget to fetch the flutter packages after adding dependency.</p>
 <h4>Animating FAB</h4>
@@ -411,25 +403,24 @@
 <p>The <code>Colors.blue</code> is used as starting animation color. This can be assigned using <code>colorStartAnimation</code> property. The property <code>colorEndAnimation</code> is used to assign ending animation color, <code>Colors.cyan</code>.</p>
 <p>When FAB menu open and closes, its icon(s) is changed using <code>animatedIconData</code> property.</p>
 <p>This is how different colors can be assigned to <code>AnimatedFloatingActionButton</code> widget:</p>
-<div class="highlight"><pre><span></span><span class="n">floatingActionButton</span><span class="o">:</span> <span class="n">AnimatedFloatingActionButton</span><span class="o">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">floatingActionButton</span><span class="o">:</span><span class="w"> </span><span class="n">AnimatedFloatingActionButton</span><span class="o">(</span><span class="w"></span>
 
-  <span class="c1">//Color shown when animation starts</span>
-  <span class="n">colorStartAnimation</span><span class="o">:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">blue</span><span class="o">,</span>
+<span class="w">  </span><span class="c1">//Color shown when animation starts</span>
+<span class="w">  </span><span class="n">colorStartAnimation</span><span class="o">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="na">blue</span><span class="o">,</span><span class="w"></span>
 
-  <span class="c1">//Color shown when animation ends</span>
-  <span class="n">colorEndAnimation</span><span class="o">:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">cyan</span><span class="o">,</span>
+<span class="w">  </span><span class="c1">//Color shown when animation ends</span>
+<span class="w">  </span><span class="n">colorEndAnimation</span><span class="o">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="na">cyan</span><span class="o">,</span><span class="w"></span>
 
-  <span class="c1">//Icon for FAB. &#39;X&#39; icon is shown when menu is open.</span>
-  <span class="n">animatedIconData</span><span class="o">:</span> <span class="n">AnimatedIcons</span><span class="o">.</span><span class="na">menu_close</span><span class="o">,</span>
-<span class="o">),</span>
-</pre></div>
-
+<span class="w">  </span><span class="c1">//Icon for FAB. &#39;X&#39; icon is shown when menu is open.</span>
+<span class="w">  </span><span class="n">animatedIconData</span><span class="o">:</span><span class="w"> </span><span class="n">AnimatedIcons</span><span class="o">.</span><span class="na">menu_close</span><span class="o">,</span><span class="w"></span>
+<span class="o">),</span><span class="w"></span>
+</code></pre></div>
 
 <h4>Adding the buttons to FAB</h4>
 <p>The <code>fabButtons</code> property takes the buttons to be added to the <code>AnimatedFloatingActionButton</code> widget.
 We'll create <code>fabOption()</code> to return list of widgets to be shown as menu items.</p>
 <p>Checkout the full code below:</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="k">Optional</span> <span class="n">app</span><span class="s1">&#39;s entry point</span>
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="k">Optional</span><span class="w"> </span><span class="n">app</span><span class="s1">&#39;s entry point</span>
 <span class="s1">void main() =&gt; runApp(CanvasPainting());</span>
 
 <span class="s1">//StatefulWidget</span>
@@ -468,108 +459,106 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
 <span class="s1">  }</span>
 <span class="s1"> ...</span>
 <span class="s1">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Let's checkout the <code>fabOption()</code> method next.</p>
 <hr>
 <h3>The <code>fabOption()</code> method</h3>
 <p>The method <code>fabOption()</code> returns the list of all menu items in the FAB menu. Assign this method to <code>AnimatedFloatingActionButton</code> widget using <code>fabButtons</code> property.</p>
-<div class="highlight"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span> <span class="n">fabOption</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fabOption</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">FAB</span> <span class="k">for</span> <span class="n">choosing</span> <span class="n">stroke</span>
-    <span class="n">FloatingActionButton</span><span class="p">(</span>
-      <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;paint_stroke&quot;</span><span class="p">,</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">brush</span><span class="p">),</span>
-      <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Stroke&#39;</span><span class="p">,</span>
-      <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="o">//</span><span class="nb">min</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">:</span> <span class="mi">50</span>
-        <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-          <span class="n">_pickStroke</span><span class="p">();</span>
-        <span class="p">});</span>
-      <span class="p">},</span>
-    <span class="p">),</span>
+<span class="w">    </span><span class="o">//</span><span class="n">FAB</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">choosing</span><span class="w"> </span><span class="n">stroke</span><span class="w"></span>
+<span class="w">    </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;paint_stroke&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">brush</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Stroke&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">//</span><span class="nb">min</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">max</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"></span>
+<span class="w">        </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">_pickStroke</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">FAB</span> <span class="k">for</span> <span class="n">choosing</span> <span class="n">opacity</span>
-    <span class="n">FloatingActionButton</span><span class="p">(</span>
-      <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;paint_opacity&quot;</span><span class="p">,</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">opacity</span><span class="p">),</span>
-      <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Opacity&#39;</span><span class="p">,</span>
-      <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="o">//</span><span class="nb">min</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">:</span><span class="mi">1</span>
-        <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-          <span class="n">_opacity</span><span class="p">();</span>
-        <span class="p">});</span>
-      <span class="p">},</span>
-    <span class="p">),</span>
+<span class="w">    </span><span class="o">//</span><span class="n">FAB</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">choosing</span><span class="w"> </span><span class="n">opacity</span><span class="w"></span>
+<span class="w">    </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;paint_opacity&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">opacity</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Opacity&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">//</span><span class="nb">min</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">max</span><span class="p">:</span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">_opacity</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">FAB</span> <span class="k">for</span> <span class="n">resetting</span> <span class="n">screen</span>
-    <span class="n">FloatingActionButton</span><span class="p">(</span>
-        <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;erase&quot;</span><span class="p">,</span>
-        <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">clear</span><span class="p">),</span>
-        <span class="n">tooltip</span><span class="p">:</span> <span class="s2">&quot;Erase&quot;</span><span class="p">,</span>
-        <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-          <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-            <span class="n">points</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span>
-          <span class="p">});</span>
-        <span class="p">}),</span>
+<span class="w">    </span><span class="o">//</span><span class="n">FAB</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">resetting</span><span class="w"> </span><span class="n">screen</span><span class="w"></span>
+<span class="w">    </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;erase&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">clear</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Erase&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">points</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span><span class="w"></span>
+<span class="w">          </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="p">}),</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">FAB</span> <span class="k">for</span> <span class="n">picking</span> <span class="n">red</span> <span class="n">color</span>    
-    <span class="n">FloatingActionButton</span><span class="p">(</span>
-      <span class="n">backgroundColor</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">white</span><span class="p">,</span>
-      <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;color_red&quot;</span><span class="p">,</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">colorMenuItem</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">red</span><span class="p">),</span>
-      <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Color&#39;</span><span class="p">,</span>
-      <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-          <span class="n">selectedColor</span> <span class="o">=</span> <span class="n">Colors</span><span class="o">.</span><span class="n">red</span><span class="p">;</span>
-        <span class="p">});</span>
-      <span class="p">},</span>
-    <span class="p">),</span>
+<span class="w">    </span><span class="o">//</span><span class="n">FAB</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">picking</span><span class="w"> </span><span class="n">red</span><span class="w"> </span><span class="n">color</span><span class="w">    </span>
+<span class="w">    </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">backgroundColor</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">white</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color_red&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">colorMenuItem</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">red</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Color&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">selectedColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">red</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">FAB</span> <span class="k">for</span> <span class="n">picking</span> <span class="n">green</span> <span class="n">color</span>
-    <span class="n">FloatingActionButton</span><span class="p">(</span>
-      <span class="n">backgroundColor</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">white</span><span class="p">,</span>
-      <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;color_green&quot;</span><span class="p">,</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">colorMenuItem</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">green</span><span class="p">),</span>
-      <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Color&#39;</span><span class="p">,</span>
-      <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-          <span class="n">selectedColor</span> <span class="o">=</span> <span class="n">Colors</span><span class="o">.</span><span class="n">green</span><span class="p">;</span>
-        <span class="p">});</span>
-      <span class="p">},</span>
-    <span class="p">),</span>
+<span class="w">    </span><span class="o">//</span><span class="n">FAB</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">picking</span><span class="w"> </span><span class="n">green</span><span class="w"> </span><span class="n">color</span><span class="w"></span>
+<span class="w">    </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">backgroundColor</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">white</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color_green&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">colorMenuItem</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">green</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Color&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">selectedColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">green</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">FAB</span> <span class="k">for</span> <span class="n">picking</span> <span class="n">pink</span> <span class="n">color</span>
-    <span class="n">FloatingActionButton</span><span class="p">(</span>
-      <span class="n">backgroundColor</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">white</span><span class="p">,</span>
-      <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;color_pink&quot;</span><span class="p">,</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">colorMenuItem</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">pink</span><span class="p">),</span>
-      <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Color&#39;</span><span class="p">,</span>
-      <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-          <span class="n">selectedColor</span> <span class="o">=</span> <span class="n">Colors</span><span class="o">.</span><span class="n">pink</span><span class="p">;</span>
-        <span class="p">});</span>
-      <span class="p">},</span>
-    <span class="p">),</span>
+<span class="w">    </span><span class="o">//</span><span class="n">FAB</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">picking</span><span class="w"> </span><span class="n">pink</span><span class="w"> </span><span class="n">color</span><span class="w"></span>
+<span class="w">    </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">backgroundColor</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">white</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color_pink&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">colorMenuItem</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">pink</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Color&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">selectedColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">pink</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">FAB</span> <span class="k">for</span> <span class="n">picking</span> <span class="n">blue</span> <span class="n">color</span>
-    <span class="n">FloatingActionButton</span><span class="p">(</span>
-      <span class="n">backgroundColor</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">white</span><span class="p">,</span>
-      <span class="n">heroTag</span><span class="p">:</span> <span class="s2">&quot;color_blue&quot;</span><span class="p">,</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">colorMenuItem</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">),</span>
-      <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Color&#39;</span><span class="p">,</span>
-      <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-          <span class="n">selectedColor</span> <span class="o">=</span> <span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">;</span>
-        <span class="p">});</span>
-      <span class="p">},</span>
-    <span class="p">),</span>
-  <span class="p">];</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="o">//</span><span class="n">FAB</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">picking</span><span class="w"> </span><span class="n">blue</span><span class="w"> </span><span class="n">color</span><span class="w"></span>
+<span class="w">    </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">backgroundColor</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">white</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">heroTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color_blue&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">colorMenuItem</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Color&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">selectedColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h3>Opacity Picker</h3>
@@ -582,62 +571,61 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
 <p>We're providing three different values for opacity. The <code>opacity = 1.0</code> is the maximum opacity. All options are displayed in <code>AlertDialog</code> widget. Selecting one option closes the dialog.</p>
 <p>We'll use <a href="https://api.flutter.dev/flutter/widgets/ModalRoute/barrierDismissible.html"><code>barrierDismissible</code></a> to enable user to tap anywhere on the screen to close this dialog box.</p>
 <p><a href="https://api.flutter.dev/flutter/widgets/ClipOval-class.html"><code>ClipOval</code></a> widget is used to create an oval shape clip of its child. You would notice slightly rounded corners for <code>AlertDialog</code> child.</p>
-<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">_opacity</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
-  <span class="o">//</span><span class="n">Shows</span> <span class="n">AlertDialog</span>
-  <span class="k">return</span> <span class="n">showDialog</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span><span class="p">(</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">context</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="nt">Future</span><span class="o">&lt;</span><span class="nt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">_opacity</span><span class="o">()</span><span class="w"> </span><span class="nt">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">//Shows</span><span class="w"> </span><span class="err">AlertDialog</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">showDialog&lt;void&gt;(</span><span class="w"></span>
+<span class="w">    </span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">Dismiss</span> <span class="n">alert</span> <span class="n">dialog</span> <span class="k">when</span> <span class="k">set</span> <span class="k">true</span>
-    <span class="n">barrierDismissible</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>
+<span class="w">    </span><span class="o">//</span><span class="n">Dismiss</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="n">dialog</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">true</span><span class="w"></span>
+<span class="w">    </span><span class="n">barrierDismissible</span><span class="o">:</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w"></span>
 
-    <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="err">{</span>
+<span class="w">    </span><span class="n">builder</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 
-      <span class="o">//</span><span class="n">Clips</span> <span class="n">its</span> <span class="n">child</span> <span class="k">in</span> <span class="n">a</span> <span class="n">oval</span> <span class="n">shape</span>
-      <span class="k">return</span> <span class="n">ClipOval</span><span class="p">(</span>
-        <span class="n">child</span><span class="p">:</span> <span class="n">AlertDialog</span><span class="p">(</span>
+<span class="w">      </span><span class="o">//</span><span class="n">Clips</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">oval</span><span class="w"> </span><span class="n">shape</span><span class="w"></span>
+<span class="w">      </span><span class="n">return</span><span class="w"> </span><span class="nf">ClipOval</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">AlertDialog</span><span class="p">(</span><span class="w"></span>
 
-          <span class="o">//</span><span class="n">Creates</span> <span class="n">three</span> <span class="n">buttons</span> <span class="k">to</span> <span class="n">pick</span> <span class="n">opacity</span> <span class="n">value</span><span class="p">.</span>
-          <span class="n">actions</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
-            <span class="n">FlatButton</span><span class="p">(</span>
-              <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span>
-                <span class="n">Icons</span><span class="p">.</span><span class="n">opacity</span><span class="p">,</span>
-                <span class="k">size</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
-              <span class="p">),</span>
-              <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="err">{</span>
-                <span class="o">//</span><span class="n">most</span> <span class="n">transparent</span>
-                <span class="n">opacity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">;</span>
-                <span class="n">Navigator</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">pop</span><span class="p">();</span>
-              <span class="err">}</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">FlatButton</span><span class="p">(</span>
-              <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span>
-                <span class="n">Icons</span><span class="p">.</span><span class="n">opacity</span><span class="p">,</span>
-                <span class="k">size</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-              <span class="p">),</span>
-              <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="err">{</span>
-                <span class="n">opacity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">;</span>
-                <span class="n">Navigator</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">pop</span><span class="p">();</span>
-              <span class="err">}</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">FlatButton</span><span class="p">(</span>
-              <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span>
-                <span class="n">Icons</span><span class="p">.</span><span class="n">opacity</span><span class="p">,</span>
-                <span class="k">size</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-              <span class="p">),</span>
-              <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="err">{</span>
-                <span class="o">//</span><span class="k">not</span> <span class="n">transparent</span> <span class="k">at</span> <span class="k">all</span><span class="p">.</span>
-                <span class="n">opacity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
-                <span class="n">Navigator</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">pop</span><span class="p">();</span>
-              <span class="err">}</span><span class="p">,</span>
-            <span class="p">),</span>
-          <span class="p">],</span>
-        <span class="p">),</span>
-      <span class="p">);</span>
-    <span class="err">}</span><span class="p">,</span>
-  <span class="p">);</span>
-<span class="err">}</span>
-</pre></div>
-
+<span class="w">          </span><span class="o">//</span><span class="n">Creates</span><span class="w"> </span><span class="n">three</span><span class="w"> </span><span class="n">buttons</span><span class="w"> </span><span class="kc">to</span><span class="w"> </span><span class="n">pick</span><span class="w"> </span><span class="n">opacity</span><span class="w"> </span><span class="n">value</span><span class="err">.</span><span class="w"></span>
+<span class="w">          </span><span class="n">actions</span><span class="err">:</span><span class="w"> </span><span class="err">&lt;</span><span class="n">Widget</span><span class="err">&gt;</span><span class="cp">[</span><span class="w"></span>
+<span class="w">            </span><span class="nx">FlatButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="nx">child</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Icons.opacity</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">size</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="c1">//most transparent</span><span class="w"></span>
+<span class="w">                </span><span class="nx">opacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Navigator.of</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="bp">.</span><span class="nb">pop</span><span class="p">();</span><span class="w"></span>
+<span class="w">              </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="nx">FlatButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="nx">child</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Icons.opacity</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">size</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">opacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Navigator.of</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="bp">.</span><span class="nb">pop</span><span class="p">();</span><span class="w"></span>
+<span class="w">              </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="nx">FlatButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="nx">child</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Icons.opacity</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">size</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="c1">//not transparent at all.</span><span class="w"></span>
+<span class="w">                </span><span class="nx">opacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Navigator.of</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="bp">.</span><span class="nb">pop</span><span class="p">();</span><span class="w"></span>
+<span class="w">              </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="cp">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="o">,</span><span class="w"></span>
+<span class="w">  </span><span class="o">);</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h3>Brush Stroke Picker</h3>
@@ -650,112 +638,108 @@ We'll create <code>fabOption()</code> to return list of widgets to be shown as m
 <p>The <code>_pickStroke()</code> method implements selection of the stroke.</p>
 <p>We're providing four different width of strokes. All options are displayed in the
 <code>AlertDialog</code> widget. Selecting one option closes the dialog.</p>
-<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">_pickStroke</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+<div class="highlight"><pre><span></span><code><span class="nt">Future</span><span class="o">&lt;</span><span class="nt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">_pickStroke</span><span class="o">()</span><span class="w"> </span><span class="nt">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-  <span class="o">//</span><span class="n">Shows</span> <span class="n">AlertDialog</span>
-  <span class="k">return</span> <span class="n">showDialog</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span><span class="p">(</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">context</span><span class="p">,</span>
+<span class="w">  </span><span class="err">//Shows</span><span class="w"> </span><span class="err">AlertDialog</span><span class="w"></span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">showDialog&lt;void&gt;(</span><span class="w"></span>
+<span class="w">    </span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">Dismiss</span> <span class="n">alert</span> <span class="n">dialog</span> <span class="k">when</span> <span class="k">set</span> <span class="k">true</span>
-    <span class="n">barrierDismissible</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="o">//</span> <span class="k">user</span> <span class="n">must</span> <span class="n">tap</span> <span class="n">button</span><span class="o">!</span>
-    <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="err">{</span>
+<span class="w">    </span><span class="o">//</span><span class="n">Dismiss</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="n">dialog</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">true</span><span class="w"></span>
+<span class="w">    </span><span class="n">barrierDismissible</span><span class="o">:</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="n">tap</span><span class="w"> </span><span class="n">button</span><span class="o">!</span><span class="w"></span>
+<span class="w">    </span><span class="n">builder</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 
-      <span class="o">//</span><span class="n">Clips</span> <span class="n">its</span> <span class="n">child</span> <span class="k">in</span> <span class="n">a</span> <span class="n">oval</span> <span class="n">shape</span>
-      <span class="k">return</span> <span class="n">ClipOval</span><span class="p">(</span>
-        <span class="n">child</span><span class="p">:</span> <span class="n">AlertDialog</span><span class="p">(</span>
+<span class="w">      </span><span class="o">//</span><span class="n">Clips</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">oval</span><span class="w"> </span><span class="n">shape</span><span class="w"></span>
+<span class="w">      </span><span class="n">return</span><span class="w"> </span><span class="nf">ClipOval</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">AlertDialog</span><span class="p">(</span><span class="w"></span>
 
-          <span class="o">//</span><span class="n">Creates</span> <span class="n">three</span> <span class="n">buttons</span> <span class="k">to</span> <span class="n">pick</span> <span class="n">stroke</span> <span class="n">value</span><span class="p">.</span>
-          <span class="n">actions</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+<span class="w">          </span><span class="o">//</span><span class="n">Creates</span><span class="w"> </span><span class="n">three</span><span class="w"> </span><span class="n">buttons</span><span class="w"> </span><span class="kc">to</span><span class="w"> </span><span class="n">pick</span><span class="w"> </span><span class="n">stroke</span><span class="w"> </span><span class="n">value</span><span class="err">.</span><span class="w"></span>
+<span class="w">          </span><span class="n">actions</span><span class="err">:</span><span class="w"> </span><span class="err">&lt;</span><span class="n">Widget</span><span class="err">&gt;</span><span class="cp">[</span><span class="w"></span>
 
-            <span class="o">//</span><span class="n">Resetting</span> <span class="k">to</span> <span class="k">default</span> <span class="n">stroke</span> <span class="n">value</span>
-            <span class="n">FlatButton</span><span class="p">(</span>
-              <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span>
-                <span class="n">Icons</span><span class="p">.</span><span class="n">clear</span><span class="p">,</span>
-              <span class="p">),</span>
-              <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="err">{</span>
-                <span class="n">strokeWidth</span> <span class="o">=</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
-                <span class="n">Navigator</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">pop</span><span class="p">();</span>
-              <span class="err">}</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">FlatButton</span><span class="p">(</span>
-              <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span>
-                <span class="n">Icons</span><span class="p">.</span><span class="n">brush</span><span class="p">,</span>
-                <span class="k">size</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
-              <span class="p">),</span>
-              <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="err">{</span>
-                <span class="n">strokeWidth</span> <span class="o">=</span> <span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
-                <span class="n">Navigator</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">pop</span><span class="p">();</span>
-              <span class="err">}</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">FlatButton</span><span class="p">(</span>
-              <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span>
-                <span class="n">Icons</span><span class="p">.</span><span class="n">brush</span><span class="p">,</span>
-                <span class="k">size</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-              <span class="p">),</span>
-              <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="err">{</span>
-                <span class="n">strokeWidth</span> <span class="o">=</span> <span class="mi">30</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
-                <span class="n">Navigator</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">pop</span><span class="p">();</span>
-              <span class="err">}</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">FlatButton</span><span class="p">(</span>
-              <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span>
-                <span class="n">Icons</span><span class="p">.</span><span class="n">brush</span><span class="p">,</span>
-                <span class="k">size</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-              <span class="p">),</span>
-              <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="err">{</span>
-                <span class="n">strokeWidth</span> <span class="o">=</span> <span class="mi">50</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
-                <span class="n">Navigator</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">pop</span><span class="p">();</span>
-              <span class="err">}</span><span class="p">,</span>
-            <span class="p">),</span>
-          <span class="p">],</span>
-        <span class="p">),</span>
-      <span class="p">);</span>
-    <span class="err">}</span><span class="p">,</span>
-  <span class="p">);</span>
-<span class="err">}</span>
-</pre></div>
-
+<span class="w">            </span><span class="c1">//Resetting to default stroke value</span><span class="w"></span>
+<span class="w">            </span><span class="nx">FlatButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="nx">child</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Icons.clear</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">strokeWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Navigator.of</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="bp">.</span><span class="nb">pop</span><span class="p">();</span><span class="w"></span>
+<span class="w">              </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="nx">FlatButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="nx">child</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Icons.brush</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">size</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">strokeWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Navigator.of</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="bp">.</span><span class="nb">pop</span><span class="p">();</span><span class="w"></span>
+<span class="w">              </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="nx">FlatButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="nx">child</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Icons.brush</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">size</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">strokeWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Navigator.of</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="bp">.</span><span class="nb">pop</span><span class="p">();</span><span class="w"></span>
+<span class="w">              </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="nx">FlatButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="nx">child</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Icons.brush</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">size</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">              </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">strokeWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Navigator.of</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="bp">.</span><span class="nb">pop</span><span class="p">();</span><span class="w"></span>
+<span class="w">              </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="cp">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="o">,</span><span class="w"></span>
+<span class="w">  </span><span class="o">);</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h3>Resetting Screen</h3>
 <p>Resetting screen clears all the recorded points:</p>
-<div class="highlight"><pre><span></span><span class="err">points.clear();</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>points.clear();
+</code></pre></div>
 
 <hr>
 <h3>Red, Green, Pink &amp; Blue Color Picker(s)</h3>
 <p>The <code>colorMenuItem(Color color)</code> method provides the icon(s) for the given color(s). Tapping on that icon makes the color selection. <code>ClipOval</code> widget is used to give smooth round shape to colored icon.</p>
-<div class="highlight"><pre><span></span><span class="n">Widget</span> <span class="n">colorMenuItem</span><span class="p">(</span><span class="nb nb-Type">Color</span> <span class="n">color</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">GestureDetector</span><span class="p">(</span>
-    <span class="n">onTap</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
-        <span class="n">selectedColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">;</span>
-      <span class="p">});</span>
-    <span class="p">},</span>
-    <span class="n">child</span><span class="p">:</span> <span class="n">ClipOval</span><span class="p">(</span>
-      <span class="n">child</span><span class="p">:</span> <span class="n">Container</span><span class="p">(</span>
-        <span class="n">padding</span><span class="p">:</span> <span class="k">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">bottom</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">),</span>
-        <span class="n">height</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
-        <span class="n">width</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
-        <span class="n">color</span><span class="p">:</span> <span class="n">color</span><span class="p">,</span>
-      <span class="p">),</span>
-    <span class="p">),</span>
-  <span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">Widget</span><span class="w"> </span><span class="n">colorMenuItem</span><span class="p">(</span><span class="nb nb-Type">Color</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">GestureDetector</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">onTap</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">selectedColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">ClipOval</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">padding</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">bottom</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">width</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">color</span><span class="p">:</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>The above <code>colorMenuItem(...)</code> method is used to create oval menu items for all the four colors.</p>
 <p>That's all for this article. Hope you've your own finger painting app on your finger tips :)</p>
 <hr>
 <p><strong>NOTE:</strong> This code has been developed in following dev environment:</p>
-<div class="highlight"><pre><span></span><span class="err">Flutter 1.15.17 • channel beta • https://github.com/flutter/flutter.git</span>
-<span class="err">Framework • revision 2294d75bfa (4 weeks ago) • 2020-03-07 00:28:38 +0900</span>
-<span class="err">Engine • revision 5aff311948</span>
-<span class="err">Tools • Dart 2.8.0 (build 2.8.0-dev.12.0 9983424a3c)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Flutter 1.15.17 • channel beta • https://github.com/flutter/flutter.git
+Framework • revision 2294d75bfa (4 weeks ago) • 2020-03-07 00:28:38 +0900
+Engine • revision 5aff311948
+Tools • Dart 2.8.0 (build 2.8.0-dev.12.0 9983424a3c)
+</code></pre></div>
 
 <hr>
 <h3>Source code repo</h3>

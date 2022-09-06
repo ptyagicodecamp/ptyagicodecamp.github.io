@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -206,98 +206,91 @@
 <p><img alt="light-theme" src="https://ptyagicodecamp.github.io/ios_themes2.jpg"></p>
 <p><strong>Dark Theme:</strong></p>
 <p><img alt="dark-theme" src="https://ptyagicodecamp.github.io/ios_themes3.jpg"></p>
-<p><strong>Checkout the companion video tutorial:</strong>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eJZMJFSQbgs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p><strong>Checkout the companion video tutorial:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eJZMJFSQbgs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <h3>What is Provider</h3>
 <p><a href="https://pub.dev/packages/provider">Provider</a> is a plugin/package that provides dependency injection and state management solution for a Flutter App. It's built with robust and scalable Flutter widgets.</p>
 <h3>Step #1. <code>pubspec.yaml</code></h3>
 <p>Add package dependency in <code>pubspec.yaml</code>:</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">flutter</span><span class="o">:</span>
-    <span class="n">sdk</span><span class="o">:</span> <span class="n">flutter</span>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">flutter</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">sdk</span><span class="o">:</span><span class="w"> </span><span class="n">flutter</span><span class="w"></span>
 
-  <span class="err">#</span><span class="n">Dependency</span> <span class="k">for</span> <span class="n">Provider</span> <span class="n">plugin</span>
-  <span class="n">provider</span><span class="o">:</span> <span class="o">^</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span> <span class="err">#</span><span class="n">ChangeNotifier</span><span class="o">,</span> <span class="n">Consumer</span><span class="o">,</span> <span class="n">Providers</span>
-</pre></div>
-
+<span class="w">  </span><span class="err">#</span><span class="n">Dependency</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Provider</span><span class="w"> </span><span class="n">plugin</span><span class="w"></span>
+<span class="w">  </span><span class="n">provider</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span><span class="w"> </span><span class="err">#</span><span class="n">ChangeNotifier</span><span class="o">,</span><span class="w"> </span><span class="n">Consumer</span><span class="o">,</span><span class="w"> </span><span class="n">Providers</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Step #2. Implement theme ChangeNotifier</h3>
 <p>I'll be using two themes: Light and Dark. Let's use <code>enum</code> to declare these two themes:</p>
-<div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">MyThemes</span> <span class="p">{</span> <span class="n">light</span><span class="p">,</span> <span class="n">dark</span> <span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="n">MyThemes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">light</span><span class="p">,</span><span class="w"> </span><span class="n">dark</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Now, I need a <code>ChangeNotifier</code> that'll notify my app about the change occurred in theme preference.</p>
-<div class="highlight"><pre><span></span><span class="err">class ThemesNotifier with ChangeNotifier {}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="n">ThemesNotifier</span> <span class="k">with</span> <span class="n">ChangeNotifier</span> {}
+</code></pre></div>
 
 <p>Next comes defining <code>ThemeData</code> for <code>light</code> and <code>dark</code> themes:</p>
-<div class="highlight"><pre><span></span><span class="err">static final List&lt;ThemeData&gt; themeData = [</span>
-<span class="err">  ThemeData(</span>
-<span class="err">      brightness: Brightness.light,</span>
-<span class="err">      primaryColor: Colors.blue,</span>
-<span class="err">      accentColor: Colors.lightBlueAccent),</span>
-<span class="err">  ThemeData(</span>
-<span class="err">      brightness: Brightness.dark,</span>
-<span class="err">      primaryColor: Colors.orange,</span>
-<span class="err">      accentColor: Colors.yellowAccent)</span>
-<span class="err">];</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">static</span><span class="w"> </span><span class="nt">final</span><span class="w"> </span><span class="nt">List</span><span class="o">&lt;</span><span class="nt">ThemeData</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">themeData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cp">[</span><span class="w"></span>
+<span class="w">  </span><span class="nx">ThemeData</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="nx">brightness</span><span class="p">:</span><span class="w"> </span><span class="nx">Brightness.light</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nx">primaryColor</span><span class="p">:</span><span class="w"> </span><span class="nx">Colors.blue</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nx">accentColor</span><span class="p">:</span><span class="w"> </span><span class="nx">Colors.lightBlueAccent</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="nx">ThemeData</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="nx">brightness</span><span class="p">:</span><span class="w"> </span><span class="nx">Brightness.dark</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nx">primaryColor</span><span class="p">:</span><span class="w"> </span><span class="nx">Colors.orange</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nx">accentColor</span><span class="p">:</span><span class="w"> </span><span class="nx">Colors.yellowAccent</span><span class="p">)</span><span class="w"></span>
+<span class="cp">]</span><span class="o">;</span><span class="w"></span>
+</code></pre></div>
 
 <p>Let's initialize default <code>MyThemes</code> and <code>ThemeData</code>:</p>
-<div class="highlight"><pre><span></span><span class="err">MyThemes _currentTheme = MyThemes.light;</span>
-<span class="err">ThemeData _currentThemeData = themeData[0];</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>MyThemes _currentTheme = MyThemes.light;
+ThemeData _currentThemeData = themeData[0];
+</code></pre></div>
 
 <p>Lastly, setters and getters to update and access <code>MyThemes</code> and <code>ThemeData</code>:</p>
-<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">switchTheme</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">currentTheme</span> <span class="o">==</span> <span class="n">MyThemes</span><span class="p">.</span><span class="n">light</span>
-    <span class="o">?</span> <span class="n">currentTheme</span> <span class="o">=</span> <span class="n">MyThemes</span><span class="p">.</span><span class="n">dark</span>
-    <span class="p">:</span> <span class="n">currentTheme</span> <span class="o">=</span> <span class="n">MyThemes</span><span class="p">.</span><span class="n">light</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">void</span> <span class="nv">switchTheme</span><span class="ss">()</span> <span class="o">=&gt;</span> <span class="nv">currentTheme</span> <span class="o">==</span> <span class="nv">MyThemes</span>.<span class="nv">light</span>
+    ? <span class="nv">currentTheme</span> <span class="o">=</span> <span class="nv">MyThemes</span>.<span class="nv">dark</span>
+    : <span class="nv">currentTheme</span> <span class="o">=</span> <span class="nv">MyThemes</span>.<span class="nv">light</span><span class="c1">;</span>
 
-<span class="k">set</span> <span class="n">currentTheme</span><span class="p">(</span><span class="n">MyThemes</span> <span class="n">theme</span><span class="p">)</span> <span class="err">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">theme</span> <span class="o">!=</span> <span class="k">null</span><span class="p">)</span> <span class="err">{</span>
-    <span class="n">_currentTheme</span> <span class="o">=</span> <span class="n">theme</span><span class="p">;</span>
-    <span class="n">_currentThemeData</span> <span class="o">=</span>
-        <span class="n">currentTheme</span> <span class="o">==</span> <span class="n">MyThemes</span><span class="p">.</span><span class="n">light</span> <span class="o">?</span> <span class="n">themeData</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">themeData</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="nv">set</span> <span class="nv">currentTheme</span><span class="ss">(</span><span class="nv">MyThemes</span> <span class="nv">theme</span><span class="ss">)</span> {
+  <span class="k">if</span> <span class="ss">(</span><span class="nv">theme</span> <span class="o">!=</span> <span class="nv">null</span><span class="ss">)</span> {
+    <span class="nv">_currentTheme</span> <span class="o">=</span> <span class="nv">theme</span><span class="c1">;</span>
+    <span class="nv">_currentThemeData</span> <span class="o">=</span>
+        <span class="nv">currentTheme</span> <span class="o">==</span> <span class="nv">MyThemes</span>.<span class="nv">light</span> ? <span class="nv">themeData</span>[<span class="mi">0</span>] : <span class="nv">themeData</span>[<span class="mi">1</span>]<span class="c1">;</span>
 
-    <span class="o">//</span><span class="n">Notifies</span> <span class="n">the</span> <span class="n">theme</span> <span class="n">change</span> <span class="k">to</span> <span class="n">app</span>    
-    <span class="n">notifyListeners</span><span class="p">();</span>
-  <span class="err">}</span>
-<span class="err">}</span>
+    <span class="o">//</span><span class="nv">Notifies</span> <span class="nv">the</span> <span class="nv">theme</span> <span class="nv">change</span> <span class="nv">to</span> <span class="nv">app</span>    
+    <span class="nv">notifyListeners</span><span class="ss">()</span><span class="c1">;</span>
+  }
+}
 
-<span class="k">get</span> <span class="n">currentTheme</span> <span class="o">=&gt;</span> <span class="n">_currentTheme</span><span class="p">;</span>
-<span class="k">get</span> <span class="n">currentThemeData</span> <span class="o">=&gt;</span> <span class="n">_currentThemeData</span><span class="p">;</span>
-</pre></div>
-
+<span class="nv">get</span> <span class="nv">currentTheme</span> <span class="o">=&gt;</span> <span class="nv">_currentTheme</span><span class="c1">;</span>
+<span class="nv">get</span> <span class="nv">currentThemeData</span> <span class="o">=&gt;</span> <span class="nv">_currentThemeData</span><span class="c1">;</span>
+</code></pre></div>
 
 <h3>Step #3. Notifying theme change to App</h3>
 <p>Sample App 'Themes Demo''s <code>build(...)</code> method uses <code>theme</code> attribute to assign <code>ThemeData</code> to app like below. <code>Provider.of&lt;ThemesNotifier&gt;(context).currentThemeData</code> is notified about a theme change happened in <code>ThemesNotifier</code>'s <code>switchTheme()</code> method.</p>
-<div class="highlight"><pre><span></span><span class="err">@override</span>
-<span class="err">Widget build(BuildContext context) {</span>
-<span class="err">  return MaterialApp(</span>
-<span class="err">      theme: Provider.of&lt;ThemesNotifier&gt;(context).currentThemeData,</span>
-<span class="err">      home: Scaffold(</span>
-<span class="err">        appBar: AppBar(</span>
-<span class="err">          title: Text(&quot;Themes Demo&quot;),</span>
-<span class="err">        ),</span>
-<span class="err">        body: body(),</span>
-<span class="err">      ));</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">@override</span><span class="w"></span>
+<span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="nl">theme</span><span class="p">:</span><span class="w"> </span><span class="n">Provider</span><span class="p">.</span><span class="k">of</span><span class="o">&lt;</span><span class="n">ThemesNotifier</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">currentThemeData</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nl">home</span><span class="p">:</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="nl">appBar</span><span class="p">:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="nl">title</span><span class="p">:</span><span class="w"> </span><span class="nc">Text</span><span class="p">(</span><span class="ss">&quot;Themes Demo&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="nl">body</span><span class="p">:</span><span class="w"> </span><span class="n">body</span><span class="p">(),</span><span class="w"></span>
+<span class="w">      </span><span class="p">));</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Theme change is requested from <code>Switch Theme</code> button :</p>
-<div class="highlight"><pre><span></span><span class="err">RaisedButton(</span>
-<span class="err">  child: Text(&quot;Switch Theme&quot;),</span>
-<span class="err">  onPressed: () {</span>
-<span class="err">    Provider.of&lt;ThemesNotifier&gt;(context).switchTheme();</span>
-<span class="err">  },</span>
-<span class="err">),</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">RaisedButton</span><span class="o">(</span><span class="w"></span>
+<span class="w">  </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Text</span><span class="o">(</span><span class="s2">&quot;Switch Theme&quot;</span><span class="o">),</span><span class="w"></span>
+<span class="w">  </span><span class="nt">onPressed</span><span class="o">:</span><span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">Provider.of&lt;ThemesNotifier&gt;(context).switchTheme()</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="o">,</span><span class="w"></span>
+<span class="o">),</span><span class="w"></span>
+</code></pre></div>
 
 <p>That's all !</p>
 <h3>Running on Flutter Web</h3>

@@ -91,7 +91,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -187,7 +187,7 @@
 it automatically generates menu items for navigation drawer in form of a xml file resource located
 inside <code>res/menu</code> directory. By default, this xml file is named <code>activity_main_drawer.xml</code>, and contains
 menu items statically like this:</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;menu</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
 
     <span class="nt">&lt;group</span> <span class="na">android:checkableBehavior=</span><span class="s">&quot;single&quot;</span><span class="nt">&gt;</span>
@@ -223,8 +223,7 @@ menu items statically like this:</p>
     <span class="nt">&lt;/item&gt;</span>
 
 <span class="nt">&lt;/menu&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>What if you want to generate or add more menu items dynamically ? If you're like me, then you would
 not want to have support to add menu items without making changes in static file. One reason for doing so
@@ -233,23 +232,22 @@ automating UI generation !</p>
 <p>Actually, its pretty simple to do so !</p>
 <h4>Show me code</h4>
 <p>Here’s code that’s responsible for generating new menu items on the fly.</p>
-<div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">void</span> <span class="n">addMenuItemInNavMenuDrawer</span><span class="p">()</span> <span class="err">{</span>
-    <span class="n">NavigationView</span> <span class="n">navView</span> <span class="o">=</span> <span class="p">(</span><span class="n">NavigationView</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">nav_view</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code>private void addMenuItemInNavMenuDrawer() {
+    NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
 
-    <span class="n">Menu</span> <span class="n">menu</span> <span class="o">=</span> <span class="n">navView</span><span class="p">.</span><span class="n">getMenu</span><span class="p">();</span>
-    <span class="n">Menu</span> <span class="n">submenu</span> <span class="o">=</span> <span class="n">menu</span><span class="p">.</span><span class="n">addSubMenu</span><span class="p">(</span><span class="ss">&quot;New Super SubMenu&quot;</span><span class="p">);</span>
+    Menu menu = navView.getMenu();
+    Menu submenu = menu.addSubMenu(&quot;New Super SubMenu&quot;);
 
-    <span class="n">submenu</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="ss">&quot;Super Item1&quot;</span><span class="p">);</span>
-    <span class="n">submenu</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="ss">&quot;Super Item2&quot;</span><span class="p">);</span>
-    <span class="n">submenu</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="ss">&quot;Super Item3&quot;</span><span class="p">);</span>
+    submenu.add(&quot;Super Item1&quot;);
+    submenu.add(&quot;Super Item2&quot;);
+    submenu.add(&quot;Super Item3&quot;);
 
-    <span class="n">navView</span><span class="p">.</span><span class="n">invalidate</span><span class="p">();</span>
-<span class="err">}</span>
-</pre></div>
-
+    navView.invalidate();
+}
+</code></pre></div>
 
 <p>Call <code>addMenuItemInNavMenuDrawer</code> in <code>onCreate()</code> method before launching your app.</p>
-<div class="highlight"><pre><span></span><span class="nv">@Override</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nv">@Override</span><span class="w"></span>
 <span class="w">    </span><span class="n">protected</span><span class="w"> </span><span class="n">void</span><span class="w"> </span><span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span><span class="w"></span>
 <span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">);</span><span class="w"></span>
@@ -261,8 +259,7 @@ automating UI generation !</p>
 
 <span class="w">        </span><span class="n">addMenuItemInNavMenuDrawer</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p>And that's pretty much it !</p>
 <h5>Before Adding New Submenu</h5>

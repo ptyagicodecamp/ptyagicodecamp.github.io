@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -207,8 +207,9 @@
 </li>
 </ul>
 <hr>
-<p><strong>Checkout the YouTube video tutorial:</strong>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UvcbDJtk1UQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p><strong>Checkout the YouTube video tutorial:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UvcbDJtk1UQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <hr>
 <h1>Building Interface</h1>
 <p>First, we'll build two pages to navigate from one to another. The First page is called <code>PageListing</code> page/screen. The second page is <code>PageDetails</code> page/screen.</p>
@@ -216,25 +217,24 @@
 <p>The <code>PageListing</code> is a <code>StatelessWidget</code>. This the homepage of this sample app. It consists of three list items. Each item has a picture and sample title and subtitle as shown in the screenshot below. The appBar shows the name of the navigation/routing used.</p>
 <p><img alt="PageListing" src="https://ptyagicodecamp.github.io/nav-pagelisting.jpg"></p>
 <p>The items are stored in a global <code>List&lt;Item&gt; seasideList</code>.</p>
-<div class="highlight"><pre><span></span><span class="err">List&lt;Item&gt; seasideList = [</span>
-<span class="err">  Item(</span>
-<span class="err">      name: &#39;Sea 1&#39;,</span>
-<span class="err">      image: &#39;assets/images/sea2.jpg&#39;,</span>
-<span class="err">      details: &quot;Ocean view for Sea 1&quot;),</span>
-<span class="err">  Item(</span>
-<span class="err">      name: &#39;Sea 2&#39;,</span>
-<span class="err">      image: &#39;assets/images/sea3.jpg&#39;,</span>
-<span class="err">      details: &quot;Ocean view for Sea 2&quot;),</span>
-<span class="err">  Item(</span>
-<span class="err">      name: &#39;Sea 3&#39;,</span>
-<span class="err">      image: &#39;assets/images/sea-rocks.jpg&#39;,</span>
-<span class="err">      details: &quot;Ocean view for Sea 3&quot;)</span>
-<span class="err">];</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">List</span><span class="o">&lt;</span><span class="nt">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">seasideList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cp">[</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Item</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Sea 1&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nb">image</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;assets/images/sea2.jpg&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nx">details</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ocean view for Sea 1&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Item</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Sea 2&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nb">image</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;assets/images/sea3.jpg&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nx">details</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ocean view for Sea 2&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Item</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Sea 3&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nb">image</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;assets/images/sea-rocks.jpg&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nx">details</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ocean view for Sea 3&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="cp">]</span><span class="o">;</span><span class="w"></span>
+</code></pre></div>
 
 <p>The <code>PageListing</code> implementation:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">PageListing</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">PageListing</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">  </span><span class="nv">@override</span><span class="w"></span>
 <span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
@@ -275,61 +275,58 @@
 <span class="w">      </span><span class="p">..</span><span class="n">showSnackBar</span><span class="p">(</span><span class="n">SnackBar</span><span class="p">(</span><span class="nl">content</span><span class="p">:</span><span class="w"> </span><span class="nc">Text</span><span class="p">(</span><span class="ss">&quot;$resultFromPageDetails&quot;</span><span class="p">)));</span><span class="w"></span>
 <span class="w">  </span><span class="err">}</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h2><code>PageDetails</code> Screen</h2>
 <p>This page displays details for the homepage's list items. It's a simple page displaying item's image, details and its name in appBar. It has a <code>FloatingActionButton</code> or FAB in the bottom-right corner. Clicking on this navigates back to home page with a message that the item is marked as favorite. This is used to demonstrate passing data from detailed page back to homepage.</p>
 <p><img alt="PageDetails" src="https://ptyagicodecamp.github.io/nav-pagedetails.jpg"></p>
 <p>The <code>PageDetails</code> implementation:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">PageDetails</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
-  <span class="n">final</span> <span class="n">Item</span> <span class="n">item</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">PageDetails</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">const</span> <span class="n">PageDetails</span><span class="p">({</span><span class="n">Key</span> <span class="n">key</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">item</span><span class="p">})</span> <span class="p">:</span> <span class="n">super</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">key</span><span class="p">);</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">PageDetails</span><span class="p">({</span><span class="n">Key</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">item</span><span class="p">})</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">super</span><span class="p">(</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="n">key</span><span class="p">);</span><span class="w"></span>
 
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
-      <span class="n">appBar</span><span class="p">:</span> <span class="n">AppBar</span><span class="p">(</span>
-        <span class="n">title</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
-      <span class="p">),</span>
-      <span class="n">body</span><span class="p">:</span> <span class="n">Column</span><span class="p">(</span>
-        <span class="n">children</span><span class="p">:</span> <span class="p">[</span>
-          <span class="n">Image</span><span class="o">.</span><span class="n">asset</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="p">),</span>
-          <span class="n">SizedBox</span><span class="p">(</span>
-            <span class="n">height</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-          <span class="p">),</span>
-          <span class="n">Text</span><span class="p">(</span>
-            <span class="n">item</span><span class="o">.</span><span class="n">details</span><span class="p">,</span>
-            <span class="n">style</span><span class="p">:</span> <span class="n">TextStyle</span><span class="p">(</span><span class="n">fontWeight</span><span class="p">:</span> <span class="n">FontWeight</span><span class="o">.</span><span class="n">bold</span><span class="p">,</span> <span class="n">fontSize</span><span class="p">:</span> <span class="mi">20</span><span class="p">),</span>
-          <span class="p">),</span>
-        <span class="p">],</span>
-      <span class="p">),</span>
-      <span class="n">floatingActionButton</span><span class="p">:</span> <span class="n">FloatingActionButton</span><span class="p">(</span>
-        <span class="n">child</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">favorite_border</span><span class="p">),</span>
-        <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
-          <span class="o">//</span><span class="n">Current</span> <span class="n">item</span><span class="s1">&#39;s name along with message is sent back to last screen</span>
-          <span class="n">Navigator</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;${item.name} is marked as favorite.&#39;</span><span class="p">);</span>
-        <span class="p">},</span>
-      <span class="p">),</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">appBar</span><span class="p">:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">Column</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="n">Image</span><span class="o">.</span><span class="n">asset</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="n">SizedBox</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="n">Text</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">item</span><span class="o">.</span><span class="n">details</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">style</span><span class="p">:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="n">fontWeight</span><span class="p">:</span><span class="w"> </span><span class="n">FontWeight</span><span class="o">.</span><span class="n">bold</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">floatingActionButton</span><span class="p">:</span><span class="w"> </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">favorite_border</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="o">//</span><span class="n">Current</span><span class="w"> </span><span class="n">item</span><span class="s1">&#39;s name along with message is sent back to last screen</span>
+<span class="w">          </span><span class="n">Navigator</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;${item.name} is marked as favorite.&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h2><code>Item</code></h2>
 <p>The <code>Item</code> is a data model to represent each row in homepage's list.</p>
-<div class="highlight"><pre><span></span><span class="err">class Item {</span>
-<span class="err">  final String name;</span>
-<span class="err">  final String image;</span>
-<span class="err">  final String details;</span>
-<span class="err">  Item({this.name, this.image, this.details});</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="n">Item</span> {
+  <span class="n">final</span> <span class="n">String</span> <span class="nb">name</span>;
+  <span class="n">final</span> <span class="n">String</span> <span class="n">image</span>;
+  <span class="n">final</span> <span class="n">String</span> <span class="n">details</span>;
+  <span class="n">Item</span>({<span class="n">this</span>.<span class="nb">name</span>, <span class="n">this</span>.<span class="n">image</span>, <span class="n">this</span>.<span class="n">details</span>});
+}
+</code></pre></div>
 
 <hr>
 <h1>Navigation</h1>
@@ -352,59 +349,56 @@
 <p><img alt="Un-Named-Navigation" src="https://ptyagicodecamp.github.io/unnamed-navigation.jpg"></p>
 <p><strong>Entry point:</strong></p>
 <p>The <code>MaterialApp</code> assigns <code>PageListing</code> screen as its <code>home</code> property.</p>
-<div class="highlight"><pre><span></span><span class="err">//Using Direct Navigation (un-named routing)</span>
-<span class="err">void main() =&gt; runApp(</span>
-<span class="err">      MaterialApp(</span>
-<span class="err">        debugShowCheckedModeBanner: false,</span>
-<span class="err">        home: PageListing(),</span>
-<span class="err">      ),</span>
-<span class="err">    );</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="nt">Using</span><span class="w"> </span><span class="nt">Direct</span><span class="w"> </span><span class="nt">Navigation</span><span class="w"> </span><span class="o">(</span><span class="nt">un-named</span><span class="w"> </span><span class="nt">routing</span><span class="o">)</span><span class="w"></span>
+<span class="nt">void</span><span class="w"> </span><span class="nt">main</span><span class="o">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">runApp</span><span class="o">(</span><span class="w"></span>
+<span class="w">      </span><span class="nt">MaterialApp</span><span class="o">(</span><span class="w"></span>
+<span class="w">        </span><span class="nt">debugShowCheckedModeBanner</span><span class="o">:</span><span class="w"> </span><span class="nt">false</span><span class="o">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">home</span><span class="o">:</span><span class="w"> </span><span class="nt">PageListing</span><span class="o">(),</span><span class="w"></span>
+<span class="w">      </span><span class="o">),</span><span class="w"></span>
+<span class="w">    </span><span class="o">);</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Navigation Implementation:</strong></p>
 <p>The <a href="https://api.flutter.dev/flutter/widgets/Navigator/push.html"><code>Navigator.push</code></a> is used to implement this routing. The <a href="https://api.flutter.dev/flutter/material/MaterialPageRoute-class.html"><code>MaterialPageRoute</code></a> is pushed on the <a href="https://api.flutter.dev/flutter/widgets/Navigator-class.html"><code>Navigator</code></a>. The Navigator is a widget that manages a set of child widgets as a stack. These child widgets are pages/screens pushed on the Navigator. Navigator refers to these children as <a href="https://api.flutter.dev/flutter/widgets/Route-class.html"><code>Route</code></a> object.</p>
 <p><strong>Sending Data:</strong></p>
 <p>The <code>MaterialPageRoute</code> uses <code>builder</code> to build the primary contents of the route (page/screen). The <code>Item</code> object is passed as argument to <code>PageDetails</code> widget.</p>
-<div class="highlight"><pre><span></span><span class="err">MaterialPageRoute(</span>
-<span class="err">  builder: (context) =&gt; PageDetails(</span>
-<span class="err">    item: item,</span>
-<span class="err">  ),</span>
-<span class="err">),</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>MaterialPageRoute(
+  builder: (context) =&gt; PageDetails(
+    item: item,
+  ),
+),
+</code></pre></div>
 
 <p><strong>Receiving Data:</strong></p>
 <p>The <code>Navigator.push</code> returns a <code>Future</code> that completes after calling <code>Navigator.pop</code> on the PageDetails Screen.</p>
 <p><strong>_navigateToPageDetails(...):</strong></p>
 <p>The <code>_navigateToPageDetails(...)</code> is called on tapping a list item. The <code>PageDetails</code> route is pushed on the <code>Navigator</code>. The <code>Navigator.push</code> returns a <code>Future</code> which contains the data sent back from <code>Navigator.pop</code> in PageDetails widget. This data is stored in <code>resultFromPageDetails</code> variable, and displayed in a <a href="https://api.flutter.dev/flutter/material/SnackBar-class.html"><code>SnackBar</code> widget</a></p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">PageListing</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">PageListing</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-  <span class="o">...</span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
 
-  <span class="o">//</span><span class="n">Launches</span> <span class="n">PageDetails</span> <span class="ow">and</span> <span class="n">awaits</span> <span class="n">the</span> <span class="n">results</span> <span class="n">from</span> <span class="n">Navigator</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="n">called</span> <span class="n">from</span> <span class="n">PageDetails</span><span class="o">.</span>
-  <span class="n">_navigateToPageDetails</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">Item</span> <span class="n">item</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+<span class="w">  </span><span class="o">//</span><span class="n">Launches</span><span class="w"> </span><span class="n">PageDetails</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">awaits</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">Navigator</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">PageDetails</span><span class="o">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">_navigateToPageDetails</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">Navigation</span> <span class="n">implementations</span> <span class="n">are</span> <span class="n">different</span> <span class="k">for</span> <span class="n">each</span> <span class="n">part</span><span class="o">.</span>
-    <span class="o">//</span><span class="n">Part</span><span class="c1">#1. Un-named</span>
-    <span class="n">final</span> <span class="n">resultFromPageDetails</span> <span class="o">=</span> <span class="n">await</span> <span class="n">Navigator</span><span class="o">.</span><span class="n">push</span><span class="p">(</span>
-      <span class="n">context</span><span class="p">,</span>
-      <span class="n">MaterialPageRoute</span><span class="p">(</span>
-        <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">PageDetails</span><span class="p">(</span>
-          <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
-        <span class="p">),</span>
-      <span class="p">),</span>
-    <span class="p">);</span>
+<span class="w">    </span><span class="o">//</span><span class="n">Navigation</span><span class="w"> </span><span class="n">implementations</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">part</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">Part</span><span class="c1">#1. Un-named</span><span class="w"></span>
+<span class="w">    </span><span class="n">final</span><span class="w"> </span><span class="n">resultFromPageDetails</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">Navigator</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">context</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">MaterialPageRoute</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">builder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">PageDetails</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">item</span><span class="p">:</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">snackbars</span> <span class="k">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">display</span> <span class="n">the</span> <span class="n">result</span> <span class="n">returned</span> <span class="n">from</span> <span class="n">another</span> <span class="n">page</span><span class="o">.</span>
-    <span class="o">//</span><span class="n">Hide</span> <span class="n">any</span> <span class="n">previous</span> <span class="n">snackbars</span> <span class="ow">and</span> <span class="n">show</span> <span class="n">the</span> <span class="n">new</span> <span class="n">resultFromPageDetails</span><span class="o">.</span>
-    <span class="n">Scaffold</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-      <span class="o">..</span><span class="n">removeCurrentSnackBar</span><span class="p">()</span>
-      <span class="o">..</span><span class="n">showSnackBar</span><span class="p">(</span><span class="n">SnackBar</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;$resultFromPageDetails&quot;</span><span class="p">)));</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="o">//</span><span class="n">snackbars</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="n">returned</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">another</span><span class="w"> </span><span class="n">page</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">Hide</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">snackbars</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">resultFromPageDetails</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="n">Scaffold</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="o">..</span><span class="n">removeCurrentSnackBar</span><span class="p">()</span><span class="w"></span>
+<span class="w">      </span><span class="o">..</span><span class="n">showSnackBar</span><span class="p">(</span><span class="n">SnackBar</span><span class="p">(</span><span class="n">content</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;$resultFromPageDetails&quot;</span><span class="p">)));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h2>Static Navigation</h2>
@@ -414,64 +408,60 @@ This option is great when there is no logic around the routes. For example, auth
 <p><img alt="Named-Navigation-static" src="https://ptyagicodecamp.github.io/named-navigation-map.jpg"></p>
 <p><strong>Entry point:</strong></p>
 <p>In this application, there are two ways to assign the initial page, <code>PageListing()</code>. One way is to assign <code>PageListing()</code> widget to <code>home</code> property. Another ways is to assign a <code>Map</code> containing &lt;<code>/</code>, <code>PageListing()</code>&gt; entry to <code>routes</code> property. The <code>/</code> represents the home page mapping.</p>
-<div class="highlight"><pre><span></span><span class="err">//Using Static Navigation</span>
-<span class="err">void main() =&gt; runApp(</span>
-<span class="err">      MaterialApp(</span>
-<span class="err">        debugShowCheckedModeBanner: false,</span>
-<span class="err">        //home: PageListing(),</span>
-<span class="err">        //Part#2. Named route using Map</span>
-<span class="err">        routes: &lt;String, WidgetBuilder&gt;{</span>
-<span class="err">          &#39;/&#39;: (BuildContext context) =&gt; PageListing(),</span>
-<span class="err">          &#39;/details&#39;: (BuildContext context) =&gt; PageDetails(</span>
-<span class="err">                item: seasideList[0],</span>
-<span class="err">              ),</span>
-<span class="err">        },</span>
-<span class="err">      ),</span>
-<span class="err">    );</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="nt">Using</span><span class="w"> </span><span class="nt">Static</span><span class="w"> </span><span class="nt">Navigation</span><span class="w"></span>
+<span class="nt">void</span><span class="w"> </span><span class="nt">main</span><span class="o">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">runApp</span><span class="o">(</span><span class="w"></span>
+<span class="w">      </span><span class="nt">MaterialApp</span><span class="o">(</span><span class="w"></span>
+<span class="w">        </span><span class="nt">debugShowCheckedModeBanner</span><span class="o">:</span><span class="w"> </span><span class="nt">false</span><span class="o">,</span><span class="w"></span>
+<span class="w">        </span><span class="o">//</span><span class="nt">home</span><span class="o">:</span><span class="w"> </span><span class="nt">PageListing</span><span class="o">(),</span><span class="w"></span>
+<span class="w">        </span><span class="o">//</span><span class="nt">Part</span><span class="p">#</span><span class="nn">2</span><span class="o">.</span><span class="w"> </span><span class="nt">Named</span><span class="w"> </span><span class="nt">route</span><span class="w"> </span><span class="nt">using</span><span class="w"> </span><span class="nt">Map</span><span class="w"></span>
+<span class="w">        </span><span class="nt">routes</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">String</span><span class="o">,</span><span class="w"> </span><span class="nt">WidgetBuilder</span><span class="o">&gt;</span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="err">&#39;/&#39;:</span><span class="w"> </span><span class="err">(BuildContext</span><span class="w"> </span><span class="err">context)</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">PageListing(),</span><span class="w"></span>
+<span class="w">          </span><span class="err">&#39;/details&#39;:</span><span class="w"> </span><span class="err">(BuildContext</span><span class="w"> </span><span class="err">context)</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">PageDetails(</span><span class="w"></span>
+<span class="w">                </span><span class="n">item</span><span class="p">:</span><span class="w"> </span><span class="n">seasideList</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="o">,</span><span class="w"></span>
+<span class="w">      </span><span class="o">),</span><span class="w"></span>
+<span class="w">    </span><span class="o">);</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Navigation Implementation:</strong></p>
 <p>All routes/pages have entries in routes table above. The <code>Map</code> entry '&lt;<code>/details</code>, <code>PageDetails()</code>&gt;' is added to navigate to the PageDetails page. The <code>/details</code> is the alias/name to the PageDetails page. This name is pushed on the <code>Naviagtor</code> widget using <a href="https://api.flutter.dev/flutter/widgets/Navigator/pushNamed.html"><code>Naviagtor.pushNamed</code></a>.</p>
-<div class="highlight"><pre><span></span><span class="err">Navigator.pushNamed(context, &#39;/details&#39;)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Navigator.pushNamed(context, &#39;/details&#39;)
+</code></pre></div>
 
 <p><strong>Sending Data:</strong></p>
 <p>The data can be passed to the PageDetails at the top-level only where the routes are assigned to <code>routes</code> property. In this case, only globally available data can be passed. In this implementation, only first item <code>seasideList[0]</code> detail page will open for any selection on the homepage.</p>
-<div class="highlight"><pre><span></span><span class="c">routes: &lt;String, WidgetBuilder&gt;{</span>
-<span class="c">  &#39;/&#39;: (BuildContext context) =&gt; PageListing(),</span>
-<span class="c">  &#39;/details&#39;: (BuildContext context) =&gt; PageDetails(</span>
-<span class="c">        item: seasideList[0],</span>
-<span class="c">      ),</span>
-<span class="err">},</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>routes: &lt;String, WidgetBuilder&gt;{
+  &#39;/&#39;: (BuildContext context) =&gt; PageListing(),
+  &#39;/details&#39;: (BuildContext context) =&gt; PageDetails(
+        item: seasideList[0],
+      ),
+},
+</code></pre></div>
 
 <p><strong>Receiving Data:</strong></p>
 <p>The <code>Navigator.push</code> returns a <code>Future</code> that completes after calling <code>Navigator.pop</code> on the PageDetails Screen. This is similar to what we discussed earlier.</p>
 <p><strong>_navigateToPageDetails(...):</strong></p>
 <p>This is similar to what we discussed earlier except <code>Navigator.pushNamed</code> is used for pushing the routes on the stack.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">PageListing</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">PageListing</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-  <span class="o">...</span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
 
-  <span class="o">//</span><span class="n">Launches</span> <span class="n">PageDetails</span> <span class="ow">and</span> <span class="n">awaits</span> <span class="n">the</span> <span class="n">results</span> <span class="n">from</span> <span class="n">Navigator</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="n">called</span> <span class="n">from</span> <span class="n">PageDetails</span><span class="o">.</span>
-  <span class="n">_navigateToPageDetails</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">Item</span> <span class="n">item</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+<span class="w">  </span><span class="o">//</span><span class="n">Launches</span><span class="w"> </span><span class="n">PageDetails</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">awaits</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">Navigator</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">PageDetails</span><span class="o">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">_navigateToPageDetails</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">Navigation</span> <span class="n">implementations</span> <span class="n">are</span> <span class="n">different</span> <span class="k">for</span> <span class="n">each</span> <span class="n">part</span><span class="o">.</span>
-    <span class="o">//</span><span class="n">Part</span><span class="c1">#2. Named route with Maps</span>
-    <span class="n">final</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">Navigator</span><span class="o">.</span><span class="n">pushNamed</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;/details&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="o">//</span><span class="n">Navigation</span><span class="w"> </span><span class="n">implementations</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">part</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">Part</span><span class="c1">#2. Named route with Maps</span><span class="w"></span>
+<span class="w">    </span><span class="n">final</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">Navigator</span><span class="o">.</span><span class="n">pushNamed</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/details&#39;</span><span class="p">);</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">snackbars</span> <span class="k">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">display</span> <span class="n">the</span> <span class="n">result</span> <span class="n">returned</span> <span class="n">from</span> <span class="n">another</span> <span class="n">page</span><span class="o">.</span>
-    <span class="o">//</span><span class="n">Hide</span> <span class="n">any</span> <span class="n">previous</span> <span class="n">snackbars</span> <span class="ow">and</span> <span class="n">show</span> <span class="n">the</span> <span class="n">new</span> <span class="n">resultFromPageDetails</span><span class="o">.</span>
-    <span class="n">Scaffold</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-      <span class="o">..</span><span class="n">removeCurrentSnackBar</span><span class="p">()</span>
-      <span class="o">..</span><span class="n">showSnackBar</span><span class="p">(</span><span class="n">SnackBar</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;$result&quot;</span><span class="p">)));</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="o">//</span><span class="n">snackbars</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="n">returned</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">another</span><span class="w"> </span><span class="n">page</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">Hide</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">snackbars</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">resultFromPageDetails</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="n">Scaffold</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="o">..</span><span class="n">removeCurrentSnackBar</span><span class="p">()</span><span class="w"></span>
+<span class="w">      </span><span class="o">..</span><span class="n">showSnackBar</span><span class="p">(</span><span class="n">SnackBar</span><span class="p">(</span><span class="n">content</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;$result&quot;</span><span class="p">)));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h2>Dynamic Navigation</h2>
@@ -481,106 +471,101 @@ This option is great when there is no logic around the routes. For example, auth
 <p><img alt="Named-Navigation-dynamic" src="https://ptyagicodecamp.github.io/named-navigation-generate.jpg"></p>
 <p><strong>Entry point:</strong></p>
 <p>The entry page <code>PageListing</code> is assigned to <code>home</code> property. The <code>initialRoute</code> property can be used to assign the beginning route/page. The <code>generateRoute</code> callback function handles the navigational logic.</p>
-<div class="highlight"><pre><span></span><span class="err">//Using Dynamic Navigation</span>
-<span class="err">void main() =&gt; runApp(</span>
-<span class="err">      MaterialApp(</span>
-<span class="err">        debugShowCheckedModeBanner: false,</span>
-<span class="err">        home: PageListing(),</span>
-<span class="err">        //Part#3. Named with onGenerateRoute</span>
-<span class="err">        initialRoute: &#39;/&#39;,</span>
-<span class="err">        onGenerateRoute: generateRoute,</span>
-<span class="err">      ),</span>
-<span class="err">    );</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="nt">Using</span><span class="w"> </span><span class="nt">Dynamic</span><span class="w"> </span><span class="nt">Navigation</span><span class="w"></span>
+<span class="nt">void</span><span class="w"> </span><span class="nt">main</span><span class="o">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">runApp</span><span class="o">(</span><span class="w"></span>
+<span class="w">      </span><span class="nt">MaterialApp</span><span class="o">(</span><span class="w"></span>
+<span class="w">        </span><span class="nt">debugShowCheckedModeBanner</span><span class="o">:</span><span class="w"> </span><span class="nt">false</span><span class="o">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">home</span><span class="o">:</span><span class="w"> </span><span class="nt">PageListing</span><span class="o">(),</span><span class="w"></span>
+<span class="w">        </span><span class="o">//</span><span class="nt">Part</span><span class="p">#</span><span class="nn">3</span><span class="o">.</span><span class="w"> </span><span class="nt">Named</span><span class="w"> </span><span class="nt">with</span><span class="w"> </span><span class="nt">onGenerateRoute</span><span class="w"></span>
+<span class="w">        </span><span class="nt">initialRoute</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="o">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">onGenerateRoute</span><span class="o">:</span><span class="w"> </span><span class="nt">generateRoute</span><span class="o">,</span><span class="w"></span>
+<span class="w">      </span><span class="o">),</span><span class="w"></span>
+<span class="w">    </span><span class="o">);</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Navigation Implementation:</strong></p>
 <p>The <code>Navigator</code> use <code>Route</code> object to represent the page/screen. The <code>generateRoute()</code> function returns the appropriate route based on the matching name. The <code>RouteSettings</code> is useful in passing around these route names and arguments, if any. The route name is extracted using <code>routeSettings.name</code>. The arguments can be extracted using <code>routeSettings.arguments</code>. When no match is found, a common default page is shown to user displaying the appropriate message.</p>
-<div class="highlight"><pre><span></span><span class="n">Route</span><span class="o">&lt;</span><span class="k">dynamic</span><span class="o">&gt;</span> <span class="n">generateRoute</span><span class="p">(</span><span class="n">RouteSettings</span> <span class="n">routeSettings</span><span class="p">)</span> <span class="err">{</span>
-  <span class="k">final</span> <span class="n">args</span> <span class="o">=</span> <span class="n">routeSettings</span><span class="p">.</span><span class="n">arguments</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">Route</span><span class="o">&lt;</span><span class="nt">dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">generateRoute</span><span class="o">(</span><span class="nt">RouteSettings</span><span class="w"> </span><span class="nt">routeSettings</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">final</span><span class="w"> </span><span class="err">args</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">routeSettings.arguments</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">switch</span> <span class="p">(</span><span class="n">routeSettings</span><span class="p">.</span><span class="n">name</span><span class="p">)</span> <span class="err">{</span>
-    <span class="k">case</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
-      <span class="k">return</span> <span class="n">MaterialPageRoute</span><span class="p">(</span>
-        <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">PageListing</span><span class="p">(),</span>
-      <span class="p">);</span>
+<span class="w">  </span><span class="err">switch</span><span class="w"> </span><span class="err">(routeSettings.name)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">case</span><span class="w"> </span><span class="err">&#39;/&#39;:</span><span class="w"></span>
+<span class="w">      </span><span class="err">return</span><span class="w"> </span><span class="err">MaterialPageRoute(</span><span class="w"></span>
+<span class="w">        </span><span class="n">builder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">PageListing</span><span class="p">(),</span><span class="w"></span>
+<span class="w">      </span><span class="p">);</span><span class="w"></span>
 
-    <span class="k">case</span> <span class="s1">&#39;/details&#39;</span><span class="p">:</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">args</span> <span class="k">is</span> <span class="n">Item</span><span class="p">)</span> <span class="err">{</span>
-        <span class="k">return</span> <span class="n">MaterialPageRoute</span><span class="p">(</span>
-          <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">PageDetails</span><span class="p">(</span>
-            <span class="n">item</span><span class="p">:</span> <span class="n">args</span><span class="p">,</span>
-          <span class="p">),</span>
-        <span class="p">);</span>
-      <span class="err">}</span>
+<span class="w">    </span><span class="err">case</span><span class="w"> </span><span class="err">&#39;/details&#39;:</span><span class="w"></span>
+<span class="w">      </span><span class="err">if</span><span class="w"> </span><span class="err">(args</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">Item)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="err">return</span><span class="w"> </span><span class="err">MaterialPageRoute(</span><span class="w"></span>
+<span class="w">          </span><span class="n">builder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">PageDetails</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">item</span><span class="err">:</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
 
-      <span class="k">return</span> <span class="n">MaterialPageRoute</span><span class="p">(</span>
-        <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">PageNotFound</span><span class="p">(),</span>
-      <span class="p">);</span>
+<span class="w">      </span><span class="nt">return</span><span class="w"> </span><span class="nt">MaterialPageRoute</span><span class="o">(</span><span class="w"></span>
+<span class="w">        </span><span class="nt">builder</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">PageNotFound</span><span class="o">(),</span><span class="w"></span>
+<span class="w">      </span><span class="o">);</span><span class="w"></span>
 
-    <span class="k">default</span><span class="p">:</span>
-      <span class="k">return</span> <span class="n">MaterialPageRoute</span><span class="p">(</span>
-        <span class="n">builder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">PageNotFound</span><span class="p">(),</span>
-      <span class="p">);</span>
-  <span class="err">}</span>
-<span class="err">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="nt">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">return</span><span class="w"> </span><span class="nt">MaterialPageRoute</span><span class="o">(</span><span class="w"></span>
+<span class="w">        </span><span class="nt">builder</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">PageNotFound</span><span class="o">(),</span><span class="w"></span>
+<span class="w">      </span><span class="o">);</span><span class="w"></span>
+<span class="w">  </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Sending Data:</strong></p>
 <p>This is similar to the last Named Routing approach. In this approach, we can pass <code>item</code> as <code>arguments</code>. This <code>arguments</code> is extracted and passed to the <code>PageDetails</code> widget in <code>generateRoute</code> routing function.</p>
-<div class="highlight"><pre><span></span><span class="err">Navigator.pushNamed(</span>
-<span class="err">      context,</span>
-<span class="err">      &#39;/details&#39;,</span>
-<span class="err">      arguments: item,</span>
-<span class="err">    )</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Navigator.pushNamed(
+      context,
+      &#39;/details&#39;,
+      arguments: item,
+    )
+</code></pre></div>
 
 <p><strong>Receiving Data:</strong></p>
 <p>The <code>Navigator.push</code> returns a <code>Future</code> that completes after calling <code>Navigator.pop</code> on the PageDetails Screen. This is similar to what we discussed earlier.</p>
 <p><strong>_navigateToPageDetails(...):</strong></p>
 <p>This is similar to what we discussed earlier except <code>Navigator.pushNamed</code> is used to pass the data along in addition to pushing the named routes on the stack.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">PageListing</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">PageListing</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-  <span class="o">...</span>
+<span class="w">  </span><span class="o">...</span><span class="w"></span>
 
-  <span class="o">//</span><span class="n">Launches</span> <span class="n">PageDetails</span> <span class="ow">and</span> <span class="n">awaits</span> <span class="n">the</span> <span class="n">results</span> <span class="n">from</span> <span class="n">Navigator</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="n">called</span> <span class="n">from</span> <span class="n">PageDetails</span><span class="o">.</span>
-  <span class="n">_navigateToPageDetails</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">Item</span> <span class="n">item</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="o">//</span><span class="n">Navigation</span> <span class="n">implementations</span> <span class="n">are</span> <span class="n">different</span> <span class="k">for</span> <span class="n">each</span> <span class="n">part</span><span class="o">.</span>
-    <span class="o">//</span><span class="n">Part</span><span class="c1">#3. Named route using callback function</span>
-    <span class="n">final</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">Navigator</span><span class="o">.</span><span class="n">pushNamed</span><span class="p">(</span>
-      <span class="n">context</span><span class="p">,</span>
-      <span class="s1">&#39;/details&#39;</span><span class="p">,</span>
-      <span class="n">arguments</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
-    <span class="p">);</span>
+<span class="w">  </span><span class="o">//</span><span class="n">Launches</span><span class="w"> </span><span class="n">PageDetails</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">awaits</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">Navigator</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">PageDetails</span><span class="o">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">_navigateToPageDetails</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">Navigation</span><span class="w"> </span><span class="n">implementations</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">part</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">Part</span><span class="c1">#3. Named route using callback function</span><span class="w"></span>
+<span class="w">    </span><span class="n">final</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">Navigator</span><span class="o">.</span><span class="n">pushNamed</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">context</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s1">&#39;/details&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">arguments</span><span class="p">:</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
 
-    <span class="o">//</span><span class="n">snackbars</span> <span class="k">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">display</span> <span class="n">the</span> <span class="n">result</span> <span class="n">returned</span> <span class="n">from</span> <span class="n">another</span> <span class="n">page</span><span class="o">.</span>
-    <span class="o">//</span><span class="n">Hide</span> <span class="n">any</span> <span class="n">previous</span> <span class="n">snackbars</span> <span class="ow">and</span> <span class="n">show</span> <span class="n">the</span> <span class="n">new</span> <span class="n">resultFromPageDetails</span><span class="o">.</span>
-    <span class="n">Scaffold</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-      <span class="o">..</span><span class="n">removeCurrentSnackBar</span><span class="p">()</span>
-      <span class="o">..</span><span class="n">showSnackBar</span><span class="p">(</span><span class="n">SnackBar</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;$result&quot;</span><span class="p">)));</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="o">//</span><span class="n">snackbars</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="n">returned</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">another</span><span class="w"> </span><span class="n">page</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">Hide</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">snackbars</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">resultFromPageDetails</span><span class="o">.</span><span class="w"></span>
+<span class="w">    </span><span class="n">Scaffold</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="o">..</span><span class="n">removeCurrentSnackBar</span><span class="p">()</span><span class="w"></span>
+<span class="w">      </span><span class="o">..</span><span class="n">showSnackBar</span><span class="p">(</span><span class="n">SnackBar</span><span class="p">(</span><span class="n">content</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;$result&quot;</span><span class="p">)));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>PageNotFound:</strong></p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">PageNotFound</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
-      <span class="n">appBar</span><span class="p">:</span> <span class="n">AppBar</span><span class="p">(</span>
-        <span class="n">title</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Page not found&quot;</span><span class="p">),</span>
-      <span class="p">),</span>
-      <span class="n">body</span><span class="p">:</span> <span class="n">Center</span><span class="p">(</span>
-        <span class="n">child</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Page is not available.&quot;</span><span class="p">),</span>
-      <span class="p">),</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">PageNotFound</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">appBar</span><span class="p">:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Page not found&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Page is not available.&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <hr>
 <h1>Source Code Repo</h1>

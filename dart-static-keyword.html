@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -194,30 +194,27 @@
 <hr>
 <h1>Using <code>static</code> keyword</h1>
 <p>Let's take an example of a string utility class, say <code>StringUtils</code>. This class contains a convenience method, say <code>reverse(String str)</code>, to reverse the given string . This utility class has a constant <code>dart</code> which is inferred to contain a String value of "oh dart".</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">StringUtils</span> <span class="p">{</span>
-  <span class="k">static</span> <span class="k">const</span> <span class="n">dart</span> <span class="o">=</span> <span class="s2">&quot;oh dart&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">StringUtils</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">dart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;oh dart&quot;</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">static</span> <span class="nb nb-Type">String</span> <span class="n">reverse</span><span class="p">(</span><span class="nb nb-Type">String</span> <span class="nb">str</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb nb-Type">String</span><span class="o">.</span><span class="n">fromCharCodes</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">runes</span><span class="o">.</span><span class="n">toList</span><span class="p">()</span><span class="o">.</span><span class="n">reversed</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">reverse</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="o">.</span><span class="n">fromCharCodes</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">runes</span><span class="o">.</span><span class="n">toList</span><span class="p">()</span><span class="o">.</span><span class="n">reversed</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Note:</strong> In case you're interested in learning about <code>runes</code> used in code above to reverse the string, then check out <a href="https://ptyagicodecamp.github.io/the-runes-property.html">my article</a> on Runes.</p>
 <h2>Running Code</h2>
 <p>The class level variable can be accessed using class name. In code below, <code>StringUtils</code> is needed to access either constant <code>dart</code> or static method <code>reverse(...)</code>.</p>
-<div class="highlight"><pre><span></span><span class="err">void main() {</span>
-<span class="err">  String reversedStatic = StringUtils.reverse(StringUtils.dart);</span>
-<span class="err">  print(reversedStatic);</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>void main() {
+  String reversedStatic = StringUtils.reverse(StringUtils.dart);
+  print(reversedStatic);
+}
+</code></pre></div>
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">trad ho</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>trad ho
+</code></pre></div>
 
 <hr>
 <h1>Few Facts about Static Variables</h1>
@@ -232,27 +229,24 @@
 <li>Static / Class methods don't have access to <code>this</code> keyword.</li>
 <li>Static methods can be used as compile-time constants, and can be passed as parameters to constant constructor. Let's create a class <code>SomeObj</code> with a <code>const</code> constructor:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">SomeObj</span> <span class="p">{</span>
-  <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">myStr</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">SomeObj</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">myStr</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">const</span> <span class="n">SomeObj</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">myStr</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">SomeObj</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">myStr</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h2>Running Code</h2>
 <p>Now the static method <code>reverse(...)</code> is passed as parameter to <code>const SomeObj(...)</code> constructor.</p>
-<div class="highlight"><pre><span></span><span class="err">void main() {</span>
-<span class="err">  SomeObj obj = SomeObj(StringUtils.reverse(StringUtils.dart));</span>
-<span class="err">  print(obj.myStr);</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>void main() {
+  SomeObj obj = SomeObj(StringUtils.reverse(StringUtils.dart));
+  print(obj.myStr);
+}
+</code></pre></div>
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">trad ho</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>trad ho
+</code></pre></div>
 
 <hr>
 <h1>Tip</h1>
@@ -260,28 +254,25 @@
 Usually utility methods are put together in a class of static methods.</p>
 <p>In Dart, if such utility methods are not logically related, then they shouldn't be put inside a class. Such Methods can be put at top-level in a dart file.</p>
 <p>The above static utility variable / methods can be moved to top-level. You don't need a class for namespace purposes. It's recommended to create a library instead for grouping methods according to namespaces.</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Utility</span> <span class="n">method</span> <span class="n">at</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span>
-<span class="k">const</span> <span class="n">dart</span> <span class="o">=</span> <span class="s2">&quot;oh dart&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Utility</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">top</span><span class="o">-</span><span class="n">level</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">dart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;oh dart&quot;</span><span class="p">;</span><span class="w"></span>
 
-<span class="nb nb-Type">String</span> <span class="n">reverse</span><span class="p">(</span><span class="nb nb-Type">String</span> <span class="nb">str</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nb nb-Type">String</span><span class="o">.</span><span class="n">fromCharCodes</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">runes</span><span class="o">.</span><span class="n">toList</span><span class="p">()</span><span class="o">.</span><span class="n">reversed</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="nb nb-Type">String</span><span class="w"> </span><span class="n">reverse</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="o">.</span><span class="n">fromCharCodes</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">runes</span><span class="o">.</span><span class="n">toList</span><span class="p">()</span><span class="o">.</span><span class="n">reversed</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h2>Running Code</h2>
-<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="o">//</span><span class="n">Moving</span> <span class="n">utility</span> <span class="n">method</span><span class="o">/</span><span class="n">variable</span> <span class="n">to</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span>
-  <span class="nb nb-Type">String</span> <span class="n">reversedStr</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">dart</span><span class="p">);</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">reversedStr</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">//</span><span class="n">Moving</span><span class="w"> </span><span class="n">utility</span><span class="w"> </span><span class="n">method</span><span class="o">/</span><span class="n">variable</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">top</span><span class="o">-</span><span class="n">level</span><span class="w"></span>
+<span class="w">  </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">reversedStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reverse</span><span class="p">(</span><span class="n">dart</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="n">reversedStr</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><span class="err">trad ho</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>trad ho
+</code></pre></div>
 
 <p><strong>Note:</strong> Avoid classes with only static members in it as per <a href="https://dart-lang.github.io/linter/lints/avoid_classes_with_only_static_members.html">this lint rule</a>.</p>
 <hr>

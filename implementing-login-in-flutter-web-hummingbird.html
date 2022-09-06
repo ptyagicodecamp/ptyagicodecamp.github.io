@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Mobile | Software Engineering | Life</p>
+<p>Explore | Life | Mobile | Software Engineering</p>
 
       <nav>
         <ul class="list">
@@ -207,48 +207,46 @@
 </ol>
 <h3><code>pubspec.yaml</code></h3>
 <p>Following dependencies need to be added to <code>pubspec.yaml</code> to interact with Firebase. <a href="https://pub.dev/packages/provider">Provider</a> package is used for dependency injection and state management.</p>
-<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
-  <span class="n">firebase</span><span class="o">:</span> <span class="n">any</span>
-  <span class="n">service_worker</span><span class="o">:</span> <span class="o">^</span><span class="mf">0.2</span><span class="o">.</span><span class="mi">0</span>
-  <span class="n">googleapis_auth</span><span class="o">:</span> <span class="o">^</span><span class="mf">0.2</span><span class="o">.</span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span>
-  <span class="n">provider</span><span class="o">:</span> <span class="n">any</span>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase</span><span class="o">:</span><span class="w"> </span><span class="n">any</span><span class="w"></span>
+<span class="w">  </span><span class="n">service_worker</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.2</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
+<span class="w">  </span><span class="n">googleapis_auth</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.2</span><span class="o">.</span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="w"></span>
+<span class="w">  </span><span class="n">provider</span><span class="o">:</span><span class="w"> </span><span class="n">any</span><span class="w"></span>
 
-<span class="n">dependency_overrides</span><span class="o">:</span>
-  <span class="n">provider</span><span class="o">:</span>
-    <span class="n">git</span><span class="o">:</span>
-      <span class="n">url</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/kevmoo/</span><span class="n">provider</span>
-      <span class="n">ref</span><span class="o">:</span> <span class="n">flutter_web</span>
-  <span class="n">firebase</span><span class="o">:</span>
-    <span class="n">git</span><span class="o">:</span>
-      <span class="n">url</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/FirebaseExtended/</span><span class="n">firebase</span><span class="o">-</span><span class="n">dart</span>
-</pre></div>
-
+<span class="n">dependency_overrides</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">provider</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">git</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">url</span><span class="o">:</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/kevmoo/</span><span class="n">provider</span><span class="w"></span>
+<span class="w">      </span><span class="n">ref</span><span class="o">:</span><span class="w"> </span><span class="n">flutter_web</span><span class="w"></span>
+<span class="w">  </span><span class="n">firebase</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">git</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">url</span><span class="o">:</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/FirebaseExtended/</span><span class="n">firebase</span><span class="o">-</span><span class="n">dart</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Web entry point:</strong> As we know that Flutter Web apps' entry point is <code>web/main.dart</code> which is compiled to javascript, and referred from <code>web/index.html</code>. Let's checkout code in both files:</p>
 <p><strong><code>web/main.dart</code>:</strong></p>
-<div class="highlight"><pre><span></span><span class="n">main</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
-  <span class="n">try</span> <span class="err">{</span>
-    <span class="n">await</span> <span class="n">config</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="nt">main</span><span class="o">()</span><span class="w"> </span><span class="nt">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">try</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">await</span><span class="w"> </span><span class="err">config()</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">fb</span><span class="p">.</span><span class="n">initializeApp</span><span class="p">(</span>
-      <span class="n">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
-      <span class="n">authDomain</span><span class="p">:</span> <span class="n">authDomain</span><span class="p">,</span>
-      <span class="n">databaseURL</span><span class="p">:</span> <span class="n">databaseUrl</span><span class="p">,</span>
-      <span class="n">storageBucket</span><span class="p">:</span> <span class="n">storageBucket</span><span class="p">,</span>
-      <span class="n">projectId</span><span class="p">:</span> <span class="n">projectId</span><span class="p">,</span>
-    <span class="p">);</span>
+<span class="w">    </span><span class="err">fb.initializeApp(</span><span class="w"></span>
+<span class="w">      </span><span class="n">apiKey</span><span class="p">:</span><span class="w"> </span><span class="n">apiKey</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">authDomain</span><span class="o">:</span><span class="w"> </span><span class="n">authDomain</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">databaseURL</span><span class="o">:</span><span class="w"> </span><span class="n">databaseUrl</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">storageBucket</span><span class="o">:</span><span class="w"> </span><span class="n">storageBucket</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">projectId</span><span class="o">:</span><span class="w"> </span><span class="n">projectId</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">await</span> <span class="n">ui</span><span class="p">.</span><span class="n">webOnlyInitializePlatform</span><span class="p">();</span>
-    <span class="n">app</span><span class="p">.</span><span class="n">main</span><span class="p">();</span>
-  <span class="err">}</span> <span class="k">on</span> <span class="n">fb</span><span class="p">.</span><span class="n">FirebaseJsNotLoadedException</span> <span class="n">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="err">{</span>
-    <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
-  <span class="err">}</span>
-<span class="err">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="err">await</span><span class="w"> </span><span class="err">ui.webOnlyInitializePlatform()</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="err">app.main()</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="nt">on</span><span class="w"> </span><span class="nt">fb</span><span class="p">.</span><span class="nc">FirebaseJsNotLoadedException</span><span class="w"> </span><span class="nt">catch</span><span class="w"> </span><span class="o">(</span><span class="nt">e</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">print(e)</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong><code>web/index.html</code>:</strong></p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
@@ -262,25 +260,23 @@
 <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong>Firebase Configuration:</strong></p>
 <p><code>fb.initializeApp</code> needs Firebase App's configuration parameters. We need to add this information in <code>package:firebase/src/assets/config.json</code> file. There's a sample  <code>config.json.sample</code> file available for you for reference:</p>
-<div class="highlight"><pre><span></span><span class="err">{</span>
-<span class="err">  &quot;_FYI&quot;: &quot;https://firebase.google.com/docs/web/setup&quot;,</span>
-<span class="err">  &quot;_COPY_TO&quot;: &quot;config.json&quot;,</span>
-<span class="err">  &quot;API_KEY&quot;: &quot;TODO&quot;,</span>
-<span class="err">  &quot;AUTH_DOMAIN&quot; : &quot;TODO&quot;,</span>
-<span class="err">  &quot;DATABASE_URL&quot;: &quot;TODO&quot;,</span>
-<span class="err">  &quot;STORAGE_BUCKET&quot;: &quot;TODO&quot;,</span>
-<span class="err">  &quot;PROJECT_ID&quot;: &quot;TODO&quot;,</span>
-<span class="err">  &quot;MESSAGING_SENDER_ID&quot;: &quot;TODO&quot;,</span>
-<span class="err">  &quot;SERVER_KEY&quot;: &quot;TODO&quot;,</span>
-<span class="err">  &quot;VAPID_KEY&quot;: &quot;TODO&quot;,</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="s">&quot;_FYI&quot;</span><span class="p">:</span> <span class="s">&quot;https://firebase.google.com/docs/web/setup&quot;</span><span class="p">,</span>
+  <span class="s">&quot;_COPY_TO&quot;</span><span class="p">:</span> <span class="s">&quot;config.json&quot;</span><span class="p">,</span>
+  <span class="s">&quot;API_KEY&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;AUTH_DOMAIN&quot;</span> <span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;DATABASE_URL&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;STORAGE_BUCKET&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;PROJECT_ID&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;MESSAGING_SENDER_ID&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;SERVER_KEY&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;VAPID_KEY&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Get parameters from Firebase console for your project, and update values in <code>config.json</code>.</p>
 <h3>LogIn Page</h3>
@@ -291,125 +287,122 @@
 <p><img alt="Register-form" src="https://ptyagicodecamp.github.io/login_ftf3.jpg"></p>
 <p><strong>Authenticating using FirebaseAuthService:</strong></p>
 <p><code>FirebaseAuthService</code> is a <code>ChangeNotifier</code>, which means if any sign-in or sign-out happens in this class, all other subscribed classes are notified. I've abstracted all APIs using <code>BaseAuthService</code>.</p>
-<div class="highlight"><pre><span></span><span class="err">abstract class BaseAuthService with ChangeNotifier {</span>
-<span class="err">  Future&lt;User&gt; currentUser();</span>
-<span class="err">  Future&lt;User&gt; signIn(String email, String password);</span>
-<span class="err">  Future&lt;User&gt; googleSignIn();</span>
-<span class="err">  Future&lt;User&gt; updateUser(User user);</span>
-<span class="err">  Future&lt;User&gt; createUser(</span>
-<span class="err">      String firstName, String lastName, String email, String password);</span>
-<span class="err">  Future&lt;void&gt; signOut();</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>abstract class BaseAuthService with ChangeNotifier {
+  Future&lt;User&gt; currentUser();
+  Future&lt;User&gt; signIn(String email, String password);
+  Future&lt;User&gt; googleSignIn();
+  Future&lt;User&gt; updateUser(User user);
+  Future&lt;User&gt; createUser(
+      String firstName, String lastName, String email, String password);
+  Future&lt;void&gt; signOut();
+}
+</code></pre></div>
 
 <p><code>FirebaseAuthService</code> extends <code>BaseAuthService</code>:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">FireAuthService</span> <span class="k">extends</span> <span class="n">BaseAuthService</span> <span class="p">{</span>
-  <span class="n">final</span> <span class="n">Auth</span> <span class="n">_firebaseAuth</span> <span class="o">=</span> <span class="n">fb</span><span class="o">.</span><span class="n">auth</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">FireAuthService</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">BaseAuthService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">Auth</span><span class="w"> </span><span class="n">_firebaseAuth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fb</span><span class="o">.</span><span class="n">auth</span><span class="p">();</span><span class="w"></span>
 
-  <span class="o">//</span><span class="n">Get</span> <span class="n">currently</span> <span class="n">logged</span><span class="o">-</span><span class="ow">in</span> <span class="n">user</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">currentUser</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">await</span> <span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">currentUser</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="o">//</span><span class="n">Get</span><span class="w"> </span><span class="n">currently</span><span class="w"> </span><span class="n">logged</span><span class="o">-</span><span class="ow">in</span><span class="w"> </span><span class="n">user</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">currentUser</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">currentUser</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="o">//</span><span class="n">Sign</span><span class="o">-</span><span class="ow">in</span> <span class="n">using</span> <span class="n">email</span> <span class="ow">and</span> <span class="n">password</span><span class="p">,</span> <span class="n">notifies</span> <span class="n">all</span> <span class="n">subscribers</span><span class="o">.</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">signIn</span><span class="p">(</span><span class="nb nb-Type">String</span> <span class="n">email</span><span class="p">,</span> <span class="nb nb-Type">String</span> <span class="n">password</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="n">try</span> <span class="p">{</span>
-      <span class="k">var</span> <span class="n">auth</span> <span class="o">=</span>
-          <span class="n">await</span> <span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">signInWithEmailAndPassword</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+<span class="w">  </span><span class="o">//</span><span class="n">Sign</span><span class="o">-</span><span class="ow">in</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="n">notifies</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">subscribers</span><span class="o">.</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signIn</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">var</span><span class="w"> </span><span class="n">auth</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">          </span><span class="n">await</span><span class="w"> </span><span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">signInWithEmailAndPassword</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">);</span><span class="w"></span>
 
-      <span class="n">notifyListeners</span><span class="p">();</span>
-      <span class="k">return</span> <span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">throw</span> <span class="n">Exception</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">      </span><span class="n">notifyListeners</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">throw</span><span class="w"> </span><span class="n">Exception</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="o">//</span><span class="n">This</span> <span class="n">method</span> <span class="k">is</span> <span class="n">called</span> <span class="n">from</span> <span class="n">register</span> <span class="n">form</span><span class="o">.</span> <span class="n">A</span> <span class="n">user</span> <span class="n">account</span> <span class="k">is</span> <span class="n">created</span> <span class="ow">in</span> <span class="n">FirebaseAuth</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">createUser</span><span class="p">(</span>
-      <span class="nb nb-Type">String</span> <span class="n">firstName</span><span class="p">,</span> <span class="nb nb-Type">String</span> <span class="n">lastName</span><span class="p">,</span> <span class="nb nb-Type">String</span> <span class="n">email</span><span class="p">,</span> <span class="nb nb-Type">String</span> <span class="n">password</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="n">auth</span> <span class="o">=</span>
-        <span class="n">await</span> <span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">createUserWithEmailAndPassword</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+<span class="w">  </span><span class="o">//</span><span class="n">This</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">register</span><span class="w"> </span><span class="n">form</span><span class="o">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">FirebaseAuth</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">createUser</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">auth</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">        </span><span class="n">await</span><span class="w"> </span><span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">createUserWithEmailAndPassword</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">);</span><span class="w"></span>
 
-    <span class="k">var</span> <span class="n">info</span> <span class="o">=</span> <span class="n">fb</span><span class="o">.</span><span class="n">UserProfile</span><span class="p">();</span>
-    <span class="n">info</span><span class="o">.</span><span class="n">displayName</span> <span class="o">=</span> <span class="s1">&#39;$firstName $lastName&#39;</span><span class="p">;</span>
-    <span class="n">await</span> <span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">updateProfile</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fb</span><span class="o">.</span><span class="n">UserProfile</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">info</span><span class="o">.</span><span class="n">displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;$firstName $lastName&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">updateProfile</span><span class="p">(</span><span class="n">info</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">updateUser</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="p">);</span>
+<span class="w">    </span><span class="n">updateUser</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="p">);</span><span class="w"></span>
 
-    <span class="k">return</span> <span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="o">//</span><span class="n">A</span> <span class="n">record</span> <span class="k">is</span> <span class="n">created</span> <span class="n">at</span> <span class="n">Firestore</span> <span class="n">to</span> <span class="n">keep</span> <span class="n">track</span> <span class="n">of</span> <span class="n">all</span> <span class="n">personalized</span> <span class="n">data</span> <span class="k">for</span> <span class="n">each</span> <span class="n">user</span><span class="o">.</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">updateUser</span><span class="p">(</span><span class="n">User</span> <span class="n">user</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="n">final</span> <span class="n">CollectionReference</span> <span class="n">ref</span> <span class="o">=</span> <span class="n">fb</span><span class="o">.</span><span class="n">firestore</span><span class="p">()</span><span class="o">.</span><span class="n">collection</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="o">//</span><span class="n">A</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">Firestore</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">keep</span><span class="w"> </span><span class="n">track</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">personalized</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">updateUser</span><span class="p">(</span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">final</span><span class="w"> </span><span class="n">CollectionReference</span><span class="w"> </span><span class="n">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fb</span><span class="o">.</span><span class="n">firestore</span><span class="p">()</span><span class="o">.</span><span class="n">collection</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">);</span><span class="w"></span>
 
-    <span class="nb nb-Type">String</span> <span class="n">displayName</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">displayName</span><span class="p">;</span>
-    <span class="nb nb-Type">String</span> <span class="n">photoUrl</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">photoURL</span><span class="p">;</span>
+<span class="w">    </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">displayName</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">photoUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">photoURL</span><span class="p">;</span><span class="w"></span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">displayName</span> <span class="o">==</span> <span class="nb nb-Type">null</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">displayName</span> <span class="o">=</span> <span class="s2">&quot;No Name yet&quot;</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">displayName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;No Name yet&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">photoUrl</span> <span class="o">==</span> <span class="nb nb-Type">null</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">photoUrl</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">photoUrl</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">photoUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="k">var</span> <span class="n">newData</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="s1">&#39;uid&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="p">,</span>
-      <span class="s1">&#39;displayName&#39;</span><span class="p">:</span> <span class="n">displayName</span><span class="p">,</span>
-      <span class="s1">&#39;photoUrl&#39;</span><span class="p">:</span> <span class="n">photoUrl</span><span class="p">,</span>
-      <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
-      <span class="s1">&#39;lastActive&#39;</span><span class="p">:</span> <span class="n">DateTime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-    <span class="p">};</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">newData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s1">&#39;uid&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s1">&#39;displayName&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">displayName</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s1">&#39;photoUrl&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">photoUrl</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s1">&#39;email&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s1">&#39;lastActive&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">DateTime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-    <span class="n">await</span> <span class="n">ref</span><span class="o">.</span><span class="n">doc</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">newData</span><span class="p">,</span> <span class="n">SetOptions</span><span class="p">(</span><span class="n">merge</span><span class="p">:</span> <span class="bp">true</span><span class="p">));</span>
+<span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">ref</span><span class="o">.</span><span class="n">doc</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">newData</span><span class="p">,</span><span class="w"> </span><span class="n">SetOptions</span><span class="p">(</span><span class="n">merge</span><span class="p">:</span><span class="w"> </span><span class="bp">true</span><span class="p">));</span><span class="w"></span>
 
-    <span class="k">return</span> <span class="n">user</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">user</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="o">//</span><span class="n">Sign</span><span class="o">-</span><span class="n">out</span>
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">signOut</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">signOut</span><span class="p">();</span>
-    <span class="n">notifyListeners</span><span class="p">();</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="o">//</span><span class="n">Sign</span><span class="o">-</span><span class="n">out</span><span class="w"></span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signOut</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">signOut</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">notifyListeners</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="err">@</span><span class="n">override</span>
-  <span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">googleSignIn</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-    <span class="o">//</span><span class="n">TODO</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">googleSignIn</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">TODO</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Checking for a logged-in user:</strong> Following code will check-in whether a user is already signed-in. If so, then <code>UserProfilePage</code> is displayed. Otherwise <code>LogInPage</code> is rendered.</p>
-<div class="highlight"><pre><span></span><span class="nt">return</span> <span class="nt">FutureBuilder</span><span class="o">&lt;</span><span class="nt">User</span><span class="o">&gt;(</span>
-      <span class="nt">future</span><span class="o">:</span> <span class="nt">Provider</span><span class="p">.</span><span class="nc">of</span><span class="o">&lt;</span><span class="nt">FireAuthService</span><span class="o">&gt;(</span><span class="nt">context</span><span class="o">)</span><span class="p">.</span><span class="nc">currentUser</span><span class="o">(),</span>
-      <span class="nt">builder</span><span class="o">:</span> <span class="o">(</span><span class="nt">context</span><span class="o">,</span> <span class="nt">AsyncSnapshot</span><span class="o">&lt;</span><span class="nt">User</span><span class="o">&gt;</span> <span class="nt">snapshot</span><span class="o">)</span> <span class="p">{</span>
-        <span class="err">if</span> <span class="err">(snapshot.connectionState</span> <span class="err">==</span> <span class="err">ConnectionState.done)</span> <span class="err">{</span>
-          <span class="err">if</span> <span class="err">(snapshot.error</span> <span class="err">!=</span> <span class="err">null)</span> <span class="err">{</span>
-            <span class="err">return</span> <span class="err">Text(snapshot.error.toString())</span><span class="p">;</span>
-          <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">FutureBuilder</span><span class="o">&lt;</span><span class="nt">User</span><span class="o">&gt;(</span><span class="w"></span>
+<span class="w">      </span><span class="nt">future</span><span class="o">:</span><span class="w"> </span><span class="nt">Provider</span><span class="p">.</span><span class="nc">of</span><span class="o">&lt;</span><span class="nt">FireAuthService</span><span class="o">&gt;(</span><span class="nt">context</span><span class="o">)</span><span class="p">.</span><span class="nc">currentUser</span><span class="o">(),</span><span class="w"></span>
+<span class="w">      </span><span class="nt">builder</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">context</span><span class="o">,</span><span class="w"> </span><span class="nt">AsyncSnapshot</span><span class="o">&lt;</span><span class="nt">User</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">snapshot</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="err">if</span><span class="w"> </span><span class="err">(snapshot.connectionState</span><span class="w"> </span><span class="err">==</span><span class="w"> </span><span class="err">ConnectionState.done)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">          </span><span class="err">if</span><span class="w"> </span><span class="err">(snapshot.error</span><span class="w"> </span><span class="err">!=</span><span class="w"> </span><span class="err">null)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">            </span><span class="err">return</span><span class="w"> </span><span class="err">Text(snapshot.error.toString())</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
 
-          <span class="nt">if</span> <span class="o">(</span><span class="nt">snapshot</span><span class="p">.</span><span class="nc">hasData</span><span class="o">)</span> <span class="p">{</span>
-            <span class="err">return</span> <span class="err">UserProfilePage(context,</span> <span class="err">snapshot.data)</span><span class="p">;</span>
-          <span class="p">}</span>
+<span class="w">          </span><span class="nt">if</span><span class="w"> </span><span class="o">(</span><span class="nt">snapshot</span><span class="p">.</span><span class="nc">hasData</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="err">return</span><span class="w"> </span><span class="err">UserProfilePage(context,</span><span class="w"> </span><span class="err">snapshot.data)</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
 
-          <span class="nt">return</span> <span class="nt">LogInPage</span><span class="o">(</span><span class="nt">title</span><span class="o">:</span> <span class="s1">&#39;Login&#39;</span><span class="o">);</span>
-        <span class="err">}</span> <span class="nt">else</span> <span class="p">{</span>
-          <span class="err">return</span> <span class="err">Container(</span>
-            <span class="n">child</span><span class="p">:</span> <span class="nf">CircularProgressIndicator</span><span class="p">(),</span>
-          <span class="p">);</span>
-        <span class="p">}</span>
-      <span class="err">}</span><span class="o">,</span>
-    <span class="o">);</span>
-</pre></div>
-
+<span class="w">          </span><span class="nt">return</span><span class="w"> </span><span class="nt">LogInPage</span><span class="o">(</span><span class="nt">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Login&#39;</span><span class="o">);</span><span class="w"></span>
+<span class="w">        </span><span class="err">}</span><span class="w"> </span><span class="nt">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="err">return</span><span class="w"> </span><span class="err">Container(</span><span class="w"></span>
+<span class="w">            </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="nf">CircularProgressIndicator</span><span class="p">(),</span><span class="w"></span>
+<span class="w">          </span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="err">}</span><span class="o">,</span><span class="w"></span>
+<span class="w">    </span><span class="o">);</span><span class="w"></span>
+</code></pre></div>
 
 <h3>User Profile Page</h3>
 <p>A <code>UserProfilePage</code> displays very basic information about the logged-in user. Right now, it shows: welcoming user with their email used as display name, placeholder for profile picture and sign-out button. Please refer to source code for details of implementing user interface.</p>
