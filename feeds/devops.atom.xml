@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tech&amp;Life - DevOps</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/devops.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2022-09-07T00:00:00-04:00</updated><subtitle>Explore | Life | Mobile | Software Engineering</subtitle><entry><title>Vim Quick References</title><link href="https://ptyagicodecamp.github.io/vim-quick-references.html" rel="alternate"></link><published>2022-09-07T00:00:00-04:00</published><updated>2022-09-07T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2022-09-07:/vim-quick-references.html</id><summary type="html">&lt;p&gt;A quick guide to Vim editor commands. I'm using macOS Terminal to run vim editor.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article is a quick getting started guide to Vim editor commands. Vim editor is an improved version of classic &lt;code&gt;Vi&lt;/code&gt; editor, hence named 'Vi Improved' or &lt;code&gt;Vim&lt;/code&gt; in short.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tech&amp;Life - DevOps</title><link href="https://ptyagicodecamp.github.io/" rel="alternate"></link><link href="https://ptyagicodecamp.github.io/feeds/devops.atom.xml" rel="self"></link><id>https://ptyagicodecamp.github.io/</id><updated>2022-09-07T00:00:00-04:00</updated><subtitle>Explore | Mobile | Software Engineering | Life</subtitle><entry><title>Vim Quick References</title><link href="https://ptyagicodecamp.github.io/vim-quick-references.html" rel="alternate"></link><published>2022-09-07T00:00:00-04:00</published><updated>2022-09-07T00:00:00-04:00</updated><author><name>ptyagi</name></author><id>tag:ptyagicodecamp.github.io,2022-09-07:/vim-quick-references.html</id><summary type="html">&lt;p&gt;A quick guide to Vim editor commands. I'm using macOS Terminal to run vim editor.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article is a quick getting started guide to Vim editor commands. Vim editor is an improved version of classic &lt;code&gt;Vi&lt;/code&gt; editor, hence named 'Vi Improved' or &lt;code&gt;Vim&lt;/code&gt; in short.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt;: I'm using macOS Terminal to run vim editor.&lt;/p&gt;
 &lt;h2&gt;Installing Vim Editor (macOS)&lt;/h2&gt;
 &lt;p&gt;You can download Vim editor on macOS using Homebrew package manager.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;brew install vim
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;brew install vim&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;Verify the installation of Vim editor by checking its version as below:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vim --version
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;vim --version&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;The above command will print the current version of Vim editor as below:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;% vim --version&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="n"&gt;VIM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Vi&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;IMproved&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;8.2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2019&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Dec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;compiled&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Nov&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2021&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="n"&gt;macOS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;version&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;arm64&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;% vim --version&lt;/span&gt;
+&lt;span class="n"&gt;VIM&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Vi&lt;/span&gt; &lt;span class="n"&gt;IMproved&lt;/span&gt; &lt;span class="mf"&gt;8.2&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2019&lt;/span&gt; &lt;span class="n"&gt;Dec&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compiled&lt;/span&gt; &lt;span class="n"&gt;Nov&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt; &lt;span class="mi"&gt;2021&lt;/span&gt; &lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;macOS&lt;/span&gt; &lt;span class="s"&gt;version&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;arm64&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;h2&gt;Opening Vim editor&lt;/h2&gt;
 &lt;p&gt;You can start opening the editor by using &lt;code&gt;vim&lt;/code&gt; followed by the file name as below:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vim test_file
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;vim test_file&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;The above command will open the &lt;code&gt;test_file&lt;/code&gt; in vim editor. Press &lt;code&gt;i&lt;/code&gt; to change to insert mode to start writing into file.&lt;/p&gt;
 &lt;h2&gt;Modes of Vim&lt;/h2&gt;
@@ -44,16 +48,19 @@
 &lt;h2&gt;Basic File operations&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Creating file:&lt;/strong&gt; You can create a file using one of the option below:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Option 1#&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vim test.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;vim test.txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Option 2#&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vi test.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;vi test.txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Option 3#&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;touch test.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;touch test.txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;&lt;strong&gt;Opening a file:&lt;/strong&gt; In &lt;code&gt;vim&lt;/code&gt; you can open a file using &lt;code&gt;vim&lt;/code&gt; followed by the file name.&lt;/p&gt;
 &lt;h1&gt;References&lt;/h1&gt;

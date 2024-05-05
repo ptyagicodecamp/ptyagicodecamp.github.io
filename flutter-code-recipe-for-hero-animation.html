@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -192,79 +192,83 @@ icons can open in another page with enlarged icon widget.</p>
 <p><strong>Target Audience:</strong> Beginner
 <strong>Recipe:</strong> Hero animation to transition a list icon into an enlarged view on another detail page.</p>
 <p><strong>Focus Widget:</strong> Hero Widget</p>
-<div class="highlight"><pre><span></span><code>Hero(
-    tag: &#39;hero-rectangle&#39;,
-    child: _blueDetailRectangle(),
-),
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Hero(</span>
+<span class="err">    tag: &#39;hero-rectangle&#39;,</span>
+<span class="err">    child: _blueDetailRectangle(),</span>
+<span class="err">),</span>
+</pre></div>
+
 
 <p><strong>Goal:</strong> Animate and enlarge list item icon using <code>Hero</code> widget.
 Tapping on a list item icon, opens up the item in another page with enlarged icon.</p>
 <p><img alt="List item icon" src="https://ptyagicodecamp.github.io/1.png">
 <img alt="Detail page icon" src="https://ptyagicodecamp.github.io/2.png"></p>
-<p>Checkout Hero animation:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/InhIo7HNU-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<p>Checkout Hero animation:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/InhIo7HNU-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <h3>Lets's go!</h3>
 <p>We need these things to accomplish our goal.
 1. List item along with Icon: I'll be using a rectangle widget for icon.</p>
 <p>Icon widget in list item at first page:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">Widget</span><span class="w"> </span><span class="nt">_blueIconRectangle</span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="err">return</span><span class="w"> </span><span class="err">Container(</span><span class="w"></span>
-<span class="w">          </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="k">height</span><span class="o">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="kc">color</span><span class="o">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="kc">blue</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">    Widget _blueIconRectangle() {</span>
+<span class="err">        return Container(</span>
+<span class="err">          width: 50,</span>
+<span class="err">          height: 50,</span>
+<span class="err">          color: Colors.blue,</span>
+<span class="err">    );</span>
+<span class="err">  }</span>
+</pre></div>
+
 
 <p><code>Hero</code> widget in list:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">Widget</span> <span class="nv">buildWidget</span><span class="ss">(</span><span class="nv">BuildContext</span> <span class="nv">context</span><span class="ss">)</span> {
-    <span class="k">return</span> <span class="nv">Center</span><span class="ss">(</span>
-        ...
-              <span class="nv">child</span>: <span class="nv">Hero</span><span class="ss">(</span>
-                <span class="nv">tag</span>: <span class="s1">&#39;</span><span class="s">hero-rectangle</span><span class="s1">&#39;</span>,
-                <span class="nv">child</span>: <span class="nv">_blueIconRectangle</span><span class="ss">()</span>,
-              <span class="ss">)</span>,
-              <span class="nv">onTap</span>: <span class="ss">()</span> <span class="o">=&gt;</span> <span class="nv">_gotoDetailsPage</span><span class="ss">(</span><span class="nv">context</span><span class="ss">)</span>,
+<div class="highlight"><pre><span></span><span class="n">Widget</span> <span class="n">buildWidget</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="err">{</span>
+    <span class="k">return</span> <span class="n">Center</span><span class="p">(</span>
+        <span class="p">...</span>
+              <span class="n">child</span><span class="p">:</span> <span class="n">Hero</span><span class="p">(</span>
+                <span class="n">tag</span><span class="p">:</span> <span class="s1">&#39;hero-rectangle&#39;</span><span class="p">,</span>
+                <span class="n">child</span><span class="p">:</span> <span class="n">_blueIconRectangle</span><span class="p">(),</span>
+              <span class="p">),</span>
+              <span class="n">onTap</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_gotoDetailsPage</span><span class="p">(</span><span class="n">context</span><span class="p">),</span>
 
-        ...
-  }
-</code></pre></div>
+        <span class="p">...</span>
+  <span class="err">}</span>
+</pre></div>
+
 
 <ol>
 <li>Enlarged icon to display on the second page.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">Widget</span><span class="w"> </span><span class="nt">_blueDetailRectangle</span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="err">return</span><span class="w"> </span><span class="err">Container(</span><span class="w"></span>
-<span class="w">      </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="k">height</span><span class="o">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="kc">color</span><span class="o">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="kc">blue</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">  Widget _blueDetailRectangle() {</span>
+<span class="err">    return Container(</span>
+<span class="err">      width: 200,</span>
+<span class="err">      height: 200,</span>
+<span class="err">      color: Colors.blue,</span>
+<span class="err">    );</span>
+<span class="err">  }</span>
+</pre></div>
+
 
 <p>Using enlarged icon in second page:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">void</span><span class="w"> </span><span class="nt">_gotoDetailsPage</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="err">Navigator.of(context).push(MaterialPageRoute(</span><span class="w"></span>
-<span class="w">      </span><span class="n">builder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">Scaffold</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">body</span><span class="err">:</span><span class="w"> </span><span class="nf">Center</span><span class="p">(</span><span class="w"></span>
-<span class="w">              </span><span class="n">child</span><span class="err">:</span><span class="w"> </span><span class="nf">Column</span><span class="p">(</span><span class="w"></span>
-<span class="w">                </span><span class="n">mainAxisAlignment</span><span class="err">:</span><span class="w"> </span><span class="n">MainAxisAlignment</span><span class="err">.</span><span class="kc">center</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="n">children</span><span class="err">:</span><span class="w"> </span><span class="err">&lt;</span><span class="n">Widget</span><span class="err">&gt;</span><span class="cp">[</span><span class="w"></span>
-<span class="w">                  </span><span class="nx">Hero</span><span class="p">(</span><span class="w"></span>
-<span class="w">                    </span><span class="kt">tag</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;hero-rectangle&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">child</span><span class="p">:</span><span class="w"> </span><span class="nx">_blueDetailRectangle</span><span class="p">(),</span><span class="w"></span>
-<span class="w">                  </span><span class="p">),</span><span class="w"></span>
-<span class="w">                  </span><span class="nx">Text</span><span class="p">(</span><span class="w"></span>
-<span class="w">                      </span><span class="s1">&#39;This is where you can see details about the list item tapped at previous page.&#39;</span><span class="p">),</span><span class="w"></span>
-<span class="w">                </span><span class="cp">]</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="p">),</span><span class="w"></span>
-<span class="w">            </span><span class="p">),</span><span class="w"></span>
-<span class="w">          </span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">void _gotoDetailsPage(BuildContext context) {</span>
+<span class="err">    Navigator.of(context).push(MaterialPageRoute(</span>
+<span class="err">      builder: (ctx) =&gt; Scaffold(</span>
+<span class="err">            body: Center(</span>
+<span class="err">              child: Column(</span>
+<span class="err">                mainAxisAlignment: MainAxisAlignment.center,</span>
+<span class="err">                children: &lt;Widget&gt;[</span>
+<span class="err">                  Hero(</span>
+<span class="err">                    tag: &#39;hero-rectangle&#39;,</span>
+<span class="err">                    child: _blueDetailRectangle(),</span>
+<span class="err">                  ),</span>
+<span class="err">                  Text(</span>
+<span class="err">                      &#39;This is where you can see details about the list item tapped at previous page.&#39;),</span>
+<span class="err">                ],</span>
+<span class="err">              ),</span>
+<span class="err">            ),</span>
+<span class="err">          ),</span>
+<span class="err">    ));</span>
+<span class="err">  }</span>
+</pre></div>
+
 
 <p>Notice that <code>Navigator.of(context).push()</code> is needed to navigate to second page from first page
 using the same tag.</p>
@@ -273,7 +277,7 @@ using the same tag.</p>
 Hero transitions use the same tag to identify the start and destination widgets.</li>
 </ol>
 <h4>Complete example code</h4>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span>
 
@@ -370,7 +374,8 @@ Hero transitions use the same tag to identify the start and destination widgets.
     <span class="p">));</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Source code repo:</strong>
 Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/flutter_hero_animation">here</a></p>
@@ -434,7 +439,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

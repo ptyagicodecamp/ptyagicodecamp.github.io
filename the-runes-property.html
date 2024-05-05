@@ -95,7 +95,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -199,62 +199,70 @@ In this article, we'll explore Dart language's one of the String class property 
 <p>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String-class.html">String Class</a> has following methods to access runes for a String.</p>
 <h2>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String/codeUnitAt.html"><code>codeUnitAt</code></a> Method</h2>
 <p>This method returns the UTF-16 (16-bit) <em>code unit</em> at the given index for the String.</p>
-<div class="highlight"><pre><span></span><code>  String myStr = &quot;Mask&quot;;
+<div class="highlight"><pre><span></span>  String myStr = &quot;Mask&quot;;
 
   ///Code unit at 0th position is M.
   ///UTF-16 decimal representation for ASCII character &#39;M&#39; is 77
   ///Reference: https://www.fileformat.info/info/unicode/char/004d/index.htm
   print(&quot;Code Unit for Letter M: <span class="cp">${</span><span class="n">myStr</span><span class="o">.</span><span class="n">codeUnitAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="cp">}</span>&quot;);
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nv">Code</span> <span class="nv">Unit</span> <span class="k">for</span> <span class="nv">Letter</span> <span class="nv">R</span>: <span class="mi">77</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Code Unit for Letter R: 77</span>
+</pre></div>
+
 
 <hr>
 <h2>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String/codeUnits.html"><code>codeUnits</code></a> Property</h2>
 <p>This property provides an unmodifiable list of the UTF-16 <em>code unit(s)</em> of this string.</p>
-<div class="highlight"><pre><span></span><code>  String myStr = &quot;Mask&quot;;
+<div class="highlight"><pre><span></span>  String myStr = &quot;Mask&quot;;
   print(&quot;Code Units for word Mask: <span class="cp">${</span><span class="n">myStr</span><span class="o">.</span><span class="n">codeUnits</span><span class="cp">}</span>&quot;);
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nv">Code</span> <span class="nv">Units</span> <span class="k">for</span> <span class="nv">word</span> <span class="nv">Mask</span>: [<span class="mi">77</span>, <span class="mi">97</span>, <span class="mi">115</span>, <span class="mi">107</span>]
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Code Units for word Mask: [77, 97, 115, 107]</span>
+</pre></div>
+
 
 <hr>
 <h2>The <a href="https://api.dart.dev/stable/2.7.2/dart-core/String/runes.html"><code>runes</code></a> Property</h2>
 <p>This property returns the list of Unicode UTF-16 <em>code point(s)</em> for the given string. In this case, code points are same as of code units. The <code>myStr.runes</code> returns the <code>Iterable&lt;int&gt;</code>.</p>
-<div class="highlight"><pre><span></span><code>  String myStr = &quot;Mask&quot;;
+<div class="highlight"><pre><span></span>  String myStr = &quot;Mask&quot;;
   print(&quot;Runes for word Mask: <span class="cp">${</span><span class="n">myStr</span><span class="o">.</span><span class="n">runes</span><span class="cp">}</span>&quot;);
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nv">Runes</span> <span class="k">for</span> <span class="nv">word</span> <span class="nv">Mask</span>: <span class="ss">(</span><span class="mi">77</span>, <span class="mi">97</span>, <span class="mi">115</span>, <span class="mi">107</span><span class="ss">)</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Runes for word Mask: (77, 97, 115, 107)</span>
+</pre></div>
+
 
 <hr>
 <h2>Example</h2>
 <p>Let's use hex representation for word "Mask". Hex for "M" is "004D", "A" is "0061", "S" is "0073", and "K" is "006B".</p>
-<div class="highlight"><pre><span></span><code>//Representing Mask in hex
+<div class="highlight"><pre><span></span>//Representing Mask in hex
 String hexStr = &quot;\u004D\u0061\u0073\u006B&quot;;
 print(&quot;From hex to String - maskStr: <span class="cp">${</span><span class="n">hexStr</span><span class="cp">}</span>&quot;);
 
 Runes codeUnits = Runes(hexStr);
 print(&quot;Code Units: <span class="cp">${</span><span class="n">codeUnits</span><span class="cp">}</span>&quot;);
 print(&quot;Code Units To String: <span class="cp">${</span><span class="n">String</span><span class="o">.</span><span class="n">fromCharCodes</span><span class="p">(</span><span class="n">codeUnits</span><span class="p">)</span><span class="cp">}</span>&quot;);
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>From hex to String - maskStr: Mask
-Code Units: (77, 97, 115, 107)
-Code Units To String: Mask
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">From hex to String - maskStr: Mask</span>
+<span class="err">Code Units: (77, 97, 115, 107)</span>
+<span class="err">Code Units To String: Mask</span>
+</pre></div>
+
 
 <hr>
 <h2>Example</h2>
 <p>Let's try another example to get <code>runes</code> for a symbol represented using 32-bit, using unicode character for <a href="https://www.compart.com/en/unicode/U+1F637">mask emoji</a>.</p>
-<div class="highlight"><pre><span></span><code>//Unicode character encoding : https://www.compart.com/en/unicode/U+1F637
+<div class="highlight"><pre><span></span>//Unicode character encoding : https://www.compart.com/en/unicode/U+1F637
 //Decimal representation : 128567
 String smileyMask = &quot;\u{1F637}&quot;; //needs 32 bit
 print(&quot;Smiley with mask: <span class="cp">${</span><span class="n">smileyMask</span><span class="cp">}</span>&quot;);
@@ -264,13 +272,15 @@ print(&quot;Code Points in smily with mask: <span class="cp">${</span><span clas
 
 //Printing String for code points
 print(String.fromCharCodes(Runes(smileyMask)));
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Smiley with mask: 😷
-Code Points in smily with mask: (128567)
-😷
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Smiley with mask: 😷</span>
+<span class="err">Code Points in smily with mask: (128567)</span>
+<span class="err">😷</span>
+</pre></div>
+
 
 <hr>
 <h1>Companion Video</h1>
@@ -343,7 +353,7 @@ Couldn't find a topic of your interest ? Please leave a comment or reach out at 
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

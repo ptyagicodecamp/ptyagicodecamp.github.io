@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -223,12 +223,13 @@
 </li>
 </ul>
 <p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib1.dart"><code>lib1.dart</code></a></p>
-<div class="highlight"><pre><span></span><code>  int addition(int a, int b) =&gt; _add(a, b);
+<div class="highlight"><pre><span></span>  <span class="nb">int</span> <span class="n">addition</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
 
-  int subtraction(int a, int b) =&gt; a - b;
+  <span class="nb">int</span> <span class="n">subtraction</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
 
-  int _add(int a, int b) =&gt; a + b;
-</code></pre></div>
+  <span class="nb">int</span> <span class="n">_add</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+</pre></div>
+
 
 <h1><code>lib2</code></h1>
 <p>This library has APIs to check if the given number is even or odd.</p>
@@ -237,20 +238,21 @@
 <li>Odd number API (<code>bool isNumberOdd(int num)</code>): This api take a number and returns true if its odd or vice versa.</li>
 </ul>
 <p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib2.dart"><code>lib2.dart</code></a></p>
-<div class="highlight"><pre><span></span><code>  bool isNumberOdd(int num) =&gt; num.isOdd;
+<div class="highlight"><pre><span></span>  <span class="n">bool</span> <span class="n">isNumberOdd</span><span class="p">(</span><span class="nb">int</span> <span class="n">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">num</span><span class="p">.</span><span class="n">isOdd</span><span class="p">;</span>
 
-  bool isNumberEven(int num) =&gt; num.isEven;
+  <span class="n">bool</span> <span class="n">isNumberEven</span><span class="p">(</span><span class="nb">int</span> <span class="n">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">num</span><span class="p">.</span><span class="n">isEven</span><span class="p">;</span>
 
-  //Added to demonstrate handle conflicting name in two different libraries
-  int addition(int a, int b) =&gt; a + b + 2;
-</code></pre></div>
+  <span class="o">//</span><span class="n">Added</span> <span class="k">to</span> <span class="n">demonstrate</span> <span class="n">handle</span> <span class="n">conflicting</span> <span class="n">name</span> <span class="k">in</span> <span class="n">two</span> <span class="n">different</span> <span class="n">libraries</span>
+  <span class="nb">int</span> <span class="n">addition</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+</pre></div>
+
 
 <hr>
 <h1>Using Prefix for library</h1>
 <p>Let's use <code>lib1.dart</code> to calculate addition of two numbers 5 and 2, and use <code>lib2.dart</code> to check if number 5 is even or odd. For <code>lib2.dart</code>, a prefix <code>check</code> is used. This is used to access <code>lib2</code>'s APIs thereafter. All <code>lib2</code>'s API's can be accessed using <code>check</code> alias.</p>
 <p>The <code>lib_prefix.dart</code>:</p>
 <p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_prefix.dart"><code>lib_prefix.dart</code></a></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;lib2.dart&#39;</span> <span class="k">as</span> <span class="n">check</span><span class="p">;</span> <span class="o">//</span><span class="n">Using</span> <span class="n">prefix</span> <span class="k">for</span> <span class="n">lib2</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -258,23 +260,25 @@
   <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
   <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
 
   <span class="o">//</span><span class="n">Using</span> <span class="n">check</span> <span class="n">to</span> <span class="n">access</span> <span class="n">the</span> <span class="n">API</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;is number even? ${check.isNumberEven(num2)}&quot;</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;is number even? ${check.isNumberEven(num2)}&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Sum of 5 and 2 is 7
-is number even? true
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Sum of 5 and 2 is 7</span>
+<span class="err">is number even? true</span>
+</pre></div>
+
 
 <h2>Handling Conflicts</h2>
 <p>Using prefix will only call method from respective library when more than one libraries have similar named apis.</p>
 <p>The <code>lib_conflict.dart</code>:</p>
 <p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_conflict.dart"><code>lib_conflict.dart</code></a></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;lib2.dart&#39;</span> <span class="k">as</span> <span class="n">check</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -282,18 +286,20 @@ is number even? true
   <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
   <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
 
   <span class="o">//</span><span class="n">Calls</span> <span class="n">addition</span><span class="p">()</span> <span class="kn">from</span> <span class="nn">lib2</span>
   <span class="nb">sum</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Sum of 5 and 2 is 7
-Sum of 5 and 2 is 9
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Sum of 5 and 2 is 7</span>
+<span class="err">Sum of 5 and 2 is 9</span>
+</pre></div>
+
 
 <hr>
 <h1>Importing specific APIs</h1>
@@ -302,7 +308,7 @@ Sum of 5 and 2 is 9
 <p>The <code>show</code> is used when a specific API needs to be made visible/accessible. For example, in <code>lib1.dart</code>, I want to access only <code>subtraction(...)</code> API.</p>
 <p>The <code>lib_show.dart</code>:</p>
 <p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_show.dart"><code>lib_show.dart</code></a></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span> <span class="n">show</span> <span class="n">subtraction</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span> <span class="n">show</span> <span class="n">subtraction</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
@@ -312,43 +318,47 @@ Sum of 5 and 2 is 9
   <span class="o">//</span><span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
 
   <span class="nb">int</span> <span class="n">difference</span> <span class="o">=</span> <span class="n">subtraction</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Difference of $num1 and $num2 is $difference&quot;</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Difference of $num1 and $num2 is $difference&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Difference of 5 and 2 is 3
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Difference of 5 and 2 is 3</span>
+</pre></div>
+
 
 <p><strong><code>hide</code>:</strong></p>
 <p>The <code>hide</code> is used when everything but a specific API is made accessible/visible.</p>
 <p>The <code>lib_hide.dart</code>:</p>
 <p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_hide.dart"><code>lib_hide.dart</code></a></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span> <span class="n">hide</span> <span class="n">subtraction</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span> <span class="n">hide</span> <span class="n">subtraction</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
   <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
   <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
 
   <span class="o">//</span><span class="n">Compile</span><span class="o">-</span><span class="n">time</span> <span class="n">error</span> <span class="n">because</span> <span class="n">subtraction</span><span class="p">()</span> <span class="n">API</span> <span class="ow">is</span> <span class="n">hidden</span>
   <span class="o">//</span><span class="nb">int</span> <span class="n">difference</span> <span class="o">=</span> <span class="n">subtraction</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
-  <span class="o">//</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Difference of $num1 and $num2 is $difference&quot;</span><span class="p">);</span>
+  <span class="o">//</span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Difference of $num1 and $num2 is $difference&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Sum of 5 and 2 is 7
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Sum of 5 and 2 is 7</span>
+</pre></div>
+
 
 <hr>
 <h1>Defer/delay loading library</h1>
 <p>A deferred library is loaded when it's actually used/needed. It's declared using <code>deferred as &lt;name&gt;</code> in import statement. The library uses <code>loadLibrary()</code> method to invoke itself. The <code>loadLibrary()</code> method returns a <code>Future</code>. That's why library invocation needs to be done in a <code>async</code> block.</p>
 <p>The <code>lib_deferred.dart</code>:</p>
 <p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_deferred.dart"><code>lib_deferred.dart</code></a></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span> <span class="n">deferred</span> <span class="k">as</span> <span class="n">lib1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span> <span class="n">deferred</span> <span class="k">as</span> <span class="n">lib1</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
@@ -357,17 +367,19 @@ Sum of 5 and 2 is 9
   <span class="n">delayedInvocation</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="n">Future</span> <span class="n">delayedInvocation</span><span class="p">(</span><span class="nb">int</span> <span class="n">num1</span><span class="p">,</span> <span class="nb">int</span> <span class="n">num2</span><span class="p">)</span> <span class="k">async</span> <span class="p">{</span>
+<span class="n">Future</span> <span class="n">delayedInvocation</span><span class="p">(</span><span class="nb">int</span> <span class="n">num1</span><span class="p">,</span> <span class="nb">int</span> <span class="n">num2</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
   <span class="o">//</span><span class="n">Loads</span> <span class="n">lib1</span> <span class="n">here</span>
-  <span class="k">await</span> <span class="n">lib1</span><span class="o">.</span><span class="n">loadLibrary</span><span class="p">();</span>
+  <span class="n">await</span> <span class="n">lib1</span><span class="o">.</span><span class="n">loadLibrary</span><span class="p">();</span>
   <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">lib1</span><span class="o">.</span><span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Sum of 5 and 2 is 7
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Sum of 5 and 2 is 7</span>
+</pre></div>
+
 
 <hr>
 <h1>Summary</h1>
@@ -437,7 +449,7 @@ Couldn't find a topic of interest ? Please leave a comment or reach out at <a hr
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

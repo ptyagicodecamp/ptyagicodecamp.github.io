@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -192,9 +192,8 @@
 <p><strong>Focus Widget:</strong> Material Icons</p>
 <p><strong>Goal:</strong> Fix MaterialIcon rendering for Flutter WebApps.</p>
 <p><img alt="Goal" src="https://ptyagicodecamp.github.io/web_material_icon.jpg"></p>
-<p><strong>Checkout the companion video tutorial:</strong></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bgLiVIIu3bA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<p><strong>Checkout the companion video tutorial:</strong>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bgLiVIIu3bA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <p><strong>[Before]</strong> Default Material Icons rendering in Flutter WebApp:</p>
 <p><img alt="Material Icons Default rendering" src="https://ptyagicodecamp.github.io/web_materialicon_1.jpg"></p>
 <p><strong>[After]</strong> Fixed Material Icons rendering for Flutter WebApp:</p>
@@ -202,32 +201,35 @@
 <h3>Lets's go!</h3>
 <h4>Step #1. <code>pubspec.yaml</code></h4>
 <p>Add material icon dependency in <code>pubspec.yaml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">flutter</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">uses</span><span class="o">-</span><span class="n">material</span><span class="o">-</span><span class="n">design</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">flutter</span><span class="o">:</span>
+  <span class="n">uses</span><span class="o">-</span><span class="n">material</span><span class="o">-</span><span class="n">design</span><span class="o">:</span> <span class="kc">true</span>
+</pre></div>
+
 
 <h4>Step #2. Download Material Icons font</h4>
 <p>Download MaterialIcons fonts from <a href="https://github.com/google/material-design-icons/raw/master/iconfont/MaterialIcons-Regular.ttf">here</a>. Copy <code>MaterialIcons-Regular.ttf</code> file under <code>web/assets/fonts</code> directory.</p>
 <h4>Step #3. <code>FontManifest.json</code></h4>
 <p>Add <code>FontManifest.json</code> in <code>web/assets</code> directory.</p>
-<div class="highlight"><pre><span></span><code>[
-  {
-    &quot;fonts&quot;: [
-      {
-        &quot;asset&quot;: &quot;fonts/MaterialIcons-Regular.ttf&quot;
-      }
-    ],
-    &quot;family&quot;: &quot;MaterialIcons&quot;
-  }
-]
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">[</span>
+<span class="err">  {</span>
+<span class="err">    &quot;fonts&quot;: [</span>
+<span class="err">      {</span>
+<span class="err">        &quot;asset&quot;: &quot;fonts/MaterialIcons-Regular.ttf&quot;</span>
+<span class="err">      }</span>
+<span class="err">    ],</span>
+<span class="err">    &quot;family&quot;: &quot;MaterialIcons&quot;</span>
+<span class="err">  }</span>
+<span class="err">]</span>
+</pre></div>
+
 
 <p><em>Note:</em> I've removed debug banner to be able to show Settings vertical dots. All you need to do is to set <code>debugShowCheckedModeBanner</code> flag to false in <code>MaterialApp</code> like below:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">new</span><span class="w"> </span><span class="nt">MaterialApp</span><span class="o">(</span><span class="w"></span>
-<span class="w">      </span><span class="nt">debugShowCheckedModeBanner</span><span class="o">:</span><span class="w"> </span><span class="nt">false</span><span class="o">,</span><span class="w"></span>
-<span class="w">      </span><span class="o">...</span><span class="w"></span>
-<span class="w">    </span><span class="o">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">return new MaterialApp(</span>
+<span class="err">      debugShowCheckedModeBanner: false,</span>
+<span class="err">      ...</span>
+<span class="err">    );</span>
+</pre></div>
+
 
 <p><strong>Source code repo:</strong>
 Source code is <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/popupmenubutton-web/flutter_widgets">here</a></p>
@@ -292,7 +294,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -206,19 +206,19 @@
 <p>This code recipe is added in the <a href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html">Flutter Cookbook</a> app as well. Source code link is available at the end of this article.</p>
 <p><img alt="localdb_cookbook" src="https://ptyagicodecamp.github.io/localdb_cookbook.jpg"></p>
 <hr>
-<p><strong>Checkout the YouTube video:</strong></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JX2BHjHKnuc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<p><strong>Checkout the YouTube video:</strong>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JX2BHjHKnuc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <hr>
 <h1><code>pubspec.yaml</code> dependency</h1>
 <p>Add <code>sqflite</code> plugin dependency as below:</p>
-<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">flutter</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">sdk</span><span class="o">:</span><span class="w"> </span><span class="n">flutter</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
+  <span class="n">flutter</span><span class="o">:</span>
+    <span class="n">sdk</span><span class="o">:</span> <span class="n">flutter</span>
 
-<span class="w">  </span><span class="err">#</span><span class="n">Local</span><span class="w"> </span><span class="n">database</span><span class="w"></span>
-<span class="w">  </span><span class="n">sqflite</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">1.3</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
-</code></pre></div>
+  <span class="err">#</span><span class="n">Local</span> <span class="n">database</span>
+  <span class="n">sqflite</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.3</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+
 
 <p><strong>Note:</strong> The <code>sqflite</code> plugin has dependency on <a href="https://pub.dev/packages/path"><code>path</code></a> plugin. Please add this dependency it's not already present in your configuration file.</p>
 <hr>
@@ -231,24 +231,25 @@
 <p><strong>positionedBlock():</strong> This method returns interface for each item in the list. It's is aligned in <code>topCenter</code> using <code>Align</code> widget. A <code>Stack</code> widgets contains two <code>Positioned</code> widgets for product description and image.
 The first <code>Positioned</code> widget is added in the background to display product information (in a <code>Column</code> widget). The another <code>Positioned</code> widget contains the product's image.</p>
 <p>The main screen is a <code>StatefulWidget</code> since we want to update data retrieved from local database. Sample data in database is added as soon as the app starts. We'll go over database details in next section. The <code>initDB()</code> method is called rom <code>initState()</code> method. The <code>initState()</code> method executes once during screen startup-time. We want to keep data ready in database for querying by <code>build()</code> method.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">ProductListing</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
-<span class="w">  </span><span class="n">_ProductListingState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_ProductListingState</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">ProductListing</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">_ProductListingState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_ProductListingState</span><span class="p">();</span>
+<span class="p">}</span>
 
-<span class="k">class</span><span class="w"> </span><span class="n">_ProductListingState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">ProductListing</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
-<span class="w">    </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">initState</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">super</span><span class="o">.</span><span class="n">initState</span><span class="p">();</span><span class="w"></span>
-<span class="w">      </span><span class="o">//</span><span class="n">insert</span><span class="w"> </span><span class="n">demo</span><span class="w"> </span><span class="n">data</span><span class="w"></span>
-<span class="w">      </span><span class="n">initDB</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="k">class</span> <span class="n">_ProductListingState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">ProductListing</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="err">@</span><span class="n">override</span>
+    <span class="n">void</span> <span class="n">initState</span><span class="p">()</span> <span class="p">{</span>
+      <span class="n">super</span><span class="o">.</span><span class="n">initState</span><span class="p">();</span>
+      <span class="o">//</span><span class="n">insert</span> <span class="n">demo</span> <span class="n">data</span>
+      <span class="n">initDB</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <h2>Rendering Data from Database</h2>
 <p>The <code>_ProductListingState</code> widget's <code>build()</code> method is responsible for updating data at the interface. It uses <code>FutureBuilder</code> widget to render data returned from asynchronous methods like <code>Future</code>. Usually data is returned asynchronously from database or remote network operations. <code>FutureBuilder</code> widget helps render data asynchronously at user interface side.</p>
-<div class="highlight"><pre><span></span><code><span class="nl">body</span><span class="p">:</span><span class="w"> </span><span class="n">FutureBuilder</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="nl">body</span><span class="p">:</span><span class="w"> </span><span class="n">FutureBuilder</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="o">//</span><span class="n">fetching</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">db</span><span class="w"></span>
 <span class="w">    </span><span class="nl">future</span><span class="p">:</span><span class="w"> </span><span class="n">allProducts</span><span class="p">(),</span><span class="w"></span>
 <span class="w">    </span><span class="nl">builder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">AsyncSnapshot</span><span class="w"> </span><span class="n">snapshot</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
@@ -275,7 +276,8 @@ The first <code>Positioned</code> widget is added in the background to display p
 <span class="w">        </span><span class="p">);</span><span class="w"></span>
 <span class="w">      </span><span class="err">}</span><span class="w"></span>
 <span class="w">    </span><span class="err">}</span><span class="p">),</span><span class="w"></span>
-</code></pre></div>
+</pre></div>
+
 
 <p>The <code>allProducts()</code> method returns a list of <code>Product</code> of <code>Future</code> type. Each product entry uses <code>positionedBlock(...)</code> method to display product details. Checkout the source code for this <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom.dart">here</a>.</p>
 <p>Let's explore the database side of things next.</p>
@@ -286,24 +288,25 @@ The first <code>Positioned</code> widget is added in the background to display p
 <h2>Creating Database</h2>
 <p>The <code>openDatabase()</code> method takes database path, version of the database to support db upgrades &amp; downgrades, and a way to create table using <code>onCreate:</code> attribute.</p>
 <p>The <code>getDatabasesPath()</code> provides the physical location of database on device. The <code>join()</code> methods is a utility method to join the given paths into single path as per the current platform's file separator. You need <code>path</code> plugin to access <code>join()</code> method.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">Future</span><span class="o">&lt;</span><span class="nt">Database</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">db</span><span class="o">()</span><span class="w"> </span><span class="nt">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">openDatabase(</span><span class="w"></span>
-<span class="w">    </span><span class="err">join(await</span><span class="w"> </span><span class="err">getDatabasesPath(),</span><span class="w"> </span><span class="err">&#39;products_database.db&#39;),</span><span class="w"></span>
-<span class="w">    </span><span class="n">onCreate</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">return</span><span class="w"> </span><span class="n">db</span><span class="o">.</span><span class="nf">execute</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="s1">&#39;CREATE TABLE IF NOT EXISTS $tableProducts(id INTEGER PRIMARY KEY, title TEXT, description TEXT, image TEXT, price REAL)&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="o">,</span><span class="w"></span>
-<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="nt">Version</span><span class="w"> </span><span class="nt">provides</span><span class="w"> </span><span class="nt">path</span><span class="w"> </span><span class="nt">to</span><span class="w"> </span><span class="nt">perform</span><span class="w"> </span><span class="nt">database</span><span class="w"> </span><span class="nt">upgrades</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="nt">downgrades</span><span class="o">.</span><span class="w"></span>
-<span class="w">    </span><span class="nt">version</span><span class="o">:</span><span class="w"> </span><span class="nt">1</span><span class="o">,</span><span class="w"></span>
-<span class="w">  </span><span class="o">);</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Future&lt;Database&gt; db() async {</span>
+<span class="err">  return openDatabase(</span>
+<span class="err">    join(await getDatabasesPath(), &#39;products_database.db&#39;),</span>
+<span class="err">    onCreate: (db, version) {</span>
+<span class="err">      return db.execute(</span>
+<span class="err">        &#39;CREATE TABLE IF NOT EXISTS $tableProducts(id INTEGER PRIMARY KEY, title TEXT, description TEXT, image TEXT, price REAL)&#39;,</span>
+<span class="err">      );</span>
+<span class="err">    },</span>
+<span class="err">    // Version provides path to perform database upgrades and downgrades.</span>
+<span class="err">    version: 1,</span>
+<span class="err">  );</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p>The <code>db()</code> will return <code>Database</code> as <code>Future</code>. Initializing database is an asynchronous operation. The database reference is being held in <code>database</code> variable, and product table name is <code>products</code> and stored in <code>tableProducts</code> constant. A table <code>products</code> is created if doesn't exist already.</p>
 <h2>Product class</h2>
 <p>The Product is represented with class <code>Product</code>. A product object has <code>id</code>, <code>title</code>, <code>description</code>, <code>image</code>, and <code>price</code>.</p>
-<div class="highlight"><pre><span></span><code>class Product {
+<div class="highlight"><pre><span></span>class Product {
   final int id;
   final String title;
   final String description;
@@ -328,29 +331,31 @@ The first <code>Positioned</code> widget is added in the background to display p
         &#39;&quot;image&quot;: <span class="cp">${</span><span class="n">this</span><span class="o">.</span><span class="n">image</span><span class="cp">}</span>, &quot;price&quot;:<span class="cp">${</span><span class="n">this</span><span class="o">.</span><span class="n">price</span><span class="cp">}</span>);&#39;;
   }
 }
-</code></pre></div>
+</pre></div>
+
 
 <h2>Inserting Product</h2>
 <p>Inserting data into a table is an asynchronous operation as well. First get a reference to database and then pick a conflictAlgorithm. It is a rule to resolve conflicts. In our case, we want to replace old content with new content if record is already present. Hence, it makes sense to pick <code>ConflictAlgorithm.replace</code> conflictAlgorithm.</p>
-<div class="highlight"><pre><span></span><code><span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">insertProduct</span><span class="p">(</span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="k">Get</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">reference</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">database</span><span class="p">.</span><span class="w"></span>
-<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="k">Database</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="k">database</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">insertProduct</span><span class="p">(</span><span class="n">Product</span> <span class="n">product</span><span class="p">)</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span> <span class="k">Get</span> <span class="n">a</span> <span class="k">reference</span> <span class="k">to</span> <span class="n">the</span> <span class="k">database</span><span class="p">.</span>
+  <span class="n">final</span> <span class="k">Database</span> <span class="n">db</span> <span class="o">=</span> <span class="n">await</span> <span class="k">database</span><span class="p">;</span>
 
-<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="k">Insert</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">correct</span><span class="w"> </span><span class="k">table</span><span class="p">.</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">Specify</span><span class="w"> </span><span class="n n-Quoted">`conflictAlgorithm`</span><span class="p">.</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="k">In</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">case</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">inserted</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="n">times</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">replaces</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="k">data</span><span class="p">.</span><span class="w"></span>
-<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="k">insert</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">tableProducts</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">product</span><span class="p">.</span><span class="n">toMap</span><span class="p">(),</span><span class="w"></span>
-<span class="w">    </span><span class="n">conflictAlgorithm</span><span class="o">:</span><span class="w"> </span><span class="n">ConflictAlgorithm</span><span class="p">.</span><span class="k">replace</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</code></pre></div>
+  <span class="o">//</span> <span class="k">Insert</span> <span class="n">the</span> <span class="n">Product</span> <span class="k">into</span> <span class="n">the</span> <span class="n">correct</span> <span class="k">table</span><span class="p">.</span>
+  <span class="o">//</span> <span class="n">Specify</span> <span class="n">`conflictAlgorithm`</span><span class="p">.</span>
+  <span class="o">//</span> <span class="k">In</span> <span class="n">this</span> <span class="k">case</span><span class="p">,</span> <span class="k">if</span> <span class="n">the</span> <span class="n">same</span> <span class="n">product</span> <span class="k">is</span> <span class="n">inserted</span>
+  <span class="o">//</span> <span class="n">multiple</span> <span class="n">times</span><span class="p">,</span> <span class="n">it</span> <span class="n">replaces</span> <span class="n">the</span> <span class="n">previous</span> <span class="k">data</span><span class="p">.</span>
+  <span class="n">await</span> <span class="n">db</span><span class="p">.</span><span class="k">insert</span><span class="p">(</span>
+    <span class="n">tableProducts</span><span class="p">,</span>
+    <span class="n">product</span><span class="p">.</span><span class="n">toMap</span><span class="p">(),</span>
+    <span class="n">conflictAlgorithm</span><span class="o">:</span> <span class="n">ConflictAlgorithm</span><span class="p">.</span><span class="k">replace</span><span class="p">,</span>
+  <span class="p">);</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <h2>Querying All Products</h2>
 <p>We want to render all products from the table into interface. In our case, there are only two products.</p>
-<div class="highlight"><pre><span></span><code><span class="n">Future</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">allProducts</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">allProducts</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="k">Get</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">database</span><span class="p">.</span><span class="w"></span>
 <span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="k">Database</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="k">database</span><span class="p">;</span><span class="w"></span>
 
@@ -370,68 +375,72 @@ The first <code>Positioned</code> widget is added in the background to display p
 <span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">);</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</code></pre></div>
+</pre></div>
+
 
 <h2>Updating Product</h2>
 <p>In this code recipe, we're not editing an existing item. However, <code>db.update(...)</code> method is useful to update the items. Remember to make use of <code>whereArgs</code> to avoid SQL injections.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">Future</span><span class="o">&lt;</span><span class="nt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">updateProduct</span><span class="o">(</span><span class="nt">Product</span><span class="w"> </span><span class="nt">product</span><span class="o">)</span><span class="w"> </span><span class="nt">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Get</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">reference</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">database.</span><span class="w"></span>
-<span class="w">  </span><span class="err">final</span><span class="w"> </span><span class="err">db</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">await</span><span class="w"> </span><span class="err">database</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">updateProduct</span><span class="p">(</span><span class="n">Product</span> <span class="n">product</span><span class="p">)</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span> <span class="k">Get</span> <span class="n">a</span> <span class="n">reference</span> <span class="k">to</span> <span class="n">the</span> <span class="k">database</span><span class="p">.</span>
+  <span class="k">final</span> <span class="n">db</span> <span class="o">=</span> <span class="n">await</span> <span class="k">database</span><span class="p">;</span>
 
-<span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Update</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">given</span><span class="w"> </span><span class="err">Product.</span><span class="w"></span>
-<span class="w">  </span><span class="err">await</span><span class="w"> </span><span class="err">db.update(</span><span class="w"></span>
-<span class="w">    </span><span class="err">tableProducts,</span><span class="w"></span>
-<span class="w">    </span><span class="err">product.toMap(),</span><span class="w"></span>
-<span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Ensure</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">Product</span><span class="w"> </span><span class="err">has</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">matching</span><span class="w"> </span><span class="err">id.</span><span class="w"></span>
-<span class="w">    </span><span class="n">where</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;id = ?&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">Pass</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Products</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">whereArg</span><span class="w"> </span><span class="kc">to</span><span class="w"> </span><span class="n">prevent</span><span class="w"> </span><span class="n">SQL</span><span class="w"> </span><span class="n">injection</span><span class="o">.</span><span class="w"></span>
-<span class="w">    </span><span class="n">whereArgs</span><span class="o">:</span><span class="w"> </span><span class="cp">[</span><span class="nx">product.id</span><span class="cp">]</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+  <span class="o">//</span> <span class="k">Update</span> <span class="n">the</span> <span class="n">given</span> <span class="n">Product</span><span class="p">.</span>
+  <span class="n">await</span> <span class="n">db</span><span class="p">.</span><span class="k">update</span><span class="p">(</span>
+    <span class="n">tableProducts</span><span class="p">,</span>
+    <span class="n">product</span><span class="p">.</span><span class="n">toMap</span><span class="p">(),</span>
+    <span class="o">//</span> <span class="n">Ensure</span> <span class="n">that</span> <span class="n">the</span> <span class="n">Product</span> <span class="n">has</span> <span class="n">a</span> <span class="n">matching</span> <span class="n">id</span><span class="p">.</span>
+    <span class="k">where</span><span class="p">:</span> <span class="ss">&quot;id = ?&quot;</span><span class="p">,</span>
+    <span class="o">//</span> <span class="n">Pass</span> <span class="n">the</span> <span class="n">Products</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">id</span> <span class="k">as</span> <span class="n">a</span> <span class="n">whereArg</span> <span class="k">to</span> <span class="n">prevent</span> <span class="k">SQL</span> <span class="n">injection</span><span class="p">.</span>
+    <span class="n">whereArgs</span><span class="p">:</span> <span class="p">[</span><span class="n">product</span><span class="p">.</span><span class="n">id</span><span class="p">],</span>
+  <span class="p">);</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <h2>Deleting Product</h2>
 <p>We're not deleting any item either in this sample. Similar to <code>update</code>, remember to use <code>whereArgs</code> to keep SQL injections on the bay.</p>
-<div class="highlight"><pre><span></span><code><span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">deleteProduct</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="k">Get</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">reference</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">database</span><span class="p">.</span><span class="w"></span>
-<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="k">database</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">deleteProduct</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span> <span class="k">Get</span> <span class="n">a</span> <span class="k">reference</span> <span class="k">to</span> <span class="n">the</span> <span class="k">database</span><span class="p">.</span>
+  <span class="n">final</span> <span class="n">db</span> <span class="o">=</span> <span class="n">await</span> <span class="k">database</span><span class="p">;</span>
 
-<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="k">Remove</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">database</span><span class="p">.</span><span class="w"></span>
-<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">tableProducts</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="k">Use</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n n-Quoted">`where`</span><span class="w"> </span><span class="n">clause</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">specific</span><span class="w"> </span><span class="n">product</span><span class="p">.</span><span class="w"></span>
-<span class="w">    </span><span class="k">where</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;id = ?&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">Pass</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Products</span><span class="s1">&#39;s id as a whereArg to prevent SQL injection.</span>
+  <span class="o">//</span> <span class="k">Remove</span> <span class="n">the</span> <span class="n">Product</span> <span class="k">from</span> <span class="n">the</span> <span class="k">database</span><span class="p">.</span>
+  <span class="n">await</span> <span class="n">db</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span>
+    <span class="n">tableProducts</span><span class="p">,</span>
+    <span class="o">//</span> <span class="k">Use</span> <span class="n">a</span> <span class="n">`where`</span> <span class="n">clause</span> <span class="k">to</span> <span class="k">delete</span> <span class="n">a</span> <span class="k">specific</span> <span class="n">product</span><span class="p">.</span>
+    <span class="k">where</span><span class="o">:</span> <span class="s2">&quot;id = ?&quot;</span><span class="p">,</span>
+    <span class="o">//</span> <span class="n">Pass</span> <span class="n">the</span> <span class="n">Products</span><span class="s1">&#39;s id as a whereArg to prevent SQL injection.</span>
 <span class="s1">    whereArgs: [id],</span>
 <span class="s1">  );</span>
 <span class="s1">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <h2>Inserting Sample Data into Table</h2>
 <p>In our sample, we're creating following two products, and inserting into database using <code>await</code> keyword to keep it asynchronous. The product images are loaded from local assets folder.</p>
-<div class="highlight"><pre><span></span><code><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">initDB</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">prod1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Shoes&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Rainbow Shoes&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;shoes.jpeg&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">price</span><span class="p">:</span><span class="w"> </span><span class="mf">65.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">initDB</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">prod1</span> <span class="o">=</span> <span class="n">Product</span><span class="p">(</span>
+    <span class="n">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="s1">&#39;Shoes&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="p">:</span> <span class="s1">&#39;Rainbow Shoes&#39;</span><span class="p">,</span>
+    <span class="n">image</span><span class="p">:</span> <span class="s1">&#39;shoes.jpeg&#39;</span><span class="p">,</span>
+    <span class="n">price</span><span class="p">:</span> <span class="mf">65.0</span><span class="p">,</span>
+  <span class="p">);</span>
 
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">prod2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Dress&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Summer Dress&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;dress.png&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">price</span><span class="p">:</span><span class="w"> </span><span class="mf">50.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
+  <span class="k">var</span> <span class="n">prod2</span> <span class="o">=</span> <span class="n">Product</span><span class="p">(</span>
+    <span class="n">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="s1">&#39;Dress&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="p">:</span> <span class="s1">&#39;Summer Dress&#39;</span><span class="p">,</span>
+    <span class="n">image</span><span class="p">:</span> <span class="s1">&#39;dress.png&#39;</span><span class="p">,</span>
+    <span class="n">price</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span>
+  <span class="p">);</span>
 
-<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">Insert</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">database</span><span class="o">.</span><span class="w"></span>
-<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">insertProduct</span><span class="p">(</span><span class="n">prod1</span><span class="p">);</span><span class="w"></span>
+  <span class="o">//</span> <span class="n">Insert</span> <span class="n">a</span> <span class="n">product</span> <span class="n">into</span> <span class="n">the</span> <span class="n">database</span><span class="o">.</span>
+  <span class="n">await</span> <span class="n">insertProduct</span><span class="p">(</span><span class="n">prod1</span><span class="p">);</span>
 
-<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">insertProduct</span><span class="p">(</span><span class="n">prod2</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+  <span class="n">await</span> <span class="n">insertProduct</span><span class="p">(</span><span class="n">prod2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p>That's all ! In this code recipe, we added two products in local database, and displayed both product entries in Flutter App.</p>
 <p><strong>Note:</strong>
@@ -507,7 +516,7 @@ Couldn't find a topic of your interest ? Please leave a comment or reach out at 
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

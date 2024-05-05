@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -220,109 +220,115 @@ Screenshot of custom widget in 'off' mode (Privacy privacy is not accepted):</p>
 <li><code>onChange</code>: Function to be assigned to <code>Switch</code> widget's <code>onChanged:</code> property.</li>
 <li><code>padding</code>: This is the padding around the custom widget. Ability to pass this value (rather hard coding) from parent make custom widget reusable.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">HyperlinkedLabelSwitch</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">label</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">hyperlink</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="n">selected</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">Function</span><span class="w"> </span><span class="n">onChange</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="w"> </span><span class="n">padding</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w">  </span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">HyperlinkedLabelSwitch</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">label</span><span class="p">;</span>
+  <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">hyperlink</span><span class="p">;</span>
+  <span class="n">final</span> <span class="nb nb-Type">bool</span> <span class="n">selected</span><span class="p">;</span>
+  <span class="n">final</span> <span class="n">Function</span> <span class="n">onChange</span><span class="p">;</span>
+  <span class="n">final</span> <span class="n">EdgeInsets</span> <span class="n">padding</span><span class="p">;</span>
+<span class="p">}</span>  
+</pre></div>
+
 
 <p>Now, let's build the custom widget that contains a clickable label and toggle switch. We need a padding around this widget for visual appeal. We'll use the padding passed from parent as <code>padding</code> parameter.
 I'm using <code>Row</code> widget to put label and toggle switch next to each other. Clickable label stays at the start of the screen, so it'll be the first child, and <code>Switch</code> widget is placed as second children to the <code>Row</code> widget. Since label consist of text, and it gets updated when user accepts the privacy policy, so we need it keep this widget flexible. We need to allow it to expand to claim the available space. That's why we'll use <code>Expand</code> widget to claim empty area.</p>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">override</span><span class="w"></span>
-<span class="nt">Widget</span><span class="w"> </span><span class="nt">build</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">return</span><span class="w"> </span><span class="nt">Padding</span><span class="o">(</span><span class="w"></span>
-<span class="w">    </span><span class="nt">padding</span><span class="o">:</span><span class="w"> </span><span class="nt">padding</span><span class="o">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Row</span><span class="o">(</span><span class="w"></span>
-<span class="w">      </span><span class="nt">children</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">Widget</span><span class="o">&gt;</span><span class="cp">[</span><span class="w"></span>
-<span class="w">        </span><span class="nx">Expanded</span><span class="p">(),</span><span class="w"></span>
-<span class="w">        </span><span class="nx">Switch</span><span class="p">()</span><span class="w"></span>
-<span class="w">      </span><span class="cp">]</span><span class="o">,</span><span class="w"></span>
-<span class="w">    </span><span class="o">),</span><span class="w"></span>
-<span class="w">  </span><span class="o">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">@override</span>
+<span class="err">Widget build(BuildContext context) {</span>
+<span class="err">  return Padding(</span>
+<span class="err">    padding: padding,</span>
+<span class="err">    child: Row(</span>
+<span class="err">      children: &lt;Widget&gt;[</span>
+<span class="err">        Expanded(),</span>
+<span class="err">        Switch()</span>
+<span class="err">      ],</span>
+<span class="err">    ),</span>
+<span class="err">  );</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p>I'll make use of <code>RichText</code> widget to create clickable text label. <code>TextSpan</code> widget is great choice for rendering more than just plain text. It's <code>recognizer</code> property can be used for responding to gestures more appropriately. In this case, I'll use <code>TapGestureRecognizer</code> as recognizer. <code>TapGestureRecognizer</code> helps to disambiguate gestures from other potential gestures. Clicking / tapping on link will open up the url in a WebView. In this example, it's a Google Doc with sample privacy policy text in it. Let's put all it together as code below:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">Expanded</span><span class="o">(</span><span class="w"></span>
-<span class="w">  </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">RichText</span><span class="o">(</span><span class="w"></span>
-<span class="w">      </span><span class="nt">text</span><span class="o">:</span><span class="w"> </span><span class="nt">TextSpan</span><span class="o">(</span><span class="w"></span>
-<span class="w">          </span><span class="nt">text</span><span class="o">:</span><span class="w"> </span><span class="nt">label</span><span class="o">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">style</span><span class="o">:</span><span class="w"> </span><span class="nt">TextStyle</span><span class="o">(</span><span class="w"></span>
-<span class="w">              </span><span class="nt">color</span><span class="o">:</span><span class="w"> </span><span class="nt">Colors</span><span class="p">.</span><span class="nc">redAccent</span><span class="o">,</span><span class="w"></span>
-<span class="w">              </span><span class="nt">decoration</span><span class="o">:</span><span class="w"> </span><span class="nt">TextDecoration</span><span class="p">.</span><span class="nc">underline</span><span class="o">,</span><span class="w"></span>
-<span class="w">              </span><span class="nt">fontSize</span><span class="o">:</span><span class="w"> </span><span class="nt">20</span><span class="p">.</span><span class="nc">0</span><span class="o">),</span><span class="w"></span>
-<span class="w">          </span><span class="o">//</span><span class="nt">TapGestureRecognizer</span><span class="w"> </span><span class="nt">helps</span><span class="w"> </span><span class="nt">to</span><span class="w"> </span><span class="nt">disambiguate</span><span class="w"> </span><span class="nt">gestures</span><span class="w"> </span><span class="nt">from</span><span class="w"> </span><span class="nt">other</span><span class="w"> </span><span class="nt">potential</span><span class="w"> </span><span class="nt">gestures</span><span class="w"></span>
-<span class="w">          </span><span class="nt">recognizer</span><span class="o">:</span><span class="w"> </span><span class="nt">TapGestureRecognizer</span><span class="o">()</span><span class="w"></span>
-<span class="w">            </span><span class="o">.</span><span class="p">.</span><span class="nc">onTap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="err">//open</span><span class="w"> </span><span class="err">hyperlink</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">webview</span><span class="w"></span>
-<span class="w">              </span><span class="err">Navigator.pushNamed(context,</span><span class="w"> </span><span class="err">WEBVIEW,</span><span class="w"></span>
-<span class="w">                  </span><span class="n">arguments</span><span class="p">:</span><span class="w"></span>
-<span class="w">                      </span><span class="nf">WebViewArguments</span><span class="p">(</span><span class="n">title</span><span class="err">:</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="err">:</span><span class="w"> </span><span class="n">hyperlink</span><span class="p">));</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="o">)),</span><span class="w"></span>
-<span class="o">),</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Expanded(</span>
+<span class="err">  child: RichText(</span>
+<span class="err">      text: TextSpan(</span>
+<span class="err">          text: label,</span>
+<span class="err">          style: TextStyle(</span>
+<span class="err">              color: Colors.redAccent,</span>
+<span class="err">              decoration: TextDecoration.underline,</span>
+<span class="err">              fontSize: 20.0),</span>
+<span class="err">          //TapGestureRecognizer helps to disambiguate gestures from other potential gestures</span>
+<span class="err">          recognizer: TapGestureRecognizer()</span>
+<span class="err">            ..onTap = () {</span>
+<span class="err">              //open hyperlink in webview</span>
+<span class="err">              Navigator.pushNamed(context, WEBVIEW,</span>
+<span class="err">                  arguments:</span>
+<span class="err">                      WebViewArguments(title: label, url: hyperlink));</span>
+<span class="err">            })),</span>
+<span class="err">),</span>
+</pre></div>
+
 
 <p>Next comes the <code>Switch</code> widget. It's fairly simple. Widget's <code>value</code>, <code>onChanged</code> attributes are assigned values from parent widget. <code>selected</code> boolean is assigned to <code>value</code>, and <code>onChange()</code> is assigned to <code>onChanged</code> attribute like below:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">Switch</span><span class="o">(</span><span class="w"></span>
-<span class="w">  </span><span class="nt">value</span><span class="o">:</span><span class="w"> </span><span class="nt">selected</span><span class="o">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">onChanged</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">bool</span><span class="w"> </span><span class="nt">v</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="err">onChange(v)</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="o">,</span><span class="w"></span>
-<span class="o">)</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Switch(</span>
+<span class="err">  value: selected,</span>
+<span class="err">  onChanged: (bool v) {</span>
+<span class="err">    onChange(v);</span>
+<span class="err">  },</span>
+<span class="err">)</span>
+</pre></div>
+
 
 <p>That's all to it. We're ready to move on to using this widget from another widget or page. Settings page is one example where this widget can be used in to create clickable label along with switch settings.</p>
 <h3>Using Custom Switch Widget</h3>
 <p>I've created a sample page <code>SwitchListTile1</code> to demonstrate integrating our brand new custom widget <code>HyperlinkedLabelSwitch</code>. <code>SwitchListTile1</code> page is a <code>StatefulWidget</code>. We chose it to be StatefulWidget because we want to update the value of toggle switch to reflect privacy policy acceptance status.
 As usual, we need a <code>State</code> for <code>StatefulWidget</code>, say <code>_SwitchListTileState</code> like below:</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">SwitchListTile1</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
-<span class="w">  </span><span class="n">State</span><span class="o">&lt;</span><span class="n">StatefulWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">_SwitchListTileState</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">SwitchListTile1</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">State</span><span class="o">&lt;</span><span class="n">StatefulWidget</span><span class="o">&gt;</span> <span class="n">createState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_SwitchListTileState</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="k">class</span><span class="w"> </span><span class="n">_SwitchListTileState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">SwitchListTile1</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="k">class</span> <span class="n">_SwitchListTileState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">SwitchListTile1</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><code>_SwitchListTileState</code> has two parameters:
 1. <code>accepted</code>: A boolean flag to keep track of state of privacy policy acceptance status.
 2. <code>privacyLabel</code>: Text message shown to user. It's 'Privacy Policy' by default. It changes to 'Privacy Policy (Accepted)', when <code>accepted</code> is <code>true</code>.</p>
 <p>The <code>body</code> of this sample page is simple, and consists of one <code>Column</code> widget. This <code>Column</code> has only one child <code>HyperlinkedLabelSwitch</code> widget.
 <code>HyperlinkedLabelSwitch</code> is initialized with default values for <code>privacyLabel</code> and <code>accepted</code>. The value of <code>hyperlink</code> remains constant and hence hard wired, since we don't accept the location of privacy policy to be changed frequently. <code>setState(){}</code> is called whenever value of switch changes. <code>privacyLabel</code>'s value is updated to include <code>(Accepted)</code> when <code>accepted</code> is <code>true</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="n">Column</span><span class="o">(</span><span class="w"></span>
-<span class="w">  </span><span class="n">children</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;[</span><span class="w"></span>
-<span class="w">    </span><span class="n">HyperlinkedLabelSwitch</span><span class="o">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">padding</span><span class="o">:</span><span class="w"></span>
-<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="na">symmetric</span><span class="o">(</span><span class="n">horizontal</span><span class="o">:</span><span class="w"> </span><span class="mf">20.0</span><span class="o">,</span><span class="w"> </span><span class="n">vertical</span><span class="o">:</span><span class="w"> </span><span class="mf">50.0</span><span class="o">),</span><span class="w"></span>
-<span class="w">      </span><span class="n">label</span><span class="o">:</span><span class="w"> </span><span class="n">privacyLabel</span><span class="o">,</span><span class="w"></span>
-<span class="w">      </span><span class="n">hyperlink</span><span class="o">:</span><span class="w"></span>
-<span class="w">          </span><span class="s1">&#39;https://docs.google.com/document/d/1TAqTE7MBzuIagISHHzjGxSHoY1z884LXR3iGIojz1sA/edit?usp=sharing&#39;</span><span class="o">,</span><span class="w"></span>
-<span class="w">      </span><span class="n">selected</span><span class="o">:</span><span class="w"> </span><span class="n">accepted</span><span class="o">,</span><span class="w"></span>
-<span class="w">      </span><span class="n">onChange</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="n">bool</span><span class="w"> </span><span class="n">v</span><span class="o">)</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">setState</span><span class="o">(()</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
-<span class="w">          </span><span class="n">accepted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="o">;</span><span class="w"></span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="n">accepted</span><span class="o">)</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">privacyLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Privacy Policy (Accepted)&#39;</span><span class="o">;</span><span class="w"></span>
-<span class="w">          </span><span class="o">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">privacyLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Privacy Policy&#39;</span><span class="o">;</span><span class="w"></span>
-<span class="w">          </span><span class="o">}</span><span class="w"></span>
-<span class="w">        </span><span class="o">});</span><span class="w"></span>
-<span class="w">      </span><span class="o">},</span><span class="w"></span>
-<span class="w">    </span><span class="o">)</span><span class="w"></span>
-<span class="w">  </span><span class="o">],</span><span class="w"></span>
-<span class="o">)</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">body</span><span class="o">:</span> <span class="n">Column</span><span class="o">(</span>
+  <span class="n">children</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;[</span>
+    <span class="n">HyperlinkedLabelSwitch</span><span class="o">(</span>
+      <span class="n">padding</span><span class="o">:</span>
+          <span class="kd">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="na">symmetric</span><span class="o">(</span><span class="n">horizontal</span><span class="o">:</span> <span class="mf">20.0</span><span class="o">,</span> <span class="n">vertical</span><span class="o">:</span> <span class="mf">50.0</span><span class="o">),</span>
+      <span class="n">label</span><span class="o">:</span> <span class="n">privacyLabel</span><span class="o">,</span>
+      <span class="n">hyperlink</span><span class="o">:</span>
+          <span class="s1">&#39;https://docs.google.com/document/d/1TAqTE7MBzuIagISHHzjGxSHoY1z884LXR3iGIojz1sA/edit?usp=sharing&#39;</span><span class="o">,</span>
+      <span class="n">selected</span><span class="o">:</span> <span class="n">accepted</span><span class="o">,</span>
+      <span class="n">onChange</span><span class="o">:</span> <span class="o">(</span><span class="n">bool</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">setState</span><span class="o">(()</span> <span class="o">{</span>
+          <span class="n">accepted</span> <span class="o">=</span> <span class="n">v</span><span class="o">;</span>
+          <span class="k">if</span> <span class="o">(</span><span class="n">accepted</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">privacyLabel</span> <span class="o">=</span> <span class="s1">&#39;Privacy Policy (Accepted)&#39;</span><span class="o">;</span>
+          <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">privacyLabel</span> <span class="o">=</span> <span class="s1">&#39;Privacy Policy&#39;</span><span class="o">;</span>
+          <span class="o">}</span>
+        <span class="o">});</span>
+      <span class="o">},</span>
+    <span class="o">)</span>
+  <span class="o">],</span>
+<span class="o">)</span>
+</pre></div>
+
 
 <p>and, we are done !</p>
 <p>Next section has complete example code for easy reference.</p>
 <h4>Complete example code</h4>
 <p>This section has full example code for your reference. There are few dependencies like <code>webview.dart</code>, <code>router.dart</code>. They are meant to be included for app navigation purposes and showing privacy policy documents in a web view. Please refer to <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/swtch">Github repo</a> for access to full code.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter/gestures.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter/gestures.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:flutter_widgets/menus/webview.dart&#39;</span><span class="p">;</span>
 <span class="kn">import</span> <span class="s1">&#39;package:flutter_widgets/router.dart&#39;</span><span class="p">;</span>
@@ -402,7 +408,7 @@ As usual, we need a <code>State</code> for <code>StatefulWidget</code>, say <cod
                         <span class="n">color</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">redAccent</span><span class="p">,</span>
                         <span class="n">decoration</span><span class="p">:</span> <span class="n">TextDecoration</span><span class="o">.</span><span class="n">underline</span><span class="p">,</span>
                         <span class="n">fontSize</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">),</span>
-                    <span class="o">//</span><span class="n">TapGestureRecognizer</span> <span class="n">helps</span> <span class="n">to</span> <span class="n">disambiguate</span> <span class="n">gestures</span> <span class="kn">from</span> <span class="nn">other</span> <span class="n">potential</span> <span class="n">gestures</span>
+                    <span class="o">//</span><span class="n">TapGestureRecognizer</span> <span class="n">helps</span> <span class="n">to</span> <span class="n">disambiguate</span> <span class="n">gestures</span> <span class="kn">from</span> <span class="nn">other</span> <span class="nn">potential</span> <span class="nn">gestures</span>
                     <span class="n">recognizer</span><span class="p">:</span> <span class="n">TapGestureRecognizer</span><span class="p">()</span>
                       <span class="o">..</span><span class="n">onTap</span> <span class="o">=</span> <span class="p">()</span> <span class="p">{</span>
                         <span class="o">//</span><span class="nb">open</span> <span class="n">hyperlink</span> <span class="ow">in</span> <span class="n">webview</span>
@@ -424,7 +430,8 @@ As usual, we need a <code>State</code> for <code>StatefulWidget</code>, say <cod
     <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Source code repo:</strong>
 Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/swtch">here</a></p>
@@ -490,7 +497,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

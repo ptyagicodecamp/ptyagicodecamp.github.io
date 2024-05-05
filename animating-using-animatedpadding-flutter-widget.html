@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -203,70 +203,74 @@
 <hr>
 <h3>Structure of <code>AnimatedPadding</code> widget</h3>
 <p><code>AnimatedPadding</code> uses <code>duration</code> and <code>curve</code> properties to animate from previous value of inset to a newer value. The <code>duration</code> value controls how long animation would take whereas <code>curve</code> property's value provides the type of animation <a href="https://api.flutter.dev/flutter/animation/Curves-class.html">Curve</a></p>
-<div class="highlight"><pre><span></span><code><span class="nt">AnimatedPadding</span><span class="o">(</span><span class="w"></span>
-<span class="w">          </span><span class="nt">padding</span><span class="o">:</span><span class="w"> </span><span class="nt">EdgeInsets</span><span class="p">.</span><span class="nc">all</span><span class="o">(</span><span class="nt">paddingValue</span><span class="o">),</span><span class="w"></span>
-<span class="w">          </span><span class="nt">duration</span><span class="o">:</span><span class="w"> </span><span class="nt">Duration</span><span class="o">(</span><span class="nt">seconds</span><span class="o">:</span><span class="w"> </span><span class="nt">2</span><span class="o">),</span><span class="w"></span>
-<span class="w">          </span><span class="nt">curve</span><span class="o">:</span><span class="w"></span>
-<span class="w">              </span><span class="nt">dropDownValue</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nt">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nt">dropDownValue</span><span class="p">.</span><span class="nc">curveCubic</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nt">Curves</span><span class="p">.</span><span class="nc">linear</span><span class="o">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Image</span><span class="p">.</span><span class="nc">asset</span><span class="o">(</span><span class="s1">&#39;assets/images/sea.jpg&#39;</span><span class="o">),</span><span class="w"></span>
-<span class="w">        </span><span class="o">),</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">AnimatedPadding(</span>
+<span class="err">          padding: EdgeInsets.all(paddingValue),</span>
+<span class="err">          duration: Duration(seconds: 2),</span>
+<span class="err">          curve:</span>
+<span class="err">              dropDownValue != null ? dropDownValue.curveCubic : Curves.linear,</span>
+<span class="err">          child: Image.asset(&#39;assets/images/sea.jpg&#39;),</span>
+<span class="err">        ),</span>
+</pre></div>
+
 
 <h3>Recipe's Code Structure</h3>
 <p>I'm using a drop down to choose the different type of <code>curve</code>. Animation curves used in this code recipe are available in the source code as well as <a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262">here</a>.</p>
 <p><code>AnimatedPadding</code> needs to be implemented inside a <code>StatefulWidget</code> since it can only animate when inset value is updated.</p>
 <p><code>AnimationCurve dropDownValue</code> holds the current selection from the <a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262">AnimationCurves</a> drop down widget.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">AnimatedPaddingDemo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
-<span class="w">  </span><span class="n">_AnimatedPaddingDemoState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_AnimatedPaddingDemoState</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">AnimatedPaddingDemo</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">_AnimatedPaddingDemoState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_AnimatedPaddingDemoState</span><span class="p">();</span>
+<span class="p">}</span>
 
-<span class="k">class</span><span class="w"> </span><span class="n">_AnimatedPaddingDemoState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">AnimatedPaddingDemo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">AnimationCurve</span><span class="w"> </span><span class="n">dropDownValue</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">double</span><span class="w"> </span><span class="n">paddingValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8.0</span><span class="p">;</span><span class="w"></span>
+<span class="k">class</span> <span class="n">_AnimatedPaddingDemoState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">AnimatedPaddingDemo</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="n">AnimationCurve</span> <span class="n">dropDownValue</span><span class="p">;</span>
+  <span class="nb nb-Type">bool</span> <span class="n">selected</span> <span class="o">=</span> <span class="bp">false</span><span class="p">;</span>
+  <span class="n">double</span> <span class="n">paddingValue</span> <span class="o">=</span> <span class="mf">8.0</span><span class="p">;</span>
 
-<span class="w">  </span><span class="o">...</span><span class="w"></span>
-<span class="p">}</span><span class="w">  </span>
-</code></pre></div>
+  <span class="o">...</span>
+<span class="p">}</span>  
+</pre></div>
+
 
 <p>Boolean <code>selected</code> keeps track of when 'Update padding' button is pressed or image is touched.</p>
 <p>'Update padding' button next to dropDown widget. It updates the value of <code>selected</code> as below:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">playAnimation</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">RaisedButton(</span><span class="w"></span>
-<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">blueAccent</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="nf">Text</span><span class="p">(</span><span class="s2">&quot;Update Padding&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">onPressed</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">setState</span><span class="p">(</span><span class="err">(</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">selected</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="err">selected</span><span class="w"> </span><span class="err">?</span><span class="w"> </span><span class="err">paddingValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">40</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">paddingValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">8.0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="o">),</span><span class="w"></span>
-<span class="w">  </span><span class="o">);</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Widget playAnimation(BuildContext context) {</span>
+<span class="err">  return RaisedButton(</span>
+<span class="err">    color: Colors.blueAccent,</span>
+<span class="err">    child: Text(&quot;Update Padding&quot;),</span>
+<span class="err">    onPressed: () =&gt; setState(() {</span>
+<span class="err">      selected = !selected;</span>
+<span class="err">      selected ? paddingValue = 40 : paddingValue = 8.0;</span>
+<span class="err">    }),</span>
+<span class="err">  );</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <h3>Implementing <code>AnimatedPadding</code> widget</h3>
 <p><code>AnimatedPadding</code> is wrapped around <code>GestureDetector</code> to let user start animation by touch in addition to pressing 'Update padding' button exclusively. User can choose one over another to start animation.</p>
 <p><code>AnimatedPadding</code> widget's default <code>padding</code> is  8.0. When user presses 'Update padding' button for a selected Curve type in dropDown widget, inset / <code>padding</code> updates to 20.0. <code>AnimatedPadding</code> updates its inset to new values with in <code>2</code> seconds as provided in <code>duration</code> attribute using current selection for <code>curve</code> property.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">animatedPaddingWidget</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">GestureDetector(</span><span class="w"></span>
-<span class="w">    </span><span class="n">onTap</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">      </span><span class="nf">setState</span><span class="p">(</span><span class="err">(</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">selected</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="err">selected</span><span class="w"> </span><span class="err">?</span><span class="w"> </span><span class="err">paddingValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">20</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">paddingValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">8.0</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="o">);</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="o">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Center</span><span class="o">(</span><span class="w"></span>
-<span class="w">      </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">AnimatedPadding</span><span class="o">(</span><span class="w"></span>
-<span class="w">        </span><span class="nt">padding</span><span class="o">:</span><span class="w"> </span><span class="nt">EdgeInsets</span><span class="p">.</span><span class="nc">all</span><span class="o">(</span><span class="nt">paddingValue</span><span class="o">),</span><span class="w"></span>
-<span class="w">        </span><span class="nt">duration</span><span class="o">:</span><span class="w"> </span><span class="nt">Duration</span><span class="o">(</span><span class="nt">seconds</span><span class="o">:</span><span class="w"> </span><span class="nt">2</span><span class="o">),</span><span class="w"></span>
-<span class="w">        </span><span class="nt">curve</span><span class="o">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">dropDownValue</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nt">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nt">dropDownValue</span><span class="p">.</span><span class="nc">curveCubic</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nt">Curves</span><span class="p">.</span><span class="nc">linear</span><span class="o">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Image</span><span class="p">.</span><span class="nc">asset</span><span class="o">(</span><span class="s1">&#39;assets/images/sea.jpg&#39;</span><span class="o">),</span><span class="w"></span>
-<span class="w">      </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="o">),</span><span class="w"></span>
-<span class="w">  </span><span class="o">);</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Widget animatedPaddingWidget(BuildContext context) {</span>
+<span class="err">  return GestureDetector(</span>
+<span class="err">    onTap: () {</span>
+<span class="err">      setState(() {</span>
+<span class="err">        selected = !selected;</span>
+<span class="err">        selected ? paddingValue = 20 : paddingValue = 8.0;</span>
+<span class="err">      });</span>
+<span class="err">    },</span>
+<span class="err">    child: Center(</span>
+<span class="err">      child: AnimatedPadding(</span>
+<span class="err">        padding: EdgeInsets.all(paddingValue),</span>
+<span class="err">        duration: Duration(seconds: 2),</span>
+<span class="err">        curve:</span>
+<span class="err">            dropDownValue != null ? dropDownValue.curveCubic : Curves.linear,</span>
+<span class="err">        child: Image.asset(&#39;assets/images/sea.jpg&#39;),</span>
+<span class="err">      ),</span>
+<span class="err">    ),</span>
+<span class="err">  );</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p>I encourage you to Checkout the code below, and play around with different types of Curve animations to pick an animation that would work best for you.</p>
 <h3>Source code repo</h3>
@@ -333,7 +337,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

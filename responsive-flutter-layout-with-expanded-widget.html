@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -198,40 +198,42 @@
 
 <hr>
 <h1>Using <code>Expanded</code> Widget</h1>
-<div class="highlight"><pre><span></span><code><span class="n">Row</span><span class="p">(</span><span class="w"></span>
-<span class="w">   </span><span class="nl">children:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">     </span><span class="n">Expanded</span><span class="p">(</span><span class="w"></span>
-<span class="w">       </span><span class="nl">child:</span><span class="w"> </span><span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">     </span><span class="p">),</span><span class="w"></span>
-<span class="w">     </span><span class="n">Expanded</span><span class="p">(</span><span class="w"></span>
-<span class="w">       </span><span class="nl">child:</span><span class="w"> </span><span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">     </span><span class="p">),</span><span class="w"></span>
-<span class="w">     </span><span class="n">Expanded</span><span class="p">(</span><span class="w"></span>
-<span class="w">       </span><span class="nl">child:</span><span class="w"> </span><span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">     </span><span class="p">),</span><span class="w"></span>
-<span class="w">   </span><span class="p">],</span><span class="w"></span>
-<span class="w"> </span><span class="p">)</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">Row</span><span class="p">(</span>
+   <span class="nl">children:</span> <span class="p">[</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+   <span class="p">],</span>
+ <span class="p">)</span>
+</pre></div>
+
 
 <hr>
 <h1>Using <code>Expanded</code> widget (flex Property)</h1>
-<div class="highlight"><pre><span></span><code><span class="n">Row</span><span class="p">(</span><span class="w"></span>
-<span class="w">   </span><span class="nl">children:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">     </span><span class="n">Expanded</span><span class="p">(</span><span class="w"></span>
-<span class="w">       </span><span class="nl">flex:</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="nl">child:</span><span class="w"> </span><span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;4/8&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">     </span><span class="p">),</span><span class="w"></span>
-<span class="w">     </span><span class="n">Expanded</span><span class="p">(</span><span class="w"></span>
-<span class="w">       </span><span class="nl">flex:</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="nl">child:</span><span class="w"> </span><span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;3/8&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">     </span><span class="p">),</span><span class="w"></span>
-<span class="w">     </span><span class="n">Expanded</span><span class="p">(</span><span class="w"></span>
-<span class="w">       </span><span class="nl">flex:</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="nl">child:</span><span class="w"> </span><span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;1/8&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">     </span><span class="p">),</span><span class="w"></span>
-<span class="w">   </span><span class="p">],</span><span class="w"></span>
-<span class="w"> </span><span class="p">)</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">Row</span><span class="p">(</span>
+   <span class="nl">children:</span> <span class="p">[</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">flex:</span> <span class="m">4</span><span class="p">,</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;4/8&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">flex:</span> <span class="m">3</span><span class="p">,</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;3/8&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+     <span class="n">Expanded</span><span class="p">(</span>
+       <span class="nl">flex:</span> <span class="m">1</span><span class="p">,</span>
+       <span class="nl">child:</span> <span class="n">childWidget</span><span class="p">(</span><span class="s2">&quot;1/8&quot;</span><span class="p">),</span>
+     <span class="p">),</span>
+   <span class="p">],</span>
+ <span class="p">)</span>
+</pre></div>
+
 
 <h1>Source Code Repo</h1>
 <ul>
@@ -301,7 +303,7 @@ Follow me at <a href="https://twitter.com/ptyagi13">twitter</a></p>
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

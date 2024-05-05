@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -190,15 +190,17 @@
 <p><strong>Type Safety:</strong> Programming concept that allows a memory block to contain only one type of data.</p>
 <p>The concept of Generics in Dart, is similar to <a href="https://en.wikipedia.org/wiki/Generics_in_Java">Java's generics</a> and <a href="https://en.wikipedia.org/wiki/Template_C%2B%2B">C++'s templates</a>.</p>
 <p>Dart's collection can hold different data types in one collection. It's optional in Dart to mention data type for a value. Usually, the variable's data type is inferred automatically. For example, <code>var myVar = 5;</code> will infer <code>myVar</code>'s dataType as <code>int</code>. The following code is valid in Dart:</p>
-<div class="highlight"><pre><span></span><code>void main() {
-  List items = [1, &quot;Empty&quot;, 1.0];
-  print(items);
-}
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">void main() {</span>
+<span class="err">  List items = [1, &quot;Empty&quot;, 1.0];</span>
+<span class="err">  print(items);</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>[1, Empty, 1.0]
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">[1, Empty, 1.0]</span>
+</pre></div>
+
 
 <hr>
 <h1>Check out YouTube Video</h1>
@@ -208,12 +210,14 @@
 <h1>Declaring Type-safe Collections</h1>
 <p>The angular brackets <code>&lt;&gt;</code>, with data type enclosed, is used to declare the collection of given data type to ensure type-safety.</p>
 <p><strong>Syntax:</strong></p>
-<div class="highlight"><pre><span></span><code>CollectionType &lt;dataType&gt; identifier = CollectionType &lt;dataType&gt;();
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">CollectionType &lt;dataType&gt; identifier = CollectionType &lt;dataType&gt;();</span>
+</pre></div>
+
 
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>List&lt;int&gt; numbers = List&lt;int&gt;();
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">List&lt;int&gt; numbers = List&lt;int&gt;();</span>
+</pre></div>
+
 
 <p>Generics are parameterized and use type variables notations to restrict the type of data. These type variables are represented using single letter names. A few typically used single letter names are:</p>
 <ul>
@@ -223,7 +227,7 @@
 <li><strong>R:</strong> The letter <code>R</code> is used to represent the return type of a method or function.</li>
 </ul>
 <p>You can also use a single letter of your choice or a descriptive word for parameter names / generics. Let's explore these two options in the following example.</p>
-<div class="highlight"><pre><span></span><code><span class="o">///</span><span class="n">Example</span><span class="w"> </span><span class="n">#1</span><span class="err">:</span><span class="w"> </span><span class="n">Demonstrating</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="n">letter</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">descriptive</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">generics</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">///</span><span class="n">Example</span><span class="w"> </span><span class="n">#1</span><span class="err">:</span><span class="w"> </span><span class="n">Demonstrating</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="n">letter</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">descriptive</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">generics</span><span class="w"></span>
 
 <span class="o">//</span><span class="n">A</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">grocery</span><span class="w"> </span><span class="n">product</span><span class="w"></span>
 <span class="k">class</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
@@ -303,14 +307,16 @@
 <span class="w">  </span><span class="n">store2</span><span class="p">.</span><span class="n">updateInventory</span><span class="p">(</span><span class="n">bread</span><span class="p">,</span><span class="w"> </span><span class="n">Inventory</span><span class="p">(</span><span class="mi">15</span><span class="p">));</span><span class="w"></span>
 <span class="w">  </span><span class="n">store2</span><span class="p">.</span><span class="n">printProducts</span><span class="p">();</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">Product</span><span class="o">:</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Bread</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">$4</span><span class="o">.</span><span class="mi">5</span><span class="o">,</span><span class="w"> </span><span class="n">Inventory</span><span class="w"> </span><span class="n">amount</span><span class="o">:</span><span class="w"> </span><span class="mi">15</span><span class="w"></span>
-<span class="n">Product</span><span class="o">:</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Milk</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">$5</span><span class="o">.</span><span class="mi">99</span><span class="o">,</span><span class="w"> </span><span class="n">Inventory</span><span class="w"> </span><span class="n">amount</span><span class="o">:</span><span class="w"> </span><span class="mi">20</span><span class="w"></span>
-<span class="n">Product</span><span class="o">:</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Bread</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">$4</span><span class="o">.</span><span class="mi">5</span><span class="o">,</span><span class="w"> </span><span class="n">Inventory</span><span class="w"> </span><span class="n">amount</span><span class="o">:</span><span class="w"> </span><span class="mi">15</span><span class="w"></span>
-<span class="n">Product</span><span class="o">:</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Milk</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">$5</span><span class="o">.</span><span class="mi">99</span><span class="o">,</span><span class="w"> </span><span class="n">Inventory</span><span class="w"> </span><span class="n">amount</span><span class="o">:</span><span class="w"> </span><span class="mi">20</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">Product</span><span class="o">:</span> <span class="n">Price</span> <span class="n">of</span> <span class="n">Bread</span> <span class="k">is</span> <span class="n">$4</span><span class="o">.</span><span class="mi">5</span><span class="o">,</span> <span class="n">Inventory</span> <span class="n">amount</span><span class="o">:</span> <span class="mi">15</span>
+<span class="n">Product</span><span class="o">:</span> <span class="n">Price</span> <span class="n">of</span> <span class="n">Milk</span> <span class="k">is</span> <span class="n">$5</span><span class="o">.</span><span class="mi">99</span><span class="o">,</span> <span class="n">Inventory</span> <span class="n">amount</span><span class="o">:</span> <span class="mi">20</span>
+<span class="n">Product</span><span class="o">:</span> <span class="n">Price</span> <span class="n">of</span> <span class="n">Bread</span> <span class="k">is</span> <span class="n">$4</span><span class="o">.</span><span class="mi">5</span><span class="o">,</span> <span class="n">Inventory</span> <span class="n">amount</span><span class="o">:</span> <span class="mi">15</span>
+<span class="n">Product</span><span class="o">:</span> <span class="n">Price</span> <span class="n">of</span> <span class="n">Milk</span> <span class="k">is</span> <span class="n">$5</span><span class="o">.</span><span class="mi">99</span><span class="o">,</span> <span class="n">Inventory</span> <span class="n">amount</span><span class="o">:</span> <span class="mi">20</span>
+</pre></div>
+
 
 <hr>
 <h1>Code Re-use</h1>
@@ -320,10 +326,10 @@
 In this method, parameter <code>T</code> is returned, a list of type <code>T</code> elements is passed to method, and <code>T</code> type is stored in variable <code>last</code>.</p>
 <p>In <code>mainGenericMethods()</code> method, there are two different data types are using <code>lastItem()</code> method to retrieve last item in their respective lists. First list is made up of <code>Product</code> items. Second list is made up of <code>int</code> data type. The <code>T lastItem&lt;T&gt;(List&lt;T&gt; products)</code> method using generic <code>T</code> parameter to support
 multiple data types using the same method. This is one excellent example of writing reusable functions/class methods.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Example</span><span class="w"> </span><span class="c1">#2: Generics methods</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span> <span class="c1">#2: Generics methods</span>
 
 <span class="o">//</span><span class="k">Function</span><span class="s1">&#39;s return type (T).</span>
-<span class="s1">//Function&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">argument</span><span class="w"> </span><span class="p">(</span><span class="k">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">).</span><span class="w"></span>
+<span class="s1">//Function&#39;</span><span class="n">s</span> <span class="n">argument</span> <span class="p">(</span><span class="k">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">).</span>
 <span class="o">//</span><span class="k">Function</span><span class="s1">&#39;s local variable (T last).</span>
 <span class="s1">T lastItem&lt;T&gt;(List&lt;T&gt; products) {</span>
 <span class="s1">  T last = products.last;</span>
@@ -346,47 +352,51 @@ multiple data types using the same method. This is one excellent example of writ
 <span class="s1">  int item = lastItem(items);</span>
 <span class="s1">  print(&quot;Last item of int type: ${item}&quot;);</span>
 <span class="s1">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Last item of Product type: Price of Bread is $4.5
-Last item of int type: 5
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Last item of Product type: Price of Bread is $4.5</span>
+<span class="err">Last item of int type: 5</span>
+</pre></div>
+
 
 <hr>
 <h1>Generics Classes</h1>
 <p>Generic classes help to restrict the type of values accepted by the class. These supplied values are known as generic parameter(s). In the following example, class <code>FreshProduce</code> is restricted to accept only <code>Product</code> dataType. It's okay to use <code>FreshProduce</code> without <code>&lt;Product&gt;</code> parameter, and it will assume it as of type <code>Product</code>. However, if any other data type other than allowed type is passed, you'll see the compile time error.</p>
-<div class="highlight"><pre><span></span><code><span class="o">///</span><span class="n">Example</span><span class="w"> </span><span class="c1">#3: Using Generics for classes</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">///</span><span class="n">Example</span> <span class="c1">#3: Using Generics for classes</span>
 
-<span class="o">//</span><span class="n">Restricting</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">supplied</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">class</span><span class="p">.</span><span class="w"></span>
-<span class="o">//</span><span class="n">FreshProduce</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="n">accept</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">Product</span><span class="w"></span>
-<span class="n">class</span><span class="w"> </span><span class="n">FreshProduce</span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">FreshProduce</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="k">String</span><span class="w"> </span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="o">//</span><span class="n">Restricting</span> <span class="n">the</span> <span class="k">type</span> <span class="k">of</span> <span class="k">values</span> <span class="n">that</span> <span class="n">can</span> <span class="n">be</span> <span class="n">supplied</span> <span class="k">to</span> <span class="n">the</span> <span class="n">class</span><span class="p">.</span>
+<span class="o">//</span><span class="n">FreshProduce</span> <span class="n">class</span> <span class="n">can</span> <span class="k">only</span> <span class="n">accept</span> <span class="k">of</span> <span class="n">Product</span> <span class="k">type</span> <span class="k">when</span> <span class="n">T</span> <span class="n">extends</span> <span class="n">Product</span>
+<span class="n">class</span> <span class="n">FreshProduce</span><span class="o">&lt;</span><span class="n">T</span> <span class="n">extends</span> <span class="n">Product</span><span class="o">&gt;</span> <span class="err">{</span>
+  <span class="n">FreshProduce</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">double</span> <span class="n">d</span><span class="p">,</span> <span class="k">String</span> <span class="n">s</span><span class="p">);</span>
 
-<span class="w">  </span><span class="k">String</span><span class="w"> </span><span class="n">toString</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Instance of Type: ${T}&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+  <span class="k">String</span> <span class="n">toString</span><span class="p">()</span> <span class="err">{</span>
+    <span class="k">return</span> <span class="s2">&quot;Instance of Type: ${T}&quot;</span><span class="p">;</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 
-<span class="n">mainGenericClass</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="k">Using</span><span class="w"> </span><span class="n n-Quoted">`Product`</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="n">accepted</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">FreshProduce</span><span class="w"> </span><span class="n">class</span><span class="w"></span>
-<span class="w">  </span><span class="n">FreshProduce</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="n">spinach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FreshProduce</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">3.99</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Spinach&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">spinach</span><span class="p">.</span><span class="n">toString</span><span class="p">());</span><span class="w"></span>
+<span class="n">mainGenericClass</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="k">Using</span> <span class="n">`Product`</span> <span class="n">parameter</span> <span class="n">accepted</span> <span class="k">by</span> <span class="n">FreshProduce</span> <span class="n">class</span>
+  <span class="n">FreshProduce</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">spinach</span> <span class="o">=</span> <span class="n">FreshProduce</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Spinach&quot;</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">spinach</span><span class="p">.</span><span class="n">toString</span><span class="p">());</span>
 
-<span class="w">  </span><span class="o">//</span><span class="n">Passing</span><span class="w"></span>
-<span class="w">  </span><span class="n">FreshProduce</span><span class="w"> </span><span class="n">spinach2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FreshProduce</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">3.99</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Spinach&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">spinach2</span><span class="p">.</span><span class="n">toString</span><span class="p">());</span><span class="w"></span>
+  <span class="o">//</span><span class="n">Passing</span>
+  <span class="n">FreshProduce</span> <span class="n">spinach2</span> <span class="o">=</span> <span class="n">FreshProduce</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Spinach&quot;</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">spinach2</span><span class="p">.</span><span class="n">toString</span><span class="p">());</span>
 
-<span class="w">  </span><span class="o">//</span><span class="n">This</span><span class="w"> </span><span class="k">code</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">give</span><span class="w"> </span><span class="n">compile</span><span class="w"> </span><span class="kt">time</span><span class="w"> </span><span class="k">error</span><span class="w"> </span><span class="n">complaining</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="n">Product</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">FreshProduce</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">spinach3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FreshProduce</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">3.99</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Spinach&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">print</span><span class="p">(</span><span class="n">spinach3</span><span class="p">.</span><span class="n">toString</span><span class="p">());</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</code></pre></div>
+  <span class="o">//</span><span class="n">This</span> <span class="k">code</span> <span class="n">will</span> <span class="n">give</span> <span class="n">compile</span> <span class="kt">time</span> <span class="k">error</span> <span class="n">complaining</span> <span class="n">that</span> <span class="n">Object</span> <span class="k">is</span> <span class="k">not</span> <span class="k">of</span> <span class="k">type</span> <span class="n">Product</span>
+  <span class="o">//</span><span class="n">FreshProduce</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">spinach3</span> <span class="o">=</span> <span class="n">FreshProduce</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Spinach&quot;</span><span class="p">);</span>
+  <span class="o">//</span><span class="n">print</span><span class="p">(</span><span class="n">spinach3</span><span class="p">.</span><span class="n">toString</span><span class="p">());</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Instance of Type: Product
-Instance of Type: Product
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Instance of Type: Product</span>
+<span class="err">Instance of Type: Product</span>
+</pre></div>
+
 
 <hr>
 <h1>Generic collections</h1>
@@ -400,87 +410,93 @@ Instance of Type: Product
 <h1>List</h1>
 <p>In this example, a list of <code>int</code> datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to list.</p>
 <p>Now, adding a dataType other than <code>int</code> will throw a compile time error. Copy this code in <a href="https://dartpad.dev/">Dart Pad</a> , and uncomment <code>theList.add(4.0);</code> to see compile time error yourself.</p>
-<div class="highlight"><pre><span></span><code><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">mainList</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">using</span><span class="w"> </span><span class="n">parameterized</span><span class="w"> </span><span class="n">types</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">constructors</span><span class="w"></span>
-<span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;.</span><span class="n">from</span><span class="p">([</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
-<span class="w">  </span><span class="n">theList</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">theList</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">mainList</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">using</span> <span class="n">parameterized</span> <span class="n">types</span> <span class="n">with</span> <span class="n">constructors</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;</span> <span class="n">theList</span> <span class="o">=</span> <span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;.</span><span class="n">from</span><span class="p">([</span><span class="mi">1</span><span class="p">]);</span>
+  <span class="n">theList</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">theList</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 
-<span class="w">  </span><span class="o">//</span><span class="n">Adding</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">throw</span><span class="w"> </span><span class="n">compile</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">error</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">theList</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mf">4.0</span><span class="p">);</span><span class="w"></span>
+  <span class="o">//</span><span class="n">Adding</span> <span class="n">double</span> <span class="n">data</span> <span class="n">type</span> <span class="n">will</span> <span class="n">throw</span> <span class="n">compile</span> <span class="n">time</span> <span class="n">error</span>
+  <span class="o">//</span><span class="n">theList</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mf">4.0</span><span class="p">);</span>
 
-<span class="w">  </span><span class="o">//</span><span class="n">iterate</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">items</span><span class="w"></span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Printing items in Dart List&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">theList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+  <span class="o">//</span><span class="n">iterate</span> <span class="n">over</span> <span class="n">list</span> <span class="ow">and</span> <span class="nb">print</span> <span class="n">all</span> <span class="n">items</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Printing items in Dart List&quot;</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">theList</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Printing items in Dart List
-1
-2
-3
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Printing items in Dart List</span>
+<span class="err">1</span>
+<span class="err">2</span>
+<span class="err">3</span>
+</pre></div>
+
 
 <hr>
 <h1>Queue</h1>
 <p>In this example, a queue of <code>double</code> datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the queue. Adding a different dataType <code>String</code> will throw a compile time error.</p>
-<div class="highlight"><pre><span></span><code><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">mainQueue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">using</span><span class="w"> </span><span class="n">parameterized</span><span class="w"> </span><span class="n">types</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">constructors</span><span class="w"></span>
-<span class="w">  </span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">double</span><span class="o">&gt;.</span><span class="n">from</span><span class="p">([</span><span class="mf">1.0</span><span class="p">]);</span><span class="w"></span>
-<span class="w">  </span><span class="n">theQueue</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mf">2.0</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">theQueue</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mf">3.0</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">mainQueue</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">using</span> <span class="n">parameterized</span> <span class="n">types</span> <span class="n">with</span> <span class="n">constructors</span>
+  <span class="n">Queue</span><span class="o">&lt;</span><span class="n">double</span><span class="o">&gt;</span> <span class="n">theQueue</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">double</span><span class="o">&gt;.</span><span class="n">from</span><span class="p">([</span><span class="mf">1.0</span><span class="p">]);</span>
+  <span class="n">theQueue</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mf">2.0</span><span class="p">);</span>
+  <span class="n">theQueue</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mf">3.0</span><span class="p">);</span>
 
-<span class="w">  </span><span class="o">//</span><span class="n">Adding</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">throw</span><span class="w"> </span><span class="n">compile</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">error</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">theQueue</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;4.0&quot;</span><span class="p">);</span><span class="w"></span>
+  <span class="o">//</span><span class="n">Adding</span> <span class="nb nb-Type">String</span> <span class="n">data</span> <span class="n">type</span> <span class="n">will</span> <span class="n">throw</span> <span class="n">compile</span> <span class="n">time</span> <span class="n">error</span>
+  <span class="o">//</span><span class="n">theQueue</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;4.0&quot;</span><span class="p">);</span>
 
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Printing items in Dart Queue&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">iterate</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">items</span><span class="w"></span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">double</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">theQueue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Printing items in Dart Queue&quot;</span><span class="p">);</span>
+  <span class="o">//</span><span class="n">iterate</span> <span class="n">over</span> <span class="n">queue</span> <span class="ow">and</span> <span class="nb">print</span> <span class="n">all</span> <span class="n">items</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">double</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">theQueue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Printing items in Dart Queue
-1.0
-2.0
-3.0
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Printing items in Dart Queue</span>
+<span class="err">1.0</span>
+<span class="err">2.0</span>
+<span class="err">3.0</span>
+</pre></div>
+
 
 <hr>
 <h1>Set</h1>
 <p>In this example, a set of <code>String</code> datatype is constructed using parameterized constructor - another example of using generics. Additionally, two more items are added to the set. Adding a different dataType <code>int</code> will throw a compile time error.</p>
-<div class="highlight"><pre><span></span><code><span class="nv">void</span> <span class="nv">mainSet</span><span class="ss">()</span> {
-  <span class="nv">Set</span><span class="o">&lt;</span><span class="nv">String</span><span class="o">&gt;</span> <span class="nv">theSet</span> <span class="o">=</span> <span class="nv">Set</span><span class="o">&lt;</span><span class="nv">String</span><span class="o">&gt;</span>.<span class="nv">from</span><span class="ss">(</span>{<span class="s2">&quot;</span><span class="s">1</span><span class="s2">&quot;</span>}<span class="ss">)</span><span class="c1">;</span>
-  <span class="nv">theSet</span>.<span class="nv">add</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">2</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
-  <span class="nv">theSet</span>.<span class="nv">add</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">3</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">mainSet</span><span class="p">()</span> <span class="err">{</span>
+  <span class="k">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">theSet</span> <span class="o">=</span> <span class="k">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="err">{</span><span class="ss">&quot;1&quot;</span><span class="err">}</span><span class="p">);</span>
+  <span class="n">theSet</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="ss">&quot;2&quot;</span><span class="p">);</span>
+  <span class="n">theSet</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="ss">&quot;3&quot;</span><span class="p">);</span>
 
-  <span class="o">//</span><span class="nv">Adding</span> <span class="nv">int</span> <span class="nv">data</span> <span class="nv">type</span> <span class="nv">will</span> <span class="nv">throw</span> <span class="nv">compile</span> <span class="nv">time</span> <span class="nv">error</span>
-  <span class="o">//</span><span class="nv">theSet</span>.<span class="nv">add</span><span class="ss">(</span><span class="mi">3</span><span class="ss">)</span><span class="c1">;</span>
+  <span class="o">//</span><span class="n">Adding</span> <span class="nb">int</span> <span class="k">data</span> <span class="k">type</span> <span class="n">will</span> <span class="n">throw</span> <span class="n">compile</span> <span class="k">time</span> <span class="n">error</span>
+  <span class="o">//</span><span class="n">theSet</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 
-  <span class="nv">print</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">Printing items in Dart Set</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
-  <span class="o">//</span><span class="nv">iterate</span> <span class="nv">over</span> <span class="nv">set</span> <span class="nv">and</span> <span class="nv">print</span> <span class="nv">all</span> <span class="nv">items</span>
-  <span class="k">for</span> <span class="ss">(</span><span class="nv">String</span> <span class="nv">item</span> <span class="nv">in</span> <span class="nv">theSet</span><span class="ss">)</span> {
-    <span class="nv">print</span><span class="ss">(</span><span class="nv">item</span><span class="ss">)</span><span class="c1">;</span>
-  }
-}
-</code></pre></div>
+  <span class="n">print</span><span class="p">(</span><span class="ss">&quot;Printing items in Dart Set&quot;</span><span class="p">);</span>
+  <span class="o">//</span><span class="k">iterate</span> <span class="n">over</span> <span class="k">set</span> <span class="k">and</span> <span class="n">print</span> <span class="k">all</span> <span class="n">items</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">item</span> <span class="k">in</span> <span class="n">theSet</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Printing items in Dart Set
-1
-2
-3
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Printing items in Dart Set</span>
+<span class="err">1</span>
+<span class="err">2</span>
+<span class="err">3</span>
+</pre></div>
+
 
 <hr>
 <h1>Map</h1>
 <p>In this example, a Map of <code>String</code> datatype is constructed using parameterized constructor - another example of using generics. One more item is added to the Map. Adding a different dataType <code>int</code> will throw a compile time error.</p>
-<div class="highlight"><pre><span></span><code>void mainMap() {
+<div class="highlight"><pre><span></span>void mainMap() {
   Map<span class="nt">&lt;int</span><span class="err">,</span> <span class="err">String</span><span class="nt">&gt;</span> theMap = {1: &#39;Dart&#39;};
   theMap[2] = &#39;Flutter&#39;;
 
@@ -493,13 +509,15 @@ Instance of Type: Product
     print(&quot;<span class="cp">${</span><span class="n">mapEntry</span><span class="o">.</span><span class="n">key</span><span class="cp">}</span> : <span class="cp">${</span><span class="n">mapEntry</span><span class="o">.</span><span class="n">value</span><span class="cp">}</span>&quot;);
   }
 }
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Printing key:value pairs in Dart Map
-1 : Dart
-2 : Flutter
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Printing key:value pairs in Dart Map</span>
+<span class="err">1 : Dart</span>
+<span class="err">2 : Flutter</span>
+</pre></div>
+
 
 <hr>
 <h1>Summary</h1>
@@ -567,7 +585,7 @@ Couldn't find a topic of your interest? Please leave a comment or reach out at <
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

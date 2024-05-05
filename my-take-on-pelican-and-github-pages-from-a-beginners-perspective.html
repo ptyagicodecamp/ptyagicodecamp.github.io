@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -220,9 +220,10 @@ brew install wget</code></p>
 <ol>
 <li>Clone github source repo into your local working directory:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/ptyagicodecamp/ptyagicodecamp.github.io-src.git githubpages
-cd githubpages
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">git clone https://github.com/ptyagicodecamp/ptyagicodecamp.github.io-src.git githubpages</span>
+<span class="err">cd githubpages</span>
+</pre></div>
+
 
 <ol>
 <li>
@@ -232,7 +233,7 @@ cd githubpages
 <p>Setup pelican : </p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"></span>
 <span class="o">&gt;</span><span class="w"> </span><span class="k">Where</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">site</span><span class="vm">?</span><span class="w"> </span><span class="o">[</span><span class="n">.</span><span class="o">]</span><span class="w"></span>
 <span class="o">&gt;</span><span class="w"> </span><span class="n">What</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">site</span><span class="vm">?</span><span class="w"> </span><span class="o">**</span><span class="n">Title</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">blog</span><span class="o">**</span><span class="w">   </span>
 <span class="o">&gt;</span><span class="w"> </span><span class="n">Who</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">site</span><span class="vm">?</span><span class="w"> </span><span class="o">**</span><span class="n">your</span><span class="w"> </span><span class="n">name</span><span class="o">**</span><span class="w"></span>
@@ -254,17 +255,19 @@ cd githubpages
 <span class="nl">Error</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="n">Errno 17</span><span class="o">]</span><span class="w"> </span><span class="k">File</span><span class="w"> </span><span class="ow">exists</span><span class="err">:</span><span class="w"> </span><span class="s1">&#39;~/githubpages/content&#39;</span><span class="w"></span>
 <span class="nl">Error</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="n">Errno 17</span><span class="o">]</span><span class="w"> </span><span class="k">File</span><span class="w"> </span><span class="ow">exists</span><span class="err">:</span><span class="w"> </span><span class="s1">&#39;~/githubpages/output&#39;</span><span class="w"></span>
 <span class="n">Done</span><span class="p">.</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="o">~/</span><span class="n">githubpages</span><span class="w"></span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Note: Make DELETE_OUTPUT_DIRECTORY = False in publishconf.py to NOT delete output dir, since its a submodule.</p>
 <h3>Writing your first blog post:</h3>
 <p>Don't forget to install Markdown package: <code>pip install Markdown</code>. Also, don’t overlook that “.md” files needs meta-data at the beginning of file. Failing to do so, would give error that “NameTile” is failing. Meta data looks like this:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="o">:</span><span class="w"> </span><span class="n">My</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">title</span><span class="w"></span>
-<span class="n">Date</span><span class="o">:</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">08</span><span class="w"> </span><span class="mi">10</span><span class="o">:</span><span class="mi">20</span><span class="w"></span>
-<span class="n">Modified</span><span class="o">:</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">08</span><span class="w"> </span><span class="mi">19</span><span class="o">:</span><span class="mi">30</span><span class="w"></span>
-<span class="n">Category</span><span class="o">:</span><span class="w"> </span><span class="n">Python</span><span class="w"></span>
-<span class="n">Tags</span><span class="o">:</span><span class="w"> </span><span class="n">pelican</span><span class="o">,</span><span class="w"> </span><span class="n">publishing</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">first</span> <span class="n">title</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">08</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
+<span class="n">Modified</span><span class="o">:</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">08</span> <span class="mi">19</span><span class="o">:</span><span class="mi">30</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
+<span class="n">Tags</span><span class="o">:</span> <span class="n">pelican</span><span class="o">,</span> <span class="n">publishing</span>
+</pre></div>
+
 
 <p>Now, write your first blog post by typing in terminal(or your faviorite editor) : <code>vi content/&lt;post-name&gt;.md</code></p>
 <p>Note: you're not required to use '.md' formatting, you can also use <code>.rst</code> formats too.</p>
@@ -283,39 +286,42 @@ At this point you can add all contents to github.
 To add submodule in output directory:</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code>cd  output
-git add .
-git commit -m “Adding my contents”
-git push -u origin master
-cd ..
-echo “*.pyc” &gt;&gt; .gitignore #you can also add this by manually editing .gitignore file
-git add .
-git commit -m “first commit”
-git push -u origin master
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">cd  output</span>
+<span class="err">git add .</span>
+<span class="err">git commit -m “Adding my contents”</span>
+<span class="err">git push -u origin master</span>
+<span class="err">cd ..</span>
+<span class="err">echo “*.pyc” &gt;&gt; .gitignore #you can also add this by manually editing .gitignore file</span>
+<span class="err">git add .</span>
+<span class="err">git commit -m “first commit”</span>
+<span class="err">git push -u origin master</span>
+</pre></div>
+
 
 <h3>Visting your Brand new Blog</h3>
 <p>You can visit your blog at https://username.github.io</p>
 <h3>Script to publish and push to github repo automatically:</h3>
 <p>I created <code>publish-n-push.sh</code> script to automate generating html contents and pushing everything to github:</p>
-<div class="highlight"><pre><span></span><code>echo &quot;publising changes...&quot;
-make html &amp;&amp; make publish
-echo &quot;pushing code to source repo...&quot;
-git add .
-git commit -m &quot;$1&quot;
-git push origin master
-echo &quot;pushing generated website to github&quot;
-cd output
-git add .
-git commit -m &quot;$1&quot;
-git push origin master
-cd ..
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">echo &quot;publising changes...&quot;</span>
+<span class="err">make html &amp;&amp; make publish</span>
+<span class="err">echo &quot;pushing code to source repo...&quot;</span>
+<span class="err">git add .</span>
+<span class="err">git commit -m &quot;$1&quot;</span>
+<span class="err">git push origin master</span>
+<span class="err">echo &quot;pushing generated website to github&quot;</span>
+<span class="err">cd output</span>
+<span class="err">git add .</span>
+<span class="err">git commit -m &quot;$1&quot;</span>
+<span class="err">git push origin master</span>
+<span class="err">cd ..</span>
+</pre></div>
+
 
 <p>Using this script: </p>
-<div class="highlight"><pre><span></span><code>cd githubpages
-./publish-n-push.sh &quot;commit-message&quot;
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">cd githubpages</span>
+<span class="err">./publish-n-push.sh &quot;commit-message&quot;</span>
+</pre></div>
+
 
 <h3>References</h3>
 <ul>
@@ -370,7 +376,7 @@ cd ..
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

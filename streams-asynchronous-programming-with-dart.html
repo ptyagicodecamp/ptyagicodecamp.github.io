@@ -90,7 +90,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -206,76 +206,80 @@
 <h2>Using Generator Function</h2>
 <p>One way to create stream by using <a href="https://dart.dev/guides/language/language-tour#generators">generator function</a>. It helps to produce lazily a sequence of values. In this example, we'll create stream using <a href="https://dart.dev/guides/language/language-tour#for-loops"><code>for</code></a> loop and <code>yield</code> keyword. The <code>yield</code> keywords is helpful in delivering values. The <code>async*</code> is an asynchronous <a href="https://dart.dev/guides/language/language-tour#generators">generator</a> that returns a Stream object.</p>
 <p><strong>Example#1:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Example</span><span class="c1">#1. Creating Stream (of numbers) using asynchronous Generators</span><span class="w"></span>
-<span class="o">//</span><span class="k">Using</span><span class="w"> </span><span class="n">yield</span><span class="p">,</span><span class="w"> </span><span class="n">async</span><span class="o">*</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#1. Creating Stream (of numbers) using asynchronous Generators</span>
+<span class="o">//</span><span class="k">Using</span> <span class="n">yield</span><span class="p">,</span> <span class="n">async</span><span class="o">*</span>
 
-<span class="o">//</span><span class="n">This</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">reference</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">stream</span><span class="w"></span>
-<span class="k">Stream</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">createNumberStream</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">last</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="o">*</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="k">last</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">yield</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="k">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">able</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">send</span><span class="w"> </span><span class="n">spaced</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="k">events</span><span class="w"></span>
-<span class="w">  </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<span class="o">//</span><span class="n">This</span> <span class="n">will</span> <span class="k">return</span> <span class="n">a</span> <span class="k">reference</span> <span class="k">to</span> <span class="n">the</span> <span class="k">stream</span>
+<span class="k">Stream</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="kt">int</span> <span class="k">last</span><span class="p">)</span> <span class="n">async</span><span class="o">*</span> <span class="err">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="k">last</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">yield</span> <span class="n">i</span><span class="p">;</span> <span class="o">//</span><span class="k">to</span> <span class="n">be</span> <span class="n">able</span> <span class="k">to</span> <span class="n">send</span> <span class="n">spaced</span> <span class="k">out</span> <span class="k">events</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 
-<span class="o">//</span><span class="n">Printing</span><span class="w"> </span><span class="n">numbers</span><span class="o">/</span><span class="k">events</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">Stream</span><span class="w"> </span><span class="p">(</span><span class="n">Listening</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">Stream</span><span class="p">)</span><span class="w"></span>
-<span class="n">printStream</span><span class="p">(</span><span class="k">Stream</span><span class="w"> </span><span class="k">stream</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">stream</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">));</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<span class="o">//</span><span class="n">Printing</span> <span class="n">numbers</span><span class="o">/</span><span class="k">events</span> <span class="k">of</span> <span class="k">Stream</span> <span class="p">(</span><span class="n">Listening</span> <span class="k">to</span> <span class="k">Stream</span><span class="p">)</span>
+<span class="n">printStream</span><span class="p">(</span><span class="k">Stream</span> <span class="k">stream</span><span class="p">)</span> <span class="err">{</span>
+  <span class="k">stream</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">s</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+<span class="err">}</span>
 
-<span class="n">void</span><span class="w"> </span><span class="n">createStreamUsingGenerators</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="k">Using</span><span class="w"> </span><span class="n n-Quoted">`yield`</span><span class="p">,</span><span class="w"> </span><span class="n">async</span><span class="o">*</span><span class="w"> </span><span class="n">keywords</span><span class="w"></span>
-<span class="w">  </span><span class="n">var</span><span class="w"> </span><span class="k">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">printStream</span><span class="p">(</span><span class="k">stream</span><span class="p">);</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-<span class="o">//----</span><span class="k">END</span><span class="o">----//</span><span class="w"></span>
+<span class="n">void</span> <span class="n">createStreamUsingGenerators</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span><span class="k">Using</span> <span class="n">`yield`</span><span class="p">,</span> <span class="n">async</span><span class="o">*</span> <span class="n">keywords</span>
+  <span class="n">var</span> <span class="k">stream</span> <span class="o">=</span> <span class="n">createNumberStream</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="n">printStream</span><span class="p">(</span><span class="k">stream</span><span class="p">);</span>
+<span class="err">}</span>
+<span class="o">//----</span><span class="k">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="n">Entry</span><span class="w"> </span><span class="kt">point</span><span class="w"> </span><span class="k">function</span><span class="w"></span>
-<span class="n">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#1.</span><span class="w"></span>
-<span class="w">  </span><span class="n">createStreamUsingGenerators</span><span class="p">();</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</code></pre></div>
+<span class="o">//</span><span class="n">Entry</span> <span class="kt">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#1.</span>
+  <span class="n">createStreamUsingGenerators</span><span class="p">();</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="mf">1</span><span class="w"></span>
-<span class="mf">2</span><span class="w"></span>
-<span class="mf">3</span><span class="w"></span>
-<span class="mf">4</span><span class="w"></span>
-<span class="mf">5</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">1</span>
+<span class="err">2</span>
+<span class="err">3</span>
+<span class="err">4</span>
+<span class="err">5</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#1</a>.</p>
 <hr>
 <h2>Using <code>Stream.fromIterable()</code></h2>
 <p>In this approach, <a href="https://api.flutter.dev/flutter/dart-async/Stream/Stream.fromIterable.html"><code>Stream.fromIterable()</code></a> takes an array of numbers as argument, and create a <code>Stream</code> of numbers delivering one event/number at a time.</p>
 <p><strong>Example#2:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Example</span><span class="c1">#2. Creating Stream of numbers using  `Stream.fromIterable()` method</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#2. Creating Stream of numbers using  `Stream.fromIterable()` method</span>
 
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">createStreamFromIterable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
-<span class="w">  </span><span class="n">Stream</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stream</span><span class="o">.</span><span class="n">fromIterable</span><span class="p">(</span><span class="n">numbers</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">printStream</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="n">void</span> <span class="n">createStreamFromIterable</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+  <span class="n">Stream</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="n">fromIterable</span><span class="p">(</span><span class="n">numbers</span><span class="p">);</span>
+  <span class="n">printStream</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+<span class="p">}</span>
 
-<span class="o">//</span><span class="n">Printing</span><span class="w"> </span><span class="n">numbers</span><span class="o">/</span><span class="n">events</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Stream</span><span class="w"> </span><span class="p">(</span><span class="n">Listening</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Stream</span><span class="p">)</span><span class="w"></span>
-<span class="n">printStream</span><span class="p">(</span><span class="n">Stream</span><span class="w"> </span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">stream</span><span class="o">.</span><span class="n">listen</span><span class="p">((</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">));</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="o">//----</span><span class="n">END</span><span class="o">----//</span><span class="w"></span>
+<span class="o">//</span><span class="n">Printing</span> <span class="n">numbers</span><span class="o">/</span><span class="n">events</span> <span class="n">of</span> <span class="n">Stream</span> <span class="p">(</span><span class="n">Listening</span> <span class="n">to</span> <span class="n">Stream</span><span class="p">)</span>
+<span class="n">printStream</span><span class="p">(</span><span class="n">Stream</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">stream</span><span class="o">.</span><span class="n">listen</span><span class="p">((</span><span class="n">s</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="n">Entry</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">function</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#2.</span><span class="w"></span>
-<span class="w">  </span><span class="n">createStreamFromIterable</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#2.</span>
+  <span class="n">createStreamFromIterable</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="mf">1</span><span class="w"></span>
-<span class="mf">2</span><span class="w"></span>
-<span class="mf">3</span><span class="w"></span>
-<span class="mf">4</span><span class="w"></span>
-<span class="mf">5</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">1</span>
+<span class="err">2</span>
+<span class="err">3</span>
+<span class="err">4</span>
+<span class="err">5</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#2</a>.</p>
 <hr>
@@ -284,69 +288,73 @@
 <h2>Using <code>listen</code></h2>
 <p>In the above two examples, we printed events of a <code>Stream</code> using <a href="https://api.dart.dev/stable/1.24.3/dart-async/Stream/listen.html"><code>listen</code></a> by adding subscription to the given stream. Let's print messages before starting and after stream is finished.</p>
 <p><strong>Example#3.</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Example</span><span class="c1">#3. Accessing Stream using `listen`</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#3. Accessing Stream using `listen`</span>
 
-<span class="n">void</span><span class="w"> </span><span class="n">printStreamEventsUsingListen</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">Stream</span><span class="w"> </span><span class="k">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Stream</span><span class="p">.</span><span class="n">fromIterable</span><span class="p">(</span><span class="err">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="err">]</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Stream Starting&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">stream</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Stream Finished&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-<span class="o">//----</span><span class="k">END</span><span class="o">----//</span><span class="w"></span>
+<span class="n">void</span> <span class="n">printStreamEventsUsingListen</span><span class="p">()</span> <span class="err">{</span>
+  <span class="k">Stream</span> <span class="k">stream</span> <span class="o">=</span> <span class="k">Stream</span><span class="p">.</span><span class="n">fromIterable</span><span class="p">(</span><span class="err">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="err">]</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="s2">&quot;Stream Starting&quot;</span><span class="p">);</span>
+  <span class="k">stream</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">),</span>
+  <span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="s2">&quot;Stream Finished&quot;</span><span class="p">);</span>
+<span class="err">}</span>
+<span class="o">//----</span><span class="k">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="n">Entry</span><span class="w"> </span><span class="kt">point</span><span class="w"> </span><span class="k">function</span><span class="w"></span>
-<span class="n">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#3.</span><span class="w"></span>
-<span class="w">  </span><span class="n">printStreamEventsUsingListen</span><span class="p">();</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</code></pre></div>
+<span class="o">//</span><span class="n">Entry</span> <span class="kt">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#3.</span>
+  <span class="n">printStreamEventsUsingListen</span><span class="p">();</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Stream Starting
-Stream Finished
-1
-2
-3
-4
-5
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Stream Starting</span>
+<span class="err">Stream Finished</span>
+<span class="err">1</span>
+<span class="err">2</span>
+<span class="err">3</span>
+<span class="err">4</span>
+<span class="err">5</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#3</a>.</p>
 <h2>Using <code>await for</code></h2>
 <p>Streams are iterated in a <code>await for</code> asynchronous for-loop. Streams are notified when there's last event arrives and <code>await for-loop</code> stops.
 Let's see an example that takes the events from the stream generated above and print those numbers in events.</p>
 <p><strong>Example#4.</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Example</span><span class="c1">#4. Accessing Stream using `await for`</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#4. Accessing Stream using `await for`</span>
 
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">printStreamEventsUsingAwaitFor</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">Stream</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stream</span><span class="o">.</span><span class="n">fromIterable</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w"></span>
+<span class="n">void</span> <span class="n">printStreamEventsUsingAwaitFor</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="n">Stream</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="n">fromIterable</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]);</span>
 
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stream Starting&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">var</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stream Finished&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="o">//----</span><span class="n">END</span><span class="o">----//</span><span class="w"></span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stream Starting&quot;</span><span class="p">);</span>
+  <span class="n">await</span> <span class="k">for</span> <span class="p">(</span><span class="k">var</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stream Finished&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="n">Entry</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">function</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#4.</span><span class="w"></span>
-<span class="w">  </span><span class="n">printStreamEventsUsingAwaitFor</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#4.</span>
+  <span class="n">printStreamEventsUsingAwaitFor</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Stream Starting
-1
-2
-3
-4
-5
-Stream Finished
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Stream Starting</span>
+<span class="err">1</span>
+<span class="err">2</span>
+<span class="err">3</span>
+<span class="err">4</span>
+<span class="err">5</span>
+<span class="err">Stream Finished</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#4</a>.</p>
 <p>The difference between <code>listen</code> and <code>await for</code> is that in <code>listen</code> approach, code related to creating stream executed first, and then events are printed. In the <code>await for</code> approach, events are printed as they come. This approach is works better when there are finite number of events in a stream, and stream does finish.</p>
@@ -354,37 +362,39 @@ Stream Finished
 <h1>Processing Stream Events</h1>
 <p>In this example, let's add the numbers delivered by stream and return the total. Let's call this new function <code>addEvents(...)</code>. Events from Stream is accessed using <code>await for</code>, and added one by one. The <code>addEvents(...)</code> function needs to be marked with <code>async</code> because it uses <code>await</code> inside the function. This method returns <code>Future&lt;int&gt;</code>. This future is accessed from <code>addNumbersInStream()</code> function using <code>await</code> and prints the total on console.</p>
 <p><strong>Example#5.</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Example</span><span class="c1">#5. Processing (Adding) Stream using `await for`</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#5. Processing (Adding) Stream using `await for`</span>
 
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">addNumbersInStream</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Stream</span><span class="w"> </span><span class="n">consists</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">numbers</span><span class="w"></span>
-<span class="w">  </span><span class="n">Stream</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stream</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;.</span><span class="n">fromIterable</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w"></span>
+<span class="n">void</span> <span class="n">addNumbersInStream</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Create</span> <span class="n">a</span> <span class="n">Stream</span> <span class="n">consists</span> <span class="n">of</span> <span class="n">numbers</span>
+  <span class="n">Stream</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;.</span><span class="n">fromIterable</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]);</span>
 
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">addEvents</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="k">var</span> <span class="n">total</span> <span class="o">=</span> <span class="n">await</span> <span class="n">addEvents</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">);</span>
+<span class="p">}</span>
 
-<span class="o">//</span><span class="n">Receiving</span><span class="w"> </span><span class="n">events</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">Stream</span><span class="p">,</span><span class="w"> </span><span class="n">adding</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">returning</span><span class="w"> </span><span class="n">total</span><span class="w"></span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">addEvents</span><span class="p">(</span><span class="n">Stream</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">var</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="o">//</span><span class="n">Receiving</span> <span class="n">events</span> <span class="n">from</span> <span class="n">Stream</span><span class="p">,</span> <span class="n">adding</span> <span class="ow">and</span> <span class="n">returning</span> <span class="n">total</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;</span> <span class="n">addEvents</span><span class="p">(</span><span class="n">Stream</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;</span> <span class="n">stream</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">await</span> <span class="k">for</span> <span class="p">(</span><span class="k">var</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span>
+  <span class="p">}</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="o">//----</span><span class="n">END</span><span class="o">----//</span><span class="w"></span>
+  <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="n">Entry</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">function</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#5.</span><span class="w"></span>
-<span class="w">  </span><span class="n">addNumbersInStream</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#5.</span>
+  <span class="n">addNumbersInStream</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="mf">15</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">15</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#5</a>.</p>
 <hr>
@@ -398,91 +408,95 @@ Stream Finished
 <h2>Error Handling in <code>await for</code> block</h2>
 <p>An error event can be responded in <code>try/catch</code> block. Let's see one of the above case to handle one error event by putting <code>await for</code> loop in previous example inside <code>try/catch</code> block. To be able to see <code>catch</code> block respond to error event, we need to tweak <code>createStream</code> to throw <code>Exception</code> at some point. Assume error event occurs when accessing 5th number.</p>
 <p><strong>Example#6.</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">///</span><span class="n">Handling</span><span class="w"> </span><span class="n">Exceptions</span><span class="w"> </span><span class="p">(</span><span class="n">Code</span><span class="w"> </span><span class="n">shared</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">listen</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">implementations</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">///</span><span class="n">Handling</span> <span class="n">Exceptions</span> <span class="p">(</span><span class="n">Code</span> <span class="n">shared</span> <span class="k">for</span> <span class="n">listen</span> <span class="ow">and</span> <span class="n">await</span> <span class="k">for</span> <span class="n">implementations</span><span class="p">)</span>
 
-<span class="o">//</span><span class="n">Generated</span><span class="w"> </span><span class="n">Stream</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">numbers</span><span class="o">.</span><span class="w"> </span><span class="n">Added</span><span class="w"> </span><span class="n">exception</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">purpose</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">demonstration</span><span class="w"></span>
-<span class="n">Stream</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="nb nb-Type">int</span><span class="w"> </span><span class="n">last</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="o">*</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">last</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">throw</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">Exception</span><span class="p">(</span><span class="s2">&quot;Demo exception when accessing 5th number&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="nb">yield</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">able</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">send</span><span class="w"> </span><span class="n">spaced</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">events</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="o">//</span><span class="n">Generated</span> <span class="n">Stream</span> <span class="n">with</span> <span class="n">numbers</span><span class="o">.</span> <span class="n">Added</span> <span class="n">exception</span> <span class="n">on</span> <span class="n">purpose</span> <span class="k">for</span> <span class="n">demonstration</span>
+<span class="n">Stream</span><span class="o">&lt;</span><span class="nb nb-Type">int</span><span class="o">&gt;</span> <span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">last</span><span class="p">)</span> <span class="n">async</span><span class="o">*</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">last</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">throw</span> <span class="n">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s2">&quot;Demo exception when accessing 5th number&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nb">yield</span> <span class="n">i</span><span class="p">;</span> <span class="o">//</span><span class="n">to</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">send</span> <span class="n">spaced</span> <span class="n">out</span> <span class="n">events</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="o">//</span><span class="n">Example</span><span class="w"> </span><span class="c1">#6. Handle Error in Stream using `await for`</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">handlingExceptionUsingAwaitFor</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">var</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="o">//----</span><span class="n">END</span><span class="o">----//</span><span class="w"></span>
+<span class="o">//</span><span class="n">Example</span> <span class="c1">#6. Handle Error in Stream using `await for`</span>
+<span class="n">void</span> <span class="n">handlingExceptionUsingAwaitFor</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="n">try</span> <span class="p">{</span>
+    <span class="n">await</span> <span class="k">for</span> <span class="p">(</span><span class="k">var</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="n">Entry</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">function</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#6.</span><span class="w"></span>
-<span class="w">  </span><span class="n">handlingExceptionUsingAwaitFor</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#6.</span>
+  <span class="n">handlingExceptionUsingAwaitFor</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="mf">1</span><span class="w"></span>
-<span class="mf">2</span><span class="w"></span>
-<span class="mf">3</span><span class="w"></span>
-<span class="mf">4</span><span class="w"></span>
-<span class="n">Exception</span><span class="p">:</span><span class="w"> </span><span class="n">Demo</span><span class="w"> </span><span class="n">exception</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">accessing</span><span class="w"> </span><span class="mf">5</span><span class="n">th</span><span class="w"> </span><span class="n">number</span><span class="w"></span>
-<span class="n">Finished</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">1</span>
+<span class="err">2</span>
+<span class="err">3</span>
+<span class="err">4</span>
+<span class="c">Exception: Demo exception when accessing 5th number</span>
+<span class="err">Finished</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#6</a>.</p>
 <hr>
 <h1>Handling Errors using <code>listen()</code> method</h1>
 <p>This is the better way to handle errors when you want to handle multiple errors without exiting code at the encounter of first error.</p>
 <p><strong>Example#7.</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">///</span><span class="n">Handling</span><span class="w"> </span><span class="n">Exceptions</span><span class="w"> </span><span class="p">(</span><span class="k">Code</span><span class="w"> </span><span class="n">shared</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">listen</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">implementations</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">///</span><span class="n">Handling</span> <span class="n">Exceptions</span> <span class="p">(</span><span class="k">Code</span> <span class="n">shared</span> <span class="k">for</span> <span class="n">listen</span> <span class="k">and</span> <span class="n">await</span> <span class="k">for</span> <span class="n">implementations</span><span class="p">)</span>
 
-<span class="o">//</span><span class="k">Generated</span><span class="w"> </span><span class="k">Stream</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="w"> </span><span class="n">Added</span><span class="w"> </span><span class="n">exception</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">purpose</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">demonstration</span><span class="w"></span>
-<span class="k">Stream</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">last</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="o">*</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="k">last</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Exception</span><span class="p">(</span><span class="s2">&quot;Demo exception when accessing 5th number&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">yield</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="k">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">able</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">send</span><span class="w"> </span><span class="n">spaced</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="k">events</span><span class="w"></span>
-<span class="w">  </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<span class="o">//</span><span class="k">Generated</span> <span class="k">Stream</span> <span class="k">with</span> <span class="n">numbers</span><span class="p">.</span> <span class="n">Added</span> <span class="n">exception</span> <span class="k">on</span> <span class="n">purpose</span> <span class="k">for</span> <span class="n">demonstration</span>
+<span class="k">Stream</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="kt">int</span> <span class="k">last</span><span class="p">)</span> <span class="n">async</span><span class="o">*</span> <span class="err">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="k">last</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="err">{</span>
+      <span class="n">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s2">&quot;Demo exception when accessing 5th number&quot;</span><span class="p">);</span>
+    <span class="err">}</span>
+    <span class="n">yield</span> <span class="n">i</span><span class="p">;</span> <span class="o">//</span><span class="k">to</span> <span class="n">be</span> <span class="n">able</span> <span class="k">to</span> <span class="n">send</span> <span class="n">spaced</span> <span class="k">out</span> <span class="k">events</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 
-<span class="o">//</span><span class="n">Example</span><span class="w"> </span><span class="c1">#7. Handle Error in Stream using `listen`</span><span class="w"></span>
-<span class="n">void</span><span class="w"> </span><span class="n">handlingExceptionUsingListen</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">var</span><span class="w"> </span><span class="k">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">stream</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">num</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">onError</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">onDone</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-<span class="o">//----</span><span class="k">END</span><span class="o">----//</span><span class="w"></span>
+<span class="o">//</span><span class="n">Example</span> <span class="c1">#7. Handle Error in Stream using `listen`</span>
+<span class="n">void</span> <span class="n">handlingExceptionUsingListen</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="n">var</span> <span class="k">stream</span> <span class="o">=</span> <span class="n">createNumberStreamWithException</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="k">stream</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="n">num</span><span class="p">),</span>
+    <span class="n">onError</span><span class="o">:</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+    <span class="n">onDone</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">),</span>
+  <span class="p">);</span>
+<span class="err">}</span>
+<span class="o">//----</span><span class="k">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="n">Entry</span><span class="w"> </span><span class="kt">point</span><span class="w"> </span><span class="k">function</span><span class="w"></span>
-<span class="n">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#7.</span><span class="w"></span>
-<span class="w">  </span><span class="n">handlingExceptionUsingListen</span><span class="p">();</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</code></pre></div>
+<span class="o">//</span><span class="n">Entry</span> <span class="kt">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#7.</span>
+  <span class="n">handlingExceptionUsingListen</span><span class="p">();</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="mf">1</span><span class="w"></span>
-<span class="mf">2</span><span class="w"></span>
-<span class="mf">3</span><span class="w"></span>
-<span class="mf">4</span><span class="w"></span>
-<span class="n">Exception</span><span class="p">:</span><span class="w"> </span><span class="n">Demo</span><span class="w"> </span><span class="n">exception</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">accessing</span><span class="w"> </span><span class="mf">5</span><span class="n">th</span><span class="w"> </span><span class="n">number</span><span class="w"></span>
-<span class="n">Finished</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">1</span>
+<span class="err">2</span>
+<span class="err">3</span>
+<span class="err">4</span>
+<span class="c">Exception: Demo exception when accessing 5th number</span>
+<span class="err">Finished</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/streams/streams.dart">here- Example#7</a>.</p>
 <hr>
@@ -543,7 +557,7 @@ Couldn't find a topic of your interest? Please leave comments or <a href="mailto
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

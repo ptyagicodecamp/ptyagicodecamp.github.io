@@ -94,7 +94,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -190,19 +190,21 @@
 <p>Imagine that you're working on a weather application, and you need a way to represent different states for weather. For example, weather can be sunny, cloudy or rainy. Now, you have two ways to represent these states in your code.</p>
 <h2>Using Constants</h2>
 <p>You can represent each state using a <code>const</code> <a href="https://dart.dev/guides/language/language-tour#keywords">keyword</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">SUNNY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Sunny&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">const</span><span class="w"> </span><span class="n">CLOUDY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Cloudy&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">const</span><span class="w"> </span><span class="n">RAINY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Rainy&#39;</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="k">const</span> <span class="n">SUNNY</span> <span class="o">=</span> <span class="s1">&#39;Sunny&#39;</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">CLOUDY</span> <span class="o">=</span> <span class="s1">&#39;Cloudy&#39;</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">RAINY</span> <span class="o">=</span> <span class="s1">&#39;Rainy&#39;</span><span class="p">;</span>
+</pre></div>
+
 
 <h2>Using Enumerated Types</h2>
 <p>Another way to represent the same information is to use enumerated types using the <code>enum</code> keyword.</p>
-<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="n">Weather</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">sunny</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">cloudy</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">rainy</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">Weather</span> <span class="p">{</span>
+  <span class="n">sunny</span><span class="p">,</span>
+  <span class="n">cloudy</span><span class="p">,</span>
+  <span class="n">rainy</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <blockquote>
 <p>Use <a href="https://dart.dev/guides/language/effective-dart/style#do-name-types-using-uppercamelcase">UpperCamelCase</a> for enums like <code>Weather</code>.</p>
@@ -216,92 +218,100 @@
 <p>When different type of weather state is represented using <code>const</code>, it's okay with
 <code>switch</code> block to declare <code>case</code> block for one constant. <code>default</code> block is optional as well.
 There's no compilation error when only one case block for <code>sunny</code> is declared, without <code>default</code> block.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Using</span><span class="w"> </span><span class="n">constants</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">weather</span><span class="w"> </span><span class="n">information</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">mainSwitchConstants</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">SUNNY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Sunny&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">CLOUDY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Cloudy&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">RAINY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Rainy&#39;</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Using</span> <span class="n">constants</span> <span class="n">to</span> <span class="n">display</span> <span class="n">weather</span> <span class="n">information</span>
+<span class="n">void</span> <span class="n">mainSwitchConstants</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="n">SUNNY</span> <span class="o">=</span> <span class="s1">&#39;Sunny&#39;</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">CLOUDY</span> <span class="o">=</span> <span class="s1">&#39;Cloudy&#39;</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">RAINY</span> <span class="o">=</span> <span class="s1">&#39;Rainy&#39;</span><span class="p">;</span>
 
-<span class="w">  </span><span class="o">//</span><span class="c1">#1. Switch doesn&#39;t complain for const, but raise error for enums</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">choice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SUNNY</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">switch</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">case</span><span class="w"> </span><span class="n">SUNNY</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sunny weather today&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+  <span class="o">//</span><span class="c1">#1. Switch doesn&#39;t complain for const, but raise error for enums</span>
+  <span class="k">var</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">SUNNY</span><span class="p">;</span>
+  <span class="n">switch</span> <span class="p">(</span><span class="n">choice</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">case</span> <span class="n">SUNNY</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sunny weather today&quot;</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Sunny weather today
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Sunny weather today</span>
+</pre></div>
+
 
 <h3>Using Enums</h3>
 <p>The <code>switch</code> block for enums requires case blocks for all of the enum class <code>Weather</code> members. The <code>default</code> block is required when case blocks for all enumerated type members are not available. Otherwise, you would see the compilation error like below:</p>
 <p><img alt="enums" src="https://ptyagicodecamp.github.io/enums_switch.jpg"></p>
 <p>Here's <code>switch</code> block with case blocks for all enum members:</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Using</span><span class="w"> </span><span class="n">Enums</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">weather</span><span class="w"> </span><span class="n">information</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">mainSwitchEnums</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">weather</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Weather</span><span class="o">.</span><span class="n">sunny</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Using</span> <span class="n">Enums</span> <span class="n">to</span> <span class="n">display</span> <span class="n">weather</span> <span class="n">information</span>
+<span class="n">void</span> <span class="n">mainSwitchEnums</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">weather</span> <span class="o">=</span> <span class="n">Weather</span><span class="o">.</span><span class="n">sunny</span><span class="p">;</span>
 
-<span class="w">  </span><span class="o">//</span><span class="n">Following</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">complain</span><span class="w"> </span><span class="n">about</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">types</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">weather</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">OR</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">default</span><span class="w"></span>
-<span class="w">  </span><span class="n">switch</span><span class="w"> </span><span class="p">(</span><span class="n">weather</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">case</span><span class="w"> </span><span class="n">Weather</span><span class="o">.</span><span class="n">sunny</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sunny weather today!&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">case</span><span class="w"> </span><span class="n">Weather</span><span class="o">.</span><span class="n">cloudy</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cloudy today!&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">case</span><span class="w"> </span><span class="n">Weather</span><span class="o">.</span><span class="n">rainy</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rainy and gloomy weather.&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+  <span class="o">//</span><span class="n">Following</span> <span class="n">code</span> <span class="n">will</span> <span class="n">complain</span> <span class="n">about</span>
+  <span class="o">//</span> <span class="ow">not</span> <span class="n">including</span> <span class="n">other</span> <span class="n">types</span> <span class="n">of</span> <span class="n">weather</span>
+  <span class="o">//</span><span class="n">OR</span> <span class="n">use</span> <span class="n">default</span>
+  <span class="n">switch</span> <span class="p">(</span><span class="n">weather</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">case</span> <span class="n">Weather</span><span class="o">.</span><span class="n">sunny</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sunny weather today!&quot;</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="n">case</span> <span class="n">Weather</span><span class="o">.</span><span class="n">cloudy</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cloudy today!&quot;</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="n">case</span> <span class="n">Weather</span><span class="o">.</span><span class="n">rainy</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rainy and gloomy weather.&quot;</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Sunny weather today!
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Sunny weather today!</span>
+</pre></div>
+
 
 <p>Check out the <code>switch</code> block when there's only <code>default</code> block is available. It prints the value of the current enum <code>weather</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Only</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">case</span><span class="o">.</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="n">compilation</span><span class="w"> </span><span class="n">issue</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">mainSwitchEnumsDefault</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">weather</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Weather</span><span class="o">.</span><span class="n">sunny</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Only</span> <span class="n">default</span> <span class="n">case</span><span class="o">.</span> <span class="n">No</span> <span class="n">compilation</span> <span class="n">issue</span>
+<span class="n">void</span> <span class="n">mainSwitchEnumsDefault</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">weather</span> <span class="o">=</span> <span class="n">Weather</span><span class="o">.</span><span class="n">sunny</span><span class="p">;</span>
 
-<span class="w">  </span><span class="n">switch</span><span class="w"> </span><span class="p">(</span><span class="n">weather</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">default</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current weather:${weather}&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+  <span class="n">switch</span> <span class="p">(</span><span class="n">weather</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">default</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current weather:${weather}&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Current weather:Weather.sunny
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Current weather:Weather.sunny</span>
+</pre></div>
+
 
 <hr>
 <h1>Iterating</h1>
 <p>The another reason to use enums over constants could be to iterate over all the different types of weather. For constants, you would need a list to store all values, and then iterate over that list.
 However, for enums, all the members of enums can be listed using <code>Weather.values</code>. Let's print all the members of <code>Weather</code> enumerated type.</p>
-<div class="highlight"><pre><span></span><code><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">mainIterating</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="c1">#2. enums can iterate on all types at once.</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">No</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="w">  </span><span class="n">Weather</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">forEach</span><span class="p">((</span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">));</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">mainIterating</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="c1">#2. enums can iterate on all types at once.</span>
+  <span class="o">//</span><span class="n">No</span> <span class="n">need</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">list</span> <span class="n">of</span> <span class="k">const</span>
+  <span class="n">Weather</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">forEach</span><span class="p">((</span><span class="n">w</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>Weather.sunny
-Weather.cloudy
-Weather.rainy
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Weather.sunny</span>
+<span class="err">Weather.cloudy</span>
+<span class="err">Weather.rainy</span>
+</pre></div>
+
 
 <hr>
 <h1>Enums extension</h1>
 <p>Enumerated types are supported by extensions. Check out my previous article on Dart Extensions <a href="https://ptyagicodecamp.github.io/dart-extensions.html#dart-extensions">here</a>. Let's add an extension method <code>console()</code> to print index of enum and a custom message <code>about</code> along with it.</p>
-<div class="highlight"><pre><span></span><code><span class="n">extension</span><span class="w"> </span><span class="n">WeatherExt</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">Weather</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">extension</span><span class="w"> </span><span class="n">WeatherExt</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">Weather</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">  </span><span class="o">//</span><span class="n">custom</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="n">weather</span><span class="w"> </span><span class="n">type</span><span class="w"></span>
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="n">weatherMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">Weather</span><span class="p">.</span><span class="nl">sunny</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;What a lovely weather&quot;</span><span class="p">,</span><span class="w"></span>
@@ -317,20 +327,23 @@ Weather.rainy
 <span class="w">  </span><span class="o">//</span><span class="n">about</span><span class="w"> </span><span class="n">property</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">custom</span><span class="w"> </span><span class="n">message</span><span class="w"></span>
 <span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">weatherMap</span><span class="o">[</span><span class="n">this</span><span class="o">]</span><span class="p">;</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Next, iterate over all the members, and use extension method <code>console()</code> to print the custom message for each weather type.</p>
-<div class="highlight"><pre><span></span><code>void mainExtension() {
-  //#3. Enum extensions. Using extension method console
-  Weather.values.forEach((w) =&gt; w.console());
-}
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">void mainExtension() {</span>
+<span class="err">  //#3. Enum extensions. Using extension method console</span>
+<span class="err">  Weather.values.forEach((w) =&gt; w.console());</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="mf">0</span><span class="w"> </span><span class="n">What</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">lovely</span><span class="w"> </span><span class="n">weather</span><span class="w"></span>
-<span class="mf">1</span><span class="w"> </span><span class="n">Scattered</span><span class="w"> </span><span class="n">showers</span><span class="w"> </span><span class="n">predicted</span><span class="w"></span>
-<span class="mf">2</span><span class="w"> </span><span class="n">Will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">raining</span><span class="w"> </span><span class="kr">to</span><span class="n">day</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">0 What a lovely weather</span>
+<span class="err">1 Scattered showers predicted</span>
+<span class="err">2 Will be raining today</span>
+</pre></div>
+
 
 <hr>
 <h1>Summary</h1>
@@ -402,7 +415,7 @@ Couldn't find a topic of your interest ? Please leave a comment or reach out at 
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

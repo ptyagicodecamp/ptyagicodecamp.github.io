@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -235,119 +235,127 @@
 <em>Note:</em> I'm using pre-defined colors in <code>MyColors</code> class that I've named as color name prefixed with a number like blue1, blue2 and so on for all colors that I've used in my web/native app.</p>
 <p>This is how a basic theme in blue would look like (all colors are used as different shades of blue).
 <em>Note:</em> In this article, I'll be implementing lighter theme only. You can read more about <code>brightness</code> attribute <a href="https://api.flutter.dev/flutter/material/ThemeData/brightness.html">here</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">static</span><span class="w"> </span><span class="nt">ThemeData</span><span class="w"> </span><span class="nt">AppThemeBlue</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">ThemeData(</span><span class="w"></span>
-<span class="w">    </span><span class="n">brightness</span><span class="p">:</span><span class="w"> </span><span class="n">Brightness</span><span class="o">.</span><span class="n">light</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">primaryColor</span><span class="o">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">blue1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">secondaryHeaderColor</span><span class="o">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">blue2</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">accentColor</span><span class="o">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">blue3</span><span class="p">,</span><span class="w">  </span>
+<div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">ThemeData</span> <span class="n">AppThemeBlue</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="n">ThemeData</span><span class="p">(</span>
+    <span class="n">brightness</span><span class="p">:</span> <span class="n">Brightness</span><span class="p">.</span><span class="n">light</span><span class="p">,</span>
+    <span class="n">primaryColor</span><span class="p">:</span> <span class="n">MyColors</span><span class="p">.</span><span class="n">blue1</span><span class="p">,</span>
+    <span class="n">secondaryHeaderColor</span><span class="p">:</span> <span class="n">MyColors</span><span class="p">.</span><span class="n">blue2</span><span class="p">,</span>
+    <span class="n">accentColor</span><span class="p">:</span> <span class="n">MyColors</span><span class="p">.</span><span class="n">blue3</span><span class="p">,</span>  
 
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+  <span class="p">);</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p>Let's define Green and Purple themes like below. All we've to do is to pick our favorite hues of those colors for <code>primaryColor</code>, <code>secondaryHeaderColor</code> and <code>accentColor</code> attributes.</p>
 <p>Green theme implementation:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">static</span><span class="w"> </span><span class="nt">ThemeData</span><span class="w"> </span><span class="nt">AppThemeGreen</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">   </span><span class="err">return</span><span class="w"> </span><span class="err">ThemeData(</span><span class="w"></span>
-<span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">Define</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">default</span><span class="w"> </span><span class="err">brightness</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">colors</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">overall</span><span class="w"> </span><span class="err">app.</span><span class="w"></span>
-<span class="w">     </span><span class="n">brightness</span><span class="p">:</span><span class="w"> </span><span class="n">Brightness</span><span class="o">.</span><span class="n">light</span><span class="p">,</span><span class="w"></span>
-<span class="w">     </span><span class="n">primaryColor</span><span class="o">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">green1</span><span class="p">,</span><span class="w"></span>
-<span class="w">     </span><span class="n">secondaryHeaderColor</span><span class="o">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">green2</span><span class="p">,</span><span class="w"></span>
-<span class="w">     </span><span class="n">accentColor</span><span class="o">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">green3</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="p">);</span><span class="w"></span>
-<span class="w"> </span><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">static ThemeData AppThemeGreen(BuildContext context) {</span>
+<span class="err">   return ThemeData(</span>
+<span class="err">     // Define the default brightness and colors for the overall app.</span>
+<span class="err">     brightness: Brightness.light,</span>
+<span class="err">     primaryColor: MyColors.green1,</span>
+<span class="err">     secondaryHeaderColor: MyColors.green2,</span>
+<span class="err">     accentColor: MyColors.green3,</span>
+<span class="err">   );</span>
+<span class="err"> }</span>
+</pre></div>
+
 
 <p>Purple theme implementation:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">static</span><span class="w"> </span><span class="nt">ThemeData</span><span class="w"> </span><span class="nt">AppThemePurple</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">ThemeData(</span><span class="w"></span>
-<span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Define</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">default</span><span class="w"> </span><span class="err">brightness</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">colors</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">overall</span><span class="w"> </span><span class="err">app.</span><span class="w"></span>
-<span class="w">    </span><span class="n">brightness</span><span class="p">:</span><span class="w"> </span><span class="n">Brightness</span><span class="o">.</span><span class="n">light</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">primaryColor</span><span class="o">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">purple1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">secondaryHeaderColor</span><span class="o">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">purple2</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">accentColor</span><span class="o">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">purple3</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">static ThemeData AppThemePurple(BuildContext context) {</span>
+<span class="err">  return ThemeData(</span>
+<span class="err">    // Define the default brightness and colors for the overall app.</span>
+<span class="err">    brightness: Brightness.light,</span>
+<span class="err">    primaryColor: MyColors.purple1,</span>
+<span class="err">    secondaryHeaderColor: MyColors.purple2,</span>
+<span class="err">    accentColor: MyColors.purple3,</span>
+<span class="err">  );</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>TextThemes:</strong>
 Let's define default text theme as below. We'll use this <code>textTheme</code> for our Blue and Purple themes.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="w"> </span><span class="nt">Define</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">default</span><span class="w"> </span><span class="nt">TextTheme</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nt">headline</span><span class="o">,</span><span class="w"> </span><span class="nt">title</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="nt">body</span><span class="w"> </span><span class="nt">text</span><span class="w"></span>
-<span class="nt">static</span><span class="w"> </span><span class="nt">TextTheme</span><span class="w"> </span><span class="nt">getDefaultTextTheme</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">TextTheme(</span><span class="w"></span>
-<span class="w">    </span><span class="n">headline</span><span class="p">:</span><span class="w"> </span><span class="nf">TextStyle</span><span class="p">(</span><span class="n">fontSize</span><span class="err">:</span><span class="w"> </span><span class="mf">36.0</span><span class="p">,</span><span class="w"> </span><span class="n">fontWeight</span><span class="err">:</span><span class="w"> </span><span class="n">FontWeight</span><span class="err">.</span><span class="kc">bold</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">title</span><span class="o">:</span><span class="w"> </span><span class="nf">TextStyle</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">fontSize</span><span class="err">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">fontStyle</span><span class="err">:</span><span class="w"> </span><span class="n">FontStyle</span><span class="err">.</span><span class="kc">normal</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">fontWeight</span><span class="err">:</span><span class="w"> </span><span class="n">FontWeight</span><span class="err">.</span><span class="kc">bold</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">body1</span><span class="o">:</span><span class="w"> </span><span class="nf">TextStyle</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">fontSize</span><span class="err">:</span><span class="w"> </span><span class="mf">26.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">fontStyle</span><span class="err">:</span><span class="w"> </span><span class="n">FontStyle</span><span class="err">.</span><span class="kc">italic</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">fontWeight</span><span class="err">:</span><span class="w"> </span><span class="n">FontWeight</span><span class="err">.</span><span class="kc">normal</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">// Define the default TextTheme for headline, title and body text</span>
+<span class="err">static TextTheme getDefaultTextTheme(BuildContext context) {</span>
+<span class="err">  return TextTheme(</span>
+<span class="err">    headline: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),</span>
+<span class="err">    title: TextStyle(</span>
+<span class="err">        fontSize: 20.0,</span>
+<span class="err">        fontStyle: FontStyle.normal,</span>
+<span class="err">        fontWeight: FontWeight.bold),</span>
+<span class="err">    body1: TextStyle(</span>
+<span class="err">        fontSize: 26.0,</span>
+<span class="err">        fontStyle: FontStyle.italic,</span>
+<span class="err">        fontWeight: FontWeight.normal),</span>
+<span class="err">  );</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Extending parent themes:</strong>
 Extending parent themes means to be able to change few attributes of parent theme, while keep other attributes same. In this example, we'll update <code>textTheme</code>. Our GreenTheme will make use of this example. Say, we want to make our title text as italic. Notice the italic text in header section in images above.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="nt">Example</span><span class="w"> </span><span class="nt">of</span><span class="w"> </span><span class="nt">extending</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">parent</span><span class="w"> </span><span class="nt">theme</span><span class="o">.</span><span class="w"> </span><span class="nt">Overwrites</span><span class="w"> </span><span class="nt">textTheme</span><span class="w"> </span><span class="nt">with</span><span class="w"> </span><span class="nt">given</span><span class="w"> </span><span class="nt">attributes</span><span class="w"></span>
-<span class="nt">static</span><span class="w"> </span><span class="nt">TextTheme</span><span class="w"> </span><span class="nt">getItalicTitleTextTheme</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">Theme.of(context).textTheme.copyWith(</span><span class="w"></span>
-<span class="w">        </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="nf">TextStyle</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">fontSize</span><span class="err">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="n">fontStyle</span><span class="err">:</span><span class="w"> </span><span class="n">FontStyle</span><span class="err">.</span><span class="kc">italic</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="n">fontWeight</span><span class="err">:</span><span class="w"> </span><span class="n">FontWeight</span><span class="err">.</span><span class="kc">bold</span><span class="p">),</span><span class="w"></span>
-<span class="w">      </span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">//Example of extending the parent theme. Overwrites textTheme with given attributes</span>
+<span class="err">static TextTheme getItalicTitleTextTheme(BuildContext context) {</span>
+<span class="err">  return Theme.of(context).textTheme.copyWith(</span>
+<span class="err">        title: TextStyle(</span>
+<span class="err">            fontSize: 20.0,</span>
+<span class="err">            fontStyle: FontStyle.italic,</span>
+<span class="err">            fontWeight: FontWeight.bold),</span>
+<span class="err">      );</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Integrating <code>TextTheme</code> in ThemeData:</strong>
 Blue and Purple themes will use default textTheme:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">static</span><span class="w"> </span><span class="nt">ThemeData</span><span class="w"> </span><span class="nt">AppThemeBlue</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">ThemeData(</span><span class="w"></span>
-<span class="w">    </span><span class="err">...</span><span class="w"></span>
-<span class="w">    </span><span class="n">textTheme</span><span class="p">:</span><span class="w"> </span><span class="nf">getDefaultTextTheme</span><span class="p">(</span><span class="n">context</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">ThemeData</span> <span class="n">AppThemeBlue</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="n">ThemeData</span><span class="p">(</span>
+    <span class="p">...</span>
+    <span class="n">textTheme</span><span class="p">:</span> <span class="n">getDefaultTextTheme</span><span class="p">(</span><span class="n">context</span><span class="p">),</span>
+  <span class="p">);</span>
+<span class="err">}</span>
 
-<span class="nt">static</span><span class="w"> </span><span class="nt">ThemeData</span><span class="w"> </span><span class="nt">AppThemePurple</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">ThemeData(</span><span class="w"></span>
-<span class="w">    </span><span class="err">...</span><span class="w"></span>
-<span class="w">    </span><span class="n">textTheme</span><span class="p">:</span><span class="w"> </span><span class="nf">getDefaultTextTheme</span><span class="p">(</span><span class="n">context</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="k">static</span> <span class="n">ThemeData</span> <span class="n">AppThemePurple</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="n">ThemeData</span><span class="p">(</span>
+    <span class="p">...</span>
+    <span class="n">textTheme</span><span class="p">:</span> <span class="n">getDefaultTextTheme</span><span class="p">(</span><span class="n">context</span><span class="p">),</span>
+  <span class="p">);</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p>Green theme will use extended textTheme <code>getItalicTitleTextTheme()</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">static</span><span class="w"> </span><span class="nt">ThemeData</span><span class="w"> </span><span class="nt">AppThemeGreen</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">ThemeData(</span><span class="w"></span>
-<span class="w">    </span><span class="err">...</span><span class="w"></span>
-<span class="w">    </span><span class="n">textTheme</span><span class="p">:</span><span class="w"> </span><span class="nf">getItalicTitleTextTheme</span><span class="p">(</span><span class="n">context</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">static ThemeData AppThemeGreen(BuildContext context) {</span>
+<span class="err">  return ThemeData(</span>
+<span class="err">    ...</span>
+<span class="err">    textTheme: getItalicTitleTextTheme(context),</span>
+<span class="err">  );</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Using Custom themes in <code>main.dart</code>:</strong></p>
 <p>You can customize theme by changing <code>theme</code> attribute of <code>MaterialApp</code> as show below:</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">entrance</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">app</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">entrance</span> <span class="n">into</span> <span class="n">app</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span>
 
-<span class="k">class</span><span class="w"> </span><span class="n">MyApp</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">widget</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">application</span><span class="o">.</span><span class="w"></span>
-<span class="w">  </span><span class="err">@</span><span class="n">override</span><span class="w"></span>
-<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="o">...</span><span class="w"></span>
+<span class="k">class</span> <span class="n">MyApp</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="n">This</span> <span class="n">widget</span> <span class="k">is</span> <span class="n">the</span> <span class="n">root</span> <span class="n">of</span> <span class="n">your</span> <span class="n">application</span><span class="o">.</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">MaterialApp</span><span class="p">(</span>
+      <span class="o">...</span>
 
-<span class="w">      </span><span class="o">//</span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">theme</span><span class="w"> </span><span class="o">!</span><span class="w"></span>
-<span class="w">      </span><span class="n">theme</span><span class="p">:</span><span class="w"> </span><span class="n">MyAppThemes</span><span class="o">.</span><span class="n">AppThemeGreen</span><span class="p">(</span><span class="n">context</span><span class="p">),</span><span class="w"></span>
+      <span class="o">//</span><span class="n">This</span> <span class="k">is</span> <span class="n">where</span> <span class="n">you</span> <span class="n">can</span> <span class="n">call</span> <span class="n">a</span> <span class="n">new</span> <span class="n">theme</span> <span class="o">!</span>
+      <span class="n">theme</span><span class="p">:</span> <span class="n">MyAppThemes</span><span class="o">.</span><span class="n">AppThemeGreen</span><span class="p">(</span><span class="n">context</span><span class="p">),</span>
 
-<span class="w">      </span><span class="o">...</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+      <span class="o">...</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p>You'll notice same textTheme for Blue and Purple theme. For GreenTheme, you'll see italic navigational links in the header section. Below are the screen shots for all themes at this stage. Note that all buttons are themed similarly as per their main theme color.</p>
 <p><em><strong><em>Theme #1 BlueTheme:</em></strong></em> Using blue color for all buttons.</p>
@@ -359,31 +367,33 @@ Blue and Purple themes will use default textTheme:</p>
 <h3><strong>Part #2:</strong> How to create and use local themes for a widget</h3>
 <p>Now, we want a particular button say "Subscribe" hued in orange theme. How would we do that ? This is where local themes come handy. Let's see how can we define a local theme.
 In <code>EmailBox</code> class, subscribe button is added as below:</p>
-<div class="highlight"><pre><span></span><code>...
+<div class="highlight"><pre><span></span><span class="p">...</span>
 
-Expanded(
-  flex: 2,
-  child: SubscribeButton(),
-)
+<span class="n">Expanded</span><span class="p">(</span>
+  <span class="n">flex</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="n">child</span><span class="p">:</span> <span class="n">SubscribeButton</span><span class="p">(),</span>
+<span class="p">)</span>
 
-...
-</code></pre></div>
+<span class="p">...</span>
+</pre></div>
+
 
 <p>We can use <code>Theme</code> widget to wrap <code>SubscribeButton()</code> widget. Pass local theme <code>ThemeData</code> as <code>data</code> attribute of <code>Theme</code> widget, and add <code>SubscribeButton()</code> widget as child. In local <code>ThemeData</code>, you can overwrite <code>primaryColor</code>, <code>secondaryHeaderColor</code> and <code>accentColor</code>. I'm using orange hues in this example.
 The benefit of this approach is to keep widgets theme agnostic. For example, branding logo is something that you may want to keep as is, even if you may want to change look and feel of all your app.</p>
-<div class="highlight"><pre><span></span><code>Expanded(
-    flex: 2,
-    child:
-        //Example of applying local themes to a certain widget in app
-        Theme(
-      data: ThemeData(
-        primaryColor: MyColors.orange1,
-        secondaryHeaderColor: MyColors.orange2,
-        accentColor: MyColors.orange3,
-      ),
-      child: SubscribeButton(),
-    ))
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Expanded(</span>
+<span class="err">    flex: 2,</span>
+<span class="err">    child:</span>
+<span class="err">        //Example of applying local themes to a certain widget in app</span>
+<span class="err">        Theme(</span>
+<span class="err">      data: ThemeData(</span>
+<span class="err">        primaryColor: MyColors.orange1,</span>
+<span class="err">        secondaryHeaderColor: MyColors.orange2,</span>
+<span class="err">        accentColor: MyColors.orange3,</span>
+<span class="err">      ),</span>
+<span class="err">      child: SubscribeButton(),</span>
+<span class="err">    ))</span>
+</pre></div>
+
 
 <p>This is how SubscribeButton would look like for all themes:</p>
 <p><img alt="Susbscribe Local Theme" src="https://ptyagicodecamp.github.io/ftf_theme_part2_subscribe.jpg"></p>
@@ -397,32 +407,34 @@ Configuring custom fonts in Flutter Web is slightly different than Flutter Nativ
 <li>Copy <code>IndieFlower.ttf</code> file into <code>web/assets</code> directory.</li>
 <li>Create <code>FontManifest.json</code> file inside <code>web/assets</code> directory with following contents:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>[
-    {
-        &quot;family&quot;: &quot;Indie Flower&quot;,
-        &quot;fonts&quot;: [
-            {
-                &quot;asset&quot;: &quot;IndieFlower.ttf&quot;
-            }
-        ]
-    }
+<div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="err">{</span>
+        <span class="ss">&quot;family&quot;</span><span class="p">:</span> <span class="ss">&quot;Indie Flower&quot;</span><span class="p">,</span>
+        <span class="ss">&quot;fonts&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="err">{</span>
+                <span class="ss">&quot;asset&quot;</span><span class="p">:</span> <span class="ss">&quot;IndieFlower.ttf&quot;</span>
+            <span class="err">}</span>
+        <span class="p">]</span>
+    <span class="err">}</span>
 
-]
-</code></pre></div>
+<span class="p">]</span>
+</pre></div>
+
 
 <ul>
 <li>Update BlueTheme to include <code>fontFamily</code> as 'Indie Flower':</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nt">static</span><span class="w"> </span><span class="nt">ThemeData</span><span class="w"> </span><span class="nt">AppThemeBlue</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">ThemeData(</span><span class="w"></span>
-<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">ThemeData</span> <span class="n">AppThemeBlue</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="n">ThemeData</span><span class="p">(</span>
+    <span class="p">...</span>
 
-<span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">I</span><span class="w"> </span><span class="err">used</span><span class="w"> </span><span class="err">custom</span><span class="w"> </span><span class="err">font</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">default</span><span class="w"> </span><span class="err">font</span><span class="w"> </span><span class="err">family.</span><span class="w"></span>
-<span class="w">    </span><span class="n">fontFamily</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Indie Flower&#39;</span><span class="p">,</span><span class="w"></span>
+    <span class="o">//</span> <span class="n">I</span> <span class="n">used</span> <span class="n">custom</span> <span class="n">font</span> <span class="k">for</span> <span class="n">the</span> <span class="k">default</span> <span class="n">font</span> <span class="n">family</span><span class="p">.</span>
+    <span class="n">fontFamily</span><span class="p">:</span> <span class="s1">&#39;Indie Flower&#39;</span><span class="p">,</span>
 
-<span class="w">    </span><span class="o">...</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+    <span class="p">...</span>
+  <span class="p">);</span>
+</pre></div>
+
 
 <p>That's pretty much to it ! Here's screen shot of the web version:
 <img alt="Custom Font-Web" src="https://ptyagicodecamp.github.io/ftf_theme_final_blue.jpg"></p>
@@ -434,11 +446,12 @@ Configuring custom fonts in Flutter Web is slightly different than Flutter Nativ
 <li>Copy over fonts file 'IndieFlower.ttf' inside fonts directory as <code>fonts/IndieFlower.ttf</code> directory.</li>
 <li>Update fonts related configuration in <code>pubspec.yaml</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>fonts:
-  - family: Indie Flower
-    fonts:
-      - asset: fonts/IndieFlower.ttf
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="c">fonts:</span>
+<span class="c">  - family: Indie Flower</span>
+<span class="c">    fonts:</span>
+<span class="c">      - asset: fonts/IndieFlower.ttf</span>
+</pre></div>
+
 
 <p><strong>Screenshot of final landing page at Android platform:</strong></p>
 <p><img alt="Android" src="https://ptyagicodecamp.github.io/ftf_theme_final_native_a.jpg"></p>
@@ -513,7 +526,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

@@ -96,7 +96,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -199,89 +199,95 @@ Clicking on action/overflow menu items displays status message.</p>
 <p><img alt="List item icon" src="https://ptyagicodecamp.github.io/basic_appbar.png"></p>
 <h3>Lets's go!</h3>
 <p>Step #1. Create AppBar inside <code>Scaffold</code>. <code>backgroundColor</code> is used for setting background color of the AppBar</p>
-<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">Scaffold</span><span class="o">(</span><span class="w"></span>
-<span class="w">      </span><span class="nt">appBar</span><span class="o">:</span><span class="w"> </span><span class="nt">AppBar</span><span class="o">(</span><span class="w"></span>
-<span class="w">        </span><span class="nt">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="nt">Colors</span><span class="p">.</span><span class="nc">blue</span><span class="o">,</span><span class="w"></span>
-<span class="w">        </span><span class="o">...</span><span class="w"></span>
-<span class="w">      </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="o">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">return Scaffold(</span>
+<span class="err">      appBar: AppBar(</span>
+<span class="err">        backgroundColor: Colors.blue,</span>
+<span class="err">        ...</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
+</pre></div>
+
 
 <p>Step #2. Add image Icon using <code>leading</code> attribute</p>
-<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">Scaffold</span><span class="o">(</span><span class="w"></span>
-<span class="w">      </span><span class="nt">appBar</span><span class="o">:</span><span class="w"> </span><span class="nt">AppBar</span><span class="o">(</span><span class="w"></span>
-<span class="w">        </span><span class="o">...</span><span class="w"></span>
-<span class="w">        </span><span class="nt">leading</span><span class="o">:</span><span class="w"> </span><span class="nt">Icon</span><span class="o">(</span><span class="nt">Icons</span><span class="p">.</span><span class="nc">import_contacts</span><span class="o">),</span><span class="w"></span>
-<span class="w">        </span><span class="o">...</span><span class="w"></span>
-<span class="w">      </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="o">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">return Scaffold(</span>
+<span class="err">      appBar: AppBar(</span>
+<span class="err">        ...</span>
+<span class="err">        leading: Icon(Icons.import_contacts),</span>
+<span class="err">        ...</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
+</pre></div>
+
 
 <p>Step #3. Add AppBar's title</p>
-<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">Scaffold</span><span class="o">(</span><span class="w"></span>
-<span class="w">      </span><span class="nt">appBar</span><span class="o">:</span><span class="w"> </span><span class="nt">AppBar</span><span class="o">(</span><span class="w"></span>
-<span class="w">        </span><span class="o">...</span><span class="w"></span>
-<span class="w">        </span><span class="nt">title</span><span class="o">:</span><span class="w"> </span><span class="nt">Text</span><span class="o">(</span><span class="s2">&quot;Contacts&quot;</span><span class="o">),</span><span class="w"></span>
-<span class="w">        </span><span class="o">...</span><span class="w"></span>
-<span class="w">      </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="o">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">return Scaffold(</span>
+<span class="err">      appBar: AppBar(</span>
+<span class="err">        ...</span>
+<span class="err">        title: Text(&quot;Contacts&quot;),</span>
+<span class="err">        ...</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
+</pre></div>
+
 
 <p>Step #4. Add <code>IconButton</code> action item to send message.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">Scaffold</span><span class="o">(</span><span class="w"></span>
-<span class="w">      </span><span class="nt">appBar</span><span class="o">:</span><span class="w"> </span><span class="nt">AppBar</span><span class="o">(</span><span class="w"></span>
-<span class="w">        </span><span class="o">...</span><span class="w"></span>
-<span class="w">        </span><span class="nt">actions</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">Widget</span><span class="o">&gt;</span><span class="cp">[</span><span class="w"></span>
-<span class="w">          </span><span class="nx">IconButton</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="nx">icon</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="nx">Icons.message</span><span class="p">),</span><span class="w"></span>
-<span class="w">            </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="nx">clicked</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Message sent&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">          </span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="cp">]</span><span class="o">,</span><span class="w"></span>
-<span class="w">      </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="o">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">return Scaffold(</span>
+<span class="err">      appBar: AppBar(</span>
+<span class="err">        ...</span>
+<span class="err">        actions: &lt;Widget&gt;[</span>
+<span class="err">          IconButton(</span>
+<span class="err">            icon: Icon(Icons.message),</span>
+<span class="err">            onPressed: () {</span>
+<span class="err">              clicked(context, &quot;Message sent&quot;);</span>
+<span class="err">            },</span>
+<span class="err">          ),</span>
+<span class="err">        ],</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
+</pre></div>
+
 
 <p>Step #5. Add overflow action item using <code>PopupMenuButton</code></p>
-<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">Scaffold</span><span class="o">(</span><span class="w"></span>
-<span class="w">      </span><span class="nt">appBar</span><span class="o">:</span><span class="w"> </span><span class="nt">AppBar</span><span class="o">(</span><span class="w"></span>
-<span class="w">        </span><span class="o">...</span><span class="w"></span>
-<span class="w">        </span><span class="nt">actions</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">Widget</span><span class="o">&gt;</span><span class="cp">[</span><span class="w"></span>
-<span class="w">          </span><span class="nx">...</span><span class="w"></span>
-<span class="w">          </span><span class="nx">PopupMenuButton</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="nx">itemBuilder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="nx">BuildContext</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="err">[</span><span class="w"></span>
-<span class="w">                </span><span class="nx">PopupMenuItem</span><span class="p">(</span><span class="nx">child</span><span class="p">:</span><span class="w"> </span><span class="nx">IconButton</span><span class="p">(</span><span class="w"></span>
-<span class="w">                  </span><span class="nx">icon</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="nx">Icons.email</span><span class="p">),</span><span class="w"></span>
-<span class="w">                  </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                   </span><span class="nx">clicked</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Email sent&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">                  </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="p">),),</span><span class="w"></span>
-<span class="w">              </span><span class="cp">]</span><span class="o">;</span><span class="w"></span>
-<span class="w">            </span><span class="err">}</span><span class="o">,</span><span class="w"></span>
-<span class="w">          </span><span class="o">)</span><span class="w"></span>
-<span class="w">        </span><span class="o">],</span><span class="w"></span>
-<span class="w">      </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="o">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">return Scaffold(</span>
+<span class="err">      appBar: AppBar(</span>
+<span class="err">        ...</span>
+<span class="err">        actions: &lt;Widget&gt;[</span>
+<span class="err">          ...</span>
+<span class="err">          PopupMenuButton(</span>
+<span class="err">            itemBuilder: (BuildContext context) {</span>
+<span class="err">              return [</span>
+<span class="err">                PopupMenuItem(child: IconButton(</span>
+<span class="err">                  icon: Icon(Icons.email),</span>
+<span class="err">                  onPressed: () {</span>
+<span class="err">                   clicked(context, &quot;Email sent&quot;);</span>
+<span class="err">                  },</span>
+<span class="err">                ),),</span>
+<span class="err">              ];</span>
+<span class="err">            },</span>
+<span class="err">          )</span>
+<span class="err">        ],</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
+</pre></div>
+
 
 <p>Step #6. Handle action item clicks</p>
-<div class="highlight"><pre><span></span><code><span class="nt">void</span><span class="w"> </span><span class="nt">clicked</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">,</span><span class="w"> </span><span class="nt">menu</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="err">final</span><span class="w"> </span><span class="err">scaffold</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">Scaffold.of(context)</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="err">scaffold.showSnackBar(</span><span class="w"></span>
-<span class="w">      </span><span class="err">SnackBar(</span><span class="w"></span>
-<span class="w">        </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="nf">Text</span><span class="p">(</span><span class="n">menu</span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="n">action</span><span class="o">:</span><span class="w"> </span><span class="nf">SnackBarAction</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">label</span><span class="err">:</span><span class="w"> </span><span class="s1">&#39;UNDO&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="n">onPressed</span><span class="err">:</span><span class="w"> </span><span class="n">scaffold</span><span class="err">.</span><span class="n">hideCurrentSnackBar</span><span class="p">),</span><span class="w"></span>
-<span class="w">      </span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">void clicked(BuildContext context, menu) {</span>
+<span class="err">    final scaffold = Scaffold.of(context);</span>
+<span class="err">    scaffold.showSnackBar(</span>
+<span class="err">      SnackBar(</span>
+<span class="err">        content: Text(menu),</span>
+<span class="err">        action: SnackBarAction(</span>
+<span class="err">            label: &#39;UNDO&#39;,</span>
+<span class="err">            onPressed: scaffold.hideCurrentSnackBar),</span>
+<span class="err">      ),</span>
+<span class="err">    );</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <h4>Complete example code</h4>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span>
 
@@ -357,7 +363,8 @@ Clicking on action/overflow menu items displays status message.</p>
     <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong><em>Source code repo:</em></strong> 
 Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/flutter_basic_appbar">here</a></p>
@@ -419,7 +426,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

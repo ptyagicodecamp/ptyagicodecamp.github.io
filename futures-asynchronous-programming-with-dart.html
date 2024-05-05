@@ -90,7 +90,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -204,32 +204,34 @@
 <h1><code>await</code> and <code>async</code></h1>
 <p>The <code>await</code> and <code>async</code> keywords are used together. The function that supposed to be doing the expensive work is marked with keyword <code>async</code>. Inside the function, the expensive call is prefixed by keyword <code>await</code>. Program suspends when <code>await</code> is called or function return or reaches at the end of the function.</p>
 <p>Let's see in following code snippet how <code>async</code> and <code>await</code> keywords are used. <code>await</code> can only be called in function which is marked/declared as <code>async</code>. <code>Future</code> keyword before the function <code>makeDataCall()</code> means that this function will be executing  asynchronously and will be suspended when come across <code>await</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="w"> </span><span class="n">Expensive</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">could</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">takes</span><span class="w"></span>
-<span class="o">//</span><span class="w"> </span><span class="n">long</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">results</span><span class="o">.</span><span class="w"></span>
-<span class="o">//</span><span class="w"> </span><span class="n">Assume</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">takes</span><span class="w"> </span><span class="n">long</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">real</span><span class="o">-</span><span class="n">world</span><span class="w"></span>
-<span class="nb nb-Type">String</span><span class="w"> </span><span class="n">getExpansiveData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Expensive</span> <span class="n">function</span> <span class="n">could</span> <span class="n">be</span> <span class="n">a</span> <span class="n">function</span> <span class="n">that</span> <span class="n">takes</span>
+<span class="o">//</span> <span class="n">long</span> <span class="n">time</span> <span class="n">to</span> <span class="n">process</span> <span class="n">data</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">results</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Assume</span> <span class="n">this</span> <span class="n">function</span> <span class="n">takes</span> <span class="n">long</span> <span class="n">time</span> <span class="n">to</span> <span class="k">return</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="n">world</span>
+<span class="nb nb-Type">String</span> <span class="n">getExpansiveData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="o">//</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">asynchronous</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">makes</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">expensive</span><span class="w"></span>
-<span class="o">//</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nb">prints</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">results</span><span class="o">.</span><span class="w"></span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">makeDataCall</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">getExpansiveData</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="o">//----</span><span class="n">END</span><span class="o">----//</span><span class="w"></span>
+<span class="o">//</span> <span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">asynchronous</span> <span class="n">function</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span>
+<span class="o">//</span> <span class="n">data</span> <span class="n">call</span> <span class="ow">and</span> <span class="nb">prints</span> <span class="n">the</span> <span class="n">results</span><span class="o">.</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCall</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getExpansiveData</span><span class="p">();</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="n">Entry</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">function</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#1.</span><span class="w"></span>
-<span class="w">  </span><span class="n">makeDataCall</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#1.</span>
+  <span class="n">makeDataCall</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p>The <code>makeDataCall()</code> returns a <code>Future</code> of type <code>void</code> because there's nothing returned by this function. It simply prints the results using <code>print()</code> function.</p>
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>I&#39;m expansive data
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">I&#39;m expansive data</span>
+</pre></div>
+
 
 <p><strong><em>Note:</em></strong> You can run this code in <a href="https://dartpad.dev/">DartPad</a> by copy and pasting above code as is.</p>
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#1</a>.</p>
@@ -238,78 +240,82 @@
 <p>In this section, we'll see how to handle exceptions thrown in the long running asynchronous operations. When <code>await</code> keyword is used, asynchronous call behaves like a synchronous one. In such cases, error handling for asynchronous and synchronous code is handled similar way.</p>
 <p>The asynchronous call prefixed with <code>await</code> keyword is wrapped in a <code>try</code>/<code>catch</code> block. When an exception is thrown in the <code>try</code> block, the <code>catch</code> block executes its code.</p>
 <p>Let's add the try/catch block in previous code, and see how it'll look like now. Let's name this function as <code>makeDataCallWithException()</code>. This function throws an <code>Exception</code> at purpose in <code>try</code> block to demonstrate the point here.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Example</span><span class="o">#</span><span class="mi">2</span><span class="p">.</span> <span class="n">Demonstrating</span> <span class="n">handling</span> <span class="n">exception</span> <span class="n">thrown</span> <span class="n">in</span> <span class="n">asynchronous</span> <span class="n">operations</span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="o">#</span><span class="mi">2</span><span class="p">.</span> <span class="n">Demonstrating</span> <span class="n">handling</span> <span class="k">exception</span> <span class="n">thrown</span> <span class="k">in</span> <span class="n">asynchronous</span> <span class="n">operations</span>
 
-<span class="o">//</span><span class="n">Expansive</span> <span class="n">operations</span> <span class="n">ended</span> <span class="n">up</span> <span class="n">throwing</span> <span class="n">exception</span>
-<span class="n">String</span> <span class="n">getExpansiveDataWithException</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">throw</span> <span class="n">Exception</span><span class="p">(</span><span class="s">&quot;Error occurred in fetching data&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="o">//</span><span class="n">Expansive</span> <span class="n">operations</span> <span class="n">ended</span> <span class="n">up</span> <span class="n">throwing</span> <span class="k">exception</span>
+<span class="n">String</span> <span class="n">getExpansiveDataWithException</span><span class="p">()</span> <span class="err">{</span>
+  <span class="n">throw</span> <span class="k">Exception</span><span class="p">(</span><span class="ss">&quot;Error occurred in fetching data&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-<span class="o">//</span><span class="n">Asynchronous</span> <span class="n">function</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span> <span class="n">data</span> <span class="n">call</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCallWithException</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">try</span> <span class="p">{</span>
+<span class="o">//</span><span class="n">Asynchronous</span> <span class="k">function</span> <span class="n">that</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">expensive</span> <span class="k">data</span> <span class="k">call</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCallWithException</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="n">try</span> <span class="err">{</span>
     <span class="n">await</span> <span class="n">getExpansiveDataWithException</span><span class="p">();</span>
-  <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="err">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="err">{</span>
     <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">toString</span><span class="p">());</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="o">//----</span><span class="kr">END</span><span class="o">----//</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+<span class="o">//</span><span class="c1">----END----//</span>
 
-<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
   <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="o">#</span><span class="mi">2</span><span class="p">.</span>
   <span class="n">makeDataCallWithException</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">Exception</span><span class="o">:</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="n">occurred</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">fetching</span><span class="w"> </span><span class="n">data</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">Exception</span><span class="o">:</span> <span class="n">Error</span> <span class="n">occurred</span> <span class="k">in</span> <span class="n">fetching</span> <span class="n">data</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#2</a>.</p>
 <hr>
 <h2>Sequencing Function Calls</h2>
 <p>It's possible to control the order of execution of asynchronous functions using sequencing with help of <code>await</code> and <code>async</code>. Let's see how this is done in example below. In this example, there are three functions <code>getDataA()</code>, <code>getDataB()</code>, and <code>getDataC()</code>. We want them to execute one after another. The <code>await</code> keyword does exactly that. It executes the function synchronously until it comes across <code>await</code>, and wait there for it to finish before execute next line, in this case another <code>await</code> call.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Example</span><span class="o">#</span><span class="mi">3</span><span class="p">.</span> <span class="n">Sequencing</span> <span class="n">order</span> <span class="n">of</span> <span class="n">asynchronous</span> <span class="n">calls</span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="o">#</span><span class="mi">3</span><span class="p">.</span> <span class="n">Sequencing</span> <span class="k">order</span> <span class="k">of</span> <span class="n">asynchronous</span> <span class="n">calls</span>
 
-<span class="n">void</span> <span class="n">getDataA</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">print</span><span class="p">(</span><span class="s">&quot;dataA&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">void</span> <span class="n">getDataA</span><span class="p">()</span> <span class="err">{</span>
+  <span class="n">print</span><span class="p">(</span><span class="ss">&quot;dataA&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-<span class="n">void</span> <span class="n">getDataB</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">print</span><span class="p">(</span><span class="s">&quot;dataB&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">void</span> <span class="n">getDataB</span><span class="p">()</span> <span class="err">{</span>
+  <span class="n">print</span><span class="p">(</span><span class="ss">&quot;dataB&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-<span class="n">String</span> <span class="n">getDataC</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">return</span> <span class="s">&quot;dataC&quot;</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="n">String</span> <span class="n">getDataC</span><span class="p">()</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="ss">&quot;dataC&quot;</span><span class="p">;</span>
+<span class="err">}</span>
 
-<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">sequencingOperations</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="o">//</span><span class="n">Order</span> <span class="n">matters</span><span class="p">.</span>
-  <span class="o">//</span><span class="n">Functions</span> <span class="n">will</span> <span class="n">execute</span> <span class="n">in</span> <span class="n">the</span> <span class="n">order</span> <span class="n">they</span> <span class="n">were</span> <span class="n">called</span><span class="p">.</span>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="k">function</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">sequencingOperations</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span><span class="k">Order</span> <span class="n">matters</span><span class="p">.</span>
+  <span class="o">//</span><span class="n">Functions</span> <span class="n">will</span> <span class="k">execute</span> <span class="k">in</span> <span class="n">the</span> <span class="k">order</span> <span class="n">they</span> <span class="n">were</span> <span class="k">called</span><span class="p">.</span>
   <span class="n">await</span> <span class="n">getDataA</span><span class="p">();</span>
   <span class="n">await</span> <span class="n">getDataB</span><span class="p">();</span>
 
-  <span class="o">//</span><span class="n">getDataC</span><span class="p">()</span> <span class="n">will</span> <span class="n">execute</span> <span class="n">first</span> <span class="n">and</span> <span class="n">will</span>
-  <span class="o">//</span><span class="n">pass</span> <span class="n">its</span> <span class="n">data</span> <span class="n">into</span> <span class="n">print</span><span class="p">()</span> <span class="n">function</span>
+  <span class="o">//</span><span class="n">getDataC</span><span class="p">()</span> <span class="n">will</span> <span class="k">execute</span> <span class="k">first</span> <span class="k">and</span> <span class="n">will</span>
+  <span class="o">//</span><span class="n">pass</span> <span class="n">its</span> <span class="k">data</span> <span class="k">into</span> <span class="n">print</span><span class="p">()</span> <span class="k">function</span>
   <span class="n">print</span><span class="p">(</span><span class="n">await</span> <span class="n">getDataC</span><span class="p">());</span>
-<span class="p">}</span>
-<span class="o">//----</span><span class="kr">END</span><span class="o">----//</span>
+<span class="err">}</span>
+<span class="o">//</span><span class="c1">----END----//</span>
 
-<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
   <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="o">#</span><span class="mi">3</span><span class="p">.</span>
   <span class="n">sequencingOperations</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
 <p>Each of the above methods will execute one by one starting from <code>getDataA()</code> and finishing executing <code>getDataC()</code>.</p>
-<div class="highlight"><pre><span></span><code>dataA
-dataB
-dataC
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">dataA</span>
+<span class="err">dataB</span>
+<span class="err">dataC</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#3</a>.</p>
 <hr>
@@ -322,169 +328,177 @@ dataC
 </ul>
 <h2><code>Future&lt;String&gt;</code></h2>
 <p>Example below transforms our earlier example code of <code>await</code> and <code>async</code> into a <code>Future</code> API implementation. Lookout for the use of <code>then()</code> in <code>mainWithFutureAPI()</code> function. In this example, <code>Future</code> is returning <code>String</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Using</span><span class="w"> </span><span class="n">Future</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="p">(</span><span class="n">Future</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">returning</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Using</span> <span class="n">Future</span> <span class="n">API</span> <span class="p">(</span><span class="n">Future</span> <span class="k">is</span> <span class="n">returning</span> <span class="nb nb-Type">String</span> <span class="n">type</span><span class="p">)</span>
 
-<span class="o">//</span><span class="n">Future</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">returned</span><span class="o">.</span><span class="w"></span>
-<span class="o">//</span><span class="n">This</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">instance</span><span class="w"> </span><span class="n">of</span><span class="w"></span>
-<span class="o">//</span><span class="n">Future</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="n">data</span><span class="o">.</span><span class="w"></span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">makeDataCallFutureString</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">getExpansiveData</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="o">//</span><span class="n">Future</span> <span class="n">with</span> <span class="nb nb-Type">String</span> <span class="n">data</span> <span class="k">is</span> <span class="n">being</span> <span class="n">returned</span><span class="o">.</span>
+<span class="o">//</span><span class="n">This</span> <span class="n">function</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">instance</span> <span class="n">of</span>
+<span class="o">//</span><span class="n">Future</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">data</span><span class="o">.</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">makeDataCallFutureString</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">await</span> <span class="n">getExpansiveData</span><span class="p">();</span>
+<span class="p">}</span>
 
-<span class="o">//</span><span class="w"> </span><span class="n">Assume</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">takes</span><span class="w"> </span><span class="n">long</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">real</span><span class="o">-</span><span class="n">world</span><span class="o">.</span><span class="w"></span>
-<span class="nb nb-Type">String</span><span class="w"> </span><span class="n">getExpansiveData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">mainWithFutureAPI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">theFuture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makeDataCallFutureString</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">  </span><span class="o">//</span><span class="n">then</span><span class="p">()</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">instance</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Future</span><span class="w"></span>
-<span class="w">  </span><span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">});</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="o">//----</span><span class="n">END</span><span class="o">----//</span><span class="w"></span>
+<span class="o">//</span> <span class="n">Assume</span> <span class="n">this</span> <span class="n">function</span> <span class="n">takes</span> <span class="n">long</span> <span class="n">time</span> <span class="n">to</span> <span class="k">return</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="n">world</span><span class="o">.</span>
+<span class="nb nb-Type">String</span> <span class="n">getExpansiveData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
 
-<span class="o">//</span><span class="n">Entry</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">function</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#4.</span><span class="w"></span>
-<span class="w">  </span><span class="n">mainWithFutureAPI</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="n">void</span> <span class="n">mainWithFutureAPI</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">theFuture</span> <span class="o">=</span> <span class="n">makeDataCallFutureString</span><span class="p">();</span>
+
+  <span class="o">//</span><span class="n">then</span><span class="p">()</span> <span class="k">is</span> <span class="n">called</span> <span class="n">at</span> <span class="n">the</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">Future</span>
+  <span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
+
+
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#4.</span>
+  <span class="n">mainWithFutureAPI</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>I&#39;m expansive data
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">I&#39;m expansive data</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#4</a>.</p>
 <hr>
 <h2><code>Future&lt;void&gt;</code></h2>
 <p>Let's look at another example of <code>Future</code> API. In this example, <code>Future</code> doesn't return anything and looks like <code>Future&lt;void&gt;</code>. In such case, <code>then()</code> callback will use an <code>unused argument</code>, represented as <code>_</code> by convention. Checkout the code snippet below to see it in action.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Example</span><span class="c1">#5. Using Future API (Future is returning void type)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="c1">#5. Using Future API (Future is returning void type)</span>
 
-<span class="o">//</span><span class="w"> </span><span class="n">Assume</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">takes</span><span class="w"> </span><span class="n">long</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">real</span><span class="o">-</span><span class="n">world</span><span class="o">.</span><span class="w"></span>
-<span class="nb nb-Type">String</span><span class="w"> </span><span class="n">getExpansiveData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="o">//</span> <span class="n">Assume</span> <span class="n">this</span> <span class="n">function</span> <span class="n">takes</span> <span class="n">long</span> <span class="n">time</span> <span class="n">to</span> <span class="k">return</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="n">world</span><span class="o">.</span>
+<span class="nb nb-Type">String</span> <span class="n">getExpansiveData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="o">//</span><span class="n">Future</span><span class="w"> </span><span class="n">doesn</span><span class="s1">&#39;t return anything</span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">makeDataCallFutureVoid</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">getExpansiveData</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="o">//</span><span class="n">Future</span> <span class="n">doesn</span><span class="s1">&#39;t return anything</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">makeDataCallFutureVoid</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="n">await</span> <span class="n">getExpansiveData</span><span class="p">();</span>
+<span class="p">}</span>
 
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">mainWithFutureAPIVoid</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">theFuture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makeDataCallFutureVoid</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">then</span><span class="p">()</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">underscore</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">unused</span><span class="w"> </span><span class="n">argument</span><span class="o">.</span><span class="w"></span>
-<span class="w">  </span><span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="o">//</span><span class="n">_</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">used</span><span class="w"></span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There&#39;s nothing to be printed here. Work is already done.&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">});</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="o">//----</span><span class="n">END</span><span class="o">----//</span><span class="w"></span>
+<span class="n">void</span> <span class="n">mainWithFutureAPIVoid</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">theFuture</span> <span class="o">=</span> <span class="n">makeDataCallFutureVoid</span><span class="p">();</span>
+  <span class="o">//</span><span class="n">then</span><span class="p">()</span> <span class="n">uses</span> <span class="n">underscore</span> <span class="k">as</span> <span class="n">unused</span> <span class="n">argument</span><span class="o">.</span>
+  <span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">_</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span><span class="n">_</span> <span class="k">is</span> <span class="ow">not</span> <span class="n">used</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There&#39;s nothing to be printed here. Work is already done.&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="n">Entry</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">function</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#5.</span><span class="w"></span>
-<span class="w">  </span><span class="n">mainWithFutureAPIVoid</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#5.</span>
+  <span class="n">mainWithFutureAPIVoid</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>There&#39;s nothing to be printed here. Work is already done.
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">There&#39;s nothing to be printed here. Work is already done.</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#5</a>.</p>
 <hr>
 <h1>Error Handling - <code>Future</code> API</h1>
 <p><code>Future</code> API uses chaining to handle exceptions. Error is caught and handled in <code>catchError()</code> block. The <code>catchError()</code> is chained with <code>then()</code> method.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="w"> </span><span class="n">Example</span><span class="c1">#6. Future API - Error Handling</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Example</span><span class="c1">#6. Future API - Error Handling</span>
 
-<span class="o">//</span><span class="w"> </span><span class="n">Assume</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">takes</span><span class="w"> </span><span class="n">long</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">real</span><span class="o">-</span><span class="n">world</span><span class="o">.</span><span class="w"></span>
-<span class="nb nb-Type">String</span><span class="w"> </span><span class="n">getExpansiveData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="o">//</span> <span class="n">Assume</span> <span class="n">this</span> <span class="n">function</span> <span class="n">takes</span> <span class="n">long</span> <span class="n">time</span> <span class="n">to</span> <span class="k">return</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="n">world</span><span class="o">.</span>
+<span class="nb nb-Type">String</span> <span class="n">getExpansiveData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">&quot;I&#39;m expansive data&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="o">//</span><span class="w"> </span><span class="n">Future</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">returned</span><span class="o">.</span><span class="w"></span>
-<span class="o">//</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">instance</span><span class="w"> </span><span class="n">of</span><span class="w"></span>
-<span class="o">//</span><span class="w"> </span><span class="n">Future</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="n">data</span><span class="o">.</span><span class="w"></span>
-<span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">makeDataCallFutureAPIError</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">getExpansiveData</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="n">throw</span><span class="w"> </span><span class="n">Exception</span><span class="p">(</span><span class="s2">&quot;Error occurred in making data call: $data&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="o">//</span> <span class="n">Future</span> <span class="n">with</span> <span class="nb nb-Type">String</span> <span class="n">data</span> <span class="k">is</span> <span class="n">being</span> <span class="n">returned</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">This</span> <span class="n">function</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">instance</span> <span class="n">of</span>
+<span class="o">//</span> <span class="n">Future</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">data</span><span class="o">.</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">makeDataCallFutureAPIError</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getExpansiveData</span><span class="p">();</span>
+  <span class="n">throw</span> <span class="n">Exception</span><span class="p">(</span><span class="s2">&quot;Error occurred in making data call: $data&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">mainWithFutureAPIError</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">theFuture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makeDataCallFutureAPIError</span><span class="p">();</span><span class="w"></span>
+<span class="n">void</span> <span class="n">mainWithFutureAPIError</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">theFuture</span> <span class="o">=</span> <span class="n">makeDataCallFutureAPIError</span><span class="p">();</span>
 
-<span class="w">  </span><span class="o">//</span><span class="n">Error</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">caught</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">handled</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">catchError</span><span class="w"> </span><span class="n">block</span><span class="w"></span>
-<span class="w">  </span><span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">})</span><span class="o">.</span><span class="n">catchError</span><span class="p">((</span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">});</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="o">//----</span><span class="n">END</span><span class="o">----//</span><span class="w"></span>
+  <span class="o">//</span><span class="n">Error</span> <span class="k">is</span> <span class="n">caught</span> <span class="ow">and</span> <span class="n">handled</span> <span class="ow">in</span> <span class="n">catchError</span> <span class="n">block</span>
+  <span class="n">theFuture</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+  <span class="p">})</span><span class="o">.</span><span class="n">catchError</span><span class="p">((</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="o">//----</span><span class="n">END</span><span class="o">----//</span>
 
-<span class="o">//</span><span class="w"> </span><span class="n">Entry</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">function</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">Run</span><span class="w"> </span><span class="n">Example</span><span class="c1">#6.</span><span class="w"></span>
-<span class="w">  </span><span class="n">mainWithFutureAPIError</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<span class="o">//</span> <span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="c1">#6.</span>
+  <span class="n">mainWithFutureAPIError</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">Exception</span><span class="o">:</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="n">occurred</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">making</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">call</span><span class="o">:</span><span class="w"> </span><span class="n">I</span><span class="err">&#39;</span><span class="n">m</span><span class="w"> </span><span class="n">expansive</span><span class="w"> </span><span class="n">data</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">Exception</span><span class="o">:</span> <span class="n">Error</span> <span class="n">occurred</span> <span class="k">in</span> <span class="n">making</span> <span class="n">data</span> <span class="n">call</span><span class="o">:</span> <span class="n">I</span><span class="err">&#39;</span><span class="n">m</span> <span class="n">expansive</span> <span class="n">data</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#6</a>.</p>
 <hr>
 <h1>Usage of <code>Future.wait()</code></h1>
 <p>The <a href="https://api.dart.dev/stable/2.8.2/dart-async/Future/wait.html"><code>Future.wait()</code></a> is used when multiple asynchronous functions needs to be executed before calling another function. This could be useful when data from multiple sources/functions is needed to be able to take next step.
 In another version, we're using Future API to accomplish what we did using <code>async</code> &amp; <code>await</code> in <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">'Example#3'</a> above.</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Example</span><span class="o">#</span><span class="mi">7</span><span class="p">.</span> <span class="n">Using</span> <span class="err">`</span><span class="n">Future</span><span class="p">.</span><span class="n">wait</span><span class="p">()</span><span class="err">`</span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Example</span><span class="o">#</span><span class="mi">7</span><span class="p">.</span> <span class="k">Using</span> <span class="o">`</span><span class="n">Future</span><span class="p">.</span><span class="n">wait</span><span class="p">()</span><span class="o">`</span>
 
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">return</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getData</span><span class="p">(</span><span class="k">data</span><span class="p">)</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="k">data</span><span class="p">;</span>
+<span class="err">}</span>
 
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataAFuture</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">return</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="s">&quot;dataA&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataAFuture</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="ss">&quot;dataA&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataBFuture</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">return</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="s">&quot;dataB&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataBFuture</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="ss">&quot;dataB&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataCFuture</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="n">return</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="s">&quot;dataC&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getDataCFuture</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="k">return</span> <span class="n">await</span> <span class="n">getData</span><span class="p">(</span><span class="ss">&quot;dataC&quot;</span><span class="p">);</span>
+<span class="err">}</span>
 
-<span class="n">mainWithFutureAPIWait</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
-  <span class="o">//</span><span class="n">Chaining</span> <span class="n">Futures</span> <span class="n">in</span> <span class="n">order</span>
+<span class="n">mainWithFutureAPIWait</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span><span class="n">Chaining</span> <span class="n">Futures</span> <span class="k">in</span> <span class="k">order</span>
   <span class="n">await</span> <span class="n">Future</span><span class="p">.</span><span class="n">wait</span><span class="p">([</span>
     <span class="n">getDataAFuture</span><span class="p">(),</span>
     <span class="n">getDataBFuture</span><span class="p">(),</span>
     <span class="n">getDataCFuture</span><span class="p">(),</span>
   <span class="p">])</span>
-      <span class="p">.</span><span class="n">then</span><span class="p">(</span>
+      <span class="p">.</span><span class="k">then</span><span class="p">(</span>
         <span class="p">(</span><span class="n">List</span> <span class="n">responses</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="n">responses</span><span class="p">),</span>
       <span class="p">)</span>
       <span class="p">.</span><span class="n">catchError</span><span class="p">((</span><span class="n">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="n">error</span><span class="p">));</span>
-<span class="p">}</span>
-<span class="o">//----</span><span class="kr">END</span><span class="o">----//</span>
+<span class="err">}</span>
+<span class="o">//</span><span class="c1">----END----//</span>
 
-<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="n">function</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="o">//</span><span class="n">Entry</span> <span class="n">point</span> <span class="k">function</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
   <span class="o">//</span><span class="n">Run</span> <span class="n">Example</span><span class="o">#</span><span class="mi">7</span><span class="p">.</span>
   <span class="n">mainWithFutureAPIWait</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><strong>Output:</strong></p>
-<div class="highlight"><pre><span></span><code>[dataA, dataB, dataC]
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">[dataA, dataB, dataC]</span>
+</pre></div>
+
 
 <p><strong>Source Code</strong> is available <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/futures/futures.dart">here- Example#7</a>.</p>
 <hr>
@@ -545,7 +559,7 @@ Couldn't find a topic of your interest? Please leave comments or <a href="mailto
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

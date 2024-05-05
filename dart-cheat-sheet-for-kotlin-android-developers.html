@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -191,86 +191,100 @@
 <p>I've used <a href="https://play.kotlinlang.org">Kotlin Playground</a> and <a href="https://dartpad.dartlang.org/">DartPad</a> to run and play around with languages.</p>
 <h3>Task: Print "Hello World"</h3>
 <p><strong>Kotlin:</strong></p>
-<div class="highlight"><pre><span></span><code>fun main() {
-  println(&quot;Hello World&quot;)
-}
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">fun main() {</span>
+<span class="err">  println(&quot;Hello World&quot;)</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><em>Output:</em></p>
-<div class="highlight"><pre><span></span><code>Hello World
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Hello World</span>
+</pre></div>
+
 
 <p><strong>Dart:</strong></p>
-<div class="highlight"><pre><span></span><code>void main() {
-  print(&quot;Hello World&quot;);
-}
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">void main() {</span>
+<span class="err">  print(&quot;Hello World&quot;);</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><em>Output:</em></p>
-<div class="highlight"><pre><span></span><code>Hello World
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">Hello World</span>
+</pre></div>
+
 
 <hr>
 <h3>Task: How to delete duplicates in a List</h3>
 <p><strong>Kotlin:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">fun</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">myList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">myList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myList</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="w"></span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="n">myList</span><span class="p">)</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">fun</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">myList</span> <span class="o">=</span> <span class="n">listOf</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">)</span>
+  <span class="n">myList</span> <span class="o">=</span> <span class="n">myList</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">myList</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><em>Output:</em></p>
-<div class="highlight"><pre><span></span><code>[A, B, C, D]
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">[A, B, C, D]</span>
+</pre></div>
+
 
 <p>Another way in Kotlin. Note usage of <code>arrayOf()</code> instead <code>listOf</code>.</p>
-<div class="highlight"><pre><span></span><code>fun main() {
-  val myList = arrayOf(&#39;A&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;D&#39;, &#39;B&#39;, &#39;C&#39;)
-  val noDupsList = myList.distinct()
-  print(noDupsList)
-}
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">fun main() {</span>
+<span class="err">  val myList = arrayOf(&#39;A&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;D&#39;, &#39;B&#39;, &#39;C&#39;)</span>
+<span class="err">  val noDupsList = myList.distinct()</span>
+<span class="err">  print(noDupsList)</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p><em>Output:</em></p>
-<div class="highlight"><pre><span></span><code>[A, B, C, D]
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">[A, B, C, D]</span>
+</pre></div>
+
 
 <p><strong>Dart:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">Delete</span><span class="w"> </span><span class="n">duplicates</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">myList</span><span class="w"></span>
-<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">myList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="p">];</span><span class="w"></span>
-<span class="w">  </span><span class="n">myList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Set</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">myList</span><span class="p">)</span><span class="o">.</span><span class="n">toList</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="n">myList</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Delete</span> <span class="n">duplicates</span> <span class="n">from</span> <span class="n">myList</span>
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">myList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">];</span>
+  <span class="n">myList</span> <span class="o">=</span> <span class="n">Set</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">myList</span><span class="p">)</span><span class="o">.</span><span class="n">toList</span><span class="p">();</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">myList</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><em>Output:</em></p>
-<div class="highlight"><pre><span></span><code>[A, B, C, D]
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">[A, B, C, D]</span>
+</pre></div>
+
 
 <hr>
 <h3>Task:</h3>
 <p><strong>Kotlin:</strong></p>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
 
 <p><em>Output:</em></p>
 <p><strong>Dart:</strong></p>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
 
 <p><em>Output:</em></p>
 <hr>
 <h3>Task:</h3>
 <p><strong>Kotlin:</strong></p>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
 
 <p><em>Output:</em></p>
 <p><strong>Dart:</strong></p>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
 
 <p><em>Output:</em></p>
 <hr>
@@ -335,7 +349,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

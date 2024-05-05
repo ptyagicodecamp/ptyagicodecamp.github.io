@@ -99,7 +99,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -202,9 +202,8 @@ Today, we'll use our voice to enter the search term rather typing text in search
 <li>Integrating speech recognition using <a href="https://github.com/rxlabz/speech_recognition">SpeechRecognition Flutter plugin</a></li>
 </ol>
 <p><img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice_small.gif"></p>
-<p>Checkout in action:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FefiyOjHvLk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<p>Checkout in action:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FefiyOjHvLk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <h3>Lets's get started!</h3>
 <h3>Dependencies: <code>pubspec.yaml</code></h3>
 <p>We'll need two new dependencies:</p>
@@ -216,60 +215,62 @@ Today, we'll use our voice to enter the search term rather typing text in search
 <p><a href="https://pub.dev/packages/permission_handler">Permission Handler Plugin</a> is needed to ask for platform specific permissions required to capture voice input.</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">speech_recognition</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
-<span class="w">  </span><span class="n">permission_handler</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
+  <span class="n">speech_recognition</span><span class="o">:</span> <span class="o">^</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span>
+  <span class="n">permission_handler</span><span class="o">:</span> <span class="o">^</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+
 
 <h3>Adding mic icon in SearchBar</h3>
 <p><strong>Mic icon in search bar:</strong></p>
 <p><img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice.png"></p>
 <p>First, we'll add a microphone icon in AppBar's actions. Please note the new code <code>_buildVoiceInput(..)</code> responsible for accepting voice input. Refer to <a href="https://ptyagicodecamp.github.io/implementing-search-action-in-appbar.html#implementing-search-action-in-appbar">previous article</a> for other details.</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="n">override</span><span class="w"></span>
-<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">appBar</span><span class="p">:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">automaticallyImplyLeading</span><span class="p">:</span><span class="w"> </span><span class="bp">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Word List&#39;</span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="n">actions</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
-<span class="w">          </span><span class="n">_buildVoiceInput</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="n">_speechRecognitionAvailable</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">_isListening</span><span class="w"></span>
-<span class="w">                </span><span class="err">?</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">start</span><span class="p">()</span><span class="w"></span>
-<span class="w">                </span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">stop</span><span class="p">(),</span><span class="w"></span>
-<span class="w">            </span><span class="n">label</span><span class="p">:</span><span class="w"> </span><span class="n">_isListening</span><span class="w"> </span><span class="err">?</span><span class="w"> </span><span class="s1">&#39;Listening...&#39;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="p">),</span><span class="w"></span>
-<span class="w">          </span><span class="o">//</span><span class="n">Adding</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">search</span><span class="w"> </span><span class="n">widget</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">AppBar</span><span class="w"></span>
-<span class="w">          </span><span class="n">IconButton</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">tooltip</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Search&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="n">icon</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">search</span><span class="p">),</span><span class="w"></span>
-<span class="w">            </span><span class="o">//</span><span class="n">Don</span><span class="s1">&#39;t block the main thread</span>
-<span class="w">            </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="n">showSearchPage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">_searchDelegate</span><span class="p">,</span><span class="w"> </span><span class="n">transcription</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">          </span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="p">),</span><span class="w"></span>
-<span class="w">      </span><span class="o">...</span><span class="w"></span>
-<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="err">@</span><span class="n">override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+      <span class="n">appBar</span><span class="p">:</span> <span class="n">AppBar</span><span class="p">(</span>
+        <span class="n">automaticallyImplyLeading</span><span class="p">:</span> <span class="bp">false</span><span class="p">,</span>
+        <span class="n">title</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Word List&#39;</span><span class="p">),</span>
+        <span class="n">actions</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+          <span class="n">_buildVoiceInput</span><span class="p">(</span>
+            <span class="n">onPressed</span><span class="p">:</span> <span class="n">_speechRecognitionAvailable</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">_isListening</span>
+                <span class="err">?</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">start</span><span class="p">()</span>
+                <span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">stop</span><span class="p">(),</span>
+            <span class="n">label</span><span class="p">:</span> <span class="n">_isListening</span> <span class="err">?</span> <span class="s1">&#39;Listening...&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+          <span class="p">),</span>
+          <span class="o">//</span><span class="n">Adding</span> <span class="n">the</span> <span class="n">search</span> <span class="n">widget</span> <span class="ow">in</span> <span class="n">AppBar</span>
+          <span class="n">IconButton</span><span class="p">(</span>
+            <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Search&#39;</span><span class="p">,</span>
+            <span class="n">icon</span><span class="p">:</span> <span class="k">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">search</span><span class="p">),</span>
+            <span class="o">//</span><span class="n">Don</span><span class="s1">&#39;t block the main thread</span>
+            <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="n">showSearchPage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">_searchDelegate</span><span class="p">,</span> <span class="n">transcription</span><span class="p">);</span>
+            <span class="p">},</span>
+          <span class="p">),</span>
+        <span class="p">],</span>
+      <span class="p">),</span>
+      <span class="o">...</span>
+   <span class="p">}</span>
 
-<span class="w">   </span><span class="n">Widget</span><span class="w"> </span><span class="n">_buildVoiceInput</span><span class="p">({</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">VoidCallback</span><span class="w"> </span><span class="n">onPressed</span><span class="p">})</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="n">new</span><span class="w"> </span><span class="n">Padding</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">padding</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mf">12.0</span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Row</span><span class="p">(</span><span class="w"></span>
-<span class="w">          </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="n">FlatButton</span><span class="p">(</span><span class="w"></span>
-<span class="w">              </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="w"></span>
-<span class="w">                </span><span class="n">label</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="n">style</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="n">color</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">white</span><span class="p">),</span><span class="w"></span>
-<span class="w">              </span><span class="p">),</span><span class="w"></span>
-<span class="w">            </span><span class="p">),</span><span class="w"></span>
-<span class="w">            </span><span class="n">IconButton</span><span class="p">(</span><span class="w"></span>
-<span class="w">              </span><span class="n">icon</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">mic</span><span class="p">),</span><span class="w"></span>
-<span class="w">              </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="n">onPressed</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="p">),</span><span class="w"></span>
-<span class="w">          </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="p">));</span><span class="w"></span>
-</code></pre></div>
+   <span class="n">Widget</span> <span class="n">_buildVoiceInput</span><span class="p">({</span><span class="nb nb-Type">String</span> <span class="n">label</span><span class="p">,</span> <span class="n">VoidCallback</span> <span class="n">onPressed</span><span class="p">})</span> <span class="o">=&gt;</span>
+    <span class="n">new</span> <span class="n">Padding</span><span class="p">(</span>
+        <span class="n">padding</span><span class="p">:</span> <span class="k">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mf">12.0</span><span class="p">),</span>
+        <span class="n">child</span><span class="p">:</span> <span class="n">Row</span><span class="p">(</span>
+          <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+            <span class="n">FlatButton</span><span class="p">(</span>
+              <span class="n">child</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">style</span><span class="p">:</span> <span class="k">const</span> <span class="n">TextStyle</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">white</span><span class="p">),</span>
+              <span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">IconButton</span><span class="p">(</span>
+              <span class="n">icon</span><span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">mic</span><span class="p">),</span>
+              <span class="n">onPressed</span><span class="p">:</span> <span class="n">onPressed</span><span class="p">,</span>
+            <span class="p">),</span>
+          <span class="p">],</span>
+        <span class="p">));</span>
+</pre></div>
+
 
 <h3>Handling permissions</h3>
 <p>Android and iOS platforms need user's consent to capture voice input.  <a href="https://pub.dev/packages/permission_handler">permission_handler plugin</a> helps to request audio permissions from user at both platforms.</p>
@@ -293,38 +294,41 @@ Add following keys in <code>Info.plist</code>. Feel free to modify text descript
 </li>
 </ul>
 <p>Once <code>AndroidManifest.xml</code> and <code>Info.plist</code> in place, next step is to ask for permissions from Flutter app, <code>main.dart</code> in our case like below:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">void</span> <span class="nv">requestPermission</span><span class="ss">()</span> <span class="nv">async</span> {
-  <span class="nv">PermissionStatus</span> <span class="nv">permission</span> <span class="o">=</span> <span class="nv">await</span> <span class="nv">PermissionHandler</span><span class="ss">()</span>
-      .<span class="nv">checkPermissionStatus</span><span class="ss">(</span><span class="nv">PermissionGroup</span>.<span class="nv">microphone</span><span class="ss">)</span><span class="c1">;</span>
+<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">requestPermission</span><span class="p">()</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="n">PermissionStatus</span> <span class="n">permission</span> <span class="o">=</span> <span class="n">await</span> <span class="n">PermissionHandler</span><span class="p">()</span>
+      <span class="p">.</span><span class="n">checkPermissionStatus</span><span class="p">(</span><span class="n">PermissionGroup</span><span class="p">.</span><span class="n">microphone</span><span class="p">);</span>
 
-  <span class="k">if</span> <span class="ss">(</span><span class="nv">permission</span> <span class="o">!=</span> <span class="nv">PermissionStatus</span>.<span class="nv">granted</span><span class="ss">)</span> {
-    <span class="nv">await</span> <span class="nv">PermissionHandler</span><span class="ss">()</span>
-        .<span class="nv">requestPermissions</span><span class="ss">(</span>[<span class="nv">PermissionGroup</span>.<span class="nv">microphone</span>]<span class="ss">)</span><span class="c1">;</span>
-  }
-}
-</code></pre></div>
+  <span class="k">if</span> <span class="p">(</span><span class="n">permission</span> <span class="o">!=</span> <span class="n">PermissionStatus</span><span class="p">.</span><span class="k">granted</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">await</span> <span class="n">PermissionHandler</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">requestPermissions</span><span class="p">([</span><span class="n">PermissionGroup</span><span class="p">.</span><span class="n">microphone</span><span class="p">]);</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <h3>Integrating SpeechRecognition</h3>
 <p>I'll be using <a href="https://github.com/rxlabz/speech_recognition">SpeechRecognition Flutter plugin</a> to integrate capture voice input for search term.
 Speech recognizer related code needs to go inside a <code>Stateful</code> widget. In our case, it goes under <code>_SearchAppBarRecipeState</code>. <code>_speech</code> holds the reference to <code>SpeechRecognition</code> instance. <code>_speechRecognitionAvailable</code> flag gets updated based on availability of speech recognizer. <code>_isListening</code> is set to true when app is activated to listen to user input. Lastly, <code>transcription</code> is voice input transcribed int text. This is the text that will be used to run search against.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">_SearchAppBarRecipeState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">SeachAppBarRecipe</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="o">//</span><span class="n">speech</span><span class="w"></span>
-<span class="w">  </span><span class="n">SpeechRecognition</span><span class="w"> </span><span class="n">_speech</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="n">_speechRecognitionAvailable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="n">_isListening</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_SearchAppBarRecipeState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">SeachAppBarRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">speech</span>
+  <span class="n">SpeechRecognition</span> <span class="n">_speech</span><span class="p">;</span>
+  <span class="nb nb-Type">bool</span> <span class="n">_speechRecognitionAvailable</span> <span class="o">=</span> <span class="bp">false</span><span class="p">;</span>
+  <span class="nb nb-Type">bool</span> <span class="n">_isListening</span> <span class="o">=</span> <span class="bp">false</span><span class="p">;</span>
 
-<span class="w">  </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">transcription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="o">...</span><span class="w"></span>
-<span class="p">}</span><span class="w">  </span>
-</code></pre></div>
+  <span class="nb nb-Type">String</span> <span class="n">transcription</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+  <span class="o">...</span>
+<span class="p">}</span>  
+</pre></div>
+
 
 <p>Initializing SpeechRecognizer in <code>initState()</code> method:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">@override</span><span class="w"></span>
-<span class="n">void</span><span class="w"> </span><span class="n">initState</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="w">  </span><span class="n">activateSpeechRecognizer</span><span class="p">();</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">@override</span>
+<span class="err">void initState() {</span>
+<span class="err">  ...</span>
+<span class="err">  activateSpeechRecognizer();</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <p>Speech recognizer is activated with callbacks. Few of the important callbacks are:</p>
 <ul>
@@ -341,56 +345,58 @@ Speech recognizer related code needs to go inside a <code>Stateful</code> widget
 <p><code>onRecognitionResult(String text)</code>: This is where the actual magic happens. Voice input is transcribed to English text. We're using only 'en_US' locale for this code recipe. Once the transcribed text is available, it's sent over to search page like below:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>showSearchPage(context, _searchDelegate, transcription);
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">showSearchPage(context, _searchDelegate, transcription);</span>
+</pre></div>
+
 
 <p>Transcribed text gets populated in search bar. When user accepts the search word by hitting enter, search result is displayed on result page similar to how it was displayed in <a href="https://ptyagicodecamp.github.io/implementing-search-action-in-appbar.html#implementing-search-action-in-appbar">previous tutorial</a>.</p>
 <ul>
 <li><code>onRecognitionComplete()</code>: This callback is called when user stops talking. At this point, <code>_isListening</code> flag is set to <code>false</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nt">void</span><span class="w"> </span><span class="nt">activateSpeechRecognizer</span><span class="o">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">requestPermission()</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="nt">void</span> <span class="nt">activateSpeechRecognizer</span><span class="o">()</span> <span class="p">{</span>
+  <span class="err">requestPermission()</span><span class="p">;</span>
 
-<span class="w">  </span><span class="err">_speech</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">new</span><span class="w"> </span><span class="err">SpeechRecognition()</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="err">_speech.setAvailabilityHandler(onSpeechAvailability)</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="err">_speech.setCurrentLocaleHandler(onCurrentLocale)</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="err">_speech.setRecognitionStartedHandler(onRecognitionStarted)</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="err">_speech.setRecognitionResultHandler(onRecognitionResult)</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="err">_speech.setRecognitionCompleteHandler(onRecognitionComplete)</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="err">_speech</span><span class="w"></span>
-<span class="w">      </span><span class="err">.activate()</span><span class="w"></span>
-<span class="w">      </span><span class="err">.then((res)</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">setState(()</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">_speechRecognitionAvailable</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">res))</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="err">_speech</span> <span class="err">=</span> <span class="err">new</span> <span class="err">SpeechRecognition()</span><span class="p">;</span>
+  <span class="err">_speech.setAvailabilityHandler(onSpeechAvailability)</span><span class="p">;</span>
+  <span class="err">_speech.setCurrentLocaleHandler(onCurrentLocale)</span><span class="p">;</span>
+  <span class="err">_speech.setRecognitionStartedHandler(onRecognitionStarted)</span><span class="p">;</span>
+  <span class="err">_speech.setRecognitionResultHandler(onRecognitionResult)</span><span class="p">;</span>
+  <span class="err">_speech.setRecognitionCompleteHandler(onRecognitionComplete)</span><span class="p">;</span>
+  <span class="err">_speech</span>
+      <span class="err">.activate()</span>
+      <span class="err">.then((res)</span> <span class="err">=&gt;</span> <span class="err">setState(()</span> <span class="err">=&gt;</span> <span class="err">_speechRecognitionAvailable</span> <span class="err">=</span> <span class="err">res))</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="nt">void</span><span class="w"> </span><span class="nt">start</span><span class="o">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">_speech</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nc">listen</span><span class="o">(</span><span class="nt">locale</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;en_US&#39;</span><span class="o">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">result</span><span class="o">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">print</span><span class="o">(</span><span class="s1">&#39;Started listening =&gt; result $result&#39;</span><span class="o">));</span><span class="w"></span>
+<span class="nt">void</span> <span class="nt">start</span><span class="o">()</span> <span class="o">=&gt;</span> <span class="nt">_speech</span>
+    <span class="p">.</span><span class="nc">listen</span><span class="o">(</span><span class="nt">locale</span><span class="o">:</span> <span class="s1">&#39;en_US&#39;</span><span class="o">)</span>
+    <span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">result</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="nt">print</span><span class="o">(</span><span class="s1">&#39;Started listening =&gt; result $result&#39;</span><span class="o">));</span>
 
-<span class="nt">void</span><span class="w"> </span><span class="nt">cancel</span><span class="o">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">_speech</span><span class="p">.</span><span class="nc">cancel</span><span class="o">()</span><span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">result</span><span class="o">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">setState</span><span class="o">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">_isListening</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">result</span><span class="o">));</span><span class="w"></span>
+<span class="nt">void</span> <span class="nt">cancel</span><span class="o">()</span> <span class="o">=&gt;</span>
+    <span class="nt">_speech</span><span class="p">.</span><span class="nc">cancel</span><span class="o">()</span><span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">result</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="nt">setState</span><span class="o">(()</span> <span class="o">=&gt;</span> <span class="nt">_isListening</span> <span class="o">=</span> <span class="nt">result</span><span class="o">));</span>
 
-<span class="nt">void</span><span class="w"> </span><span class="nt">stop</span><span class="o">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">_speech</span><span class="p">.</span><span class="nc">stop</span><span class="o">()</span><span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">result</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="err">setState(()</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">_isListening</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">result)</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="o">);</span><span class="w"></span>
+<span class="nt">void</span> <span class="nt">stop</span><span class="o">()</span> <span class="o">=&gt;</span> <span class="nt">_speech</span><span class="p">.</span><span class="nc">stop</span><span class="o">()</span><span class="p">.</span><span class="nc">then</span><span class="o">((</span><span class="nt">result</span><span class="o">)</span> <span class="p">{</span>
+      <span class="err">setState(()</span> <span class="err">=&gt;</span> <span class="err">_isListening</span> <span class="err">=</span> <span class="err">result)</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">);</span>
 
-<span class="nt">void</span><span class="w"> </span><span class="nt">onSpeechAvailability</span><span class="o">(</span><span class="nt">bool</span><span class="w"> </span><span class="nt">result</span><span class="o">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">setState</span><span class="o">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">_speechRecognitionAvailable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">result</span><span class="o">);</span><span class="w"></span>
+<span class="nt">void</span> <span class="nt">onSpeechAvailability</span><span class="o">(</span><span class="nt">bool</span> <span class="nt">result</span><span class="o">)</span> <span class="o">=&gt;</span>
+    <span class="nt">setState</span><span class="o">(()</span> <span class="o">=&gt;</span> <span class="nt">_speechRecognitionAvailable</span> <span class="o">=</span> <span class="nt">result</span><span class="o">);</span>
 
-<span class="nt">void</span><span class="w"> </span><span class="nt">onCurrentLocale</span><span class="o">(</span><span class="nt">String</span><span class="w"> </span><span class="nt">locale</span><span class="o">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">setState</span><span class="o">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">print</span><span class="o">(</span><span class="s2">&quot;current locale: $locale&quot;</span><span class="o">));</span><span class="w"></span>
+<span class="nt">void</span> <span class="nt">onCurrentLocale</span><span class="o">(</span><span class="nt">String</span> <span class="nt">locale</span><span class="o">)</span> <span class="o">=&gt;</span>
+    <span class="nt">setState</span><span class="o">(()</span> <span class="o">=&gt;</span> <span class="nt">print</span><span class="o">(</span><span class="s2">&quot;current locale: $locale&quot;</span><span class="o">));</span>
 
-<span class="nt">void</span><span class="w"> </span><span class="nt">onRecognitionStarted</span><span class="o">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">setState</span><span class="o">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">_isListening</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">true</span><span class="o">);</span><span class="w"></span>
+<span class="nt">void</span> <span class="nt">onRecognitionStarted</span><span class="o">()</span> <span class="o">=&gt;</span> <span class="nt">setState</span><span class="o">(()</span> <span class="o">=&gt;</span> <span class="nt">_isListening</span> <span class="o">=</span> <span class="nt">true</span><span class="o">);</span>
 
-<span class="nt">void</span><span class="w"> </span><span class="nt">onRecognitionResult</span><span class="o">(</span><span class="nt">String</span><span class="w"> </span><span class="nt">text</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">setState(()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="err">transcription</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">text</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="err">showSearchPage(context,</span><span class="w"> </span><span class="err">_searchDelegate,</span><span class="w"> </span><span class="err">transcription)</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="err">stop()</span><span class="p">;</span><span class="w"> </span><span class="err">//stop</span><span class="w"> </span><span class="err">listening</span><span class="w"> </span><span class="err">now</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="o">);</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<span class="nt">void</span> <span class="nt">onRecognitionResult</span><span class="o">(</span><span class="nt">String</span> <span class="nt">text</span><span class="o">)</span> <span class="p">{</span>
+  <span class="err">setState(()</span> <span class="err">{</span>
+    <span class="err">transcription</span> <span class="err">=</span> <span class="err">text</span><span class="p">;</span>
+    <span class="err">showSearchPage(context,</span> <span class="err">_searchDelegate,</span> <span class="err">transcription)</span><span class="p">;</span>
+    <span class="err">stop()</span><span class="p">;</span> <span class="err">//stop</span> <span class="err">listening</span> <span class="err">now</span>
+  <span class="p">}</span><span class="o">);</span>
+<span class="err">}</span>
 
-<span class="nt">void</span><span class="w"> </span><span class="nt">onRecognitionComplete</span><span class="o">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">setState</span><span class="o">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">_isListening</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">false</span><span class="o">);</span><span class="w"></span>
-</code></pre></div>
+<span class="nt">void</span> <span class="nt">onRecognitionComplete</span><span class="o">()</span> <span class="o">=&gt;</span> <span class="nt">setState</span><span class="o">(()</span> <span class="o">=&gt;</span> <span class="nt">_isListening</span> <span class="o">=</span> <span class="nt">false</span><span class="o">);</span>
+</pre></div>
+
 
 <p><strong>Listening to user's voice:</strong></p>
 <p><img alt="Search by voice" src="https://ptyagicodecamp.github.io/search_voice1.png"></p>
@@ -463,7 +469,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

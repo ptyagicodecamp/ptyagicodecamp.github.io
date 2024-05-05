@@ -97,7 +97,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -216,13 +216,14 @@
 <p>In this article, I'll show you how <a href="https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1">Flutter 1.9 release</a> makes developing cross-platform Flutter applications simple while maximizing code reuse. I'll be using <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/login-web/landingpage">my previous</a> Flutter-to-Fly sample app to demonstrate this transition to Flutter 1.9.</p>
 <h3>Migrating project to Flutter 1.9</h3>
 <p>There is pretty good documentation on migrating existing project to Flutter 1.9 and / or creating a new Flutter project available on <a href="https://flutter.dev/docs/get-started/web">official Flutter website</a>. Basically, you would need to run these following commands in one directory level up of your project directory:</p>
-<div class="highlight"><pre><span></span><code>  $ flutter channel master
-  $ flutter upgrade
-  $ flutter config --enable-web
-  $ cd &lt;into project directory&gt;
-  $ flutter create .
-  $flutter run -d chrome
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err">  $ flutter channel master</span>
+<span class="err">  $ flutter upgrade</span>
+<span class="err">  $ flutter config --enable-web</span>
+<span class="err">  $ cd &lt;into project directory&gt;</span>
+<span class="err">  $ flutter create .</span>
+<span class="err">  $flutter run -d chrome</span>
+</pre></div>
+
 
 <p><strong>NOTE:</strong> In case you run into <a href="https://github.com/flutter/flutter/issues/40876#issuecomment-533506158">White screen issue</a>, you may want to change your Flutter channel to <code>flutter channel dev</code>.</p>
 <h3>Running X-platform apps from Android Studio</h3>
@@ -230,8 +231,9 @@
 <p><img alt="plugins" src="https://ptyagicodecamp.github.io/as_running.jpg"></p>
 <h3>Deploying Web App</h3>
 <p>Deploying Web App is just a command away:</p>
-<div class="highlight"><pre><span></span><code> $ flutter build web
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="err"> $ flutter build web</span>
+</pre></div>
+
 
 <p>Above command will generate a <code>build</code> folder in the root directory. Copy its contents into <code>public</code> directory of your hosting site.</p>
 <h3>Launching URL(s)</h3>
@@ -249,31 +251,35 @@
 </ol>
 <p><strong>pubspec.yaml:</strong></p>
 <p>Following dependencies are needed for launching URLs from Flutter app.</p>
-<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">universal_html</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
-<span class="w">  </span><span class="n">url_launcher</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">2</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
+  <span class="n">universal_html</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span>
+  <span class="n">url_launcher</span><span class="o">:</span> <span class="o">^</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">2</span>
+</pre></div>
+
 
 <p>Let's see contents of <code>url_launcher.dart</code> below. This is where target platform is detected and appropriate implementation is used.</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="s1">&#39;unsupported.dart&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">html</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;web.dart&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">io</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;mobile.dart&#39;</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="k">export</span> <span class="s1">&#39;unsupported.dart&#39;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="s1">&#39;web.dart&#39;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">io</span><span class="p">)</span> <span class="s1">&#39;mobile.dart&#39;</span><span class="p">;</span>
+</pre></div>
+
 
 <h3>Firebase login functionality</h3>
 <p>Flutter team is working on <a href="https://pub.dev/packages/fb_auth">fb_auth plugin</a> to provide cross-platform Firebase support.</p>
 <p><strong>pubspec.yaml:</strong></p>
 <p>Following dependency is needed for adding cross-platform support for Firebase.</p>
-<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
 
-<span class="w">  </span><span class="n">fb_auth</span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span><span class="o">.</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
-</code></pre></div>
+  <span class="n">fb_auth</span><span class="o">:</span> <span class="mf">0.0</span><span class="o">.</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+
 
 <p>Let's checkout <code>fire_auth_service.dart</code> below. Please refer to <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/master-x/landingpage/lib/plugins/firetop">source code in Gihub repo</a> to refer other files.</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="s1">&#39;unsupported.dart&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">html</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;web.dart&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">io</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;mobile.dart&#39;</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="k">export</span> <span class="s1">&#39;unsupported.dart&#39;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="s1">&#39;web.dart&#39;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dart</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">io</span><span class="p">)</span> <span class="s1">&#39;mobile.dart&#39;</span><span class="p">;</span>
+</pre></div>
+
 
 <p>You would notice that <code>web.dart</code> and <code>mobile.dart</code> are very similar and use <code>FBAuth()</code> to access Firebase functionality. We still need to keep them separate because not everything is available in <a href="https://pub.dev/packages/fb_auth"><code>fb_auth</code> plugin</a>. For example, <a href="https://github.com/flutter/flutter/issues/40360#issuecomment-531262594">FireStore support is missing</a> for Flutter Web.</p>
 <h3>Conclusion</h3>
@@ -350,7 +356,7 @@ Couldn't find a topic of your interest ? Please leave comments or <a href="mailt
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme

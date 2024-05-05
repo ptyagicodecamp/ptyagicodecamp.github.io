@@ -92,7 +92,7 @@
         <a href="https://ptyagicodecamp.github.io">tech&Life</a>
       </h1>
 
-<p>Explore | Life | Mobile | Software Engineering</p>
+<p>Explore | Mobile | Software Engineering | Life</p>
 
       <nav>
         <ul class="list">
@@ -215,7 +215,7 @@ Here’s how you can add it as a dependency in your <code>build.gradle</code>:
 <p>I named it as <code>layout_fab_submenu.xml</code>. It’s a <code>FrameLayout</code>.</p>
 <p>I chose FrameLayout because I wanted a screen floating atop of existing screen and
 a holder for all FAB menu items. Don’t forget to set the top margin to <code>android:layout_marginTop="?attr/actionBarSize"</code> to avoid Actionbar overlapping.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;FrameLayout</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;FrameLayout</span>
     <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">xmlns:app=</span><span class="s">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
     <span class="na">android:id=</span><span class="s">&quot;@+id/fabFrame&quot;</span>
@@ -230,14 +230,15 @@ a holder for all FAB menu items. Don’t forget to set the top margin to <code>a
 
     .....
 <span class="nt">&lt;/FrameLayout&gt;</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong><em>Step#2:</em></strong> Layout for FAB SubMenu items</p>
 <p>Now, I want to create one <code>LinearLayout</code> for each <strong><em>FAB</em></strong>. Since I want all of the FAB items
 to be at bottom right corner of screen, so I will use <code>android:layout_gravity=bottom|end</code>.
 Every sub menu will have its own <code>LinearLayout</code> like following. Each <code>LinearLayout</code> has one <code>CardView</code>
 to hold <code>TextView</code> for explaining FAB's purpose and one <code>android.support.design.widget.FloatingActionButton</code> next to it.</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">LinearLayout</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">LinearLayout</span><span class="w"></span>
 <span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">id</span><span class="o">=</span><span class="ss">&quot;@+id/layoutFabSave&quot;</span><span class="w"></span>
 <span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_width</span><span class="o">=</span><span class="ss">&quot;wrap_content&quot;</span><span class="w"></span>
 <span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_height</span><span class="o">=</span><span class="ss">&quot;wrap_content&quot;</span><span class="w"></span>
@@ -277,81 +278,84 @@ to hold <code>TextView</code> for explaining FAB's purpose and one <code>android
 <span class="w">            </span><span class="nl">app</span><span class="p">:</span><span class="n">fabSize</span><span class="o">=</span><span class="ss">&quot;mini&quot;</span><span class="w"> </span><span class="o">/&gt;</span><span class="w"></span>
 
 <span class="w">    </span><span class="o">&lt;/</span><span class="n">LinearLayout</span><span class="o">&gt;</span><span class="w"></span>
-</code></pre></div>
+</pre></div>
+
 
 <h3>Lets check out More Code</h3>
 <p>In order to support FAB opening and closing, you would need to write two methods. One is to make sub menus
 visible, and other is to hide sub menus and only show main FAB which is <code>Settings</code> icon is our case.
 When <code>Settings</code> FAB expands, it turns into 'X' to give option to be able to close expanded sub menus.
 These are the two methods you would need:</p>
-<div class="highlight"><pre><span></span><code>//closes FAB submenus
-    private void closeSubMenusFab(){
-        layoutFabSave.setVisibility(View.INVISIBLE);
-        layoutFabEdit.setVisibility(View.INVISIBLE);
-        layoutFabPhoto.setVisibility(View.INVISIBLE);
-        fabSettings.setImageResource(R.drawable.ic_settings_black_24dp);
-        fabExpanded = false;
-    }
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">closes</span> <span class="n">FAB</span> <span class="n">submenus</span>
+    <span class="n">private</span> <span class="n">void</span> <span class="n">closeSubMenusFab</span><span class="p">()</span><span class="err">{</span>
+        <span class="n">layoutFabSave</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="k">View</span><span class="p">.</span><span class="n">INVISIBLE</span><span class="p">);</span>
+        <span class="n">layoutFabEdit</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="k">View</span><span class="p">.</span><span class="n">INVISIBLE</span><span class="p">);</span>
+        <span class="n">layoutFabPhoto</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="k">View</span><span class="p">.</span><span class="n">INVISIBLE</span><span class="p">);</span>
+        <span class="n">fabSettings</span><span class="p">.</span><span class="n">setImageResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">ic_settings_black_24dp</span><span class="p">);</span>
+        <span class="n">fabExpanded</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="err">}</span>
 
-    //Opens FAB submenus
-    private void openSubMenusFab(){
-        layoutFabSave.setVisibility(View.VISIBLE);
-        layoutFabEdit.setVisibility(View.VISIBLE);
-        layoutFabPhoto.setVisibility(View.VISIBLE);
-        //Change settings icon to &#39;X&#39; icon
-        fabSettings.setImageResource(R.drawable.ic_close_black_24dp);
-        fabExpanded = true;
-    }
-</code></pre></div>
+    <span class="o">//</span><span class="n">Opens</span> <span class="n">FAB</span> <span class="n">submenus</span>
+    <span class="n">private</span> <span class="n">void</span> <span class="n">openSubMenusFab</span><span class="p">()</span><span class="err">{</span>
+        <span class="n">layoutFabSave</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="k">View</span><span class="p">.</span><span class="n">VISIBLE</span><span class="p">);</span>
+        <span class="n">layoutFabEdit</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="k">View</span><span class="p">.</span><span class="n">VISIBLE</span><span class="p">);</span>
+        <span class="n">layoutFabPhoto</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="k">View</span><span class="p">.</span><span class="n">VISIBLE</span><span class="p">);</span>
+        <span class="o">//</span><span class="n">Change</span> <span class="n">settings</span> <span class="n">icon</span> <span class="k">to</span> <span class="s1">&#39;X&#39;</span> <span class="n">icon</span>
+        <span class="n">fabSettings</span><span class="p">.</span><span class="n">setImageResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">ic_close_black_24dp</span><span class="p">);</span>
+        <span class="n">fabExpanded</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="err">}</span>
+</pre></div>
+
 
 <p>Now, its time to hook them up in the main code to make it functional. Lets start with <code>onCreate()</code> method:</p>
-<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">MainActivity</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="n">MainActivity</span> <span class="k">extends</span> <span class="n">AppCompatActivity</span> <span class="p">{</span>
 
-<span class="w">    </span><span class="o">//</span><span class="n">boolean</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">know</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">FAB</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">closed</span><span class="w"> </span><span class="n">state</span><span class="o">.</span><span class="w"></span>
-<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">boolean</span><span class="w"> </span><span class="n">fabExpanded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">FloatingActionButton</span><span class="w"> </span><span class="n">fabSettings</span><span class="p">;</span><span class="w"></span>
+    <span class="o">//</span><span class="n">boolean</span> <span class="n">flag</span> <span class="n">to</span> <span class="n">know</span> <span class="k">if</span> <span class="n">main</span> <span class="n">FAB</span> <span class="k">is</span> <span class="ow">in</span> <span class="n">open</span> <span class="ow">or</span> <span class="n">closed</span> <span class="n">state</span><span class="o">.</span>
+    <span class="n">private</span> <span class="n">boolean</span> <span class="n">fabExpanded</span> <span class="o">=</span> <span class="bp">false</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">FloatingActionButton</span> <span class="n">fabSettings</span><span class="p">;</span>
 
-<span class="w">    </span><span class="o">//</span><span class="n">Linear</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="n">holding</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Save</span><span class="w"> </span><span class="n">submenu</span><span class="w"></span>
-<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">LinearLayout</span><span class="w"> </span><span class="n">layoutFabSave</span><span class="p">;</span><span class="w"></span>
+    <span class="o">//</span><span class="n">Linear</span> <span class="n">layout</span> <span class="n">holding</span> <span class="n">the</span> <span class="n">Save</span> <span class="n">submenu</span>
+    <span class="n">private</span> <span class="n">LinearLayout</span> <span class="n">layoutFabSave</span><span class="p">;</span>
 
-<span class="w">    </span><span class="o">//</span><span class="n">Linear</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="n">holding</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Edit</span><span class="w"> </span><span class="n">submenu</span><span class="w"></span>
-<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">LinearLayout</span><span class="w"> </span><span class="n">layoutFabEdit</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">LinearLayout</span><span class="w"> </span><span class="n">layoutFabPhoto</span><span class="p">;</span><span class="w"></span>
+    <span class="o">//</span><span class="n">Linear</span> <span class="n">layout</span> <span class="n">holding</span> <span class="n">the</span> <span class="n">Edit</span> <span class="n">submenu</span>
+    <span class="n">private</span> <span class="n">LinearLayout</span> <span class="n">layoutFabEdit</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">LinearLayout</span> <span class="n">layoutFabPhoto</span><span class="p">;</span>
 
-<span class="w">    </span><span class="err">@</span><span class="n">Override</span><span class="w"></span>
-<span class="w">    </span><span class="n">protected</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">activity_main</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="n">Toolbar</span><span class="w"> </span><span class="n">toolbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Toolbar</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">toolbar</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="n">setSupportActionBar</span><span class="p">(</span><span class="n">toolbar</span><span class="p">);</span><span class="w"></span>
+    <span class="err">@</span><span class="n">Override</span>
+    <span class="n">protected</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">activity_main</span><span class="p">);</span>
+        <span class="n">Toolbar</span> <span class="n">toolbar</span> <span class="o">=</span> <span class="p">(</span><span class="n">Toolbar</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">toolbar</span><span class="p">);</span>
+        <span class="n">setSupportActionBar</span><span class="p">(</span><span class="n">toolbar</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">fabSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">FloatingActionButton</span><span class="p">)</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">fabSetting</span><span class="p">);</span><span class="w"></span>
+        <span class="n">fabSettings</span> <span class="o">=</span> <span class="p">(</span><span class="n">FloatingActionButton</span><span class="p">)</span> <span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">fabSetting</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">layoutFabSave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">LinearLayout</span><span class="p">)</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">layoutFabSave</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="n">layoutFabEdit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">LinearLayout</span><span class="p">)</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">layoutFabEdit</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="n">layoutFabPhoto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">LinearLayout</span><span class="p">)</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">layoutFabPhoto</span><span class="p">);</span><span class="w"></span>
+        <span class="n">layoutFabSave</span> <span class="o">=</span> <span class="p">(</span><span class="n">LinearLayout</span><span class="p">)</span> <span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">layoutFabSave</span><span class="p">);</span>
+        <span class="n">layoutFabEdit</span> <span class="o">=</span> <span class="p">(</span><span class="n">LinearLayout</span><span class="p">)</span> <span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">layoutFabEdit</span><span class="p">);</span>
+        <span class="n">layoutFabPhoto</span> <span class="o">=</span> <span class="p">(</span><span class="n">LinearLayout</span><span class="p">)</span> <span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">layoutFabPhoto</span><span class="p">);</span>
 
-<span class="w">        </span><span class="o">//</span><span class="n">When</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">Fab</span><span class="w"> </span><span class="p">(</span><span class="n">Settings</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">clicked</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">expands</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">expanded</span><span class="w"> </span><span class="n">already</span><span class="o">.</span><span class="w"></span>
-<span class="w">        </span><span class="o">//</span><span class="n">Collapses</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">FAB</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="n">already</span><span class="o">.</span><span class="w"></span>
-<span class="w">        </span><span class="o">//</span><span class="n">This</span><span class="w"> </span><span class="n">gives</span><span class="w"> </span><span class="n">FAB</span><span class="w"> </span><span class="p">(</span><span class="n">Settings</span><span class="p">)</span><span class="w"> </span><span class="n">open</span><span class="o">/</span><span class="n">close</span><span class="w"> </span><span class="n">behavior</span><span class="w"></span>
-<span class="w">        </span><span class="n">fabSettings</span><span class="o">.</span><span class="n">setOnClickListener</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="n">View</span><span class="o">.</span><span class="n">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="err">@</span><span class="n">Override</span><span class="w"></span>
-<span class="w">            </span><span class="n">public</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fabExpanded</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="bp">true</span><span class="p">){</span><span class="w"></span>
-<span class="w">                    </span><span class="n">closeSubMenusFab</span><span class="p">();</span><span class="w"></span>
-<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="n">openSubMenusFab</span><span class="p">();</span><span class="w"></span>
-<span class="w">                </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">});</span><span class="w"></span>
+        <span class="o">//</span><span class="n">When</span> <span class="n">main</span> <span class="n">Fab</span> <span class="p">(</span><span class="n">Settings</span><span class="p">)</span> <span class="k">is</span> <span class="n">clicked</span><span class="p">,</span> <span class="n">it</span> <span class="n">expands</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">expanded</span> <span class="n">already</span><span class="o">.</span>
+        <span class="o">//</span><span class="n">Collapses</span> <span class="k">if</span> <span class="n">main</span> <span class="n">FAB</span> <span class="n">was</span> <span class="n">open</span> <span class="n">already</span><span class="o">.</span>
+        <span class="o">//</span><span class="n">This</span> <span class="n">gives</span> <span class="n">FAB</span> <span class="p">(</span><span class="n">Settings</span><span class="p">)</span> <span class="n">open</span><span class="o">/</span><span class="n">close</span> <span class="n">behavior</span>
+        <span class="n">fabSettings</span><span class="o">.</span><span class="n">setOnClickListener</span><span class="p">(</span><span class="n">new</span> <span class="n">View</span><span class="o">.</span><span class="n">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+            <span class="err">@</span><span class="n">Override</span>
+            <span class="n">public</span> <span class="n">void</span> <span class="n">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">view</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">fabExpanded</span> <span class="o">==</span> <span class="bp">true</span><span class="p">){</span>
+                    <span class="n">closeSubMenusFab</span><span class="p">();</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="n">openSubMenusFab</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
 
-<span class="w">        </span><span class="o">//</span><span class="n">Only</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">FAB</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">visible</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">beginning</span><span class="w"></span>
-<span class="w">        </span><span class="n">closeSubMenusFab</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+        <span class="o">//</span><span class="n">Only</span> <span class="n">main</span> <span class="n">FAB</span> <span class="k">is</span> <span class="n">visible</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">beginning</span>
+        <span class="n">closeSubMenusFab</span><span class="p">();</span>
+    <span class="p">}</span>
 
-<span class="w">    </span><span class="o">....</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+    <span class="o">....</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <h3>Congratulations!</h3>
 <p>Yay ! You got FAB integrated along with sub menu in less than 5 minutes. Its time to celebrate :)</p>
@@ -402,7 +406,7 @@ These are the two methods you would need:</p>
 
     <footer>
 <p>
-  &copy; 2022  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
