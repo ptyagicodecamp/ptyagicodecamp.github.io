@@ -193,17 +193,18 @@ To keep things simple, I'll use the word 'ticket' to keep this article focused o
 3. Bug</p>
 <p>An <strong>Epic</strong> ticket is the one that contains the one slice of functionality towards the big picture feature. Depending on how big a feature is, it can be sliced into multiple Epics. Consider an Epic as the 'brick wall' or 'window' of a lego house. I tend to use Epic and User Story interchangeably based on the size of a feature. Epic is a collection of multiple User Stories. I've used User Story and Sub-Task structure in several projects. However, I found it effective to use Epic to describe a slice of feature and underlying Tasks contributing towards it.</p>
 <p>A <strong>Task</strong> ticket is the smallest actionable unit of work that contributes towards the completion of Epic. </p>
-<p>A <strong>Bug</strong> is self-explanatory. They could the gaps in the expected functionality. There may not be any bugs when starting to build a new feature. However, as soon as it either goes through the testing phase or in end-user hands, its quite normal to discover few expected or un-expected behaviors that needed to be worked on.</p>
+<p>A <strong>Bug</strong> is self-explanatory. They could the gaps in the expected functionality. There may not be any bugs when starting to build a new feature. However, as soon as a new feature either goes through the testing phase or in end-user hands, its quite normal to discover few expected or un-expected behaviors that needs to be worked on.</p>
 <p>Let's take a sample feature of building profile page for account management in a Jira-like web application, to guide the discussion of this article. </p>
-<p>This feature "Profile page for account management" can be split into multiple Epics. There's different types of expertise required on different aspect of this feature. First, a profile page user-interface design is needed. Second, a functional user-interface that user can interact with. Third, a backend component and API (application-programming-interface) integration to store the user information for later retrieval. Fourth, quality assurance and testing. Fifth, user documentation and internal documention, etc..etc.   </p>
-<p>To keep it simple, let's take the first three pieces and create an Epic for each:</p>
+<p>This feature "Profile page for account management" can be split into multiple Epics. First, a profile page user-interface design is needed. Second, a functional user-interface that user can interact with. Third, a backend component and API (Application Programming Interface) integration to store the user information for later retrieval. Fourth, quality assurance and testing. Fifth, user documentation and internal documention, etc..etc. There's a good chance that different technical expertise may be needed to execute each of the Epic. For example, designing the Profile page would require UX designing skills, front-end skills like React for implementing the page and backend skills for developing APIs.</p>
+<p>Okay, let's go back to identifying top three Epics. For example, these first three Epic could focus on designing progile page and implementing page and developing APIs to make this page functional.</p>
+<p>Example Epics could look like below:</p>
 <ol>
 <li>Epic #1: Design profile page UI</li>
 <li>Epic #2: Develop backend API for profile management</li>
 <li>Epic #3: Develop front for profile page</li>
 </ol>
 <h2>Attributes of an Effective Ticket</h2>
-<p>An effective ticket is critical for clear communication and successful task completion. Based on my observations, the following four attributes contribute to a well-written ticket that is easily consumable by an assignee and has a high success rate of on-time completion:</p>
+<p>An effective ticket is critical for clear communication and successful task completion. Based on my observations, the following four attributes contribute to a well-written ticket that is easily consumable by an assignee and has a high success rate of on-time completion. The following attributes can be used across the Epic, Task and Bug types.</p>
 <ul>
 <li>Summary or Title</li>
 <li>Description</li>
@@ -247,9 +248,9 @@ To keep things simple, I'll use the word 'ticket' to keep this article focused o
 * Test the responsiveness of the page on different devices and screen sizes.
 * Review the audit logs to ensure all changes are correctly recorded.</p>
 <h2>Examples of Poorly vs Effectively written Jira Tickets</h2>
-<p>Before I close, it will be worthwhile to see few examples of each type of ticket discussed so far, comparing poorly writtern vs well-written</p>
+<p>Before I close, it will be worthwhile to see few examples of each type of ticket discussed so far, comparing poorly written vs well-written</p>
 <h3>[Example 1] Epic: Develop Profile Page for Account Management</h3>
-<p>Below is the example of a poorly writtern vs Effectively writtern Epic ticket. Usually, poorly written tickets don't have enough information to make the ticket actionable. They don't have clear acceptance criteria or don't have them at all.</p>
+<p>Below is the example of a poorly written vs Effectively written Epic ticket. Usually, poorly written tickets don't have enough information to make the ticket actionable. They don't have clear acceptance criteria or don't have them at all.</p>
 <p><strong><em>Poorly Written Epic Ticket</em></strong>
 The title and description of this Epic doesn't contain much information about what is being created and why is it needed. The acceptance criteria is very loose since it doesn't provide what's expected from this page. The verification criteria doesn't give details for assignee to verify the completeness and correctness either.</p>
 <p><strong>Title:</strong> Profile Page
@@ -261,11 +262,11 @@ The title and description of this Epic doesn't contain much information about wh
 * Check the page.</p>
 <p><strong><em>Effectively written Epic Ticket</em></strong>
 In this example of Epic, the description contains the background context of what is being asked for and its justification from end-user perspective. The 'How' part is the overall scope of the feature that needs to be taken into consideration when doing granual level planning and splitting work further into Task type tickets.</p>
-<p><strong>Title:</strong> Develop Profile Page for Account Management
-<strong>Description:</strong>
-<strong><em>What:</em></strong> Create a comprehensive profile page that allows users to view and edit their personal information, change their passwords, and manage other account settings.
-<strong><em>Why:</em></strong> Enhance user experience by providing a centralized place for managing account details.
-<strong><em>How:</em></strong> Design the UI, develop the backend API, implement the frontend, conduct QA testing, and create documentation.</p>
+<p><strong>Title:</strong> Develop Profile Page for Account Management</p>
+<p><strong>Description:</strong></p>
+<p><strong><em>What:</em></strong> Create a comprehensive profile page that allows users to view and edit their personal information, change their passwords, and manage other account settings.</p>
+<p><strong><em>Why:</em></strong> Enhance user experience by providing a centralized place for managing account details.</p>
+<p><strong><em>How:</em></strong> Design the UI, develop the backend API, implement the frontend, conduct QA testing, and create documentation.</p>
 <p><strong>Acceptance Criteria:</strong>
 * Users can view and edit their personal information.
 * Users can change their passwords.
@@ -282,12 +283,12 @@ In this example of Epic, the description contains the background context of what
 <strong>Description:</strong> Make the frontend for the profile page.
 <strong>Acceptance Criteria:</strong> N/A
 <strong>Verification and Testing:</strong> N/A</p>
-<p><strong><em>Effectively writtern Task Ticket</em></strong>
-<strong>Title:</strong> Implement Frontend for Profile Page
-<strong>Description:</strong>
-<strong><em>What:</em></strong> Implement the frontend components for the profile page based on the approved design. <strong><em>Note</em></strong> Add link to approved design or attach screenshot alongwith details on each UI component.
-<strong><em>Why:</em></strong> To allow users to interact with the profile page and manage their account information.
-<strong><em>How:</em></strong> Use React to build the components, ensure responsiveness, and integrate with the backend API.</p>
+<p><strong><em>Effectively written Task Ticket</em></strong>
+<strong>Title:</strong> Implement Frontend for Profile Page</p>
+<p><strong>Description:</strong></p>
+<p><strong><em>What:</em></strong> Implement the frontend components for the profile page based on the approved design. <strong><em>Note</em></strong> Add link to approved design or attach screenshot alongwith details on each UI component.</p>
+<p><strong><em>Why:</em></strong> To allow users to interact with the profile page and manage their account information.</p>
+<p><strong><em>How:</em></strong> Use React to build the components, ensure responsiveness, and integrate with the backend API.</p>
 <p><strong>Acceptance Criteria:</strong>
 * Frontend components are implemented according to the design.
 * The profile page is responsive and works on various devices.
@@ -305,13 +306,13 @@ This ticket doesn't have descriptive title. It's hard to know from title and des
 <strong>Description:</strong> There is an error.
 <strong>Acceptance Criteria:</strong> N/A
 <strong>Verification and Testing:</strong> N/A</p>
-<p><strong><em>Effectively writtern Bug Ticket</em></strong>
-Title for the ticket is self-explainatory. Assignee immediately knowns which part of the codebase they would like to start on. The description clearly mentions details on error and the severity of issue and its impact on customers. The 'how' piece explicitly sets the expectations for assingee on the action plan. Once issue has been resolved there is a check-list in the form of acceptance criteria before moving this ticket into done column. There are verification and testing steps provided to ensure that the fix has been tested reliably.  </p>
-<p><strong>Title:</strong> Error Saving Profile Information
-<strong>Description:</strong>
-<strong><em>What:</em></strong> When attempting to save changes to the profile information, users receive a "500 Internal Server Error" message.
-<strong><em>Why:</em></strong> This prevents users from updating their profile information, which impacts user experience and functionality.
-<strong><em>How:</em></strong> Investigate the error, identify the root cause, and implement a fix to ensure changes can be saved successfully.</p>
+<p><strong><em>Effectively written Bug Ticket</em></strong></p>
+<p>Title for the ticket is self-explainatory. Assignee immediately knowns which part of the codebase they would like to start on. The description clearly mentions details on error and the severity of issue and its impact on customers. The 'how' piece explicitly sets the expectations for assingee on the action plan. Once issue has been resolved there is a check-list in the form of acceptance criteria before moving this ticket into done column. There are verification and testing steps provided to ensure that the fix has been tested reliably.  </p>
+<p><strong>Title:</strong> Error Saving Profile Information</p>
+<p><strong>Description:</strong></p>
+<p><strong><em>What:</em></strong> When attempting to save changes to the profile information, users receive a "500 Internal Server Error" message.</p>
+<p><strong><em>Why:</em></strong> This prevents users from updating their profile information, which impacts user experience and functionality.</p>
+<p><strong><em>How:</em></strong> Investigate the error, identify the root cause, and implement a fix to ensure changes can be saved successfully.</p>
 <p><strong>Acceptance Criteria:</strong>
 * The "500 Internal Server Error" is resolved.
 * Users can successfully save changes to their profile information without errors.
