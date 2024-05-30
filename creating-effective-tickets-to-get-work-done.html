@@ -224,21 +224,25 @@ To keep things simple, I'll use the word 'ticket' to keep this article focused o
 <p>Example: "The user profile page will enhance the user experience by allowing users to manage their personal information directly. This feature is critical for user satisfaction and retention."</p>
 <h4>The 'How'</h4>
 <p>Outline how the task might be done or suggest solutions. Providing a high-level plan or approach can guide the assignee and ensure alignment with the project’s goals.</p>
-<p>Example:
-* Design the user interface for the profile page.
-* Develop the backend API to fetch and update user information.
-* Integrate the frontend with the backend API.
-* Implement validation for input fields.
-* Ensure the page is responsive and works on different devices.</p>
+<p>Example:</p>
+<ul>
+<li>Design the user interface for the profile page.</li>
+<li>Develop the backend API to fetch and update user information.</li>
+<li>Integrate the frontend with the backend API.</li>
+<li>Implement validation for input fields.</li>
+<li>Ensure the page is responsive and works on different devices.</li>
+</ul>
 <h3>Acceptance Criteria</h3>
 <p>Define what successful completion looks like. Clear acceptance criteria set the standards for when a task can be considered done and help prevent misunderstandings.</p>
-<p>Example:
-* Users can view their personal information (name, email, profile picture, etc.).
-* Users can edit their personal information and save changes.
-* Input validation is enforced (e.g., valid email format, mandatory fields).
-* The page design adheres to the company's UI/UX standards.
-* The page is responsive and functional across different devices (desktop, tablet, mobile).
-* All changes are logged and can be audited for security purposes.</p>
+<p>Example:</p>
+<ul>
+<li>Users can view their personal information (name, email, profile picture, etc.).</li>
+<li>Users can edit their personal information and save changes.</li>
+<li>Input validation is enforced (e.g., valid email format, mandatory fields).</li>
+<li>The page design adheres to the company's UI/UX standards.</li>
+<li>The page is responsive and functional across different devices (desktop, tablet, mobile).</li>
+<li>All changes are logged and can be audited for security purposes.</li>
+</ul>
 <h3>Verification &amp; Testing</h3>
 <p>This section includes verifying what was agreed upon. Although optional, it is highly recommended to outline how the task will be tested to ensure all acceptance criteria are met.</p>
 <p>Example:
@@ -253,13 +257,17 @@ To keep things simple, I'll use the word 'ticket' to keep this article focused o
 <p>Below is the example of a poorly written vs Effectively written Epic ticket. Usually, poorly written tickets don't have enough information to make the ticket actionable. They don't have clear acceptance criteria or don't have them at all.</p>
 <p><strong><em>Poorly Written Epic Ticket</em></strong>
 The title and description of this Epic doesn't contain much information about what is being created and why is it needed. The acceptance criteria is very loose since it doesn't provide what's expected from this page. The verification criteria doesn't give details for assignee to verify the completeness and correctness either.</p>
-<p><strong>Title:</strong> Profile Page
-<strong>Description:</strong> Make a profile page.</p>
-<p><strong>Acceptance Criteria:</strong> 
-* Page is created.
-* Users can use it.</p>
-<p><strong>Verification and Testing:</strong> 
-* Check the page.</p>
+<p><strong>Title:</strong> Profile Page</p>
+<p><strong>Description:</strong> Make a profile page.</p>
+<p><strong>Acceptance Criteria:</strong> </p>
+<ul>
+<li>Page is created.</li>
+<li>Users can use it.</li>
+</ul>
+<p><strong>Verification and Testing:</strong> </p>
+<ul>
+<li>Check the page.</li>
+</ul>
 <p><strong><em>Effectively written Epic Ticket</em></strong>
 In this example of Epic, the description contains the background context of what is being asked for and its justification from end-user perspective. The 'How' part is the overall scope of the feature that needs to be taken into consideration when doing granual level planning and splitting work further into Task type tickets.</p>
 <p><strong>Title:</strong> Develop Profile Page for Account Management</p>
@@ -267,42 +275,50 @@ In this example of Epic, the description contains the background context of what
 <p><strong><em>What:</em></strong> Create a comprehensive profile page that allows users to view and edit their personal information, change their passwords, and manage other account settings.</p>
 <p><strong><em>Why:</em></strong> Enhance user experience by providing a centralized place for managing account details.</p>
 <p><strong><em>How:</em></strong> Design the UI, develop the backend API, implement the frontend, conduct QA testing, and create documentation.</p>
-<p><strong>Acceptance Criteria:</strong>
-* Users can view and edit their personal information.
-* Users can change their passwords.
-* Users can manage account settings.
-* All features are fully tested and documented.</p>
-<p><strong>Verification and Testing:</strong>
-* Verify that the profile page meets design specifications.
-* Test all functionalities to ensure they work as expected.
-* Review documentation for completeness and accuracy.</p>
+<p><strong>Acceptance Criteria:</strong></p>
+<ul>
+<li>Users can view and edit their personal information.</li>
+<li>Users can change their passwords.</li>
+<li>Users can manage account settings.</li>
+<li>All features are fully tested and documented.</li>
+</ul>
+<p><strong>Verification and Testing:</strong></p>
+<ul>
+<li>Verify that the profile page meets design specifications.</li>
+<li>Test all functionalities to ensure they work as expected.</li>
+<li>Review documentation for completeness and accuracy.</li>
+</ul>
 <h3>[Example 2] Task: Develop Frontend for Profile Page</h3>
 <p>Below is the example of a Task type of ticket. This Task could further be split into many other Tasks. However, to spare the implementation level details this ticket assumes that developing the Profile page UI in one ticket. The acceptance criteria helps to guide the adherence of the end to end functionality whereas verification and testing ensures the correctness and accuracy achieved.</p>
-<p><strong><em>Poorly Written Task Ticket:</em></strong>
-<strong>Title:</strong> Frontend Profile Page
-<strong>Description:</strong> Make the frontend for the profile page.
-<strong>Acceptance Criteria:</strong> N/A
-<strong>Verification and Testing:</strong> N/A</p>
-<p><strong><em>Effectively written Task Ticket</em></strong>
-<strong>Title:</strong> Implement Frontend for Profile Page</p>
+<p><strong><em>Poorly Written Task Ticket:</em></strong></p>
+<p><strong>Title:</strong> Frontend Profile Page</p>
+<p><strong>Description:</strong> Make the frontend for the profile page.</p>
+<p><strong>Acceptance Criteria:</strong> N/A</p>
+<p><strong>Verification and Testing:</strong> N/A</p>
+<p><strong><em>Effectively written Task Ticket</em></strong></p>
+<p><strong>Title:</strong> Implement Frontend for Profile Page</p>
 <p><strong>Description:</strong></p>
 <p><strong><em>What:</em></strong> Implement the frontend components for the profile page based on the approved design. <strong><em>Note</em></strong> Add link to approved design or attach screenshot alongwith details on each UI component.</p>
 <p><strong><em>Why:</em></strong> To allow users to interact with the profile page and manage their account information.</p>
 <p><strong><em>How:</em></strong> Use React to build the components, ensure responsiveness, and integrate with the backend API.</p>
-<p><strong>Acceptance Criteria:</strong>
-* Frontend components are implemented according to the design.
-* The profile page is responsive and works on various devices.
-* The frontend successfully communicates with the backend API.</p>
-<p><strong>Verification and Testing:</strong>
-* Verify the layout and styling match the design.
-* Test the profile page on different devices and screen sizes.
-* Confirm data is correctly fetched from and sent to the backend API.
-* <strong><em>Note</em></strong> Add references to front-end testing standards followed in your team</p>
+<p><strong>Acceptance Criteria:</strong></p>
+<ul>
+<li>Frontend components are implemented according to the design.</li>
+<li>The profile page is responsive and works on various devices.</li>
+<li>The frontend successfully communicates with the backend API.</li>
+</ul>
+<p><strong>Verification and Testing:</strong></p>
+<ul>
+<li>Verify the layout and styling match the design.</li>
+<li>Test the profile page on different devices and screen sizes.</li>
+<li>Confirm data is correctly fetched from and sent to the backend API.</li>
+<li><strong><em>Note</em></strong> Add references to front-end testing standards followed in your team</li>
+</ul>
 <h3>[Example 3] Bug: Error Saving Profile Information</h3>
 <p>Let's checkout an example of poorly written vs effective bug ticket.   </p>
-<p><strong>Poorly written Bug Ticket</strong>
-This ticket doesn't have descriptive title. It's hard to know from title and description about the issue let alone to fix it. Assignee likely will spend extra time to understand what's being asked to fix and where is the error occurring. They will rely on enormous Slack messages exhanges or 1-on-1 conversations just to gather the information on what error is being observed. Even after they fix it, they will likely to remain confused about whether they fixed the originally reported issue. 
-<strong>Title:</strong> Error
+<p><strong>Poorly written Bug Ticket</strong></p>
+<p>This ticket doesn't have descriptive title. It's hard to know from title and description about the issue let alone to fix it. Assignee likely will spend extra time to understand what's being asked to fix and where is the error occurring. They will rely on enormous Slack messages exhanges or 1-on-1 conversations just to gather the information on what error is being observed. Even after they fix it, they will likely to remain confused about whether they fixed the originally reported issue. </p>
+<p><strong>Title:</strong> Error
 <strong>Description:</strong> There is an error.
 <strong>Acceptance Criteria:</strong> N/A
 <strong>Verification and Testing:</strong> N/A</p>
@@ -313,14 +329,18 @@ This ticket doesn't have descriptive title. It's hard to know from title and des
 <p><strong><em>What:</em></strong> When attempting to save changes to the profile information, users receive a "500 Internal Server Error" message.</p>
 <p><strong><em>Why:</em></strong> This prevents users from updating their profile information, which impacts user experience and functionality.</p>
 <p><strong><em>How:</em></strong> Investigate the error, identify the root cause, and implement a fix to ensure changes can be saved successfully.</p>
-<p><strong>Acceptance Criteria:</strong>
-* The "500 Internal Server Error" is resolved.
-* Users can successfully save changes to their profile information without errors.
-* The fix is tested and verified.</p>
-<p><strong>Verification and Testing:</strong>
-* Reproduce the error by following the steps provided. <strong><em>Note</em></strong>: Add steps to recreate error
-* Implement the fix and verify the error is resolved. <strong><em>Note</em></strong>: The fix can be verified against a pre-existing testplan, if any.
-* Test saving profile information under various conditions to ensure reliability. <strong><em>Note</em></strong>: Various conditions can involve development, sandbox and production environment or load/scale testing.</p>
+<p><strong>Acceptance Criteria:</strong></p>
+<ul>
+<li>The "500 Internal Server Error" is resolved.</li>
+<li>Users can successfully save changes to their profile information without errors.</li>
+<li>The fix is tested and verified.</li>
+</ul>
+<p><strong>Verification and Testing:</strong></p>
+<ul>
+<li>Reproduce the error by following the steps provided. <strong><em>Note</em></strong>: Add steps to recreate error</li>
+<li>Implement the fix and verify the error is resolved. <strong><em>Note</em></strong>: The fix can be verified against a pre-existing testplan, if any.</li>
+<li>Test saving profile information under various conditions to ensure reliability. <strong><em>Note</em></strong>: Various conditions can involve development, sandbox and production environment or load/scale testing.</li>
+</ul>
 <h1>References</h1>
 <ol>
 <li><a href="https://support.atlassian.com/jira-cloud-administration/docs/what-are-issue-types/">Jira Issue Types</a></li>
