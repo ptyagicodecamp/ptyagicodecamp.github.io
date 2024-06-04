@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/solid.css">
+
+    <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
+
+    <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-133714063-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="ptyagi" />
+<meta name="description" content="This article is the Part-2 of introduction to using libraries in Dart/Flutter." />
+<meta name="keywords" content="export, part, import, libraries, dart, cross-platform, flutter, code-recipes, development">
+
+
+<meta property="og:site_name" content="tech&Life"/>
+<meta property="og:title" content="Dart Libraries (Part2)"/>
+<meta property="og:description" content="This article is the Part-2 of introduction to using libraries in Dart/Flutter."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/dart-libraries-part2.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-05-10 00:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Dart"/>
+<meta property="article:tag" content="export"/>
+<meta property="article:tag" content="part"/>
+<meta property="article:tag" content="import"/>
+<meta property="article:tag" content="libraries"/>
+<meta property="article:tag" content="dart"/>
+<meta property="article:tag" content="cross-platform"/>
+<meta property="article:tag" content="flutter"/>
+<meta property="article:tag" content="code-recipes"/>
+<meta property="article:tag" content="development"/>
+<meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
+
+  <title>tech&Life &ndash; Dart Libraries (Part2)</title>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6359982310050489",
+      enable_page_level_ads: true
+    });
+  </script>
+</head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://ptyagicodecamp.github.io">
+        <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="tech&Life" title="tech&Life">
+      </a>
+
+      <h1>
+        <a href="https://ptyagicodecamp.github.io">tech&Life</a>
+      </h1>
+
+<p>Explore | Mobile | Software Engineering | Life</p>
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="https://www.paypal.me/pritya" >Support</a>
+            </li>
+            <li>
+              <a target="_self" href="https://www.codementor.io/ptyagicodecamp" >Codementor</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank">
+              <i class="fab fa-medium"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank">
+              <i class="fab fa-codementor"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle ads-aside"
+           data-ad-client="ca-pub-6359982310050489"
+           data-ad-slot="8977779775"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://ptyagicodecamp.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="dart-libraries-part2">Dart Libraries (Part2)</h1>
+    <p>
+      Posted on May 10, 2020 in <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
+
+    </p>
+  </header>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+  <div>
+    <p><img alt="libraries-part2" src="https://ptyagicodecamp.github.io/libraries2.png"></p>
+<h1>Introduction</h1>
+<p>This article covers <code>part</code>, <code>library</code>, and <code>export</code> directives. Checkout the <a href="https://ptyagicodecamp.github.io/dart-libraries-part1.html">Part-1</a> to learn few ways libraries are used in Dart.
+In addition to introducing above directives, we'll also be learning to restrict the visibility of a library's APIs.</p>
+<hr>
+<h1>Check out YouTube Video</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aHf1ENZWmzY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h1>Revisiting Setup</h1>
+<p>Let's revisit the sample libraries <code>lib1</code> and <code>lib2</code>created in <a href="https://ptyagicodecamp.github.io/dart-libraries-part1.html#dart-libraries-part1">Part-1</a> for demonstration.</p>
+<h1><code>lib1</code></h1>
+<p>This library has APIs to calculate sum and difference of two integers.</p>
+<ul>
+<li>
+<p>Addition API: The <code>int addition(int a, int b)</code> calculates sum of two given integers and returns an integer.</p>
+</li>
+<li>
+<p>Subtraction API: The <code>int subtraction(int a, int b)</code> calculates difference of two given integers and returns an integer.</p>
+</li>
+<li>
+<p><code>int _add(int a, int b)</code>: It is an internal function/method that does perform the real addition. This method is used by addition api. Identifiers with underscore (_) prefix are only available inside library.</p>
+</li>
+</ul>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib1.dart"><code>lib1.dart</code></a></p>
+<div class="highlight"><pre><span></span>  <span class="nb">int</span> <span class="n">addition</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+
+  <span class="nb">int</span> <span class="n">subtraction</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
+
+  <span class="nb">int</span> <span class="n">_add</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+</pre></div>
+
+
+<h1><code>lib2</code></h1>
+<p>This library has APIs to check if the given number is even or odd.</p>
+<ul>
+<li>Even number API (<code>bool isNumberOdd(int num)</code>): This api take a number and returns true if its even or vice versa.</li>
+<li>Odd number API (<code>bool isNumberOdd(int num)</code>): This api take a number and returns true if its odd or vice versa.</li>
+</ul>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib2.dart"><code>lib2.dart</code></a></p>
+<div class="highlight"><pre><span></span>  <span class="n">bool</span> <span class="n">isNumberOdd</span><span class="p">(</span><span class="nb">int</span> <span class="n">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">num</span><span class="p">.</span><span class="n">isOdd</span><span class="p">;</span>
+
+  <span class="n">bool</span> <span class="n">isNumberEven</span><span class="p">(</span><span class="nb">int</span> <span class="n">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">num</span><span class="p">.</span><span class="n">isEven</span><span class="p">;</span>
+</pre></div>
+
+
+<hr>
+<h1>Privacy (Restricting Access)</h1>
+<p>It's possible to restrict variables'/APIs visibility in Dart libraries. Identifiers with underscore (_) prefix are only available inside library.</p>
+<p>Let's import <code>lib1.dart</code> to use <code>addition(..)</code> method. Please note that trying to call <code>_add(...)</code> method will show a compile time error since it's private and is available to <code>lib1.dart</code> only.</p>
+<p>The <code>lib_main.dart</code>:</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_main.dart"><code>lib_main.dart</code></a></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">Compile</span><span class="o">-</span><span class="n">time</span> <span class="n">error</span> <span class="n">because</span> <span class="n">_add</span><span class="p">()</span> <span class="n">function</span> <span class="ow">is</span> <span class="n">private</span>
+  <span class="o">//</span><span class="nb">sum</span> <span class="o">=</span> <span class="n">_add</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><span class="err">Sum of 5 and 2 is 7</span>
+</pre></div>
+
+
+<hr>
+<h1>Using <code>part</code> directive</h1>
+<p>The use of <code>part</code> directive is most common in auto-generated code. Traditionally, <code>part</code> directive is a glue between two tightly coupled libraries.</p>
+<p><strong>Note:</strong> Related code is available in its own folder <a href="https://github.com/ptyagicodecamp/dart_vocab/tree/master/src/libraries/maths_part"><code>libraries/maths_part</code></a>.</p>
+<p>For example, lets that assume <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib1.dart"><code>lib1.dart</code></a> and <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib2.dart"><code>lib2.dart</code></a> are two huge libraries that were spilt into two. In normal circumstances, I would add both libraries in <code>import</code> statements at the top of <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/part_main.dart"><code>maths_part/part_main.dart</code></a> in order to access APIs from both libraries. In such scenarios, <code>part</code> directive could come handy to avoid multiple import statements.</p>
+<p>The <code>lib1.dart</code> file: The <code>part</code> directive at the top mentions that all <code>lib2</code> belongs to <code>lib1</code>, and bring-in all <code>lib2</code>'s apis into <code>lib1</code>. Only importing <code>lib1.dart</code> will give access to both libraries' apis.</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib1.dart"><code>lib1.dart</code></a></p>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="n">importing</span> <span class="n">lib1</span> <span class="n">brings</span><span class="o">-</span><span class="k">in</span> <span class="k">all</span> <span class="n">apis</span> <span class="k">from</span> <span class="n">lib2</span> <span class="k">as</span> <span class="n">well</span>
+<span class="n">part</span> <span class="s1">&#39;lib2.dart&#39;</span><span class="p">;</span>
+
+<span class="nb">int</span> <span class="n">addition</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+
+<span class="nb">int</span> <span class="n">subtraction</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
+
+<span class="nb">int</span> <span class="n">_add</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+</pre></div>
+
+
+<p>The <code>lib2.dart</code> file: This library is marked as part of <code>lib1.dart</code> by using <code>part of</code> directive as <code>part of 'lib1.dart';</code>.</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/lib2.dart"><code>lib2.dart</code></a></p>
+<div class="highlight"><pre><span></span><span class="n">part</span> <span class="k">of</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
+
+<span class="n">bool</span> <span class="n">isNumberOdd</span><span class="p">(</span><span class="nb">int</span> <span class="n">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">num</span><span class="p">.</span><span class="n">isOdd</span><span class="p">;</span>
+
+<span class="n">bool</span> <span class="n">isNumberEven</span><span class="p">(</span><span class="nb">int</span> <span class="n">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">num</span><span class="p">.</span><span class="n">isEven</span><span class="p">;</span>
+</pre></div>
+
+
+<p>The <code>part_main.dart</code> file: Importing <code>lib1.dart</code> gives access to all apis from both <code>lib1</code> &amp; <code>lib2</code>.
+<a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/maths_part/part_main.dart"><code>part_main.dart</code></a></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;lib1.dart&#39;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="o">//</span><span class="n">API</span> <span class="kn">from</span> <span class="nn">lib1.dart</span>
+  <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">API</span> <span class="kn">from</span> <span class="nn">lib2.dart</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;is number even? ${isNumberEven(num2)}&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><span class="err">Sum of 5 and 2 is 7</span>
+<span class="err">is number even? true</span>
+</pre></div>
+
+
+<hr>
+<h1><code>library</code> directive</h1>
+<p>The <code>library</code> directive is used to <a href="https://dart.dev/guides/libraries/create-library-packages#documenting-a-library">auto-generate documentation</a> for library using <a href="https://github.com/dart-lang/dartdoc#dartdoc"><code>dartdoc</code></a> tool.</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/tree/master/src/libraries/math_lib1"><code>math_lib1</code></a> for this example.</p>
+<h1>Generating documentation</h1>
+<ol>
+<li>Add <code>library</code> directive at the top of <code>lib1.dart</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">library math_lib1;</span>
+</pre></div>
+
+
+<ol>
+<li>
+<p>Create a directory <code>math_lib1</code>, and copy <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/math_lib1/lib1.dart"><code>lib1.dart</code></a> under it.  </p>
+</li>
+<li>
+<p>Add <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/math_lib1/pubspec.yaml"><code>pubspec.yaml</code></a> under <code>math_lib1</code> directory:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">name</span><span class="o">:</span> <span class="n">math_lib1</span>
+<span class="n">description</span><span class="o">:</span> <span class="n">Math</span> <span class="n">operations</span> <span class="n">library</span>
+<span class="n">version</span><span class="o">:</span> <span class="mf">0.0</span><span class="o">.</span><span class="mi">1</span>
+</pre></div>
+
+
+<ol>
+<li>Use <code>dartdoc</code> tool to create documentation:</li>
+</ol>
+<div class="highlight"><pre><span></span>  <span class="err">$</span> <span class="n">cd</span> <span class="n">math_lib1</span>
+
+  <span class="o">#</span> <span class="n">Generates</span> <span class="n">documentation</span>
+  <span class="err">$</span> <span class="n">dartdoc</span>
+
+  <span class="o">#</span> <span class="n">Documentation</span> <span class="n">available</span> <span class="k">at</span> <span class="o">`</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/`</span>
+  <span class="err">$</span> <span class="n">dhttpd</span> <span class="c1">--path doc/api</span>
+</pre></div>
+
+
+<hr>
+<h1>Using <code>export</code> directive</h1>
+<p>This directive is used to export only public apis. In other words, it makes apis publicly accessible.</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/tree/master/src/libraries/math_export/"><code>math_export</code></a> for this example.</p>
+<p>The <code>lib1.dart</code> and <code>lib2.dart</code> files are available under <code>lib/src/</code> folder. The files under <code>lib/src/</code> directory are hidden. The <code>lib/maths_export.dart</code> file use <code>export</code> directive to make <code>lib1.dart</code> public.</p>
+<p>The <code>lib/maths_export.dart</code>:</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/math_export/lib/maths_export.dart">maths_export.dart</a></p>
+<div class="highlight"><pre><span></span><span class="k">export</span> <span class="s1">&#39;src/lib1.dart&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>An external file <code>lib_export.dart</code> imports <code>maths_export.dart</code> like below:</p>
+<p>The <code>lib_export.dart</code>:</p>
+<p><strong>SourceCode:</strong> Please refer to <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries/lib_export.dart">lib_export.dart</a></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;math_export/lib/maths_export.dart&#39;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">addition</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sum of $num1 and $num2 is $sum&quot;</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">Compile</span><span class="o">-</span><span class="n">time</span> <span class="n">error</span> <span class="n">because</span> <span class="n">lib2</span><span class="o">.</span><span class="n">dart</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">exported</span>
+  <span class="o">//</span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;is number even? ${isNumberEven(num2)}&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><span class="err">Sum of 5 and 2 is 7</span>
+</pre></div>
+
+
+<hr>
+<h1>Summary</h1>
+<p>In this article, we saw how can <code>export</code>, <code>library</code>, and <code>part</code> directives are used in Dart. We touched on generating documentation from Dart libraries. We also saw how to keep apis private in libraries.</p>
+<p>That's it for this article. Check out the <a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html">Dart Vocabulary Series</a> for other Dart stuff.</p>
+<hr>
+<h1>Source Code</h1>
+<p>Please checkout the source code at Github <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/libraries">here</a></p>
+<hr>
+<h1>References</h1>
+<ul>
+<li><a href="https://dart.dev/guides/language/language-tour">Official Dart Language Tour</a></li>
+</ul>
+<p>Happy Darting :)</p>
+<p>_Liked the article ?
+Couldn't find a topic of interest? Please leave a comment or reach out at <a href="https://twitter.com/ptyagi13">twitter</a> about the topics you would like me to share!</p>
+<p><a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a>_</p>
+<p>Follow me at <a href="https://medium.com/@ptyagicodecamp">Medium</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://ptyagicodecamp.github.io/tag/export.html">export</a>
+      <a href="https://ptyagicodecamp.github.io/tag/part.html">part</a>
+      <a href="https://ptyagicodecamp.github.io/tag/import.html">import</a>
+      <a href="https://ptyagicodecamp.github.io/tag/libraries.html">libraries</a>
+      <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+    </p>
+  </div>
+
+  <div class="center social-share">
+    <p>Like this article? Share it with your friends!</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'https-ptyagicodecamp-github-io';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cf387135c8761da" async="async"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " tech&Life ",
+  "url" : "https://ptyagicodecamp.github.io",
+  "image": "https://ptyagicodecamp.github.io/images/profile.jpg",
+  "description": "Mobile engineering tech logger."
+}
+</script>
+<a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+</body>
+</html>
