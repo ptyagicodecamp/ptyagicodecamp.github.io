@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/solid.css">
+
+    <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
+
+    <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-133714063-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="ptyagi" />
+<meta name="description" content="This article demonstrates persisting data in local database in Flutter App." />
+<meta name="keywords" content="sqflite, cross-platform, flutter, code-recipes, android, android Studio, iOS, development">
+
+
+<meta property="og:site_name" content="tech&Life"/>
+<meta property="og:title" content="Persisting Data in Local DB for Flutter (Android &amp; iOS)"/>
+<meta property="og:description" content="This article demonstrates persisting data in local database in Flutter App."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/persisting-data-in-local-db-for-flutter-android-ios.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-05-06 00:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Flutter"/>
+<meta property="article:tag" content="sqflite"/>
+<meta property="article:tag" content="cross-platform"/>
+<meta property="article:tag" content="flutter"/>
+<meta property="article:tag" content="code-recipes"/>
+<meta property="article:tag" content="android"/>
+<meta property="article:tag" content="android Studio"/>
+<meta property="article:tag" content="iOS"/>
+<meta property="article:tag" content="development"/>
+<meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
+
+  <title>tech&Life &ndash; Persisting Data in Local DB for Flutter (Android &amp; iOS)</title>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6359982310050489",
+      enable_page_level_ads: true
+    });
+  </script>
+</head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://ptyagicodecamp.github.io">
+        <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="tech&Life" title="tech&Life">
+      </a>
+
+      <h1>
+        <a href="https://ptyagicodecamp.github.io">tech&Life</a>
+      </h1>
+
+<p>Explore | Mobile | Software Engineering | Life</p>
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="https://www.paypal.me/pritya" >Support</a>
+            </li>
+            <li>
+              <a target="_self" href="https://www.codementor.io/ptyagicodecamp" >Codementor</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank">
+              <i class="fab fa-medium"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank">
+              <i class="fab fa-codementor"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle ads-aside"
+           data-ad-client="ca-pub-6359982310050489"
+           data-ad-slot="8977779775"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://ptyagicodecamp.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="persisting-data-in-local-db-for-flutter-android-ios">Persisting Data in Local DB for Flutter (Android & iOS)</h1>
+    <p>
+      Posted on May 06, 2020 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+
+    </p>
+  </header>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+  <div>
+    <p><img alt="products_db" src="https://ptyagicodecamp.github.io/localdb_cover.png"></p>
+<p><strong>Target Audience:</strong> Beginner</p>
+<p><strong>Recipe:</strong> Persisting products data in local database using <code>sqflite</code> Flutter plugin.</p>
+<p><strong>Focus Widget:</strong> Flutter plugin <a href="https://pub.dev/packages/sqflite">sqflite</a>.</p>
+<p><strong>Goal:</strong> In this recipe, we'll create, save, and retrieve two objects of custom data type, <code>Product</code> in the local sqlite database. We'll create two files for this recipe:</p>
+<ul>
+<li>
+<p><strong>User Interface</strong> -<a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom.dart"><code>ecom.dart</code></a> : User interface to load data from local database.</p>
+</li>
+<li>
+<p><strong>Database</strong> -<a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom_db.dart"><code>ecom_db.dart</code></a>: This file contains all code related to sqlite database.</p>
+</li>
+</ul>
+<p>The user interface will load two demo products in a <code>ListView</code> as shown in this screenshot:</p>
+<p><img alt="products_db" src="https://ptyagicodecamp.github.io/localdb_products.jpg"></p>
+<hr>
+<h1>Flutter Cookbook</h1>
+<p>This code recipe is added in the <a href="https://ptyagicodecamp.github.io/flutter-live-booklet-flutter-component-recipes.html">Flutter Cookbook</a> app as well. Source code link is available at the end of this article.</p>
+<p><img alt="localdb_cookbook" src="https://ptyagicodecamp.github.io/localdb_cookbook.jpg"></p>
+<hr>
+<p><strong>Checkout the YouTube video:</strong>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JX2BHjHKnuc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<hr>
+<h1><code>pubspec.yaml</code> dependency</h1>
+<p>Add <code>sqflite</code> plugin dependency as below:</p>
+<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
+  <span class="n">flutter</span><span class="o">:</span>
+    <span class="n">sdk</span><span class="o">:</span> <span class="n">flutter</span>
+
+  <span class="err">#</span><span class="n">Local</span> <span class="n">database</span>
+  <span class="n">sqflite</span><span class="o">:</span> <span class="o">^</span><span class="mf">1.3</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+
+
+<p><strong>Note:</strong> The <code>sqflite</code> plugin has dependency on <a href="https://pub.dev/packages/path"><code>path</code></a> plugin. Please add this dependency it's not already present in your configuration file.</p>
+<hr>
+<h1>User Interface</h1>
+<p>In this code recipe, there're only two product items used for demonstration purposes. Each item has an image, title, description, and price.</p>
+<p>The UI is composed of widgets as shown below:</p>
+<p><img alt="localdb_interface" src="https://ptyagicodecamp.github.io/localdb_products_lined.jpg"></p>
+<p><strong>Note:</strong> This article is not intended for learning to build user interface. Hence, I'll quickly review the UI structure. Please refer to source code to see full code.</p>
+<p>Main interface is rendered using <code>ListView</code> widget. The <code>ListView</code> widget has a <code>Column</code> widget as its child. The custom widget <code>positionedBlock()</code> is added as <code>Column</code> widget's child.</p>
+<p><strong>positionedBlock():</strong> This method returns interface for each item in the list. It's is aligned in <code>topCenter</code> using <code>Align</code> widget. A <code>Stack</code> widgets contains two <code>Positioned</code> widgets for product description and image.
+The first <code>Positioned</code> widget is added in the background to display product information (in a <code>Column</code> widget). The another <code>Positioned</code> widget contains the product's image.</p>
+<p>The main screen is a <code>StatefulWidget</code> since we want to update data retrieved from local database. Sample data in database is added as soon as the app starts. We'll go over database details in next section. The <code>initDB()</code> method is called rom <code>initState()</code> method. The <code>initState()</code> method executes once during screen startup-time. We want to keep data ready in database for querying by <code>build()</code> method.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">ProductListing</span> <span class="k">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">_ProductListingState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_ProductListingState</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="n">_ProductListingState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">ProductListing</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="err">@</span><span class="n">override</span>
+    <span class="n">void</span> <span class="n">initState</span><span class="p">()</span> <span class="p">{</span>
+      <span class="n">super</span><span class="o">.</span><span class="n">initState</span><span class="p">();</span>
+      <span class="o">//</span><span class="n">insert</span> <span class="n">demo</span> <span class="n">data</span>
+      <span class="n">initDB</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>Rendering Data from Database</h2>
+<p>The <code>_ProductListingState</code> widget's <code>build()</code> method is responsible for updating data at the interface. It uses <code>FutureBuilder</code> widget to render data returned from asynchronous methods like <code>Future</code>. Usually data is returned asynchronously from database or remote network operations. <code>FutureBuilder</code> widget helps render data asynchronously at user interface side.</p>
+<div class="highlight"><pre><span></span><span class="nl">body</span><span class="p">:</span><span class="w"> </span><span class="n">FutureBuilder</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">fetching</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">db</span><span class="w"></span>
+<span class="w">    </span><span class="nl">future</span><span class="p">:</span><span class="w"> </span><span class="n">allProducts</span><span class="p">(),</span><span class="w"></span>
+<span class="w">    </span><span class="nl">builder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">AsyncSnapshot</span><span class="w"> </span><span class="n">snapshot</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="err">!</span><span class="n">snapshot</span><span class="p">.</span><span class="n">hasData</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">//</span><span class="n">loading</span><span class="w"> </span><span class="n">circular</span><span class="w"> </span><span class="n">progress</span><span class="w"> </span><span class="n">bar</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span><span class="nl">child</span><span class="p">:</span><span class="w"> </span><span class="n">CircularProgressIndicator</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="err">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="nl">child</span><span class="p">:</span><span class="w"> </span><span class="n">ListView</span><span class="p">.</span><span class="n">builder</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="nl">itemCount</span><span class="p">:</span><span class="w"> </span><span class="n">snapshot</span><span class="p">.</span><span class="k">data</span><span class="p">.</span><span class="n">length</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nl">scrollDirection</span><span class="p">:</span><span class="w"> </span><span class="n">Axis</span><span class="p">.</span><span class="n">vertical</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nl">itemBuilder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="nc">int</span><span class="w"> </span><span class="k">index</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="k">Column</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="nl">children</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">                  //custom widget</span>
+<span class="n">                  positionedBlock(context, snapshot.data[index</span><span class="o">]</span><span class="p">),</span><span class="w"></span>
+<span class="w">                  </span><span class="n">Divider</span><span class="p">(</span><span class="w"></span>
+<span class="w">                    </span><span class="nl">thickness</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">                  </span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="err">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="err">}</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">),</span><span class="w"></span>
+</pre></div>
+
+
+<p>The <code>allProducts()</code> method returns a list of <code>Product</code> of <code>Future</code> type. Each product entry uses <code>positionedBlock(...)</code> method to display product details. Checkout the source code for this <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom.dart">here</a>.</p>
+<p>Let's explore the database side of things next.</p>
+<hr>
+<h1>Local Database</h1>
+<p>The <code>sqflite</code> plugin access to sqlite database on Android and iOS devices for Flutter. Let's check out the database operations next.</p>
+<p><strong>Note:</strong> Refer <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets-code/flutter_widgets/lib/persistence/ecom_db.dart"><code>ecom_db.dart</code></a>.</p>
+<h2>Creating Database</h2>
+<p>The <code>openDatabase()</code> method takes database path, version of the database to support db upgrades &amp; downgrades, and a way to create table using <code>onCreate:</code> attribute.</p>
+<p>The <code>getDatabasesPath()</code> provides the physical location of database on device. The <code>join()</code> methods is a utility method to join the given paths into single path as per the current platform's file separator. You need <code>path</code> plugin to access <code>join()</code> method.</p>
+<div class="highlight"><pre><span></span><span class="err">Future&lt;Database&gt; db() async {</span>
+<span class="err">  return openDatabase(</span>
+<span class="err">    join(await getDatabasesPath(), &#39;products_database.db&#39;),</span>
+<span class="err">    onCreate: (db, version) {</span>
+<span class="err">      return db.execute(</span>
+<span class="err">        &#39;CREATE TABLE IF NOT EXISTS $tableProducts(id INTEGER PRIMARY KEY, title TEXT, description TEXT, image TEXT, price REAL)&#39;,</span>
+<span class="err">      );</span>
+<span class="err">    },</span>
+<span class="err">    // Version provides path to perform database upgrades and downgrades.</span>
+<span class="err">    version: 1,</span>
+<span class="err">  );</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>The <code>db()</code> will return <code>Database</code> as <code>Future</code>. Initializing database is an asynchronous operation. The database reference is being held in <code>database</code> variable, and product table name is <code>products</code> and stored in <code>tableProducts</code> constant. A table <code>products</code> is created if doesn't exist already.</p>
+<h2>Product class</h2>
+<p>The Product is represented with class <code>Product</code>. A product object has <code>id</code>, <code>title</code>, <code>description</code>, <code>image</code>, and <code>price</code>.</p>
+<div class="highlight"><pre><span></span>class Product {
+  final int id;
+  final String title;
+  final String description;
+  final String image;
+  final double price;
+
+  Product({this.id, this.title, this.description, this.image, this.price});
+
+  Map<span class="nt">&lt;String</span><span class="err">,</span> <span class="err">dynamic</span><span class="nt">&gt;</span> toMap() {
+    return {
+      &#39;id&#39;: id,
+      &#39;title&#39;: title,
+      &#39;description&#39;: description,
+      &#39;image&#39;: image,
+      &#39;price&#39;: price,
+    };
+  }
+
+  @override
+  String toString() {
+    return &#39;Product(&quot;id&quot;: <span class="cp">${</span><span class="n">this</span><span class="o">.</span><span class="n">id</span><span class="cp">}</span>, &quot;title&quot;: <span class="cp">${</span><span class="n">this</span><span class="o">.</span><span class="n">title</span><span class="cp">}</span>, &quot;description&quot;: <span class="cp">${</span><span class="n">this</span><span class="o">.</span><span class="n">description</span><span class="cp">}</span>, &#39;
+        &#39;&quot;image&quot;: <span class="cp">${</span><span class="n">this</span><span class="o">.</span><span class="n">image</span><span class="cp">}</span>, &quot;price&quot;:<span class="cp">${</span><span class="n">this</span><span class="o">.</span><span class="n">price</span><span class="cp">}</span>);&#39;;
+  }
+}
+</pre></div>
+
+
+<h2>Inserting Product</h2>
+<p>Inserting data into a table is an asynchronous operation as well. First get a reference to database and then pick a conflictAlgorithm. It is a rule to resolve conflicts. In our case, we want to replace old content with new content if record is already present. Hence, it makes sense to pick <code>ConflictAlgorithm.replace</code> conflictAlgorithm.</p>
+<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">insertProduct</span><span class="p">(</span><span class="n">Product</span> <span class="n">product</span><span class="p">)</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span> <span class="k">Get</span> <span class="n">a</span> <span class="k">reference</span> <span class="k">to</span> <span class="n">the</span> <span class="k">database</span><span class="p">.</span>
+  <span class="n">final</span> <span class="k">Database</span> <span class="n">db</span> <span class="o">=</span> <span class="n">await</span> <span class="k">database</span><span class="p">;</span>
+
+  <span class="o">//</span> <span class="k">Insert</span> <span class="n">the</span> <span class="n">Product</span> <span class="k">into</span> <span class="n">the</span> <span class="n">correct</span> <span class="k">table</span><span class="p">.</span>
+  <span class="o">//</span> <span class="n">Specify</span> <span class="n">`conflictAlgorithm`</span><span class="p">.</span>
+  <span class="o">//</span> <span class="k">In</span> <span class="n">this</span> <span class="k">case</span><span class="p">,</span> <span class="k">if</span> <span class="n">the</span> <span class="n">same</span> <span class="n">product</span> <span class="k">is</span> <span class="n">inserted</span>
+  <span class="o">//</span> <span class="n">multiple</span> <span class="n">times</span><span class="p">,</span> <span class="n">it</span> <span class="n">replaces</span> <span class="n">the</span> <span class="n">previous</span> <span class="k">data</span><span class="p">.</span>
+  <span class="n">await</span> <span class="n">db</span><span class="p">.</span><span class="k">insert</span><span class="p">(</span>
+    <span class="n">tableProducts</span><span class="p">,</span>
+    <span class="n">product</span><span class="p">.</span><span class="n">toMap</span><span class="p">(),</span>
+    <span class="n">conflictAlgorithm</span><span class="o">:</span> <span class="n">ConflictAlgorithm</span><span class="p">.</span><span class="k">replace</span><span class="p">,</span>
+  <span class="p">);</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h2>Querying All Products</h2>
+<p>We want to render all products from the table into interface. In our case, there are only two products.</p>
+<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">allProducts</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="k">Get</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">database</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="k">Database</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="k">database</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">Query</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">table</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">Products</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="k">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="k">dynamic</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">maps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="n">tableProducts</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nf">Convert</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="k">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="k">dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">maps</span><span class="p">.</span><span class="n">length</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="nl">id</span><span class="p">:</span><span class="w"> </span><span class="n">maps</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">&#39;id&#39;</span><span class="o">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nl">title</span><span class="p">:</span><span class="w"> </span><span class="n">maps</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">&#39;title&#39;</span><span class="o">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nl">description</span><span class="p">:</span><span class="w"> </span><span class="n">maps</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">&#39;description&#39;</span><span class="o">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nc">image</span><span class="err">:</span><span class="w"> </span><span class="n">maps</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">&#39;image&#39;</span><span class="o">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nl">price</span><span class="p">:</span><span class="w"> </span><span class="n">maps</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">&#39;price&#39;</span><span class="o">]</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div>
+
+
+<h2>Updating Product</h2>
+<p>In this code recipe, we're not editing an existing item. However, <code>db.update(...)</code> method is useful to update the items. Remember to make use of <code>whereArgs</code> to avoid SQL injections.</p>
+<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">updateProduct</span><span class="p">(</span><span class="n">Product</span> <span class="n">product</span><span class="p">)</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span> <span class="k">Get</span> <span class="n">a</span> <span class="n">reference</span> <span class="k">to</span> <span class="n">the</span> <span class="k">database</span><span class="p">.</span>
+  <span class="k">final</span> <span class="n">db</span> <span class="o">=</span> <span class="n">await</span> <span class="k">database</span><span class="p">;</span>
+
+  <span class="o">//</span> <span class="k">Update</span> <span class="n">the</span> <span class="n">given</span> <span class="n">Product</span><span class="p">.</span>
+  <span class="n">await</span> <span class="n">db</span><span class="p">.</span><span class="k">update</span><span class="p">(</span>
+    <span class="n">tableProducts</span><span class="p">,</span>
+    <span class="n">product</span><span class="p">.</span><span class="n">toMap</span><span class="p">(),</span>
+    <span class="o">//</span> <span class="n">Ensure</span> <span class="n">that</span> <span class="n">the</span> <span class="n">Product</span> <span class="n">has</span> <span class="n">a</span> <span class="n">matching</span> <span class="n">id</span><span class="p">.</span>
+    <span class="k">where</span><span class="p">:</span> <span class="ss">&quot;id = ?&quot;</span><span class="p">,</span>
+    <span class="o">//</span> <span class="n">Pass</span> <span class="n">the</span> <span class="n">Products</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">id</span> <span class="k">as</span> <span class="n">a</span> <span class="n">whereArg</span> <span class="k">to</span> <span class="n">prevent</span> <span class="k">SQL</span> <span class="n">injection</span><span class="p">.</span>
+    <span class="n">whereArgs</span><span class="p">:</span> <span class="p">[</span><span class="n">product</span><span class="p">.</span><span class="n">id</span><span class="p">],</span>
+  <span class="p">);</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h2>Deleting Product</h2>
+<p>We're not deleting any item either in this sample. Similar to <code>update</code>, remember to use <code>whereArgs</code> to keep SQL injections on the bay.</p>
+<div class="highlight"><pre><span></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">void</span><span class="o">&gt;</span> <span class="n">deleteProduct</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span> <span class="n">async</span> <span class="err">{</span>
+  <span class="o">//</span> <span class="k">Get</span> <span class="n">a</span> <span class="k">reference</span> <span class="k">to</span> <span class="n">the</span> <span class="k">database</span><span class="p">.</span>
+  <span class="n">final</span> <span class="n">db</span> <span class="o">=</span> <span class="n">await</span> <span class="k">database</span><span class="p">;</span>
+
+  <span class="o">//</span> <span class="k">Remove</span> <span class="n">the</span> <span class="n">Product</span> <span class="k">from</span> <span class="n">the</span> <span class="k">database</span><span class="p">.</span>
+  <span class="n">await</span> <span class="n">db</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span>
+    <span class="n">tableProducts</span><span class="p">,</span>
+    <span class="o">//</span> <span class="k">Use</span> <span class="n">a</span> <span class="n">`where`</span> <span class="n">clause</span> <span class="k">to</span> <span class="k">delete</span> <span class="n">a</span> <span class="k">specific</span> <span class="n">product</span><span class="p">.</span>
+    <span class="k">where</span><span class="o">:</span> <span class="s2">&quot;id = ?&quot;</span><span class="p">,</span>
+    <span class="o">//</span> <span class="n">Pass</span> <span class="n">the</span> <span class="n">Products</span><span class="s1">&#39;s id as a whereArg to prevent SQL injection.</span>
+<span class="s1">    whereArgs: [id],</span>
+<span class="s1">  );</span>
+<span class="s1">}</span>
+</pre></div>
+
+
+<h2>Inserting Sample Data into Table</h2>
+<p>In our sample, we're creating following two products, and inserting into database using <code>await</code> keyword to keep it asynchronous. The product images are loaded from local assets folder.</p>
+<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">initDB</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="n">prod1</span> <span class="o">=</span> <span class="n">Product</span><span class="p">(</span>
+    <span class="n">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="s1">&#39;Shoes&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="p">:</span> <span class="s1">&#39;Rainbow Shoes&#39;</span><span class="p">,</span>
+    <span class="n">image</span><span class="p">:</span> <span class="s1">&#39;shoes.jpeg&#39;</span><span class="p">,</span>
+    <span class="n">price</span><span class="p">:</span> <span class="mf">65.0</span><span class="p">,</span>
+  <span class="p">);</span>
+
+  <span class="k">var</span> <span class="n">prod2</span> <span class="o">=</span> <span class="n">Product</span><span class="p">(</span>
+    <span class="n">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="s1">&#39;Dress&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="p">:</span> <span class="s1">&#39;Summer Dress&#39;</span><span class="p">,</span>
+    <span class="n">image</span><span class="p">:</span> <span class="s1">&#39;dress.png&#39;</span><span class="p">,</span>
+    <span class="n">price</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span>
+  <span class="p">);</span>
+
+  <span class="o">//</span> <span class="n">Insert</span> <span class="n">a</span> <span class="n">product</span> <span class="n">into</span> <span class="n">the</span> <span class="n">database</span><span class="o">.</span>
+  <span class="n">await</span> <span class="n">insertProduct</span><span class="p">(</span><span class="n">prod1</span><span class="p">);</span>
+
+  <span class="n">await</span> <span class="n">insertProduct</span><span class="p">(</span><span class="n">prod2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>That's all ! In this code recipe, we added two products in local database, and displayed both product entries in Flutter App.</p>
+<p><strong>Note:</strong>
+The <code>sqflite</code> plugin provides the lower level implementation for creating and accessing database on Android and iOS platforms. However, the <code>moor</code> plugin provides database access across Android, iOS and Web platforms. Please check out <a href="https://ptyagicodecamp.github.io/persisting-theme-in-localdatabase-moor-plugin.html">my article</a> about persisting data using <code>moor</code> plugin.</p>
+<hr>
+<h1>Source Code Repo</h1>
+<ul>
+<li>
+<p>Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/widgets/flutter_widgets/lib/persistence">here</a></p>
+</li>
+<li>
+<p>Flutter Cookbook project's source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/">here</a></p>
+</li>
+</ul>
+<hr>
+<h1>References</h1>
+<ol>
+<li>The <a href="https://pub.dev/packages/path"><code>path</code></a> Plugin</li>
+<li>The <a href="https://pub.dev/packages/sqflite"><code>sqflite</code></a> Plugin</li>
+</ol>
+<p>Happy cooking with Flutter :)</p>
+<p>_Liked the article ?
+Couldn't find a topic of your interest ? Please leave a comment or reach out at <a href="https://twitter.com/ptyagi13">twitter</a> about the topics you would like me to share !</p>
+<p><a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a>_</p>
+<p>Follow me at <a href="https://medium.com/@ptyagicodecamp">Medium</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://ptyagicodecamp.github.io/tag/sqflite.html">sqflite</a>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android.html">android</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">android Studio</a>
+      <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+      <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+    </p>
+  </div>
+
+  <div class="center social-share">
+    <p>Like this article? Share it with your friends!</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'https-ptyagicodecamp-github-io';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cf387135c8761da" async="async"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " tech&Life ",
+  "url" : "https://ptyagicodecamp.github.io",
+  "image": "https://ptyagicodecamp.github.io/images/profile.jpg",
+  "description": "Mobile engineering tech logger."
+}
+</script>
+<a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+</body>
+</html>

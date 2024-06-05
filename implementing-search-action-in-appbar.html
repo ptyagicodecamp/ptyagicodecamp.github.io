@@ -1,0 +1,884 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/solid.css">
+
+    <link href="https://ptyagicodecamp.github.io/static/custom.css" rel="stylesheet">
+
+    <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-133714063-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="ptyagi" />
+<meta name="description" content="Implementing Search action in AppBar using Flutter for Android and iOS mobile apps." />
+<meta name="keywords" content="SearchDelegate, SearchAppBar, cross-platform, flutter, code-recipes, android, android Studio, iOS, development">
+
+
+<meta property="og:site_name" content="tech&Life"/>
+<meta property="og:title" content="Implementing Search action in AppBar"/>
+<meta property="og:description" content="Implementing Search action in AppBar using Flutter for Android and iOS mobile apps."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://ptyagicodecamp.github.io/implementing-search-action-in-appbar.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-02-06 00:00:00-05:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+<meta property="article:section" content="Flutter"/>
+<meta property="article:tag" content="SearchDelegate"/>
+<meta property="article:tag" content="SearchAppBar"/>
+<meta property="article:tag" content="cross-platform"/>
+<meta property="article:tag" content="flutter"/>
+<meta property="article:tag" content="code-recipes"/>
+<meta property="article:tag" content="android"/>
+<meta property="article:tag" content="android Studio"/>
+<meta property="article:tag" content="iOS"/>
+<meta property="article:tag" content="development"/>
+<meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
+
+  <title>tech&Life &ndash; Implementing Search action in AppBar</title>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6359982310050489",
+      enable_page_level_ads: true
+    });
+  </script>
+</head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://ptyagicodecamp.github.io">
+        <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="tech&Life" title="tech&Life">
+      </a>
+
+      <h1>
+        <a href="https://ptyagicodecamp.github.io">tech&Life</a>
+      </h1>
+
+<p>Explore | Mobile | Software Engineering | Life</p>
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="https://www.paypal.me/pritya" >Support</a>
+            </li>
+            <li>
+              <a target="_self" href="https://www.codementor.io/ptyagicodecamp" >Codementor</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/priyankatyagi" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="https://github.com/ptyagicodecamp" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-medium" href="https://medium.com/@ptyagicodecamp" target="_blank">
+              <i class="fab fa-medium"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/ptyagi13" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-codementor" href="https://www.codementor.io/ptyagicodecamp" target="_blank">
+              <i class="fab fa-codementor"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle ads-aside"
+           data-ad-client="ca-pub-6359982310050489"
+           data-ad-slot="8977779775"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://ptyagicodecamp.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="implementing-search-action-in-appbar">Implementing Search action in AppBar</h1>
+    <p>
+      Posted on February 06, 2019 in <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+
+    </p>
+  </header>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+  <div>
+    <h2>Search in AppBar</h2>
+<p>In today's recipe, I'll show you how search action can be
+integrated at top of the page. I'll be using Flutter's <a href="https://docs.flutter.io/flutter/material/SearchDelegate-class.html">SearchDelegate</a>
+component to achieve this. It comes packed with support for populating suggestions in search bar,
+adding actions items to the right side of the search bar. I'm using dart's library <code>english_words</code> to
+populate the list of words.</p>
+<p><strong><em>Target Audience:</em></strong> Beginner</p>
+<p><strong><em>Recipe:</em></strong> Implementing Search action in AppBar using Flutter for Android and iOS mobile apps.</p>
+<p><strong><em>Focus Widget:</em></strong> <a href="https://docs.flutter.io/flutter/material/SearchDelegate-class.html">SearchDelegate</a></p>
+<p><strong><em>Goal:</em></strong> In this recipe, I'll show you :
+1. How to populate sorted english word list in app and search for a given word using Search bar at the top of the application.
+2. How to build suggestion list for search bar.
+3. How to add actions like "clear" to reset search bar, and a dummy action "mic" for voice input.</p>
+<p><img alt="Sorted Wordlist" src="https://ptyagicodecamp.github.io/wordlist.png">
+<img alt="Search in Wordlist" src="https://ptyagicodecamp.github.io/wordlist_search.png"></p>
+<p>Checkout in action:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GuP1Voc4pTw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<h3>Lets's go!</h3>
+<p><strong>Step #0:</strong> Create "Flutter Application" project in Android Studio.</p>
+<p><strong>Step #1.</strong> Get dependencies. First thing to add <code>english_words</code> dependency in
+<code>pubspec.yaml</code> to be able to populate English words in our recipe app's word list.</p>
+<div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="o">:</span>
+  <span class="n">flutter</span><span class="o">:</span>
+    <span class="n">sdk</span><span class="o">:</span> <span class="n">flutter</span>
+  <span class="err">#</span> <span class="n">This</span> <span class="k">is</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">populate</span> <span class="n">English</span> <span class="n">words</span> <span class="k">in</span> <span class="n">app</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">word</span> <span class="n">list</span><span class="o">.</span>
+  <span class="n">english_words</span><span class="o">:</span> <span class="o">^</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">3</span>
+</pre></div>
+
+
+<p><strong>Step #2.</strong> Display Word list 
+To display English word list as list in app, first thing is to import the dependency in <code>main.dart</code> file:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:english_words/english_words.dart&#39;</span> <span class="k">as</span> <span class="n">words</span><span class="p">;</span>
+</pre></div>
+
+
+<p><strong>Step #3.</strong> Initialize word list in <code>SearchAppBarRecipeState</code> class.
+Now, in the <code>_SearchAppBarRecipeState</code> class, fetch the list of words like below. Make sure
+that you've a list data structure to hold word list. I'm using <code>kWords</code> for this purpose.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_SearchAppBarRecipeState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">SeachAppBarRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">Data</span> <span class="n">structure</span> <span class="n">to</span> <span class="n">hold</span> <span class="n">word</span> <span class="n">list</span>
+  <span class="n">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">kWords</span><span class="p">;</span>
+
+  <span class="o">...</span>
+
+    <span class="o">//</span><span class="n">Initializing</span> <span class="n">kWords</span> <span class="n">list</span> <span class="n">with</span> <span class="n">data</span> <span class="n">fetched</span> <span class="n">from</span> <span class="n">english_words</span> <span class="n">library</span>
+  <span class="n">_SearchAppBarRecipeState</span><span class="p">()</span>
+      <span class="p">:</span> <span class="n">kWords</span> <span class="o">=</span> <span class="n">List</span><span class="o">.</span><span class="n">from</span><span class="p">(</span><span class="n">Set</span><span class="o">.</span><span class="n">from</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">all</span><span class="p">)),</span>
+        <span class="n">super</span><span class="p">();</span>
+
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Step #4.</strong> Sorting word list.
+You'll notice at this point that data is un-sorted at this point. 
+Let's make it alphabetically sorted as below:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_SearchAppBarRecipeState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">SeachAppBarRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="n">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">kWords</span><span class="p">;</span>
+  <span class="o">...</span>
+
+  <span class="o">//</span><span class="n">Initializing</span> <span class="n">with</span> <span class="n">sorted</span> <span class="n">list</span> <span class="n">of</span> <span class="n">english</span> <span class="n">words</span>
+  <span class="n">_SearchAppBarRecipeState</span><span class="p">()</span>
+      <span class="p">:</span> <span class="n">kWords</span> <span class="o">=</span> <span class="n">List</span><span class="o">.</span><span class="n">from</span><span class="p">(</span><span class="n">Set</span><span class="o">.</span><span class="n">from</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">all</span><span class="p">))</span>
+    <span class="o">..</span><span class="n">sort</span><span class="p">(</span>
+          <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">w1</span><span class="o">.</span><span class="n">toLowerCase</span><span class="p">()</span><span class="o">.</span><span class="n">compareTo</span><span class="p">(</span><span class="n">w2</span><span class="o">.</span><span class="n">toLowerCase</span><span class="p">()),</span>
+    <span class="p">),</span>
+        <span class="n">super</span><span class="p">();</span>
+   <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Step #5.</strong> Setup <code>SearchDelegate</code> to implement Search AppBar.
+Search delegate is where all the magic happens. It holds two list of words. One list is of
+the general word list passed during initialization. Another list <code>_history</code> contains the list of history words.
+You can pre-populate <code>_history</code> list to give a baseline for history search items. This list will be shown when
+user clicks on the search bar.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_SearchAppBarDelegate</span> <span class="k">extends</span> <span class="n">SearchDelegate</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">list</span> <span class="n">holds</span> <span class="n">the</span> <span class="n">full</span> <span class="n">word</span> <span class="n">list</span>
+  <span class="n">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">_words</span><span class="p">;</span>
+
+  <span class="o">//</span><span class="n">list</span> <span class="n">holds</span> <span class="n">history</span> <span class="n">search</span> <span class="n">words</span><span class="o">.</span>
+  <span class="n">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">_history</span><span class="p">;</span>
+
+    <span class="o">//</span><span class="n">initialize</span> <span class="n">delegate</span> <span class="n">with</span> <span class="n">full</span> <span class="n">word</span> <span class="n">list</span> <span class="ow">and</span> <span class="n">history</span> <span class="n">words</span>
+  <span class="n">_SearchAppBarDelegate</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">words</span><span class="p">)</span>
+      <span class="p">:</span> <span class="n">_words</span> <span class="o">=</span> <span class="n">words</span><span class="p">,</span>
+  <span class="o">//</span><span class="n">pre</span><span class="o">-</span><span class="n">populated</span> <span class="n">history</span> <span class="n">of</span> <span class="n">words</span>
+        <span class="n">_history</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span><span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;watermelon&#39;</span><span class="p">],</span>
+        <span class="n">super</span><span class="p">();</span>
+
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Step #6.</strong> After setting up words list options in delegate, now its time to pick up an icon that will be placed at the
+left side of search bar. Mostly, this icon menu is meant for navigating back to previous screen.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_SearchAppBarDelegate</span> <span class="k">extends</span> <span class="n">SearchDelegate</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="o">...</span>
+
+    <span class="o">//</span> <span class="n">Setting</span> <span class="n">leading</span> <span class="n">icon</span> <span class="k">for</span> <span class="n">the</span> <span class="n">search</span> <span class="n">bar</span><span class="o">.</span>
+    <span class="o">//</span><span class="n">Clicking</span> <span class="n">on</span> <span class="n">back</span> <span class="n">arrow</span> <span class="n">will</span> <span class="n">take</span> <span class="n">control</span> <span class="n">to</span> <span class="n">main</span> <span class="n">page</span>
+    <span class="err">@</span><span class="n">override</span>
+    <span class="n">Widget</span> <span class="n">buildLeading</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">IconButton</span><span class="p">(</span>
+        <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Back&#39;</span><span class="p">,</span>
+        <span class="n">icon</span><span class="p">:</span> <span class="n">AnimatedIcon</span><span class="p">(</span>
+          <span class="n">icon</span><span class="p">:</span> <span class="n">AnimatedIcons</span><span class="o">.</span><span class="n">menu_arrow</span><span class="p">,</span>
+          <span class="n">progress</span><span class="p">:</span> <span class="n">transitionAnimation</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="o">//</span><span class="n">Take</span> <span class="n">control</span> <span class="n">back</span> <span class="n">to</span> <span class="n">previous</span> <span class="n">page</span>
+          <span class="n">this</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nb nb-Type">null</span><span class="p">);</span>
+        <span class="p">},</span>
+      <span class="p">);</span>
+    <span class="p">}</span>
+
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Alright we got the icon for search bar ! What next ? </p>
+<p><strong>Step #7.</strong> Now it's time to implement <code>buildResults</code> method to show searched item. This is where search query <code>this.query</code> will
+display searched item. For sake of simplicity, I'll be adding two widgets only.
+First widget is <code>Text</code> and will display message '===Your Word Choice==='. Second widget is
+<code>GestureDetector</code> which has it's another <code>Text</code> widget as its <code>child</code>. Tapping on the <code>Text</code> widget will
+take control back to previous page along with <code>this.query</code> parameter to display the searched word in main page.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_SearchAppBarDelegate</span> <span class="k">extends</span> <span class="n">SearchDelegate</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="o">...</span>
+
+  <span class="o">//</span><span class="n">Builds</span> <span class="n">page</span> <span class="n">to</span> <span class="n">populate</span> <span class="n">search</span> <span class="n">results</span><span class="o">.</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">Widget</span> <span class="n">buildResults</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Padding</span><span class="p">(</span>
+      <span class="n">padding</span><span class="p">:</span> <span class="k">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mf">8.0</span><span class="p">),</span>
+      <span class="n">child</span><span class="p">:</span> <span class="n">Center</span><span class="p">(</span>
+        <span class="n">child</span><span class="p">:</span> <span class="n">Column</span><span class="p">(</span>
+          <span class="n">mainAxisSize</span><span class="p">:</span> <span class="n">MainAxisSize</span><span class="o">.</span><span class="n">min</span><span class="p">,</span>
+          <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+            <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;===Your Word Choice===&#39;</span><span class="p">),</span>
+            <span class="n">GestureDetector</span><span class="p">(</span>
+              <span class="n">onTap</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="o">//</span><span class="n">Define</span> <span class="n">your</span> <span class="n">action</span> <span class="n">when</span> <span class="n">clicking</span> <span class="n">on</span> <span class="n">result</span> <span class="n">item</span><span class="o">.</span>
+                <span class="o">//</span><span class="n">In</span> <span class="n">this</span> <span class="n">example</span><span class="p">,</span> <span class="n">it</span> <span class="n">simply</span> <span class="n">closes</span> <span class="n">the</span> <span class="n">page</span>
+                <span class="n">this</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="p">);</span>
+              <span class="p">},</span>
+              <span class="n">child</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span>
+                <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="p">,</span>
+                <span class="n">style</span><span class="p">:</span> <span class="n">Theme</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">textTheme</span>
+                    <span class="o">.</span><span class="n">display2</span>
+                    <span class="o">.</span><span class="n">copyWith</span><span class="p">(</span><span class="n">fontWeight</span><span class="p">:</span> <span class="n">FontWeight</span><span class="o">.</span><span class="n">normal</span><span class="p">),</span>
+              <span class="p">),</span>
+            <span class="p">),</span>
+          <span class="p">],</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Step #8.</strong> Next, it's time for implementing <code>buildSuggestions</code> method of SearchDelegate class. 
+So, what does building suggestions mean ? This is the list of suggestions for words that you'll see
+when typing your search query in search bar. There're two parts of this. 
+First, we've to pass the list of words that could be displayed as suggestions. 
+Second, we need to implement the UI widget to display this suggestion list.</p>
+<p>For data part, we display pre-populated history words when query term is empty. When user
+starts typing then we show all the words that starts with search terms entered in search bar. That's it !</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_SearchAppBarDelegate</span> <span class="k">extends</span> <span class="n">SearchDelegate</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="o">...</span>
+
+  <span class="o">//</span> <span class="n">Suggestions</span> <span class="n">list</span> <span class="k">while</span> <span class="n">typing</span> <span class="n">search</span> <span class="n">query</span> <span class="o">-</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="o">.</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">Widget</span> <span class="n">buildSuggestions</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">final</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">suggestions</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">isEmpty</span>
+        <span class="err">?</span> <span class="n">_history</span>
+        <span class="p">:</span> <span class="n">_words</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">word</span><span class="o">.</span><span class="n">startsWith</span><span class="p">(</span><span class="n">query</span><span class="p">));</span>
+
+        <span class="o">...</span>
+  <span class="p">}</span>
+
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>It's UI widget's turn now. As you can see <code>buildSuggestions</code> method returns a <code>Widget</code>.
+We'll make a separate class say <code>_WordSuggestionList</code> to populate suggestion list widget and will
+return it from <code>buildSuggestions</code>.
+<code>_WordSuggestionList</code> is going to be a <code>StatelessWidget</code>, and has three things: First, list of suggestions.
+Second, search query and last a callback say <code>ValueChanged&lt;String&gt; onSelected</code>. It'll be <code>ListView</code>
+of size of number of suggestions provided. Each suggestion is displayed in <code>ListTile</code> widget. This widget will show
+<code>history</code> icon for items fetched from pre-populated history words only. Text for widget will be updated as user is typing the search query.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_WordSuggestionList</span> <span class="k">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="n">_WordSuggestionList</span><span class="p">({</span><span class="n">this</span><span class="o">.</span><span class="n">suggestions</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">onSelected</span><span class="p">});</span>
+
+  <span class="n">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">suggestions</span><span class="p">;</span>
+  <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">query</span><span class="p">;</span>
+  <span class="n">final</span> <span class="n">ValueChanged</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">onSelected</span><span class="p">;</span>
+
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">final</span> <span class="n">textTheme</span> <span class="o">=</span> <span class="n">Theme</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">textTheme</span><span class="o">.</span><span class="n">subhead</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ListView</span><span class="o">.</span><span class="n">builder</span><span class="p">(</span>
+      <span class="n">itemCount</span><span class="p">:</span> <span class="n">suggestions</span><span class="o">.</span><span class="n">length</span><span class="p">,</span>
+      <span class="n">itemBuilder</span><span class="p">:</span> <span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="nb nb-Type">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">final</span> <span class="nb nb-Type">String</span> <span class="n">suggestion</span> <span class="o">=</span> <span class="n">suggestions</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">return</span> <span class="n">ListTile</span><span class="p">(</span>
+          <span class="n">leading</span><span class="p">:</span> <span class="n">query</span><span class="o">.</span><span class="n">isEmpty</span> <span class="err">?</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">history</span><span class="p">)</span> <span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="nb nb-Type">null</span><span class="p">),</span>
+          <span class="o">//</span> <span class="n">Highlight</span> <span class="n">the</span> <span class="n">substring</span> <span class="n">that</span> <span class="n">matched</span> <span class="n">the</span> <span class="n">query</span><span class="o">.</span>
+          <span class="n">title</span><span class="p">:</span> <span class="n">RichText</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">:</span> <span class="n">TextSpan</span><span class="p">(</span>
+              <span class="n">text</span><span class="p">:</span> <span class="n">suggestion</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">query</span><span class="o">.</span><span class="n">length</span><span class="p">),</span>
+              <span class="n">style</span><span class="p">:</span> <span class="n">textTheme</span><span class="o">.</span><span class="n">copyWith</span><span class="p">(</span><span class="n">fontWeight</span><span class="p">:</span> <span class="n">FontWeight</span><span class="o">.</span><span class="n">bold</span><span class="p">),</span>
+              <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">TextSpan</span><span class="o">&gt;</span><span class="p">[</span>
+                <span class="n">TextSpan</span><span class="p">(</span>
+                  <span class="n">text</span><span class="p">:</span> <span class="n">suggestion</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">length</span><span class="p">),</span>
+                  <span class="n">style</span><span class="p">:</span> <span class="n">textTheme</span><span class="p">,</span>
+                <span class="p">),</span>
+              <span class="p">],</span>
+            <span class="p">),</span>
+          <span class="p">),</span>
+          <span class="n">onTap</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="n">onSelected</span><span class="p">(</span><span class="n">suggestion</span><span class="p">);</span>
+          <span class="p">},</span>
+        <span class="p">);</span>
+      <span class="p">},</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Let's plug-in <code>_WordSuggestionList</code> back into <code>buildSuggestions</code> method:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_SearchAppBarDelegate</span> <span class="k">extends</span> <span class="n">SearchDelegate</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="o">...</span>
+
+  <span class="o">//</span> <span class="n">Suggestions</span> <span class="n">list</span> <span class="k">while</span> <span class="n">typing</span> <span class="n">search</span> <span class="n">query</span> <span class="o">-</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="o">.</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">Widget</span> <span class="n">buildSuggestions</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">final</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">suggestions</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">isEmpty</span>
+        <span class="err">?</span> <span class="n">_history</span>
+        <span class="p">:</span> <span class="n">_words</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">word</span><span class="o">.</span><span class="n">startsWith</span><span class="p">(</span><span class="n">query</span><span class="p">));</span>
+
+    <span class="o">//</span><span class="n">calling</span> <span class="n">wordsuggestion</span> <span class="n">list</span>    
+    <span class="k">return</span> <span class="n">_WordSuggestionList</span><span class="p">(</span>
+          <span class="n">query</span><span class="p">:</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="p">,</span>
+          <span class="n">suggestions</span><span class="p">:</span> <span class="n">suggestions</span><span class="o">.</span><span class="n">toList</span><span class="p">(),</span>
+          <span class="n">onSelected</span><span class="p">:</span> <span class="p">(</span><span class="nb nb-Type">String</span> <span class="n">suggestion</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">this</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">suggestion</span><span class="p">;</span>
+            <span class="n">this</span><span class="o">.</span><span class="n">_history</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">suggestion</span><span class="p">);</span>
+            <span class="n">showResults</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+          <span class="p">},</span>
+  <span class="p">}</span>
+
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Step #9. Building actions in SearchBar.
+Last step is to add action menus in SearchBar's right side. I'll be adding two menu actions.
+One is "Clear" icon to clear search query from search bar. Another is a "mic" icon, that could be
+improved to accept voice input, which is beyond the scope of this recipe. However, if you would like me 
+to write about another recipe for accepting voice input, feel free to contact me as mentioned at the end of this post.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_SearchAppBarDelegate</span> <span class="k">extends</span> <span class="n">SearchDelegate</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="o">...</span>
+
+<span class="o">//</span> <span class="n">Action</span> <span class="n">buttons</span> <span class="n">at</span> <span class="n">the</span> <span class="n">right</span> <span class="n">of</span> <span class="n">search</span> <span class="n">bar</span><span class="o">.</span>
+  <span class="err">@</span><span class="n">override</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span> <span class="n">buildActions</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+      <span class="n">query</span><span class="o">.</span><span class="n">isNotEmpty</span> <span class="err">?</span>
+      <span class="n">IconButton</span><span class="p">(</span>
+        <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Clear&#39;</span><span class="p">,</span>
+        <span class="n">icon</span><span class="p">:</span> <span class="k">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">clear</span><span class="p">),</span>
+        <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+          <span class="n">showSuggestions</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+        <span class="p">},</span>
+      <span class="p">)</span> <span class="p">:</span> <span class="n">IconButton</span><span class="p">(</span>
+        <span class="n">icon</span><span class="p">:</span> <span class="k">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">mic</span><span class="p">),</span>
+        <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Voice input&#39;</span><span class="p">,</span>
+        <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="n">this</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;TBW: Get input from voice&#39;</span><span class="p">;</span>
+        <span class="p">},</span>
+
+      <span class="p">),</span>
+    <span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Step #10. Finally, call Search Delegate from <code>SearchAppBarRecipeState</code>.
+After creating <code>SearchDelegate</code> class, call it from <code>_SearchAppBarRecipeState</code> class and initialize it in <code>initState</code>.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">_SearchAppBarRecipeState</span> <span class="k">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">SeachAppBarRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="n">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="nb nb-Type">String</span><span class="o">&gt;</span> <span class="n">kWords</span><span class="p">;</span>
+
+    <span class="o">//</span><span class="n">Calling</span> <span class="n">search</span> <span class="n">delegate</span> <span class="k">class</span>
+    <span class="n">_SearchAppBarDelegate</span> <span class="n">_searchDelegate</span><span class="p">;</span>
+    <span class="o">...</span>
+
+    <span class="err">@</span><span class="n">override</span>
+    <span class="n">void</span> <span class="n">initState</span><span class="p">()</span> <span class="p">{</span>
+       <span class="n">super</span><span class="o">.</span><span class="n">initState</span><span class="p">();</span>
+       <span class="o">//</span><span class="n">Initializing</span> <span class="n">search</span> <span class="n">delegate</span> <span class="n">with</span> <span class="n">sorted</span> <span class="n">list</span> <span class="n">of</span> <span class="n">English</span> <span class="n">words</span>
+       <span class="n">_searchDelegate</span> <span class="o">=</span> <span class="n">_SearchAppBarDelegate</span><span class="p">(</span><span class="n">kWords</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>That's it !</p>
+<h4>Complete example code</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="s1">&#39;package:english_words/english_words.dart&#39;</span> <span class="k">as</span> <span class="n">words</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span>
+
+<span class="k">class</span> <span class="nc">MyApp</span> <span class="n">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="n">This</span> <span class="n">widget</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">root</span> <span class="n">of</span> <span class="n">your</span> <span class="n">application</span><span class="o">.</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">MaterialApp</span><span class="p">(</span>
+      <span class="n">title</span><span class="p">:</span> <span class="s1">&#39;SeachAppBarRecipe&#39;</span><span class="p">,</span>
+      <span class="n">theme</span><span class="p">:</span> <span class="n">ThemeData</span><span class="p">(</span>
+        <span class="n">primarySwatch</span><span class="p">:</span> <span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span>
+      <span class="p">),</span>
+      <span class="n">home</span><span class="p">:</span> <span class="n">SeachAppBarRecipe</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="s1">&#39;SeachAppBarRecipe&#39;</span><span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">SeachAppBarRecipe</span> <span class="n">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+  <span class="n">SeachAppBarRecipe</span><span class="p">({</span><span class="n">Key</span> <span class="n">key</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">title</span><span class="p">})</span> <span class="p">:</span> <span class="nb">super</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">key</span><span class="p">);</span>
+
+  <span class="n">final</span> <span class="n">String</span> <span class="n">title</span><span class="p">;</span>
+
+  <span class="nd">@override</span>
+  <span class="n">_SearchAppBarRecipeState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_SearchAppBarRecipeState</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">_SearchAppBarRecipeState</span> <span class="n">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">SeachAppBarRecipe</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="n">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">kWords</span><span class="p">;</span>
+  <span class="n">_SearchAppBarDelegate</span> <span class="n">_searchDelegate</span><span class="p">;</span>
+
+  <span class="o">//</span><span class="n">Initializing</span> <span class="k">with</span> <span class="nb">sorted</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">english</span> <span class="n">words</span>
+  <span class="n">_SearchAppBarRecipeState</span><span class="p">()</span>
+      <span class="p">:</span> <span class="n">kWords</span> <span class="o">=</span> <span class="n">List</span><span class="o">.</span><span class="n">from</span><span class="p">(</span><span class="n">Set</span><span class="o">.</span><span class="n">from</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">all</span><span class="p">))</span>
+    <span class="o">..</span><span class="n">sort</span><span class="p">(</span>
+          <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">w1</span><span class="o">.</span><span class="n">toLowerCase</span><span class="p">()</span><span class="o">.</span><span class="n">compareTo</span><span class="p">(</span><span class="n">w2</span><span class="o">.</span><span class="n">toLowerCase</span><span class="p">()),</span>
+    <span class="p">),</span>
+        <span class="nb">super</span><span class="p">();</span>
+
+
+  <span class="nd">@override</span>
+  <span class="n">void</span> <span class="n">initState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">super</span><span class="o">.</span><span class="n">initState</span><span class="p">();</span>
+    <span class="o">//</span><span class="n">Initializing</span> <span class="n">search</span> <span class="n">delegate</span> <span class="k">with</span> <span class="nb">sorted</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">English</span> <span class="n">words</span>
+    <span class="n">_searchDelegate</span> <span class="o">=</span> <span class="n">_SearchAppBarDelegate</span><span class="p">(</span><span class="n">kWords</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+      <span class="n">appBar</span><span class="p">:</span> <span class="n">AppBar</span><span class="p">(</span>
+        <span class="n">automaticallyImplyLeading</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="n">title</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Word List&#39;</span><span class="p">),</span>
+        <span class="n">actions</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+          <span class="o">//</span><span class="n">Adding</span> <span class="n">the</span> <span class="n">search</span> <span class="n">widget</span> <span class="ow">in</span> <span class="n">AppBar</span>
+          <span class="n">IconButton</span><span class="p">(</span>
+            <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Search&#39;</span><span class="p">,</span>
+            <span class="n">icon</span><span class="p">:</span> <span class="n">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">search</span><span class="p">),</span>
+            <span class="o">//</span><span class="n">Don</span><span class="s1">&#39;t block the main thread</span>
+            <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="n">showSearchPage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">_searchDelegate</span><span class="p">);</span>
+            <span class="p">},</span>
+          <span class="p">),</span>
+        <span class="p">],</span>
+      <span class="p">),</span>
+      <span class="n">body</span><span class="p">:</span> <span class="n">Scrollbar</span><span class="p">(</span>
+        <span class="o">//</span><span class="n">Displaying</span> <span class="nb">all</span> <span class="n">English</span> <span class="n">words</span> <span class="ow">in</span> <span class="nb">list</span> <span class="ow">in</span> <span class="n">app</span><span class="s1">&#39;s main page</span>
+        <span class="n">child</span><span class="p">:</span> <span class="n">ListView</span><span class="o">.</span><span class="n">builder</span><span class="p">(</span>
+          <span class="n">itemCount</span><span class="p">:</span> <span class="n">kWords</span><span class="o">.</span><span class="n">length</span><span class="p">,</span>
+          <span class="n">itemBuilder</span><span class="p">:</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">=&gt;</span>
+              <span class="n">ListTile</span><span class="p">(</span>
+                <span class="n">title</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="n">kWords</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span>
+                <span class="n">onTap</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+                  <span class="n">Scaffold</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">showSnackBar</span><span class="p">(</span>
+                      <span class="n">SnackBar</span><span class="p">(</span>
+                          <span class="n">content</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Click the Search action&quot;</span><span class="p">),</span>
+                          <span class="n">action</span><span class="p">:</span> <span class="n">SnackBarAction</span><span class="p">(</span>
+                            <span class="n">label</span><span class="p">:</span> <span class="s1">&#39;Search&#39;</span><span class="p">,</span>
+                            <span class="n">onPressed</span><span class="p">:</span> <span class="p">(){</span>
+                              <span class="n">showSearchPage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">_searchDelegate</span><span class="p">);</span>
+                            <span class="p">},</span>
+                          <span class="p">)</span>
+                      <span class="p">)</span>
+                  <span class="p">);</span>
+                <span class="p">},</span>
+              <span class="p">),</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="o">//</span><span class="n">Shows</span> <span class="n">Search</span> <span class="n">result</span>
+  <span class="n">void</span> <span class="n">showSearchPage</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span>
+      <span class="n">_SearchAppBarDelegate</span> <span class="n">searchDelegate</span><span class="p">)</span> <span class="n">async</span> <span class="p">{</span>
+    <span class="n">final</span> <span class="n">String</span> <span class="n">selected</span> <span class="o">=</span> <span class="n">await</span> <span class="n">showSearch</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span>
+      <span class="n">context</span><span class="p">:</span> <span class="n">context</span><span class="p">,</span>
+      <span class="n">delegate</span><span class="p">:</span> <span class="n">searchDelegate</span><span class="p">,</span>
+    <span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">selected</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">Scaffold</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">showSnackBar</span><span class="p">(</span>
+        <span class="n">SnackBar</span><span class="p">(</span>
+          <span class="n">content</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Your Word Choice: $selected&#39;</span><span class="p">),</span>
+        <span class="p">),</span>
+      <span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="n">Search</span> <span class="n">delegate</span>
+<span class="k">class</span> <span class="nc">_SearchAppBarDelegate</span> <span class="n">extends</span> <span class="n">SearchDelegate</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="n">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">_words</span><span class="p">;</span>
+  <span class="n">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">_history</span><span class="p">;</span>
+
+  <span class="n">_SearchAppBarDelegate</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">words</span><span class="p">)</span>
+      <span class="p">:</span> <span class="n">_words</span> <span class="o">=</span> <span class="n">words</span><span class="p">,</span>
+  <span class="o">//</span><span class="n">pre</span><span class="o">-</span><span class="n">populated</span> <span class="n">history</span> <span class="n">of</span> <span class="n">words</span>
+        <span class="n">_history</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;watermelon&#39;</span><span class="p">],</span>
+        <span class="nb">super</span><span class="p">();</span>
+
+  <span class="o">//</span> <span class="n">Setting</span> <span class="n">leading</span> <span class="n">icon</span> <span class="k">for</span> <span class="n">the</span> <span class="n">search</span> <span class="n">bar</span><span class="o">.</span>
+  <span class="o">//</span><span class="n">Clicking</span> <span class="n">on</span> <span class="n">back</span> <span class="n">arrow</span> <span class="n">will</span> <span class="n">take</span> <span class="n">control</span> <span class="n">to</span> <span class="n">main</span> <span class="n">page</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">buildLeading</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">IconButton</span><span class="p">(</span>
+      <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Back&#39;</span><span class="p">,</span>
+      <span class="n">icon</span><span class="p">:</span> <span class="n">AnimatedIcon</span><span class="p">(</span>
+        <span class="n">icon</span><span class="p">:</span> <span class="n">AnimatedIcons</span><span class="o">.</span><span class="n">menu_arrow</span><span class="p">,</span>
+        <span class="n">progress</span><span class="p">:</span> <span class="n">transitionAnimation</span><span class="p">,</span>
+      <span class="p">),</span>
+      <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="o">//</span><span class="n">Take</span> <span class="n">control</span> <span class="n">back</span> <span class="n">to</span> <span class="n">previous</span> <span class="n">page</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">null</span><span class="p">);</span>
+      <span class="p">},</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="o">//</span> <span class="n">Builds</span> <span class="n">page</span> <span class="n">to</span> <span class="n">populate</span> <span class="n">search</span> <span class="n">results</span><span class="o">.</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">buildResults</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Padding</span><span class="p">(</span>
+      <span class="n">padding</span><span class="p">:</span> <span class="n">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mf">8.0</span><span class="p">),</span>
+      <span class="n">child</span><span class="p">:</span> <span class="n">Center</span><span class="p">(</span>
+        <span class="n">child</span><span class="p">:</span> <span class="n">Column</span><span class="p">(</span>
+          <span class="n">mainAxisSize</span><span class="p">:</span> <span class="n">MainAxisSize</span><span class="o">.</span><span class="n">min</span><span class="p">,</span>
+          <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+            <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;===Your Word Choice===&#39;</span><span class="p">),</span>
+            <span class="n">GestureDetector</span><span class="p">(</span>
+              <span class="n">onTap</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="o">//</span><span class="n">Define</span> <span class="n">your</span> <span class="n">action</span> <span class="n">when</span> <span class="n">clicking</span> <span class="n">on</span> <span class="n">result</span> <span class="n">item</span><span class="o">.</span>
+                <span class="o">//</span><span class="n">In</span> <span class="n">this</span> <span class="n">example</span><span class="p">,</span> <span class="n">it</span> <span class="n">simply</span> <span class="n">closes</span> <span class="n">the</span> <span class="n">page</span>
+                <span class="n">this</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="p">);</span>
+              <span class="p">},</span>
+              <span class="n">child</span><span class="p">:</span> <span class="n">Text</span><span class="p">(</span>
+                <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="p">,</span>
+                <span class="n">style</span><span class="p">:</span> <span class="n">Theme</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">textTheme</span>
+                    <span class="o">.</span><span class="n">display2</span>
+                    <span class="o">.</span><span class="n">copyWith</span><span class="p">(</span><span class="n">fontWeight</span><span class="p">:</span> <span class="n">FontWeight</span><span class="o">.</span><span class="n">normal</span><span class="p">),</span>
+              <span class="p">),</span>
+            <span class="p">),</span>
+          <span class="p">],</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="o">//</span> <span class="n">Suggestions</span> <span class="nb">list</span> <span class="k">while</span> <span class="n">typing</span> <span class="n">search</span> <span class="n">query</span> <span class="o">-</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="o">.</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">buildSuggestions</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">final</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">suggestions</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">isEmpty</span>
+        <span class="err">?</span> <span class="n">_history</span>
+        <span class="p">:</span> <span class="n">_words</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">word</span><span class="o">.</span><span class="n">startsWith</span><span class="p">(</span><span class="n">query</span><span class="p">));</span>
+
+    <span class="k">return</span> <span class="n">_WordSuggestionList</span><span class="p">(</span>
+      <span class="n">query</span><span class="p">:</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="p">,</span>
+      <span class="n">suggestions</span><span class="p">:</span> <span class="n">suggestions</span><span class="o">.</span><span class="n">toList</span><span class="p">(),</span>
+      <span class="n">onSelected</span><span class="p">:</span> <span class="p">(</span><span class="n">String</span> <span class="n">suggestion</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">suggestion</span><span class="p">;</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">_history</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">suggestion</span><span class="p">);</span>
+        <span class="n">showResults</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+      <span class="p">},</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="o">//</span> <span class="n">Action</span> <span class="n">buttons</span> <span class="n">at</span> <span class="n">the</span> <span class="n">right</span> <span class="n">of</span> <span class="n">search</span> <span class="n">bar</span><span class="o">.</span>
+  <span class="nd">@override</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span> <span class="n">buildActions</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+      <span class="n">query</span><span class="o">.</span><span class="n">isNotEmpty</span> <span class="err">?</span>
+      <span class="n">IconButton</span><span class="p">(</span>
+        <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Clear&#39;</span><span class="p">,</span>
+        <span class="n">icon</span><span class="p">:</span> <span class="n">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">clear</span><span class="p">),</span>
+        <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+          <span class="n">showSuggestions</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+        <span class="p">},</span>
+      <span class="p">)</span> <span class="p">:</span> <span class="n">IconButton</span><span class="p">(</span>
+        <span class="n">icon</span><span class="p">:</span> <span class="n">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">mic</span><span class="p">),</span>
+        <span class="n">tooltip</span><span class="p">:</span> <span class="s1">&#39;Voice input&#39;</span><span class="p">,</span>
+        <span class="n">onPressed</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="n">this</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;TBW: Get input from voice&#39;</span><span class="p">;</span>
+        <span class="p">},</span>
+
+      <span class="p">),</span>
+    <span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">Suggestions</span> <span class="nb">list</span> <span class="n">widget</span> <span class="n">displayed</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">search</span> <span class="n">page</span><span class="o">.</span>
+<span class="k">class</span> <span class="nc">_WordSuggestionList</span> <span class="n">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="n">const</span> <span class="n">_WordSuggestionList</span><span class="p">({</span><span class="n">this</span><span class="o">.</span><span class="n">suggestions</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">query</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">onSelected</span><span class="p">});</span>
+
+  <span class="n">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">suggestions</span><span class="p">;</span>
+  <span class="n">final</span> <span class="n">String</span> <span class="n">query</span><span class="p">;</span>
+  <span class="n">final</span> <span class="n">ValueChanged</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">onSelected</span><span class="p">;</span>
+
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">final</span> <span class="n">textTheme</span> <span class="o">=</span> <span class="n">Theme</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">textTheme</span><span class="o">.</span><span class="n">subhead</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ListView</span><span class="o">.</span><span class="n">builder</span><span class="p">(</span>
+      <span class="n">itemCount</span><span class="p">:</span> <span class="n">suggestions</span><span class="o">.</span><span class="n">length</span><span class="p">,</span>
+      <span class="n">itemBuilder</span><span class="p">:</span> <span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="nb">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">final</span> <span class="n">String</span> <span class="n">suggestion</span> <span class="o">=</span> <span class="n">suggestions</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">return</span> <span class="n">ListTile</span><span class="p">(</span>
+          <span class="n">leading</span><span class="p">:</span> <span class="n">query</span><span class="o">.</span><span class="n">isEmpty</span> <span class="err">?</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">history</span><span class="p">)</span> <span class="p">:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">null</span><span class="p">),</span>
+          <span class="o">//</span> <span class="n">Highlight</span> <span class="n">the</span> <span class="n">substring</span> <span class="n">that</span> <span class="n">matched</span> <span class="n">the</span> <span class="n">query</span><span class="o">.</span>
+          <span class="n">title</span><span class="p">:</span> <span class="n">RichText</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">:</span> <span class="n">TextSpan</span><span class="p">(</span>
+              <span class="n">text</span><span class="p">:</span> <span class="n">suggestion</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">query</span><span class="o">.</span><span class="n">length</span><span class="p">),</span>
+              <span class="n">style</span><span class="p">:</span> <span class="n">textTheme</span><span class="o">.</span><span class="n">copyWith</span><span class="p">(</span><span class="n">fontWeight</span><span class="p">:</span> <span class="n">FontWeight</span><span class="o">.</span><span class="n">bold</span><span class="p">),</span>
+              <span class="n">children</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">TextSpan</span><span class="o">&gt;</span><span class="p">[</span>
+                <span class="n">TextSpan</span><span class="p">(</span>
+                  <span class="n">text</span><span class="p">:</span> <span class="n">suggestion</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">length</span><span class="p">),</span>
+                  <span class="n">style</span><span class="p">:</span> <span class="n">textTheme</span><span class="p">,</span>
+                <span class="p">),</span>
+              <span class="p">],</span>
+            <span class="p">),</span>
+          <span class="p">),</span>
+          <span class="n">onTap</span><span class="p">:</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="n">onSelected</span><span class="p">(</span><span class="n">suggestion</span><span class="p">);</span>
+          <span class="p">},</span>
+        <span class="p">);</span>
+      <span class="p">},</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong><em>Source code repo:</em></strong>
+Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/search_appbar">here</a></p>
+<h3>References:</h3>
+<ol>
+<li><a href="https://docs.flutter.io/flutter/material/SearchDelegate-class.html">Search Delegate</a></li>
+<li><a href="https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/search_demo.dart">Flutter Gallery</a></li>
+<li><a href="https://docs.flutter.io/flutter/material/SearchDelegate/buildActions.html">BuildActions</a></li>
+<li><a href="'https://docs.flutter.io/flutter/material/SearchDelegate/buildResults.html">BuildResults</a></li>
+</ol>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://ptyagicodecamp.github.io/tag/searchdelegate.html">SearchDelegate</a>
+      <a href="https://ptyagicodecamp.github.io/tag/searchappbar.html">SearchAppBar</a>
+      <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+      <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
+      <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android.html">android</a>
+      <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">android Studio</a>
+      <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+      <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+    </p>
+  </div>
+
+  <div class="center social-share">
+    <p>Like this article? Share it with your friends!</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'https-ptyagicodecamp-github-io';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; 2024  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cf387135c8761da" async="async"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " tech&Life ",
+  "url" : "https://ptyagicodecamp.github.io",
+  "image": "https://ptyagicodecamp.github.io/images/profile.jpg",
+  "description": "Mobile engineering tech logger."
+}
+</script>
+<a href="https://github.com/ptyagicodecamp" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+</body>
+</html>
