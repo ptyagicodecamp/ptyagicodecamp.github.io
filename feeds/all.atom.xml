@@ -16,26 +16,41 @@
 &lt;p&gt;To regain control, CTOs must implement an &lt;strong&gt;AI Attribution Layer (AIAL)&lt;/strong&gt;. Think of this as a "Digital Signature" for every line of code. Just as &lt;code&gt;git blame&lt;/code&gt; allows us to identify which human modified a file, the Attribution Layer identifies the &lt;strong&gt;provenance&lt;/strong&gt; of the logic.&lt;/p&gt;
 &lt;p&gt;An effective AIAL tracks three critical new KPIs that replace the aging DORA pillars:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;AI Code Share (ACS):&lt;/strong&gt; The percentage of a PR authored by an LLM versus a human. In 2026, a "High-Performing Team" isn't the one with the highest ACS; it’s the one with the most &lt;strong&gt;stable&lt;/strong&gt; ACS. If a mission-critical service suddenly jumps from 20% to 80% AI authorship, that is a red flag for architectural integrity.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Agentic Churn:&lt;/strong&gt; This measures how often &lt;em&gt;AI-generated&lt;/em&gt; code is rewritten by &lt;em&gt;humans&lt;/em&gt;. If your AI-generated blocks have a 15% churn rate while human blocks stay at 3%, your "AI productivity gain" is a net negative once you factor in the Senior Engineer's "Cognitive Tax" for fixing it.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;The Review Bottleneck (AI vs. Human Cycle Time):&lt;/strong&gt; In the DORA era, we measured "Lead Time for Changes" from first commit to production. Today, this is a useless metric because the "authoring" phase is now instant. Lead Time is no longer a measure of CI/CD efficiency; it is a measure of &lt;strong&gt;Senior Engineer availability.&lt;/strong&gt; Humans have become the "manual validators" for an AI firehose. If your lead time is increasing while your throughput is also increasing, your senior talent is drowning.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AI Code Share (ACS):&lt;/strong&gt; The percentage of a PR authored by an LLM versus a human. In 2026, a "High-Performing Team" isn't the one with the highest ACS; it’s the one with the most &lt;strong&gt;stable&lt;/strong&gt; ACS. If a mission-critical service suddenly jumps from 20% to 80% AI authorship, that is a red flag for architectural integrity.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Agentic Churn:&lt;/strong&gt; This measures how often &lt;em&gt;AI-generated&lt;/em&gt; code is rewritten by &lt;em&gt;humans&lt;/em&gt;. If your AI-generated blocks have a 15% churn rate while human blocks stay at 3%, your "AI productivity gain" is a net negative once you factor in the Senior Engineer's "Cognitive Tax" for fixing it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The Review Bottleneck (AI vs. Human Cycle Time):&lt;/strong&gt; In the DORA era, we measured "Lead Time for Changes" from first commit to production. Today, this is a useless metric because the "authoring" phase is now instant. Lead Time is no longer a measure of CI/CD efficiency; it is a measure of &lt;strong&gt;Senior Engineer availability.&lt;/strong&gt; Humans have become the "manual validators" for an AI firehose. If your lead time is increasing while your throughput is also increasing, your senior talent is drowning.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2&gt;The Seniority Divide&lt;/h2&gt;
 &lt;h3&gt;Knowledge Retention as a Strategic Risk&lt;/h3&gt;
 &lt;p&gt;The most dangerous side effect of the AI-accelerated SDLC is the "Hollow Middle." We are seeing a widening gap between the "Elite" architects who can orchestrate agents and the "Junior" developers who have become glorified copy-pasting clerks.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://stackoverflow.blog/2026/02/18/closing-the-developer-ai-trust-gap/"&gt;Uvik/Stack Overflow 2025/2026 surveys&lt;/a&gt; highlight a staggering &lt;strong&gt;Trust Gap&lt;/strong&gt;: despite AI being used in nearly every IDE, &lt;strong&gt;developer trust in AI accuracy has plummeted to 29%.&lt;/strong&gt; This creates a paradox:
-1. &lt;strong&gt;Seniors&lt;/strong&gt; spend their days debugging AI "hallucinations" rather than mentoring.
-2. &lt;strong&gt;Juniors&lt;/strong&gt; lack the "struggle time" necessary to build mental models of the codebase because the AI provides the answer before they've even framed the question.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://stackoverflow.blog/2026/02/18/closing-the-developer-ai-trust-gap/"&gt;Uvik/Stack Overflow 2025/2026 surveys&lt;/a&gt; highlight a staggering &lt;strong&gt;Trust Gap&lt;/strong&gt;: despite AI being used in nearly every IDE, &lt;strong&gt;developer trust in AI accuracy has plummeted to 29%.&lt;/strong&gt; This creates a paradox:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Seniors&lt;/strong&gt; spend their days debugging AI "hallucinations" rather than mentoring.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Juniors&lt;/strong&gt; lack the "struggle time" necessary to build mental models of the codebase because the AI provides the answer before they've even framed the question.&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;This is a &lt;strong&gt;knowledge-retention risk.&lt;/strong&gt; If your AI-generated code share is high and your team turnover is standard, you are losing the "tribal knowledge" of &lt;em&gt;why&lt;/em&gt; things work. The AI knows &lt;em&gt;what&lt;/em&gt; to write, but it doesn't understand the "Why" of your specific business logic. If your senior staff leaves, you are left with a codebase that no living human actually understands.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;The 2026 Playbook&lt;/h2&gt;
 &lt;h3&gt;Actionable Steps for Engineering Directors&lt;/h3&gt;
 &lt;p&gt;If you want to survive the "Post-DORA" world, you must stop managing by the dashboard and start managing by the &lt;strong&gt;Attribution Layer.&lt;/strong&gt; Here is your 2026 implementation plan:&lt;/p&gt;
 &lt;h3&gt;1. Mandatory PR Metadata Tags&lt;/h3&gt;
-&lt;p&gt;Implement automated tagging in your CI/CD pipeline. Every PR must include a metadata header indicating the tool used for generation.
-* &lt;strong&gt;Example Tags:&lt;/strong&gt; &lt;code&gt;author: human&lt;/code&gt;, &lt;code&gt;co-author: claude-4&lt;/code&gt;, &lt;code&gt;agent: aider-v5&lt;/code&gt;.
-This allows you to calculate the &lt;strong&gt;Cost per Feature&lt;/strong&gt; with nuance. If a feature took two days but was 90% AI-generated, its "cost" is actually higher in terms of long-term maintenance than a three-day human-authored feature.&lt;/p&gt;
+&lt;p&gt;Implement automated tagging in your CI/CD pipeline. Every PR must include a metadata header indicating the tool used for generation.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Example Tags:&lt;/strong&gt; &lt;code&gt;author: human&lt;/code&gt;, &lt;code&gt;co-author: claude-4&lt;/code&gt;, &lt;code&gt;agent: aider-v5&lt;/code&gt;.
+This allows you to calculate the &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cost per Feature&lt;/strong&gt; with nuance. If a feature took two days but was 90% AI-generated, its "cost" is actually higher in terms of long-term maintenance than a three-day human-authored feature.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3&gt;2. Risk-Weighted Review Pipelines&lt;/h3&gt;
 &lt;p&gt;Track the ratio of &lt;strong&gt;Lines of Code (LOC) Changed vs. Review Time.&lt;/strong&gt; If your AI is outputting 1,000 lines of code and your seniors are approving them in 5 minutes, you aren't "Agile"—you’re compromised. Establish a "Brake Limit": if AI Code Share exceeds 60%, the PR requires two senior human reviewers and a mandatory "Interactive Loom Review" where the author explains the logic.&lt;/p&gt;
 &lt;h3&gt;3. The Value-to-Churn Ratio (VCR)&lt;/h3&gt;
