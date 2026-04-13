@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>tech&Life - Responsive Flutter layout with FittedBox widget</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="Pelican" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore | Mobile | Software Engineering | Life" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Full Atom Feed" />
+        <link href="https://ptyagicodecamp.github.io/feeds/flutterlayouts.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="FlutterLayouts" />
+    <meta name="tags" content="cross-platform" />
+    <meta name="tags" content="Flutter" />
+    <meta name="tags" content="code-recipes" />
+    <meta name="tags" content="Android" />
+    <meta name="tags" content="Android Studio" />
+    <meta name="tags" content="iOS" />
+    <meta name="tags" content="development" />
+    <meta name="tags" content="responsive" />
+
+  </head>
+
+  <body>
+      <header>
+          <hgroup><h1><a href="https://ptyagicodecamp.github.io/">tech&Life</a></h1><p>Explore | Mobile | Software Engineering | Life</p></hgroup>
+          <nav><ul>
+              <li><a href="/archives.html">Archives</a></li>
+              <li><a href="/categories.html">Categories</a></li>
+              <li><a href="/tags.html">Tags</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/dart.html" >Dart</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development.html" >Development</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development-flutter-cross-platform.html" >Development, Flutter, Cross-platform</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/devops.html" >DevOps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/engineering-management.html" >Engineering Management</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutter.html" >Flutter</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html"  aria-current="page" >FlutterLayouts</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/leadership.html" >Leadership</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/navigation.html" >Navigation</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/publishing-apps.html" >publishing-apps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/widgets.html" >Widgets</a></li>
+          </ul></nav>
+      </header>
+      <main>
+  <article>
+    <header>
+      <h2>
+        <a href="https://ptyagicodecamp.github.io/responsive-flutter-layout-with-fittedbox-widget.html" rel="bookmark"
+           title="Permalink to Responsive Flutter layout with FittedBox widget">Responsive Flutter layout with FittedBox widget</a></h2>
+      
+    </header>
+    <p><img alt="FittedBox" src="https://ptyagicodecamp.github.io/fitted_box.jpg"></p>
+<p><strong>Target Audience:</strong> Beginner</p>
+<p><strong>Recipe:</strong> Learn to use FittedBox layout widget to create responsive layouts for Flutter applications.</p>
+<p><strong>Focus Widget:</strong> <a href="https://api.flutter.dev/flutter/widgets/FittedBox-class.html">FittedBox</a></p>
+<hr>
+<p>The <code>FittedBox</code> widget is a single child layout widget which means it can have only one child assigned to it. In this example, the <code>Row</code> widget is added as child to <code>FittedBox</code> widget. The <code>Row</code> widget has two <code>Image</code> widgets as its children. Normally, the second child of <code>Row</code> widget will overflow to right when it renders its children on a screen size which is not sufficient to accommodate all of its children. However, with <code>FittedBox</code> this problem of widget overflowing is solved. It scales and position its child within the parent widget.</p>
+<p><strong>Checkout the companion video tutorial:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xU5ZGOoBI08" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h1>Using <code>FittedBox</code> Widget</h1>
+<div class="highlight"><pre><span></span><code><span class="n">FittedBox</span><span class="p">(</span>
+<span class="w"> </span><span class="nl">child:</span><span class="w"> </span><span class="n">Row</span><span class="p">(</span>
+<span class="w">   </span><span class="nl">children:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">     </span><span class="n">Image</span><span class="p">.</span><span class="n">asset</span><span class="p">(</span><span class="s1">&#39;assets/flutter_icon.png&#39;</span><span class="p">),</span>
+<span class="w">     </span><span class="n">Image</span><span class="p">.</span><span class="n">asset</span><span class="p">(</span><span class="s1">&#39;assets/flutter_icon.png&#39;</span><span class="p">),</span>
+<span class="w">   </span><span class="p">],</span>
+<span class="w"> </span><span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<h1>Source Code Repo</h1>
+<ul>
+<li>
+<p>Source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook2/blob/master/lib/responsive_widgets/fitted_box.dart#L80:L84">here</a></p>
+</li>
+<li>
+<p>Flutter Cookbook2 project's source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook2">here</a></p>
+</li>
+</ul>
+<h1>References</h1>
+<p>1.<a href="https://api.flutter.dev/flutter/widgets/FittedBox-class.html">FittedBox</a></p>
+<p>Happy cooking with Flutter :)</p>
+<p>_Liked the article?Liked the article? Let me know with 👏👏👏</p>
+<p>Couldn't find a topic of interest? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a>_</p>
+<p>Follow me at <a href="https://medium.com/@ptyagicodecamp">Medium</a>
+Follow me at <a href="https://twitter.com/ptyagi13">twitter</a></p>
+    <footer>
+      <p>Published: <time datetime="2020-10-01T00:00:00-04:00">
+        October 01, 2020
+      </time></p>
+        <address>
+          By             <a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a>
+        </address>
+        <p>
+          Category: <a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html">FlutterLayouts</a>
+        </p>
+        <p>
+          Tags:
+            <a href="https://ptyagicodecamp.github.io/tag/flutterlayouts.html">FlutterLayouts</a>
+            <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+            <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
+            <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
+            <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+            <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+            <a href="https://ptyagicodecamp.github.io/tag/responsive.html">responsive</a>
+        </p>
+    </footer>
+  </article>
+      </main>
+      <footer>
+          <address>
+            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+          </address>
+      </footer>
+  </body>
+</html>

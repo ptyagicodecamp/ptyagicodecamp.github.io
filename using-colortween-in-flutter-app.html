@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>tech&Life - Using ColorTween in Flutter app</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="Pelican" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore | Mobile | Software Engineering | Life" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Full Atom Feed" />
+        <link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="ColorTween" />
+    <meta name="tags" content="Animations" />
+    <meta name="tags" content="Cross-platform" />
+    <meta name="tags" content="Flutter" />
+    <meta name="tags" content="Code-recipes" />
+    <meta name="tags" content="Android" />
+    <meta name="tags" content="Android Studio" />
+    <meta name="tags" content="iOS" />
+    <meta name="tags" content="development" />
+    <meta name="tags" content="Hummingbird" />
+
+  </head>
+
+  <body>
+      <header>
+          <hgroup><h1><a href="https://ptyagicodecamp.github.io/">tech&Life</a></h1><p>Explore | Mobile | Software Engineering | Life</p></hgroup>
+          <nav><ul>
+              <li><a href="/archives.html">Archives</a></li>
+              <li><a href="/categories.html">Categories</a></li>
+              <li><a href="/tags.html">Tags</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/dart.html" >Dart</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development.html" >Development</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development-flutter-cross-platform.html" >Development, Flutter, Cross-platform</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/devops.html" >DevOps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/engineering-management.html" >Engineering Management</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutter.html"  aria-current="page" >Flutter</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html" >FlutterLayouts</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/leadership.html" >Leadership</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/navigation.html" >Navigation</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/publishing-apps.html" >publishing-apps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/widgets.html" >Widgets</a></li>
+          </ul></nav>
+      </header>
+      <main>
+  <article>
+    <header>
+      <h2>
+        <a href="https://ptyagicodecamp.github.io/using-colortween-in-flutter-app.html" rel="bookmark"
+           title="Permalink to Using ColorTween in Flutter app">Using ColorTween in Flutter app</a></h2>
+      
+    </header>
+    <p><strong>Target Audience:</strong> Beginner</p>
+<p><strong>Recipe:</strong> Implement animation using ColorTween for Android, iOS and WebApp.</p>
+<p><strong>Focus Widget:</strong> <a href="https://api.flutter.dev/flutter/animation/ColorTween-class.html">ColorTween</a></p>
+<p><strong>Goal:</strong> Animating from one color to another for a quiz card's background based on the correct answer. We'll implement a card with picture of an animal in it, along with two choices to select from: 'Carnivorous' or 'Herbivorous'. When correct option is picked, background color of card will transition from grey to blue color in order to indicate correct selection otherwise background stays grey or turns grey from blue.</p>
+<p><img alt="Color Tween Gif" src="https://ptyagicodecamp.github.io/color_tween.gif"></p>
+<hr>
+<p><strong>Checkout the companion video tutorial:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6O1dini5Buc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h3>ColorTween for Native platforms (Android &amp; iOS)</h3>
+<p><strong>Step #1. Data (<code>items.dart</code>)</strong>
+I'll be creating a little data structure <code>CardItem</code> to keep track of model for UI card.
+It has four parts to represent a Quiz card: <code>title</code>, <code>description</code>, <code>image</code> and <code>animalType</code>.
+<code>title</code> and <code>description</code> are not used to render on Card UI. <code>image</code> has path to image in <code>assets</code> directory in Android Studio.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="n">CardItem</span> {
+  <span class="n">final</span> <span class="n">String</span> <span class="n">title</span>;
+  <span class="n">final</span> <span class="n">String</span> <span class="n">description</span>;
+  <span class="n">final</span> <span class="n">String</span> <span class="n">image</span>;
+  <span class="n">final</span> <span class="n">String</span> <span class="n">animalType</span>;
+
+  <span class="n">CardItem</span>(<span class="n">this</span>.<span class="n">title</span>, <span class="n">this</span>.<span class="n">description</span>, <span class="n">this</span>.<span class="n">image</span>, <span class="n">this</span>.<span class="n">animalType</span>);
+
+  <span class="n">CardItem</span>.<span class="n">fromMap</span>(<span class="nb">Map</span><span class="s">&lt;String, dynamic&gt;</span> <span class="n">data</span>)
+      : <span class="n">title</span> = <span class="n">data</span>[<span class="s">&quot;title&quot;</span>],
+        <span class="n">description</span> = <span class="n">data</span>[<span class="s">&quot;description&quot;</span>],
+        <span class="n">image</span> = <span class="n">data</span>[<span class="s">&quot;image&quot;</span>],
+        <span class="n">animalType</span> = <span class="n">data</span>[<span class="s">&#39;animalType&#39;</span>];
+
+  <span class="n">static</span> <span class="nb">List</span><span class="s">&lt;CardItem&gt;</span> <span class="n">fromData</span>(<span class="nb">List</span><span class="s">&lt;dynamic&gt;</span> <span class="n">data</span>) {
+    <span class="k">return</span> <span class="n">data</span>.<span class="n">map</span>((<span class="nb">item</span>) =&gt; <span class="n">CardItem</span>.<span class="n">fromMap</span>(<span class="nb">item</span>)).<span class="n">toList</span>();
+  }
+}
+</code></pre></div>
+
+<p>In the class above, you might have noticed <code>fromMap(...)</code> and <code>fromData(...)</code> methods, which are used to parse <code>json</code> data (intended to be fetched over network). In this recipe, I've hard-wired the sample <code>json</code> data as below:</p>
+<div class="highlight"><pre><span></span><code>[  
+   {  
+      &quot;title&quot;:&quot;cat&quot;,
+      &quot;description&quot;:&quot;Cat is carnivorous animal.&quot;,
+      &quot;image&quot;:&quot;assets/images/carnivorous_cat.jpg&quot;,
+      &quot;animalType&quot;:&quot;carnivorous&quot;
+   },
+   {
+     ...
+   },
+   ...
+]
+</code></pre></div>
+
+<p>Parsing json string above is done as below:</p>
+<div class="highlight"><pre><span></span><code>final List&lt;CardItem&gt; cardItems =
+    CardItem.fromData(json.decode(Samples.jsonData()));
+</code></pre></div>
+
+<p>Now, importing <code>items.dart</code> in any class/file, will give access to <code>cardItems</code>. An item in list can be accessed as <code>cardItems[0], cardItems[1]</code> and so on.</p>
+<p><strong>Step #2. User Interface (<code>color_tween.dart</code>)</strong>
+We'll be implementing following quiz like card to demonstrate transitioning from grey color to blue and vice versa.</p>
+<p>UI's body has main three parts:</p>
+<ul>
+<li><a href="https://api.flutter.dev/flutter/widgets/Positioned-class.html"><code>Positioned Widget</code></a>: To display card.</li>
+<li>Image: image of the animal to quiz on.</li>
+<li>Row of <a href="https://api.flutter.dev/flutter/material/FlatButton-class.html">FlatButton</a> widgets: Two FlatButton to present choice of <code>Carnivorous</code> in red and <code>Herbivorous</code> in green color.</li>
+</ul>
+<p><img alt="Color Tween" src="https://ptyagicodecamp.github.io/color_tween1.jpg"></p>
+<p><strong>Step #2-a. Quiz Card UI anatomy:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nv">@override</span>
+<span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="k">context</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">  </span><span class="o">//</span><span class="n">we</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">screenSize</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">render</span><span class="w"> </span><span class="n">card</span><span class="w"> </span><span class="n">relative</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">given</span><span class="w"> </span><span class="n">device</span><span class="s1">&#39;s screen size</span>
+<span class="s1">  Size screenSize = MediaQuery.of(context).size;</span>
+
+<span class="s1">  //Fetching image from `assets` folder</span>
+<span class="s1">  DecorationImage decorationImage = DecorationImage(</span>
+<span class="s1">      image: AssetImage(cardItems[0].image), fit: BoxFit.fitWidth);</span>
+
+<span class="s1">  return Scaffold(</span>
+<span class="s1">    appBar: AppBar(...),</span>
+<span class="s1">    body: Container(</span>
+<span class="s1">      ...</span>
+
+<span class="s1">      Positioned(</span>
+<span class="s1">        child: Card(</span>
+<span class="s1">          ...</span>
+<span class="s1">          //parent container to host the quiz card</span>
+<span class="s1">          child: Container(</span>
+<span class="s1">            alignment: Alignment.center,</span>
+<span class="s1">            width: screenSize.width / 1.2,</span>
+<span class="s1">            height: screenSize.height / 1.7,</span>
+<span class="s1">            ...,</span>
+
+<span class="s1">            //Contents of card: Image and FlatButtons for quiz options</span>
+<span class="s1">            child: Column(</span>
+<span class="s1">              children: &lt;Widget&gt;[</span>
+
+<span class="s1">                //Image of quiz animal</span>
+<span class="s1">                Container(</span>
+<span class="s1">                  //Note: width of image is same as parent</span>
+<span class="s1">                  width: screenSize.width / 1.2,</span>
+
+<span class="s1">                  //Note: Image&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">smaller</span><span class="w"> </span><span class="k">than</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">parent</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">contain</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">inside</span><span class="w"> </span><span class="n">it</span><span class="p">.</span>
+<span class="w">                  </span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="n">screenSize</span><span class="p">.</span><span class="n">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.2</span><span class="p">,</span>
+
+<span class="w">                  </span><span class="o">//</span><span class="n">Rendering</span><span class="w"> </span><span class="n">image</span>
+<span class="w">                  </span><span class="n">decoration</span><span class="o">:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span>
+<span class="w">                      </span><span class="n">borderRadius</span><span class="o">:</span><span class="w"> </span><span class="n">BorderRadius</span><span class="p">.</span><span class="k">only</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">topLeft</span><span class="o">:</span><span class="w"> </span><span class="n">Radius</span><span class="p">.</span><span class="n">circular</span><span class="p">(</span><span class="mf">8.0</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">topRight</span><span class="o">:</span><span class="w"> </span><span class="n">Radius</span><span class="p">.</span><span class="n">circular</span><span class="p">(</span><span class="mf">8.0</span><span class="p">),</span>
+<span class="w">                      </span><span class="p">),</span>
+<span class="w">                      </span><span class="n">image</span><span class="o">:</span><span class="w"> </span><span class="n">decorationImage</span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">                </span><span class="o">//</span><span class="n">Widget</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">contain</span><span class="w"> </span><span class="n">FlatButtons</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">quiz</span><span class="w"> </span><span class="k">options</span>
+<span class="w">                </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                  </span><span class="o">//</span><span class="n">Width</span><span class="w"> </span><span class="n">remains</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">however</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="n">needs</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">calculated</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">under</span><span class="w"> </span><span class="n">image</span><span class="p">.</span>
+<span class="w">                  </span><span class="n">width</span><span class="o">:</span><span class="w"> </span><span class="n">screenSize</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">height</span><span class="o">:</span>
+<span class="w">                      </span><span class="n">screenSize</span><span class="p">.</span><span class="n">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1.7</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">screenSize</span><span class="p">.</span><span class="n">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.2</span><span class="p">,</span>
+
+<span class="w">                  </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="k">Row</span><span class="p">(</span>
+<span class="w">                    </span><span class="p">...</span>
+<span class="w">                    </span><span class="n">children</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="err">[</span>
+<span class="w">                      </span><span class="n">FlatButton</span><span class="p">(</span>
+<span class="w">                        </span><span class="p">..</span>
+<span class="w">                        </span><span class="o">//</span><span class="n">Animation</span><span class="w"> </span><span class="k">trigger</span><span class="o">:</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">animation</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">triggered</span>
+<span class="w">                        </span><span class="n">onPressed</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{}</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                          </span><span class="p">..</span>
+<span class="w">                          </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="kt">Text</span><span class="p">(</span><span class="s2">&quot;Carnivorous&quot;</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                      </span><span class="p">),</span>
+<span class="w">                      </span><span class="n">FlatButton</span><span class="p">(</span>
+<span class="w">                        </span><span class="p">..</span>
+<span class="w">                        </span><span class="o">//</span><span class="n">Animation</span><span class="w"> </span><span class="k">trigger</span><span class="o">:</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">animation</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">triggered</span>
+<span class="w">                        </span><span class="n">onPressed</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{}</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                          </span><span class="p">..</span>
+<span class="w">                          </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="kt">Text</span><span class="p">(</span><span class="s2">&quot;Herbivorous&quot;</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                      </span><span class="p">),</span>
+<span class="w">                    </span><span class="err">]</span><span class="p">,</span>
+<span class="w">                  </span><span class="p">),</span>
+<span class="w">                </span><span class="p">)</span>
+<span class="w">              </span><span class="err">]</span><span class="p">,</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">          </span><span class="p">),</span>
+<span class="w">        </span><span class="p">),</span>
+
+<span class="w">      </span><span class="p">),</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<p><strong>Step #3: Implementing ColorTween Animation</strong></p>
+<p>Finally, time to implement transition animation from grey to blue color using ColorTween class. There are couple of steps that we would need to achieve that.</p>
+<ul>
+<li>Using <a href="https://api.flutter.dev/flutter/widgets/SingleTickerProviderStateMixin-mixin.html"><code>SingleTickerProviderStateMixin</code></a> with <code>Stateful</code> parent's <code>State</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">ColorTweenAnimationDemo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">_ColorTweenAnimationDemoState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">      </span><span class="n">new</span><span class="w"> </span><span class="n">_ColorTweenAnimationDemoState</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">_ColorTweenAnimationDemoState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">ColorTweenAnimationDemo</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">with</span><span class="w"> </span><span class="n">SingleTickerProviderStateMixin</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>Initializing <a href="https://api.flutter.dev/flutter/animation/AnimationController-class.html"><code>AnimationController</code></a> and <a href="https://api.flutter.dev/flutter/animation/Animation-class.html"><code>Animation</code></a> inside <code>initState()</code>. AnimationController is intended to control the state of the animation like starting using <code>forward()</code>, revering using <code>reverse()</code> and stopping. <code>Animation&lt;Color&gt;</code> will be used to define value change between one color to another, which is from grey to blue in our case. <code>ColorTween</code> class is exactly what it says <code>between colors</code>. It begins with beginning color 'grey' and ends with <code>blue</code>. This transition behavior is attached with AnimationController <code>_controller</code> to manage the animation. A listener can be added to listen to state changes from where it starts until it stops.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+
+<span class="n">AnimationController</span><span class="w"> </span><span class="n">_controller</span><span class="p">;</span>
+<span class="n">Animation</span><span class="o">&lt;</span><span class="nb nb-Type">Color</span><span class="o">&gt;</span><span class="w"> </span><span class="n">animation</span><span class="p">;</span>
+
+<span class="err">@</span><span class="n">override</span>
+<span class="nb nb-Type">void</span><span class="w"> </span><span class="n">initState</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">super</span><span class="o">.</span><span class="n">initState</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">_controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AnimationController</span><span class="p">(</span>
+<span class="w">    </span><span class="n">duration</span><span class="p">:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Duration</span><span class="p">(</span><span class="n">milliseconds</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">),</span>
+<span class="w">    </span><span class="n">vsync</span><span class="p">:</span><span class="w"> </span><span class="n">this</span><span class="p">,</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ColorTween</span><span class="p">(</span>
+<span class="w">    </span><span class="n">begin</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">grey</span><span class="p">,</span>
+<span class="w">    </span><span class="n">end</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">.</span><span class="n">animate</span><span class="p">(</span><span class="n">_controller</span><span class="p">)</span>
+<span class="w">    </span><span class="o">..</span><span class="n">addListener</span><span class="p">(()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">setState</span><span class="p">(()</span><span class="w"> </span><span class="p">{});</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Animating Card's background:</strong> <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/animations-native/flutter_widgets/lib/anims/color_tween.dart#L62:L65">Add <code>animation.value</code> as <code>color</code> attribute for <code>BoxDecoration(...)</code> in parent's card widget like below:</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>...
+//parent container to host the quiz card
+child: Container(
+                  ...
+                  width: screenSize.width / 1.2,
+                  height: screenSize.height / 1.7,
+                  decoration: BoxDecoration(
+                    color: animation.value,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  ...
+                )
+...
+</code></pre></div>
+
+<ul>
+<li><strong>Triggering animation:</strong> We want our color change animation starts when we click the right answer which is <code>Carnivorous</code> in out case. When we press <code>FlatButton</code> at left, background color changes from grey to blue. When <code>FlatButton</code> at right, <code>Herbivorous</code> is clicked, <code>reverse()</code> animation is called, which changes color from blue to back to grey. Let's see how animation is started from FlatButton's <code>onPressed()</code> methods:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>children: &lt;Widget&gt;[
+  FlatButton(
+    ..
+    //Animation trigger: This is where animation will be triggered, responsible to change color from grey to blue.
+    onPressed: () =&gt; {_controller.forward()},
+    child: Container(
+      ..
+      child: Text(&quot;Carnivorous&quot;),
+    ),
+  ),
+  FlatButton(
+    ..
+    //Animation trigger: This is where the reverse animation will be triggered, responsible to change color back to grey.
+    onPressed: () =&gt; {_controller.reverse()},
+    child: Container(
+      ..
+      child: Text(&quot;Herbivorous&quot;),
+    ),
+  ),
+],
+</code></pre></div>
+
+<ul>
+<li><strong>Disposing AnimationController:</strong> Don't forget to dispose AnimationController.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nv">@override</span>
+<span class="n">dispose</span><span class="p">()</span><span class="w"> </span><span class="err">{</span>
+<span class="w">  </span><span class="n">_controller</span><span class="vm">?</span><span class="p">.</span><span class="n">dispose</span><span class="p">();</span>
+<span class="w">  </span><span class="n">super</span><span class="p">.</span><span class="n">dispose</span><span class="p">();</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<h3>What about Flutter Web ?</h3>
+<p><strong>[UPDATE Sept 23rd, 2019]</strong> Since release of Flutter 1.9, there's no need of maintaining separate code bases for native and web Flutter implementations. Please refer to <a href="https://ptyagicodecamp.github.io/migrating-to-flutter-19-implementing-cross-platform-firebase-login-in-flutter-apps.html">my article about migrating to Flutter 1.9 for details</a>.</p>
+<p><strong>Note:</strong> As of today Aug 7th, 2019- There's <a href="https://github.com/flutter/flutter/issues/37761">an issue</a> in running Flutter Web App after upgrading to the latest version of Flutter SDK.</p>
+<p>Let's achieve the same animations on Web platform. Please refer to my <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html">this article</a>, if you're new to Flutter-Web / Hummingbird and need help with setting up web project.
+In short, we would need to create an another branch say <code>animations-web</code> to host all web related code since web libraries are not pushed to same repository as of native platform. You'll need to fetch libraries directly from their Github repo.</p>
+<ul>
+<li>It means imports in native vs web platform are different. Make sure that all files have correct web intended imports.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Native</span><span class="p">:</span>
+<span class="kn">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="n">Web</span><span class="p">:</span>
+<span class="kn">import</span><span class="w"> </span><span class="s1">&#39;package:flutter_web/material.dart&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>pubspec.yaml</code>: I keep a backup for native and web <code>pubspec.yaml</code> config as <code>pubspec.yaml.web</code> and <code>pubspec.yaml.native</code> in both branches. Copy correct file's content into current <code>pubspec.yaml</code>.</p>
+</li>
+<li>
+<p>Building project in web branch <code>animations-web</code>. Make sure that you're in <code>stable</code> channel:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nx">flutter</span><span class="w"> </span><span class="nx">channel</span><span class="w"> </span><span class="nx">stable</span>
+
+<span class="nx">flutter</span><span class="w"> </span><span class="nx">clean</span>
+
+<span class="nx">flutter</span><span class="w"> </span><span class="nx">pub</span><span class="w"> </span><span class="nx">upgrade</span>
+
+<span class="nx">flutter</span><span class="w"> </span><span class="nx">pub</span><span class="w"> </span><span class="nx">get</span>
+
+<span class="nx">flutter</span><span class="w"> </span><span class="nx">packages</span><span class="w"> </span><span class="nx">pub</span><span class="w"> </span><span class="nx">global</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nx">webdev</span><span class="w"> </span><span class="nx">serve</span>
+</code></pre></div>
+
+<p><strong>Note:</strong> You may notice that image doesn't render using <code>AssetImage</code>. I use <code>Image.network()</code> to render images in web version like below:</p>
+<div class="highlight"><pre><span></span><code>Container(
+  width: screenSize.width / 1.2,
+  height: screenSize.height / 2.2,
+  child: Image.network(cardItems[0].image),
+),
+</code></pre></div>
+
+<p>Here's screenshot of the web version:</p>
+<p><img alt="Color Tween" src="https://ptyagicodecamp.github.io/color_tween_web.jpg"></p>
+<p><strong>Source code repo:</strong></p>
+<p><strong>[UPDATE]</strong> Native and Web codebases are merged into one codebase since release of Flutter 1.9.</p>
+<ul>
+<li>Source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/animations/flutter_animations/flutter_animations/lib/colorTween/color_tween.dart">here</a></li>
+</ul>
+<h3>References:</h3>
+<ol>
+<li><a href="https://api.flutter.dev/flutter/animation/ColorTween-class.html">ColorTween</a></li>
+<li><a href="https://api.flutter.dev/flutter/animation/AnimationController-class.html">AnimationController</a></li>
+<li><a href="https://api.flutter.dev/flutter/animation/Animation-class.html">Animation</a></li>
+<li><a href="https://api.flutter.dev/flutter/widgets/SingleTickerProviderStateMixin-mixin.html">SingleTickerProviderStateMixin</a></li>
+<li><a href="https://api.flutter.dev/flutter/widgets/Positioned-class.html">Positioned Widget</a></li>
+<li><a href="https://api.flutter.dev/flutter/material/FlatButton-class.html">FlatButton</a></li>
+</ol>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+<p>Follow me at <a href="https://twitter.com/ptyagi13">twitter</a></p>
+    <footer>
+      <p>Published: <time datetime="2019-08-07T00:00:00-04:00">
+        August 07, 2019
+      </time></p>
+        <address>
+          By             <a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a>
+        </address>
+        <p>
+          Category: <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+        </p>
+        <p>
+          Tags:
+            <a href="https://ptyagicodecamp.github.io/tag/colortween.html">ColorTween</a>
+            <a href="https://ptyagicodecamp.github.io/tag/animations.html">Animations</a>
+            <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>
+            <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
+            <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
+            <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+            <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+            <a href="https://ptyagicodecamp.github.io/tag/hummingbird.html">Hummingbird</a>
+        </p>
+    </footer>
+  </article>
+      </main>
+      <footer>
+          <address>
+            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+          </address>
+      </footer>
+  </body>
+</html>
