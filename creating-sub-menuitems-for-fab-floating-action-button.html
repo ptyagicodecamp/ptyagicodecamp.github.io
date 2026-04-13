@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>tech&Life - Creating Sub MenuItems for FAB (Floating Action Button)</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="Pelican" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore | Mobile | Software Engineering | Life" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Full Atom Feed" />
+        <link href="https://ptyagicodecamp.github.io/feeds/development.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="ANDROID" />
+    <meta name="tags" content="FAB" />
+    <meta name="tags" content="DEV" />
+    <meta name="tags" content="UI" />
+
+  </head>
+
+  <body>
+      <header>
+          <hgroup><h1><a href="https://ptyagicodecamp.github.io/">tech&Life</a></h1><p>Explore | Mobile | Software Engineering | Life</p></hgroup>
+          <nav><ul>
+              <li><a href="/archives.html">Archives</a></li>
+              <li><a href="/categories.html">Categories</a></li>
+              <li><a href="/tags.html">Tags</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/dart.html" >Dart</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development.html"  aria-current="page" >Development</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development-flutter-cross-platform.html" >Development, Flutter, Cross-platform</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/devops.html" >DevOps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/engineering-management.html" >Engineering Management</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutter.html" >Flutter</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html" >FlutterLayouts</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/leadership.html" >Leadership</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/navigation.html" >Navigation</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/publishing-apps.html" >publishing-apps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/widgets.html" >Widgets</a></li>
+          </ul></nav>
+      </header>
+      <main>
+  <article>
+    <header>
+      <h2>
+        <a href="https://ptyagicodecamp.github.io/creating-sub-menuitems-for-fab-floating-action-button.html" rel="bookmark"
+           title="Permalink to Creating Sub MenuItems for FAB (Floating Action Button)">Creating Sub MenuItems for FAB (Floating Action Button)</a></h2>
+      
+    </header>
+    <h3>Final Outcome</h3>
+<p>Our target to integrate FAB into an existing Android App and creating submenus. Settings icon is used as FAB. Clicking on it will open its submenus: Save, Edit and Photo. Clicking on X will close submenus and Settings icon will re-appear.</p>
+<p>This is how main screen will look after FAB integrated into it.</p>
+<p><img alt="close" src="./images/device-settings-close.png"></p>
+<p>Clicking on <code>Settings</code> icon will open sub menus:</p>
+<p><img alt="open" src="./images/device-settings-open.png"></p>
+<h3>Create Android Studio Project</h3>
+<p><strong><em>Step#1:</em></strong> Create New Project in Android Studio:</p>
+<p><img alt="create" src="./images/create_project-1.png"></p>
+<p><strong><em>Step#2:</em></strong> Choose Blank Activity:
+<img alt="create" src="./images/create_project-2.png"></p>
+<p><strong><em>Step#3:</em></strong> This how your project would look like :
+<img alt="create" src="./images/create_project-3.png"></p>
+<h3>Preparation</h3>
+<p><strong><em>Step#1:</em></strong>  Assets:
+I need few assets to be used as FAB submenu icons.
+I used Android Studio’s built-in tool to generate Vector Assets.
+You can access this tool right clicking on <code>app</code> module → Click <code>New</code> → Click on <code>Vector Assets</code></p>
+<p><img alt="asset1" src="./images/create-vector-asset-1.png">
+<img alt="asset2" src="./images/create-vector-asset-2.png">
+<img alt="asset3" src="./images/create-vector-asset-3.png"></p>
+<p><strong><em>Step#2:</em></strong>  Configuration:
+I’ll be using cardView component to display description for sub menu items.
+Here’s how you can add it as a dependency in your <code>build.gradle</code>:
+<code>compile 'com.android.support:cardview-v7:25.1.0'</code></p>
+<p><img alt="Cardview" src="./images/cardview-dep-gradle.png"></p>
+<h4>XML Layout</h4>
+<p><strong><em>Step#1:</em></strong> Create a new layout file to contains FAB and its sub menu items.</p>
+<p><img alt="Layout1" src="./images/create-submenu-layout-1.png"></p>
+<p><img alt="Layout2" src="./images/create-submenu-layout-2.png"></p>
+<p>I named it as <code>layout_fab_submenu.xml</code>. It’s a <code>FrameLayout</code>.</p>
+<p>I chose FrameLayout because I wanted a screen floating atop of existing screen and
+a holder for all FAB menu items. Don’t forget to set the top margin to <code>android:layout_marginTop="?attr/actionBarSize"</code> to avoid Actionbar overlapping.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;FrameLayout</span>
+<span class="w">    </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<span class="w">    </span><span class="na">xmlns:app=</span><span class="s">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+<span class="w">    </span><span class="na">android:id=</span><span class="s">&quot;@+id/fabFrame&quot;</span>
+<span class="w">    </span><span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+<span class="w">    </span><span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
+<span class="w">    </span><span class="na">android:layout_marginTop=</span><span class="s">&quot;?attr/actionBarSize&quot;</span>
+<span class="w">    </span><span class="na">android:paddingBottom=</span><span class="s">&quot;@dimen/activity_vertical_margin&quot;</span>
+<span class="w">    </span><span class="na">android:paddingLeft=</span><span class="s">&quot;@dimen/activity_horizontal_margin&quot;</span>
+<span class="w">    </span><span class="na">android:paddingRight=</span><span class="s">&quot;@dimen/activity_horizontal_margin&quot;</span>
+<span class="w">    </span><span class="na">android:paddingTop=</span><span class="s">&quot;@dimen/activity_vertical_margin&quot;</span>
+<span class="w">    </span><span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">    </span>.....
+<span class="nt">&lt;/FrameLayout&gt;</span>
+</code></pre></div>
+
+<p><strong><em>Step#2:</em></strong> Layout for FAB SubMenu items</p>
+<p>Now, I want to create one <code>LinearLayout</code> for each <strong><em>FAB</em></strong>. Since I want all of the FAB items
+to be at bottom right corner of screen, so I will use <code>android:layout_gravity=bottom|end</code>.
+Every sub menu will have its own <code>LinearLayout</code> like following. Each <code>LinearLayout</code> has one <code>CardView</code>
+to hold <code>TextView</code> for explaining FAB's purpose and one <code>android.support.design.widget.FloatingActionButton</code> next to it.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">LinearLayout</span>
+<span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">id</span><span class="o">=</span><span class="ss">&quot;@+id/layoutFabSave&quot;</span>
+<span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_width</span><span class="o">=</span><span class="ss">&quot;wrap_content&quot;</span>
+<span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_height</span><span class="o">=</span><span class="ss">&quot;wrap_content&quot;</span>
+<span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">gravity</span><span class="o">=</span><span class="ss">&quot;center_vertical&quot;</span>
+<span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_gravity</span><span class="o">=</span><span class="ss">&quot;bottom|end&quot;</span>
+<span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_marginRight</span><span class="o">=</span><span class="ss">&quot;8dp&quot;</span>
+<span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_marginBottom</span><span class="o">=</span><span class="ss">&quot;120dp&quot;</span>
+<span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_marginEnd</span><span class="o">=</span><span class="ss">&quot;8dp&quot;</span>
+<span class="w">        </span><span class="nl">android</span><span class="p">:</span><span class="n">orientation</span><span class="o">=</span><span class="ss">&quot;horizontal&quot;</span><span class="o">&gt;</span>
+
+<span class="w">        </span><span class="o">&lt;</span><span class="n">android</span><span class="p">.</span><span class="n">support</span><span class="p">.</span><span class="n">v7</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">CardView</span>
+<span class="w">            </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_width</span><span class="o">=</span><span class="ss">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_height</span><span class="o">=</span><span class="ss">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="nl">app</span><span class="p">:</span><span class="n">cardBackgroundColor</span><span class="o">=</span><span class="ss">&quot;@color/cardview_light_background&quot;</span>
+<span class="w">            </span><span class="nl">app</span><span class="p">:</span><span class="n">cardCornerRadius</span><span class="o">=</span><span class="ss">&quot;@dimen/cardCornerRadius&quot;</span>
+<span class="w">            </span><span class="nl">app</span><span class="p">:</span><span class="n">cardElevation</span><span class="o">=</span><span class="ss">&quot;@dimen/cardElevation&quot;</span>
+<span class="w">            </span><span class="nl">app</span><span class="p">:</span><span class="n">cardUseCompatPadding</span><span class="o">=</span><span class="ss">&quot;true&quot;</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">TextView</span>
+<span class="w">                </span><span class="nl">android</span><span class="p">:</span><span class="n">id</span><span class="o">=</span><span class="ss">&quot;@+id/cvtSave&quot;</span>
+<span class="w">                </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_width</span><span class="o">=</span><span class="ss">&quot;wrap_content&quot;</span>
+<span class="w">                </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_height</span><span class="o">=</span><span class="ss">&quot;wrap_content&quot;</span>
+<span class="w">                </span><span class="nl">android</span><span class="p">:</span><span class="nc">text</span><span class="o">=</span><span class="ss">&quot;@string/save&quot;</span>
+<span class="w">                </span><span class="nl">android</span><span class="p">:</span><span class="n">textAppearance</span><span class="o">=</span><span class="ss">&quot;?android:attr/textAppearanceSmall&quot;</span>
+<span class="w">                </span><span class="nl">android</span><span class="p">:</span><span class="n">textStyle</span><span class="o">=</span><span class="ss">&quot;bold&quot;</span>
+<span class="w">                </span><span class="nl">android</span><span class="p">:</span><span class="n">paddingRight</span><span class="o">=</span><span class="ss">&quot;@dimen/cardview_horizontal_padding&quot;</span>
+<span class="w">                </span><span class="nl">android</span><span class="p">:</span><span class="n">paddingLeft</span><span class="o">=</span><span class="ss">&quot;@dimen/cardview_horizontal_padding&quot;</span>
+<span class="w">                </span><span class="nl">android</span><span class="p">:</span><span class="n">paddingBottom</span><span class="o">=</span><span class="ss">&quot;@dimen/cardview_vertical_padding&quot;</span>
+<span class="w">                </span><span class="nl">android</span><span class="p">:</span><span class="n">paddingTop</span><span class="o">=</span><span class="ss">&quot;@dimen/cardview_vertical_padding&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">        </span><span class="o">&lt;/</span><span class="n">android</span><span class="p">.</span><span class="n">support</span><span class="p">.</span><span class="n">v7</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">CardView</span><span class="o">&gt;</span>
+
+<span class="w">        </span><span class="o">&lt;</span><span class="n">android</span><span class="p">.</span><span class="n">support</span><span class="p">.</span><span class="n">design</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">FloatingActionButton</span>
+<span class="w">            </span><span class="nl">android</span><span class="p">:</span><span class="n">id</span><span class="o">=</span><span class="ss">&quot;@+id/fabSave&quot;</span>
+<span class="w">            </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_width</span><span class="o">=</span><span class="ss">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="nl">android</span><span class="p">:</span><span class="n">layout_height</span><span class="o">=</span><span class="ss">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="nl">android</span><span class="p">:</span><span class="n">src</span><span class="o">=</span><span class="ss">&quot;@drawable/ic_save_black_24dp&quot;</span>
+<span class="w">            </span><span class="nl">app</span><span class="p">:</span><span class="n">backgroundTint</span><span class="o">=</span><span class="ss">&quot;@android:color/holo_green_light&quot;</span>
+<span class="w">            </span><span class="nl">app</span><span class="p">:</span><span class="n">fabSize</span><span class="o">=</span><span class="ss">&quot;mini&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+
+<span class="w">    </span><span class="o">&lt;/</span><span class="n">LinearLayout</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<h3>Lets check out More Code</h3>
+<p>In order to support FAB opening and closing, you would need to write two methods. One is to make sub menus
+visible, and other is to hide sub menus and only show main FAB which is <code>Settings</code> icon is our case.
+When <code>Settings</code> FAB expands, it turns into 'X' to give option to be able to close expanded sub menus.
+These are the two methods you would need:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//closes FAB submenus</span>
+<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">void</span><span class="w"> </span><span class="n">closeSubMenusFab</span><span class="p">(){</span>
+<span class="w">        </span><span class="n">layoutFabSave</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="n">INVISIBLE</span><span class="p">);</span>
+<span class="w">        </span><span class="n">layoutFabEdit</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="n">INVISIBLE</span><span class="p">);</span>
+<span class="w">        </span><span class="n">layoutFabPhoto</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="n">INVISIBLE</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fabSettings</span><span class="p">.</span><span class="n">setImageResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">ic_settings_black_24dp</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fabExpanded</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">//Opens FAB submenus</span>
+<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">void</span><span class="w"> </span><span class="n">openSubMenusFab</span><span class="p">(){</span>
+<span class="w">        </span><span class="n">layoutFabSave</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="n">VISIBLE</span><span class="p">);</span>
+<span class="w">        </span><span class="n">layoutFabEdit</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="n">VISIBLE</span><span class="p">);</span>
+<span class="w">        </span><span class="n">layoutFabPhoto</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="n">VISIBLE</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">//Change settings icon to &#39;X&#39; icon</span>
+<span class="w">        </span><span class="n">fabSettings</span><span class="p">.</span><span class="n">setImageResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">ic_close_black_24dp</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fabExpanded</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+
+<p>Now, its time to hook them up in the main code to make it functional. Lets start with <code>onCreate()</code> method:</p>
+<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">MainActivity</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">//</span><span class="n">boolean</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">know</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">FAB</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">closed</span><span class="w"> </span><span class="n">state</span><span class="o">.</span>
+<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">boolean</span><span class="w"> </span><span class="n">fabExpanded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">FloatingActionButton</span><span class="w"> </span><span class="n">fabSettings</span><span class="p">;</span>
+
+<span class="w">    </span><span class="o">//</span><span class="n">Linear</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="n">holding</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Save</span><span class="w"> </span><span class="n">submenu</span>
+<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">LinearLayout</span><span class="w"> </span><span class="n">layoutFabSave</span><span class="p">;</span>
+
+<span class="w">    </span><span class="o">//</span><span class="n">Linear</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="n">holding</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Edit</span><span class="w"> </span><span class="n">submenu</span>
+<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">LinearLayout</span><span class="w"> </span><span class="n">layoutFabEdit</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="n">LinearLayout</span><span class="w"> </span><span class="n">layoutFabPhoto</span><span class="p">;</span>
+
+<span class="w">    </span><span class="err">@</span><span class="n">Override</span>
+<span class="w">    </span><span class="n">protected</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">activity_main</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Toolbar</span><span class="w"> </span><span class="n">toolbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Toolbar</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">toolbar</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setSupportActionBar</span><span class="p">(</span><span class="n">toolbar</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">fabSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">FloatingActionButton</span><span class="p">)</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">fabSetting</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">layoutFabSave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">LinearLayout</span><span class="p">)</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">layoutFabSave</span><span class="p">);</span>
+<span class="w">        </span><span class="n">layoutFabEdit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">LinearLayout</span><span class="p">)</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">layoutFabEdit</span><span class="p">);</span>
+<span class="w">        </span><span class="n">layoutFabPhoto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">LinearLayout</span><span class="p">)</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">layoutFabPhoto</span><span class="p">);</span>
+
+<span class="w">        </span><span class="o">//</span><span class="n">When</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">Fab</span><span class="w"> </span><span class="p">(</span><span class="n">Settings</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">clicked</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">expands</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">expanded</span><span class="w"> </span><span class="n">already</span><span class="o">.</span>
+<span class="w">        </span><span class="o">//</span><span class="n">Collapses</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">FAB</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="n">already</span><span class="o">.</span>
+<span class="w">        </span><span class="o">//</span><span class="n">This</span><span class="w"> </span><span class="n">gives</span><span class="w"> </span><span class="n">FAB</span><span class="w"> </span><span class="p">(</span><span class="n">Settings</span><span class="p">)</span><span class="w"> </span><span class="n">open</span><span class="o">/</span><span class="n">close</span><span class="w"> </span><span class="n">behavior</span>
+<span class="w">        </span><span class="n">fabSettings</span><span class="o">.</span><span class="n">setOnClickListener</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="n">View</span><span class="o">.</span><span class="n">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="err">@</span><span class="n">Override</span>
+<span class="w">            </span><span class="n">public</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fabExpanded</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="bp">true</span><span class="p">){</span>
+<span class="w">                    </span><span class="n">closeSubMenusFab</span><span class="p">();</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">openSubMenusFab</span><span class="p">();</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="o">//</span><span class="n">Only</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">FAB</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">visible</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">beginning</span>
+<span class="w">        </span><span class="n">closeSubMenusFab</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="o">....</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>Congratulations!</h3>
+<p>Yay ! You got FAB integrated along with sub menu in less than 5 minutes. Its time to celebrate :)</p>
+<p>Source code is available at <a href="https://github.com/ptyagicodecamp/fab-submenu">Github </a></p>
+    <footer>
+      <p>Published: <time datetime="2017-02-15T11:24:00-05:00">
+        February 15, 2017
+      </time></p>
+        <address>
+          By             <a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a>
+        </address>
+        <p>
+          Category: <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
+        </p>
+        <p>
+          Tags:
+            <a href="https://ptyagicodecamp.github.io/tag/android.html">ANDROID</a>
+            <a href="https://ptyagicodecamp.github.io/tag/fab.html">FAB</a>
+            <a href="https://ptyagicodecamp.github.io/tag/dev.html">DEV</a>
+            <a href="https://ptyagicodecamp.github.io/tag/ui.html">UI</a>
+        </p>
+    </footer>
+  </article>
+      </main>
+      <footer>
+          <address>
+            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+          </address>
+      </footer>
+  </body>
+</html>

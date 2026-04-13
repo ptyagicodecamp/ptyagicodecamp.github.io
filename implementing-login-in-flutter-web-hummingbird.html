@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>tech&Life - Implementing Login in Flutter Web (Hummingbird)</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="Pelican" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore | Mobile | Software Engineering | Life" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Full Atom Feed" />
+        <link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="FirebaseAuth" />
+    <meta name="tags" content="Flutter" />
+    <meta name="tags" content="Code-recipes" />
+    <meta name="tags" content="Android" />
+    <meta name="tags" content="Android Studio" />
+    <meta name="tags" content="iOS" />
+
+  </head>
+
+  <body>
+      <header>
+          <hgroup><h1><a href="https://ptyagicodecamp.github.io/">tech&Life</a></h1><p>Explore | Mobile | Software Engineering | Life</p></hgroup>
+          <nav><ul>
+              <li><a href="/archives.html">Archives</a></li>
+              <li><a href="/categories.html">Categories</a></li>
+              <li><a href="/tags.html">Tags</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/dart.html" >Dart</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development.html" >Development</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development-flutter-cross-platform.html" >Development, Flutter, Cross-platform</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/devops.html" >DevOps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/engineering-management.html" >Engineering Management</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutter.html"  aria-current="page" >Flutter</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html" >FlutterLayouts</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/leadership.html" >Leadership</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/navigation.html" >Navigation</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/publishing-apps.html" >publishing-apps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/widgets.html" >Widgets</a></li>
+          </ul></nav>
+      </header>
+      <main>
+  <article>
+    <header>
+      <h2>
+        <a href="https://ptyagicodecamp.github.io/implementing-login-in-flutter-web-hummingbird.html" rel="bookmark"
+           title="Permalink to Implementing Login in Flutter Web (Hummingbird)">Implementing Login in Flutter Web (Hummingbird)</a></h2>
+      
+    </header>
+    <h3>Background</h3>
+<p>In this article, we'll make use of <a href="https://firebase.google.com/docs/reference/android/com/google/firebase/auth/FirebaseAuth">FirebaseAuth</a> to implement login functionality in <a href="https://flutter-to-fly.firebaseapp.com/">Flutter-to-Fly</a> WebApp built using Flutter Web - Hummingbird. Design has been evolved since I wrote my first article about <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page-web-hummingbird-android-ios.html">Designing Cross platform Flutter prototype for Landing Page (Web-Hummingbird, Android, iOS)</a>. This article focuses on implementing Login functionality in Hummingbird only. Please refer to <a href="https://youtu.be/Sr1dn3j5tz0">this youtube video</a> for implementing same login functionality in Android &amp; iOS.</p>
+<p>We'll implement LogIn button shown below:</p>
+<p><img alt="FirebaseAuth-Login" src="https://ptyagicodecamp.github.io/login_ftf1.jpg"></p>
+<p>Please refer to previous related articles below:</p>
+<ol>
+<li><a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">Designing Cross platform Flutter prototype for Landing Page</a></li>
+<li><a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html">Making Cross-platform Flutter Landing Page Responsive</a></li>
+<li><a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html">Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)</a></li>
+<li><a href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html">Implementing Flutter FactsBot using DialogFlow</a></li>
+</ol>
+<p><strong>Checkout the companion video:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mK90EXsy6CA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3>Introduction</h3>
+<p>In this article, we'll make our login button work. I'll use Firebase authentication to implement email and password authentication. First, setup Firebase Project as mentioned <a href="https://firebase.google.com/docs/storage/web/start">here</a>. We need to add configuration details in Flutter app to be able to communicate with Firebase.</p>
+<p>We'll add two more pages to WebApp.</p>
+<ol>
+<li><strong>LogIn Page</strong>: Clicking on "LogIn" button will take user to LogIn Page where either they can login using their credentials or register. Registering a user creates a user record in <a href="https://firebase.google.com/docs/firestore">FireStore</a>.</li>
+<li><strong>User Profile Page</strong>: Logged in users can see their display name, profile picture placeholder, and SignOut button. This is only for demonstration purposes, and doesn't do much at this point.</li>
+</ol>
+<h3><code>pubspec.yaml</code></h3>
+<p>Following dependencies need to be added to <code>pubspec.yaml</code> to interact with Firebase. <a href="https://pub.dev/packages/provider">Provider</a> package is used for dependency injection and state management.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="o">:</span>
+<span class="w">  </span><span class="n">firebase</span><span class="o">:</span><span class="w"> </span><span class="n">any</span>
+<span class="w">  </span><span class="n">service_worker</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.2</span><span class="o">.</span><span class="mi">0</span>
+<span class="w">  </span><span class="n">googleapis_auth</span><span class="o">:</span><span class="w"> </span><span class="o">^</span><span class="mf">0.2</span><span class="o">.</span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span>
+<span class="w">  </span><span class="n">provider</span><span class="o">:</span><span class="w"> </span><span class="n">any</span>
+
+<span class="n">dependency_overrides</span><span class="o">:</span>
+<span class="w">  </span><span class="n">provider</span><span class="o">:</span>
+<span class="w">    </span><span class="n">git</span><span class="o">:</span>
+<span class="w">      </span><span class="n">url</span><span class="o">:</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/kevmoo/</span><span class="n">provider</span>
+<span class="w">      </span><span class="n">ref</span><span class="o">:</span><span class="w"> </span><span class="n">flutter_web</span>
+<span class="w">  </span><span class="n">firebase</span><span class="o">:</span>
+<span class="w">    </span><span class="n">git</span><span class="o">:</span>
+<span class="w">      </span><span class="n">url</span><span class="o">:</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/FirebaseExtended/</span><span class="n">firebase</span><span class="o">-</span><span class="n">dart</span>
+</code></pre></div>
+
+<p><strong>Web entry point:</strong> As we know that Flutter Web apps' entry point is <code>web/main.dart</code> which is compiled to javascript, and referred from <code>web/index.html</code>. Let's checkout code in both files:</p>
+<p><strong><code>web/main.dart</code>:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">main</span><span class="o">()</span><span class="w"> </span><span class="nt">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">try</span><span class="w"> </span><span class="err">{</span>
+<span class="w">    </span><span class="err">await</span><span class="w"> </span><span class="err">config()</span><span class="p">;</span>
+
+<span class="w">    </span><span class="err">fb.initializeApp(</span>
+<span class="w">      </span><span class="n">apiKey</span><span class="p">:</span><span class="w"> </span><span class="n">apiKey</span><span class="p">,</span>
+<span class="w">      </span><span class="n">authDomain</span><span class="o">:</span><span class="w"> </span><span class="n">authDomain</span><span class="p">,</span>
+<span class="w">      </span><span class="n">databaseURL</span><span class="o">:</span><span class="w"> </span><span class="n">databaseUrl</span><span class="p">,</span>
+<span class="w">      </span><span class="n">storageBucket</span><span class="o">:</span><span class="w"> </span><span class="n">storageBucket</span><span class="p">,</span>
+<span class="w">      </span><span class="n">projectId</span><span class="o">:</span><span class="w"> </span><span class="n">projectId</span><span class="p">,</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="err">await</span><span class="w"> </span><span class="err">ui.webOnlyInitializePlatform()</span><span class="p">;</span>
+<span class="w">    </span><span class="err">app.main()</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="nt">on</span><span class="w"> </span><span class="nt">fb</span><span class="p">.</span><span class="nc">FirebaseJsNotLoadedException</span><span class="w"> </span><span class="nt">catch</span><span class="w"> </span><span class="o">(</span><span class="nt">e</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">print(e)</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<p><strong><code>web/index.html</code>:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.gstatic.com/firebasejs/6.4.0/firebase-firestore.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.gstatic.com/firebasejs/6.4.0/firebase-auth.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.gstatic.com/firebasejs/6.4.0/firebase-storage.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">defer</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;main.dart.js&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;application/javascript&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Firebase Configuration:</strong></p>
+<p><code>fb.initializeApp</code> needs Firebase App's configuration parameters. We need to add this information in <code>package:firebase/src/assets/config.json</code> file. There's a sample  <code>config.json.sample</code> file available for you for reference:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="s">&quot;_FYI&quot;</span><span class="p">:</span> <span class="s">&quot;https://firebase.google.com/docs/web/setup&quot;</span><span class="p">,</span>
+  <span class="s">&quot;_COPY_TO&quot;</span><span class="p">:</span> <span class="s">&quot;config.json&quot;</span><span class="p">,</span>
+  <span class="s">&quot;API_KEY&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;AUTH_DOMAIN&quot;</span> <span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;DATABASE_URL&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;STORAGE_BUCKET&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;PROJECT_ID&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;MESSAGING_SENDER_ID&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;SERVER_KEY&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+  <span class="s">&quot;VAPID_KEY&quot;</span><span class="p">:</span> <span class="s">&quot;TODO&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Get parameters from Firebase console for your project, and update values in <code>config.json</code>.</p>
+<h3>LogIn Page</h3>
+<p>I'll not be explaining the UI code in this tutorial. However, please take a look at source code. Feel free to reach out to me if you need explanation with any part.</p>
+<p><strong>LogIn Form:</strong></p>
+<p><img alt="LogIn-form" src="https://ptyagicodecamp.github.io/login_ftf2.jpg"></p>
+<p><strong>Register Form:</strong></p>
+<p><img alt="Register-form" src="https://ptyagicodecamp.github.io/login_ftf3.jpg"></p>
+<p><strong>Authenticating using FirebaseAuthService:</strong></p>
+<p><code>FirebaseAuthService</code> is a <code>ChangeNotifier</code>, which means if any sign-in or sign-out happens in this class, all other subscribed classes are notified. I've abstracted all APIs using <code>BaseAuthService</code>.</p>
+<div class="highlight"><pre><span></span><code>abstract class BaseAuthService with ChangeNotifier {
+  Future&lt;User&gt; currentUser();
+  Future&lt;User&gt; signIn(String email, String password);
+  Future&lt;User&gt; googleSignIn();
+  Future&lt;User&gt; updateUser(User user);
+  Future&lt;User&gt; createUser(
+      String firstName, String lastName, String email, String password);
+  Future&lt;void&gt; signOut();
+}
+</code></pre></div>
+
+<p><code>FirebaseAuthService</code> extends <code>BaseAuthService</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">FireAuthService</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">BaseAuthService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="n">Auth</span><span class="w"> </span><span class="n">_firebaseAuth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fb</span><span class="o">.</span><span class="n">auth</span><span class="p">();</span>
+
+<span class="w">  </span><span class="o">//</span><span class="n">Get</span><span class="w"> </span><span class="n">currently</span><span class="w"> </span><span class="n">logged</span><span class="o">-</span><span class="ow">in</span><span class="w"> </span><span class="n">user</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">currentUser</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">currentUser</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="o">//</span><span class="n">Sign</span><span class="o">-</span><span class="ow">in</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="n">notifies</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">subscribers</span><span class="o">.</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signIn</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">var</span><span class="w"> </span><span class="n">auth</span><span class="w"> </span><span class="o">=</span>
+<span class="w">          </span><span class="n">await</span><span class="w"> </span><span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">signInWithEmailAndPassword</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">);</span>
+
+<span class="w">      </span><span class="n">notifyListeners</span><span class="p">();</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">throw</span><span class="w"> </span><span class="n">Exception</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="o">//</span><span class="n">This</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">register</span><span class="w"> </span><span class="n">form</span><span class="o">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">FirebaseAuth</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">createUser</span><span class="p">(</span>
+<span class="w">      </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">auth</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">await</span><span class="w"> </span><span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">createUserWithEmailAndPassword</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fb</span><span class="o">.</span><span class="n">UserProfile</span><span class="p">();</span>
+<span class="w">    </span><span class="n">info</span><span class="o">.</span><span class="n">displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;$firstName $lastName&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">updateProfile</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">updateUser</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">auth</span><span class="o">.</span><span class="n">user</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="o">//</span><span class="n">A</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">Firestore</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">keep</span><span class="w"> </span><span class="n">track</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">personalized</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">user</span><span class="o">.</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">updateUser</span><span class="p">(</span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="p">)</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">final</span><span class="w"> </span><span class="n">CollectionReference</span><span class="w"> </span><span class="n">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fb</span><span class="o">.</span><span class="n">firestore</span><span class="p">()</span><span class="o">.</span><span class="n">collection</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">displayName</span><span class="p">;</span>
+<span class="w">    </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">photoUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">photoURL</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">displayName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;No Name yet&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">photoUrl</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">photoUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">newData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s1">&#39;uid&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;displayName&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">displayName</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;photoUrl&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">photoUrl</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;email&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;lastActive&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">DateTime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">ref</span><span class="o">.</span><span class="n">doc</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">newData</span><span class="p">,</span><span class="w"> </span><span class="n">SetOptions</span><span class="p">(</span><span class="n">merge</span><span class="p">:</span><span class="w"> </span><span class="bp">true</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">user</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="o">//</span><span class="n">Sign</span><span class="o">-</span><span class="n">out</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="nb nb-Type">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signOut</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">_firebaseAuth</span><span class="o">.</span><span class="n">signOut</span><span class="p">();</span>
+<span class="w">    </span><span class="n">notifyListeners</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">googleSignIn</span><span class="p">()</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">//</span><span class="n">TODO</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Checking for a logged-in user:</strong> Following code will check-in whether a user is already signed-in. If so, then <code>UserProfilePage</code> is displayed. Otherwise <code>LogInPage</code> is rendered.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">FutureBuilder</span><span class="o">&lt;</span><span class="nt">User</span><span class="o">&gt;(</span>
+<span class="w">      </span><span class="nt">future</span><span class="o">:</span><span class="w"> </span><span class="nt">Provider</span><span class="p">.</span><span class="nc">of</span><span class="o">&lt;</span><span class="nt">FireAuthService</span><span class="o">&gt;(</span><span class="nt">context</span><span class="o">)</span><span class="p">.</span><span class="nc">currentUser</span><span class="o">(),</span>
+<span class="w">      </span><span class="nt">builder</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">context</span><span class="o">,</span><span class="w"> </span><span class="nt">AsyncSnapshot</span><span class="o">&lt;</span><span class="nt">User</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">snapshot</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="err">if</span><span class="w"> </span><span class="err">(snapshot.connectionState</span><span class="w"> </span><span class="err">==</span><span class="w"> </span><span class="err">ConnectionState.done)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">          </span><span class="err">if</span><span class="w"> </span><span class="err">(snapshot.error</span><span class="w"> </span><span class="err">!=</span><span class="w"> </span><span class="err">null)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">            </span><span class="err">return</span><span class="w"> </span><span class="err">Text(snapshot.error.toString())</span><span class="p">;</span>
+<span class="w">          </span><span class="p">}</span>
+
+<span class="w">          </span><span class="nt">if</span><span class="w"> </span><span class="o">(</span><span class="nt">snapshot</span><span class="p">.</span><span class="nc">hasData</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="err">return</span><span class="w"> </span><span class="err">UserProfilePage(context,</span><span class="w"> </span><span class="err">snapshot.data)</span><span class="p">;</span>
+<span class="w">          </span><span class="p">}</span>
+
+<span class="w">          </span><span class="nt">return</span><span class="w"> </span><span class="nt">LogInPage</span><span class="o">(</span><span class="nt">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Login&#39;</span><span class="o">);</span>
+<span class="w">        </span><span class="err">}</span><span class="w"> </span><span class="nt">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="err">return</span><span class="w"> </span><span class="err">Container(</span>
+<span class="w">            </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="nf">CircularProgressIndicator</span><span class="p">(),</span>
+<span class="w">          </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="err">}</span><span class="o">,</span>
+<span class="w">    </span><span class="o">);</span>
+</code></pre></div>
+
+<h3>User Profile Page</h3>
+<p>A <code>UserProfilePage</code> displays very basic information about the logged-in user. Right now, it shows: welcoming user with their email used as display name, placeholder for profile picture and sign-out button. Please refer to source code for details of implementing user interface.</p>
+<p><img alt="UserProfile-page" src="https://ptyagicodecamp.github.io/login_ftf4.jpg"></p>
+<h3>A note on iOS Firebase integration</h3>
+<p>You may run into trouble building your code for iOS complaining about Firebase imports as shown in screenshot below:</p>
+<p><img alt="ios-firebase" src="https://ptyagicodecamp.github.io/ios_firebase_issue.jpg"></p>
+<p><strong>Solution:</strong>
+I found <a href="https://stackoverflow.com/questions/41709912/error-could-not-build-objective-c-module-firebase">this StackOverflow post</a> useful to debug and fix this issue:</p>
+<p><img alt="ios-firebase-fix" src="https://ptyagicodecamp.github.io/ios_firebase_issue_fix.jpg"></p>
+<h3>Conclusion</h3>
+<p>We learned how to implement Firebase authentication in Flutter Web / Hummingbird for 'Login' button in our demo web app. We overviewed dependencies, and ChangeNotifier responsible for authentication, registering and creating user, and creating a user record in FireStore. Please refer to code below for Web and Native (Android &amp; iOS) implementations.</p>
+<p>Keep Fluttering !</p>
+<h3>Source code</h3>
+<ul>
+<li>Hummingbird / Flutter Web implementation's source code is <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/login-web">available here</a></li>
+<li>Android &amp; iOS implementation's source code is <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/login">available here</a></li>
+</ul>
+<h3>References/Credits:</h3>
+<ul>
+<li><a href="https://firebase.google.com/docs/storage/web/start">Setup Firebase Project</a></li>
+<li><a href="https://youtu.be/Sr1dn3j5tz0">Android &amp; iOS LogIn implementation</a></li>
+<li><a href="https://firebase.google.com/docs/reference/android/com/google/firebase/auth/FirebaseAuth">FirebaseAuth</a></li>
+<li><a href="https://pub.dev/packages/firebase_web">Firebase Web</a></li>
+<li><a href="https://pub.dev/packages/firebase">Firebase</a></li>
+<li><a href="https://github.com/FirebaseExtended/firebase-dart">Firebase Dart</a></li>
+<li><a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">Designing Cross platform Flutter prototype for Landing Page</a></li>
+<li><a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive.html">Making Cross-platform Flutter Landing Page Responsive</a></li>
+<li><a href="https://ptyagicodecamp.github.io/using-flutter-themes-for-cross-platform-landing-page-web-hummingbird-android-ios.html">Using Flutter Themes for Cross-platform Landing Page (Web-Hummingbird, Android, iOS)</a></li>
+<li><a href="https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html">Implementing Flutter FactsBot using DialogFlow</a></li>
+</ul>
+<h3>Image Credits</h3>
+<ul>
+<li><a href="https://www.vecteezy.com/vector-art/604578-hummingbird-icon-logo-and-symbols-template-vector">Bird logo</a></li>
+<li><a href="https://icons8.com/ouch/illustration/fogg-page-under-construction">Landing page image</a></li>
+</ul>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+    <footer>
+      <p>Published: <time datetime="2019-09-10T00:00:00-04:00">
+        September 10, 2019
+      </time></p>
+        <address>
+          By             <a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a>
+        </address>
+        <p>
+          Category: <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+        </p>
+        <p>
+          Tags:
+            <a href="https://ptyagicodecamp.github.io/tag/firebaseauth.html">FirebaseAuth</a>
+            <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
+            <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
+            <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+        </p>
+    </footer>
+  </article>
+      </main>
+      <footer>
+          <address>
+            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+          </address>
+      </footer>
+  </body>
+</html>
