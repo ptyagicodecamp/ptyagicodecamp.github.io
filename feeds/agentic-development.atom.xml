@@ -5,13 +5,13 @@
 &lt;p&gt;What happened? The metrics didn't lie, but they no longer measured reality. Astra’s engineers had leaned so heavily into autonomous coding agents that they were shipping 400% more code than the previous year. However, that code was a "Frankenstein" of AI-generated blocks with no human lineage. The "Elite" velocity was actually a high-speed collision with technical debt. The system didn’t break because of slow deployments; it broke because the &lt;strong&gt;human review capacity&lt;/strong&gt; could not keep pace with the &lt;strong&gt;AI-driven firehose.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The factory floor is now automated, but the robots are outrunning the conveyor belt. In 2026, DORA metrics—the gold standard of the last decade—have officially become vanity metrics. If you are still managing your VPs of Engineering based on Deployment Frequency alone, you aren't leading; you’re observing a crash in slow motion. We need a new architectural standard: &lt;strong&gt;The AI Attribution Layer.&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2&gt;Section 1: The Goodhart’s Law of AI&lt;/h2&gt;
+&lt;h2&gt;The Goodhart’s Law of AI&lt;/h2&gt;
 &lt;h3&gt;Why Optimizing for "Velocity" Leads to "Garbage In, Garbage Out"&lt;/h3&gt;
 &lt;p&gt;The fundamental flaw in modern SDLC management is a classic case of &lt;strong&gt;Goodhart’s Law&lt;/strong&gt;: "When a measure becomes a target, it ceases to be a good measure." For years, we targeted PR throughput as a proxy for value. AI has broken that proxy.&lt;/p&gt;
 &lt;p&gt;According to recent &lt;a href="https://dx.com"&gt;DX Tooling Benchmarks&lt;/a&gt;, Cursor and GitHub Copilot users saw a staggering &lt;strong&gt;46% jump in PR throughput&lt;/strong&gt; (moving from a median of 2.8 to 4.1 PRs) between Q4 2025 and Q1 2026. On the surface, this looks like a productivity miracle. In reality, it is the &lt;strong&gt;Throughput Illusion.&lt;/strong&gt; When code generation becomes essentially "free" via LLMs, the cost of &lt;em&gt;authoring&lt;/em&gt; drops to near zero, but the cost of &lt;em&gt;maintaining&lt;/em&gt; and &lt;em&gt;validating&lt;/em&gt; scales exponentially. If your team is shipping 4.1 PRs per week but 90% of those are agent-authored, your "Deployment Frequency" is no longer measuring team health—it’s measuring how often your engineers hit &lt;code&gt;Cmd+K&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;We are seeing a &lt;strong&gt;Quality Crisis&lt;/strong&gt; that traditional DORA metrics are blind to. &lt;a href="https://www.gitclear.com"&gt;Netcorp and GitClear’s 2026 research&lt;/a&gt; reveals that while &lt;strong&gt;41% of all code is now AI-generated&lt;/strong&gt;, the &lt;strong&gt;code churn rate&lt;/strong&gt;—the percentage of code revised or deleted within two weeks of being pushed—has spiked to &lt;strong&gt;5.7%&lt;/strong&gt;. Compare that to the 3.1% baseline in 2020. We are moving faster, yes, but we are running in circles, constantly refactoring the hallucinatory output of last week's "Elite" sprint.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2&gt;Section 2: Defining the AI Attribution Layer&lt;/h2&gt;
+&lt;h2&gt;Defining the AI Attribution Layer&lt;/h2&gt;
 &lt;h3&gt;The Digital Signature for the Modern SDLC&lt;/h3&gt;
 &lt;p&gt;To regain control, CTOs must implement an &lt;strong&gt;AI Attribution Layer (AIAL)&lt;/strong&gt;. Think of this as a "Digital Signature" for every line of code. Just as &lt;code&gt;git blame&lt;/code&gt; allows us to identify which human modified a file, the Attribution Layer identifies the &lt;strong&gt;provenance&lt;/strong&gt; of the logic.&lt;/p&gt;
 &lt;p&gt;An effective AIAL tracks three critical new KPIs that replace the aging DORA pillars:&lt;/p&gt;
@@ -21,7 +21,7 @@
 &lt;li&gt;&lt;strong&gt;The Review Bottleneck (AI vs. Human Cycle Time):&lt;/strong&gt; In the DORA era, we measured "Lead Time for Changes" from first commit to production. Today, this is a useless metric because the "authoring" phase is now instant. Lead Time is no longer a measure of CI/CD efficiency; it is a measure of &lt;strong&gt;Senior Engineer availability.&lt;/strong&gt; Humans have become the "manual validators" for an AI firehose. If your lead time is increasing while your throughput is also increasing, your senior talent is drowning.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2&gt;Section 3: The Seniority Divide&lt;/h2&gt;
+&lt;h2&gt;The Seniority Divide&lt;/h2&gt;
 &lt;h3&gt;Knowledge Retention as a Strategic Risk&lt;/h3&gt;
 &lt;p&gt;The most dangerous side effect of the AI-accelerated SDLC is the "Hollow Middle." We are seeing a widening gap between the "Elite" architects who can orchestrate agents and the "Junior" developers who have become glorified copy-pasting clerks.&lt;/p&gt;
 &lt;p&gt;The &lt;a href="https://stackoverflow.blog/2026/02/18/closing-the-developer-ai-trust-gap/"&gt;Uvik/Stack Overflow 2025/2026 surveys&lt;/a&gt; highlight a staggering &lt;strong&gt;Trust Gap&lt;/strong&gt;: despite AI being used in nearly every IDE, &lt;strong&gt;developer trust in AI accuracy has plummeted to 29%.&lt;/strong&gt; This creates a paradox:
@@ -29,7 +29,7 @@
 2. &lt;strong&gt;Juniors&lt;/strong&gt; lack the "struggle time" necessary to build mental models of the codebase because the AI provides the answer before they've even framed the question.&lt;/p&gt;
 &lt;p&gt;This is a &lt;strong&gt;knowledge-retention risk.&lt;/strong&gt; If your AI-generated code share is high and your team turnover is standard, you are losing the "tribal knowledge" of &lt;em&gt;why&lt;/em&gt; things work. The AI knows &lt;em&gt;what&lt;/em&gt; to write, but it doesn't understand the "Why" of your specific business logic. If your senior staff leaves, you are left with a codebase that no living human actually understands.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2&gt;Section 4: The 2026 Playbook&lt;/h2&gt;
+&lt;h2&gt;The 2026 Playbook&lt;/h2&gt;
 &lt;h3&gt;Actionable Steps for Engineering Directors&lt;/h3&gt;
 &lt;p&gt;If you want to survive the "Post-DORA" world, you must stop managing by the dashboard and start managing by the &lt;strong&gt;Attribution Layer.&lt;/strong&gt; Here is your 2026 implementation plan:&lt;/p&gt;
 &lt;h3&gt;1. Mandatory PR Metadata Tags&lt;/h3&gt;
@@ -40,7 +40,9 @@ This allows you to calculate the &lt;strong&gt;Cost per Feature&lt;/strong&gt; w
 &lt;p&gt;Track the ratio of &lt;strong&gt;Lines of Code (LOC) Changed vs. Review Time.&lt;/strong&gt; If your AI is outputting 1,000 lines of code and your seniors are approving them in 5 minutes, you aren't "Agile"—you’re compromised. Establish a "Brake Limit": if AI Code Share exceeds 60%, the PR requires two senior human reviewers and a mandatory "Interactive Loom Review" where the author explains the logic.&lt;/p&gt;
 &lt;h3&gt;3. The Value-to-Churn Ratio (VCR)&lt;/h3&gt;
 &lt;p&gt;Replace your velocity metrics with the &lt;strong&gt;VCR&lt;/strong&gt;. This formula balances the volume of output against the stability of the code provenance:&lt;/p&gt;
-&lt;p&gt;$$VCR = \frac{\text{Features Delivered} \times (1 - \text{AI Code Share})}{\text{Agentic Churn Rate}}$$&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;VCR = (Features Delivered X (1 - AI Code Share}) / Agentic Churn Rate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;A high VCR indicates a team that is using AI as an accelerant for human-led architecture, rather than a replacement for it.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;Conclusion: Orchestration is the New Leadership&lt;/h2&gt;
