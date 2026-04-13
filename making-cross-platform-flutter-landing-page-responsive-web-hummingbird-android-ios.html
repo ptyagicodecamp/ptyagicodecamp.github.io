@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>tech&Life - Making Cross-platform Flutter Landing Page Responsive (Web-Hummingbird, Android, iOS)</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="Pelican" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore | Mobile | Software Engineering | Life" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Full Atom Feed" />
+        <link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="Hummingbird" />
+    <meta name="tags" content="Cross-platform" />
+    <meta name="tags" content="Flutter" />
+    <meta name="tags" content="Code-recipes" />
+    <meta name="tags" content="Android" />
+    <meta name="tags" content="Android Studio" />
+    <meta name="tags" content="iOS" />
+    <meta name="tags" content="Responsive" />
+
+  </head>
+
+  <body>
+      <header>
+          <hgroup><h1><a href="https://ptyagicodecamp.github.io/">tech&Life</a></h1><p>Explore | Mobile | Software Engineering | Life</p></hgroup>
+          <nav><ul>
+              <li><a href="/archives.html">Archives</a></li>
+              <li><a href="/categories.html">Categories</a></li>
+              <li><a href="/tags.html">Tags</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/dart.html" >Dart</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development.html" >Development</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development-flutter-cross-platform.html" >Development, Flutter, Cross-platform</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/devops.html" >DevOps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/engineering-management.html" >Engineering Management</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutter.html"  aria-current="page" >Flutter</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html" >FlutterLayouts</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/leadership.html" >Leadership</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/navigation.html" >Navigation</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/publishing-apps.html" >publishing-apps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/widgets.html" >Widgets</a></li>
+          </ul></nav>
+      </header>
+      <main>
+  <article>
+    <header>
+      <h2>
+        <a href="https://ptyagicodecamp.github.io/making-cross-platform-flutter-landing-page-responsive-web-hummingbird-android-ios.html" rel="bookmark"
+           title="Permalink to Making Cross-platform Flutter Landing Page Responsive (Web-Hummingbird, Android, iOS)">Making Cross-platform Flutter Landing Page Responsive (Web-Hummingbird, Android, iOS)</a></h2>
+      
+    </header>
+    <p><strong>Goal:</strong> Our goal is to make Flutter page responsive for Web and Native apps.</p>
+<p><em>Web landing page:</em></p>
+<p><img alt="Web landing page comparison" src="https://ptyagicodecamp.github.io/responsive_web_comp.jpg"></p>
+<p><em>Native landing screen:</em></p>
+<p><img alt="Native landing page comparison" src="https://ptyagicodecamp.github.io/responsive_native_comp.jpg"></p>
+<h3>Introduction</h3>
+<p>This post is continuation of <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">Designing Cross platform Flutter prototype for Landing Page</a>. In this article, I'll show you how to make landing page responsive (meaning adapting to given screen size).</p>
+<p>Checkout the companion videos:</p>
+<p><strong>Part-1:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bFpJA_RDDXQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><strong>Part-2:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/krr7mKEUfE0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>In previous post, we learned how to design and implement a cross-platform (Web, Android and iOS). It looked great on large screen like desktop/laptop. However, it's widgets overflown when web landing page was resized to smaller screen like below:</p>
+<p><img alt="Overflow widgets for Web" src="https://ptyagicodecamp.github.io/web_overflow_screen.jpg"></p>
+<p>On native environment for a phone screen, it looked like this:</p>
+<p><img alt="Overflow widgets for native" src="https://ptyagicodecamp.github.io/overflow_screen.jpg"></p>
+<p>In this post, I'll be showing how to :</p>
+<ul>
+<li>
+<p>Implement a StatelessWidget <code>ResponsiveWidget</code> to support dynamic screen sizes.</p>
+</li>
+<li>
+<p>Adapt landing page's body to large vs smaller screens.</p>
+</li>
+<li>
+<p>Adapt landing page's header to show menu icon at smaller screens.</p>
+</li>
+</ul>
+<h4>ResponsiveWidget utility class</h4>
+<p>Let's implement a StatelessWidget <code>ResponsiveWidget</code> that uses <a href="https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html">LayoutBuilder</a>. LayoutBuilder is a widget which builds a widget tree that can depend on the parent widget's size. This class is responsible for detecting the screen size, and put them in one of the three buckets: Large, Medium and Small. It has utility static functions/methods to check the screen sizes.</p>
+<p>I'll be using <a href="https://api.flutter.dev/flutter/widgets/MediaQuery-class.html"><code>MediaQuery</code></a> to access the size of the screen. This is how I'll be checking the size of the screens by using width of the screen in pixels.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="n">ResponsiveWidget</span> {
+  ...
+  //<span class="n">Large</span> <span class="n">screen</span> <span class="k">is</span> <span class="nb">any</span> <span class="n">screen</span> <span class="n">whose</span> <span class="n">width</span> <span class="k">is</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">1200</span> <span class="n">pixels</span>
+  <span class="n">static</span> <span class="n">bool</span> <span class="n">isLargeScreen</span>(<span class="n">BuildContext</span> <span class="n">context</span>) {
+    <span class="k">return</span> <span class="n">MediaQuery</span>.<span class="nb">of</span>(<span class="n">context</span>).<span class="n">size</span>.<span class="n">width</span> &gt; <span class="mi">1200</span>;
+  }
+
+  //<span class="n">Small</span> <span class="n">screen</span> <span class="k">is</span> <span class="nb">any</span> <span class="n">screen</span> <span class="n">whose</span> <span class="n">width</span> <span class="k">is</span> <span class="n">less</span> <span class="n">than</span> <span class="mi">800</span> <span class="n">pixels</span>
+  <span class="n">static</span> <span class="n">bool</span> <span class="n">isSmallScreen</span>(<span class="n">BuildContext</span> <span class="n">context</span>) {
+    <span class="k">return</span> <span class="n">MediaQuery</span>.<span class="nb">of</span>(<span class="n">context</span>).<span class="n">size</span>.<span class="n">width</span> &lt; <span class="mi">800</span>;
+  }
+
+  //<span class="n">Medium</span> <span class="n">screen</span> <span class="k">is</span> <span class="nb">any</span> <span class="n">screen</span> <span class="n">whose</span> <span class="n">width</span> <span class="k">is</span> <span class="n">less</span> <span class="n">than</span> <span class="mi">1200</span> <span class="n">pixels</span>,
+<span class="sr">  //</span><span class="o">and</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">800</span> <span class="n">pixels</span>
+  <span class="n">static</span> <span class="n">bool</span> <span class="n">isMediumScreen</span>(<span class="n">BuildContext</span> <span class="n">context</span>) {
+    <span class="k">return</span> <span class="n">MediaQuery</span>.<span class="nb">of</span>(<span class="n">context</span>).<span class="n">size</span>.<span class="n">width</span> &gt; <span class="mi">800</span> &amp;&amp;
+    <span class="n">MediaQuery</span>.<span class="nb">of</span>(<span class="n">context</span>).<span class="n">size</span>.<span class="n">width</span> &lt; <span class="mi">1200</span>;
+  }  
+}
+</code></pre></div>
+
+<p>In the following section, I'll be building body of the landing page. In my <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">previous post</a>, I had only one design for landing page's body which is targeted to desktop size screens or say larger screens with width more than 1200 pixels. The widgets will give overflow signal when screen size is resized to smaller screen. To solve this problem, ideally you can design separate three designs for each of the screen buckets: Large, Medium and Small. In <code>ResponsiveWidget</code>'s <code>build</code> function, appropriate implementation will be picked like below:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ResponsiveWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">...</span>
+<span class="w">  </span><span class="k">final</span><span class="w"> </span><span class="nx">Widget</span><span class="w"> </span><span class="nx">largeScreen</span><span class="p">;</span>
+<span class="w">  </span><span class="k">final</span><span class="w"> </span><span class="nx">Widget</span><span class="w"> </span><span class="nx">mediumScreen</span><span class="p">;</span>
+<span class="w">  </span><span class="k">final</span><span class="w"> </span><span class="nx">Widget</span><span class="w"> </span><span class="nx">smallScreen</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">const</span><span class="w"> </span><span class="nx">ResponsiveWidget</span><span class="p">(</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">Key</span><span class="w"> </span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">this</span><span class="p">.</span><span class="nx">largeScreen</span><span class="p">,</span><span class="w"> </span><span class="nx">this</span><span class="p">.</span><span class="nx">mediumScreen</span><span class="p">,</span><span class="w"> </span><span class="nx">this</span><span class="p">.</span><span class="nx">smallScreen</span><span class="p">})</span>
+<span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="nx">super</span><span class="p">(</span><span class="nx">key</span><span class="p">:</span><span class="w"> </span><span class="nx">key</span><span class="p">);</span>
+
+<span class="w">  </span><span class="err">@</span><span class="k">override</span>
+<span class="w">  </span><span class="nx">Widget</span><span class="w"> </span><span class="nx">build</span><span class="p">(</span><span class="nx">BuildContext</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">//Returns the widget which is more appropriate for the screen size</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">LayoutBuilder</span><span class="p">(</span><span class="nx">builder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">constraints</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">constraints</span><span class="p">.</span><span class="nx">maxWidth</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">1200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">largeScreen</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">constraints</span><span class="p">.</span><span class="nx">maxWidth</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">800</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">constraints</span><span class="p">.</span><span class="nx">maxWidth</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">1200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//if medium screen not available, then return large screen</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">mediumScreen</span><span class="w"> </span><span class="p">??</span><span class="w"> </span><span class="nx">largeScreen</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//if small screen implementation not available, then return large screen</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">smallScreen</span><span class="w"> </span><span class="p">??</span><span class="w"> </span><span class="nx">largeScreen</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4>Adapting landing page's Body</h4>
+<p>This is how <code>Body</code>'s widget look like from my <a href="https://ptyagicodecamp.github.io/designing-cross-platform-flutter-prototype-for-landing-page.html">previous posts</a>. To make it responsive, we'll need different design implementations for each of the screen bucket. To keep things simple, I'll create only two layout implementations in this tutorial: Large and Small. Anything in Medium bucket will fall back to Large layout.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Body</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">SizedBox</span><span class="p">(</span>
+<span class="w">      </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Stack</span><span class="p">(</span>
+<span class="w">        </span><span class="n">fit</span><span class="p">:</span><span class="w"> </span><span class="n">StackFit</span><span class="o">.</span><span class="n">expand</span><span class="p">,</span>
+<span class="w">        </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+<span class="w">          </span><span class="n">addBackground</span><span class="p">(),</span>
+<span class="w">          </span><span class="n">addWelcomeText</span><span class="p">()</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">      </span><span class="p">),</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="o">....</span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
+
+<p>Our target <code>Body</code> widget <code>build</code> method to look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s1">&#39;package:landingpage/utils/responsive_widget.dart&#39;</span><span class="p">;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Body</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+
+<span class="nd">@override</span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ResponsiveWidget</span><span class="p">(</span>
+<span class="w">      </span><span class="n">largeScreen</span><span class="p">:</span><span class="w"> </span><span class="n">LargeScreen</span><span class="p">(),</span>
+<span class="w">      </span><span class="n">smallScreen</span><span class="p">:</span><span class="w"> </span><span class="n">SmallScreen</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="o">...</span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
+
+<p>As you see that I imported <code>responsive_widget.dart</code>, and provided two implementations: <code>LargeScreen()</code> and <code>SmallScreen()</code>. One of the implementation will be rendered based on the screen size at runtime. You might have noticed that I've not provided <code>MediumScreen()</code>. In that case, it will fall back to <code>LargeScreen()</code> widget. Okay, let's get started implementing <code>LargeScreen()</code> first. Basically, we'll move existing layout into <code>LargeScreen()</code>. At this point large screen layout will look like this:</p>
+<p><img alt="Large screen widgets for Web" src="https://ptyagicodecamp.github.io/ftf_final.jpg"></p>
+<p>For <code>SmallScreen()</code>, we might need to do few tinkering. Like we need to put things in a <code>Column</code> inside <code>SingleChildScrollView</code>, and add all other widgets as its children. We do this to fit all widgets in vertical view to make every widget accessible when width is not sufficient to layout in horizontal manner. This is how <code>SmallScreen()</code> implementation will look like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">SmallScreen</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">SingleChildScrollView</span><span class="p">(</span>
+<span class="w">      </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Padding</span><span class="p">(</span>
+<span class="w">        </span><span class="n">padding</span><span class="p">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
+<span class="w">        </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Column</span><span class="p">(</span>
+<span class="w">          </span><span class="n">crossAxisAlignment</span><span class="p">:</span><span class="w"> </span><span class="n">CrossAxisAlignment</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+<span class="w">          </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+<span class="w">            </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">              </span><span class="n">Strings</span><span class="o">.</span><span class="n">hello</span><span class="p">,</span>
+<span class="w">              </span><span class="n">style</span><span class="p">:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span>
+<span class="w">                </span><span class="n">fontWeight</span><span class="p">:</span><span class="w"> </span><span class="n">FontWeight</span><span class="o">.</span><span class="n">bold</span><span class="p">,</span>
+<span class="w">                </span><span class="n">fontSize</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span>
+<span class="w">                </span><span class="n">color</span><span class="p">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">blue4</span><span class="p">,</span>
+<span class="w">              </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="n">RichText</span><span class="p">(</span>
+<span class="w">              </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="n">TextSpan</span><span class="p">(</span>
+<span class="w">                  </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="n">Strings</span><span class="o">.</span><span class="n">welcomeTo</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">style</span><span class="p">:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="n">fontSize</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">:</span><span class="w"> </span><span class="n">MyColors</span><span class="o">.</span><span class="n">blue4</span><span class="p">),</span>
+<span class="w">                  </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="n">TextSpan</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="n">Strings</span><span class="o">.</span><span class="n">ftf</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">style</span><span class="p">:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span>
+<span class="w">                            </span><span class="n">fontSize</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">fontWeight</span><span class="p">:</span><span class="w"> </span><span class="n">FontWeight</span><span class="o">.</span><span class="n">bold</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">color</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">black54</span><span class="p">))</span>
+<span class="w">                  </span><span class="p">]),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="n">SizedBox</span><span class="p">(</span>
+<span class="w">              </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">              </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Image</span><span class="o">.</span><span class="n">network</span><span class="p">(</span>
+<span class="w">                </span><span class="n">backgroundImage</span><span class="p">,</span>
+<span class="w">                </span><span class="n">scale</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">              </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="n">Padding</span><span class="p">(</span>
+<span class="w">              </span><span class="n">padding</span><span class="p">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">left</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="n">top</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">),</span>
+<span class="w">              </span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="n">Strings</span><span class="o">.</span><span class="n">subscribeText</span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="n">SizedBox</span><span class="p">(</span>
+<span class="w">              </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="n">EmailBox</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">SizedBox</span><span class="p">(</span>
+<span class="w">              </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">      </span><span class="p">),</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>At this point small screen layout will look like below. You'll notice that background image is moved to bottom under the welcome text, and above the "subscribe to keep informed" text. In larger screen background image was towards the right side of the page. This is because we've added background image below the welcome text. Observe the code snippet above. Overall landing page on small screen looks balanced.</p>
+<p><img alt="Small screen widgets for Web" src="https://ptyagicodecamp.github.io/web_responsive_1.jpg"></p>
+<p>However, there're still two issues with this layout:
+First, "EmailBox" to inputting email addresses is aligned towards left and far away from right side. This is because of right padding "74". We would need to make it to same as of left side padding to keep this box in center. Let's set <code>EmailBox</code> widget right padding to "4" for smaller screens.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">EmailBox</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Padding</span><span class="p">(</span>
+<span class="w">      </span><span class="n">padding</span><span class="p">:</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="o">.</span><span class="n">only</span><span class="p">(</span>
+<span class="w">          </span><span class="n">left</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span>
+<span class="w">          </span><span class="n">right</span><span class="p">:</span><span class="w"> </span><span class="n">ResponsiveWidget</span><span class="o">.</span><span class="n">isSmallScreen</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="err">?</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="mi">74</span><span class="p">,</span><span class="w"> </span><span class="o">//</span><span class="n">Check</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">screen</span><span class="w"> </span><span class="n">type</span>
+<span class="w">          </span><span class="n">top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">          </span><span class="n">bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">),</span>
+<span class="w">          </span><span class="o">....</span>
+
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span><span class="w">          </span>
+</code></pre></div>
+
+<p>Second, you might notice that "Subscribe" button still have overflow text like shown in screenshot below:
+<img alt="Overflow subscribe button" src="https://ptyagicodecamp.github.io/web_overflow_subscribe.jpg"></p>
+<p>Let's fix the overflow text issue with <code>SubscribeButton</code>.
+There're three places, where we need to adjust the size rendering to fit on smaller screens.</p>
+<ul>
+<li>Make the font of the text "Subscribe" on button adaptive to the screen at run time.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Text(
+    Strings.subscribeButton,
+    style: TextStyle(
+        color: MyColors.white1,
+        fontSize: ResponsiveWidget.isSmallScreen(context)
+            ? 12
+            : ResponsiveWidget.isMediumScreen(context)
+                ? 12
+                : 16,
+        letterSpacing: 1),
+  ),
+</code></pre></div>
+
+<ul>
+<li>Make spacing between text and image adaptive to the screen at run time. On Smaller screen make it 4, on medium 6 and for larger screens 8.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>SizedBox(
+  width: ResponsiveWidget.isSmallScreen(context)
+      ? 4
+      : ResponsiveWidget.isMediumScreen(context) ? 6 : 8,
+),
+</code></pre></div>
+
+<ul>
+<li>Last thing is to make image size adjustable to screen size.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Image.network(
+  emailImage,
+  color: MyColors.white1,
+  width: ResponsiveWidget.isSmallScreen(context)
+      ? 12
+      : ResponsiveWidget.isMediumScreen(context) ? 12 : 20,
+  height: ResponsiveWidget.isSmallScreen(context)
+      ? 12
+      : ResponsiveWidget.isMediumScreen(context) ? 12 : 20,
+)
+</code></pre></div>
+
+<p>However this doesn't solve the problem fully. For small screens "Subscribe" text and "email" icon is just too much to adjust together next to each other. So you've to be creative with your design here. In my case, I only used email image for button and skipped "Subscribe" text on button. I created two different variants for buttons. One for smaller screen and another for larger screen.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">Widget</span><span class="w"> </span><span class="nv">buildButton</span><span class="ss">(</span><span class="nv">BuildContext</span><span class="w"> </span><span class="nv">context</span><span class="ss">)</span><span class="w"> </span>{
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">ResponsiveWidget</span>.<span class="nv">isSmallScreen</span><span class="ss">(</span><span class="nv">context</span><span class="ss">))</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">buildSmallButton</span><span class="ss">(</span><span class="nv">context</span><span class="ss">)</span><span class="c1">;</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">buildLargeButton</span><span class="ss">(</span><span class="nv">context</span><span class="ss">)</span><span class="c1">;</span>
+}
+</code></pre></div>
+
+<p>Here, I'm showing only small button implementation. Refer to code to checkout our large button implementation.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">buildSmallButton</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">Row(</span>
+<span class="w">    </span><span class="n">mainAxisAlignment</span><span class="p">:</span><span class="w"> </span><span class="n">MainAxisAlignment</span><span class="o">.</span><span class="kc">center</span><span class="p">,</span>
+<span class="w">    </span><span class="n">children</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="cp">[</span>
+<span class="w">      </span><span class="nx">Image.network</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">emailImage</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">color</span><span class="p">:</span><span class="w"> </span><span class="nx">MyColors.white1</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">width</span><span class="p">:</span><span class="w"> </span><span class="nx">ResponsiveWidget.isSmallScreen</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span>
+<span class="w">            </span><span class="o">?</span><span class="w"> </span><span class="mi">12</span>
+<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="nx">ResponsiveWidget.isMediumScreen</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">height</span><span class="p">:</span><span class="w"> </span><span class="nx">ResponsiveWidget.isSmallScreen</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span>
+<span class="w">            </span><span class="o">?</span><span class="w"> </span><span class="mi">12</span>
+<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="nx">ResponsiveWidget.isMediumScreen</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">    </span><span class="cp">]</span><span class="p">,</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Note:</strong> I'm using Chrome's inspect mode to checkout layout on different screen layouts.</p>
+<p>Screenshot below shows the Small button :
+<img alt="Smaller screen button for Web" src="https://ptyagicodecamp.github.io/web_responsive_2.jpg"></p>
+<p>At this point, we've made body of the landing page responsive. Now let's make header responsive.</p>
+<h4>Adapting landing page's Header</h4>
+<p>In large screens, there's enough room to show all navigation links. However, as far as smaller screens are concerned, there's not enough space to show all links next to each other. For smaller screens, it makes sense to show a menu icon. Clicking on menu icon can bring up all the links. Implementing menu icon interaction is out of the scope of this article.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">class</span><span class="w"> </span><span class="nt">Header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">...</span>
+<span class="w">  </span><span class="err">//Builds</span><span class="w"> </span><span class="err">navigation</span><span class="w"> </span><span class="err">links</span><span class="w"> </span><span class="err">at</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">right</span><span class="w"> </span><span class="err">top</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">landing</span><span class="w"> </span><span class="err">page</span>
+<span class="w">  </span><span class="err">Widget</span><span class="w"> </span><span class="err">buildHeaderLinks(BuildContext</span><span class="w"> </span><span class="err">context)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">    </span><span class="err">if</span><span class="w"> </span><span class="err">(!ResponsiveWidget.isSmallScreen(context))</span>
+<span class="w">      </span><span class="err">return</span><span class="w"> </span><span class="err">Row(</span>
+<span class="w">        </span><span class="n">mainAxisAlignment</span><span class="p">:</span><span class="w"> </span><span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">spaceAround</span><span class="p">,</span>
+<span class="w">        </span><span class="n">children</span><span class="o">:</span><span class="w"> </span><span class="nf">getLinksListing</span><span class="p">()</span><span class="o">..</span><span class="nf">add</span><span class="p">(</span><span class="nf">buildLoginButton</span><span class="p">()),</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="err">else</span>
+<span class="w">      </span><span class="err">return</span><span class="w"> </span><span class="err">Image.network(&quot;assets/menu.png&quot;,</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="k">height</span><span class="o">:</span><span class="w"> </span><span class="mi">25</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="o">...</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<p><strong>Note:</strong> <code>Image.network</code> needs to be replaced with <code>Image.asset</code> for Native implementation.</p>
+<p><img alt="Responsive navigation for smaller screen for Web" src="https://ptyagicodecamp.github.io/web_responsive_3.jpg"></p>
+<p>So, this concludes making landing page responsive for all screen form factors.</p>
+<h4>Running in Native environment</h4>
+<p>You may want to make few changes to adapt to native code. I've native source code available <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-responsive">here</a></p>
+<ul>
+<li><code>Image.network</code> needs to be replaced with <code>Image.asset</code>.</li>
+<li><code>flutter_web</code> imports need to be replaced with it's native variant <code>flutter</code>.</li>
+</ul>
+<p>Responsive page at Native platform looks like below in Android:</p>
+<p><img alt="Responsive navigation for smaller screen for Android" src="https://ptyagicodecamp.github.io/native_responsive_final.jpg"></p>
+<p>Keep Fluttering !</p>
+<h3>Source code repo:</h3>
+<ul>
+<li>Source code for <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/web-responsive">web</a></li>
+<li>Source code for <a href="https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/native-responsive">Native</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PL9hJBK4eqz6NQiumJc6Iwt7r6eLk8ZZP3">Youtube playlist for Designing Flutter Landing page</a></li>
+</ul>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+    <footer>
+      <p>Published: <time datetime="2019-06-11T00:00:00-04:00">
+        June 11, 2019
+      </time></p>
+        <address>
+          By             <a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a>
+        </address>
+        <p>
+          Category: <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+        </p>
+        <p>
+          Tags:
+            <a href="https://ptyagicodecamp.github.io/tag/hummingbird.html">Hummingbird</a>
+            <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">Cross-platform</a>
+            <a href="https://ptyagicodecamp.github.io/tag/flutter.html">Flutter</a>
+            <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">Code-recipes</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android.html">Android</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">Android Studio</a>
+            <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+            <a href="https://ptyagicodecamp.github.io/tag/responsive.html">Responsive</a>
+        </p>
+    </footer>
+  </article>
+      </main>
+      <footer>
+          <address>
+            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+          </address>
+      </footer>
+  </body>
+</html>

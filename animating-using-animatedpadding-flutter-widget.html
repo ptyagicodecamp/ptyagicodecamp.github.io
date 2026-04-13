@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>tech&Life - Animating using AnimatedPadding Flutter widget</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="Pelican" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore | Mobile | Software Engineering | Life" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Full Atom Feed" />
+        <link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="AnimatedPadding" />
+    <meta name="tags" content="cross-platform" />
+    <meta name="tags" content="flutter" />
+    <meta name="tags" content="code-recipes" />
+    <meta name="tags" content="android" />
+    <meta name="tags" content="android Studio" />
+    <meta name="tags" content="iOS" />
+    <meta name="tags" content="development" />
+
+  </head>
+
+  <body>
+      <header>
+          <hgroup><h1><a href="https://ptyagicodecamp.github.io/">tech&Life</a></h1><p>Explore | Mobile | Software Engineering | Life</p></hgroup>
+          <nav><ul>
+              <li><a href="/archives.html">Archives</a></li>
+              <li><a href="/categories.html">Categories</a></li>
+              <li><a href="/tags.html">Tags</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/dart.html" >Dart</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development.html" >Development</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development-flutter-cross-platform.html" >Development, Flutter, Cross-platform</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/devops.html" >DevOps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/engineering-management.html" >Engineering Management</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutter.html"  aria-current="page" >Flutter</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html" >FlutterLayouts</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/leadership.html" >Leadership</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/navigation.html" >Navigation</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/publishing-apps.html" >publishing-apps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/widgets.html" >Widgets</a></li>
+          </ul></nav>
+      </header>
+      <main>
+  <article>
+    <header>
+      <h2>
+        <a href="https://ptyagicodecamp.github.io/animating-using-animatedpadding-flutter-widget.html" rel="bookmark"
+           title="Permalink to Animating using AnimatedPadding Flutter widget">Animating using AnimatedPadding Flutter widget</a></h2>
+      
+    </header>
+    <h2>Introduction</h2>
+<p><code>AnimatedPadding</code> widget is the animated version of the <code>Padding</code> widget.</p>
+<p>In this article, we'll see how <code>AnimatedPadding</code> widget is used to animate an image in it. We'll observe animation behavior for various types of <a href="https://api.flutter.dev/flutter/animation/Curves-class.html">curves</a>.</p>
+<p><strong>Target Audience:</strong> Beginner</p>
+<p><strong>Recipe:</strong> Animating an image in <code>AnimatedPadding</code> widget.</p>
+<p><strong>Focus Widget:</strong> <code>AnimatedPadding</code></p>
+<p><strong>Goal:</strong> Animate an image inside <code>AnimatedPadding</code> using various types given <a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262">AnimationCurves</a></p>
+<p><img alt="code recipe demo" src="https://ptyagicodecamp.github.io/anim_padding_1.jpg"></p>
+<p><strong>AnimationCurves:</strong></p>
+<p><img alt="animation curves" src="https://ptyagicodecamp.github.io/anim_curves.jpg"></p>
+<hr>
+<p><strong>Checkout YouTube video:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gvRQzzm6X3w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h3>Structure of <code>AnimatedPadding</code> widget</h3>
+<p><code>AnimatedPadding</code> uses <code>duration</code> and <code>curve</code> properties to animate from previous value of inset to a newer value. The <code>duration</code> value controls how long animation would take whereas <code>curve</code> property's value provides the type of animation <a href="https://api.flutter.dev/flutter/animation/Curves-class.html">Curve</a></p>
+<div class="highlight"><pre><span></span><code><span class="nt">AnimatedPadding</span><span class="o">(</span>
+<span class="w">          </span><span class="nt">padding</span><span class="o">:</span><span class="w"> </span><span class="nt">EdgeInsets</span><span class="p">.</span><span class="nc">all</span><span class="o">(</span><span class="nt">paddingValue</span><span class="o">),</span>
+<span class="w">          </span><span class="nt">duration</span><span class="o">:</span><span class="w"> </span><span class="nt">Duration</span><span class="o">(</span><span class="nt">seconds</span><span class="o">:</span><span class="w"> </span><span class="nt">2</span><span class="o">),</span>
+<span class="w">          </span><span class="nt">curve</span><span class="o">:</span>
+<span class="w">              </span><span class="nt">dropDownValue</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nt">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nt">dropDownValue</span><span class="p">.</span><span class="nc">curveCubic</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nt">Curves</span><span class="p">.</span><span class="nc">linear</span><span class="o">,</span>
+<span class="w">          </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Image</span><span class="p">.</span><span class="nc">asset</span><span class="o">(</span><span class="s1">&#39;assets/images/sea.jpg&#39;</span><span class="o">),</span>
+<span class="w">        </span><span class="o">),</span>
+</code></pre></div>
+
+<h3>Recipe's Code Structure</h3>
+<p>I'm using a drop down to choose the different type of <code>curve</code>. Animation curves used in this code recipe are available in the source code as well as <a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262">here</a>.</p>
+<p><code>AnimatedPadding</code> needs to be implemented inside a <code>StatefulWidget</code> since it can only animate when inset value is updated.</p>
+<p><code>AnimationCurve dropDownValue</code> holds the current selection from the <a href="https://gist.github.com/ptyagicodecamp/92f7ab72466b65a82da2c44f1c2fc262">AnimationCurves</a> drop down widget.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">AnimatedPaddingDemo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">@</span><span class="n">override</span>
+<span class="w">  </span><span class="n">_AnimatedPaddingDemoState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_AnimatedPaddingDemoState</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">_AnimatedPaddingDemoState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">AnimatedPaddingDemo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">AnimationCurve</span><span class="w"> </span><span class="n">dropDownValue</span><span class="p">;</span>
+<span class="w">  </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span>
+<span class="w">  </span><span class="n">double</span><span class="w"> </span><span class="n">paddingValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8.0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="o">...</span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
+
+<p>Boolean <code>selected</code> keeps track of when 'Update padding' button is pressed or image is touched.</p>
+<p>'Update padding' button next to dropDown widget. It updates the value of <code>selected</code> as below:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">playAnimation</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">RaisedButton(</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">blueAccent</span><span class="p">,</span>
+<span class="w">    </span><span class="n">child</span><span class="o">:</span><span class="w"> </span><span class="nf">Text</span><span class="p">(</span><span class="s2">&quot;Update Padding&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">onPressed</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">setState</span><span class="p">(</span><span class="err">(</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">      </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">selected</span><span class="p">;</span>
+<span class="w">      </span><span class="err">selected</span><span class="w"> </span><span class="err">?</span><span class="w"> </span><span class="err">paddingValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">40</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">paddingValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">8.0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="o">),</span>
+<span class="w">  </span><span class="o">);</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<h3>Implementing <code>AnimatedPadding</code> widget</h3>
+<p><code>AnimatedPadding</code> is wrapped around <code>GestureDetector</code> to let user start animation by touch in addition to pressing 'Update padding' button exclusively. User can choose one over another to start animation.</p>
+<p><code>AnimatedPadding</code> widget's default <code>padding</code> is  8.0. When user presses 'Update padding' button for a selected Curve type in dropDown widget, inset / <code>padding</code> updates to 20.0. <code>AnimatedPadding</code> updates its inset to new values with in <code>2</code> seconds as provided in <code>duration</code> attribute using current selection for <code>curve</code> property.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">Widget</span><span class="w"> </span><span class="nt">animatedPaddingWidget</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">return</span><span class="w"> </span><span class="err">GestureDetector(</span>
+<span class="w">    </span><span class="n">onTap</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="err">{</span>
+<span class="w">      </span><span class="nf">setState</span><span class="p">(</span><span class="err">(</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">        </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">selected</span><span class="p">;</span>
+<span class="w">        </span><span class="err">selected</span><span class="w"> </span><span class="err">?</span><span class="w"> </span><span class="err">paddingValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">20</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">paddingValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">8.0</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span><span class="o">);</span>
+<span class="w">    </span><span class="err">}</span><span class="o">,</span>
+<span class="w">    </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Center</span><span class="o">(</span>
+<span class="w">      </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">AnimatedPadding</span><span class="o">(</span>
+<span class="w">        </span><span class="nt">padding</span><span class="o">:</span><span class="w"> </span><span class="nt">EdgeInsets</span><span class="p">.</span><span class="nc">all</span><span class="o">(</span><span class="nt">paddingValue</span><span class="o">),</span>
+<span class="w">        </span><span class="nt">duration</span><span class="o">:</span><span class="w"> </span><span class="nt">Duration</span><span class="o">(</span><span class="nt">seconds</span><span class="o">:</span><span class="w"> </span><span class="nt">2</span><span class="o">),</span>
+<span class="w">        </span><span class="nt">curve</span><span class="o">:</span>
+<span class="w">            </span><span class="nt">dropDownValue</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nt">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nt">dropDownValue</span><span class="p">.</span><span class="nc">curveCubic</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nt">Curves</span><span class="p">.</span><span class="nc">linear</span><span class="o">,</span>
+<span class="w">        </span><span class="nt">child</span><span class="o">:</span><span class="w"> </span><span class="nt">Image</span><span class="p">.</span><span class="nc">asset</span><span class="o">(</span><span class="s1">&#39;assets/images/sea.jpg&#39;</span><span class="o">),</span>
+<span class="w">      </span><span class="o">),</span>
+<span class="w">    </span><span class="o">),</span>
+<span class="w">  </span><span class="o">);</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<p>I encourage you to Checkout the code below, and play around with different types of Curve animations to pick an animation that would work best for you.</p>
+<h3>Source code repo</h3>
+<ol>
+<li><code>AnimatedPadding</code> code recipe is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/blob/animations/flutter_animations/flutter_animations/lib/animations/anim_padding.dart">here</a></li>
+<li>Source code for all other animation code recipes is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/animations/flutter_animations/flutter_animations">here</a></li>
+</ol>
+<h3>References:</h3>
+<ol>
+<li><a href="https://api.flutter.dev/flutter/widgets/AnimatedPadding-class.html">AnimatedPadding</a></li>
+<li><a href="https://api.flutter.dev/flutter/animation/Curves-class.html">Animation Curves</a></li>
+</ol>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+    <footer>
+      <p>Published: <time datetime="2019-11-15T15:33:00-05:00">
+        November 15, 2019
+      </time></p>
+        <address>
+          By             <a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a>
+        </address>
+        <p>
+          Category: <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+        </p>
+        <p>
+          Tags:
+            <a href="https://ptyagicodecamp.github.io/tag/animatedpadding.html">AnimatedPadding</a>
+            <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+            <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
+            <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android.html">android</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">android Studio</a>
+            <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+            <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+        </p>
+    </footer>
+  </article>
+      </main>
+      <footer>
+          <address>
+            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+          </address>
+      </footer>
+  </body>
+</html>

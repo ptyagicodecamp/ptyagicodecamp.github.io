@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>tech&Life - Flutter code recipe for AppBar widget</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="Pelican" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore | Mobile | Software Engineering | Life" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Full Atom Feed" />
+        <link href="https://ptyagicodecamp.github.io/feeds/flutter.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="AppBar" />
+    <meta name="tags" content="cross-platform" />
+    <meta name="tags" content="flutter" />
+    <meta name="tags" content="code-recipes" />
+    <meta name="tags" content="android" />
+    <meta name="tags" content="android Studio" />
+    <meta name="tags" content="iOS" />
+    <meta name="tags" content="development" />
+
+  </head>
+
+  <body>
+      <header>
+          <hgroup><h1><a href="https://ptyagicodecamp.github.io/">tech&Life</a></h1><p>Explore | Mobile | Software Engineering | Life</p></hgroup>
+          <nav><ul>
+              <li><a href="/archives.html">Archives</a></li>
+              <li><a href="/categories.html">Categories</a></li>
+              <li><a href="/tags.html">Tags</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/dart.html" >Dart</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development.html" >Development</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development-flutter-cross-platform.html" >Development, Flutter, Cross-platform</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/devops.html" >DevOps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/engineering-management.html" >Engineering Management</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutter.html"  aria-current="page" >Flutter</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html" >FlutterLayouts</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/leadership.html" >Leadership</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/navigation.html" >Navigation</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/publishing-apps.html" >publishing-apps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/widgets.html" >Widgets</a></li>
+          </ul></nav>
+      </header>
+      <main>
+  <article>
+    <header>
+      <h2>
+        <a href="https://ptyagicodecamp.github.io/flutter-code-recipe-for-appbar-widget.html" rel="bookmark"
+           title="Permalink to Flutter code recipe for AppBar widget">Flutter code recipe for AppBar widget</a></h2>
+      
+    </header>
+    <h2>AppBar</h2>
+<p>AppBar widget is the main widget in any Android app. It sits at the top of the application,
+and mostly controls major action items. In today's recipe, I'll show you how to design an AppBar for
+a phonebook style app. The AppBar will have a phonebook icon, a title saying 'Contacts' and action items in 
+AppBar's always on area as well as in overflow area.</p>
+<p><strong><em>Target Audience:</em></strong> Beginner</p>
+<p><strong><em>Recipe:</em></strong> Implement a basic appBar with a title, actions, and an overflow dropdown menu.</p>
+<p><strong><em>Focus Widget:</em></strong> AppBar</p>
+<p><strong><em>Goal:</em></strong> AppBar displays an icon, title, action and overflow menu items. 
+Clicking on action/overflow menu items displays status message.</p>
+<p><img alt="List item icon" src="https://ptyagicodecamp.github.io/basic_appbar.png"></p>
+<h3>Lets's go!</h3>
+<p>Step #1. Create AppBar inside <code>Scaffold</code>. <code>backgroundColor</code> is used for setting background color of the AppBar</p>
+<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">Scaffold</span><span class="o">(</span>
+<span class="w">      </span><span class="nt">appBar</span><span class="o">:</span><span class="w"> </span><span class="nt">AppBar</span><span class="o">(</span>
+<span class="w">        </span><span class="nt">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="nt">Colors</span><span class="p">.</span><span class="nc">blue</span><span class="o">,</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">      </span><span class="o">),</span>
+<span class="w">    </span><span class="o">);</span>
+</code></pre></div>
+
+<p>Step #2. Add image Icon using <code>leading</code> attribute</p>
+<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">Scaffold</span><span class="o">(</span>
+<span class="w">      </span><span class="nt">appBar</span><span class="o">:</span><span class="w"> </span><span class="nt">AppBar</span><span class="o">(</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="nt">leading</span><span class="o">:</span><span class="w"> </span><span class="nt">Icon</span><span class="o">(</span><span class="nt">Icons</span><span class="p">.</span><span class="nc">import_contacts</span><span class="o">),</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">      </span><span class="o">),</span>
+<span class="w">    </span><span class="o">);</span>
+</code></pre></div>
+
+<p>Step #3. Add AppBar's title</p>
+<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">Scaffold</span><span class="o">(</span>
+<span class="w">      </span><span class="nt">appBar</span><span class="o">:</span><span class="w"> </span><span class="nt">AppBar</span><span class="o">(</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="nt">title</span><span class="o">:</span><span class="w"> </span><span class="nt">Text</span><span class="o">(</span><span class="s2">&quot;Contacts&quot;</span><span class="o">),</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">      </span><span class="o">),</span>
+<span class="w">    </span><span class="o">);</span>
+</code></pre></div>
+
+<p>Step #4. Add <code>IconButton</code> action item to send message.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">Scaffold</span><span class="o">(</span>
+<span class="w">      </span><span class="nt">appBar</span><span class="o">:</span><span class="w"> </span><span class="nt">AppBar</span><span class="o">(</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="nt">actions</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">Widget</span><span class="o">&gt;</span><span class="cp">[</span>
+<span class="w">          </span><span class="nx">IconButton</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">icon</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="nx">Icons.message</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nx">clicked</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Message sent&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">          </span><span class="p">),</span>
+<span class="w">        </span><span class="cp">]</span><span class="o">,</span>
+<span class="w">      </span><span class="o">),</span>
+<span class="w">    </span><span class="o">);</span>
+</code></pre></div>
+
+<p>Step #5. Add overflow action item using <code>PopupMenuButton</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">return</span><span class="w"> </span><span class="nt">Scaffold</span><span class="o">(</span>
+<span class="w">      </span><span class="nt">appBar</span><span class="o">:</span><span class="w"> </span><span class="nt">AppBar</span><span class="o">(</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="nt">actions</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">Widget</span><span class="o">&gt;</span><span class="cp">[</span>
+<span class="w">          </span><span class="nx">...</span>
+<span class="w">          </span><span class="nx">PopupMenuButton</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">itemBuilder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="nx">BuildContext</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="err">[</span>
+<span class="w">                </span><span class="nx">PopupMenuItem</span><span class="p">(</span><span class="nx">child</span><span class="p">:</span><span class="w"> </span><span class="nx">IconButton</span><span class="p">(</span>
+<span class="w">                  </span><span class="nx">icon</span><span class="p">:</span><span class="w"> </span><span class="nx">Icon</span><span class="p">(</span><span class="nx">Icons.email</span><span class="p">),</span>
+<span class="w">                  </span><span class="nx">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                   </span><span class="nx">clicked</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Email sent&quot;</span><span class="p">);</span>
+<span class="w">                  </span><span class="p">},</span>
+<span class="w">                </span><span class="p">),),</span>
+<span class="w">              </span><span class="cp">]</span><span class="o">;</span>
+<span class="w">            </span><span class="err">}</span><span class="o">,</span>
+<span class="w">          </span><span class="o">)</span>
+<span class="w">        </span><span class="o">],</span>
+<span class="w">      </span><span class="o">),</span>
+<span class="w">    </span><span class="o">);</span>
+</code></pre></div>
+
+<p>Step #6. Handle action item clicks</p>
+<div class="highlight"><pre><span></span><code><span class="nt">void</span><span class="w"> </span><span class="nt">clicked</span><span class="o">(</span><span class="nt">BuildContext</span><span class="w"> </span><span class="nt">context</span><span class="o">,</span><span class="w"> </span><span class="nt">menu</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">final</span><span class="w"> </span><span class="err">scaffold</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">Scaffold.of(context)</span><span class="p">;</span>
+<span class="w">    </span><span class="err">scaffold.showSnackBar(</span>
+<span class="w">      </span><span class="err">SnackBar(</span>
+<span class="w">        </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="nf">Text</span><span class="p">(</span><span class="n">menu</span><span class="p">),</span>
+<span class="w">        </span><span class="n">action</span><span class="o">:</span><span class="w"> </span><span class="nf">SnackBarAction</span><span class="p">(</span>
+<span class="w">            </span><span class="n">label</span><span class="err">:</span><span class="w"> </span><span class="s1">&#39;UNDO&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">onPressed</span><span class="err">:</span><span class="w"> </span><span class="n">scaffold</span><span class="err">.</span><span class="n">hideCurrentSnackBar</span><span class="p">),</span>
+<span class="w">      </span><span class="p">),</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4>Complete example code</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="n">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nd">@override</span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">(</span>
+<span class="w">      </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Flutter Basic Appbar Demo&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="n">theme</span><span class="p">:</span><span class="w"> </span><span class="n">ThemeData</span><span class="p">(</span>
+<span class="w">        </span><span class="n">primarySwatch</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span>
+<span class="w">      </span><span class="p">),</span>
+<span class="w">      </span><span class="n">home</span><span class="p">:</span><span class="w"> </span><span class="n">BasicAppbarRecipe</span><span class="p">(</span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Basic Appbar&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BasicAppbarRecipe</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">StatefulWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">BasicAppbarRecipe</span><span class="p">({</span><span class="n">Key</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">title</span><span class="p">})</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">super</span><span class="p">(</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="n">key</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">final</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nd">@override</span>
+<span class="w">  </span><span class="n">_BasicAppbarRecipeState</span><span class="w"> </span><span class="n">createState</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_BasicAppbarRecipeState</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_BasicAppbarRecipeState</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">State</span><span class="o">&lt;</span><span class="n">BasicAppbarRecipe</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="nd">@override</span>
+<span class="w">  </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">      </span><span class="n">appBar</span><span class="p">:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span>
+<span class="w">        </span><span class="n">backgroundColor</span><span class="p">:</span><span class="w"> </span><span class="n">Colors</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span>
+<span class="w">        </span><span class="o">//</span><span class="n">setting</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">icon</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">AppBar</span>
+<span class="w">        </span><span class="n">leading</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">import_contacts</span><span class="p">),</span>
+<span class="w">        </span><span class="o">//</span><span class="n">setting</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">AppBar</span>
+<span class="w">        </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Contacts&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">actions</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+<span class="w">          </span><span class="o">//</span><span class="n">Setting</span><span class="w"> </span><span class="n">IconButton</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">send</span><span class="w"> </span><span class="n">message</span>
+<span class="w">          </span><span class="n">IconButton</span><span class="p">(</span>
+<span class="w">            </span><span class="n">icon</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">message</span><span class="p">),</span>
+<span class="w">            </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="o">//</span><span class="n">Handling</span><span class="w"> </span><span class="n">click</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="n">items</span>
+<span class="w">              </span><span class="n">clicked</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Message sent&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">          </span><span class="p">),</span>
+<span class="w">          </span><span class="o">//</span><span class="n">Setting</span><span class="w"> </span><span class="n">Overflow</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">PopupMenuButton</span>
+<span class="w">          </span><span class="n">PopupMenuButton</span><span class="p">(</span>
+<span class="w">            </span><span class="n">itemBuilder</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">PopupMenuItem</span><span class="p">(</span><span class="n">child</span><span class="p">:</span><span class="w"> </span><span class="n">IconButton</span><span class="p">(</span>
+<span class="w">                  </span><span class="n">icon</span><span class="p">:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="o">.</span><span class="n">email</span><span class="p">),</span>
+<span class="w">                  </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">clicked</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Email sent&quot;</span><span class="p">);</span>
+<span class="w">                  </span><span class="p">},</span>
+<span class="w">                </span><span class="p">),),</span>
+<span class="w">              </span><span class="p">];</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">          </span><span class="p">)</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">      </span><span class="p">),</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">void</span><span class="w"> </span><span class="n">clicked</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">menu</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">final</span><span class="w"> </span><span class="n">scaffold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Scaffold</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scaffold</span><span class="o">.</span><span class="n">showSnackBar</span><span class="p">(</span>
+<span class="w">      </span><span class="n">SnackBar</span><span class="p">(</span>
+<span class="w">        </span><span class="n">content</span><span class="p">:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="n">menu</span><span class="p">),</span>
+<span class="w">        </span><span class="n">action</span><span class="p">:</span><span class="w"> </span><span class="n">SnackBarAction</span><span class="p">(</span>
+<span class="w">            </span><span class="n">label</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;UNDO&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">onPressed</span><span class="p">:</span><span class="w"> </span><span class="n">scaffold</span><span class="o">.</span><span class="n">hideCurrentSnackBar</span><span class="p">),</span>
+<span class="w">      </span><span class="p">),</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong><em>Source code repo:</em></strong> 
+Recipe source code is available <a href="https://github.com/ptyagicodecamp/flutter_cookbook/tree/master/flutter_basic_appbar">here</a></p>
+<h3>References:</h3>
+<ol>
+<li>https://docs.flutter.io/flutter/material/AppBar-class.html</li>
+</ol>
+<p>Happy cooking with Flutter :)</p>
+<p><em>Liked the article ?
+Couldn't find a topic of your interest ? Please leave comments or <a href="mailto:ptyagicodecamp@gmail.com">email me</a> about topics you would like me to write !
+<a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a></em></p>
+    <footer>
+      <p>Published: <time datetime="2019-02-02T23:33:00-05:00">
+        February 02, 2019
+      </time></p>
+        <address>
+          By             <a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a>
+        </address>
+        <p>
+          Category: <a href="https://ptyagicodecamp.github.io/category/flutter.html">Flutter</a>
+        </p>
+        <p>
+          Tags:
+            <a href="https://ptyagicodecamp.github.io/tag/appbar.html">AppBar</a>
+            <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+            <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
+            <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android.html">android</a>
+            <a href="https://ptyagicodecamp.github.io/tag/android-studio.html">android Studio</a>
+            <a href="https://ptyagicodecamp.github.io/tag/ios.html">iOS</a>
+            <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+        </p>
+    </footer>
+  </article>
+      </main>
+      <footer>
+          <address>
+            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+          </address>
+      </footer>
+  </body>
+</html>

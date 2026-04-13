@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>tech&Life - Dart Extensions</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="Pelican" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore | Mobile | Software Engineering | Life" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Full Atom Feed" />
+        <link href="https://ptyagicodecamp.github.io/feeds/dart.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="extension" />
+    <meta name="tags" content="dart" />
+    <meta name="tags" content="cross-platform" />
+    <meta name="tags" content="flutter" />
+    <meta name="tags" content="code-recipes" />
+    <meta name="tags" content="development" />
+
+  </head>
+
+  <body>
+      <header>
+          <hgroup><h1><a href="https://ptyagicodecamp.github.io/">tech&Life</a></h1><p>Explore | Mobile | Software Engineering | Life</p></hgroup>
+          <nav><ul>
+              <li><a href="/archives.html">Archives</a></li>
+              <li><a href="/categories.html">Categories</a></li>
+              <li><a href="/tags.html">Tags</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/dart.html"  aria-current="page" >Dart</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development.html" >Development</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development-flutter-cross-platform.html" >Development, Flutter, Cross-platform</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/devops.html" >DevOps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/engineering-management.html" >Engineering Management</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutter.html" >Flutter</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html" >FlutterLayouts</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/leadership.html" >Leadership</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/navigation.html" >Navigation</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/publishing-apps.html" >publishing-apps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/widgets.html" >Widgets</a></li>
+          </ul></nav>
+      </header>
+      <main>
+  <article>
+    <header>
+      <h2>
+        <a href="https://ptyagicodecamp.github.io/dart-extensions.html" rel="bookmark"
+           title="Permalink to Dart Extensions">Dart Extensions</a></h2>
+      
+    </header>
+    <p><img alt="extensions" src="https://ptyagicodecamp.github.io/extensions.png"></p>
+<h1>Introduction</h1>
+<p>Dart Extensions were first introduced in Dart 2.6 as preview. Later on, they have been released in Dart 2.7 officially. The extensions feature is the way to add functionality to existing libraries.</p>
+<p>Sometimes you may want to add utility method(s) in a third-party library or in a core class like <a href="https://api.dart.dev/stable/2.7.2/dart-core/String-class.html">String</a> for your convenience. However, it may not be possible to add your methods in those classes all the time. The closest possible solution is to write utility and/or wrapper classes with <code>static</code> methods and members. These extra classes can bloat your code base and increases the number of objects in general.</p>
+<p>In such scenarios, extensions feature can come handy. It may look like wrapper classes, but they are different than wrapper classes. In wrapper classes, object is explicitly passed as arguments to the static methods. However, extensions implicitly extends the type.</p>
+<p>There are three types of Dart extensions :</p>
+<ul>
+<li>Extension methods</li>
+<li>Extension operators</li>
+<li>Extension properties</li>
+</ul>
+<h1>Defining Extensions</h1>
+<p>In Dart, all three types of extensions are defined inside one code block. The code block starts with <code>extension</code> followed by an optional name for the extension and <code>on</code> keyword, and then the type.</p>
+<p>For example, if I want to add a custom functionality to <code>List</code> data type, then the extension code block would look like below:</p>
+<div class="highlight"><pre><span></span><code>extension&lt;T&gt; MyList on List&lt;T&gt; {
+  //extension methods
+
+  //extension operators
+
+  //extension properties
+}
+</code></pre></div>
+
+<p>The <code>MyList</code> is optional. It's only needed when extensions are written in a separate file, and are being imported into another dart file. However, if you have another similar local / private extension, you might see conflicts. To avoid such conflicts, you may want to hide external extension like below:</p>
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="n">extensions2</span><span class="o">.</span><span class="n">dart</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">MyList</span><span class="w"> </span><span class="n">extension</span><span class="w"> </span><span class="n">definition</span>
+<span class="kn">import</span><span class="w"> </span><span class="s1">&#39;extensions2.dart&#39;</span><span class="w"> </span><span class="n">hide</span><span class="w"> </span><span class="n">MyList</span><span class="p">;</span>
+</code></pre></div>
+
+<p>In the following section, let's explore few examples to use it.</p>
+<hr>
+<h1>Usage</h1>
+<p>Let's get started by defining a local <code>extension&lt;T&gt;</code> block <code>on</code> <code>List&lt;T&gt;</code> type. We'll be exploring different type of data types, so using generic type <code>T</code>.</p>
+<div class="highlight"><pre><span></span><code>extension&lt;T&gt; on List&lt;T&gt; {
+  //extension methods
+
+  //extension operators
+
+  //extension properties
+}
+</code></pre></div>
+
+<h2>Extension Methods</h2>
+<p>In this section, we'll add two extension methods. We've a list of prices.</p>
+<p><strong>#1. Extension:</strong></p>
+<p>First, let's add an extension method <code>priceList()</code> to return the prices listing. This method doesn't do anything important, but demonstrate how extensions implicitly extends the type using <code>this</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">extension</span><span class="o">&lt;</span><span class="nt">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">on</span><span class="w"> </span><span class="nt">List</span><span class="o">&lt;</span><span class="nt">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">//Extension</span><span class="w"> </span><span class="n">Method</span><span class="p">:</span><span class="w"> </span><span class="n">demo</span>
+<span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">priceList</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="nf">map</span><span class="p">(</span><span class="err">(</span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="o">.</span><span class="nf">toList</span><span class="p">();</span>
+
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Using:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="err">{</span>
+<span class="w">  </span><span class="o">//</span><span class="k">List</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">prices</span>
+<span class="w">  </span><span class="k">List</span><span class="w"> </span><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.99</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="err">]</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Price listing:&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="o">//</span><span class="n">priceList</span><span class="p">()</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n n-Quoted">`prices`</span>
+<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">prices</span><span class="p">.</span><span class="n">priceList</span><span class="p">());</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code>Price listing:
+[1, 1.99, 4]
+</code></pre></div>
+
+<hr>
+<p><strong>#2. Extension:</strong></p>
+<p>The <code>priceLabels(String symbol)</code> extension method iterates over the price listing, and append a <code>symbol</code> prefix for each price.</p>
+<div class="highlight"><pre><span></span><code>extension<span class="nt">&lt;T&gt;</span><span class="w"> </span>on<span class="w"> </span>List<span class="nt">&lt;T&gt;</span><span class="w"> </span>{
+
+<span class="w">  </span>//Extension<span class="w"> </span>Method:<span class="w"> </span>Adding<span class="w"> </span>$<span class="w"> </span>prefix
+<span class="w">  </span>List<span class="nt">&lt;String&gt;</span><span class="w"> </span>priceLabels(String<span class="w"> </span>symbol)<span class="w"> </span>=&gt;
+<span class="w">      </span>this.map((item)<span class="w"> </span>=&gt;<span class="w"> </span>&quot;<span class="nv">$symbol</span><span class="w"> </span><span class="cp">${</span><span class="n">item</span><span class="cp">}</span>&quot;).toList();
+
+}
+</code></pre></div>
+
+<p><strong>Using:</strong></p>
+<div class="highlight"><pre><span></span><code>void main() {
+  //List of prices
+  List prices = [1, 1.99, 4];
+
+  print(&quot;\nPrice listing with \$ prefix&quot;);
+
+  //The $ symbol is passed
+  print(prices.priceLabels(&quot;\$&quot;));
+}
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code>Price listing with $ prefix
+[$ 1, $ 1.99, $ 4]
+</code></pre></div>
+
+<hr>
+<h2>Extension Operators</h2>
+<p>In this section, we'll add two extension operators. We've a list of prices similar to last example.</p>
+<p><strong>#3. Extension:</strong></p>
+<p>Let's define an operator extension for <code>^</code> operator. I want to use this operator to increases the price by the <code>n</code> times, where <code>n</code> is the argument passed into it.</p>
+<div class="highlight"><pre><span></span><code>extension<span class="nt">&lt;T&gt;</span><span class="w"> </span>on<span class="w"> </span>List<span class="nt">&lt;T&gt;</span><span class="w"> </span>{
+<span class="w">  </span>//Extension<span class="w"> </span>Operator:<span class="w"> </span>Hike<span class="w"> </span>up<span class="w"> </span>the<span class="w"> </span>price<span class="w"> </span>by<span class="w"> </span>n
+<span class="w">  </span>List<span class="nt">&lt;num&gt;</span><span class="w"> </span>operator<span class="w"> </span>^(int<span class="w"> </span>n)<span class="w"> </span>=&gt;
+<span class="w">    </span>this.map((item)<span class="w"> </span>=&gt;<span class="w"> </span>num.parse(&quot;<span class="cp">${</span><span class="n">item</span><span class="cp">}</span>&quot;)<span class="w"> </span>*<span class="w"> </span>n).toList();
+
+}
+</code></pre></div>
+
+<p><strong>Using:</strong></p>
+<div class="highlight"><pre><span></span><code>void main() {
+  //List of prices
+  List prices = [1, 1.99, 4];
+
+  print(&quot;\nPrice listing after hiking up prices 3x of the original value&quot;);
+
+  //argument is passed after the operator sign
+  print(prices ^ 3);
+}
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code>Price listing after hiking up prices 3x of the original value
+[3, 5.97, 12]
+</code></pre></div>
+
+<hr>
+<p><strong>#4. Extension:</strong></p>
+<p>Next define another operator extension for <code>-</code> operator. I want to use this operator to reduce the items' price to half when this operator is used.</p>
+<div class="highlight"><pre><span></span><code>extension<span class="nt">&lt;T&gt;</span><span class="w"> </span>on<span class="w"> </span>List<span class="nt">&lt;T&gt;</span><span class="w"> </span>{
+<span class="w">  </span>//Extension<span class="w"> </span>Operator:<span class="w"> </span>Reduce<span class="w"> </span>all<span class="w"> </span>prices<span class="w"> </span>by<span class="w"> </span>half
+<span class="w">   </span>List<span class="nt">&lt;num&gt;</span><span class="w"> </span>operator<span class="w"> </span>-()<span class="w"> </span>=&gt;
+<span class="w">       </span>this.map((item)<span class="w"> </span>=&gt;<span class="w"> </span>num.parse(&quot;<span class="cp">${</span><span class="n">item</span><span class="cp">}</span>&quot;)<span class="w"> </span>/<span class="w"> </span>2).toList();
+}
+</code></pre></div>
+
+<p><strong>Using:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb nb-Type">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">//</span><span class="n">List</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">prices</span>
+<span class="w">  </span><span class="n">List</span><span class="w"> </span><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.99</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">];</span>
+
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span>
+<span class="w">      </span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sale Price listing: prices are reduced by half of the original value&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="o">//</span><span class="n">no</span><span class="o">-</span><span class="n">arg</span><span class="w"> </span><span class="n">operator</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">put</span><span class="w"> </span><span class="n">before</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">variable</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code>Sale Price listing: prices are reduced by half of the original value
+[0.5, 0.995, 2.0]
+</code></pre></div>
+
+<hr>
+<h2>Extension Property</h2>
+<p>In this section, we'll add one extension property. We've a list of prices similar to last example.</p>
+<p><strong>#5. Extension:</strong></p>
+<p>In this extension, we'll add a property to return total number of printed price tags needed for price listing, where 3 tags are needed per item. We've a list of prices similar to last example.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">extension</span><span class="o">&lt;</span><span class="nt">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">on</span><span class="w"> </span><span class="nt">List</span><span class="o">&lt;</span><span class="nt">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">//Extension</span><span class="w"> </span><span class="n">Property</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">printed</span><span class="w"> </span><span class="n">labels</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">price</span><span class="o">.</span>
+<span class="w">  </span><span class="n">int</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">numPrintedPriceTags</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Using:</strong></p>
+<div class="highlight"><pre><span></span><code>void main() {
+  //List of prices
+  List prices = [1, 1.99, 4];
+
+  print(&quot;\nNumber of total price tags&quot;);
+  print(prices.numPrintedPriceTags);
+}
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code>Number of total price tags
+9
+</code></pre></div>
+
+<hr>
+<h1>Companion Video</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NYahXrWoepo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h1>Source Code</h1>
+<p>Please checkout the source code at Github <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/extensions.dart">here</a></p>
+<hr>
+<h1>References</h1>
+<ol>
+<li>
+<p><a href="https://dart.dev/guides/language/extension-methods">Extension methods</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/dartlang/extension-methods-2d466cd8b308">Dart Extension Methods Fundamentals</a></p>
+</li>
+</ol>
+<p>Happy Darting :)</p>
+<p>_Liked the article ?
+Couldn't find a topic of your interest ? Please leave a comment or reach out at <a href="https://twitter.com/ptyagi13">twitter</a> about the topics you would like me to share !</p>
+<p><a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a>_</p>
+<p>Follow me at <a href="https://medium.com/@ptyagicodecamp">Medium</a></p>
+    <footer>
+      <p>Published: <time datetime="2020-04-07T00:00:00-04:00">
+        April 07, 2020
+      </time></p>
+        <address>
+          By             <a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a>
+        </address>
+        <p>
+          Category: <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
+        </p>
+        <p>
+          Tags:
+            <a href="https://ptyagicodecamp.github.io/tag/extension.html">extension</a>
+            <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>
+            <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+            <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
+            <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+            <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+        </p>
+    </footer>
+  </article>
+      </main>
+      <footer>
+          <address>
+            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+          </address>
+      </footer>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>tech&Life - WebViewHelper library</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="Pelican" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore | Mobile | Software Engineering | Life" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Full Atom Feed" />
+        <link href="https://ptyagicodecamp.github.io/feeds/development.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="android" />
+    <meta name="tags" content="webview" />
+    <meta name="tags" content="library" />
+    <meta name="tags" content="open-source" />
+    <meta name="tags" content="dev" />
+
+  </head>
+
+  <body>
+      <header>
+          <hgroup><h1><a href="https://ptyagicodecamp.github.io/">tech&Life</a></h1><p>Explore | Mobile | Software Engineering | Life</p></hgroup>
+          <nav><ul>
+              <li><a href="/archives.html">Archives</a></li>
+              <li><a href="/categories.html">Categories</a></li>
+              <li><a href="/tags.html">Tags</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/dart.html" >Dart</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development.html"  aria-current="page" >Development</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development-flutter-cross-platform.html" >Development, Flutter, Cross-platform</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/devops.html" >DevOps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/engineering-management.html" >Engineering Management</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutter.html" >Flutter</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html" >FlutterLayouts</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/leadership.html" >Leadership</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/navigation.html" >Navigation</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/publishing-apps.html" >publishing-apps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/widgets.html" >Widgets</a></li>
+          </ul></nav>
+      </header>
+      <main>
+  <article>
+    <header>
+      <h2>
+        <a href="https://ptyagicodecamp.github.io/webviewhelper-library.html" rel="bookmark"
+           title="Permalink to WebViewHelper library">WebViewHelper library</a></h2>
+      
+    </header>
+    <h3>A little about WebView widgets:</h3>
+<p>Webview widget is used to display HTML contents in an Android app. HTML contents can be rendered in a TextView widget using Html.fromHtml() method to parse very basic text. So why do we need WebView widget ? WebView widget is capable of handling more advanced HTML tags, Javascript and CSS, which gives a native feel to HTML contents right in your app. But this doesn't come for free. WebViews are more memory intensive when compared to TextView widget.</p>
+<h3>Background:</h3>
+<p>Pre Android 4.4, WebView was powered by WebKit. Starting Android 4.4, it’s powered by Chromium. Starting Android 5.0, WebView is distributed through Google Play Store. Starting Android 7.0, WebView uses Chrome browser app or System WebView app when Chrome browser is disabled.</p>
+<p>Downside of newer implementation starting Android 5.0: Since System WebView implementation is distributed through Play Store and no more bundled in Android OS, its challenging for OEMs to keep their implementation of WebView in sync with Play Store’s System WebView. The two can go out of sync very quickly.</p>
+<h3>Behaviors:</h3>
+<ol>
+<li>Any links embedded in a WebView widget will open in a WebView in Android 5.0 and over. </li>
+<li>On Android 4.4 and below, links embedded in a WebView will open in a Web Browser rather than in a WebView widget</li>
+<li>By default, javascript is disabled in WebView widget. It can be turned on by <code>getSettings().setJavaScriptEnabled(true)</code>. I’ve created convenience class <code>WebViewHelper</code> around <code>android.webkit.WebView</code> class features.</li>
+</ol>
+<h3>Using from Android Studio:</h3>
+<p>Add following in your project's <code>build.gradle</code> under <code>dependencies</code> block.</p>
+<div class="highlight"><pre><span></span><code>compile &#39;org.ptyagicodecamp:webview-android:0.0.2&#39;
+</code></pre></div>
+
+<h3>How to use <code>WebViewHelper</code> class ?</h3>
+<h5>Initializing</h5>
+<p>You would need to pass reference to <code>WebView</code> widget into <code>WebViewHelper</code> like this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">WebViewHelper</span><span class="w"> </span><span class="n">webViewHelper</span><span class="p">;</span>
+<span class="p">....</span>
+
+<span class="nv">@Override</span>
+<span class="w">    </span><span class="n">protected</span><span class="w"> </span><span class="n">void</span><span class="w"> </span><span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">        </span><span class="n">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">webView</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WebView</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">webView</span><span class="p">);</span>
+<span class="w">        </span><span class="o">//</span><span class="k">initialize</span><span class="w"> </span><span class="n">WebViewHelper</span>
+<span class="w">        </span><span class="n">webViewHelper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WebViewHelper</span><span class="p">(</span><span class="n">webView</span><span class="p">);</span>
+<span class="w">    </span><span class="err">}</span>
+</code></pre></div>
+
+<h5>Using library</h5>
+<div class="highlight"><pre><span></span><code>public<span class="w"> </span>void<span class="w"> </span>loadUrl(View<span class="w"> </span>view)<span class="w"> </span>{
+<span class="w">        </span>webViewHelper.loadUrl(&quot;https://ptyagicodecamp.github.io/&quot;);
+<span class="w">    </span>}
+
+<span class="w">    </span>public<span class="w"> </span>void<span class="w"> </span>loadData(View<span class="w"> </span>view)<span class="w"> </span>{
+<span class="w">        </span>webViewHelper.loadData(&quot;<span class="nt">&lt;html&gt;&lt;a</span><span class="w"> </span><span class="na">href=</span><span class="s">\&quot;https://ptyagicodecamp.github.io/\&quot;</span><span class="nt">&gt;</span>Click<span class="w"> </span>Here<span class="w"> </span>to<span class="w"> </span>visit<span class="w"> </span>my<span class="w"> </span>Blog<span class="nt">&lt;/html&gt;</span>&quot;);
+<span class="w">    </span>}
+
+<span class="w">    </span>public<span class="w"> </span>void<span class="w"> </span>toggleJavaScript(View<span class="w"> </span>view)<span class="w"> </span>{
+
+<span class="w">        </span>if<span class="w"> </span>(((ToggleButton)view).isChecked())<span class="w"> </span>{
+<span class="w">            </span>webViewHelper.enableJS();
+<span class="w">            </span>Toast.makeText(this,<span class="w"> </span>&quot;Javascript<span class="w"> </span>is<span class="w"> </span>enabled&quot;,<span class="w"> </span>Toast.LENGTH_LONG).show();
+<span class="w">        </span>}<span class="w"> </span>else<span class="w"> </span>{
+<span class="w">            </span>webViewHelper.disableJS();
+<span class="w">            </span>Toast.makeText(this,<span class="w"> </span>&quot;Javascript<span class="w"> </span>is<span class="w"> </span>disabled&quot;,<span class="w"> </span>Toast.LENGTH_LONG).show();
+<span class="w">        </span>}
+<span class="w">    </span>}
+</code></pre></div>
+
+<p>Source code is available <a href="https://github.com/ptyagicodecamp/webview-android">here</a></p>
+    <footer>
+      <p>Published: <time datetime="2016-12-16T15:06:00-05:00">
+        December 16, 2016
+      </time></p>
+        <address>
+          By             <a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a>
+        </address>
+        <p>
+          Category: <a href="https://ptyagicodecamp.github.io/category/development.html">Development</a>
+        </p>
+        <p>
+          Tags:
+            <a href="https://ptyagicodecamp.github.io/tag/android.html">android</a>
+            <a href="https://ptyagicodecamp.github.io/tag/webview.html">webview</a>
+            <a href="https://ptyagicodecamp.github.io/tag/library.html">library</a>
+            <a href="https://ptyagicodecamp.github.io/tag/open-source.html">open-source</a>
+            <a href="https://ptyagicodecamp.github.io/tag/dev.html">dev</a>
+        </p>
+    </footer>
+  </article>
+      </main>
+      <footer>
+          <address>
+            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+          </address>
+      </footer>
+  </body>
+</html>

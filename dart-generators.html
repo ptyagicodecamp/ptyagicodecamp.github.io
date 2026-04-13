@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>tech&Life - Dart Generators</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="Pelican" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore | Mobile | Software Engineering | Life" />
+        <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Full Atom Feed" />
+        <link href="https://ptyagicodecamp.github.io/feeds/dart.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="generators" />
+    <meta name="tags" content="dart" />
+    <meta name="tags" content="cross-platform" />
+    <meta name="tags" content="flutter" />
+    <meta name="tags" content="code-recipes" />
+    <meta name="tags" content="development" />
+
+  </head>
+
+  <body>
+      <header>
+          <hgroup><h1><a href="https://ptyagicodecamp.github.io/">tech&Life</a></h1><p>Explore | Mobile | Software Engineering | Life</p></hgroup>
+          <nav><ul>
+              <li><a href="/archives.html">Archives</a></li>
+              <li><a href="/categories.html">Categories</a></li>
+              <li><a href="/tags.html">Tags</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/dart.html"  aria-current="page" >Dart</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development.html" >Development</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/development-flutter-cross-platform.html" >Development, Flutter, Cross-platform</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/devops.html" >DevOps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/engineering-management.html" >Engineering Management</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutter.html" >Flutter</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/flutterlayouts.html" >FlutterLayouts</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/leadership.html" >Leadership</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/navigation.html" >Navigation</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/publishing-apps.html" >publishing-apps</a></li>
+                <li><a href="https://ptyagicodecamp.github.io/category/widgets.html" >Widgets</a></li>
+          </ul></nav>
+      </header>
+      <main>
+  <article>
+    <header>
+      <h2>
+        <a href="https://ptyagicodecamp.github.io/dart-generators.html" rel="bookmark"
+           title="Permalink to Dart Generators">Dart Generators</a></h2>
+      
+    </header>
+    <p><img alt="enums" src="https://ptyagicodecamp.github.io/generators.png"></p>
+<h1>Introduction</h1>
+<p>Dart generator functions are used to generate sequence of values on-demand lazily. Such value sequence can be generated either synchronously or asynchronously. There are two types of built-in generator functions available to support both scenarios:</p>
+<ul>
+<li>Synchronous Generator: Synchronous generator function returns an <a href="https://api.dart.dev/stable/2.8.4/dart-core/Iterable-class.html">Iterable</a> object. That means first the values are generated and then returned lazily on-demand by the function.</li>
+</ul>
+<blockquote>
+<p>Iterable: A collection of values, or "elements", that can be accessed sequentially.</p>
+</blockquote>
+<ul>
+<li>Asynchronous Generator: Asynchronous generator function returns a <a href="https://api.dart.dev/stable/2.8.4/dart-async/Stream-class.html">Stream</a> object. The sequence of values is generated on demand as they become available.</li>
+</ul>
+<blockquote>
+<p>Stream: A source of asynchronous data events.</p>
+</blockquote>
+<hr>
+<h1>Check out YouTube Video</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hbaCIwAzooM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<p>Let's understand generator functions with help of an example. We'll generate numbers starting from a given number say 5 until 0, using generator functions. We'll observe both ways (asynchronous and synchronous generators) to create this number sequence.</p>
+<h1>Using <code>sync*</code> - Synchronous Generator</h1>
+<p>The function <code>Iterable&lt;int&gt; countDownFromSync(int num) sync*</code> takes a number as <code>num</code>, and sends out all numbers starting from <code>num</code> until 0. The synchronous generator function is marked with <code>sync*</code>. The values are returned using <code>yield</code> keyword. The iterable <code>sequence</code> receives the number sequence and print each number using <code>for</code> loop. This number sequence actually is not generated until it has been accessed by <code>for</code> loop.</p>
+<p><strong>main1():</strong></p>
+<div class="highlight"><pre><span></span><code>void main1() {
+  print(&quot;Getting CountDown Iterable [sync* + yield]&quot;);
+  Iterable&lt;int&gt; sequence = countDownFromSync(5);
+
+  print(&quot;Starting...&quot;);
+
+  for (int value in sequence) {
+    print(value);
+  }
+  print(&quot;DONE&quot;);
+}
+
+//sync*
+Iterable&lt;int&gt; countDownFromSync(int num) sync* {
+  while (num &gt; 0) {
+    yield num--;
+  }
+}
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<p>The <code>sync*</code> helps to generate values in a synchronous manner. Note that <code>Starting...</code> message is printed before for loop's execution. The <code>DONE</code> message is executed at last as well.</p>
+<div class="highlight"><pre><span></span><code>Getting CountDown Iterable [sync* + yield]
+Starting...
+5
+4
+3
+2
+1
+DONE
+</code></pre></div>
+
+<h1>Using <code>async*</code> - Asynchronous Generator</h1>
+<p>The function <code>Stream&lt;int&gt; countDownFromAsync(int num) async*</code> takes a number as <code>num</code>, and deliver number sequence starting from <code>num</code> until 0. The asynchronous generator function is marked with <code>async*</code>. The values are returned using <code>yield</code> keyword. The stream <code>sequence</code> receives the number sequence. Its values can be accessed as soon as it got started listening upon.</p>
+<p><strong>main2()</strong>:</p>
+<div class="highlight"><pre><span></span><code>void main2() {
+  print(&quot;Getting CountDown Stream [async* + yield]&quot;);
+  Stream&lt;int&gt; sequence = countDownFromAsync(5);
+
+  print(&quot;Starting...&quot;);
+
+  sequence.listen((int value) {
+    print(value);
+  });
+  print(&quot;DONE&quot;);
+}
+
+//async*
+Stream&lt;int&gt; countDownFromAsync(int num) async* {
+  while (num &gt; 0) {
+    yield num--;
+  }
+}
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<p>The <code>async*</code> helps to generate values in an asynchronous manner. Note that <code>Starting...</code> and <code>DONE</code> messages/setup are printed before actual stream's values are printed. The values are printed as they become available after the setup code.</p>
+<div class="highlight"><pre><span></span><code>Getting CountDown Stream [async* + yield]
+Starting...
+DONE
+5
+4
+3
+2
+1
+</code></pre></div>
+
+<h1>Using <code>sync* + yield*</code> - Recursive Synchronous Generator</h1>
+<p>When generator functions are used recursively, <code>yield*</code> is used to mark such recursive function calls. This example shows how to use generator functions recursively. You'll notice the same output as for the non-recursive implementation. The keyword <code>yield*</code> is used for the function that's called recursively.</p>
+<div class="highlight"><pre><span></span><code>void main3() {
+  print(&quot;Getting CountDown Iterable [sync* + yield*]&quot;);
+  Iterable&lt;int&gt; sequence = countDownFromSyncRecursive(5);
+
+  print(&quot;Starting...&quot;);
+
+  for (int value in sequence) {
+    print(value);
+  }
+  print(&quot;DONE&quot;);
+}
+
+//sync* + yield* for recursive functions
+Iterable&lt;int&gt; countDownFromSyncRecursive(int num) sync* {
+  if (num &gt; 0) {
+    yield num;
+
+    yield* countDownFromSyncRecursive(num - 1);
+  }
+}
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code>Getting CountDown Iterable [sync* + yield*]
+Starting...
+5
+4
+3
+2
+1
+DONE
+</code></pre></div>
+
+<h1>Using <code>async* + yield*</code> - Recursive Asynchronous Generator</h1>
+<p>This is an example of using an asynchronous generator function recursively. It also has the same output as its non-recursive counter-part.</p>
+<div class="highlight"><pre><span></span><code>void main4() {
+  print(&quot;Getting CountDown Stream [async* + yield*]&quot;);
+  Stream&lt;int&gt; sequence = countDownFromAsyncRecursive(5);
+
+  print(&quot;Starting...&quot;);
+
+  sequence.listen((int value) {
+    print(value);
+  });
+  print(&quot;DONE&quot;);
+}
+
+//async* + yield* for recursive functions
+Stream&lt;int&gt; countDownFromAsyncRecursive(int num) async* {
+  if (num &gt; 0) {
+    yield num;
+
+    yield* countDownFromAsyncRecursive(num - 1);
+  }
+}
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code>Getting CountDown Stream [async* + yield*]
+Starting...
+DONE
+5
+4
+3
+2
+1
+</code></pre></div>
+
+<hr>
+<h1>Summary</h1>
+<p>In this article, we saw how to use Dart's generator function to produce an on-demand sequence of values synchronously and asynchronously in an iterative and recursive manner.</p>
+<p>That's it for this article. Check out the <a href="https://ptyagicodecamp.github.io/a-dartflutter-vocabulary-series.html">Dart Vocabulary Series</a> for other Dart stuff.</p>
+<hr>
+<h1>Source Code</h1>
+<p>Please checkout the source code at Github <a href="https://github.com/ptyagicodecamp/dart_vocab/blob/master/src/generators.dart">here</a></p>
+<hr>
+<h1>References</h1>
+<ol>
+<li><a href="https://dart.dev/guides/language/language-tour#generators">Dart language tour</a></li>
+<li><a href="http://dartdoc.takyam.com/articles/beyond-async/">Beyond Async</a></li>
+<li><a href="https://www.youtube.com/watch?v=TF-TBsgIErY">Generators-Flutter in Focus</a></li>
+</ol>
+<p>Happy Darting :)</p>
+<p>_Liked the article?
+Couldn't find a topic of interest? Please leave a comment or reach out at <a href="https://twitter.com/ptyagi13">twitter</a> about the topics you would like me to share!</p>
+<p><a href="https://www.paypal.me/pritya">BTW I love cupcakes and coffee both :)</a>_</p>
+<p>Follow me at <a href="https://medium.com/@ptyagicodecamp">Medium</a></p>
+    <footer>
+      <p>Published: <time datetime="2020-06-07T00:00:00-04:00">
+        June 07, 2020
+      </time></p>
+        <address>
+          By             <a href="https://ptyagicodecamp.github.io/author/ptyagi.html">ptyagi</a>
+        </address>
+        <p>
+          Category: <a href="https://ptyagicodecamp.github.io/category/dart.html">Dart</a>
+        </p>
+        <p>
+          Tags:
+            <a href="https://ptyagicodecamp.github.io/tag/generators.html">generators</a>
+            <a href="https://ptyagicodecamp.github.io/tag/dart.html">dart</a>
+            <a href="https://ptyagicodecamp.github.io/tag/cross-platform.html">cross-platform</a>
+            <a href="https://ptyagicodecamp.github.io/tag/flutter.html">flutter</a>
+            <a href="https://ptyagicodecamp.github.io/tag/code-recipes.html">code-recipes</a>
+            <a href="https://ptyagicodecamp.github.io/tag/development.html">development</a>
+        </p>
+    </footer>
+  </article>
+      </main>
+      <footer>
+          <address>
+            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+          </address>
+      </footer>
+  </body>
+</html>
