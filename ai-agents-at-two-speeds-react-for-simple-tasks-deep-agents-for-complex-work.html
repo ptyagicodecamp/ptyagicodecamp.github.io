@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://ptyagicodecamp.github.io/theme/pygments/monokai.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/theme/font-awesome/css/solid.css">
+
+  <link rel="stylesheet" type="text/css" href="https://ptyagicodecamp.github.io/static/custom.css">
+
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Microsoft EDGE -->
+  <meta name="msapplication-TileColor" content="#333333">
+
+  <link href="https://ptyagicodecamp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tech&Life Atom">
+
+
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-133714063-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+ 
+
+<meta name="author" content="ptyagi" />
+<meta name="description" content="LangChain ReAct Agents vs Deep Agents for a Refund Assistant" />
+<meta name="keywords" content="Leadership, Engineering Management, Agentic Development Metrics">
+
+
+  <meta property="og:site_name" content="tech&Life"/>
+  <meta property="og:title" content="AI Agents at Two Speeds: ReAct for Simple Tasks, Deep Agents for Complex Work"/>
+  <meta property="og:description" content="LangChain ReAct Agents vs Deep Agents for a Refund Assistant"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://ptyagicodecamp.github.io/ai-agents-at-two-speeds-react-for-simple-tasks-deep-agents-for-complex-work.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2026-06-16 00:00:00-04:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://ptyagicodecamp.github.io/author/ptyagi.html">
+  <meta property="article:section" content="Agentic Development"/>
+  <meta property="article:tag" content="Leadership"/>
+  <meta property="article:tag" content="Engineering Management"/>
+  <meta property="article:tag" content="Agentic Development Metrics"/>
+  <meta property="og:image" content="https://ptyagicodecamp.github.io/images/profile.jpg">
+
+  <title>tech&Life &ndash; AI Agents at Two Speeds: ReAct for Simple Tasks, Deep Agents for Complex Work</title>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6359982310050489",
+      enable_page_level_ads: true
+    });
+  </script>
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://ptyagicodecamp.github.io/">
+      <img src="https://ptyagicodecamp.github.io/images/profile.jpg" alt="tech&Life" title="tech&Life">
+    </a>
+
+    <h1>
+      <a href="https://ptyagicodecamp.github.io/">tech&Life</a>
+    </h1>
+
+    <p>Explore | Mobile | Software Engineering | Life</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://www.paypal.me/pritya" >Support</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.codementor.io/ptyagicodecamp" >Codementor</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-linkedin"
+           href="https://www.linkedin.com/in/ptyagi13"
+           target="_blank">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-github"
+           href="https://github.com/ptyagicodecamp"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-medium"
+           href="https://medium.com/@ptyagi13"
+           target="_blank">
+          <i class="fa-brands fa-medium"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-twitter"
+           href="https://twitter.com/ptyagi13"
+           target="_blank">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-youtube"
+           href="https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA?view_as=subscriber"
+           target="_blank">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-codementor"
+           href="https://www.codementor.io/ptyagicodecamp"
+           target="_blank">
+          <i class="fa-brands fa-codementor"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-aside"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="8977779775"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</aside>
+  <main>
+
+<nav>
+  <a href="https://ptyagicodecamp.github.io/">Home</a>
+
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+
+  <a href="https://ptyagicodecamp.github.io/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="ai-agents-at-two-speeds-react-for-simple-tasks-deep-agents-for-complex-work">AI Agents at Two Speeds: ReAct for Simple Tasks, Deep Agents for Complex Work</h1>
+    <p>
+      Posted on June 16, 2026 in <a href="https://ptyagicodecamp.github.io/category/agentic-development.html">Agentic Development</a>
+
+    </p>
+  </header>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+  <div>
+    <h1>AI Agents at Two Speeds: ReAct for Simple Tasks, Deep Agents for Complex Work</h1>
+<p>Imagine a customer support refund assistant that reads a customer message, looks up refund policy, checks order status, decides whether to refund, escalate, or deny, drafts a customer-facing response, and logs the decision. The same problem can be implemented either way because both approaches let a model call tools. The difference is how much process you want around those tool calls.</p>
+<p>Most AI agent discussions get technical quickly: prompts, tools, graphs, memory, orchestration. But for teams deciding what to build, the practical question is simpler: how much agent do you actually need? A customer refund assistant is a useful test case because it is familiar, operational, and easy to scale from simple to complex. The same assistant can be built as a lightweight ReAct-style agent that checks policy and responds, or as a Deep Agent that plans, delegates, tracks context, and leaves an audit trail. This article compares both approaches using that single example, so the tradeoff is clear: start simple when the work is simple, and move deeper when the workflow demands it.</p>
+<p>A ReAct-style agent is the lightweight option: it reasons, calls a tool, reads the result, and repeats until it can answer. A Deep Agent is the heavier operations option: it still uses tools, but adds planning, richer context management, subagents, working files, and orchestration for longer-running tasks. For a refund assistant, ReAct is often enough when the policy is simple and the answer is immediate. Deep Agents make more sense when the same refund workflow starts to involve exceptions, audit notes, specialist review, long context, or multiple workstreams.</p>
+<h2>LangChain ReAct approach</h2>
+<p>ReAct means "reason and act." In practice, the agent loop asks the model what to do next, calls a tool if needed, gives the tool result back to the model as an observation, and continues until the model returns a final answer. In current LangChain v1, the recommended API for this lightweight agent loop is <code>langchain.agents.create_agent</code>; the older <code>langgraph.prebuilt.create_react_agent</code> path has been replaced for most new work.</p>
+<div class="highlight"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Customer</span><span class="w"> </span><span class="n">message</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">ReAct</span><span class="o">-</span><span class="n">style</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="n">loop</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">{</span><span class="n">Need</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">information</span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Order</span><span class="w"> </span><span class="n">status</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">check_order_status</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Refund</span><span class="w"> </span><span class="n">rules</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">lookup_refund_policy</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Draft</span><span class="w"> </span><span class="n">response</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">log_refund_decision</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Final</span><span class="w"> </span><span class="n">answer</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">langchain.agents</span> <span class="kn">import</span> <span class="n">create_agent</span>
+<span class="kn">from</span> <span class="nn">tools</span> <span class="kn">import</span> <span class="n">check_order_status</span><span class="p">,</span> <span class="n">lookup_refund_policy</span><span class="p">,</span> <span class="n">log_refund_decision</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">create_agent</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;MODEL_ID&quot;</span><span class="p">],</span>
+    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">check_order_status</span><span class="p">,</span> <span class="n">lookup_refund_policy</span><span class="p">,</span> <span class="n">log_refund_decision</span><span class="p">],</span>
+    <span class="n">system_prompt</span><span class="o">=</span><span class="p">(</span>
+        <span class="s2">&quot;You are a refund assistant. Check the order, apply policy, decide &quot;</span>
+        <span class="s2">&quot;refund/escalate/deny, draft a short customer response, and log it.&quot;</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span>
+    <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Order R-1001 arrived damaged. Can I get a refund?&quot;</span>
+    <span class="p">}]</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<p>Strengths: simple to build, easy to explain, low ceremony, good for short workflows. Limits: the loop can get messy when the task requires many steps, lots of context, durable artifacts, or specialist subtasks. Best fit: small support actions, simple policy checks, internal copilots, and workflows where each request finishes quickly.</p>
+<h2>Deep Agent approach</h2>
+<p>Deep Agents use the same basic idea of a model plus tools, but package it in a more production-oriented harness. The agent can plan work, manage longer context, use files or artifacts, delegate to subagents, and run more complex tasks without forcing every intermediate result into one conversation thread.</p>
+<div class="highlight"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Customer</span><span class="w"> </span><span class="n">message</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Deep</span><span class="w"> </span><span class="n">Agent</span><span class="w"> </span><span class="n">supervisor</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Plan</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">todos</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">check_order_status</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Policy</span><span class="w"> </span><span class="n">reviewer</span><span class="w"> </span><span class="n">subagent</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">lookup_refund_policy</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Working</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">decision</span><span class="w"> </span><span class="n">note</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Response</span><span class="w"> </span><span class="n">writer</span><span class="w"> </span><span class="n">subagent</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">log_refund_decision</span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Final</span><span class="w"> </span><span class="n">answer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">audit</span><span class="w"> </span><span class="n">trail</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">deepagents</span> <span class="kn">import</span> <span class="n">create_deep_agent</span>
+<span class="kn">from</span> <span class="nn">tools</span> <span class="kn">import</span> <span class="n">check_order_status</span><span class="p">,</span> <span class="n">lookup_refund_policy</span><span class="p">,</span> <span class="n">log_refund_decision</span>
+
+<span class="n">subagents</span> <span class="o">=</span> <span class="p">[{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;policy-reviewer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Checks refund policy and returns a decision recommendation.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;system_prompt&quot;</span><span class="p">:</span> <span class="s2">&quot;Use lookup_refund_policy. Return decision, policy_code, rationale.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tools&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">lookup_refund_policy</span><span class="p">],</span>
+<span class="p">}]</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">create_deep_agent</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;MODEL_ID&quot;</span><span class="p">],</span>
+    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">check_order_status</span><span class="p">,</span> <span class="n">lookup_refund_policy</span><span class="p">,</span> <span class="n">log_refund_decision</span><span class="p">],</span>
+    <span class="n">system_prompt</span><span class="o">=</span><span class="p">(</span>
+        <span class="s2">&quot;You are a refund operations agent. Plan, verify the order, apply policy, &quot;</span>
+        <span class="s2">&quot;draft a customer response, log the decision, and keep an audit note.&quot;</span>
+    <span class="p">),</span>
+    <span class="n">subagents</span><span class="o">=</span><span class="n">subagents</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span>
+    <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Order R-1001 arrived damaged. Can I get a refund?&quot;</span>
+    <span class="p">}]</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<p>Strengths: better for multi-step work, exceptions, auditability, context isolation, and specialist review. Limits: more moving parts, more latency, more things to test, and more design decisions. Best fit: refund operations with edge cases, regulated support, high-value orders, investigations, or workflows that produce durable notes and handoffs.</p>
+<h2>Difference visualization</h2>
+<div class="highlight"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">ReAct</span><span class="p">]</span>
+<span class="w">        </span><span class="n">R1</span><span class="p">[</span><span class="n">User</span><span class="w"> </span><span class="n">request</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R2</span><span class="p">[</span><span class="n">Single</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="n">loop</span><span class="p">]</span>
+<span class="w">        </span><span class="n">R2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R3</span><span class="p">[</span><span class="n">Immediate</span><span class="w"> </span><span class="n">tool</span><span class="w"> </span><span class="n">call</span><span class="p">]</span>
+<span class="w">        </span><span class="n">R3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R2</span>
+<span class="w">        </span><span class="n">R2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R4</span><span class="p">[</span><span class="n">Final</span><span class="w"> </span><span class="n">response</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Deep</span><span class="w"> </span><span class="n">Agent</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D1</span><span class="p">[</span><span class="n">User</span><span class="w"> </span><span class="n">request</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D2</span><span class="p">[</span><span class="n">Plan</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span><span class="p">[</span><span class="n">Supervisor</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D4</span><span class="p">[</span><span class="n">Specialized</span><span class="w"> </span><span class="n">subagent</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D5</span><span class="p">[</span><span class="n">State</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">artifacts</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D6</span><span class="p">[</span><span class="n">Tool</span><span class="w"> </span><span class="n">calls</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span>
+<span class="w">        </span><span class="n">D5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span>
+<span class="w">        </span><span class="n">D6</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span>
+<span class="w">        </span><span class="n">D3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D7</span><span class="p">[</span><span class="n">Final</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">audit</span><span class="w"> </span><span class="n">trail</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+</code></pre></div>
+
+<h2>Evaluation strategy</h2>
+<p>Evaluate both systems the same way. A non-engineer-friendly way to read evals is: "Did it make the right decision, follow policy, use the right systems, write a usable customer reply, and escalate when risk was present?"</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Correctness</td>
+<td>Did the assistant choose refund, deny, or escalate correctly?</td>
+</tr>
+<tr>
+<td>Policy compliance</td>
+<td>Did the decision match the refund rule that applies?</td>
+</tr>
+<tr>
+<td>Tool-use accuracy</td>
+<td>Did it check order status, check policy, and log the result?</td>
+</tr>
+<tr>
+<td>Response quality</td>
+<td>Is the customer message clear, brief, and not full of internal details?</td>
+</tr>
+<tr>
+<td>Escalation safety</td>
+<td>Did risky cases, such as chargebacks or missing orders, go to a human?</td>
+</tr>
+</tbody>
+</table>
+<p>Sample cases:</p>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Situation</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>damaged_within_window</td>
+<td>Delivered 7 days ago, damaged item</td>
+<td>refund</td>
+</tr>
+<tr>
+<td>late_change_of_mind</td>
+<td>Delivered 45 days ago, changed mind</td>
+<td>deny</td>
+</tr>
+<tr>
+<td>lost_shipment</td>
+<td>Shipment lost</td>
+<td>refund</td>
+</tr>
+<tr>
+<td>open_chargeback</td>
+<td>Wrong item plus open payment dispute</td>
+<td>escalate</td>
+</tr>
+<tr>
+<td>missing_order</td>
+<td>Order cannot be found</td>
+<td>escalate</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">grade_case</span><span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+    <span class="n">trace_tools</span> <span class="o">=</span> <span class="p">{</span><span class="n">step</span><span class="p">[</span><span class="s2">&quot;tool&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tool_trace&quot;</span><span class="p">,</span> <span class="p">[])}</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;correctness&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;decision&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">case</span><span class="p">[</span><span class="s2">&quot;expected_decision&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;policy_compliance&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;policy_code&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">case</span><span class="p">[</span><span class="s2">&quot;expected_policy_code&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;tool_use_accuracy&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;check_order_status&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lookup_refund_policy&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;log_refund_decision&quot;</span><span class="p">,</span>
+        <span class="p">}</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">trace_tools</span><span class="p">),</span>
+        <span class="s2">&quot;response_quality&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;customer_response&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">,</span>
+        <span class="s2">&quot;escalation_safety&quot;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="k">case</span><span class="p">[</span><span class="s2">&quot;expected_decision&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;escalate&quot;</span>
+            <span class="ow">or</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;decision&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;escalate&quot;</span>
+        <span class="p">),</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+<p>In the included local evals, both samples score 5/5 on the small deterministic dataset. That does not prove production readiness. It proves the sample policy path works and gives you a starting harness. In production, add more real cases, adversarial messages, policy edge cases, and human review of failed outputs.</p>
+<h2>GitHub Code Repos</h2>
+<ul>
+<li><a href="https://github.com/ptyagicodecamp/react-agent-refund-agent">react-refund-agent</a></li>
+<li><a href="https://github.com/ptyagicodecamp/deep-agent-refund-agent">deep-agent-refund-agent</a></li>
+</ul>
+<p>Each contains <code>README.md</code>, <code>requirements.txt</code>, <code>agent.py</code>, <code>tools.py</code>, <code>evals.py</code>, and <code>sample_cases.json</code>. The default eval path runs without API keys. Set <code>USE_LLM=1</code> and <code>MODEL_ID</code> to exercise the real LangChain or Deep Agents path.</p>
+<h2>Decision guide</h2>
+<table>
+<thead>
+<tr>
+<th>Choice</th>
+<th>Use when</th>
+<th>Avoid when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ReAct-style LangChain agent</td>
+<td>The workflow is short, policy is clear, tools are few, and speed matters.</td>
+<td>The task needs durable artifacts, many exceptions, or specialist sub-workflows.</td>
+</tr>
+<tr>
+<td>Deep Agent</td>
+<td>The workflow needs planning, subagents, longer context, audit notes, or handoffs.</td>
+<td>The job is a simple lookup-and-reply task where extra orchestration adds cost without value.</td>
+</tr>
+</tbody>
+</table>
+<h2>Final recommendation</h2>
+<p>Teams starting today should begin with a ReAct-style LangChain agent for the narrow refund path, then move to a Deep Agent when operational complexity shows up: chargebacks, high-value approvals, policy exceptions, audit trails, or multi-team handoffs. Keep the eval dataset constant across both. That makes the architecture decision practical instead of theoretical.</p>
+<h2>Source notes</h2>
+<p>LangChain and Deep Agents APIs evolve, so verify package versions against official docs before production use. The current examples here follow the official LangChain agents docs, LangChain v1 migration notes, Deep Agents overview, Deep Agents quickstart, and Deep Agents subagents documentation:</p>
+<ul>
+<li>https://docs.langchain.com/oss/python/langchain/agents</li>
+<li>https://docs.langchain.com/oss/python/migrate/langchain-v1</li>
+<li>https://docs.langchain.com/oss/python/deepagents/overview</li>
+<li>https://docs.langchain.com/oss/python/deepagents/quickstart</li>
+<li>https://docs.langchain.com/oss/python/deepagents/subagents</li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://ptyagicodecamp.github.io/tag/leadership.html">Leadership</a>
+      <a href="https://ptyagicodecamp.github.io/tag/engineering-management.html">Engineering Management</a>
+      <a href="https://ptyagicodecamp.github.io/tag/agentic-development-metrics.html">Agentic Development Metrics</a>
+    </p>
+  </div>
+
+
+  <div class="center social-share">
+    <p>Like this article? Share it with your friends!</p>
+    <div class="addthis_native_toolbox"></div>
+    <div class="addthis_sharing_toolbox"></div>
+    <div class="addthis_inline_share_toolbox"></div>
+  </div>
+
+
+    <div class="addthis_relatedposts_inline"></div>
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="ca-pub-6359982310050489"
+         data-ad-slot="6546879945"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'https-ptyagicodecamp-github-io';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>
+  &copy; 2026  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Creative Commons Attribution-ShareAlike</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " tech&Life ",
+  "url" : "https://ptyagicodecamp.github.io",
+  "image": "https://ptyagicodecamp.github.io/images/profile.jpg",
+  "description": "Mobile engineering tech logger."
+}
+</script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cf387135c8761da" async="async"></script>
+<a href="https://github.com/ptyagicodecamp" target="_blank" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+
+</body>
+</html>
